@@ -68,15 +68,19 @@
                     <div class="row">
                         @if ($home_slider_bottom_first)
                             <div class="col-12 col-md-4">
-                                <div class="ps-promo__item"><img class="ps-promo__banner"
-                                        src="{{ asset('storage/' . $home_slider_bottom_first->image) }}"
-                                        alt="alt" />
-                                    <div class="ps-promo__content"><span
-                                            class="ps-promo__badge">{{ $home_slider_bottom_first->badge }}</span>
-                                        <h4 class="text-dark ps-promo__name">{{ $home_slider_bottom_first->title }}
+                                <div class="ps-promo__item">
+                                    <img class="ps-promo__banner"
+                                        src="{{ asset('storage/' . $home_slider_bottom_first->image) }}" alt="alt"
+                                        onerror="this.onerror=null; this.src='/images/default_logo.png';" />
+                                    <div class="ps-promo__content">
+                                        <span
+                                            class="ps-promo__badge">{{ $home_slider_bottom_first->badge ?? 'Default Text Here' }}</span>
+                                        <h4 class="text-dark ps-promo__name">
+                                            {{ $home_slider_bottom_first->title ?? 'Default Text Here' }}
                                         </h4>
                                         <div class="ps-promo__image">
-                                            <img src="{{ asset('frontend/img/icon/icon10.png') }}" alt="" />
+                                            <img src="{{ asset('storage/' . $home_slider_bottom_first->image) }}" alt=""
+                                                onerror="this.onerror=null; this.src='/images/default_logo.png';" />
                                         </div>
                                         <a class="btn-green ps-promo__btn"
                                             href="{{ $home_slider_bottom_first->button_link }}">{{ $home_slider_bottom_first->button_name }}</a>
@@ -1001,7 +1005,8 @@
                             <div class="ps-blog__meta">
                                 <span
                                     class="ps-blog__date">{{ $blog_post->created_at->format('M d Y') }}</span>
-                                <a class="ps-blog__author" href="#">{{ $blog_post->author }}</a>
+                                <a class="ps-blog__author"
+                                    href="#">{{ $blog_post->author }}</a>
                             </div>
                             <a class="ps-blog__title" style="font-size: 18px;"
                                 href="{{ route('blog.details', $blog_post->slug) }}">

@@ -39,71 +39,56 @@
         font-size: 18px;
     }
 
-    .special-offers-btn {
+    /* Button styling */
+    .animated-button {
+        border: 2px solid orange;
         position: relative;
-        /* Position for pseudo-element layering */
-        background-color: white;
-        border: 2px solid transparent;
-        /* Transparent border for border-image */
-        border-radius: 5px;
-        padding: 10px 20px;
+        padding: 9px 20px;
         font-size: 20px;
         font-weight: bold;
-        cursor: pointer;
-        overflow: hidden;
-        /* Hide overflow of the animated layer */
-
-        /* Text Gradient */
-        background-image: linear-gradient(90deg, #f68e39 0%, #ea6867 29%, #cb4b98 64%, #9256c6 100%);
         color: transparent;
-        -webkit-background-clip: text;
+        background: linear-gradient(90deg, #f68e39 0%, #ea6867 29%, #cb4b98 64%, #9256c6 100%);
         background-clip: text;
-
-        /* Gradient Border */
-        border-image: linear-gradient(90deg, #f68e39 0%, #ea6867 29%, #cb4b98 64%, #9256c6 100%);
-        border-image-slice: 1;
-        /* Ensures the gradient fills the border */
+        -webkit-background-clip: text;
+        border-radius: 5px;
+        overflow: hidden;
+        cursor: pointer;
+        outline: none;
+        text-decoration: none;
+        display: inline-block;
+        z-index: 2;
+        /* Bring the text to the top */
     }
 
-    /* The animated gradient layer */
-    .special-offers-btn::before {
+    /* Light animation overlay */
+    .animated-button::before {
         content: '';
         position: absolute;
         top: 0;
-        left: -100%;
-        /* Start from the left side, outside of the button */
-        width: 200%;
-        /* Cover enough width for a smooth transition */
+        right: -100%;
+        width: 100%;
         height: 100%;
-        background-image: linear-gradient(90deg, #f68e39 0%, #ea6867 29%, #cb4b98 64%, #9256c6 100%);
-        z-index: -1;
-        /* Place behind the text */
-
-        /* Repeating animation every 3 seconds */
-        animation: slideGradient 3s linear infinite;
+        background: linear-gradient(90deg, rgba(246, 142, 57, 1) 0%, rgba(246, 142, 57, 0.5) 50%, rgba(246, 142, 57, 0) 100%);
+        /* Gradient from solid orange to transparent */
+        border-radius: 5px;
+        z-index: 1;
+        /* Behind the text */
+        animation: slide-animation1 2s linear infinite;
     }
 
-    /* Keyframes for sliding animation */
-    @keyframes slideGradient {
+    /* Keyframes for the animation */
+    @keyframes slide-animation1 {
         0% {
-            transform: translateX(-100%);
+            right: -100%;
+        }
+
+        50% {
+            right: 100%;
         }
 
         100% {
-            transform: translateX(100%);
+            right: 100%;
         }
-    }
-
-    /* Hover styles for text */
-    .special-offers-btn:hover {
-        color: transparent;
-        background-image: linear-gradient(90deg, #f68e39 0%, #ea6867 29%, #cb4b98 64%, #9256c6 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-
-        /* Gradient Border on Hover */
-        background-image: linear-gradient(90deg, #f68e39 0%, #ea6867 29%, #cb4b98 64%, #9256c6 100%);
-        border-image-slice: 1;
     }
 
     .ps-navigation__left {
@@ -216,10 +201,10 @@
             <div class="ps-logo">
                 <a href="{{ route('home') }}">
                     <img src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
-                        alt="" onerror="this.onerror=null; this.src='/images/default_logo.png';">
+                        alt="" onerror="this.onerror=null; this.src='/images/default_logo-2.jpg';">
                     <img class="sticky-logo"
                         src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
-                        alt="" onerror="this.onerror=null; this.src='/images/default_logo.png';">
+                        alt="" onerror="this.onerror=null; this.src='/images/default_logo-2.jpg';">
                 </a>
             </div>
             <a class="ps-menu--sticky" href="#">
@@ -407,7 +392,7 @@
                     </div>
                     <div class="col-lg-2">
                         <div class="text-right pt-3">
-                            <a href="#" class="btn btn-primary special-offers-btn">11:11 Sale</a>
+                            <a href="#" class="animated-button">11:11 SALE</a>
                         </div>
                     </div>
                 </div>
