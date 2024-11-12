@@ -10,7 +10,7 @@
                             @csrf
                             <div class="card-body">
                                 <div class="py-20">
-                                    <img width="200px" class="img-fluid" src="{{ optional($setting)->site_logo_black && file_exists(public_path('storage/' . $setting->site_logo_black)) ? asset('storage/' . $setting->site_logo_black) : asset('frontend/img/logo.png') }}"
+                                    <img width="200px" class="img-fluid" src="{{ optional($setting)->site_logo_black && file_exists(public_path('storage/' . optional($setting)->site_logo_black)) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
                                         alt="">
                                     {{-- <img width="200px" class="img-fluid" src="{{ !empty($site->site_logo_white) && file_exists(public_path('storage/settings/' . $site->site_logo_white)) ? asset('storage/settings/' . $site->site_logo_white) : asset('frontend/img/logo.png') }}"
                                         alt=""> --}}

@@ -33,7 +33,7 @@
                                         <div style="margin-bottom: 10px">
                                             <a href="#" rel="noopener">
                                                 <img alt="Logo"
-                                                    src="{{ asset('storage/' . $setting->site_logo_black) }}"
+                                                    src="{{ asset('storage/' . optional($setting)->site_logo_black) }}"
                                                     style="height: 35px">
                                             </a>
                                         </div>
@@ -123,10 +123,10 @@
                                         style="color:#181C32; font-size: 16px; font-weight: 600; margin-bottom:9px                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ">
                                         It’s all about customers!</p>
                                     <p style="margin-bottom:2px">Call our customer care number:
-                                        {{ $setting->primary_phone }}</p>
+                                        {{ optional($setting)->primary_phone }}</p>
                                     <p style="margin-bottom:4px">You may reach us at <a
-                                            href="mailto:{{ $setting->contact_email }}" rel="noopener" target="_blank"
-                                            style="font-weight: 600">{{ $setting->contact_email }}</a>.</p>
+                                            href="mailto:{{ optional($setting)->contact_email }}" rel="noopener" target="_blank"
+                                            style="font-weight: 600">{{ optional($setting)->contact_email }}</a>.</p>
                                     <p>We serve Monday – Friday: 9:00-20:00; Saturday: 11:00 – 15:00</p>
                                 </td>
                             </tr>
@@ -142,7 +142,7 @@
                             <tr>
                                 <td align="center" valign="center"
                                     style="font-size: 13px; padding:0 15px; text-align:center; font-weight: 500; color: #A1A5B7;font-family:Arial,Helvetica,sans-serif">
-                                    <p> © Copyright {{ $setting->website_name }}.</p>
+                                    <p> © Copyright {{ optional($setting)->website_name }}.</p>
                                 </td>
                             </tr>
                         </tbody>

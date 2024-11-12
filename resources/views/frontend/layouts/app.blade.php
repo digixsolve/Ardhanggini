@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link href="{{ asset('storage/' . $setting->site_favicon) }}" rel="apple-touch-icon-precomposed">
-    <link href="{{ asset('storage/' . $setting->site_favicon) }}" rel="shortcut icon" type="image/png">
+    <link href="{{ asset('storage/' . optional($setting)->site_favicon) }}" rel="apple-touch-icon-precomposed">
+    <link href="{{ asset('storage/' . optional($setting)->site_favicon) }}" rel="shortcut icon" type="image/png">
 
     @stack('heads')
     @props(['product'])
@@ -45,7 +45,7 @@
         <meta property="og:title" content="{{ optional($setting)->site_title ?: config('app.name', 'E-Commerce') }}" />
         <meta property="og:description" content="{{ optional($setting)->meta_description ?: config('app.name') }}" />
         <meta property="og:image"
-            content="{{ optional($setting)->site_logo_black && file_exists(public_path('storage/' . $setting->site_logo_black)) ? asset('storage/' . $setting->site_logo_black) : asset('frontend/images/brandPage-logo-no-img(217-55).jpg') }}" />
+            content="{{ optional($setting)->site_logo_black && file_exists(public_path('storage/' . optional($setting)->site_logo_black)) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/images/brandPage-logo-no-img(217-55).jpg') }}" />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
@@ -55,7 +55,7 @@
         <meta property="twitter:description"
             content="{{ optional($setting)->meta_description ?: config('app.name') }}" />
         <meta property="twitter:image"
-            content="{{ optional($setting)->site_logo_black && file_exists(public_path('storage/' . $setting->site_logo_black)) ? asset('storage/' . $setting->site_logo_black) : asset('frontend/images/brandPage-logo-no-img(217-55).jpg') }}" />
+            content="{{ optional($setting)->site_logo_black && file_exists(public_path('storage/' . optional($setting)->site_logo_black)) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/images/brandPage-logo-no-img(217-55).jpg') }}" />
     @endif
 
     <title>
