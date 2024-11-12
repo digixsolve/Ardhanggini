@@ -56,7 +56,7 @@ return new class extends Migration
             $table->text('tumblr_url')->nullable();
             $table->text('tiktok_url')->nullable();
 
-            $table->enum('user_verification', ['0', '1'])->default('0')->nullable();
+            $table->string('user_verification')->default('0')->nullable();
             $table->integer('minimum_order_amount')->nullable();
 
             $table->string('start_time_monday',150)->nullable();
