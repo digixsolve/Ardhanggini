@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
+
 :root {
     --space-unit: 1em;
     --space-xxxxs: calc(0.09 * var(--space-unit));
@@ -31,7 +33,7 @@ body::-webkit-scrollbar-thumb {
     outline: 0px solid slategrey;
 }
 * {
-    font-family: "Jost", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 400;
 }
 
@@ -55,7 +57,7 @@ h6 {
     margin-top: 0;
     margin-bottom: 10px;
     font-weight: 600;
-    font-family: "Jost", sans-serif;
+    font-family: "Inter", sans-serif;
 }
 
 h1 a,
@@ -747,8 +749,8 @@ body {
 }
 
 .ps-btn--success {
-    border-color: #12a05c !important;
-    background-color: #12a05c !important;
+    border-color: #5000668c !important;
+    background-color: #5000668c !important;
     color: white !important;
 }
 
@@ -973,7 +975,7 @@ textarea.form-control {
     margin-bottom: 0;
     position: relative;
     padding-left: 30px;
-    font-family: "Jost", sans-serif;
+    font-family: "Inter", sans-serif;
     color: rgba(34, 34, 34, 0.5);
     font-weight: 400;
     cursor: pointer;
@@ -1124,7 +1126,7 @@ textarea.form-control {
     position: relative;
     margin-bottom: 0;
     padding-left: 30px;
-    font-family: "Jost", sans-serif;
+    font-family: "Inter", sans-serif;
     color: #737373;
     font-weight: 400;
     cursor: pointer;
@@ -1873,7 +1875,7 @@ textarea.form-control {
 
 .ps-post .ps-blog__meta {
     margin-bottom: 45px;
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 14px;
     line-height: 20px;
 }
@@ -1900,7 +1902,7 @@ textarea.form-control {
 
 .ps-post .ps-blog__text {
     margin-bottom: 40px;
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
@@ -2112,7 +2114,7 @@ textarea.form-control {
 }
 
 .ps-section--block-grid .ps-section__desc {
-    color: #8cbf4491;
+    color: #5000668c;
     margin-bottom: 24px;
     font-size: 16px;
     line-height: 26px;
@@ -2131,7 +2133,7 @@ textarea.form-control {
 
 .ps-section--block-grid .ps-section__list li::before {
     content: "\f00c";
-    color: #12a05c;
+    color: #5000668c;
     font-size: 75%;
     display: inline-block;
     font-weight: 900;
@@ -2916,7 +2918,7 @@ textarea.form-control {
     display: none;
     width: 60px;
     height: 60px;
-    background-color: #8cbf44;
+    background-color: #500066;
     border-radius: 3px;
     color: white;
     font-size: 12px;
@@ -2930,7 +2932,7 @@ textarea.form-control {
     display: none;
     width: 290px;
     height: 160px;
-    background-color: #8cbf44;
+    background-color: #500066;
     border-radius: 3px;
     color: white;
     font-size: 12px;
@@ -2943,7 +2945,7 @@ textarea.form-control {
 .category-banner .no-preview-2 {
     display: none;
     height: 160px;
-    background-color: #8cbf44;
+    background-color: #500066;
     border-radius: 3px;
     color: white;
     font-size: 20px;
@@ -3193,7 +3195,7 @@ textarea.form-control {
     line-height: 24px;
     padding: 6px 15px;
     font-size: 16px;
-    color: #8cbf4491;
+    color: #5000668c;
     background-color: #f0f2f5;
     border-radius: 40px;
 }
@@ -3360,7 +3362,7 @@ textarea.form-control {
     vertical-align: top;
     width: 56px;
     height: 56px;
-    background-color: rgba(16, 49, 120, 0.1) !important;
+    background-color: #50006638 !important;
     transition: all 0.4s ease;
     border-radius: 50%;
     transform: translateY(-50%);
@@ -3379,7 +3381,7 @@ textarea.form-control {
     vertical-align: top;
     width: 56px;
     height: 56px;
-    background-color: #8cbf4466 !important;
+    background-color: #5000668c !important;
     transition: all 0.4s ease;
     border-radius: 50%;
     transform: translateY(-50%);
@@ -3465,7 +3467,7 @@ textarea.form-control {
 }
 
 .ps-badge.ps-badge--instock {
-    background-color: #12a05c;
+    background-color: #5000668c;
 }
 
 .ps-badge.ps-badge--leftstock {
@@ -3659,7 +3661,7 @@ textarea.form-control {
 
 .ps-product__desc li::before {
     content: "\f00c";
-    color: #12a05c;
+    color: #5000668c;
     font-size: 75%;
     display: inline-block;
     font-weight: 900;
@@ -3723,7 +3725,7 @@ textarea.form-control {
 }
 
 .ps-product .ps-product__quantity .number-input button i {
-    color: #8cbf4491;
+    color: #5000668c;
     font-weight: 600;
 }
 
@@ -3868,7 +3870,7 @@ textarea.form-control {
     margin-bottom: 20px;
     padding-right: 50px;
     border-top: 1px solid #f0f2f5;
-    color: #8cbf4491;
+    color: #5000668c;
 }
 
 .ps-product--standard .ps-product__footer span {
@@ -4008,7 +4010,7 @@ textarea.form-control {
 
 .ps-product--detail .ps-product__desc li::before {
     content: "\f00c";
-    color: #12a05c;
+    color: #5000668c;
     font-size: 75%;
     display: inline-block;
     font-weight: 900;
@@ -4031,7 +4033,7 @@ textarea.form-control {
 }
 
 .ps-product--detail .ps-product__link {
-    color: #8cbf4491;
+    color: #5000668c;
     line-height: 20px;
     font-size: 14px;
     margin-right: 25px;
@@ -4255,7 +4257,7 @@ textarea.form-control {
 }
 
 .ps-product--detail .ps-product__quantity .number-input button i {
-    color: #8cbf4491;
+    color: #5000668c;
     font-weight: 600;
 }
 
@@ -4323,14 +4325,14 @@ textarea.form-control {
 }
 
 .ps-product--detail .ps-product__content .ps-subtitle {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 22px;
     margin-bottom: 20px;
 }
 
 .ps-product--detail .ps-product__content .ps-desc {
     font-size: 16px;
-    color: #8cbf4491;
+    color: #5000668c;
     margin-bottom: 20px;
 }
 
@@ -4676,7 +4678,7 @@ textarea.form-control {
 }
 
 .ps-product--extension .ps-gif__text {
-    color: #12a05c;
+    color: #5000668c;
     font-weight: 500;
     text-align: center;
     font-size: 16px;
@@ -5007,7 +5009,7 @@ textarea.form-control {
 }
 
 .ps-product--list .ps-product__quantity .number-input button i {
-    color: #8cbf4491;
+    color: #5000668c;
     font-weight: 600;
 }
 
@@ -5034,7 +5036,7 @@ textarea.form-control {
 }
 
 .ps-product--list .ps-product__link {
-    color: #8cbf4491;
+    color: #5000668c;
     line-height: 20px;
     font-size: 14px;
     margin-right: 25px;
@@ -5200,11 +5202,11 @@ textarea.form-control {
 }
 
 .ps-product--wishlist .ps-product__in-stock {
-    color: #12a05c;
+    color: #5000668c;
 }
 
 .ps-product--wishlist .ps-product__out-stock {
-    color: #8cbf4491;
+    color: #5000668c;
 }
 
 .ps-product--wishlist .ps-btn {
@@ -5289,7 +5291,7 @@ textarea.form-control {
 
 .ps-banner .ps-banner__price del {
     font-size: 20px;
-    color: #8cbf4491;
+    color: #5000668c;
     display: inline-block;
     position: relative;
     top: -12px;
@@ -5329,7 +5331,7 @@ textarea.form-control {
 
 .ps-banner .ps-banner__shop.bg-success:hover {
     background-color: white !important;
-    color: #12a05c;
+    color: #5000668c;
 }
 
 .ps-banner .ps-banner__shop.bg-pink:hover {
@@ -5427,9 +5429,9 @@ textarea.form-control {
 }
 
 .ps-banner .bg-success {
-    background-color: #12a05c !important;
+    background-color: #5000668c !important;
     color: white;
-    border-color: #12a05c;
+    border-color: #5000668c;
 }
 
 .ps-banner .bg-pink {
@@ -5670,7 +5672,7 @@ textarea.form-control {
 .ps-banner--round .ps-banner__btn {
     display: block;
     margin-bottom: 15px;
-    color: #8cbf4491;
+    color: #5000668c;
     font-weight: 600;
     font-size: 16px;
 }
@@ -6367,13 +6369,13 @@ textarea.form-control {
 }
 
 .ps-table--product .ps-product__status span {
-    color: #12a05c;
+    color: #5000668c;
     font-size: 14px;
 }
 
 .ps-table--product .ps-product__status span::before {
     content: "\f00c";
-    color: #12a05c;
+    color: #5000668c;
     font-size: 75%;
     display: inline-block;
     font-weight: 900;
@@ -6474,7 +6476,7 @@ textarea.form-control {
 }
 
 .ps-table--product .number-input button i {
-    color: #8cbf4491;
+    color: #5000668c;
     font-weight: 600;
 }
 
@@ -6637,7 +6639,7 @@ textarea.form-control {
 
 .ps-dropdown-single .select2-results__option {
     font-size: 14px !important;
-    color: #8cbf4491 !important;
+    color: #5000668c !important;
 }
 
 .ps-dropdown-single .select2-results__option[aria-selected="true"] {
@@ -6669,7 +6671,7 @@ textarea.form-control {
     height: 34px;
     border-radius: 40px;
     background-color: #f0f2f5;
-    color: #8cbf4491;
+    color: #5000668c;
     margin-bottom: 10px;
     padding: 4px 10px !important;
     font-size: 14px;
@@ -6831,7 +6833,7 @@ textarea.form-control {
     margin: 0 auto 30px;
     border-radius: 40px;
     color: white;
-    background-color: #12a05c;
+    background-color: #5000668c;
     font-size: 12px;
     text-transform: uppercase;
     font-weight: 600;
@@ -7077,7 +7079,7 @@ textarea.form-control {
     display: inline-block;
     text-transform: uppercase;
     color: white;
-    background-color: #12a05c;
+    background-color: #5000668c;
     font-size: 1.2rem;
     text-align: center;
     border-radius: 40px;
@@ -7477,7 +7479,7 @@ textarea.form-control {
     font-size: 16px;
     line-height: 26px;
     margin-bottom: 60px;
-    color: #8cbf4491;
+    color: #5000668c;
     text-align: center;
     font-weight: 500;
 }
@@ -7603,7 +7605,7 @@ textarea.form-control {
     display: none;
     margin-bottom: 0;
     font-size: 16px;
-    color: #8cbf4491;
+    color: #5000668c;
 }
 
 /*3. COMPONENTS */
@@ -7674,7 +7676,7 @@ textarea.form-control {
     font-size: 42%;
     line-height: 20px;
     margin-left: 10px;
-    color: #8cbf4491;
+    color: #5000668c;
 }
 
 .ps-shopping .ps-shopping__list li {
@@ -7721,17 +7723,17 @@ textarea.form-control {
 }
 
 .ps-shopping .ps-input::-moz-placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
 .ps-shopping .ps-input:-ms-input-placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
 .ps-shopping .ps-input::placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
@@ -7866,7 +7868,7 @@ textarea.form-control {
     height: 44px;
     background-color: #f0f2f5;
     border-color: #f0f2f5;
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 14px;
     padding: 10px 25px;
 }
@@ -7944,7 +7946,7 @@ textarea.form-control {
 
 .ps-search-table .form-control {
     border-color: #f0f2f5;
-    color: #8cbf4491;
+    color: #5000668c;
     height: 46px;
     font-size: 18px;
 }
@@ -7952,21 +7954,21 @@ textarea.form-control {
 .ps-search-table .form-control:focus {
     box-shadow: none;
     background-color: #f0f2f5;
-    color: #8cbf4491;
+    color: #5000668c;
 }
 
 .ps-search-table .form-control::-moz-placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
 .ps-search-table .form-control:-ms-input-placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
 .ps-search-table .form-control::placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
@@ -8009,7 +8011,7 @@ textarea.form-control {
 .ps-login--modal .form-control {
     background-color: #f0f2f5;
     border-radius: 50px;
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 18px;
     padding: 10px 25px;
     line-height: 26px;
@@ -8022,7 +8024,7 @@ textarea.form-control {
 
 .ps-login--modal label {
     font-size: 16px;
-    color: #8cbf4491;
+    color: #5000668c;
     margin-bottom: 5px;
 }
 
@@ -8046,7 +8048,7 @@ textarea.form-control {
     width: 100%;
     height: 44px;
     background-color: #f0f2f5;
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
     margin-bottom: 10px;
 }
@@ -8054,21 +8056,21 @@ textarea.form-control {
 .ps-form--subscribe .ps-input:focus {
     box-shadow: none;
     background-color: #f0f2f5;
-    color: #8cbf4491;
+    color: #5000668c;
 }
 
 .ps-form--subscribe .ps-input::-moz-placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
 .ps-form--subscribe .ps-input:-ms-input-placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
 .ps-form--subscribe .ps-input::placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
@@ -8103,7 +8105,7 @@ textarea.form-control {
 .ps-form--newsletter .ps-input {
     padding: 9px 15px;
     height: 44px;
-    color: #8cbf4491;
+    color: #5000668c;
     background-color: white;
     border-radius: 40px !important;
     border-color: white;
@@ -8117,17 +8119,17 @@ textarea.form-control {
 }
 
 .ps-form--newsletter .ps-input::-moz-placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
 .ps-form--newsletter .ps-input:-ms-input-placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
 .ps-form--newsletter .ps-input::placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
@@ -8248,7 +8250,7 @@ textarea.form-control {
 
 .ps-form--contact .ps-form__input {
     border-radius: 40px;
-    color: #8cbf4491;
+    color: #5000668c;
     background-color: #f0f2f5;
     padding: 9px 15px;
     border: none;
@@ -8262,23 +8264,23 @@ textarea.form-control {
 }
 
 .ps-form--contact .ps-form__input::-moz-placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
 .ps-form--contact .ps-form__input:-ms-input-placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
 .ps-form--contact .ps-form__input::placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
 .ps-form--contact .ps-form__textarea {
     border-radius: 40px;
-    color: #8cbf4491;
+    color: #5000668c;
     background-color: #f0f2f5;
     padding: 9px 15px;
     border: none;
@@ -8291,17 +8293,17 @@ textarea.form-control {
 }
 
 .ps-form--contact .ps-form__textarea::-moz-placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
 .ps-form--contact .ps-form__textarea:-ms-input-placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
 .ps-form--contact .ps-form__textarea::placeholder {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 }
 
@@ -8575,7 +8577,7 @@ textarea.form-control {
 }
 
 .ps-delivery .ps-delivery__text {
-    color: #12a05c;
+    color: #5000668c;
     font-size: 22px;
     line-height: 26px;
     display: inline-flex;
@@ -8588,8 +8590,8 @@ textarea.form-control {
 }
 
 .ps-delivery .ps-delivery__more {
-    background-color: #12a05c;
-    border: 1px solid #12a05c;
+    background-color: #5000668c;
+    border: 1px solid #5000668c;
     font-size: 18px;
     font-weight: 500;
     color: white;
@@ -8603,7 +8605,7 @@ textarea.form-control {
 
 .ps-delivery .ps-delivery__more:hover {
     background-color: white;
-    color: #12a05c;
+    color: #5000668c;
 }
 
 @media (min-width: 768px) {
@@ -9028,7 +9030,7 @@ textarea.form-control {
 }
 
 .ps-categogy .ps-categogy__name sup {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 42%;
     line-height: 20px;
     vertical-align: super;
@@ -10492,7 +10494,7 @@ textarea.form-control {
 }
 
 .ps-review--product .ps-review__date {
-    color: #8cbf4491;
+    color: #5000668c;
 }
 
 .ps-review--product .ps-review__rating .br-widget a {
@@ -11178,7 +11180,7 @@ textarea.form-control {
 }
 
 .ps-page--notfound .ps-page__content p {
-    color: #8cbf4491;
+    color: #5000668c;
     margin-bottom: 20px;
     font-size: 14px;
 }
@@ -11679,7 +11681,7 @@ textarea.form-control {
     font-size: 16px;
     line-height: 26px;
     margin-bottom: 50px;
-    color: #8cbf4491;
+    color: #5000668c;
     text-align: center;
     font-weight: 500;
 }
@@ -11751,7 +11753,7 @@ textarea.form-control {
 
 .ps-block--about .ps-block__subtitle {
     font-size: 16px;
-    color: #8cbf4491;
+    color: #5000668c;
 }
 
 @media (min-width: 1280px) {
@@ -11795,7 +11797,7 @@ textarea.form-control {
 
 .ps-about--video .ps-banner .ps-banner__btn {
     display: block;
-    color: #8cbf4491;
+    color: #5000668c;
 }
 
 .ps-about--video .ps-banner .ps-banner__btn img {
@@ -12065,7 +12067,7 @@ textarea.form-control {
     font-size: 16px;
     line-height: 26px;
     margin-bottom: 25px;
-    color: #8cbf4491;
+    color: #5000668c;
     margin-bottom: 20px;
 }
 
@@ -12079,7 +12081,7 @@ textarea.form-control {
 }
 
 .ps-contact .ps-contact__work {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
     line-height: 26px;
     margin-bottom: 24px;
@@ -12309,7 +12311,7 @@ textarea.form-control {
 }
 
 .ps-checkout .ps-checkout__text {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 14px;
     line-height: 24px;
     margin-bottom: 5px;
@@ -12402,7 +12404,7 @@ textarea.form-control {
 }
 
 .ps-checkout .ps-checkout__order .form-check label {
-    color: #8cbf4491;
+    color: #5000668c;
 }
 
 .ps-checkout .ps-checkout__row {
@@ -12506,7 +12508,7 @@ textarea.form-control {
 
 .ps-checkout .payment-method .ps-note {
     background-color: #f0f2f5;
-    color: #8cbf4491;
+    color: #5000668c;
     border-radius: 4px;
     padding: 18px 25px;
     margin-top: 10px;
@@ -12639,12 +12641,12 @@ textarea.form-control {
 .ps-compare--product .ps-table td {
     padding: 20px;
     font-size: 14px;
-    color: #8cbf4491;
+    color: #5000668c;
     min-width: 220px;
 }
 
 .ps-compare--product .ps-table .ps-product__list li {
-    color: #8cbf4491;
+    color: #5000668c;
     padding: 8px 0;
     font-size: 14px;
 }
@@ -12658,14 +12660,14 @@ textarea.form-control {
 }
 
 .ps-compare--product .ps-table .ps-product__text {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 14px;
     margin-bottom: 0;
 }
 
 .ps-compare--product .ps-table .ps-check-line::before {
     content: "\f00c";
-    color: #12a05c;
+    color: #5000668c;
     font-size: 75%;
     display: inline-block;
     font-weight: 900;
@@ -12696,7 +12698,7 @@ textarea.form-control {
 .ps-compare--product .ps-table .ps-product__title {
     line-height: 20px;
     margin-bottom: 12px;
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 16px;
 } */
 .ps-product__title {
@@ -12864,7 +12866,7 @@ textarea.form-control {
 }
 
 .ps-social__link {
-    color: #8cbf4491;
+    color: #5000668c;
     position: relative;
     font-size: 20px;
 }
@@ -12964,11 +12966,11 @@ textarea.form-control {
 }
 
 .ps-social__link.whatsapp .ps-tooltip {
-    background-color: #8cbf44;
+    background-color: #500066;
 }
 
 .ps-social__link.whatsapp .ps-tooltip::before {
-    border-top-color: #8cbf44;
+    border-top-color: #500066;
 }
 
 .ps-social__link:hover .ps-tooltip {
@@ -13002,7 +13004,7 @@ textarea.form-control {
 }
 
 .ps-social__link:hover.envelope {
-    color: #8cbf44;
+    color: #500066;
 }
 
 .ps-social--color li {
@@ -13041,7 +13043,7 @@ textarea.form-control {
 }
 
 .ps-social--color .ps-social__link.whatsapp {
-    background-color: #8cbf44;
+    background-color: #500066;
 }
 
 .ps-social--color .ps-social__link.envelope {
@@ -13093,7 +13095,7 @@ textarea.form-control {
 }
 
 .mega-menu .has-badge {
-    background-color: #12a05c;
+    background-color: #5000668c;
     color: white;
     font-size: 10px;
     padding: 1px 2px;
@@ -13111,7 +13113,7 @@ textarea.form-control {
     width: 0;
     height: 0;
     border-top: 2px solid transparent;
-    border-left: 6px solid #12a05c;
+    border-left: 6px solid #5000668c;
     border-bottom: 6px solid transparent;
     transform: rotate(15deg);
     position: absolute;
@@ -13519,7 +13521,7 @@ textarea.form-control {
     padding: 20px 0 0;
     margin: 20px 0 0;
     border-top: 1px solid #f0f2f5;
-    color: #8cbf4491;
+    color: #5000668c;
 }
 
 .ps-menu--slidebar .ps-language-currency {
@@ -13535,7 +13537,7 @@ textarea.form-control {
 }
 
 .ps-menu--slidebar .ps-language-currency > li a {
-    color: #8cbf4491;
+    color: #5000668c;
 }
 
 .ps-menu--slidebar .ps-language-currency > li.active .sub-toggle {
@@ -13556,7 +13558,7 @@ textarea.form-control {
 }
 
 .ps-menu--slidebar .ps-language-currency .sub-menu li a {
-    color: #8cbf4491;
+    color: #5000668c;
     font-size: 14px;
     padding: 5px 10px;
 }
@@ -13850,7 +13852,7 @@ textarea.form-control {
 .ps-portfolio--detail .ps-portfolio__des {
     margin-bottom: 30px;
     font-size: 16px;
-    color: #8cbf4491;
+    color: #5000668c;
 }
 
 .ps-portfolio--detail .ps-portfolio__item {
@@ -14139,7 +14141,7 @@ textarea.form-control {
 
 .ps-header .ps-language-currency .ps-dropdown-value {
     font-size: 14px;
-    color: #8cbf4491;
+    color: #5000668c;
     margin-right: 20px;
     padding: 12px 0;
 }
@@ -14334,7 +14336,7 @@ textarea.form-control {
     line-height: 30px;
     text-align: right;
     font-size: 16px;
-    color: #8cbf4491;
+    color: #5000668c;
     display: none;
     padding: 10px 0;
 }
@@ -14630,7 +14632,7 @@ textarea.form-control {
     }
     .ps-header--2 .ps-logo img {
         width: 125px;
-    height: 115px;
+        height: 115px;
     }
     .ps-header--2.ps-header--sticky .ps-logo .sticky-logo {
         height: auto;
@@ -16489,7 +16491,7 @@ textarea.form-control {
 .ps-footer--newsletter p {
     font-size: 16px;
     line-height: 26px;
-    color: #8cbf4491;
+    color: #5000668c;
     margin-bottom: 20px;
 }
 
@@ -16584,7 +16586,7 @@ textarea.form-control {
 
 .ps-footer--listpage .ps-footer__list li a {
     display: block;
-    color: #8cbf4491;
+    color: #5000668c;
 }
 
 .ps-footer--listpage .ps-footer__list li a:hover {
@@ -16651,7 +16653,7 @@ textarea.form-control {
 }
 
 .ps-footer--5 .ps-footer--contact .ps-footer__email {
-    border: 1px solid #8cbf4491;
+    border: 1px solid #5000668c;
     padding: 4px 20px;
     border-radius: 40px;
 }
@@ -16675,7 +16677,7 @@ textarea.form-control {
 }
 
 .ps-footer--5 .ps-footer--bottom {
-    border-color: #8cbf4491;
+    border-color: #5000668c;
 }
 
 .ps-footer--5 .ps-footer--bottom img {
@@ -18323,7 +18325,7 @@ table.dataTable tbody td:last-child {
         margin: auto;
         height: 44px;
         background-color: #f0f2f5;
-        color: #8cbf4491;
+        color: #5000668c;
         font-size: 16px;
         margin-bottom: 10px;
     }
@@ -18413,12 +18415,12 @@ table.dataTable tbody td:last-child {
 }
 .category-title-text {
     background: #ffff;
-    border-bottom: 3px solid #8cbf44;
+    border-bottom: 3px solid #500066;
     padding: 10px;
     color: #3f51b5;
 }
 .category-title-text h3 {
-    color: #8cbf44 !important;
+    color: #500066 !important;
 }
 
 /* New Style For New E-commerce */
@@ -18431,7 +18433,7 @@ table.dataTable tbody td:last-child {
 }
 
 .scrolling-text a {
-text-transform: uppercase;
+    text-transform: uppercase;
     display: inline-block;
     color: #fff;
     padding-left: 2%;
@@ -18448,7 +18450,7 @@ text-transform: uppercase;
         transform: translateX(-100%);
     }
 }
-.header-icons{
+.header-icons {
     width: 22px;
 }
 

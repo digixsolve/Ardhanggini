@@ -27,7 +27,7 @@
         }
 
         .slider-nav-thumbnails .slick-slide.slick-current.slick-active img {
-            background: #8cbf44;
+            background: #500066;
         }
 
         .slider-nav-thumbnails img {

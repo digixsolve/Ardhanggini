@@ -13,9 +13,12 @@
     <meta name="author" content="" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    <title>{{optional($setting)->website_name}}</title>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Jost:400,500,600,700&amp;display=swap&amp;ver=1607580870">
+    <title>{{ optional($setting)->website_name }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frontend/plugins/bootstrap4/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
@@ -100,7 +103,7 @@
                     <div class="col-lg-6">
                         <div class="text-right">
                             <span class="font-weight-bold">Shipping From:</span>
-                            <p class="mb-0">{{ optional($setting)->website_name}}</p>
+                            <p class="mb-0">{{ optional($setting)->website_name }}</p>
                             <p class="mb-0">{{ optional($setting)->primary_phone }}</p>
                             <p class="mb-0">{{ optional($setting)->contact_email }}</p>
                             <p class="mb-0">{{ optional($setting)->address_line_one }}</p>
@@ -204,7 +207,7 @@
                 </div>
             </div>
             <div class="card-footer p-4 text-center border-0" style="background-color: #e1ecff;">
-                © {{optional($setting)->website_name}}, LTD 2024.
+                © {{ optional($setting)->website_name }}, LTD 2024.
             </div>
         </div>
     </div>

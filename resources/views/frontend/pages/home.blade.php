@@ -70,17 +70,16 @@
                             <div class="col-12 col-md-4">
                                 <div class="ps-promo__item">
                                     <img class="ps-promo__banner"
-                                        src="{{ asset('storage/' . $home_slider_bottom_first->image) }}" alt="alt"
-                                        onerror="this.onerror=null; this.src='/images/default_logo.png';" />
+                                        src="{{ asset('storage/' . $home_slider_bottom_first->image) }}"
+                                        alt="alt" />
                                     <div class="ps-promo__content">
-                                        <span
-                                            class="ps-promo__badge">{{ $home_slider_bottom_first->badge ?? 'Default Text Here' }}</span>
+                                        <span class="ps-promo__badge">{{ $home_slider_bottom_first->badge }}</span>
                                         <h4 class="text-dark ps-promo__name">
-                                            {{ $home_slider_bottom_first->title ?? 'Default Text Here' }}
+                                            {{ $home_slider_bottom_first->title }}
                                         </h4>
                                         <div class="ps-promo__image">
-                                            <img src="{{ asset('storage/' . $home_slider_bottom_first->image) }}" alt=""
-                                                onerror="this.onerror=null; this.src='/images/default_logo.png';" />
+                                            <img src="{{ asset('storage/' . $home_slider_bottom_first->image) }}"
+                                                alt="" />
                                         </div>
                                         <a class="btn-green ps-promo__btn"
                                             href="{{ $home_slider_bottom_first->button_link }}">{{ $home_slider_bottom_first->button_name }}</a>
