@@ -14,7 +14,7 @@
     --component-padding: var(--space-xxxl);
     --site-text: #808080;
     --site-red: #e31d19;
-    --site-green: #8cbf44;
+    --site-green: #500066;
 }
 
 /*1. RESET AND TYPHOGRAPHY */
@@ -6333,7 +6333,6 @@ textarea.form-control {
     background-color: #fff;
     padding: 25px 20px;
     vertical-align: middle;
-
 }
 
 .ps-table--product .ps-product__thumbnail {
@@ -7939,7 +7938,7 @@ textarea.form-control {
 
 .ps-search-table {
     background-color: #f0f2f5;
-    border-radius: 40px;
+    border-radius: 5px;
     overflow: hidden;
 }
 
@@ -12766,7 +12765,14 @@ textarea.form-control {
 }
 
 .ps-noti {
-    background-color: var(--site-green);
+    /* background-color: var(--site-green); */
+    background: linear-gradient(
+        90deg,
+        #f68e39 0%,
+        #ea6867 29%,
+        #cb4b98 64%,
+        #9256c6 100%
+    );
     position: relative;
 }
 
@@ -13334,17 +13340,17 @@ textarea.form-control {
 
 .menu > li {
     display: inline-block;
-    padding-right: 5px;
+    padding-right: 13px;
 }
 
 .menu > li > a {
     position: relative;
     display: inline-block;
-    padding: 15px 0;
+    padding: 0px 0px;
     font-size: 14px;
     font-weight: 500;
     line-height: 24px;
-    color: #474646;
+    color: #fff;
     /* color: var(--site-green); */
     text-transform: capitalize;
     transform-style: preserve-3d;
@@ -13407,9 +13413,6 @@ textarea.form-control {
 }
 
 @media (min-width: 992px) {
-    .menu > li {
-        padding-right: 15px;
-    }
     .menu > li > a {
         font-size: 15px;
     }
@@ -13417,7 +13420,8 @@ textarea.form-control {
 
 @media (min-width: 1024px) {
     .menu > li > a {
-        font-size: 17px;
+        font-size: 18px;
+        padding-left: 24px;
     }
 }
 
@@ -13499,7 +13503,7 @@ textarea.form-control {
     transition: all 0.75s cubic-bezier(0.7, 0, 0.3, 1);
     overflow-y: auto;
     background-color: white;
-    padding: 40px 35px;
+    padding: 80px 35px;
     display: none;
 }
 
@@ -14011,6 +14015,7 @@ textarea.form-control {
     padding-bottom: 10px;
     position: relative;
     transition: all 0.5s;
+    background-color: var(--site-green);
 }
 
 .ps-header .ps-header__middle .container {
@@ -14071,7 +14076,7 @@ textarea.form-control {
 
 .ps-header .ps-logo {
     height: 80px;
-    padding-right: 50px;
+    padding-right: 12px;
 }
 
 .ps-header .ps-logo img {
@@ -14179,17 +14184,17 @@ textarea.form-control {
 
 .ps-header .ps-header__icons .ps-header__item .badge {
     position: absolute;
-    bottom: 50%;
-    left: 50%;
-    width: 22px;
-    height: 22px;
+    bottom: 75%;
+    left: 60%;
+    width: 18px;
+    height: 18px;
     font-size: 11px;
-    border-radius: 50%;
+    line-height: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--site-green);
-    color: white;
+    background-color: #ffffff;
+    color: #500066;
 }
 
 .ps-header .ps-header__icons .ps-header__item i {
@@ -14197,7 +14202,7 @@ textarea.form-control {
 }
 
 .ps-header .ps-header__icons .ps-header__item:hover {
-    color: #103178;
+    color: #fff;
 }
 
 .ps-header .header__search-mini {
@@ -14617,18 +14622,15 @@ textarea.form-control {
         padding-bottom: 10px;
     }
     .ps-header--2 .ps-header__middle .ps-header__search {
-        display: inline-block;
-        width: auto;
-        min-width: 360px;
+        width: 85%;
         position: initial;
-        float: right;
-        margin-right: 60px;
     }
     .ps-header--2 .ps-logo {
-        height: 80px;
+        height: 115px;
     }
     .ps-header--2 .ps-logo img {
-        height: 54px;
+        width: 125px;
+    height: 115px;
     }
     .ps-header--2.ps-header--sticky .ps-logo .sticky-logo {
         height: auto;
@@ -16008,7 +16010,7 @@ textarea.form-control {
 }
 
 .ps-header--13 .ps-header__icons .ps-header__item {
-    color: #333;
+    color: #fff;
 }
 
 .ps-header--13 .ps-header__icons .ps-header__item .badge {
@@ -16034,6 +16036,11 @@ textarea.form-control {
 @media (min-width: 1280px) {
     .ps-header--13 .ps-header__search {
         margin-left: 30px;
+    }
+}
+@media (max-width: 600px) {
+    .ps-header__middle {
+        display: none;
     }
 }
 
@@ -16092,7 +16099,7 @@ textarea.form-control {
 
 .ps-navigation--footer {
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
@@ -18411,4 +18418,44 @@ table.dataTable tbody td:last-child {
 }
 .category-title-text h3 {
     color: #8cbf44 !important;
+}
+
+/* New Style For New E-commerce */
+
+.scrolling-text {
+    white-space: nowrap;
+    /* Prevent text wrapping */
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.scrolling-text a {
+text-transform: uppercase;
+    display: inline-block;
+    color: #fff;
+    padding-left: 2%;
+    animation: scroll-left 5s linear infinite;
+    /* Adjust the time for speed */
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+.header-icons{
+    width: 22px;
+}
+
+.menus-items-head {
+    border-left: 2px solid #fff !important;
+}
+
+.menus-items-head:first-child,
+.menus-items-head:last-child {
+    border-left: none !important;
 }

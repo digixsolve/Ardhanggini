@@ -1,9 +1,14 @@
 <div class="ps-navigation--footer">
+    <div>
+        <a href="{{ route('home') }}">
+            <img src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
+                alt="" onerror="this.onerror=null; this.src='/images/default_logo.png';" style="width: 50px">
+        </a>
+    </div>
     <div class="ps-nav__item"><a href="#" id="open-menu"><i class="icon-menu"></i></a><a href="#"
             id="close-menu"><i class="icon-cross"></i></a></div>
-    <div class="ps-nav__item"><a href="{{ route('home') }}"><i class="icon-home2"></i></a></div>
     <div class="ps-nav__item"><a href="{{ route('login') }}"><i class="icon-user"></i></a></div>
-    <div class="ps-nav__item">
+    {{-- <div class="ps-nav__item">
         <a href="{{ route('user.wishlist') }}">
             <i class="fa fa-heart-o"></i>
             @php
@@ -15,13 +20,13 @@
             @endphp
             <span class="badge wishlistCount">{{ $wishlistCount }}</span>
         </a>
-    </div>
-    <div class="ps-nav__item">
+    </div> --}}
+    {{-- <div class="ps-nav__item">
         <a href="{{ route('cart') }}">
             <i class="icon-cart-empty"></i>
             <span class="badge cartCount">{{ Cart::instance('cart')->count() }}</span>
         </a>
-    </div>
+    </div> --}}
 </div>
 <div class="ps-menu--slidebar">
     <div class="ps-menu__content">
