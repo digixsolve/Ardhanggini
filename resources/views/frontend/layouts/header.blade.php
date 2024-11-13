@@ -579,25 +579,39 @@
     const searchInput = document.getElementById("search_text");
 
     function changePlaceholder() {
-        // Add fade-out class to initiate fade-out effect
-        searchInput.classList.add("fade-out");
+        // Only run the placeholder animation if the input field is empty
+        if (searchInput.value === "") {
+            // Add fade-out class to initiate fade-out effect
+            searchInput.classList.add("fade-out");
 
-        // Wait for the fade-out animation to finish before changing the placeholder
-        setTimeout(() => {
-            placeholderIndex = (placeholderIndex + 1) % placeholders.length;
-            searchInput.placeholder = placeholders[placeholderIndex];
+            // Wait for the fade-out animation to finish before changing the placeholder
+            setTimeout(() => {
+                placeholderIndex = (placeholderIndex + 1) % placeholders.length;
+                searchInput.placeholder = placeholders[placeholderIndex];
 
-            // Remove fade-out and add fade-in for the next transition
-            searchInput.classList.remove("fade-out");
-            searchInput.classList.add("fade-in");
-        }, 500); // Wait for the fade-out animation to complete (0.5s)
+                // Remove fade-out and add fade-in for the next transition
+                searchInput.classList.remove("fade-out");
+                searchInput.classList.add("fade-in");
+            }, 500); // Wait for the fade-out animation to complete (0.5s)
 
-        // Remove fade-in class after the animation completes to reset for next change
-        setTimeout(() => {
-            searchInput.classList.remove("fade-in");
-        }, 1000); // 0.5s for fade-out + 0.5s for fade-in
+            // Remove fade-in class after the animation completes to reset for next change
+            setTimeout(() => {
+                searchInput.classList.remove("fade-in");
+            }, 1000); // 0.5s for fade-out + 0.5s for fade-in
+        }
     }
 
-    // Change placeholder every 5 seconds
-    setInterval(changePlaceholder, 2000);
+    // Change placeholder every 2 seconds if the input is empty
+    const placeholderInterval = setInterval(changePlaceholder, 2000);
+
+    // Listen for typing in the input field
+    searchInput.addEventListener("input", () => {
+        if (searchInput.value !== "") {
+            // Stop the animation if there's text in the input
+            clearInterval(placeholderInterval);
+        } else {
+            // Restart the animation if the input is empty
+            setInterval(changePlaceholder, 2000);
+        }
+    });
 </script>
