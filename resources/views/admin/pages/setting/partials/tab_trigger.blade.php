@@ -39,7 +39,7 @@
     <li class="nav-item w-100 me-0 mb-md-2" role="presentation">
         <a class="nav-link w-100 btn btn-flex btn-active-info fs-6 fw-normal" data-bs-toggle="tab" href="#footer"
             aria-selected="false" role="tab" tabindex="-1">
-            <i class="fas fa-duotone"></i>
+            <i class="fa-solid fa-shoe-prints"></i>
             <span class="ps-2">Footer Section</span>
         </a>
     </li>
