@@ -73,7 +73,7 @@
         border-radius: 5px;
         z-index: 1;
         /* Behind the text */
-        animation: slide-animation1 2s linear infinite;
+        animation: slide-animation1 4s linear infinite;
     }
 
     /* Keyframes for the animation */
@@ -104,37 +104,37 @@
         /* Ensures color applies fully across browsers */
     }
 
-    /* Animation for fading out and sliding */
-    .fade-out {
-        animation: fadeOut 0.5s forwards;
+    /* Placeholder animation classes */
+    .placeholder-animated.fade-out {
+        animation: slide-up 0.5s forwards;
     }
 
-    .fade-in {
-        animation: fadeIn 0.5s forwards;
+    .placeholder-animated.fade-in {
+        animation: slide-down 0.5s forwards;
     }
 
-    /* Keyframes for fade out and in */
-    @keyframes fadeOut {
+    /* Keyframes for slide-up and slide-down */
+    @keyframes slide-up {
         0% {
+            transform: translateY(0);
             opacity: 1;
-            transform: translateX(0);
         }
 
         100% {
+            transform: translateY(-20px);
             opacity: 0;
-            transform: translateX(-20px);
         }
     }
 
-    @keyframes fadeIn {
+    @keyframes slide-down {
         0% {
+            transform: translateY(20px);
             opacity: 0;
-            transform: translateX(20px);
         }
 
         100% {
+            transform: translateY(0);
             opacity: 1;
-            transform: translateX(0);
         }
     }
 </style>
@@ -577,14 +577,15 @@
     ];
     let placeholderIndex = 0;
     const searchInput = document.getElementById("search_text");
+    let placeholderInterval;
 
+    // Function to change placeholder with slide animation
     function changePlaceholder() {
-        // Only run the placeholder animation if the input field is empty
         if (searchInput.value === "") {
-            // Add fade-out class to initiate fade-out effect
-            searchInput.classList.add("fade-out");
+            // Add slide-out animation
+            searchInput.classList.add("placeholder-animated", "fade-out");
 
-            // Wait for the fade-out animation to finish before changing the placeholder
+            // Wait for slide-out to complete before changing placeholder
             setTimeout(() => {
                 placeholderIndex = (placeholderIndex + 1) % placeholders.length;
                 searchInput.placeholder = placeholders[placeholderIndex];
@@ -592,26 +593,36 @@
                 // Remove fade-out and add fade-in for the next transition
                 searchInput.classList.remove("fade-out");
                 searchInput.classList.add("fade-in");
-            }, 500); // Wait for the fade-out animation to complete (0.5s)
+            }, 500); // Wait 0.5s for fade-out to complete
 
-            // Remove fade-in class after the animation completes to reset for next change
+            // Remove fade-in class after the animation completes to reset for the next change
             setTimeout(() => {
                 searchInput.classList.remove("fade-in");
-            }, 1000); // 0.5s for fade-out + 0.5s for fade-in
+            }, 1000); // 0.5s fade-out + 0.5s fade-in
         }
     }
 
-    // Change placeholder every 2 seconds if the input is empty
-    const placeholderInterval = setInterval(changePlaceholder, 2000);
+    // Function to start the placeholder animation
+    function startPlaceholderAnimation() {
+        if (placeholderInterval) clearInterval(placeholderInterval);
+        placeholderInterval = setInterval(changePlaceholder, 4000);
+    }
 
-    // Listen for typing in the input field
-    searchInput.addEventListener("input", () => {
-        if (searchInput.value !== "") {
-            // Stop the animation if there's text in the input
-            clearInterval(placeholderInterval);
-        } else {
-            // Restart the animation if the input is empty
-            setInterval(changePlaceholder, 2000);
+    // Stop animation on focus
+    searchInput.addEventListener("focus", () => {
+        clearInterval(placeholderInterval);
+        searchInput.classList.remove("placeholder-animated", "fade-out", "fade-in");
+    });
+
+    // Restart animation on blur, only if input is empty
+    searchInput.addEventListener("blur", () => {
+        if (searchInput.value === "") {
+            startPlaceholderAnimation();
         }
     });
+
+    // Start animation initially if input is empty
+    if (searchInput.value === "") {
+        startPlaceholderAnimation();
+    }
 </script>
