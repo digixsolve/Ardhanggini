@@ -13422,7 +13422,7 @@ textarea.form-control {
 
 @media (min-width: 1024px) {
     .menu > li > a {
-        font-size: 18px;
+        font-size: 16px;
         padding-left: 24px;
     }
 }
@@ -16120,7 +16120,7 @@ textarea.form-control {
 }
 
 .ps-navigation--footer .ps-nav__item a {
-    color: #e31d19;
+    color: var(--site-green);
     display: inline-flex;
     width: 44px;
     height: 44px;
@@ -16136,16 +16136,16 @@ textarea.form-control {
 
 .ps-navigation--footer .ps-nav__item .badge {
     position: absolute;
-    top: 4px;
-    right: 2px;
+    top: -8px;
+    right: -4px;
     width: 18px;
     height: 18px;
     font-size: 9px;
-    border-radius: 50%;
+    border-radius: 3px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #103178;
+    background-color: var(--site-green);
     color: white;
 }
 

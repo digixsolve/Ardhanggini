@@ -1,15 +1,18 @@
 <div class="ps-navigation--footer">
     <div>
         <a href="{{ route('home') }}">
-            <img src="{{ asset('images/default_logo.png') }}"
-                style="width: 110px; padding: 10px;">
+            <img src="{{ asset('images/default_logo.png') }}" style="width: 110px; padding: 10px;">
         </a>
     </div>
     <div class="d-flex align-items-center">
-        <div class="ps-nav__item"><a href="{{ route('login') }}"><i class="icon-user"></i></a></div>
+        <div class="ps-nav__item"><a href="{{ route('login') }}">
+                <img src="images/icons_black/Profile-black.svg" style="width: 25px" alt="">
+            </a>
+        </div>
         <div class="ps-nav__item">
             <a href="{{ route('user.wishlist') }}">
-                <i class="fa fa-heart-o"></i>
+                {{-- <i class="fa fa-heart-o"></i> --}}
+                <img src="images/icons_black/Heart-black.svg" style="width: 25px" alt="">
                 @php
                     $wishlistCount = 0; // Default value in case user is not authenticated
                     if (Auth::check()) {
@@ -22,12 +25,19 @@
         </div>
         <div class="ps-nav__item">
             <a href="{{ route('cart') }}">
-                <i class="icon-cart-empty"></i>
+                <img src="images/icons_black/Cart-black.svg" style="width: 25px" alt="">
                 <span class="badge cartCount">{{ Cart::instance('cart')->count() }}</span>
             </a>
         </div>
-        <div class="ps-nav__item"><a href="#" id="open-menu"><i class="icon-menu"></i></a><a href="#"
-                id="close-menu"><i class="icon-cross"></i></a></div>
+        <div class="ps-nav__item">
+            <a href="#" id="open-menu">
+                {{-- <i class="icon-menu"></i> --}}
+                <i class="fa-solid fa-bars pt-2"></i>
+            </a>
+            <a href="#" id="close-menu">
+                <i class="fa-solid fa-xmark"></i>
+            </a>
+        </div>
     </div>
 </div>
 <div class="ps-menu--slidebar">

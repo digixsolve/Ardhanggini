@@ -96,6 +96,47 @@
         align-items: center;
         justify-content: center;
     }
+
+    /* Placeholder color */
+    #search_text::placeholder {
+        color: #252525 !important;
+        opacity: 1;
+        /* Ensures color applies fully across browsers */
+    }
+
+    /* Animation for fading out and sliding */
+    .fade-out {
+        animation: fadeOut 0.5s forwards;
+    }
+
+    .fade-in {
+        animation: fadeIn 0.5s forwards;
+    }
+
+    /* Keyframes for fade out and in */
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
 </style>
 <header class="ps-header ps-header--2">
     @if (!empty(optional($setting)->website_name) || !empty(optional($setting)->site_motto))
@@ -342,9 +383,9 @@
                                 <div class="ps-search-table">
                                     <div class="input-group rounded-pill">
                                         <input id="search_text" class="form-control ps-input search_text"
-                                            type="text" placeholder="Search for products">
+                                            type="text" placeholder="Ladies Bags">
                                         <div class="input-group-append">
-                                            {{-- <a href="#"><i class="fa fa-search"></i></a> --}}
+                                            <a href="#"><i class="fa fa-search"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -526,4 +567,37 @@
 
     // Initial setup
     updateVisibility();
+</script>
+<script>
+    const placeholders = [
+        "Tote Bag",
+        "Office Bag",
+        "Imported Bag",
+        "Laptop Bag"
+    ];
+    let placeholderIndex = 0;
+    const searchInput = document.getElementById("search_text");
+
+    function changePlaceholder() {
+        // Add fade-out class to initiate fade-out effect
+        searchInput.classList.add("fade-out");
+
+        // Wait for the fade-out animation to finish before changing the placeholder
+        setTimeout(() => {
+            placeholderIndex = (placeholderIndex + 1) % placeholders.length;
+            searchInput.placeholder = placeholders[placeholderIndex];
+
+            // Remove fade-out and add fade-in for the next transition
+            searchInput.classList.remove("fade-out");
+            searchInput.classList.add("fade-in");
+        }, 500); // Wait for the fade-out animation to complete (0.5s)
+
+        // Remove fade-in class after the animation completes to reset for next change
+        setTimeout(() => {
+            searchInput.classList.remove("fade-in");
+        }, 1000); // 0.5s for fade-out + 0.5s for fade-in
+    }
+
+    // Change placeholder every 5 seconds
+    setInterval(changePlaceholder, 2000);
 </script>
