@@ -280,7 +280,7 @@
                         ],
                         [
                             'title' => 'Site Contents',
-                            'icon' => 'fa-solid fa-file-pen text-light fs-3',
+                            'icon' => 'fa-solid fa-file-pen text-info fs-3',
                             'routes' => [
                                 'admin.terms-condition.index',
                                 'admin.terms-condition.create',
@@ -338,7 +338,7 @@
                         ],
                         [
                             'title' => 'Settings',
-                            'icon' => 'fa-solid fa-gear text-secondary fs-3',
+                            'icon' => 'fa-solid fa-gear text-danger fs-3',
                             'routes' => ['admin.settings.index', 'admin.email-settings.index'],
                             'subMenu' => [
                                 [
@@ -431,7 +431,7 @@
       this.closest('form').submit();">
                 <span class="btn-label">
                     @csrf
-                    {{ __('Log Out') }}
+                    <i class="fa-solid fa-right-from-bracket"></i> Log Out
                 </span>
             </a>
         </form>
