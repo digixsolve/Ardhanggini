@@ -32,74 +32,19 @@
         /* Default display for JS-managed visibility */
     }
 
-    button {
+    .button-nav-arrow {
         background: none;
         border: none;
         cursor: pointer;
         font-size: 18px;
-    }
-
-    /* Button styling */
-    .animated-button {
-        border: 2px solid orange;
         position: relative;
-        padding: 9px 20px;
-        font-size: 20px;
-        font-weight: bold;
-        color: transparent;
-        background: linear-gradient(90deg, #f68e39 0%, #ea6867 29%, #cb4b98 64%, #9256c6 100%);
-        background-clip: text;
-        -webkit-background-clip: text;
-        border-radius: 5px;
-        overflow: hidden;
-        cursor: pointer;
-        outline: none;
-        text-decoration: none;
-        display: inline-block;
-        z-index: 2;
-        /* Bring the text to the top */
-    }
-
-    /* Light animation overlay */
-    .animated-button::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, rgba(246, 142, 57, 1) 0%, rgba(246, 142, 57, 0.5) 50%, rgba(246, 142, 57, 0) 100%);
-        /* Gradient from solid orange to transparent */
-        border-radius: 5px;
-        z-index: 1;
-        /* Behind the text */
-        animation: slide-animation1 4s linear infinite;
-    }
-
-    /* Keyframes for the animation */
-    @keyframes slide-animation1 {
-        0% {
-            right: -100%;
-        }
-
-        50% {
-            right: 100%;
-        }
-
-        100% {
-            right: 100%;
-        }
-    }
-
-    .ps-navigation__left {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        top: 2px;
+        font-size: 14px;
     }
 
     /* Placeholder color */
     #search_text::placeholder {
-        color: #252525 !important;
+        color: #979797 !important;
         opacity: 1;
         /* Ensures color applies fully across browsers */
     }
@@ -137,6 +82,236 @@
             opacity: 1;
         }
     }
+
+    /* New Button */
+    .button-new {
+        --h-button: 48px;
+        --w-button: 102px;
+        --round: 0.75rem;
+        cursor: pointer;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        transition: all 0.25s ease;
+        background: linear-gradient(90deg, #f68e39 0%, #ea6867 29%, #cb4b98 64%, #9256c6 100%);
+        border-radius: var(--round);
+        border: none;
+        outline: none;
+        padding: 12px 18px;
+    }
+
+    .button-new::before,
+    .button-new::after {
+        content: "";
+        position: absolute;
+        inset: var(--space);
+        transition: all 0.5s ease-in-out;
+        border-radius: calc(var(--round) - var(--space));
+        z-index: 0;
+    }
+
+    .button-new::before {
+        --space: 1px;
+        background: linear-gradient(177.95deg,
+                rgba(255, 255, 255, 0.19) 0%,
+                rgba(255, 255, 255, 0) 100%);
+    }
+
+    .button-new::after {
+        --space: 2px;
+        background: linear-gradient(90deg, #f68e39 0%, #ea6867 29%, #cb4b98 64%, #9256c6 100%);
+    }
+
+    .button-new:active {
+        transform: scale(0.95);
+    }
+
+    .fold {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 1rem;
+        width: 1rem;
+        display: inline-block;
+        transition: all 0.5s ease-in-out;
+        border-bottom-left-radius: 0.5rem;
+        border-top-right-radius: var(--round);
+    }
+
+    .fold::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 150%;
+        height: 150%;
+        transform: rotate(45deg) translateX(0%) translateY(-18px);
+        background-color: #e8e8e8;
+        pointer-events: none;
+    }
+
+    .button-new:hover .fold {
+        margin-top: -1rem;
+        margin-right: -1rem;
+    }
+
+    .points_wrapper {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .points_wrapper .point {
+        bottom: -10px;
+        position: absolute;
+        animation: floating-points infinite ease-in-out;
+        pointer-events: none;
+        width: 2px;
+        height: 2px;
+        background-color: #fff;
+        border-radius: 9999px;
+    }
+
+    @keyframes floating-points {
+        0% {
+            transform: translateY(0);
+        }
+
+        85% {
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(-55px);
+            opacity: 0;
+        }
+    }
+
+    .points_wrapper .point:nth-child(1) {
+        left: 10%;
+        opacity: 1;
+        animation-duration: 2.35s;
+        animation-delay: 0.2s;
+    }
+
+    .points_wrapper .point:nth-child(2) {
+        left: 30%;
+        opacity: 0.7;
+        animation-duration: 2.5s;
+        animation-delay: 0.5s;
+    }
+
+    .points_wrapper .point:nth-child(3) {
+        left: 25%;
+        opacity: 0.8;
+        animation-duration: 2.2s;
+        animation-delay: 0.1s;
+    }
+
+    .points_wrapper .point:nth-child(4) {
+        left: 44%;
+        opacity: 0.6;
+        animation-duration: 2.05s;
+    }
+
+    .points_wrapper .point:nth-child(5) {
+        left: 50%;
+        opacity: 1;
+        animation-duration: 1.9s;
+    }
+
+    .points_wrapper .point:nth-child(6) {
+        left: 75%;
+        opacity: 0.5;
+        animation-duration: 1.5s;
+        animation-delay: 1.5s;
+    }
+
+    .points_wrapper .point:nth-child(7) {
+        left: 88%;
+        opacity: 0.9;
+        animation-duration: 2.2s;
+        animation-delay: 0.2s;
+    }
+
+    .points_wrapper .point:nth-child(8) {
+        left: 58%;
+        opacity: 0.8;
+        animation-duration: 2.25s;
+        animation-delay: 0.2s;
+    }
+
+    .points_wrapper .point:nth-child(9) {
+        left: 98%;
+        opacity: 0.6;
+        animation-duration: 2.6s;
+        animation-delay: 0.1s;
+    }
+
+    .points_wrapper .point:nth-child(10) {
+        left: 65%;
+        opacity: 1;
+        animation-duration: 2.5s;
+        animation-delay: 0.2s;
+    }
+
+    .inner {
+        z-index: 2;
+        gap: 6px;
+        position: relative;
+        width: 100%;
+        color: white;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.5;
+        transition: color 0.2s ease-in-out;
+    }
+
+    .inner svg.icon {
+        width: 18px;
+        height: 18px;
+        transition: fill 0.1s linear;
+    }
+
+    .button-new:focus svg.icon {
+        fill: white;
+    }
+
+    .button-new:hover svg.icon {
+        fill: transparent;
+        animation:
+            dasharray 1s linear forwards,
+            filled 0.1s linear forwards 0.95s;
+    }
+
+    @keyframes dasharray {
+        from {
+            stroke-dasharray: 0 0 0 0;
+        }
+
+        to {
+            stroke-dasharray: 68 68 0 0;
+        }
+    }
+
+    @keyframes filled {
+        to {
+            fill: white;
+        }
+    }
+
+    .marquee-text {
+        font-size: 14px;
+    }
 </style>
 <header class="ps-header ps-header--2">
     @if (!empty(optional($setting)->website_name) || !empty(optional($setting)->site_motto))
@@ -145,41 +320,41 @@
                 {{-- <p class="m-0">Welcome to {{ optional($setting)->website_name }}, {{ optional($setting)->site_motto }}
                 </p> --}}
                 <div class="scrolling-text">
-                    <a href="#" class="mb-0 py-2">
+                    <a href="#" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        11:11 Special sale offer
+                        {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2">
+                    <a href="#" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        11:11 Special sale offer
+                        {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2">
+                    <a href="#" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        11:11 Special sale offer
+                        {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2">
+                    <a href="#" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        11:11 Special sale offer
+                        {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2">
+                    <a href="#" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        11:11 Special sale offer
+                        {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2">
+                    <a href="#" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        11:11 Special sale offer
+                        {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2">
+                    <a href="#" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        11:11 Special sale offer
+                        {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2">
+                    <a href="#" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        11:11 Special sale offer
+                        {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2">
+                    <a href="#" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        11:11 Special sale offer
+                        {{ optional($setting)->site_motto }}
                     </a>
                 </div>
             </div>
@@ -423,7 +598,7 @@
                                             @endforeach
                                         </ul>
                                         <!-- Next Button -->
-                                        <button id="nextButton" onclick="showNext()">
+                                        <button id="nextButton" onclick="showNext()" class="button-nav-arrow">
                                             <i class="fa fa-chevron-right text-white"></i>
                                         </button>
                                     </div>
@@ -433,7 +608,31 @@
                     </div>
                     <div class="col-lg-2">
                         <div class="text-right pt-3">
-                            <a href="#" class="animated-button">11:11 SALE</a>
+                            {{-- <a href="#" class="animated-button">11:11 SALE</a> --}}
+                            <button type="button" class="button-new mt-2">
+                                <span class="fold"></span>
+
+                                <div class="points_wrapper">
+                                    <i class="point"></i>
+                                    <i class="point"></i>
+                                    <i class="point"></i>
+                                    <i class="point"></i>
+                                    <i class="point"></i>
+                                    <i class="point"></i>
+                                    <i class="point"></i>
+                                    <i class="point"></i>
+                                    <i class="point"></i>
+                                    <i class="point"></i>
+                                </div>
+
+                                <span class="inner"><svg class="icon" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2.5">
+                                        <polyline
+                                            points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37">
+                                        </polyline>
+                                    </svg>11.11 SALE</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -625,4 +824,9 @@
     if (searchInput.value === "") {
         startPlaceholderAnimation();
     }
+</script>
+<script>
+    // Using jQuery
+    $('.menus-items-head:first').css('border-left', 'none');
+    $('.menus-items-head:last').css('border-left', 'none');
 </script>

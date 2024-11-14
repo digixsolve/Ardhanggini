@@ -18455,10 +18455,20 @@ table.dataTable tbody td:last-child {
 }
 
 .menus-items-head {
-    border-left: 2px solid #fff !important;
+    position: relative;
 }
 
-.menus-items-head:first-child,
-.menus-items-head:last-child {
-    border-left: none !important;
+.menus-items-head::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 20px;
+    width: 2px;
+    background-color: #fff;
+}
+
+.menus-items-head:first-of-type::before,
+.menus-items-head:last-of-type::before {
+    display: none; /* Hides the pseudo-element */
 }
