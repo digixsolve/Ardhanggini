@@ -1769,7 +1769,7 @@
 
         <div class="owl-nav">
             <button type="button" role="presentation" class="owl-prev"><i
-                    class="fa fa-chevron-left"></i></button>
+                    class="fa fa-chevron-left"></i></button push -u origin main>
             <button type="button" role="presentation" class="owl-next"><i
                     class="fa fa-chevron-right"></i></button>
         </div>
