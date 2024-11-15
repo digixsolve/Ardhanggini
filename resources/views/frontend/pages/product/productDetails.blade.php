@@ -284,12 +284,12 @@
                                     Specification
                                 </a>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            {{-- <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews-content"
                                     role="tab" aria-controls="reviews-content" aria-selected="false">
                                     Reviews (5)
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                         <div class="tab-content bg-white p-5" id="productContent">
                             <div class="tab-pane fade show active" id="description-content" role="tabpanel"
@@ -322,12 +322,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="reviews-content" role="tabpanel"
+                            {{-- <div class="tab-pane fade" id="reviews-content" role="tabpanel"
                                 aria-labelledby="reviews-tab">
                                 <div class="ps-product__tabreview">
                                     <div class="ps-review--product">
                                         <div class="ps-review__row">
-                                            <div class="ps-review__avatar"><img src="https://plus.unsplash.com/premium_photo-1683121366070-5ceb7e007a97?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
+                                            <div class="ps-review__avatar"><img src="img/avatar/avatar-review.html"
                                                     alt="alt" /></div>
                                             <div class="ps-review__info">
                                                 <div class="ps-review__name">Mark J.</div>
@@ -384,7 +384,7 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <section class="ps-section--also" data-background="img/related-bg.jpg">
