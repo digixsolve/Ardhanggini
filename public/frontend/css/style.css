@@ -18571,6 +18571,11 @@ table.dataTable tbody td:last-child {
     width: 22px;
 }
 
+/* Special case: When there are exactly 5 items */
+.menu.five-items .menus-items-head:last-child::before {
+    background-color: transparent; /* Explicitly set transparent */
+}
+
 .menus-items-head {
     position: relative;
 }
@@ -18579,13 +18584,22 @@ table.dataTable tbody td:last-child {
     content: "";
     position: absolute;
     top: 5px;
-    left: 0;
+    right: -15px;
     height: 20px;
     width: 2px;
-    background-color: #fff;
+    background-color: #fff; /* Default color */
+}
+.menus-items-head:last-child::before {
+    background-color: transparent; /* Default: Transparent for the last item */
+}
+.menus-items-head:last-child::before {
+    left: 0px;
+    background-color: white; /* Default: Transparent for the last item */
+}
+.menus-items-head.transparent-before::before {
+    background-color: transparent;
 }
 
-.menus-items-head:first-of-type::before,
-.menus-items-head:last-of-type::before {
-    display: none; /* Hides the pseudo-element */
+.menus-items-head:nth-child(5)::before {
+    background-color: transparent; /* Transparent for the 5th item */
 }

@@ -32,6 +32,17 @@
         /* Default display for JS-managed visibility */
     }
 
+    .button-nav-arrow-prev {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        position: relative;
+        top: 1px;
+        font-size: 14px;
+        left: 10px;
+        z-index: 5;
+    }
     .button-nav-arrow {
         background: none;
         border: none;
@@ -583,15 +594,15 @@
                                 <nav class="ps-main-menu">
                                     <div class="menu-container">
                                         <!-- Previous Button -->
-                                        <button id="prevButton" onclick="showPrevious()" style="display: none;">
+                                        <button id="prevButton" onclick="showPrevious()" class="button-nav-arrow-prev"
+                                            style="display: none;">
                                             <i class="fa fa-chevron-left text-white"></i>
                                         </button>
                                         <!-- Menu Items -->
                                         <ul class="menu">
                                             @foreach ($categories->slice(0, 6) as $index => $category)
                                                 <li class="menu-item menus-items-head"
-                                                    data-index="{{ $index }}"
-                                                    style="display: {{ $index < 5 ? 'block' : 'none' }};">
+                                                    data-index="{{ $index }}">
                                                     <a
                                                         href="{{ route('category.products', $category->slug) }}">{{ $category->name }}</a>
                                                 </li>
@@ -825,8 +836,14 @@
         startPlaceholderAnimation();
     }
 </script>
+
 <script>
-    // Using jQuery
-    $('.menus-items-head:first').css('border-left', 'none');
-    $('.menus-items-head:last').css('border-left', 'none');
+    document.addEventListener("DOMContentLoaded", function () {
+    const menuItems = document.querySelectorAll(".menu .menus-items-head");
+
+    // Check if there are at least 5 items and set the fifth item's ::before color to transparent
+    if (menuItems.length >= 5) {
+        menuItems[4].classList.add("transparent-before");
+    }
+});
 </script>

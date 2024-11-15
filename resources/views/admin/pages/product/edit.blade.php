@@ -127,6 +127,30 @@
                                     multiselect-select-all="true" data-control="select2"
                                     data-placeholder="Select an option" data-allow-clear="true">
                                     @php
+                                            // Ensure $categoryIds is an array
+                                            $categoryIds = isset($product->category_id)
+                                                ? json_decode($product->category_id, true)
+                                                : [];
+                                            if (!is_array($categoryIds)) {
+                                                $categoryIds = [];
+                                            }
+                                            $tagIds = isset($product->tag_id)
+                                                ? json_decode($product->tag_id, true)
+                                                : [];
+                                            if (!is_array($tagIds)) {
+                                                $tagIds = [];
+                                            }
+                                        @endphp
+
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}"
+                                                {{ in_array($category->id, $categoryIds) ? 'selected' : '' }}>
+                                                {{ $category->name }}
+                                            </option>
+                                        @endforeach
+
+
+                                    {{-- @php
                                         $categoryIds = is_string($product->category_id)
                                             ? json_decode($product->category_id, true) // Convert JSON string to array
                                             : $product->category_id;
@@ -139,7 +163,7 @@
                                                 {{ $category->name }}
                                             </option>
                                         @endforeach
-                                    @endif
+                                    @endif --}}
 
                                 </x-metronic.select-option>
                             </div>
