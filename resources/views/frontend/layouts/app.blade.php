@@ -105,11 +105,6 @@
     <!--End of Tawk.to Script-->
 
     <style>
-        .swal2-popup {
-            font-size: 1.3rem !important;
-            padding: 1.5rem;
-        }
-
         /* Preloader styles */
         #preloader {
             position: fixed;
@@ -124,11 +119,18 @@
             align-items: center;
         }
 
-        /* Optionally hide the preloader after it has been hidden */
+        /* Main content visibility after preloader */
         #main-content {
             display: block;
         }
 
+        /* Swal2 Popup Styling */
+        .swal2-popup {
+            font-size: 1.3rem !important;
+            padding: 1.5rem;
+        }
+
+        /* Swal button alignment */
         .swal2-confirm {
             margin-right: 1rem;
         }
@@ -137,14 +139,137 @@
             margin-bottom: 1.25rem;
         }
     </style>
+    <style>
+        @font-face {
+            font-family: 'CustomBengaliFont';
+            src: url('/fonts/Unicode/LiSubhaSwarnaUnicode-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .custom-text,
+        .wave-text span{
+            font-family: 'CustomBengaliFont', sans-serif;
+        }
+
+        /* Gradient background */
+        .wave-text {
+            display: flex;
+            font-size: 10ch;
+            /* Adjust font size as needed */
+            font-weight: bold;
+            color: transparent;
+            /* Makes text transparent for gradient */
+            background: linear-gradient(90deg, #f68e39 0%, #ea6867 29%, #cb4b98 64%, #9256c6 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            /* Safari and Chrome */
+            position: relative;
+        }
+
+        /* Outline effect */
+        .wave-text::after {
+            content: attr(data-text);
+            /* Duplicates the text */
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: white;
+            -webkit-text-stroke: 1px black;
+            /* Outline width and color */
+            z-index: -1;
+            /* Ensures it's behind the text */
+        }
+
+        /* Wave animation */
+        /* Apply gradient color to each letter */
+        .wave-text span {
+            display: inline-block;
+            animation: wave 1.5s ease-in-out infinite;
+            font-size: 2ch;
+            /* Adjust font size as needed */
+            font-weight: bold;
+            color: transparent;
+            /* Makes text transparent for gradient */
+            background: linear-gradient(90deg, #f68e39 0%, #ea6867 29%, #cb4b98 64%, #9256c6 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            /* Safari and Chrome */
+        }
+
+        /* Keyframes for the wave effect */
+        @keyframes wave {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+                /* Adjust wave height */
+            }
+        }
+
+        /* Add a delay to each letter for the wave effect */
+        .wave-text span:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .wave-text span:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .wave-text span:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .wave-text span:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .wave-text span:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .wave-text span:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .wave-text span:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        .wave-text span:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+
+        .wave-text span:nth-child(9) {
+            animation-delay: 0.8s;
+        }
+
+        .wave-text span:nth-child(10) {
+            animation-delay: 0.9s;
+        }
+
+        .wave-text span:nth-child(11) {
+            animation-delay: 1s;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Preloader HTML -->
-    <div id="preloader">
-        <img width="100px" src="{{ asset('frontend/img/loader.gif') }}" alt="Loading...">
+    <div id="preloader" class="flex-column">
+        <img class="wave-flag-animation" width="100px" src="{{ asset('images/default_logo.png') }}"
+            alt="Loading...">
+        <div class="wave-text">
+            <span>অ</span>
+            <span>র্ধা</span>
+            <span>ঙ্গি</span>
+            <span>নী</span>
+        </div>
     </div>
-
     <div id="main-content" style="display: none;">
         <div class="ps-page">
             {{-- Header --}}
@@ -280,7 +405,7 @@
                 document.getElementById('preloader').style.display = 'none';
                 // Show the main content
                 document.getElementById('main-content').style.display = 'block';
-            }, 2000); // 2000 milliseconds = 2 seconds
+            }, 4000); // 2000 milliseconds = 2 seconds
         });
     </script>
     {{-- Preloader End --}}
