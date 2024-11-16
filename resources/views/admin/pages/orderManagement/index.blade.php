@@ -110,7 +110,7 @@
                             </td>
                             <td>{{ $order->user->first_name }} {{ $order->user->last_name }}</td>
                             <td>{{ $order->created_at }}</td>
-                            <td><span class="text-info fw-bold">£</span>{{ $order->total_amount }}</td>
+                            <td><span class="text-info fw-bold">৳</span>{{ $order->total_amount }}</td>
                             <td>{{ $order->quantity }}</td>
                             <td>
                                 @if ($order->payment_status == 'unpaid')
@@ -236,7 +236,7 @@
                                 <td class="text-end">
                                     <div class="text-gray-900 fs-7">Cost</div>
                                     <div class="text-muted fs-7 fw-bold"
-                                        data-kt-docs-datatable-subtable="template_cost">£ {{ $item->price }}</div>
+                                        data-kt-docs-datatable-subtable="template_cost">৳ {{ $item->price }}</div>
                                 </td>
                                 <td class="text-end">
                                     <div class="text-gray-900 fs-7">Qty</div>
@@ -246,7 +246,7 @@
                                 <td class="text-end">
                                     <div class="text-gray-900 fs-7">Total</div>
                                     <div class="text-muted fs-7 fw-bold"
-                                        data-kt-docs-datatable-subtable="template_total">£ {{ $item->subtotal }}
+                                        data-kt-docs-datatable-subtable="template_total">৳ {{ $item->subtotal }}
                                     </div>
                                 </td>
                                 <td></td>

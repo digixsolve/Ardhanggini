@@ -17,7 +17,7 @@
                     </div>
                     <div class="d-flex flex-column align-items-center pe-4">
                         <div>
-                            <span class="fs-2x fw-bold text-gray-800 me-2 lh-1 ls-n2">£ {{ $total_sale }}</span>
+                            <span class="fs-2x fw-bold text-gray-800 me-2 lh-1 ls-n2">৳ {{ $total_sale }}</span>
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                         <td><a href="javascript:void(0)">{{ $order->order_number }}</a></td>
                         <td>{{ $order->user->first_name }} {{ $order->user->last_name }}</td>
                         <td>{{ $order->created_at->format('Y-m-d') }}</td>
-                        <td><span class="text-info fw-bold">£</span>{{ $order->total_amount }}</td>
+                        <td><span class="text-info fw-bold">৳</span>{{ $order->total_amount }}</td>
                         <td>{{ $order->quantity }}</td>
                         <td>
                             @if ($order->payment_status == 'unpaid')
@@ -183,7 +183,7 @@
                             </td>
                             <td class="text-end">
                                 <div class="text-gray-900 fs-7">Cost</div>
-                                <div class="text-muted fs-7 fw-bold">£ {{ $item->price }}</div>
+                                <div class="text-muted fs-7 fw-bold">৳ {{ $item->price }}</div>
                             </td>
                             <td class="text-end">
                                 <div class="text-gray-900 fs-7">Qty</div>
@@ -191,7 +191,7 @@
                             </td>
                             <td class="text-end">
                                 <div class="text-gray-900 fs-7">Total</div>
-                                <div class="text-muted fs-7 fw-bold">£ {{ $item->subtotal }}</div>
+                                <div class="text-muted fs-7 fw-bold">৳ {{ $item->subtotal }}</div>
                             </td>
                             <td></td>
                         </tr>

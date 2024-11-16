@@ -427,9 +427,9 @@
         <div class="container">
             <div class="ps-logo">
                 <a href="{{ route('home') }}">
-                    <img src="{{ !empty(optional($setting)->site_logo_white) ? asset('storage/' . optional($setting)->site_logo_white) : asset('frontend/img/logo.png') }}"
+                    <img class="rounded-2" src="{{ !empty(optional($setting)->site_logo_white) ? asset('storage/' . optional($setting)->site_logo_white) : asset('frontend/img/logo.png') }}"
                         alt="" onerror="this.onerror=null; this.src='/images/default_logo-2.jpg';">
-                    <img class="sticky-logo"
+                    <img class="sticky-logo rounded-2"
                         src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
                         alt="" onerror="this.onerror=null; this.src='/images/default_logo-2.jpg';">
                 </a>
@@ -444,7 +444,7 @@
                             <li>
                                 {{-- Log Out --}}
                                 <a class="ps-header__item" href="javascript:void(0)" id="login-modal">
-                                    <img src="images/Profile.svg" class="header-icons" alt="">
+                                    <img src="images/icon-profile.svg" class="header-icons" alt="">
                                 </a>
                                 @auth
                                     <div class="ps-login--modal">
@@ -462,45 +462,6 @@
                                     </div>
                                 @else
                                     <div class="ps-login--modal">
-                                        {{-- <form method="POST" action="{{ route('login') }}">
-                                            @csrf
-                                            <div class="form-group">
-                                                <x-input-label class="form-label form__label" for="email" :value="__('Email')" />
-                                                <input class="form-control" type="email" name="email" :value="old('email')"
-                                                    required autocomplete="username" />
-                                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                                            </div>
-                                            <div class="form-group">
-                                                <x-input-label class="ps-form__label form-label" for="password" :value="__('Password')" />
-                                                <div class="input-group">
-                                                    <x-text-input class="form-control form-control-solid ps-form__input"
-                                                        type="password" id="password" name="password" required
-                                                        autocomplete="new-password" />
-                                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                                                    <div
-                                                        class="input-group-append bg-light text-center d-flex align-items-center p-3 rounded-3 border">
-                                                        <a class="fa fa-eye-slash toogle-password" href="javascript:void(0);"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group form-check">
-                                                <input class="form-check-input" type="checkbox" id="remember_me" name="remember">
-                                                <label class="form-check-label" for="remember_me">Remember me</label>
-                                            </div>
-                                            <x-primary-button class="ps-btn ps-btn--warning" type="submit">
-                                                {{ __('Log in') }}
-                                            </x-primary-button>
-                                            <div class="pt-3">
-                                                @if (Route::has('password.request'))
-                                                    <span>Lost your</span><a class="ps-account__link site_text_color_links"
-                                                        href="{{ route('password.request') }}"> password?</a> <br>
-                                                    <span class="ps-5">Account? <a
-                                                            class="ps-account__link site_text_color_links"
-                                                            href="{{ route('register') }}">Create New Accounts</a></span>
-                                                @endif
-                                            </div>
-                                        </form> --}}
-                                        {{-- If Not Logged In --}}
                                         @guest
                                             <div>
                                                 <p>Already Have An Account?</p>
@@ -542,7 +503,7 @@
                             <li>
                                 <a class="ps-header__item" href="{{ route('user.wishlist') }}">
                                     {{-- <i class="fa fa-heart-o"></i> --}}
-                                    <img src="images/Heart.svg" class="header-icons" alt="">
+                                    <img src="images/icon-heart.svg" class="header-icons" alt="">
                                     @php
                                         $wishlistCount = 0; // Default value in case user is not authenticated
                                         if (Auth::check()) {
@@ -557,7 +518,7 @@
                             <li>
                                 <a class="ps-header__item" href="#" id="cart-mini">
                                     {{-- <i class="icon-cart-empty"></i> --}}
-                                    <img src="images/Cart.svg" class="header-icons" alt="">
+                                    <img src="images/icon-cart.svg" class="header-icons" alt="">
                                     <span class="badge cartCount">{{ Cart::instance('cart')->count() }}</span></a>
                                 <div class="ps-cart--mini miniCart">
                                     @include('frontend.pages.cart.partials.minicart')

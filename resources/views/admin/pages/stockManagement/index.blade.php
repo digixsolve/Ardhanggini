@@ -46,12 +46,12 @@
                             <td>
                                 @if (!empty($product->box_discount_price))
                                     <div class="">
-                                        <span class="ps-product__price sale">£{{ $product->box_discount_price }}</span>
-                                        <span class="ps-product__del">£{{ $product->box_price }}</span>
+                                        <span class="ps-product__price sale">৳{{ $product->box_discount_price }}</span>
+                                        <span class="ps-product__del">৳{{ $product->box_price }}</span>
                                     </div>
                                 @else
                                     <div class="">
-                                        <span class="ps-product__price sale">£{{ $product->box_price }}</span>
+                                        <span class="ps-product__price sale">৳{{ $product->box_price }}</span>
                                     </div>
                                 @endif
                             </td>

@@ -34,7 +34,7 @@
                             <td>{{ $method->duration }}</td>
                             <td>{{ $method->min_weight }}</td>
                             <td>{{ $method->max_weight }}</td>
-                            <td>£{{ $method->price }}</td>
+                            <td>৳{{ $method->price }}</td>
                             <td><span class="badge {{ $method->status == 'active' ? 'bg-success' : 'bg-danger' }}">
                                 {{ $method->status == 'active' ? 'Active' : 'InActive' }}</span></td>
                             <td class="text-start">

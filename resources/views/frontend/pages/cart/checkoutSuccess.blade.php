@@ -117,7 +117,7 @@
                                                                 <span>{{ Str::limit(optional($item->product)->name, 30) }}</span>
                                                             </td>
                                                             <td>
-                                                                <span><span class="text-info">(£)</span>{{ optional($item)->quantity * optional($item)->price }}</span>
+                                                                <span><span class="text-info">(৳)</span>{{ optional($item)->quantity * optional($item)->price }}</span>
                                                             </td>
                                                             <td class="text-center">
                                                                 <span>{{ optional($item)->quantity }}</span>
@@ -126,7 +126,7 @@
                                                                 <span>{{ optional($item->product)->sku_code }}</span>
                                                             </td>
                                                             <td class="text-right">
-                                                                <span><span class="text-info">(£)</span>{{ optional($item)->quantity * optional($item)->price }}</span>
+                                                                <span><span class="text-info">(৳)</span>{{ optional($item)->quantity * optional($item)->price }}</span>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -135,7 +135,7 @@
                                                             <span>Subtotal</span>
                                                         </td>
                                                         <td class="text-right">
-                                                            <span><span class="text-info">(£)</span>{{ $order->sub_total }}</span>
+                                                            <span><span class="text-info">(৳)</span>{{ $order->sub_total }}</span>
                                                         </td>
                                                     </tr>
                                                     <tr class="">
@@ -143,7 +143,7 @@
                                                             <span>VAT (0%)</span>
                                                         </td>
                                                         <td class="text-right">
-                                                            <span><span class="text-info">(£)</span>0.00</span>
+                                                            <span><span class="text-info">(৳)</span>0.00</span>
                                                         </td>
                                                     </tr>
                                                     <tr class="">
@@ -151,7 +151,7 @@
                                                             <span>Shipping Charge</span>
                                                         </td>
                                                         <td class="text-right">
-                                                            <span><span class="text-info">(£)</span>{{ $order->shippingCharge->price }}</span>
+                                                            <span><span class="text-info">(৳)</span>{{ $order->shippingCharge->price }}</span>
                                                         </td>
                                                     </tr>
                                                     <tr class="invoice_table">
@@ -159,7 +159,7 @@
                                                             <span>Grand Total</span>
                                                         </td>
                                                         <td class="text-right">
-                                                            <span><span class="text-info">(£)</span>{{ number_format($order->total_amount, 2) }}</span>
+                                                            <span><span class="text-info">(৳)</span>{{ number_format($order->total_amount, 2) }}</span>
                                                         </td>
                                                     </tr>
                                                 </tbody>

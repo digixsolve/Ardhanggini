@@ -281,7 +281,7 @@
                                     </td>
                                     <td>
                                         <div>
-                                            <h4>£ 5.75/pc</h4>
+                                            <h4>৳ 5.75/pc</h4>
                                             <p><strong>Stock:</strong>150 Box</p>
                                             <p><strong>Box</strong>16 pcs</p>
                                         </div>

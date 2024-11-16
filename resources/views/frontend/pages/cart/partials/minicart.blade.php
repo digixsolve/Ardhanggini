@@ -14,7 +14,7 @@
                             {{ $item->model->name }}</a>
                         <p class="ps-product__meta">
                             <span class="ps-product__price">{{ $item->qty }}  X  </span>
-                            <span class="ps-product__price">£{{ $item->price }}</span>
+                            <span class="ps-product__price">৳{{ $item->price }}</span>
                         </p>
                     </div>
                     <a class="ps-product__remove delete" href="{{ route('cart.destroy',$item->rowId ) }}">
@@ -26,7 +26,7 @@
     </ul>
     <div class="ps-cart__total">
         <span>Subtotal </span>
-        <span>£{{ $subTotal }}</span>
+        <span>৳{{ $subTotal }}</span>
     </div>
     <div class="ps-cart__footer">
         <a class="ps-btn ps-btn--outline" href="{{ route('cart') }}">View Cart

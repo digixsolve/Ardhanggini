@@ -121,19 +121,17 @@
                                                                     {{ implode(' ', array_slice(explode(' ', $category_product->name), 0, 8)) }}
                                                                 </a>
                                                             </h5>
-                                                            @if (Auth::check() && Auth::user()->status == 'active')
                                                                 @if (!empty($category_product->box_discount_price))
                                                                     <div class="ps-product__meta">
                                                                         <span
-                                                                            class="ps-product__price sale">£{{ $category_product->box_discount_price }}</span>
+                                                                            class="ps-product__price sale">৳{{ $category_product->box_discount_price }}</span>
                                                                         <span
-                                                                            class="ps-product__del">£{{ $category_product->unit_price }}
-                                                                            Per Unit</span>
+                                                                            class="ps-product__del">৳{{ $category_product->unit_price }} </span>
                                                                     </div>
                                                                 @else
                                                                     <div class="ps-product__meta">
                                                                         <span
-                                                                            class="ps-product__price sale">£{{ $category_product->unit_price }}
+                                                                            class="ps-product__price sale">৳{{ $category_product->unit_price }}
                                                                             Per Unit</span>
                                                                     </div>
                                                                 @endif
@@ -141,13 +139,6 @@
                                                                     class="btn ps-btn--warning my-3 btn-block add_to_cart"
                                                                     data-product_id="{{ $category_product->id }}"
                                                                     data-product_qty="1">Add To Cart</a>
-                                                            @else
-                                                                <div class="ps-product__meta">
-                                                                    <a href="{{ route('login') }}"
-                                                                        class="btn btn-info btn-block">Login to view
-                                                                        price</a>
-                                                                </div>
-                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -317,14 +308,14 @@
                                                     @if (!empty($category_product->box_discount_price))
                                                         <div class="ps-product__meta">
                                                             <span
-                                                                class="ps-product__price sale">£{{ $category_product->box_discount_price }}</span>
+                                                                class="ps-product__price sale">৳{{ $category_product->box_discount_price }}</span>
                                                             <span
-                                                                class="ps-product__del">£{{ $category_product->unit_price }} Per Unit</span>
+                                                                class="ps-product__del">৳{{ $category_product->unit_price }} Per Unit</span>
                                                         </div>
                                                     @else
                                                         <div class="ps-product__meta">
                                                             <span
-                                                                class="ps-product__price sale">£{{ $category_product->unit_price }} Per Unit</span>
+                                                                class="ps-product__price sale">৳{{ $category_product->unit_price }} Per Unit</span>
                                                         </div>
                                                     @endif
 

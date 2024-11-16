@@ -9,9 +9,10 @@
                 <div class="ps-banner">
                     <div class="ps-banner__block">
                         <div class="ps-banner__content">
-                            <div class="ps-logo"><a href="{{ route('home') }}"> <img src="{{ asset('frontend/img/logo.png') }}"
-                                        alt></a></div>
-                            <h2 class="ps-banner__title">Your Ultimate Destination <br> for Wholesale Wonders!</h2>
+                            <div class="ps-logo"><a href="{{ route('home') }}"> <img
+                                        src="{{ asset('frontend/img/logo.png') }}" alt></a></div>
+                            <h2 class="ps-banner__title">A Trusted Online Shop Where you can find stylish womens's bag &
+                                baggage</h2>
                             <div class="ps-banner__btn-group">
                                 <div class="ps-banner__btn"><img src="{{ asset('frontend/img/icon/virus.svg') }}"
                                         alt>Bulk Savings</div>
@@ -26,9 +27,6 @@
                 </div>
             </section>
             <section class="ps-about--info">
-                <h2 class="ps-about__title">Your Ultimate Wholesale Hub <br> for Bulk Bargains!</h2>
-                <p class="ps-about__subtitle">Our platform is designed for seamless navigation, offering a user-friendly
-                    experience that's both sleek and intuitive.</p>
                 <div class="ps-about__extent">
                     <div class="row m-0">
                         <div class="col-12 col-md-4 p-0">
@@ -36,7 +34,7 @@
                                 <div class="ps-block__icon"><img src="{{ asset('frontend/img/icon/award-icon-2.png') }}"
                                         alt=""></div>
                                 <h4 class="ps-block__title">Effortless Ordering</h4>
-                                <div class="ps-block__subtitle">Streamline your wholesale purchases with our easy-to-use
+                                <div class="ps-block__subtitle">Streamline your  purchases with our easy-to-use
                                     online platform, making ordering a breeze for your convenience.</div>
                             </div>
                         </div>
@@ -77,7 +75,8 @@
             </section>
             <section class="ps-about__project">
                 <div class="container">
-                    <h2 class="ps-about__title">Welcome to {{optional($setting)->website_name}}, your premier destination for wholesale solutions.
+                    <h2 class="ps-about__title">Welcome to {{ optional($setting)->website_name }}, your premier
+                        destination for  solutions.
                     </h2>
                     <section class="ps-section--block-grid">
                         <div class="ps-section__thumbnail"> <a class="ps-section__image" href="#"><img
@@ -86,10 +85,11 @@
                             <h3 class="ps-section__title">Top quality products and proven suppliers with quality
                                 certificates!</h3>
                             <div class="ps-section__subtitle">They have CEE 2020 certificate.</div>
-                            <div class="ps-section__desc">At {{optional($setting)->website_name}}, we pride ourselves on delivering top-quality
+                            <div class="ps-section__desc">At {{ optional($setting)->website_name }}, we pride ourselves
+                                on delivering top-quality
                                 products and exceptional service to businesses of all sizes. With our extensive range of
                                 products and commitment to customer satisfaction, we strive to be your trusted partner
-                                in meeting your wholesale needs.</div>
+                                in meeting your  needs.</div>
                             <div class="ps-section__desc">
                                 Our platform is designed with you in mind, offering a seamless shopping experience and
                                 flexible options to accommodate your unique requirements. Whether you're stocking up on
@@ -102,11 +102,12 @@
                                     src="{{ asset('frontend/img/about/about-us-2.jpg') }}" alt=""></a></div>
                         <div class="ps-section__content">
                             <h3 class="ps-section__title">Empowering Your Business Success</h3>
-                            <div class="ps-section__subtitle">Your Trusted Partner in Wholesale Solutions</div>
-                            <div class="ps-section__desc">At {{optional($setting)->website_name}}, we are dedicated to empowering your business
-                                success through our comprehensive range of wholesale solutions. With a commitment to
+                            <div class="ps-section__subtitle">Your Trusted Partner in  Solutions</div>
+                            <div class="ps-section__desc">At {{ optional($setting)->website_name }}, we are dedicated
+                                to empowering your business
+                                success through our comprehensive range of  solutions. With a commitment to
                                 excellence and a focus on customer satisfaction, we strive to be the go-to choice for
-                                businesses seeking reliable and cost-effective wholesale options.</div>
+                                businesses seeking reliable and cost-effective  options.</div>
                             <ul class="ps-section__list">
                                 <li>Quality Assurance</li>
                                 <li>Tailored Solutions</li>
@@ -119,12 +120,13 @@
                         <div class="ps-section__thumbnail"> <a class="ps-section__image" href="#"><img
                                     src="{{ asset('frontend/img/about/about-us-3.jpg') }}" alt=""></a></div>
                         <div class="ps-section__content">
-                            <h3 class="ps-section__title">Driving Wholesale Excellence</h3>
-                            <div class="ps-section__subtitle">Your Gateway to Premium Wholesale Solutions</div>
-                            <div class="ps-section__desc">At {{optional($setting)->website_name}}, we're committed to driving wholesale excellence by
+                            <h3 class="ps-section__title">Driving  Excellence</h3>
+                            <div class="ps-section__subtitle">Your Gateway to Premium  Solutions</div>
+                            <div class="ps-section__desc">At {{ optional($setting)->website_name }}, we're committed to
+                                driving  excellence by
                                 offering a comprehensive range of premium solutions tailored to meet your business
                                 needs. With a focus on quality, reliability, and customer satisfaction, we aim to
-                                elevate your wholesale experience and help you achieve your goals.</div>
+                                elevate your  experience and help you achieve your goals.</div>
                             <ul class="ps-section__list">
                                 <li>Premium Quality</li>
                                 <li>Customized Options</li>
@@ -216,9 +218,9 @@
                 <h3 class="ps-section__title">From the blog</h3>
                 <div class="ps-section__carousel">
                     <div class="owl-carousel" data-owl-auto="false" data-owl-loop="true" data-owl-speed="13000"
-                        data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="3" data-owl-item-xs="1"
-                        data-owl-item-sm="1" data-owl-item-md="2" data-owl-item-lg="3" data-owl-item-xl="3"
-                        data-owl-duration="1000" data-owl-mousedrag="on">
+                        data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="3"
+                        data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="2" data-owl-item-lg="3"
+                        data-owl-item-xl="3" data-owl-duration="1000" data-owl-mousedrag="on">
                         @foreach ($blog_posts as $blog_post)
                             <div class="ps-section__item">
                                 <div class="ps-blog--latset">
@@ -250,7 +252,8 @@
             </section>
             <section class="ps-section--newsletter"
                 style="background-image: url('{{ asset('frontend/img/newsletter-bg.jpg') }}')">
-                <h3 class="ps-section__title pt-5">Join our newsletter and get <br> $20 discount for your first order</h3>
+                <h3 class="ps-section__title pt-5">Join our newsletter and get <br> $20 discount for your first order
+                </h3>
                 <div class="ps-section__content">
                     <form action="{{ route('subscription.add') }}" method="post">
                         @csrf

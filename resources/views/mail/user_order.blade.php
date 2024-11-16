@@ -67,7 +67,7 @@
 
                                                         <div style="font-family:Arial,Helvetica,sans-serif">
                                                             {{ $item->product_name }}</div>
-                                                        <div style="font-family:Arial,Helvetica,sans-serif">£
+                                                        <div style="font-family:Arial,Helvetica,sans-serif">৳
                                                             {{ $item->quantity }} x {{ optional($item)->price }}</div>
 
                                                     </div>
@@ -78,7 +78,7 @@
                                                     <div style="font-family:Arial,Helvetica,sans-serif">SubTotal</div>
                                                     <div
                                                         style="color:#50cd89; font-weight:700; font-family:Arial,Helvetica,sans-serif">
-                                                        £ {{ $data['order']->sub_total }}</div>
+                                                        ৳ {{ $data['order']->sub_total }}</div>
 
                                                 </div>
 
@@ -87,7 +87,7 @@
                                                     style="display:flex; justify-content: space-between; color:#7E8299; font-size: 14px; font-weight:500;">
                                                     <div style="font-family:Arial,Helvetica,sans-serif">Shipping Charge
                                                     </div>
-                                                    <div style="font-family:Arial,Helvetica,sans-serif">£
+                                                    <div style="font-family:Arial,Helvetica,sans-serif">৳
                                                         {{ $data['order']->shippingCharge->price }}</div>
                                                 </div>
 
@@ -100,7 +100,7 @@
                                                     <div style="font-family:Arial,Helvetica,sans-serif">Total</div>
                                                     <div
                                                         style="color:#50cd89; font-weight:700; font-family:Arial,Helvetica,sans-serif">
-                                                        £ {{ number_format($data['order']->total_amount, 2) }}</div>
+                                                        ৳ {{ number_format($data['order']->total_amount, 2) }}</div>
 
                                                 </div>
 

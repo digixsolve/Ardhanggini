@@ -64,8 +64,9 @@
                             <ul class="ps-social">
                                 @if (optional($setting)->facebook_url)
                                     <li>
-                                        <a class="ps-social__link facebook" href="{{ optional($setting)->facebook_url }}"
-                                            target="_blank" rel="noopener noreferrer">
+                                        <a class="ps-social__link facebook"
+                                            href="{{ optional($setting)->facebook_url }}" target="_blank"
+                                            rel="noopener noreferrer">
                                             <i class="fa fa-facebook"></i>
                                             <span class="ps-tooltip">Facebook</span>
                                         </a>
@@ -74,8 +75,9 @@
 
                                 @if (optional($setting)->instagram_url)
                                     <li>
-                                        <a class="ps-social__link instagram" href="{{ optional($setting)->instagram_url }}"
-                                            target="_blank" rel="noopener noreferrer">
+                                        <a class="ps-social__link instagram"
+                                            href="{{ optional($setting)->instagram_url }}" target="_blank"
+                                            rel="noopener noreferrer">
                                             <i class="fa fa-instagram"></i>
                                             <span class="ps-tooltip">Instagram</span>
                                         </a>
@@ -94,8 +96,9 @@
 
                                 @if (optional($setting)->pinterest_url)
                                     <li>
-                                        <a class="ps-social__link pinterest" href="{{ optional($setting)->pinterest_url }}"
-                                            target="_blank" rel="noopener noreferrer">
+                                        <a class="ps-social__link pinterest"
+                                            href="{{ optional($setting)->pinterest_url }}" target="_blank"
+                                            rel="noopener noreferrer">
                                             <i class="fa fa-pinterest-p"></i>
                                             <span class="ps-tooltip">Pinterest</span>
                                         </a>
@@ -104,8 +107,9 @@
 
                                 @if (optional($setting)->linkedin_url)
                                     <li>
-                                        <a class="ps-social__link linkedin" href="{{ optional($setting)->linkedin_url }}"
-                                            target="_blank" rel="noopener noreferrer">
+                                        <a class="ps-social__link linkedin"
+                                            href="{{ optional($setting)->linkedin_url }}" target="_blank"
+                                            rel="noopener noreferrer">
                                             <i class="fa fa-linkedin"></i>
                                             <span class="ps-tooltip">LinkedIn</span>
                                         </a>
@@ -126,8 +130,9 @@
 
                                 @if (optional($setting)->whatsapp_url)
                                     <li>
-                                        <a class="ps-social__link whatsapp" href="{{ optional($setting)->whatsapp_url }}"
-                                            target="_blank" rel="noopener noreferrer">
+                                        <a class="ps-social__link whatsapp"
+                                            href="{{ optional($setting)->whatsapp_url }}" target="_blank"
+                                            rel="noopener noreferrer">
                                             <i class="fa fa-whatsapp"></i>
                                             <span class="ps-tooltip">WhatsApp</span>
                                         </a>
@@ -139,7 +144,7 @@
                     <div class="col-12 col-lg-8">
                         <div class="ps-contact__map">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2480.862612991394!2d0.07784621197950896!3d51.55241820729635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a66365fab4ff%3A0x930454119641ab95!2s144%20Hampton%20Rd%2C%20Ilford%20IG1%201PR%2C%20UK!5e0!3m2!1sen!2sbd!4v1723443590326!5m2!1sen!2sbd"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d456.45265457796717!2d90.36323376144203!3d23.760882538091433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf65f840a615%3A0x9b7b0e2729349db8!2z4Ka44Kay4Ka_4Kau4KeB4Kay4KeN4Kay4Ka-4Ka5IOCmsOCni-CmoSDgpqrgpr7gpqjgpr_gprAg4Kaf4KeN4Kav4Ka-4KaC4KaV!5e0!3m2!1sen!2sbd!4v1731757458918!5m2!1sen!2sbd"
                                 width="600" height="450" style="border: 0" allowfullscreen=""
                                 loading="lazy"></iframe>
                         </div>
@@ -173,7 +178,8 @@
                         </div>
                         <div class="col-12">
                             <div class="ps-form__group">
-                                <textarea class="form-control ps-form__textarea" rows="5" name="message" placeholder="Message" style="border-radius: 8px"></textarea>
+                                <textarea class="form-control ps-form__textarea" rows="5" name="message" placeholder="Message"
+                                    style="border-radius: 8px"></textarea>
                             </div>
                         </div>
                     </div>
@@ -184,7 +190,7 @@
             </form>
             {{-- <section class="ps-section--instagram">
                 <h3 class="ps-section__title">
-                    Follow <strong>@{{optional($setting)->website_name}} </strong>on instagram
+                    Follow <strong>@{{ optional($setting) - > website_name }} </strong>on instagram
                 </h3>
                 <div class="ps-section__content">
                     <div class="row m-0">

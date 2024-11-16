@@ -34,10 +34,10 @@
                                                 <tr>
                                                     <th width="5%">SL</th>
                                                     <th width="10%">Image</th>
-                                                    <th width="45%">Name</th>
-                                                    <th width="15%">Status</th>
-                                                    <th width="15%">Price</th>
-                                                    <th width="10%">To Cart</th>
+                                                    <th width="40%">Name</th>
+                                                    <th width="15%" class="text-center">Status</th>
+                                                    <th width="15%" class="text-center">Price</th>
+                                                    <th width="15%" class="text-center">To Cart</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -49,7 +49,7 @@
                                                             <div>
                                                                 <img src="{{ asset('storage/' . $product->thumbnail) }}"
                                                                     class="" width="50px" height="50px"
-                                                                    alt="">
+                                                                    alt="" onerror="this.onerror=null; this.src='{{ asset('frontend/img/no-image.png') }}';">
                                                             </div>
                                                         </td>
                                                         <td>{{ $product->name }}</td>
@@ -62,17 +62,17 @@
                                                                     Stock</span>
                                                             @endif
                                                         </td>
-                                                        <td>
+                                                        <td class="text-center">
                                                             @if (!empty($product->box_discount_price))
                                                                 <div class="ps-product__meta">
                                                                     <span
-                                                                        class="ps-product__price sale">£{{ $product->box_discount_price }}</span>
+                                                                        class="ps-product__price sale">৳{{ $product->box_discount_price }}</span>
                                                                     <span
-                                                                        class="ps-product__del">£{{ $product->box_price }}</span>
+                                                                        class="ps-product__del">৳{{ $product->box_price }}</span>
                                                                 </div>
                                                             @else
                                                                 <div class="ps-product__meta"><span
-                                                                        class="ps-product__price sale">£{{ $product->box_price }}</span>
+                                                                        class="ps-product__price sale">৳{{ $product->box_price }}</span>
                                                                 </div>
                                                             @endif
                                                         </td>
@@ -171,14 +171,14 @@
                                                         @if (!empty($related_product->box_discount_price))
                                                             <div class="ps-product__meta">
                                                                 <span
-                                                                    class="ps-product__price sale">£{{ $related_product->box_discount_price }}</span>
+                                                                    class="ps-product__price sale">৳{{ $related_product->box_discount_price }}</span>
                                                                 <span
-                                                                    class="ps-product__del">£{{ $related_product->box_price }}</span>
+                                                                    class="ps-product__del">৳{{ $related_product->box_price }}</span>
                                                             </div>
                                                         @else
                                                             <div class="ps-product__meta">
                                                                 <span
-                                                                    class="ps-product__price sale">£{{ $related_product->box_price }}</span>
+                                                                    class="ps-product__price sale">৳{{ $related_product->box_price }}</span>
                                                             </div>
                                                         @endif
                                                         <a href="{{ route('cart.store', $related_product->id) }}"

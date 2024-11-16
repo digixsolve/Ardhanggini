@@ -61,7 +61,7 @@
         <div class="ps-home__content">
             @if ($categorys->count() > 0)
                 <section class="ps-section--categories">
-                    <div class="container bg-white px-0" style="border-radius: 5px;">
+                    <div class="container px-0" style="border-radius: 5px; background-color: #ffffffe6;">
                         {{-- <h3 class="ps-section__title py-5" style="font-size: 30px;">Popular Categories</h3> --}}
                         <div class="ps-section__content py-5">
                             <div class="ps-categories__list owl-carousel">
@@ -163,23 +163,38 @@
                                                             {{ implode(' ', array_slice(explode(' ', $latest_product->name), 0, 8)) }}
                                                         </a>
                                                     </h5>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="ps-product__rating">
+                                                            <div class="br-wrapper br-theme-fontawesome-stars"><select
+                                                                    class="ps-rating" data-read-only="true"
+                                                                    style="display: none;">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            Reviews(02)
+                                                        </div>
+                                                    </div>
                                                     @if (!empty($latest_product->box_discount_price))
                                                         <div class="ps-product__meta">
                                                             <span
-                                                                class="ps-product__price sale">£{{ $latest_product->box_discount_price }}</span>
+                                                                class="ps-product__price sale">৳{{ $latest_product->box_discount_price }}</span>
                                                             <span
-                                                                class="ps-product__del">£{{ $latest_product->unit_price }}
-                                                                Per Unit</span>
+                                                                class="ps-product__del">৳{{ $latest_product->unit_price }}</span>
                                                         </div>
                                                     @else
                                                         <div class="ps-product__meta">
                                                             <span
-                                                                class="ps-product__price sale">£{{ $latest_product->unit_price }}
-                                                                Per Unit</span>
+                                                                class="ps-product__price sale">৳{{ $latest_product->unit_price }}</span>
                                                         </div>
                                                     @endif
                                                     <a href="{{ route('cart.store', $latest_product->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart"
+                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
                                                         data-product_id="{{ $latest_product->id }}"
                                                         data-product_qty="1">
                                                         Add To Cart
@@ -191,8 +206,8 @@
                                                                     onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i
                                                                         class="icon-minus"></i>
                                                                 </button>
-                                                                <input class="quantity" min="0" name="quantity"
-                                                                    value="1" type="number" />
+                                                                <input class="quantity" min="0"
+                                                                    name="quantity" value="1" type="number" />
                                                                 <button class="plus"
                                                                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i
                                                                         class="icon-plus"></i>
@@ -297,23 +312,38 @@
                                                             {{ implode(' ', array_slice(explode(' ', $categoryoneproduct->name), 0, 8)) }}
                                                         </a>
                                                     </h5>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="ps-product__rating">
+                                                            <div class="br-wrapper br-theme-fontawesome-stars"><select
+                                                                    class="ps-rating" data-read-only="true"
+                                                                    style="display: none;">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            Reviews(02)
+                                                        </div>
+                                                    </div>
                                                     @if (!empty($categoryoneproduct->box_discount_price))
                                                         <div class="ps-product__meta">
                                                             <span
-                                                                class="ps-product__price sale">£{{ $categoryoneproduct->box_discount_price }}</span>
+                                                                class="ps-product__price sale">৳{{ $categoryoneproduct->box_discount_price }}</span>
                                                             <span
-                                                                class="ps-product__del">£{{ $categoryoneproduct->unit_price }}
-                                                                Per Unit</span>
+                                                                class="ps-product__del">৳{{ $categoryoneproduct->unit_price }}</span>
                                                         </div>
                                                     @else
                                                         <div class="ps-product__meta">
                                                             <span
-                                                                class="ps-product__price sale">£{{ $categoryoneproduct->unit_price }}
-                                                                Per Unit</span>
+                                                                class="ps-product__price sale">৳{{ $categoryoneproduct->unit_price }}</span>
                                                         </div>
                                                     @endif
                                                     <a href="{{ route('cart.store', $categoryoneproduct->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart"
+                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
                                                         data-product_id="{{ $categoryoneproduct->id }}"
                                                         data-product_qty="1">
                                                         Add To Cart
@@ -359,12 +389,12 @@
             @endif
             <div class="container px-0">
                 <div class="ps-delivery ps-delivery--info my-5"
-                    data-background="https://nouthemes.net/html/mymedi/img/promotion/banner-delivery-3.jpg"
-                    style="background-image: url(&quot;img/promotion/banner-delivery-3.jpg&quot;);">
+                    data-background="{{ asset('images/delivery_banner.jpg') }}"
+                    style="background-image: url({{ asset('images/delivery_banner.jpg') }});">
                     <div class="ps-delivery__content">
                         <div class="ps-delivery__text"> <i class="icon-shield-check"></i><span> <strong>100% Secure
-                                    delivery </strong>without contacting the courier</span></div><a
-                            class="ps-delivery__more" href="#">More</a>
+                                    delivery </strong>without courier communication</span></div><a
+                            class="ps-delivery__more" href="{{ route('allproducts') }}">Shop</a>
                     </div>
                 </div>
             </div>
@@ -444,23 +474,38 @@
                                                                 {{ implode(' ', array_slice(explode(' ', $categorytwoproduct->name), 0, 8)) }}
                                                             </a>
                                                         </h5>
+                                                        <div>
+                                                            <div class="ps-product__rating">
+                                                                <div class="br-wrapper br-theme-fontawesome-stars"><select
+                                                                        class="ps-rating" data-read-only="true"
+                                                                        style="display: none;">
+                                                                        <option value="1">1</option>
+                                                                        <option value="2">2</option>
+                                                                        <option value="3">3</option>
+                                                                        <option value="4">4</option>
+                                                                        <option value="5">5</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                Reviews
+                                                            </div>
+                                                        </div>
                                                         @if (!empty($categorytwoproduct->box_discount_price))
                                                             <div class="ps-product__meta">
                                                                 <span
-                                                                    class="ps-product__price sale">£{{ $categorytwoproduct->box_discount_price }}</span>
+                                                                    class="ps-product__price sale">৳{{ $categorytwoproduct->box_discount_price }}</span>
                                                                 <span
-                                                                    class="ps-product__del">£{{ $categorytwoproduct->unit_price }}
-                                                                    Per Unit</span>
+                                                                    class="ps-product__del">৳{{ $categorytwoproduct->unit_price }}</span>
                                                             </div>
                                                         @else
                                                             <div class="ps-product__meta">
                                                                 <span
-                                                                    class="ps-product__price sale">£{{ $categorytwoproduct->unit_price }}
-                                                                    Per Unit</span>
+                                                                    class="ps-product__price sale">৳{{ $categorytwoproduct->unit_price }}</span>
                                                             </div>
                                                         @endif
                                                         <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
                                                             data-product_id="{{ $categorytwoproduct->id }}"
                                                             data-product_qty="1">
                                                             Add To Cart
@@ -579,23 +624,38 @@
                                                             {{ implode(' ', array_slice(explode(' ', $categorythreeproduct->name), 0, 8)) }}
                                                         </a>
                                                     </h5>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="ps-product__rating">
+                                                            <div class="br-wrapper br-theme-fontawesome-stars"><select
+                                                                    class="ps-rating" data-read-only="true"
+                                                                    style="display: none;">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            Reviews(02)
+                                                        </div>
+                                                    </div>
                                                     @if (!empty($categorythreeproduct->box_discount_price))
                                                         <div class="ps-product__meta">
                                                             <span
-                                                                class="ps-product__price sale">£{{ $categorythreeproduct->box_discount_price }}</span>
+                                                                class="ps-product__price sale">৳{{ $categorythreeproduct->box_discount_price }}</span>
                                                             <span
-                                                                class="ps-product__del">£{{ $categorythreeproduct->unit_price }}
-                                                                Per Unit</span>
+                                                                class="ps-product__del">৳{{ $categorythreeproduct->unit_price }}</span>
                                                         </div>
                                                     @else
                                                         <div class="ps-product__meta">
                                                             <span
-                                                                class="ps-product__price sale">£{{ $categorythreeproduct->unit_price }}
-                                                                Per Unit</span>
+                                                                class="ps-product__price sale">৳{{ $categorythreeproduct->unit_price }}</span>
                                                         </div>
                                                     @endif
                                                     <a href="{{ route('cart.store', $categorythreeproduct->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart"
+                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
                                                         data-product_id="{{ $categorythreeproduct->id }}"
                                                         data-product_qty="1">
                                                         Add To Cart
@@ -676,9 +736,9 @@
                                                 @if ($deal->offer_price && $deal->price)
                                                     <div class="ps-promo__meta">
                                                         <p class="ps-promo__price text-warning">
-                                                            £{{ $deal->offer_price }}
+                                                            ৳{{ $deal->offer_price }}
                                                         </p>
-                                                        <p class="ps-promo__del text-white">£{{ $deal->price }}
+                                                        <p class="ps-promo__del text-white">৳{{ $deal->price }}
                                                         </p>
                                                     </div>
                                                 @endif
@@ -713,9 +773,9 @@
                                             @if ($deal->offer_price && $deal->price)
                                                 <div class="ps-promo__meta">
                                                     <p class="ps-promo__price text-warning">
-                                                        £ {{ number_format($deal->offer_price, 2) }}</p>
+                                                        ৳ {{ number_format($deal->offer_price, 2) }}</p>
                                                     <p class="ps-promo__del text-dark">
-                                                        £ {{ number_format($deal->price, 2) }}</p>
+                                                        ৳ {{ number_format($deal->price, 2) }}</p>
                                                 </div>
                                             @endif
                                             @if (!empty($deal->button_link))
@@ -801,24 +861,40 @@
                                                         {{ implode(' ', array_slice(explode(' ', $deal_product->name), 0, 8)) }}
                                                     </a>
                                                 </h5>
-
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="ps-product__rating">
+                                                        <div class="br-wrapper br-theme-fontawesome-stars"><select
+                                                                class="ps-rating" data-read-only="true"
+                                                                style="display: none;">
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        Reviews
+                                                    </div>
+                                                </div>
                                                 @if (!empty($deal_product->box_discount_price))
                                                     <div class="ps-product__meta">
                                                         <span
-                                                            class="ps-product__price sale">£{{ $deal_product->box_discount_price }}</span>
+                                                            class="ps-product__price sale">৳{{ $deal_product->box_discount_price }}</span>
                                                         <span
-                                                            class="ps-product__del">£{{ $deal_product->unit_price }}
+                                                            class="ps-product__del">৳{{ $deal_product->unit_price }}
                                                             Per Unit</span>
                                                     </div>
                                                 @else
                                                     <div class="ps-product__meta">
                                                         <span
-                                                            class="ps-product__price sale">£{{ $deal_product->unit_price }}
+                                                            class="ps-product__price sale">৳{{ $deal_product->unit_price }}
                                                             Per Unit</span>
                                                     </div>
                                                 @endif
                                                 <a href="{{ route('cart.store', $deal_product->id) }}"
-                                                    class="btn ps-btn--warning my-3 btn-block add_to_cart"
+                                                    class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
                                                     data-product_id="{{ $deal_product->id }}"
                                                     data-product_qty="1">Add To
                                                     Cart</a>

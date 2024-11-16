@@ -579,18 +579,18 @@
                                     <div class="input-group">
                                         <select name="annual_spend" class="form-select ps-form__input"
                                             id="annual_spend">
-                                            <option value="Under £500">Under £500</option>
-                                            <option value="£1,000 - £2,000">£1,000 - £2,000
+                                            <option value="Under ৳500">Under ৳500</option>
+                                            <option value="৳1,000 - ৳2,000">৳1,000 - ৳2,000
                                             </option>
-                                            <option value="£2,000 - £5,000">£2,000 - £5,000
+                                            <option value="৳2,000 - ৳5,000">৳2,000 - ৳5,000
                                             </option>
-                                            <option value="£5,000 - £10,000">£5,000 - £10,000
+                                            <option value="৳5,000 - ৳10,000">৳5,000 - ৳10,000
                                             </option>
-                                            <option value="£10,000 - £30,000">£10,000 - £30,000
+                                            <option value="৳10,000 - ৳30,000">৳10,000 - ৳30,000
                                             </option>
-                                            <option value="£30,000 - £50,000">£30,000 - £50,000
+                                            <option value="৳30,000 - ৳50,000">৳30,000 - ৳50,000
                                             </option>
-                                            <option value="Over £50,000">Over £50,000</option>
+                                            <option value="Over ৳50,000">Over ৳50,000</option>
                                         </select>
                                     </div>
                                     <x-input-error :messages="$errors->get('annual_spend')" class="mt-2" />

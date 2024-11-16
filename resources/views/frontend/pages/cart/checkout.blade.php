@@ -79,7 +79,7 @@
                                                 value="{{ old('billing_postcode', $user->zipcode) }}" required />
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-6">
                                         <div class="ps-checkout__group">
                                             <label class="ps-checkout__label">Country (optional)</label>
                                             <select name="billing_country" class="form-select ps-form__input"
@@ -465,7 +465,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-6">
                                         <div class="ps-checkout__group">
                                             <label class="ps-checkout__label">Phone *</label>
                                             <input class="ps-input" type="text" name="billing_phone"
@@ -830,14 +830,14 @@
                                             x <span>{{ $cartItem->qty }}</span>
                                         </div>
                                         <div class="ps-product__price">
-                                            £{{ number_format($cartItem->price * $cartItem->qty, 2) }}</div>
+                                            ৳{{ number_format($cartItem->price * $cartItem->qty, 2) }}</div>
                                     </div>
                                 @endforeach
                                 <div class="ps-checkout__row">
                                     <div class="ps-title">Subtotal</div>
                                     <input type="hidden" name="sub_total" id="sub_total"
                                         value="{{ $subTotal }}">
-                                    <div class="ps-product__price">£{{ number_format($subTotal, 2) }}</div>
+                                    <div class="ps-product__price">৳{{ number_format($subTotal, 2) }}</div>
                                 </div>
                                 <div class="ps-checkout__row">
                                     <div class="ps-title">Shipping <span class="text-danger">*</span></div>
@@ -850,7 +850,7 @@
                                                     value="{{ $shippingmethod->id }}" @checked($loop->first)/>
                                                 <label class="form-check-label"
                                                     for="shipping-{{ $shippingmethod->id }}">{{ $shippingmethod->title }}
-                                                    <span>(£{{ number_format($shippingmethod->price, 2) }})</span></label>
+                                                    <span>(৳{{ number_format($shippingmethod->price, 2) }})</span></label>
                                             </div>
                                         @endforeach
                                     </div>
@@ -861,7 +861,7 @@
 
                                         <input type="hidden" name="total_amount" id="total-input"
                                             value="{{ number_format($subTotal, 2) }}">
-                                        £<span id="total-price"
+                                        ৳<span id="total-price"
                                             style="font-weight: 600;">{{ number_format($subTotal, 2) }}</span>
                                     </div>
                                 </div>
@@ -877,7 +877,7 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" name="payment_method" type="radio"
                                                     id="stripe" value="stripe" checked/>
-                                                <label class="form-check-label mt-0" for="stripe">Credit/Debit Card</label>
+                                                <label class="form-check-label mt-0" for="stripe">Cash On Delivery</label>
                                             </div>
                                             {{-- <div class="form-check">
                                                 <input class="form-check-input" name="payment_method" type="radio"

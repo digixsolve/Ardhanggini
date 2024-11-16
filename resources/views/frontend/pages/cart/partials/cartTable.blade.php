@@ -25,7 +25,7 @@
                             <div class="ps-product__row">
                                 <div class="ps-product__label">Price:</div>
                                 <div class="ps-product__value">
-                                    <span class="ps-product__price">£{{ $item->price }}</span>
+                                    <span class="ps-product__price">৳{{ $item->price }}</span>
                                 </div>
                             </div>
                             <div class="ps-product__row ps-product__stock">
@@ -66,7 +66,7 @@
                             </div>
                             <div class="ps-product__row ps-product__subtotal">
                                 <div class="ps-product__label">Subtotal:</div>
-                                <div class="ps-product__value">£{{ $item->price * $item->qty }}
+                                <div class="ps-product__value">৳{{ $item->price * $item->qty }}
                                 </div>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                                     href="{{ route('product.details', $item->model->slug) }}">{{ $item->model->name }}</a>
                             </td>
                             <td class="ps-product__meta">
-                                <span class="ps-product__price">£{{ $item->price }}</span>
+                                <span class="ps-product__price">৳{{ $item->price }}</span>
                             </td>
                             <td class="ps-product__quantity">
                                 <div class="def-number-input number-input safari_only">
@@ -129,7 +129,7 @@
                                     </button>
                                 </div>
                             </td>
-                            <td class="ps-product__subtotal text-center">£{{ $item->price * $item->qty }}</td>
+                            <td class="ps-product__subtotal text-center">৳{{ $item->price * $item->qty }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -149,13 +149,13 @@
         <div class="ps-shopping__box">
             <div class="ps-shopping__row">
                 <div class="ps-shopping__label">Subtotal</div>
-                <div class="ps-shopping__price">£{{ Cart::subtotal() }}</div>
+                <div class="ps-shopping__price">৳{{ Cart::subtotal() }}</div>
             </div>
 
 
             <div class="ps-shopping__row">
                 <div class="ps-shopping__label">Total</div>
-                <div class="ps-shopping__price">£{{ Cart::subtotal() }}</div>
+                <div class="ps-shopping__price">৳{{ Cart::subtotal() }}</div>
             </div>
             <div class="ps-shopping__checkout">
                 <a class="ps-btn ps-btn--warning" href="{{ route('checkout') }}">Proceed to checkout</a>

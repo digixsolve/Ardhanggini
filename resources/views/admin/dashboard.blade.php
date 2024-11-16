@@ -9,7 +9,7 @@
                                 <div class="card-header pt-5">
                                     <div class="card-title d-flex flex-column">
                                         <div class="d-flex align-items-center">
-                                            <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">£</span>
+                                            <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">৳</span>
                                             <span
                                                 class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">{{ number_format($earningsCurrentMonth, 2) }}</span>
                                             <span class="badge badge-light-success fs-base">
@@ -36,7 +36,7 @@
                                                 </div>
 
                                                 <div class="fw-bolder text-gray-700 text-xxl-end">
-                                                    £{{ number_format($categoryWiseSale->total_sales, 2) }}</div>
+                                                    ৳{{ number_format($categoryWiseSale->total_sales, 2) }}</div>
                                             </div>
                                         @endforeach
                                     </div>
@@ -86,7 +86,7 @@
                             <div class="card-header pt-5">
                                 <div class="card-title d-flex flex-column">
                                     <div class="d-flex align-items-center">
-                                        <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">£</span>
+                                        <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">৳</span>
                                         <span
                                             class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">{{ number_format($averageDailySales, 2) }}</span>
                                         <span class="badge badge-light-success fs-base">
@@ -126,7 +126,7 @@
                         <div class="card-body d-flex justify-content-between flex-column pb-1 px-0">
                             <div class="px-9 mb-5">
                                 <div class="d-flex mb-2">
-                                    <span class="fs-4 fw-semibold text-gray-500 me-1">£</span>
+                                    <span class="fs-4 fw-semibold text-gray-500 me-1">৳</span>
                                     <span
                                         class="fs-2hx fw-bold text-gray-800 me-2 lh-1 ls-n2">{{ number_format($earningsCurrentMonth, 2) }}</span>
                                 </div>
@@ -185,7 +185,7 @@
                                             <td>{{ $order->user->first_name }}
                                                 {{ $order->user->last_name }}</td>
                                             <td>{{ $order->created_at->format('d M, Y') }}</td>
-                                            <td><span class="text-info fw-bold">£</span>{{ $order->total_amount }}
+                                            <td><span class="text-info fw-bold">৳</span>{{ $order->total_amount }}
                                             </td>
                                             <td>{{ $order->quantity }}</td>
                                             <td>

@@ -123,7 +123,7 @@
                                 @endif
                             </td>
 
-                            <td class="text-center">£{{ $product->box_price }}</td>
+                            <td class="text-center">৳{{ $product->box_price }}</td>
                             <td>
                                 <span class="badge {{ $product->status == 'published' ? 'bg-success' : 'bg-danger' }}">
                                     {{ $product->status == 'published' ? 'Published' : 'Unpublished' }}</span>

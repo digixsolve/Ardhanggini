@@ -54,16 +54,16 @@
                                                         <div class="ps-product__label">Price:</div>
                                                         <div class="ps-product__value">
                                                             <span
-                                                                class="ps-product__price sale">£{{ $wishlist->product->box_discount_price }}</span>
+                                                                class="ps-product__price sale">৳{{ $wishlist->product->box_discount_price }}</span>
                                                             <span
-                                                                class="ps-product__del">£{{ $wishlist->product->box_price }}</span>
+                                                                class="ps-product__del">৳{{ $wishlist->product->box_price }}</span>
                                                         </div>
                                                     </div>
                                                 @else
                                                     <div class="ps-product__row">
                                                         <div class="ps-product__label">Price:</div>
                                                         <div class="ps-product__value">
-                                                            <span class="ps-product__price sale">£
+                                                            <span class="ps-product__price sale">৳
                                                                 {{ $wishlist->product->box_price }}
                                                         </div>
                                                     </div>
@@ -129,16 +129,16 @@
                                                             <div class="ps-product__row">
                                                                 <div class="ps-product__value">
                                                                     <span
-                                                                        class="ps-product__price sale">£{{ $wishlist->product->box_discount_price }}</span>
+                                                                        class="ps-product__price sale">৳{{ $wishlist->product->box_discount_price }}</span>
                                                                     <span
-                                                                        class="ps-product__del">£{{ $wishlist->product->box_price }}</span>
+                                                                        class="ps-product__del">৳{{ $wishlist->product->box_price }}</span>
                                                                 </div>
                                                             </div>
                                                         @else
                                                             <div class="ps-product__row">
                                                                 <div class="ps-product__value">
                                                                     <span
-                                                                        class="ps-product__price sale">£{{ $wishlist->product->box_price }}
+                                                                        class="ps-product__price sale">৳{{ $wishlist->product->box_price }}
                                                                 </div>
                                                             </div>
                                                         @endif

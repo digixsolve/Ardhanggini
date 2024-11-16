@@ -144,8 +144,6 @@
 <body>
     <!-- Preloader HTML -->
     <div id="preloader" class="flex-column">
-        {{-- <img class="wave-flag-animation" width="100px" src="{{ asset('images/default_logo.png') }}"
-            alt="Loading..."> --}}
         <div class="wave-text">
             <span>অ</span>
             <span>র্ধা</span>
@@ -288,7 +286,7 @@
                 document.getElementById('preloader').style.display = 'none';
                 // Show the main content
                 document.getElementById('main-content').style.display = 'block';
-            }, 4000); // 2000 milliseconds = 2 seconds
+            }, 2000); // 2000 milliseconds = 2 seconds
         });
     </script>
     {{-- Preloader End --}}

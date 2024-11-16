@@ -54,7 +54,7 @@
                                                     <td>{{ $order->created_at->format('d M, Y') }}</td>
                                                     <td>{{ $order->quantity }}</td>
                                                     <td><span
-                                                            class="text-info fw-bold">£</span>{{ $order->total_amount }}
+                                                            class="text-info fw-bold">৳</span>{{ $order->total_amount }}
                                                     </td>
                                                     <td>
                                                         @if (!empty($order->external_order_id))

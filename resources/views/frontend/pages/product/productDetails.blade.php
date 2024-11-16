@@ -185,12 +185,7 @@
                                                 <tr>
                                                     <td>{{ $product->box_contains }}</td>
                                                     <td>
-                                                        @if (Auth::check() && Auth::user()->status == 'active')
-                                                            {{ $product->unit_price }}
-                                                        @else
-                                                            <a href="{{ route('login') }}"
-                                                                class="btn btn-info btn-block">Login</a>
-                                                        @endif
+                                                        {{ $product->unit_price }}
                                                     </td>
                                                     <td>
                                                         @if (!empty($product->box_stock) && $product->box_stock > 0)
@@ -217,41 +212,33 @@
                                 @endif
 
 
-                                @if (Auth::check() && Auth::user()->status == 'active')
-                                    @if (!empty($product->box_discount_price))
-                                        <div class="ps-product__meta">
-                                            <span
-                                                class="ps-product__price sale">£{{ $product->box_discount_price }}</span>
-                                            <span class="ps-product__del">£{{ $product->box_price }}</span>
-                                        </div>
-                                    @else
-                                        <div class="ps-product__meta">
-                                            <span class="ps-product__price sale">£{{ $product->box_price }}</span>
-                                        </div>
-                                    @endif
-
-                                    <div class="ps-product__quantity">
-                                        <h6>Quantity</h6>
-                                        <div class="def-number-input number-input safari_only">
-                                            <button class="minus"
-                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i
-                                                    class="icon-minus"></i></button>
-                                            <input class="quantity" min="1" name="quantity" value="1"
-                                                type="number" data-product_id="{{ $product->id }}" />
-                                            <button class="plus"
-                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i
-                                                    class="icon-plus"></i></button>
-                                        </div>
+                                @if (!empty($product->box_discount_price))
+                                    <div class="ps-product__meta">
+                                        <span class="ps-product__price sale">৳{{ $product->box_discount_price }}</span>
+                                        <span class="ps-product__del">৳{{ $product->box_price }}</span>
                                     </div>
-
-                                    <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
-                                        data-product_id="{{ $product->id }}" href="#">Add to cart</a>
                                 @else
                                     <div class="ps-product__meta">
-                                        <a href="{{ route('login') }}" class="btn btn-info btn-block">Login to view
-                                            price</a>
+                                        <span class="ps-product__price sale">৳{{ $product->box_price }}</span>
                                     </div>
                                 @endif
+
+                                <div class="ps-product__quantity">
+                                    <h6>Quantity</h6>
+                                    <div class="def-number-input number-input safari_only">
+                                        <button class="minus"
+                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i
+                                                class="icon-minus"></i></button>
+                                        <input class="quantity" min="1" name="quantity" value="1"
+                                            type="number" data-product_id="{{ $product->id }}" />
+                                        <button class="plus"
+                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i
+                                                class="icon-plus"></i></button>
+                                    </div>
+                                </div>
+
+                                <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
+                                    data-product_id="{{ $product->id }}" href="#">Add to cart</a>
 
                                 <ul class="ps-product__bundle">
                                     <li><i class="icon-wallet"></i>100% Money back Guaranteed</li>
@@ -327,7 +314,8 @@
                                 <div class="ps-product__tabreview">
                                     <div class="ps-review--product">
                                         <div class="ps-review__row">
-                                            <div class="ps-review__avatar"><img src="https://plus.unsplash.com/premium_photo-1683121366070-5ceb7e007a97?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
+                                            <div class="ps-review__avatar"><img
+                                                    src="https://plus.unsplash.com/premium_photo-1683121366070-5ceb7e007a97?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
                                                     alt="alt" /></div>
                                             <div class="ps-review__info">
                                                 <div class="ps-review__name">Mark J.</div>
@@ -452,32 +440,41 @@
                                                         {{ implode(' ', array_slice(explode(' ', $related_product->name), 0, 8)) }}
                                                     </a>
                                                 </h5>
-                                                @if (Auth::check() && Auth::user()->status == 'active')
-                                                    @if (!empty($related_product->box_discount_price))
-                                                        <div class="ps-product__meta">
-                                                            <span
-                                                                class="ps-product__price sale">£{{ $related_product->box_discount_price }}</span>
-                                                            <span
-                                                                class="ps-product__del">£{{ $related_product->box_price }}</span>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="ps-product__rating">
+                                                        <div class="br-wrapper br-theme-fontawesome-stars"><select
+                                                                class="ps-rating" data-read-only="true"
+                                                                style="display: none;">
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                            </select>
                                                         </div>
-                                                    @else
-                                                        <div class="ps-product__meta">
-                                                            <span
-                                                                class="ps-product__price sale">£{{ $related_product->box_price }}</span>
-                                                        </div>
-                                                    @endif
-                                                    <a href="{{ route('cart.store', $related_product->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart"
-                                                        data-product_id="{{ $related_product->id }}"
-                                                        data-product_qty="1">Add To
-                                                        Cart</a>
+                                                    </div>
+                                                    <div>
+                                                        Reviews(02)
+                                                    </div>
+                                                </div>
+                                                @if (!empty($related_product->box_discount_price))
+                                                    <div class="ps-product__meta">
+                                                        <span
+                                                            class="ps-product__price sale">৳{{ $related_product->box_discount_price }}</span>
+                                                        <span
+                                                            class="ps-product__del">৳{{ $related_product->box_price }}</span>
+                                                    </div>
                                                 @else
                                                     <div class="ps-product__meta">
-                                                        <a href="{{ route('login') }}"
-                                                            class="btn btn-info btn-block">Login
-                                                            to view price</a>
+                                                        <span
+                                                            class="ps-product__price sale">৳{{ $related_product->box_price }}</span>
                                                     </div>
                                                 @endif
+                                                <a href="{{ route('cart.store', $related_product->id) }}"
+                                                    class="btn ps-btn--warning my-3 btn-block add_to_cart"
+                                                    data-product_id="{{ $related_product->id }}"
+                                                    data-product_qty="1">Add To
+                                                    Cart</a>
                                                 <div class="ps-product__actions ps-product__group-mobile">
                                                     <div class="ps-product__quantity">
                                                         <div class="def-number-input number-input safari_only">
@@ -516,12 +513,14 @@
                     </section>
                 </div>
             </div>
-            <div class="ps-delivery"
-                style="background-image: url({{ asset('frontend/img/promotion/banner-delivery-2.jpg') }})">
+            <div class="ps-delivery ps-delivery--info my-5"
+                data-background="{{ asset('images/delivery_banner.jpg') }}"
+                style="background-image: url({{ asset('images/delivery_banner.jpg') }});">
                 <div class="ps-delivery__content">
-                    <div class="ps-delivery__text"> <i class="icon-shield-check"></i><span> <strong>100% Secure
-                                delivery </strong>without contacting the courier</span></div><a
-                        class="ps-delivery__more" href="#">More</a>
+                    <div class="ps-delivery__text"> <i class="icon-shield-check"></i><span> <strong>100%
+                                Secure
+                                delivery </strong>without courier communication</span></div><a
+                        class="ps-delivery__more" href="{{ route('allproducts') }}">Shop</a>
                 </div>
             </div>
         </div>
@@ -617,48 +616,38 @@
                                             <div class="ps-product__desc">
                                                 <p>{!! $related_product->short_description !!}</p>
                                             </div>
-                                            @if (Auth::check() && Auth::user()->status == 'active')
-                                                @if (!empty($related_product->box_discount_price))
-                                                    <div class="ps-product__meta">
-                                                        <span
-                                                            class="ps-product__price sale">£{{ $related_product->box_discount_price }}</span>
-                                                        <span
-                                                            class="ps-product__del">£{{ $related_product->box_price }}</span>
-                                                    </div>
-                                                @else
-                                                    <div class="ps-product__meta">
-                                                        <span
-                                                            class="ps-product__price sale">£{{ $related_product->box_price }}</span>
-                                                    </div>
-                                                @endif
-
-                                                <div class="ps-product__quantity">
-                                                    <h6>Quantity</h6>
-                                                    <div class="def-number-input number-input safari_only">
-                                                        <button class="minus"
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i
-                                                                class="icon-minus"></i></button>
-                                                        <input class="quantity" min="1" name="quantity"
-                                                            value="1" type="number"
-                                                            data-product_id="{{ $related_product->id }}" />
-                                                        <button class="plus"
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i
-                                                                class="icon-plus"></i></button>
-                                                    </div>
+                                            @if (!empty($related_product->box_discount_price))
+                                                <div class="ps-product__meta">
+                                                    <span
+                                                        class="ps-product__price sale">৳{{ $related_product->box_discount_price }}</span>
+                                                    <span
+                                                        class="ps-product__del">৳{{ $related_product->box_price }}</span>
                                                 </div>
-
-                                                <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
-                                                    data-product_id="{{ $related_product->id }}" href="#">Add
-                                                    to
-                                                    cart</a>
                                             @else
                                                 <div class="ps-product__meta">
-                                                    <a href="{{ route('login') }}"
-                                                        class="btn btn-info btn-block">Login to
-                                                        view
-                                                        price</a>
+                                                    <span
+                                                        class="ps-product__price sale">৳{{ $related_product->box_price }}</span>
                                                 </div>
                                             @endif
+
+                                            <div class="ps-product__quantity">
+                                                <h6>Quantity</h6>
+                                                <div class="def-number-input number-input safari_only">
+                                                    <button class="minus"
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i
+                                                            class="icon-minus"></i></button>
+                                                    <input class="quantity" min="1" name="quantity"
+                                                        value="1" type="number"
+                                                        data-product_id="{{ $related_product->id }}" />
+                                                    <button class="plus"
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i
+                                                            class="icon-plus"></i></button>
+                                                </div>
+                                            </div>
+
+                                            <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
+                                                data-product_id="{{ $related_product->id }}" href="#">Add
+                                                to cart</a>
                                             <div class="ps-product__type">
                                                 <ul class="ps-product__list">
 

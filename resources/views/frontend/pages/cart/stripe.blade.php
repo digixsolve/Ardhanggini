@@ -12,7 +12,7 @@
                             </div>
                             <div class="d-flex justify-content-between align-items-center pb-4">
                                 <h5>Total Ammount</h5>
-                                <h5>£ <span class="text-info">{{ $order->total_amount }}</span></h5>
+                                <h5>৳ <span class="text-info">{{ $order->total_amount }}</span></h5>
                             </div>
                             <hr>
                             <div class="d-flex justify-content-between align-items-center pt-4">
@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="mt-5 col-12">
                                         <button id='pay-btn' class="btn btn-warning w-100 p-4 text-white"
-                                            onclick="createToken()">Pay £ {{ $order->total_amount }}</button>
+                                            onclick="createToken()">Pay ৳ {{ $order->total_amount }}</button>
                                     </div>
                                 </form>
                             </div>

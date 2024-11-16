@@ -51,7 +51,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div>
-                    <img src="{{ asset('frontend/img/refund.jpg') }}" alt="">
+                    <img src="{{ asset('frontend/img/refund.png') }}" alt="">
                 </div>
             </div>
             <div class="col-lg-6">
