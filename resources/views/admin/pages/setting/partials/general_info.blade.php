@@ -27,7 +27,7 @@
     </div>
     <div class="col-lg-4 mb-7">
         <x-metronic.label for="site_logo_black"
-            class="col-form-label fw-bold fs-6 ">{{ __('Site Logo Colorful (For White Background)') }}
+            class="col-form-label fw-bold fs-6 ">{{ __('Site Logo Black (For White Background)') }}
         </x-metronic.label>
 
         <x-metronic.file-input id="site_logo_black" name="site_logo_black" :source="asset('storage/' . optional($setting)->site_logo_black)"
