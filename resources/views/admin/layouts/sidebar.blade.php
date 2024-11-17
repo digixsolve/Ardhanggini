@@ -203,7 +203,7 @@
                         ],
                         [
                             'title' => 'Staffs',
-                            'icon' => 'fa-solid fa-lock fs-3',
+                            'icon' => 'fa-solid fa-lock fs-3 text-primary',
                             'routes' => [
                                 'admin.staff.index',
                                 'admin.staff.create',
