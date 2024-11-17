@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
 class AdminManagementController extends Controller
@@ -10,9 +11,16 @@ class AdminManagementController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->middleware('permission:view admin management|show admin management|delete admin management|create admin management|edit admin management|store admin management|update admin management')->only(['index', 'show', 'destroy','create', 'edit', 'store', 'update']);
+    }
     public function index()
     {
-        //
+        $data = [
+            'admins' => Admin::latest()->get(),
+        ];
+        return view('admin.pages.adminManagement.index', $data);
     }
 
     /**
@@ -20,7 +28,10 @@ class AdminManagementController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'admins' => Admin::latest()->get(),
+        ];
+        return view('admin.pages.adminManagement.create', $data);
     }
 
     /**
@@ -44,7 +55,10 @@ class AdminManagementController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = [
+            'admins' => Admin::latest()->get(),
+        ];
+        return view('admin.pages.adminManagement.edit', $data);
     }
 
     /**

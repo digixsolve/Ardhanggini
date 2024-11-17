@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ActivityLogController;
+use App\Http\Controllers\Admin\AdminManagementController;
 use App\Http\Controllers\Admin\EmailSettingController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
@@ -125,7 +126,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
             'user'                  => UserController::class, //done
             'staff'                 => StaffController::class, //done
             'user-management'       => UserManagementController::class, //done
-            'admin-managemnet'      => UserManagementController::class, //done
+            'admin-managemnet'      => AdminManagementController::class, //done
             'categories'            => CategoryController::class, //done
             'icons'                 => IconController::class, //done
             'newsletters'           => NewsletterController::class,
