@@ -259,6 +259,9 @@
                                 'admin.faq.create',
                                 'admin.faq.edit',
                                 'admin.newsletters.index',
+                                'admin.testimonial.index',
+                                'admin.testimonial.create',
+                                'admin.testimonial.edit',
                             ],
                             'subMenu' => [
                                 [
@@ -275,6 +278,11 @@
                                     'title' => 'Subscribed Emails List',
                                     'routes' => ['admin.newsletters.index'],
                                     'route' => 'admin.newsletters.index',
+                                ],
+                                [
+                                    'title' => 'Testimonials',
+                                    'routes' => ['admin.testimonial.index'],
+                                    'route' => 'admin.testimonial.index',
                                 ],
                             ],
                         ],

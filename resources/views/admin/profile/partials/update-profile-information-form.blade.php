@@ -70,21 +70,19 @@
 
 
                 <div class="mb-7">
-
                     <label class="required fw-bold fs-6 mb-5">Role</label>
                     @foreach ($roles as $role)
                         <div class="d-flex fv-row">
                             <div class="form-check form-check-custom form-check-solid">
                                 <x-metronic.checkbox id="role-name-{{ $role->id }}" type="checkbox" name="roles[]"
-                                    :value="$role->name"></x-metronic.checkbox>
+                                    :value="$role->name" :checked="$user->hasRole($role->name)" />
                                 <x-metronic.label for="role-name-{{ $role->id }}"
                                     class="form-check-label">{{ $role->name }}</x-metronic.label>
-
                             </div>
                         </div>
                     @endforeach
-                </div>
 
+                </div>
 
             </div>
         </div>

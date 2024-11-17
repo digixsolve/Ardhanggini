@@ -1,47 +1,48 @@
 <?php
 
-use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\LogController;
+use App\Http\Controllers\Admin\IconController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\DealBannerController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\StaffController;
+use App\Http\Controllers\Admin\AboutUsController;
+use App\Http\Controllers\Admin\BlogTagController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\BlogPostController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CatalogueController;
+use App\Http\Controllers\Admin\NewsletterController;
+use App\Http\Controllers\Admin\PageBannerController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ActivityLogController;
-use App\Http\Controllers\Admin\AdminManagementController;
+use App\Http\Controllers\Admin\FaqCategoryController;
+use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\EmailSettingController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
+use App\Http\Controllers\Admin\PrivacyPolicyController;
+use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\Admin\AdminManagementController;
+use App\Http\Controllers\Admin\OrderManagementController;
+use App\Http\Controllers\Admin\StockManagementController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\TermsAndConditionController;
+use App\Http\Controllers\Admin\ShippingManagementController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Admin\BlogCategoryController;
-use App\Http\Controllers\Admin\BlogPostController;
-use App\Http\Controllers\Admin\BlogTagController;
-use App\Http\Controllers\Admin\BrandController;
-use App\Http\Controllers\Admin\CatalogueController;
-use App\Http\Controllers\Admin\ContactController;
-use App\Http\Controllers\Admin\FaqCategoryController;
-use App\Http\Controllers\Admin\FaqController;
-use App\Http\Controllers\Admin\IconController;
-use App\Http\Controllers\Admin\NewsletterController;
-use App\Http\Controllers\Admin\OrderManagementController;
-use App\Http\Controllers\Admin\PageBannerController;
-use App\Http\Controllers\Admin\PrivacyPolicyController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\ShippingManagementController;
-use App\Http\Controllers\Admin\StaffController;
-use App\Http\Controllers\Admin\StockManagementController;
-use App\Http\Controllers\Admin\TermsAndConditionController;
-use App\Http\Controllers\Admin\UserManagementController;
-use App\Http\Controllers\DealBannerController;
 
 // Route::get('/', function () {
 //     return redirect()->route('admin.dashboard');
@@ -118,6 +119,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
             'privacy-policy'  => PrivacyPolicyController::class,
             'deal-banner'     => DealBannerController::class,
             'blog-post'       => BlogPostController::class,
+            'testimonial'     => TestimonialController::class,
         ],
         ['except' => ['show']]
     );

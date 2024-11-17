@@ -62,7 +62,8 @@
                                 class="icon-bag2"></i>Non-contact shipping</a></p>
                 </div>
                 <div class="col-12 col-sm-4 p-0">
-                    <p class="text-center"><a class="ps-footer__link" href="#"><i class="icon-truck"></i>Free Delivery UK Mainland</a></p>
+                    <p class="text-center"><a class="ps-footer__link" href="#"><i class="icon-truck"></i>Free
+                            Delivery UK Mainland</a></p>
                 </div>
             </div>
         </div>
@@ -82,7 +83,8 @@
                                     </a>
                                 </div>
                                 <div class="ps-footer__title">Our store</div>
-                                <p>{{ optional($setting)->address_line_one }}<br>{{ optional($setting)->address_line_two }}</p>
+                                <p>{{ optional($setting)->address_line_one }}<br>{{ optional($setting)->address_line_two }}
+                                </p>
 
                                 <!-- In your Blade view (e.g., resources/views/your_view_name.blade.php) -->
                                 <ul class="ps-social">
@@ -170,7 +172,8 @@
                         <div class="col-12 col-md-8">
                             <div class="ps-footer--contact">
                                 <h5 class="ps-footer__title">Need help</h5>
-                                <div class="ps-footer__fax"><i class="icon-telephone"></i>{{ optional($setting)->primary_phone }}
+                                <div class="ps-footer__fax"><i
+                                        class="icon-telephone"></i>{{ optional($setting)->primary_phone }}
                                 </div>
                                 <p class="ps-footer__work">Monday – Friday: 9:00-20:00<br>Saturday: 11:00 – 15:00</p>
                                 <hr>
@@ -179,6 +182,13 @@
                                         <i class="icon-envelope"></i>
                                         <span>{{ optional($setting)->contact_email }}</span>
                                     </a>
+                                </p>
+
+                                <p>
+                                    <a href='javascript:void(0)'>Visitors</a>
+                                    <script type='text/javascript'
+                                        src='https://www.freevisitorcounters.com/auth.php?id=06fa9794466c511c0eb7c3fc907b9f116d3928ac'></script>
+                                    <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1263168/t/0"></script>
                                 </p>
                             </div>
                         </div>
