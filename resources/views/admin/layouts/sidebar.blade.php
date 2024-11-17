@@ -5,7 +5,7 @@
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <a href="{{ route('dashboard') }}">
             <img alt="Logo"
-                src="{{ !empty(optional($setting)->site_logo_black) && file_exists(public_path('storage/' . optional($setting)->site_logo_white)) ? asset('storage/' . optional($setting)->site_logo_white) : asset('frontend/img/logo.png') }}"
+                src="{{ !empty(optional($setting)->site_logo_black) && file_exists(public_path('storage/' . optional($setting)->site_logo_white)) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
                 class="w-100px">
             {{-- <img alt="Logo" src="{{ asset('frontend/img/logo.png') }}" class="w-100px"> --}}
         </a>
@@ -201,55 +201,55 @@
                                 ],
                             ],
                         ],
-                        // [
-                        //     'title' => 'Staffs',
-                        //     'icon' => 'icons/duotune/general/gen051.svg fs-3',
-                        //     'routes' => [
-                        //         'admin.staff.index',
-                        //         'admin.staff.create',
-                        //         'admin.staff.edit',
-                        //         'admin.role.index',
-                        //         'admin.role.create',
-                        //         'admin.role.edit',
-                        //         'admin.permission.index',
-                        //         'admin.permission.create',
-                        //         'admin.permission.edit',
-                        //     ],
-                        //     'subMenu' => [
-                        //         [
-                        //             'title' => 'Staff List',
-                        //             'routes' => ['admin.staff.index', 'admin.staff.create', 'admin.staff.edit'],
-                        //             'route' => 'admin.staff.index',
-                        //         ],
-                        //         [
-                        //             'title' => 'Role & Permissions',
-                        //             'routes' => [
-                        //                 'admin.role.index',
-                        //                 'admin.role.create',
-                        //                 'admin.role.edit',
-                        //                 'admin.permission.index',
-                        //                 'admin.permission.create',
-                        //                 'admin.permission.edit',
-                        //             ],
-                        //             'subMenu' => [
-                        //                 [
-                        //                     'title' => 'Roles List',
-                        //                     'routes' => ['admin.role.index', 'admin.role.create', 'admin.role.edit'],
-                        //                     'route' => 'admin.role.index',
-                        //                 ],
-                        //                 [
-                        //                     'title' => 'Permissions List',
-                        //                     'routes' => [
-                        //                         'admin.permission.index',
-                        //                         'admin.permission.create',
-                        //                         'admin.permission.edit',
-                        //                     ],
-                        //                     'route' => 'admin.permission.index',
-                        //                 ],
-                        //             ],
-                        //         ],
-                        //     ],
-                        // ],
+                        [
+                            'title' => 'Staffs',
+                            'icon' => 'fa-solid fa-lock fs-3 text-primary',
+                            'routes' => [
+                                'admin.staff.index',
+                                'admin.staff.create',
+                                'admin.staff.edit',
+                                'admin.role.index',
+                                'admin.role.create',
+                                'admin.role.edit',
+                                'admin.permission.index',
+                                'admin.permission.create',
+                                'admin.permission.edit',
+                            ],
+                            'subMenu' => [
+                                [
+                                    'title' => 'Staff List',
+                                    'routes' => ['admin.staff.index', 'admin.staff.create', 'admin.staff.edit'],
+                                    'route' => 'admin.staff.index',
+                                ],
+                                [
+                                    'title' => 'Role & Permissions',
+                                    'routes' => [
+                                        'admin.role.index',
+                                        'admin.role.create',
+                                        'admin.role.edit',
+                                        'admin.permission.index',
+                                        'admin.permission.create',
+                                        'admin.permission.edit',
+                                    ],
+                                    'subMenu' => [
+                                        [
+                                            'title' => 'Roles List',
+                                            'routes' => ['admin.role.index', 'admin.role.create', 'admin.role.edit'],
+                                            'route' => 'admin.role.index',
+                                        ],
+                                        [
+                                            'title' => 'Permissions List',
+                                            'routes' => [
+                                                'admin.permission.index',
+                                                'admin.permission.create',
+                                                'admin.permission.edit',
+                                            ],
+                                            'route' => 'admin.permission.index',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
                         [
                             'title' => 'Customer Support',
                             'icon' => 'fa-solid fa-headset text-info fs-3',
@@ -259,6 +259,9 @@
                                 'admin.faq.create',
                                 'admin.faq.edit',
                                 'admin.newsletters.index',
+                                'admin.testimonial.index',
+                                'admin.testimonial.create',
+                                'admin.testimonial.edit',
                             ],
                             'subMenu' => [
                                 [
@@ -275,6 +278,11 @@
                                     'title' => 'Subscribed Emails List',
                                     'routes' => ['admin.newsletters.index'],
                                     'route' => 'admin.newsletters.index',
+                                ],
+                                [
+                                    'title' => 'Testimonials',
+                                    'routes' => ['admin.testimonial.index'],
+                                    'route' => 'admin.testimonial.index',
                                 ],
                             ],
                         ],
@@ -339,12 +347,23 @@
                         [
                             'title' => 'Settings',
                             'icon' => 'fa-solid fa-gear text-danger fs-3',
-                            'routes' => ['admin.settings.index', 'admin.email-settings.index'],
+                            'routes' => [
+                                'admin.settings.index',
+                                'admin.email-settings.index',
+                                'admin.admin-managemnet.index',
+                                'admin.admin-managemnet.create',
+                                'admin.admin-managemnet.edit',
+                            ],
                             'subMenu' => [
                                 [
                                     'title' => 'Website Setting',
                                     'routes' => ['admin.settings.index'],
                                     'route' => 'admin.settings.index',
+                                ],
+                                [
+                                    'title' => 'Admin Management',
+                                    'routes' => ['admin.admin-managemnet.index'],
+                                    'route' => 'admin.admin-managemnet.index',
                                 ],
                                 // [
                                 //     'title' => 'Email Setting',
@@ -427,8 +446,7 @@
     <div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
         <form method="POST" action="{{ route('admin.logout') }}">
             <a href="{{ route('admin.logout') }}" class="btn btn-custom btn-primary w-100"
-                onclick="event.preventDefault();
-      this.closest('form').submit();">
+                onclick="event.preventDefault();this.closest('form').submit();">
                 <span class="btn-label">
                     @csrf
                     <i class="fa-solid fa-right-from-bracket"></i> Log Out

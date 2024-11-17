@@ -98,7 +98,7 @@ class StaffController extends Controller
     public function edit(string $id)
     {
         return view('admin.pages.staff.edit', [
-            'staff' => Admin::find($id),
+            'staff' => Admin::with('roles')->find($id),
             'roles' => Role::get(),
         ]);
     }

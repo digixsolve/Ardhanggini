@@ -100,6 +100,24 @@ class RolePermissionSeeder extends Seeder
                 ],
             ],
             [
+                'group_name' => 'Admin Management',
+                'permissions' => [
+                    'view admin management',
+                    'show admin management',
+                    'delete admin management',
+                ],
+            ],
+            [
+                'group_name' => 'Staff Management',
+                'permissions' => [
+                    'view staff',
+                    'create staff',
+                    'show staff',
+                    'edit staff',
+                    'delete staff',
+                ],
+            ],
+            [
                 'group_name' => 'Tags',
                 'permissions' => [
                     'view tag',

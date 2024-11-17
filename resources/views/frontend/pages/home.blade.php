@@ -1,4 +1,5 @@
 <x-frontend-app-layout :title="'Home Page'">
+    <link rel='stylesheet' href='http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css'>
     <section class="ps-section--banner">
         <div class="ps-section__overlay">
             <div class="ps-section__loading"></div>
@@ -476,8 +477,8 @@
                                                         </h5>
                                                         <div>
                                                             <div class="ps-product__rating">
-                                                                <div class="br-wrapper br-theme-fontawesome-stars"><select
-                                                                        class="ps-rating" data-read-only="true"
+                                                                <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                    <select class="ps-rating" data-read-only="true"
                                                                         style="display: none;">
                                                                         <option value="1">1</option>
                                                                         <option value="2">2</option>
@@ -704,8 +705,86 @@
                 </div>
             @endif
         </div>
-
-
+        <section class="testimonial_section mb-4 mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="about_content">
+                            <div class="background_layer"></div>
+                            <div class="layer_content">
+                                <div class="section_title">
+                                    <h5>CLIENTS</h5>
+                                    <h2>Happy with<strong>Customers & Clients</strong></h2>
+                                    <div class="heading_line"><span></span></div>
+                                    <p>If you need any industrial solution we are available for you. Lorem ipsum dolor
+                                        sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                        labore et dolore magna aliqua.</p>
+                                </div>
+                                <a href="#" class="tst-btn">Contact Us<i
+                                        class="icofont-long-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="testimonial_box">
+                            <div class="testimonial_container">
+                                <div class="background_layer">
+                                    <h1 class="testimonial-title">Our Customer Say</h1>
+                                </div>
+                                <div class="layer_content">
+                                    <div class="row w-75 mx-auto">
+                                        <div class="col-lg-12">
+                                            <div class="slick-carousel testimonial-slider">
+                                                {{-- testimonial Items --}}
+                                                @foreach ($testimonials as $testimonial)
+                                                    <div class="card tst-cards mb-4 pr-4">
+                                                        <div class="card-body">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-lg-3">
+                                                                    <div class="profile">
+                                                                        <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
+                                                                            alt="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-9">
+                                                                    <div class="d-flex">
+                                                                        <div class="mr-3">
+                                                                            <i
+                                                                                class="fa-solid fa-quote-left site-text"></i>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="testimonial-message"
+                                                                                id="testimonial-{{ $testimonial->id }}">
+                                                                                <span class="testimonial-text">
+                                                                                    {{ implode(' ', array_slice(explode(' ', $testimonial->message), 0, 9)) }}
+                                                                                </span>
+                                                                                <button class="btn-sm red-more-btn"
+                                                                                    data-expanded="false"
+                                                                                    onclick="toggleTestimonialContent('{{ $testimonial->id }}', '{{ addslashes($testimonial->message) }}')">
+                                                                                    ...
+                                                                                </button>
+                                                                            </p>
+                                                                            <h5
+                                                                                class="text-right site-text fw-semibold">
+                                                                                {{ $testimonial->name }}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                                {{-- testimonial Items end --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         @if ($deals->count() > 0 || $deal_products->count() > 0)
             <div class="container px-0">
@@ -932,7 +1011,7 @@
             </div>
         @endif
         @if ($blog_posts->count() > 0)
-            <section class="ps-section--blog container-fluid bg-white pb-5 mt-5">
+            <section class="ps-section--blog container-fluid bg-white pb-5 cst-blog">
                 <div class="container px-0">
                     <div class="py-5">
                         <h3 class="ps-section__title mb-0" style="font-size: 30px;">From the blog</h3>
@@ -988,6 +1067,68 @@
     </div>
     @include('frontend.layouts.HomeQuickViewModal')
     @push('scripts')
+        <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+        <script>
+            function toggleTestimonialContent(testimonialId, fullMessage) {
+                var testimonial = document.getElementById('testimonial-' + testimonialId);
+                var textElement = testimonial.querySelector('.testimonial-text');
+                var btn = testimonial.querySelector('button');
+
+                // Check if the full content is currently shown
+                if (btn.getAttribute('data-expanded') === 'true') {
+                    // If showing full content, truncate to first 9 words
+                    textElement.innerHTML = fullMessage.split(' ').slice(0, 9).join(' ');
+                    btn.innerHTML = '...'; // Change button text
+                    btn.setAttribute('data-expanded', 'false'); // Update state
+                } else {
+                    // If showing truncated content, show full message
+                    textElement.innerHTML = fullMessage;
+                    btn.innerHTML = 'Less'; // Change button text
+                    btn.setAttribute('data-expanded', 'true'); // Update state
+                }
+            }
+        </script>
+        <script>
+            $('.slick-carousel').slick({
+                vertical: true, // Enable vertical scrolling
+                verticalSwiping: true, // Allow vertical swiping
+                slidesToShow: 3, // Show 3 slides at once
+                slidesToScroll: 1, // Scroll 1 slide at a time
+                autoplay: true, // Enable autoplay
+                autoplaySpeed: 3000, // Delay between slides (3 seconds)
+                speed: 500, // Transition speed (in milliseconds)
+                infinite: true, // Enable infinite looping
+                arrows: false, // Disable navigation arrows
+                touchMove: true, // Enable touch interactions
+                swipeToSlide: true, // Allow swiping to slide
+                swipe: true, // Enable swipe gestures
+                cssEase: 'ease', // Smooth easing for the transition
+                responsive: [{
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    },
+                    {
+                        breakpoint: 1000,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    }
+                ]
+            });
+
+            // Add mouse wheel scroll functionality
+            $('.slick-carousel').on('wheel', function(e) {
+                e.preventDefault();
+                if (e.originalEvent.deltaY > 0) {
+                    $(this).slick('slickNext'); // Scroll down
+                } else {
+                    $(this).slick('slickPrev'); // Scroll up
+                }
+            });
+        </script>
+
         <script>
             $(document).ready(function() {
                 $('.dealCarousel').owlCarousel({
