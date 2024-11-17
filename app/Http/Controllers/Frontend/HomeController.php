@@ -18,6 +18,7 @@ use App\Models\PrivacyPolicy;
 use App\Models\ShippingMethod;
 use App\Models\TermsAndCondition;
 use App\Http\Controllers\Controller;
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
@@ -64,6 +65,7 @@ class HomeController extends Controller
             'deals'                     => DealBanner::active()->inRandomOrder()->limit(7)->get(),
             'blog'                      => BlogPost::inRandomOrder()->active()->first(),
             'categorys'                 => Category::orderBy('name', 'ASC')->active()->get(),
+            'testimonials'              => Testimonial::latest()->where('status','active')->get(),
             'categoryone'               => $categoryone ?? '',
             'categoryoneproducts'       => $categoryoneproducts,
             'categorytwo'               => $categorytwo ?? '',

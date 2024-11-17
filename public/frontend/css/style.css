@@ -18770,7 +18770,7 @@ table.dataTable tbody td:last-child {
     background-color: var(--site-green);
     margin-left: -170px !important;
     position: relative;
-    height: 680px;
+    height: 605px;
     top: 70px;
 }
 .testimonial_section .testimonial_box .testimonial_container .background_layer {
@@ -19026,7 +19026,7 @@ table.dataTable tbody td:last-child {
 }
 /* Testimonial End */
 
-.profile img{
+.profile img {
     border: 2px solid #000;
     border-radius: 100%;
     width: 80px;
@@ -19040,18 +19040,27 @@ table.dataTable tbody td:last-child {
 }
 
 .testimonial-slider {
-    top: 45px;
+    top: 80px;
 }
 
-
-.cst-blog{
+.cst-blog {
     margin-top: 50px;
 }
 
-.site-text{
+.site-text {
     color: var(--site-green);
 }
 
-.tst-cards{
+.tst-cards {
     border-radius: 10px;
+}
+.red-more-btn {
+    border: 1px solid white;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+.red-more-btn:hover {
+    border: 1px solid var(--site-green);
+    background: transparent;
+    cursor: pointer;
 }

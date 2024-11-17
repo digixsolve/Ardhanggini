@@ -733,110 +733,50 @@
                             <div class="testimonial_container">
                                 <div class="background_layer"></div>
                                 <div class="layer_content">
-                                    <div class="row w-75 mx-auto py-5">
+                                    <div class="row w-75 mx-auto">
                                         <div class="col-lg-12">
                                             <div class="slick-carousel testimonial-slider">
-                                                <div class="card tst-cards mb-4 pr-4">
-                                                    <div class="card-body">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-lg-3">
-                                                                <div class="profile">
-                                                                    <img src="https://a.storyblok.com/f/191576/1200x800/a3640fdc4c/profile_picture_maker_before.webp"
-                                                                        alt="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-9">
-                                                                <div class="d-flex">
-                                                                    <div class="mr-3">
-                                                                        <i
-                                                                            class="fa-solid fa-quote-left site-text"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dolores cupiditate.</p>
-                                                                        <h5 class="text-right site-text fw-semibold">
-                                                                            Mr. Perfect</h5>
+                                                {{-- testimonial Items --}}
+                                                @foreach ($testimonials as $testimonial)
+                                                    <div class="card tst-cards mb-4 pr-4">
+                                                        <div class="card-body">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-lg-3">
+                                                                    <div class="profile">
+                                                                        <img src="https://a.storyblok.com/f/191576/1200x800/a3640fdc4c/profile_picture_maker_before.webp"
+                                                                            alt="">
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card tst-cards mb-4 pr-4">
-                                                    <div class="card-body">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-lg-3">
-                                                                <div class="profile">
-                                                                    <img src="https://media.istockphoto.com/id/1386479313/photo/happy-millennial-afro-american-business-woman-posing-isolated-on-white.jpg?b=1&s=612x612&w=0&k=20&c=MsKXmwf7TDRdKRn_lHohhmD5rvVvnGs9ry0xl6CrMT4="
-                                                                        alt="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-9">
-                                                                <div class="d-flex">
-                                                                    <div class="mr-3">
-                                                                        <i
-                                                                            class="fa-solid fa-quote-left site-text"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dolores cupiditate.</p>
-                                                                        <h5 class="text-right site-text fw-semibold">
-                                                                            Mr. Perfect</h5>
+                                                                <div class="col-lg-9">
+                                                                    <div class="d-flex">
+                                                                        <div class="mr-3">
+                                                                            <i
+                                                                                class="fa-solid fa-quote-left site-text"></i>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="testimonial-message"
+                                                                                id="testimonial-{{ $testimonial->id }}">
+                                                                                <span class="testimonial-text">
+                                                                                    {{ implode(' ', array_slice(explode(' ', $testimonial->message), 0, 9)) }}
+                                                                                </span>
+                                                                                <button
+                                                                                    class="btn-sm red-more-btn"
+                                                                                    data-expanded="false"
+                                                                                    onclick="toggleTestimonialContent('{{ $testimonial->id }}', '{{ addslashes($testimonial->message) }}')">
+                                                                                    ...
+                                                                                </button>
+                                                                            </p>
+                                                                            <h5
+                                                                                class="text-right site-text fw-semibold">
+                                                                                {{ $testimonial->name }}</h5>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="card tst-cards mb-4 pr-4">
-                                                    <div class="card-body">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-lg-3">
-                                                                <div class="profile">
-                                                                    <img src="https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-600nw-1714666150.jpg"
-                                                                        alt="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-9">
-                                                                <div class="d-flex">
-                                                                    <div class="mr-3">
-                                                                        <i
-                                                                            class="fa-solid fa-quote-left site-text"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dolores cupiditate.</p>
-                                                                        <h5 class="text-right site-text fw-semibold">
-                                                                            Mr. Perfect</h5>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card tst-cards mb-4 pr-4">
-                                                    <div class="card-body">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-lg-3">
-                                                                <div class="profile">
-                                                                    <img src="https://st4.depositphotos.com/3433891/23034/i/450/depositphotos_230346996-stock-photo-young-handsome-entrepreneur-man-face.jpg"
-                                                                        alt="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-9">
-                                                                <div class="d-flex">
-                                                                    <div class="mr-3">
-                                                                        <i
-                                                                            class="fa-solid fa-quote-left site-text"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dolores cupiditate.</p>
-                                                                        <h5 class="text-right site-text fw-semibold">
-                                                                            Mr. Perfect</h5>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Repeat other items -->
+                                                @endforeach
+                                                {{-- testimonial Items end --}}
                                             </div>
                                         </div>
                                     </div>
@@ -1131,6 +1071,26 @@
     @push('scripts')
         <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
         <script>
+            function toggleTestimonialContent(testimonialId, fullMessage) {
+                var testimonial = document.getElementById('testimonial-' + testimonialId);
+                var textElement = testimonial.querySelector('.testimonial-text');
+                var btn = testimonial.querySelector('button');
+
+                // Check if the full content is currently shown
+                if (btn.getAttribute('data-expanded') === 'true') {
+                    // If showing full content, truncate to first 9 words
+                    textElement.innerHTML = fullMessage.split(' ').slice(0, 9).join(' ');
+                    btn.innerHTML = '...'; // Change button text
+                    btn.setAttribute('data-expanded', 'false'); // Update state
+                } else {
+                    // If showing truncated content, show full message
+                    textElement.innerHTML = fullMessage;
+                    btn.innerHTML = 'Less'; // Change button text
+                    btn.setAttribute('data-expanded', 'true'); // Update state
+                }
+            }
+        </script>
+        <script>
             $('.slick-carousel').slick({
                 vertical: true, // Enable vertical scrolling
                 verticalSwiping: true, // Allow vertical swiping
@@ -1139,12 +1099,33 @@
                 autoplay: true, // Enable autoplay
                 autoplaySpeed: 3000, // Delay between slides (3 seconds)
                 speed: 500, // Transition speed (in milliseconds)
-                infinite: true, // Enable infinite looping
+                infinite: false, // Enable infinite looping
                 arrows: false, // Disable navigation arrows
                 touchMove: true, // Enable touch interactions
                 swipeToSlide: true, // Allow swiping to slide
                 swipe: true, // Enable swipe gestures
-                cssEase: 'ease' // Smooth easing for the transition
+                cssEase: 'ease', // Smooth easing for the transition
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+
+            // Add mouse wheel scroll functionality
+            $('.slick-carousel').on('wheel', function(e) {
+                e.preventDefault();
+                if (e.originalEvent.deltaY > 0) {
+                    $(this).slick('slickNext'); // Scroll down
+                } else {
+                    $(this).slick('slickPrev'); // Scroll up
+                }
             });
         </script>
 

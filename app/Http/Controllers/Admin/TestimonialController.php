@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class TestimonialController extends Controller
 {
@@ -32,7 +34,23 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            Testimonial::create([
+                "name" => $request->name,
+                "company_name" => $request->company_name,
+                "message" => $request->message,
+                "rating" => $request->rating,
+                "status" => $request->status,
+            ]);
+            DB::commit();
+            Session::flash('success','Testimonial Added Successfuly');
+            return redirect()->route('admin.testimonial.index');
+        } catch (\Exception $e) {
+           DB::rolllback();
+           Session::flash('error', 'Testimonial Not Submited'.$e->getMessage());
+           return redirect()->back()->withInput();
+        }
     }
 
     /**
@@ -59,7 +77,24 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $testimonial=Testimonial::find($id);
+        DB::beginTransaction();
+        try {
+            $testimonial->update([
+                "name" => $request->name,
+                "company_name" => $request->company_name,
+                "message" => $request->message,
+                "rating" => $request->rating,
+                "status" => $request->status,
+            ]);
+            DB::commit();
+            Session::flash('success','Testimonial Added Successfuly');
+            return redirect()->route('admin.testimonial.index');
+        } catch (\Exception $e) {
+           DB::rolllback();
+           Session::flash('error', 'Testimonial Not Submited'.$e->getMessage());
+           return redirect()->back()->withInput();
+        }
     }
 
     /**
@@ -67,6 +102,7 @@ class TestimonialController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $testimonial=Testimonial::find($id);
+        $testimonial->delete();
     }
 }

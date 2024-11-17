@@ -164,6 +164,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::post('brands/toggle-status/{id}', [BrandController::class, 'toggleStatus'])->name('brands.toggle-status');
     Route::post('categories/toggle-status/{id}', [CategoryController::class, 'toggleStatus'])->name('categories.toggle-status');
     Route::post('banner/toggle-status/{id}', [PageBannerController::class, 'toggleStatus'])->name('banner.toggle-status');
+    Route::post('testimonial/toggle-status/{id}', [TestimonialController::class, 'toggleStatus'])->name('testimonial.toggle-status');
     Route::post('deal-banner/toggle-status/{id}', [DealBannerController::class, 'toggleStatus'])->name('deal-banner.toggle-status');
     Route::post('product/toggle-status/{id}', [BrandController::class, 'toggleStatus'])->name('product.toggle-status');
     Route::post('user/toggle-status/{id}', [UserController::class, 'toggleStatus'])->name('user.toggle-status');
