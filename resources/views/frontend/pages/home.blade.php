@@ -1,4 +1,5 @@
 <x-frontend-app-layout :title="'Home Page'">
+    <link rel='stylesheet' href='http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css'>
     <section class="ps-section--banner">
         <div class="ps-section__overlay">
             <div class="ps-section__loading"></div>
@@ -476,8 +477,8 @@
                                                         </h5>
                                                         <div>
                                                             <div class="ps-product__rating">
-                                                                <div class="br-wrapper br-theme-fontawesome-stars"><select
-                                                                        class="ps-rating" data-read-only="true"
+                                                                <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                    <select class="ps-rating" data-read-only="true"
                                                                         style="display: none;">
                                                                         <option value="1">1</option>
                                                                         <option value="2">2</option>
@@ -704,8 +705,148 @@
                 </div>
             @endif
         </div>
-
-
+        <section class="testimonial_section mb-4">
+            <div class="py-5 text-center">
+                <h3 class="ps-section__title mb-0" style="font-size: 30px;">Our Client Say-</h3>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="about_content">
+                            <div class="background_layer"></div>
+                            <div class="layer_content">
+                                <div class="section_title">
+                                    <h5>CLIENTS</h5>
+                                    <h2>Happy with<strong>Customers & Clients</strong></h2>
+                                    <div class="heading_line"><span></span></div>
+                                    <p>If you need any industrial solution we are available for you. Lorem ipsum dolor
+                                        sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                        labore et dolore magna aliqua.</p>
+                                </div>
+                                <a href="#" class="tst-btn">Contact Us<i
+                                        class="icofont-long-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="testimonial_box">
+                            <div class="testimonial_container">
+                                <div class="background_layer"></div>
+                                <div class="layer_content">
+                                    <div class="row w-75 mx-auto py-5">
+                                        <div class="col-lg-12">
+                                            <div class="slick-carousel testimonial-slider">
+                                                <div class="card tst-cards mb-4 pr-4">
+                                                    <div class="card-body">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-lg-3">
+                                                                <div class="profile">
+                                                                    <img src="https://a.storyblok.com/f/191576/1200x800/a3640fdc4c/profile_picture_maker_before.webp"
+                                                                        alt="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-9">
+                                                                <div class="d-flex">
+                                                                    <div class="mr-3">
+                                                                        <i
+                                                                            class="fa-solid fa-quote-left site-text"></i>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dolores cupiditate.</p>
+                                                                        <h5 class="text-right site-text fw-semibold">
+                                                                            Mr. Perfect</h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card tst-cards mb-4 pr-4">
+                                                    <div class="card-body">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-lg-3">
+                                                                <div class="profile">
+                                                                    <img src="https://media.istockphoto.com/id/1386479313/photo/happy-millennial-afro-american-business-woman-posing-isolated-on-white.jpg?b=1&s=612x612&w=0&k=20&c=MsKXmwf7TDRdKRn_lHohhmD5rvVvnGs9ry0xl6CrMT4="
+                                                                        alt="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-9">
+                                                                <div class="d-flex">
+                                                                    <div class="mr-3">
+                                                                        <i
+                                                                            class="fa-solid fa-quote-left site-text"></i>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dolores cupiditate.</p>
+                                                                        <h5 class="text-right site-text fw-semibold">
+                                                                            Mr. Perfect</h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card tst-cards mb-4 pr-4">
+                                                    <div class="card-body">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-lg-3">
+                                                                <div class="profile">
+                                                                    <img src="https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-600nw-1714666150.jpg"
+                                                                        alt="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-9">
+                                                                <div class="d-flex">
+                                                                    <div class="mr-3">
+                                                                        <i
+                                                                            class="fa-solid fa-quote-left site-text"></i>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dolores cupiditate.</p>
+                                                                        <h5 class="text-right site-text fw-semibold">
+                                                                            Mr. Perfect</h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card tst-cards mb-4 pr-4">
+                                                    <div class="card-body">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-lg-3">
+                                                                <div class="profile">
+                                                                    <img src="https://st4.depositphotos.com/3433891/23034/i/450/depositphotos_230346996-stock-photo-young-handsome-entrepreneur-man-face.jpg"
+                                                                        alt="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-9">
+                                                                <div class="d-flex">
+                                                                    <div class="mr-3">
+                                                                        <i
+                                                                            class="fa-solid fa-quote-left site-text"></i>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dolores cupiditate.</p>
+                                                                        <h5 class="text-right site-text fw-semibold">
+                                                                            Mr. Perfect</h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Repeat other items -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         @if ($deals->count() > 0 || $deal_products->count() > 0)
             <div class="container px-0">
@@ -932,7 +1073,7 @@
             </div>
         @endif
         @if ($blog_posts->count() > 0)
-            <section class="ps-section--blog container-fluid bg-white pb-5 mt-5">
+            <section class="ps-section--blog container-fluid bg-white pb-5 cst-blog">
                 <div class="container px-0">
                     <div class="py-5">
                         <h3 class="ps-section__title mb-0" style="font-size: 30px;">From the blog</h3>
@@ -988,6 +1129,25 @@
     </div>
     @include('frontend.layouts.HomeQuickViewModal')
     @push('scripts')
+        <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+        <script>
+            $('.slick-carousel').slick({
+                vertical: true, // Enable vertical scrolling
+                verticalSwiping: true, // Allow vertical swiping
+                slidesToShow: 3, // Show 3 slides at once
+                slidesToScroll: 1, // Scroll 1 slide at a time
+                autoplay: true, // Enable autoplay
+                autoplaySpeed: 3000, // Delay between slides (3 seconds)
+                speed: 500, // Transition speed (in milliseconds)
+                infinite: true, // Enable infinite looping
+                arrows: false, // Disable navigation arrows
+                touchMove: true, // Enable touch interactions
+                swipeToSlide: true, // Allow swiping to slide
+                swipe: true, // Enable swipe gestures
+                cssEase: 'ease' // Smooth easing for the transition
+            });
+        </script>
+
         <script>
             $(document).ready(function() {
                 $('.dealCarousel').owlCarousel({
