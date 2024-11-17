@@ -28,7 +28,7 @@
                         <form class="form" action="{{ route('admin.testimonial.update', $testimonial->id) }}"
                             method="POST" enctype="multipart/form-data">
                             @csrf
-
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-lg-6 mb-7">
                                     <x-metronic.label for="name"
