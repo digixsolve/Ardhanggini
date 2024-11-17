@@ -130,7 +130,7 @@
 
                     <div class="card-body d-flex flex-column px-9 pt-10 pb-10">
                         <div class="fs-2tx fw-bold mb-3">
-                            <span class="text-info">{{ $user->order->count() }}</span>
+                            <span class="text-info">{{ optional($user->order)->count() }}</span>
                         </div>
                     </div>
                 </div>
