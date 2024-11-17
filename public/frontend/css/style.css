@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
 @font-face {
     font-family: "CustomBengaliFont";
     src: url("/fonts/Unicode/LiSubhaSwarnaUnicode-Regular.ttf")
@@ -9886,11 +9886,6 @@ textarea.form-control {
     display: none;
 }
 
-.ps-section--deals .ps-section__carousel {
-    border: 3px solid #e31d19;
-    border-radius: 5px;
-}
-
 .ps-section--deals .owl-carousel .owl-dots {
     bottom: -50px;
     display: none;
@@ -18271,12 +18266,7 @@ table.dataTable tbody td:last-child {
 /* Deal Carousel */
 .dealCarousel-prev,
 .dealCarousel-next {
-    background: #fff;
-    /* Background color */
-    color: #000;
-    /* Text color */
-    border: 1px solid #ddd;
-    /* Border styling */
+    color: #673ab7;
     padding: 10px;
     cursor: pointer;
     font-size: 20px;
@@ -18639,9 +18629,9 @@ table.dataTable tbody td:last-child {
 }
 .testimonial_section .about_content {
     background-color: #020d26;
-    padding-top: 77px;
-    padding-right: 210px;
-    padding-bottom: 62px;
+    padding-top: 40px;
+    padding-right: 240px;
+    padding-bottom: 40px;
     position: relative;
 }
 .testimonial_section .about_content .background_layer {
@@ -18770,7 +18760,7 @@ table.dataTable tbody td:last-child {
     background-color: var(--site-green);
     margin-left: -170px !important;
     position: relative;
-    height: 605px;
+    height: 560px;
     top: 70px;
 }
 .testimonial_section .testimonial_box .testimonial_container .background_layer {
@@ -18984,12 +18974,38 @@ table.dataTable tbody td:last-child {
     background: #020d26;
 }
 
-@media all and (max-width: 991px) {
+@media all and (max-width: 600px) {
+    .testimonial_section .testimonial_box .testimonial_container {
+        background-color: var(--site-green);
+        margin-left: 345px !important;
+        position: relative;
+        height: 345px !important;
+        top: 115px !important;
+    }
+    .testimonial-slider {
+        top: 20px !important;
+    }
+    .testimonial-title {
+        font-size: 44px !important;
+        font-family: "Dancing Script", cursive;
+        position: relative;
+        top: -65px !important;
+        text-align: center;
+        left: 40px !important;
+    }
+    .testimonial_section .about_content .layer_content {
+        position: relative;
+        z-index: 9;
+        height: 100%;
+        left: 17px;
+        padding-bottom: 18px;
+        padding-top: 0px;
+    }
     .testimonial_section .about_content {
-        padding-right: 15px !important;
+        padding-right: 30px !important;
     }
     .testimonial_section .about_content .background_layer {
-        width: 200% !important;
+        width: 100% !important;
     }
     .testimonial_section .testimonial_box {
         margin-top: 0 !important;
@@ -19004,7 +19020,7 @@ table.dataTable tbody td:last-child {
         margin-top: 28% !important;
     }
     .testimonial_section .testimonial_box .testimonial_container {
-        margin-left: -15px !important;
+        margin-left: 0px !important;
     }
     .testimonial_section .testimonial_box .testimonial_container .testimonials {
         margin: 0px 0 20px 0;
@@ -19023,6 +19039,11 @@ table.dataTable tbody td:last-child {
         .images_box {
         display: none;
     }
+
+    .testimonial-container {
+        width: 100% !important;
+        margin: auto !important;
+    }
 }
 /* Testimonial End */
 
@@ -19040,7 +19061,7 @@ table.dataTable tbody td:last-child {
 }
 
 .testimonial-slider {
-    top: 80px;
+    top: 55px;
 }
 
 .cst-blog {
@@ -19057,14 +19078,15 @@ table.dataTable tbody td:last-child {
 .red-more-btn {
     border: 1px solid white;
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 .red-more-btn:hover {
     border: 1px solid var(--site-green);
     background: transparent;
     cursor: pointer;
 }
-.testimonial-title{
+.testimonial-title {
     font-size: 52px;
     font-family: "Dancing Script", cursive;
     position: relative;
@@ -19073,3 +19095,7 @@ table.dataTable tbody td:last-child {
     left: 40px;
 }
 
+.testimonial-container {
+    width: 85%;
+    margin: auto;
+}

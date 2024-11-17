@@ -43,6 +43,7 @@
         left: 10px;
         z-index: 5;
     }
+
     .button-nav-arrow {
         background: none;
         border: none;
@@ -427,7 +428,8 @@
         <div class="container">
             <div class="ps-logo">
                 <a href="{{ route('home') }}">
-                    <img class="rounded-2" src="{{ !empty(optional($setting)->site_logo_white) ? asset('storage/' . optional($setting)->site_logo_white) : asset('frontend/img/logo.png') }}"
+                    <img class="rounded-2"
+                        src="{{ !empty(optional($setting)->site_logo_white) ? asset('storage/' . optional($setting)->site_logo_white) : asset('frontend/img/logo.png') }}"
                         alt="" onerror="this.onerror=null; this.src='/images/default_logo-2.jpg';">
                     <img class="sticky-logo rounded-2"
                         src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
@@ -555,8 +557,8 @@
                                 <nav class="ps-main-menu">
                                     <div class="menu-container">
                                         <!-- Previous Button -->
-                                        <button id="prevButton" onclick="showPrevious()" class="button-nav-arrow-prev"
-                                            style="display: none;">
+                                        <button id="prevButton" onclick="showPrevious()"
+                                            class="button-nav-arrow-prev" style="display: none;">
                                             <i class="fa fa-chevron-left text-white"></i>
                                         </button>
                                         <!-- Menu Items -->
@@ -581,7 +583,7 @@
                     <div class="col-lg-2">
                         <div class="text-right pt-3">
                             {{-- <a href="#" class="animated-button">11:11 SALE</a> --}}
-                            <button type="button" class="button-new mt-2">
+                            <a href="{{ route('special.products') }}" class="button-new mt-2">
                                 <span class="fold"></span>
 
                                 <div class="points_wrapper">
@@ -604,7 +606,7 @@
                                             points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37">
                                         </polyline>
                                     </svg>11.11 SALE</span>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -799,12 +801,12 @@
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const menuItems = document.querySelectorAll(".menu .menus-items-head");
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuItems = document.querySelectorAll(".menu .menus-items-head");
 
-    // Check if there are at least 5 items and set the fifth item's ::before color to transparent
-    if (menuItems.length >= 5) {
-        menuItems[4].classList.add("transparent-before");
-    }
-});
+        // Check if there are at least 5 items and set the fifth item's ::before color to transparent
+        if (menuItems.length >= 5) {
+            menuItems[4].classList.add("transparent-before");
+        }
+    });
 </script>

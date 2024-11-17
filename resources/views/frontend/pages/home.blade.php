@@ -729,10 +729,10 @@
                         <div class="testimonial_box">
                             <div class="testimonial_container">
                                 <div class="background_layer">
-                                    <h1 class="testimonial-title">Our Customer Say</h1>
+                                    <h1 class="testimonial-title">Our Customers Say</h1>
                                 </div>
                                 <div class="layer_content">
-                                    <div class="row w-75 mx-auto">
+                                    <div class="row testimonial-container">
                                         <div class="col-lg-12">
                                             <div class="slick-carousel testimonial-slider">
                                                 {{-- testimonial Items --}}
@@ -756,7 +756,7 @@
                                                                             <p class="testimonial-message"
                                                                                 id="testimonial-{{ $testimonial->id }}">
                                                                                 <span class="testimonial-text">
-                                                                                    {{ implode(' ', array_slice(explode(' ', $testimonial->message), 0, 9)) }}
+                                                                                    {{ implode(' ', array_slice(explode(' ', $testimonial->message), 0, 12)) }}
                                                                                 </span>
                                                                                 <button class="btn-sm red-more-btn"
                                                                                     data-expanded="false"
@@ -1076,8 +1076,8 @@
 
                 // Check if the full content is currently shown
                 if (btn.getAttribute('data-expanded') === 'true') {
-                    // If showing full content, truncate to first 9 words
-                    textElement.innerHTML = fullMessage.split(' ').slice(0, 9).join(' ');
+                    // If showing full content, truncate to first 12 words
+                    textElement.innerHTML = fullMessage.split(' ').slice(0, 12).join(' ');
                     btn.innerHTML = '...'; // Change button text
                     btn.setAttribute('data-expanded', 'false'); // Update state
                 } else {
@@ -1103,19 +1103,17 @@
                 swipeToSlide: true, // Allow swiping to slide
                 swipe: true, // Enable swipe gestures
                 cssEase: 'ease', // Smooth easing for the transition
-                responsive: [{
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 1
-                        }
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    {
-                        breakpoint: 1000,
-                        settings: {
-                            slidesToShow: 2
-                        }
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 3
                     }
-                ]
+                }
             });
 
             // Add mouse wheel scroll functionality
@@ -1213,13 +1211,14 @@
                     nav: false, // Disable navigation arrows
                     dots: false, // Disable dots
                     autoplay: true, // Enable autoplay
-                    autoplayTimeout: 2000, // 2 seconds delay for sliding
-                    autoplaySpeed: 2000, // Transition speed (2 seconds)
-                    smartSpeed: 3000, // Smooth transition between items
+                    autoplayTimeout: 5000, // 4 seconds delay for sliding
+                    autoplaySpeed: 5000, // Transition speed (2 seconds)
+                    smartSpeed: 5000, // Smooth transition between items
+                    slideTransition: 'linear', // Linear transition for smooth effect
                     autoplayHoverPause: true, // Pause autoplay on hover
                     responsive: {
                         0: {
-                            items: 3, // 2 items on extra small screens
+                            items: 3, // 3 items on extra small screens
                         },
                         576: {
                             items: 3, // 3 items on small screens
@@ -1228,7 +1227,7 @@
                             items: 4, // 4 items on medium screens
                         },
                         1024: {
-                            items: 6, // 5 items on large screens
+                            items: 6, // 6 items on large screens
                         },
                     },
                 });
