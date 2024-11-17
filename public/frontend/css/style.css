@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 @font-face {
     font-family: "CustomBengaliFont";
     src: url("/fonts/Unicode/LiSubhaSwarnaUnicode-Regular.ttf")
@@ -19064,3 +19064,12 @@ table.dataTable tbody td:last-child {
     background: transparent;
     cursor: pointer;
 }
+.testimonial-title{
+    font-size: 52px;
+    font-family: "Dancing Script", cursive;
+    position: relative;
+    top: -95px;
+    text-align: center;
+    left: 40px;
+}
+

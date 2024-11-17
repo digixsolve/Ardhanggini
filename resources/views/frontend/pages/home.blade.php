@@ -705,10 +705,7 @@
                 </div>
             @endif
         </div>
-        <section class="testimonial_section mb-4">
-            <div class="py-5 text-center">
-                <h3 class="ps-section__title mb-0" style="font-size: 30px;">Our Client Say-</h3>
-            </div>
+        <section class="testimonial_section mb-4 mt-5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7">
@@ -731,7 +728,9 @@
                     <div class="col-lg-5">
                         <div class="testimonial_box">
                             <div class="testimonial_container">
-                                <div class="background_layer"></div>
+                                <div class="background_layer">
+                                    <h1 class="testimonial-title">Our Customer Say</h1>
+                                </div>
                                 <div class="layer_content">
                                     <div class="row w-75 mx-auto">
                                         <div class="col-lg-12">
@@ -743,7 +742,7 @@
                                                             <div class="row align-items-center">
                                                                 <div class="col-lg-3">
                                                                     <div class="profile">
-                                                                        <img src="https://a.storyblok.com/f/191576/1200x800/a3640fdc4c/profile_picture_maker_before.webp"
+                                                                        <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
                                                                             alt="">
                                                                     </div>
                                                                 </div>
@@ -759,8 +758,7 @@
                                                                                 <span class="testimonial-text">
                                                                                     {{ implode(' ', array_slice(explode(' ', $testimonial->message), 0, 9)) }}
                                                                                 </span>
-                                                                                <button
-                                                                                    class="btn-sm red-more-btn"
+                                                                                <button class="btn-sm red-more-btn"
                                                                                     data-expanded="false"
                                                                                     onclick="toggleTestimonialContent('{{ $testimonial->id }}', '{{ addslashes($testimonial->message) }}')">
                                                                                     ...
@@ -1099,23 +1097,25 @@
                 autoplay: true, // Enable autoplay
                 autoplaySpeed: 3000, // Delay between slides (3 seconds)
                 speed: 500, // Transition speed (in milliseconds)
-                infinite: false, // Enable infinite looping
+                infinite: true, // Enable infinite looping
                 arrows: false, // Disable navigation arrows
                 touchMove: true, // Enable touch interactions
                 swipeToSlide: true, // Allow swiping to slide
                 swipe: true, // Enable swipe gestures
                 cssEase: 'ease', // Smooth easing for the transition
-                responsive: {
-                    0: {
-                        items: 1
+                responsive: [{
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 1
+                        }
                     },
-                    600: {
-                        items: 2
-                    },
-                    1000: {
-                        items: 4
+                    {
+                        breakpoint: 1000,
+                        settings: {
+                            slidesToShow: 2
+                        }
                     }
-                }
+                ]
             });
 
             // Add mouse wheel scroll functionality
