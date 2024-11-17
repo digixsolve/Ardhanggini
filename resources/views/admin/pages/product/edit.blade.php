@@ -127,30 +127,27 @@
                                     multiselect-select-all="true" data-control="select2"
                                     data-placeholder="Select an option" data-allow-clear="true">
                                     @php
-                                            // Ensure $categoryIds is an array
-                                            $categoryIds = isset($product->category_id)
+                                        // Ensure $categoryIds is an array
+                                        $categoryIds = isset($product->category_id)
+                                            ? (is_string($product->category_id)
                                                 ? json_decode($product->category_id, true)
-                                                : [];
-                                            if (!is_array($categoryIds)) {
-                                                $categoryIds = [];
-                                            }
-                                            $tagIds = isset($product->tag_id)
-                                                ? json_decode($product->tag_id, true)
-                                                : [];
-                                            if (!is_array($tagIds)) {
-                                                $tagIds = [];
-                                            }
-                                        @endphp
+                                                : $product->category_id)
+                                            : [];
+                                        $tagIds = isset($product->tag_id) ? json_decode($product->tag_id, true) : [];
+                                        if (!is_array($tagIds)) {
+                                            $tagIds = [];
+                                        }
+                                    @endphp
 
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}"
-                                                {{ in_array($category->id, $categoryIds) ? 'selected' : '' }}>
-                                                {{ $category->name }}
-                                            </option>
-                                        @endforeach
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"
+                                            {{ in_array($category->id, $categoryIds) ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </x-metronic.select-option>
 
-
-                                    {{-- @php
+                                {{-- @php
                                         $categoryIds = is_string($product->category_id)
                                             ? json_decode($product->category_id, true) // Convert JSON string to array
                                             : $product->category_id;
@@ -165,7 +162,7 @@
                                         @endforeach
                                     @endif --}}
 
-                                </x-metronic.select-option>
+
                             </div>
                             <div class="fv-row">
                                 <x-metronic.label for="color" class="col-form-label required fw-bold fs-6">
@@ -345,7 +342,8 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="fv-row pt-5">
-                                                    <x-metronic.label for="video_link" class="form-label">Product Video
+                                                    <x-metronic.label for="video_link" class="form-label">Product
+                                                        Video
                                                         Link</x-metronic.label>
                                                     <input type="text" name="video_link" class="form-control mb-2"
                                                         placeholder="Product Video Link" id="video_link"
@@ -452,14 +450,14 @@
                                             <x-metronic.label class="form-label">Vat</x-metronic.label>
                                             <x-metronic.input type="number" name="vat" id="vat"
                                                 class="form-control mb-2" placeholder="how much the vat"
-                                                :value="old('vat',$product->vat)"></x-metronic.file-input>
+                                                :value="old('vat', $product->vat)"></x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much box vat. Eg: 5%</div>
                                         </div>
                                         <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Tax</x-metronic.label>
                                             <x-metronic.input type="number" name="tax" id="tax"
                                                 class="form-control mb-2" placeholder="how much the tax "
-                                                :value="old('tax',$product->tax)"></x-metronic.file-input>
+                                                :value="old('tax', $product->tax)"></x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much tax Eg: 5%</div>
                                         </div>
                                         <div class="fv-row col-4 mt-10">
@@ -527,7 +525,8 @@
                                             <div class="col-lg-6">
                                                 <div>
                                                     <img class="img-fluid w-100"
-                                                        src="{{ asset('frontend/img/box_size.png') }}" alt="">
+                                                        src="{{ asset('frontend/img/box_size.png') }}"
+                                                        alt="">
                                                 </div>
                                             </div>
                                         </div>
