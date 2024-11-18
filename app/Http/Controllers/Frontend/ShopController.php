@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Brand;
-use App\Models\Product; 
+use App\Models\Product;
 use App\Models\Category;
 use App\Models\DealBanner;
 use Illuminate\Http\Request;
@@ -58,7 +58,7 @@ class ShopController extends Controller
 
         // Filter by Price Range
         if ($request->has('price_min') && $request->has('price_max')) {
-            $query->whereBetween('box_price', [$request->price_min, $request->price_max]);
+            $query->whereBetween('unit_price', [$request->price_min, $request->price_max]);
         }
 
         // Sort products

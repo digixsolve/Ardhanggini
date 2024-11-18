@@ -92,7 +92,8 @@
                                                                                         'frontend/img/no-product.jpg',
                                                                                     );
                                                                             @endphp
-                                                                            <img src="{{ $imageSrc }}" class="category_product_img"
+                                                                            <img src="{{ $imageSrc }}"
+                                                                                class="category_product_img"
                                                                                 alt="{{ $category_product->meta_title }}"
                                                                                 width="210" height="210" />
                                                                         @endforeach
@@ -108,9 +109,11 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
-                                                            @if (!empty($category_product->box_discount_price))
+                                                            @if (!empty($category_product->unit_discount_price))
                                                                 <div class="ps-product__badge">
-                                                                    <div class="ps-badge ps-badge--sale">Offer</div>
+                                                                    <div class="ps-badge ps-badge--sale">
+                                                                        {{ $category_product->unit_price > 0 ? (($category_product->unit_price - $category_product->unit_discount_price) / $category_product->unit_price) * 100 : 0 }}
+                                                                    </div>
                                                                 </div>
                                                             @endif
                                                         </div>
@@ -121,24 +124,24 @@
                                                                     {{ implode(' ', array_slice(explode(' ', $category_product->name), 0, 8)) }}
                                                                 </a>
                                                             </h5>
-                                                                @if (!empty($category_product->box_discount_price))
-                                                                    <div class="ps-product__meta">
-                                                                        <span
-                                                                            class="ps-product__price sale">৳{{ $category_product->box_discount_price }}</span>
-                                                                        <span
-                                                                            class="ps-product__del">৳{{ $category_product->unit_price }} </span>
-                                                                    </div>
-                                                                @else
-                                                                    <div class="ps-product__meta">
-                                                                        <span
-                                                                            class="ps-product__price sale">৳{{ $category_product->unit_price }}
-                                                                            Per Unit</span>
-                                                                    </div>
-                                                                @endif
-                                                                <a href="{{ route('cart.store', $category_product->id) }}"
-                                                                    class="btn ps-btn--warning my-3 btn-block add_to_cart"
-                                                                    data-product_id="{{ $category_product->id }}"
-                                                                    data-product_qty="1">Add To Cart</a>
+                                                            @if (!empty($category_product->unit_discount_price))
+                                                                <div class="ps-product__meta">
+                                                                    <span
+                                                                        class="ps-product__price sale">৳{{ $category_product->unit_discount_price }}</span>
+                                                                    <span
+                                                                        class="ps-product__del">৳{{ $category_product->unit_price }}
+                                                                    </span>
+                                                                </div>
+                                                            @else
+                                                                <div class="ps-product__meta">
+                                                                    <span
+                                                                        class="ps-product__price sale">৳{{ $category_product->unit_price }}</span>
+                                                                </div>
+                                                            @endif
+                                                            <a href="{{ route('cart.store', $category_product->id) }}"
+                                                                class="btn ps-btn--warning my-3 btn-block add_to_cart"
+                                                                data-product_id="{{ $category_product->id }}"
+                                                                data-product_qty="1">Add To Cart</a>
                                                         </div>
                                                     </div>
                                                 </div>

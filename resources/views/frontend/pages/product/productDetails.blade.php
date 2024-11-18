@@ -350,42 +350,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ps-form--review">
-                                    <div class="ps-form__title">Write a review</div>
-                                    <div class="ps-form__desc">Your email address will not be published. Required
-                                        fields are marked *</div>
-                                    <form action="" method="post">
-                                        <div class="row">
-                                            <div class="col-12 col-lg-4">
-                                                <label class="ps-form__label">Your rating *</label>
-                                                <select class="ps-rating--form" data-value="0">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-6 col-lg-4">
-                                                <label class="ps-form__label">Name *</label>
-                                                <input class="form-control ps-form__input">
-                                            </div>
-                                            <div class="col-6 col-lg-4">
-                                                <label class="ps-form__label">Email *</label>
-                                                <input class="form-control ps-form__input">
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="ps-form__block">
-                                                    <label class="ps-form__label">Your review *</label>
-                                                    <textarea class="form-control ps-form__textarea"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 text-center">
-                                                <button class="btn ps-btn ps-btn--warning">Add Review</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -9,14 +9,20 @@
                                     onerror="this.onerror=null; this.src='{{ asset('frontend/img/no-product.jpg') }}';">
                             </figure>
                         </a>
+                        <div class="ps-product__badge">
+                            <div class="ps-badge ps-badge--hot">-{{ number_format($product->unit_price > 0 ? (($product->unit_price - $product->unit_discount_price) / $product->unit_price) * 100 : 0,2) }}%</div>
+                        </div>
                         <div class="ps-product__actions">
                             <div class="ps-product__item" data-toggle="tooltip" data-placement="left" title=""
                                 data-original-title="Quick view"><a href="#" data-toggle="modal"
                                     data-target="#popupQuickview{{ $product->id }}"><i class="fa fa-search"></i></a>
                             </div>
                         </div>
-                        <div class="ps-product__badge">
-                        </div>
+                        {{-- <div class="ps-product__percent">-{{ number_format($product->unit_price > 0 ? (($product->unit_price - $product->unit_discount_price) / $product->unit_price) * 100 : 0,0) }}%</div> --}}
+                        {{-- <div class="ps-product__badge">
+                            <span class="bg-black text-white badge">
+                                </span>
+                        </div> --}}
                     </div>
                     <div class="ps-product__info">
                         {{-- <a class="ps-product__branch" href="/">
@@ -41,14 +47,14 @@
                     </div>
                 </div>
                 <div class="ps-product__footer">
-                    @if (!empty($product->box_discount_price))
+                    @if (!empty($product->unit_discount_price))
                         <div class="ps-product__meta">
-                            <span class="ps-product__price  sale">৳{{ $product->box_discount_price }}</span>
-                            <span class="ps-product__del">৳{{ $product->box_price }}</span>
+                            <span class="ps-product__price  sale">৳{{ $product->unit_discount_price }}</span>
+                            <span class="ps-product__del">৳{{ $product->unit_price }}</span>
                         </div>
                     @else
                         <div class="ps-product__meta">
-                            <span class="ps-product__price sale">৳{{ $product->box_price }}</span>
+                            <span class="ps-product__price sale">৳{{ $product->unit_price }}</span>
                         </div>
                     @endif
 

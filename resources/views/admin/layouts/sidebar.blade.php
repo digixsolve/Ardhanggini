@@ -139,6 +139,11 @@
                                     'routes' => ['admin.shipping-management.index'],
                                     'route' => 'admin.shipping-management.index',
                                 ],
+                                [
+                                    'title' => 'Review',
+                                    'routes' => ['admin.product-review.index'],
+                                    'route' => 'admin.product-review.index',
+                                ],
                             ],
                         ],
                         [

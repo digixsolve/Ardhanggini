@@ -43,6 +43,7 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\ProductReviewController;
 
 // Route::get('/', function () {
 //     return redirect()->route('admin.dashboard');
@@ -120,6 +121,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
             'deal-banner'     => DealBannerController::class,
             'blog-post'       => BlogPostController::class,
             'testimonial'     => TestimonialController::class,
+            'product-review'  => ProductReviewController::class,
         ],
         ['except' => ['show']]
     );

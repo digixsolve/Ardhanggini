@@ -190,10 +190,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                href="#kt_ecommerce_add_product_package">Package</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
                                 href="#kt_ecommerce_add_product_price">Pricing</a>
                         </li>
                         <li class="nav-item">
@@ -396,34 +392,34 @@
                                 <div class="card card-flush py-4">
                                     <div class="card-header">
                                         <div class="card-title">
-                                            <h2>Box Pricing</h2>
+                                            <h2>Pricing</h2>
                                         </div>
                                     </div>
                                     <div class="card-body pt-0 row">
-                                        <div class="mb-5 fv-row col-4">
+                                        {{-- <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Box Contains</x-metronic.label>
                                             <x-metronic.input type="number" name="box_contains" id="box_contains"
                                                 class="form-control mb-2" placeholder="how much in a box"
                                                 :value="old('box_contains', $product->box_contains)"></x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much product in a box.</div>
-                                        </div>
-                                        <div class="mb-5 fv-row col-4">
+                                        </div> --}}
+                                        {{-- <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Box Price</x-metronic.label>
                                             <x-metronic.input type="number" name="box_price" id="box_price"
                                                 class="form-control mb-2" placeholder="how much the box price"
                                                 :value="old('box_price', $product->box_price)"></x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much box price.</div>
-                                        </div>
-                                        <div class="mb-5 fv-row col-4">
+                                        </div> --}}
+                                        {{-- <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Box Discount Price</x-metronic.label>
                                             <x-metronic.input type="number" name="box_discount_price"
                                                 id="box_discount_price" class="form-control mb-2"
                                                 placeholder="how much the box discount price"
                                                 :value="old('box_discount_price', $product->box_discount_price)"></x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much box discount price.</div>
-                                        </div>
+                                        </div> --}}
                                         <div class="mb-5 fv-row col-4">
-                                            <x-metronic.label class="form-label">Unit Price</x-metronic.label>
+                                            <x-metronic.label class="form-label">Price</x-metronic.label>
                                             <x-metronic.input type="number" name="unit_price" id="unit_price"
                                                 class="form-control mb-2" placeholder="how much the unit price"
                                                 :value="old('unit_price', $product->unit_price)" readonly></x-metronic.file-input>
@@ -438,11 +434,11 @@
                                                 <div class="text-muted fs-7">How much unit discount price.</div>
                                         </div>
                                         <div class="mb-5 fv-row col-4">
-                                            <x-metronic.label class="form-label">Box Stock</x-metronic.label>
-                                            <x-metronic.input type="number" name="box_stock" id="box_stock"
-                                                class="form-control mb-2" placeholder="how much the box stock"
-                                                :value="old('box_stock', $product->box_stock)"></x-metronic.file-input>
-                                                <div class="text-muted fs-7">How much box stock. Eg: 50</div>
+                                            <x-metronic.label class="form-label">Stock</x-metronic.label>
+                                            <x-metronic.input type="number" name="stock" id="stock"
+                                                class="form-control mb-2" placeholder="how much the stock"
+                                                :value="old('stock', $product->stock)"></x-metronic.file-input>
+                                                <div class="text-muted fs-7">How much stock. Eg: 50</div>
                                         </div>
                                         <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Vat</x-metronic.label>
@@ -458,7 +454,7 @@
                                                 :value="old('tax', $product->tax)"></x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much tax Eg: 5%</div>
                                         </div>
-                                        <div class="fv-row col-4 mt-10">
+                                        {{-- <div class="fv-row col-4 mt-10">
                                             <div class="form-check">
                                                 <input class="form-check-input" name="is_refurbished" type="checkbox"
                                                     value="1" id="is_refurbished" @checked($product->is_refurbished == '1') />
@@ -466,71 +462,10 @@
                                                     Is Refurbished
                                                 </x-metronic.label>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="kt_ecommerce_add_product_package" role="tab-panel">
-                            <div class="d-flex flex-column gap-7 gap-lg-10">
-                                {{-- Shipping Card Start --}}
-                                <div class="card card-flush py-4">
-                                    <div class="card-header">
-                                        <div class="card-title">
-                                            <h2>Package Details</h2>
-                                        </div>
-                                    </div>
-                                    <div class="card-body pt-0">
-                                        <div class="fv-row row">
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <x-metronic.label class="form-label">Weight
-                                                            (gm)</x-metronic.label>
-                                                        <x-metronic.input type="number" name="weight"
-                                                            id="weight" class="form-control mb-2"
-                                                            placeholder="1.5" :value="old('weight', $product->weight)"></x-metronic.input>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <x-metronic.label class="form-label">Length
-                                                            (cm)</x-metronic.label>
-                                                        <x-metronic.input type="number" name="length"
-                                                            id="length" class="form-control mb-2" placeholder="15"
-                                                            :value="old('length', $product->length)"></x-metronic.file-input>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <x-metronic.label class="form-label">Width
-                                                            (cm)</x-metronic.label>
-                                                        <x-metronic.input type="number" name="width"
-                                                            id="width" class="form-control mb-2" placeholder="10"
-                                                            :value="old('width', $product->width)"></x-metronic.file-input>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <x-metronic.label class="form-label">Height
-                                                            (cm)</x-metronic.label>
-                                                        <x-metronic.input type="number" name="height"
-                                                            id="height" class="form-control mb-2" placeholder="9"
-                                                            :value="old('height', $product->height)"></x-metronic.file-input>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <p id="dimensionPreview">Length(0") X Width(0") X Height(0")
-                                                        </p> <!-- Dimension preview -->
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div>
-                                                    <img class="img-fluid w-100"
-                                                        src="{{ asset('frontend/img/box_size.png') }}"
-                                                        alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- Shipping Card End --}}
                             </div>
                         </div>
                         <div class="tab-pane fade" id="kt_ecommerce_add_product_meta" role="tab-panel">

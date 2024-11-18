@@ -332,39 +332,43 @@
                 {{-- <p class="m-0">Welcome to {{ optional($setting)->website_name }}, {{ optional($setting)->site_motto }}
                 </p> --}}
                 <div class="scrolling-text">
-                    <a href="#" class="mb-0 py-2 marquee-text">
+                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
                         {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2 marquee-text">
+                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
                         {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2 marquee-text">
+                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
                         {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2 marquee-text">
+                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
                         {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2 marquee-text">
+                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
                         {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2 marquee-text">
+                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
                         {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2 marquee-text">
+                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
                         {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2 marquee-text">
+                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
                         {{ optional($setting)->site_motto }}
                     </a>
-                    <a href="#" class="mb-0 py-2 marquee-text">
+                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        {{ optional($setting)->site_motto }}
+                    </a>
+                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
                         <i class="fa-solid fa-cart-shopping"></i>
                         {{ optional($setting)->site_motto }}
                     </a>
