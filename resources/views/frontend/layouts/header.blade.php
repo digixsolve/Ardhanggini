@@ -446,7 +446,7 @@
                             <li>
                                 {{-- Log Out --}}
                                 <a class="ps-header__item" href="javascript:void(0)" id="login-modal">
-                                    <img src="images/icon-profile.svg" class="header-icons" alt="">
+                                    <img src="{{ asset('images/icon-profile.svg') }}" class="header-icons" alt="">
                                 </a>
                                 @auth
                                     <div class="ps-login--modal">
@@ -505,7 +505,7 @@
                             <li>
                                 <a class="ps-header__item" href="{{ route('user.wishlist') }}">
                                     {{-- <i class="fa fa-heart-o"></i> --}}
-                                    <img src="images/icon-heart.svg" class="header-icons" alt="">
+                                    <img src="{{ asset('images/icon-heart.svg') }}" class="header-icons" alt="">
                                     @php
                                         $wishlistCount = 0; // Default value in case user is not authenticated
                                         if (Auth::check()) {
@@ -520,7 +520,7 @@
                             <li>
                                 <a class="ps-header__item" href="#" id="cart-mini">
                                     {{-- <i class="icon-cart-empty"></i> --}}
-                                    <img src="images/icon-cart.svg" class="header-icons" alt="">
+                                    <img src="{{ asset('images/icon-cart.svg') }}" class="header-icons" alt="">
                                     <span class="badge cartCount">{{ Cart::instance('cart')->count() }}</span></a>
                                 <div class="ps-cart--mini miniCart">
                                     @include('frontend.pages.cart.partials.minicart')

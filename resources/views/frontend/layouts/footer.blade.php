@@ -71,9 +71,9 @@
     <div class="container">
         <div class="ps-footer__middle">
             <div class="row">
-                <div class="col-12 col-md-7">
+                <div class="col-12 col-md-5">
                     <div class="row">
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-6">
                             <div class="ps-footer--address">
                                 <div class="ps-logo">
                                     <a href="{{ route('home') }}">
@@ -169,7 +169,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-12 col-md-8">
+                        <div class="col-12 col-md-6">
                             <div class="ps-footer--contact">
                                 <h5 class="ps-footer__title">Need help</h5>
                                 <div class="ps-footer__fax"><i
@@ -194,19 +194,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-5">
+                <div class="col-12 col-md-7">
                     <div class="row">
-                        <div class="col-6 col-md-4">
-                            <div class="ps-footer--block">
-                                <h5 class="ps-block__title">General</h5>
-                                <ul class="ps-block__list">
-                                    <li><a href="{{ route('home') }}">Home</a></li>
-                                    <li><a href="{{ route('about-us') }}">About us</a></li>
-                                    <li><a href="{{ route('contact') }}">Contact us</a></li>
-                                    <li><a href="{{ route('allBlog') }}">Blog</a></li>
-                                </ul>
-                            </div>
-                        </div>
                         <div class="col-6 col-md-4">
                             <div class="ps-footer--block">
                                 <h5 class="ps-block__title">Account</h5>
@@ -229,22 +218,44 @@
                                 </ul>
                             </div>
                         </div>
+                        <div class="col-12 col-md-4">
+                            <div class="ps-footer--block">
+                            <h5 class="ps-block__title text-center mb-0">Visitor Count</h5>
+                            <div class="visitor-box">
+                                <div class="main-counter">
+                                    <h1 class="mb-0">07</h1>
+                                    <div class="sub-counter">
+                                        <p>ONLINE NOW</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="today-count">
+                                        <p class="mb-0 text-white">Today</p>
+                                        <p class="mb-0 text-white">70</p>
+                                    </div>
+                                    <div class="total-count">
+                                        <p class="mb-0 text-white">Total</p>
+                                        <p class="mb-0 text-white">70</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ps-footer--bottom">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <a href="{{ optional($setting)->copyright_url }}">
+                            <p>{{ optional($setting)->copyright_title }}</p>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 text-right">
+                        <img src="{{ asset('frontend/img/payment.png') }}" alt>
+                        <img class="payment-light" src="{{ asset('frontend/img/payment-light.png') }}" alt>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="ps-footer--bottom">
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <a href="{{ optional($setting)->copyright_url }}">
-                        <p>{{ optional($setting)->copyright_title }}</p>
-                    </a>
-                </div>
-                <div class="col-12 col-md-6 text-right">
-                    <img src="{{ asset('frontend/img/payment.png') }}" alt>
-                    <img class="payment-light" src="{{ asset('frontend/img/payment-light.png') }}" alt>
-                </div>
-            </div>
-        </div>
-    </div>
 </footer>

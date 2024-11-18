@@ -161,8 +161,6 @@
                                             </option>
                                         @endforeach
                                     @endif --}}
-
-
                             </div>
                             <div class="fv-row">
                                 <x-metronic.label for="color" class="col-form-label required fw-bold fs-6">
@@ -170,7 +168,7 @@
                                 </x-metronic.label>
                                 <!-- Input element for Tagify -->
                                 <input class="form-control d-flex align-items-center" name="color"
-                                    :value="old('color', $product - > color)" id="kt_tagify_color" />
+                                    :value="old('color', $product->color)" id="kt_tagify_color" />
                             </div>
                         </div>
                     </div>

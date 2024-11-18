@@ -176,7 +176,7 @@
                                             </tbody>
                                         </table>
                                         <div class="ps-product__group mt-20">
-                                            <table class="table ps-table ps-table--oriented m-0">
+                                            {{-- <table class="table ps-table ps-table--oriented m-0">
                                                 <tr>
                                                     <th>Carton / Box</th>
                                                     <th>Unit Price</th>
@@ -195,7 +195,21 @@
                                                         @endif
                                                     </td>
                                                 </tr>
-                                            </table>
+                                            </table> --}}
+
+                                            <div class="pt-4">
+                                                <p class="fw-bold">Color Variation</p>
+                                                <div class="color-one">
+                                                    @if (is_array($product->color) && !empty($product->color))
+                                                        @foreach ($product->color as $color)
+                                                            <div class="round">
+                                                                <input type="checkbox" id="{{ $color }}" value="{{ $color }}">
+                                                                <label for="{{ $color }}"></label>
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -751,6 +765,30 @@
                         1000: {
                             items: 4 // Change this to 4 as well
                         }
+                    }
+                });
+            });
+        </script>
+        <script>
+            // Get all input elements
+            const colorInputs = document.querySelectorAll('.color-one .round input[type="checkbox"]');
+
+            // Loop through each input and set the label background color
+            colorInputs.forEach(input => {
+                const label = document.querySelector(`label[for="${input.id}"]`);
+                if (label) {
+                    label.style.backgroundColor = input.value; // Set background color from input value
+                }
+
+                // Add event listener to allow only one checkbox to be checked at a time
+                input.addEventListener('change', () => {
+                    if (input.checked) {
+                        // Uncheck all other checkboxes
+                        colorInputs.forEach(otherInput => {
+                            if (otherInput !== input) {
+                                otherInput.checked = false;
+                            }
+                        });
                     }
                 });
             });
