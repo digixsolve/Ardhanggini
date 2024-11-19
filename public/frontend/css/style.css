@@ -19070,9 +19070,6 @@ table.dataTable tbody td:last-child {
     color: var(--site-green);
 }
 
-.tst-cards {
-    border-radius: 10px;
-}
 .red-more-btn {
     border: 1px solid white;
     background-color: white;
@@ -19183,4 +19180,37 @@ table.dataTable tbody td:last-child {
 
 .color-one .round input[type="checkbox"]:checked + label:after {
     opacity: 1;
+}
+
+
+.tst-cards {
+    border-radius: 10px;
+    height: 200px !important;
+}
+.testimonial-message{
+    color: white;
+}
+
+.testi-card {
+    background: transparent;
+    border: 1px solid #b7a9a8;
+    padding: 30px;
+    border-radius: 10px;
+}
+.testigmonial-slider{
+    background-color: #343C4A;
+}
+
+.testi-dots{
+    font-size: 60px;
+    color: #b7a9a8;
+}
+
+.testimonial-slider .item {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

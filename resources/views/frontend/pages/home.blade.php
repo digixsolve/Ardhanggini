@@ -705,78 +705,78 @@
                 </div>
             @endif
         </div>
-        <section class="testimonial_section mb-4 mt-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="about_content">
-                            <div class="background_layer"></div>
-                            <div class="layer_content">
-                                <div class="section_title">
-                                    <h5>CLIENTS</h5>
-                                    <h2>Happy with<strong>Customers & Clients</strong></h2>
-                                    <div class="heading_line"><span></span></div>
-                                    <p>If you need any industrial solution we are available for you. Lorem ipsum dolor
-                                        sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                        labore et dolore magna aliqua.</p>
+        <section style="background-color: #353C44;" class="mt-5 mb-0">
+            <div class="container-fluid py-5">
+                <div class="container py-5">
+                    <div class="row py-5 align-items-center">
+                        <div class="col-lg-6">
+                            <div>
+                                <p class="text-white">Clients</p>
+                                <h2 class="text-white fw-normal">Happy With</h2>
+                                <h1 class="text-white fw-bold">Customers & Clients</h1>
+                                <p class="mb-5 text-white">If you need any industrial solution we are available for
+                                    you. Lorem ipsum dolor sit
+                                    amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                                    dolore magna aliqua.</p>
+                                <div class="mt-4">
+                                    <a href="#" class="tst-btn text-white px-5">Shop Now</a>
                                 </div>
-                                <a href="#" class="tst-btn">Contact Us<i
-                                        class="icofont-long-arrow-right"></i></a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="testimonial_box">
-                            <div class="testimonial_container">
-                                <div class="background_layer">
-                                    <h1 class="testimonial-title">Our Customers Say</h1>
-                                </div>
-                                <div class="layer_content">
-                                    <div class="row testimonial-container">
-                                        <div class="col-lg-12">
-                                            <div class="slick-carousel testimonial-slider">
-                                                {{-- testimonial Items --}}
-                                                @foreach ($testimonials as $testimonial)
-                                                    <div class="card tst-cards mb-4 pr-4">
-                                                        <div class="card-body">
-                                                            <div class="row align-items-center">
-                                                                <div class="col-lg-3">
-                                                                    <div class="profile">
-                                                                        <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
-                                                                            alt="">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-9">
-                                                                    <div class="d-flex">
-                                                                        <div class="mr-3">
-                                                                            <i
-                                                                                class="fa-solid fa-quote-left site-text"></i>
-                                                                        </div>
-                                                                        <div>
-                                                                            <p class="testimonial-message"
-                                                                                id="testimonial-{{ $testimonial->id }}">
-                                                                                <span class="testimonial-text">
-                                                                                    {{ implode(' ', array_slice(explode(' ', $testimonial->message), 0, 12)) }}
-                                                                                </span>
-                                                                                <button class="btn-sm red-more-btn"
-                                                                                    data-expanded="false"
-                                                                                    onclick="toggleTestimonialContent('{{ $testimonial->id }}', '{{ addslashes($testimonial->message) }}')">
-                                                                                    ...
-                                                                                </button>
-                                                                            </p>
-                                                                            <h5
-                                                                                class="text-right site-text fw-semibold">
-                                                                                {{ $testimonial->name }}</h5>
-                                                                        </div>
+                        <div class="col-lg-6">
+                            <div>
+                                <div class="home-demo">
+                                    <div class="owl-carousel testigmonial-slider owl-theme">
+                                        @foreach ($testimonials as $testimonial)
+                                            <div class="card testi-card">
+                                                <div class="card-body">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-lg-12">
+                                                            <div class="d-flex">
+                                                                <div>
+                                                                    <div>
+                                                                        <p class="testimonial-message"
+                                                                            id="testimonial-{{ $testimonial->id }}">
+                                                                            <span class="testimonial-text">
+                                                                                <i
+                                                                                    class="fa-solid fa-quote-left pr-3 testi-dots pb-4"></i> <br>
+                                                                               <span> {{ $testimonial->message }}</span>
+                                                                            </span>
+                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="col-lg-12">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center mt-5">
+                                                                <div class="profile d-flex align-items-center">
+                                                                    <div>
+                                                                        <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
+                                                                            alt="">
+
+                                                                    </div>
+                                                                    <div class="pl-3">
+                                                                        <h4 class="text-white fw-semibold mb-0">
+                                                                            {{ $testimonial->name }}</h4>
+                                                                        <p class="text-white mb-0">
+                                                                            <small>{{ $testimonial->company_name }}</small>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    @for ($i = 1; $i <= $testimonial->rating; $i++)
+                                                                        <i class="fa-solid fa-star"
+                                                                            style="color: goldenrod"></i>
+                                                                    @endfor
+                                                                    <span class="text-white pl-2">{{ $testimonial->rating }}.0</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                @endforeach
-                                                {{-- testimonial Items end --}}
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -1011,7 +1011,7 @@
             </div>
         @endif
         @if ($blog_posts->count() > 0)
-            <section class="ps-section--blog container-fluid bg-white pb-5 cst-blog">
+            <section class="ps-section--blog container-fluid bg-white pb-5 cst-blog mt-0">
                 <div class="container px-0">
                     <div class="py-5">
                         <h3 class="ps-section__title mb-0" style="font-size: 30px;">From the blog</h3>
@@ -1092,17 +1092,14 @@
             $('.slick-carousel').slick({
                 vertical: true, // Enable vertical scrolling
                 verticalSwiping: true, // Allow vertical swiping
-                slidesToShow: 3, // Show 3 slides at once
-                slidesToScroll: 1, // Scroll 1 slide at a time
-                autoplay: true, // Enable autoplay
-                autoplaySpeed: 3000, // Delay between slides (3 seconds)
-                speed: 500, // Transition speed (in milliseconds)
-                infinite: true, // Enable infinite looping
-                arrows: false, // Disable navigation arrows
-                touchMove: true, // Enable touch interactions
-                swipeToSlide: true, // Allow swiping to slide
-                swipe: true, // Enable swipe gestures
-                cssEase: 'ease', // Smooth easing for the transition
+                loop: true,
+                items: 1,
+                margin: 10,
+                nav: false,
+                dots: false,
+                autoplay: false,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
                 responsive: {
                     0: {
                         items: 1
@@ -1113,16 +1110,6 @@
                     1000: {
                         items: 3
                     }
-                }
-            });
-
-            // Add mouse wheel scroll functionality
-            $('.slick-carousel').on('wheel', function(e) {
-                e.preventDefault();
-                if (e.originalEvent.deltaY > 0) {
-                    $(this).slick('slickNext'); // Scroll down
-                } else {
-                    $(this).slick('slickPrev'); // Scroll up
                 }
             });
         </script>
@@ -1230,6 +1217,21 @@
                             items: 6, // 6 items on large screens
                         },
                     },
+                });
+            });
+        </script>
+        <script>
+            $(function() {
+                var owl = $(".testigmonial-slider");
+                owl.owlCarousel({
+                    items: 1,
+                    margin: 10,
+                    loop: true,
+                    nav: false,
+                    dots: false,
+                    autoplay: true,
+                    autoplayTimeout: 5000,
+                    autoplayHoverPause: true,
                 });
             });
         </script>
