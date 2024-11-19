@@ -151,10 +151,10 @@
                                                         </div>
 
                                                     </div>
-                                                    @if (!empty($latest_product->box_discount_price))
+                                                    @if (!empty($latest_product->unit_discount_price))
                                                         <div class="ps-product__badge">
                                                             <div class="ps-badge ps-badge--sale">
-                                                                {{ $latest_product->unit_price > 0 ? number_format((($latest_product->unit_price - $latest_product->unit_discount_price) / $latest_product->unit_price) * 100,1) : 0 }}
+                                                                - {{ !empty($latest_product->unit_discount_price) && $latest_product->unit_discount_price > 0 ? number_format((($latest_product->unit_price - $latest_product->unit_discount_price) / $latest_product->unit_price) * 100,1) : 0 }} %
                                                             </div>
                                                         </div>
                                                     @endif
@@ -183,10 +183,10 @@
                                                             Reviews(02)
                                                         </div>
                                                     </div>
-                                                    @if (!empty($latest_product->box_discount_price))
+                                                    @if (!empty($latest_product->unit_discount_price))
                                                         <div class="ps-product__meta">
                                                             <span
-                                                                class="ps-product__price sale">৳{{ $latest_product->box_discount_price }}</span>
+                                                                class="ps-product__price sale">৳{{ $latest_product->unit_discount_price }}</span>
                                                             <span
                                                                 class="ps-product__del">৳{{ $latest_product->unit_price }}</span>
                                                         </div>
@@ -302,9 +302,11 @@
                                                         </div>
 
                                                     </div>
-                                                    @if (!empty($categoryoneproduct->box_discount_price))
+                                                    @if (!empty($categoryoneproduct->unit_discount_price))
                                                         <div class="ps-product__badge">
-                                                            <div class="ps-badge ps-badge--sale">Offer</div>
+                                                            <div class="ps-badge ps-badge--sale">
+                                                                - {{ !empty($categoryoneproduct->unit_discount_price) && $categoryoneproduct->unit_discount_price > 0 ? number_format((($categoryoneproduct->unit_price - $categoryoneproduct->unit_discount_price) / $categoryoneproduct->unit_price) * 100,1) : 0 }} %
+                                                            </div>
                                                         </div>
                                                     @endif
                                                 </div>
@@ -332,10 +334,10 @@
                                                             Reviews(02)
                                                         </div>
                                                     </div>
-                                                    @if (!empty($categoryoneproduct->box_discount_price))
+                                                    @if (!empty($categoryoneproduct->unit_discount_price))
                                                         <div class="ps-product__meta">
                                                             <span
-                                                                class="ps-product__price sale">৳{{ $categoryoneproduct->box_discount_price }}</span>
+                                                                class="ps-product__price sale">৳{{ $categoryoneproduct->unit_discount_price }}</span>
                                                             <span
                                                                 class="ps-product__del">৳{{ $categoryoneproduct->unit_price }}</span>
                                                         </div>
@@ -464,9 +466,11 @@
                                                             </div>
 
                                                         </div>
-                                                        @if (!empty($categorytwoproduct->box_discount_price))
+                                                        @if (!empty($categorytwoproduct->unit_discount_price))
                                                             <div class="ps-product__badge">
-                                                                <div class="ps-badge ps-badge--sale">Offer</div>
+                                                                <div class="ps-badge ps-badge--sale">
+                                                                    - {{ !empty($categorytwoproduct->unit_discount_price) && $categorytwoproduct->unit_discount_price > 0 ? number_format((($categorytwoproduct->unit_price - $categorytwoproduct->unit_discount_price) / $categorytwoproduct->unit_price) * 100,1) : 0 }} %
+                                                                </div>
                                                             </div>
                                                         @endif
                                                     </div>
@@ -494,10 +498,10 @@
                                                                 Reviews
                                                             </div>
                                                         </div>
-                                                        @if (!empty($categorytwoproduct->box_discount_price))
+                                                        @if (!empty($categorytwoproduct->unit_discount_price))
                                                             <div class="ps-product__meta">
                                                                 <span
-                                                                    class="ps-product__price sale">৳{{ $categorytwoproduct->box_discount_price }}</span>
+                                                                    class="ps-product__price sale">৳{{ $categorytwoproduct->unit_discount_price }}</span>
                                                                 <span
                                                                     class="ps-product__del">৳{{ $categorytwoproduct->unit_price }}</span>
                                                             </div>
@@ -614,9 +618,11 @@
                                                         </div>
 
                                                     </div>
-                                                    @if (!empty($categorythreeproduct->box_discount_price))
+                                                    @if (!empty($categorythreeproduct->unit_discount_price))
                                                         <div class="ps-product__badge">
-                                                            <div class="ps-badge ps-badge--sale">Offer</div>
+                                                            <div class="ps-badge ps-badge--sale">
+                                                                - {{ !empty($categorythreeproduct->unit_discount_price) && $categorythreeproduct->unit_discount_price > 0 ? number_format((($categorythreeproduct->unit_price - $categorythreeproduct->unit_discount_price) / $categorythreeproduct->unit_price) * 100,1) : 0 }} %
+                                                            </div>
                                                         </div>
                                                     @endif
                                                 </div>
@@ -644,10 +650,10 @@
                                                             Reviews(02)
                                                         </div>
                                                     </div>
-                                                    @if (!empty($categorythreeproduct->box_discount_price))
+                                                    @if (!empty($categorythreeproduct->unit_discount_price))
                                                         <div class="ps-product__meta">
                                                             <span
-                                                                class="ps-product__price sale">৳{{ $categorythreeproduct->box_discount_price }}</span>
+                                                                class="ps-product__price sale">৳{{ $categorythreeproduct->unit_discount_price }}</span>
                                                             <span
                                                                 class="ps-product__del">৳{{ $categorythreeproduct->unit_price }}</span>
                                                         </div>
@@ -932,9 +938,11 @@
                                                                 class="fa fa-search"></i></a></div>
 
                                                 </div>
-                                                @if (!empty($deal_product->box_discount_price))
+                                                @if (!empty($deal_product->unit_discount_price))
                                                     <div class="ps-product__badge">
-                                                        <div class="ps-badge ps-badge--sale">Offer</div>
+                                                        <div class="ps-badge ps-badge--sale">
+                                                            - {{ !empty($deal_product->unit_discount_price) && $deal_product->unit_discount_price > 0 ? number_format((($deal_product->unit_price - $deal_product->unit_discount_price) / $deal_product->unit_price) * 100,1) : 0 }} %
+                                                        </div>
                                                     </div>
                                                 @endif
                                             </div>
@@ -961,10 +969,10 @@
                                                         Reviews
                                                     </div>
                                                 </div>
-                                                @if (!empty($deal_product->box_discount_price))
+                                                @if (!empty($deal_product->unit_discount_price))
                                                     <div class="ps-product__meta">
                                                         <span
-                                                            class="ps-product__price sale">৳{{ $deal_product->box_discount_price }}</span>
+                                                            class="ps-product__price sale">৳{{ $deal_product->unit_discount_price }}</span>
                                                         <span
                                                             class="ps-product__del">৳{{ $deal_product->unit_price }}
                                                             Per Unit</span>
