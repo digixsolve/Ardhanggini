@@ -153,7 +153,9 @@
                                                     </div>
                                                     @if (!empty($latest_product->box_discount_price))
                                                         <div class="ps-product__badge">
-                                                            <div class="ps-badge ps-badge--sale">Offer</div>
+                                                            <div class="ps-badge ps-badge--sale">
+                                                                {{ $latest_product->unit_price > 0 ? number_format((($latest_product->unit_price - $latest_product->unit_discount_price) / $latest_product->unit_price) * 100,1) : 0 }}
+                                                            </div>
                                                         </div>
                                                     @endif
                                                 </div>
@@ -804,7 +806,9 @@
                                             <div class="ps-promo__content">
                                                 @if ($deal->badge)
                                                     <span
-                                                        class="ps-promo__badge">{{ $deal->badge ?? round(100 - ($deal->offer_price / $deal->price) * 100) . '%' }}</span>
+                                                        class="ps-promo__badge">
+                                                        {{ $deal->badge ?? round(100 - ($deal->offer_price / $deal->price) * 100) . '%' }}
+                                                    </span>
                                                 @endif
                                                 <h4 class="text-white ps-promo__name">
                                                     {{ $deal->title }}
