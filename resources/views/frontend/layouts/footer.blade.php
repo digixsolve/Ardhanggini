@@ -54,16 +54,16 @@
         <div class="container">
             <div class="row m-0">
                 <div class="col-12 col-sm-4 p-0">
-                    <p class="text-center"><a class="ps-footer__link" href="#"><i class="icon-wallet"></i>100% Money
-                            back Guaranteed</a></p>
+                    <p class="text-center"><a class="ps-footer__link" href="#"><i class="icon-wallet"></i>
+                            Full cash on delivery</a></p>
                 </div>
                 <div class="col-12 col-sm-4 p-0">
-                    <p class="text-center"><a class="ps-footer__link" href="#"><i
-                                class="icon-bag2"></i>Non-contact shipping</a></p>
+                    <p class="text-center"><a class="ps-footer__link" href="#"><i class="icon-bag2"></i>Inside
+                            Dhaka -70 TK (24-48 hrs)</a></p>
                 </div>
                 <div class="col-12 col-sm-4 p-0">
-                    <p class="text-center"><a class="ps-footer__link" href="#"><i class="icon-truck"></i>Free
-                            Delivery UK Mainland</a></p>
+                    <p class="text-center"><a class="ps-footer__link" href="#"><i class="icon-truck"></i>
+                            Outside Dhaka -150 TK</a></p>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
             <div class="row">
                 <div class="col-12 col-md-5">
                     <div class="row">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-4">
                             <div class="ps-footer--address">
                                 <div class="ps-logo">
                                     <a href="{{ route('home') }}">
@@ -169,34 +169,26 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-8">
                             <div class="ps-footer--contact">
                                 <h5 class="ps-footer__title">Need help</h5>
                                 <div class="ps-footer__fax"><i
                                         class="icon-telephone"></i>{{ optional($setting)->primary_phone }}
                                 </div>
                                 <p class="ps-footer__work">Monday – Friday: 9:00-20:00<br>Saturday: 11:00 – 15:00</p>
-                                <hr>
                                 <p>
                                     <a class="ps-footer__email" href="mailto:{{ optional($setting)->contact_email }}">
                                         <i class="icon-envelope"></i>
                                         <span>{{ optional($setting)->contact_email }}</span>
                                     </a>
                                 </p>
-
-                                {{-- <p>
-                                    <a href='javascript:void(0)'>Visitors</a>
-                                    <script type='text/javascript'
-                                        src='https://www.freevisitorcounters.com/auth.php?id=06fa9794466c511c0eb7c3fc907b9f116d3928ac'></script>
-                                    <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1263168/t/0"></script>
-                                </p> --}}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-7">
                     <div class="row">
-                        <div class="col-6 col-md-4">
+                        <div class="col-6 col-md-3">
                             <div class="ps-footer--block">
                                 <h5 class="ps-block__title">Account</h5>
                                 <ul class="ps-block__list">
@@ -218,28 +210,28 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-5">
                             <div class="ps-footer--block">
-                            <h5 class="ps-block__title text-center mb-0">Visitor Count</h5>
-                            <div class="visitor-box">
-                                <div class="main-counter">
-                                    <h1 class="mb-0">07</h1>
-                                    <div class="sub-counter">
-                                        <p>ONLINE NOW</p>
+                                <h5 class="ps-block__title text-center mb-0">Visitor Count</h5>
+                                <div class="visitor-box">
+                                    <div class="main-counter">
+                                        <h1 class="mb-0">00</h1>
+                                        <div class="sub-counter">
+                                            <p>ONLINE NOW</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="today-count">
-                                        <p class="mb-0 text-white">Today</p>
-                                        <p class="mb-0 text-white">70</p>
-                                    </div>
-                                    <div class="total-count">
-                                        <p class="mb-0 text-white">Total</p>
-                                        <p class="mb-0 text-white">70</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="today-count">
+                                            <p class="mb-0 text-white">Today</p>
+                                            <p class="mb-0 text-white">70</p>
+                                        </div>
+                                        <div class="total-count">
+                                            <p class="mb-0 text-white">Total</p>
+                                            <p class="mb-0 text-white">70</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>

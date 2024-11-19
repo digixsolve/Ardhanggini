@@ -4086,11 +4086,6 @@ textarea.form-control {
     line-height: 18px;
 }
 
-.ps-product--detail .ps-product__meta {
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
 .ps-product--detail .ps-product__price {
     font-size: 25px;
     font-weight: 600;
@@ -19157,7 +19152,7 @@ table.dataTable tbody td:last-child {
     background-color: var(--site-green);
     text-align: center;
     color: white;
-    padding: 2px 30px;
+    padding: 2px 35px;
     border-radius: 5px;
 }
 .total-count {
@@ -19165,7 +19160,7 @@ table.dataTable tbody td:last-child {
     text-align: center;
     color: white;
     border-radius: 5px;
-    padding: 2px 30px;
+    padding: 2px 35px;
 }
 .main-counter h1 {
     text-align: center;
@@ -19178,7 +19173,7 @@ table.dataTable tbody td:last-child {
     position: relative;
     margin-top: -47px;
     background: #f7f7f7bd;
-    width: 68%;
+    width: 100%;
     margin: auto;
     top: -48px;
     font-weight: bold;

@@ -203,7 +203,8 @@
                                                     @if (is_array($product->color) && !empty($product->color))
                                                         @foreach ($product->color as $color)
                                                             <div class="round">
-                                                                <input type="checkbox" id="{{ $color }}" value="{{ $color }}">
+                                                                <input type="checkbox" id="{{ $color }}"
+                                                                    value="{{ $color }}">
                                                                 <label for="{{ $color }}"></label>
                                                             </div>
                                                         @endforeach
@@ -218,10 +219,10 @@
                         <div class="col-12 col-md-3">
                             <div class="ps-product__feature">
                                 @if (!empty($product->box_stock) && $product->box_stock > 0)
-                                    <div class="ps-product__badge"><span
+                                    <div class="ps-product__badge mb-0"><span
                                             class="ps-badge bg-success">{{ $product->box_stock }} In Stock</span></div>
                                 @else
-                                    <div class="ps-product__badge"><span class="ps-badge ps-badge--outstock">Out Of
+                                    <div class="ps-product__badge mb-0"><span class="ps-badge ps-badge--outstock">Out Of
                                             Stock</span></div>
                                 @endif
 
@@ -255,9 +256,11 @@
                                     data-product_id="{{ $product->id }}" href="#">Add to cart</a>
 
                                 <ul class="ps-product__bundle">
-                                    <li><i class="icon-wallet"></i>100% Money back Guaranteed</li>
-                                    <li><i class="icon-bag2"></i>Non-contact shipping</li>
-                                    <li><i class="icon-truck"></i>Free Delivery All Over UK Mainland (2-3 Days)</li>
+                                    <li><i class="icon-bag2"></i>Full cash on delivery</li>
+                                    <li><i class="icon-truck"></i>Inside Dhaka -70 TK <br> (24-48 hrs)</li>
+                                    <li><i class="icon-truck"></i>Outside Dhaka -150 TK <br> (2-4 Days)</li>
+                                    <li><i class="icon-truck"></i>Dhaka sub-area -100 TK <br> (Keraniganj, Tangi, Savar,
+                                        Gazipur, Narayanganj, Asulia) (2-4 Days)</li>
                                 </ul>
                             </div>
                         </div>
@@ -327,27 +330,38 @@
                                 aria-labelledby="reviews-tab">
                                 <div class="ps-product__tabreview">
                                     <div class="ps-review--product">
-                                        <div class="ps-review__row">
-                                            <div class="ps-review__avatar"><img
-                                                    src="https://plus.unsplash.com/premium_photo-1683121366070-5ceb7e007a97?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
-                                                    alt="alt" /></div>
-                                            <div class="ps-review__info">
-                                                <div class="ps-review__name">Mark J.</div>
-                                                <div class="ps-review__date">Oct 30, 2021</div>
-                                            </div>
-                                            <div class="ps-review__rating">
-                                                <select class="ps-rating" data-read-only="true">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4" selected="selected">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                            <div class="ps-review__desc">
-                                                <p>Everything is perfect. I would recommend!</p>
-                                            </div>
-                                        </div>
+                                        {{-- Check if $reviews is not empty --}}
+                                        @if (!empty($reviews) && count($reviews) > 0)
+                                            @foreach ($reviews as $review)
+                                                <div class="ps-review__row">
+                                                    <div class="ps-review__avatar">
+                                                        <img src="{{ $review['image'] }}"
+                                                            alt="{{ $review['name'] }}" />
+                                                    </div>
+                                                    <div class="ps-review__info">
+                                                        <div class="ps-review__name">{{ $review['name'] }}</div>
+                                                        <div class="ps-review__date">
+                                                            {{ \Carbon\Carbon::parse($review['date'])->format('M d, Y') }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="ps-review__rating">
+                                                        <select class="ps-rating" data-read-only="true">
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                <option value="{{ $i }}"
+                                                                    {{ $i == $review['rating'] ? 'selected' : '' }}>
+                                                                    {{ $i }}</option>
+                                                            @endfor
+                                                        </select>
+                                                    </div>
+                                                    <div class="ps-review__desc">
+                                                        <p>{{ $review['message'] }}</p>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <p>No reviews available.</p>
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>

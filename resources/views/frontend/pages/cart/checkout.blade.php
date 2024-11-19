@@ -839,9 +839,9 @@
                                         value="{{ $subTotal }}">
                                     <div class="ps-product__price">৳{{ number_format($subTotal, 2) }}</div>
                                 </div>
-                                <div class="ps-checkout__row">
-                                    <div class="ps-title">Shipping <span class="text-danger">*</span></div>
-                                    <div class="ps-checkout__checkbox">
+                                <div class="ps-checkout__row row">
+                                    <div class="ps-title col-lg-12">Shipping <span class="text-danger">*</span></div>
+                                    <div class="ps-checkout__checkbox col-lg-12">
                                         @foreach ($shippingmethods as $index => $shippingmethod)
                                             <div class="form-check">
                                                 <input class="form-check-input" name="shipping_id" type="radio"
@@ -849,7 +849,7 @@
                                                     data-shipping_price="{{ $shippingmethod->price }}"
                                                     value="{{ $shippingmethod->id }}" @checked($loop->first)/>
                                                 <label class="form-check-label"
-                                                    for="shipping-{{ $shippingmethod->id }}">{{ $shippingmethod->title }}
+                                                    for="shipping-{{ $shippingmethod->id }}">{{ $shippingmethod->title }} {{ $shippingmethod->duration }}
                                                     <span>(৳{{ number_format($shippingmethod->price, 2) }})</span></label>
                                             </div>
                                         @endforeach
