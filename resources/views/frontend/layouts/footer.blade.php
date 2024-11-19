@@ -184,12 +184,12 @@
                                     </a>
                                 </p>
 
-                                <p>
+                                {{-- <p>
                                     <a href='javascript:void(0)'>Visitors</a>
                                     <script type='text/javascript'
                                         src='https://www.freevisitorcounters.com/auth.php?id=06fa9794466c511c0eb7c3fc907b9f116d3928ac'></script>
                                     <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1263168/t/0"></script>
-                                </p>
+                                </p> --}}
                             </div>
                         </div>
                     </div>

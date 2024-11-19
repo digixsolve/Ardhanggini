@@ -1,5 +1,5 @@
 <x-frontend-app-layout :title="'Home Page'">
-    <link rel='stylesheet' href='http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <section class="ps-section--banner">
         <div class="ps-section__overlay">
             <div class="ps-section__loading"></div>
@@ -739,8 +739,10 @@
                                                                             id="testimonial-{{ $testimonial->id }}">
                                                                             <span class="testimonial-text">
                                                                                 <i
-                                                                                    class="fa-solid fa-quote-left pr-3 testi-dots pb-4"></i> <br>
-                                                                               <span> {{ $testimonial->message }}</span>
+                                                                                    class="fa-solid fa-quote-left pr-3 testi-dots pb-4"></i>
+                                                                                <br>
+                                                                                <span>
+                                                                                    {{ $testimonial->message }}</span>
                                                                             </span>
                                                                         </p>
                                                                     </div>
@@ -769,7 +771,8 @@
                                                                         <i class="fa-solid fa-star"
                                                                             style="color: goldenrod"></i>
                                                                     @endfor
-                                                                    <span class="text-white pl-2">{{ $testimonial->rating }}.0</span>
+                                                                    <span
+                                                                        class="text-white pl-2">{{ $testimonial->rating }}.0</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -962,14 +965,12 @@
                                                         <span
                                                             class="ps-product__price sale">৳{{ $deal_product->box_discount_price }}</span>
                                                         <span
-                                                            class="ps-product__del">৳{{ $deal_product->unit_price }}
-                                                            Per Unit</span>
+                                                            class="ps-product__del">৳{{ $deal_product->unit_price }}</span>
                                                     </div>
                                                 @else
                                                     <div class="ps-product__meta">
                                                         <span
-                                                            class="ps-product__price sale">৳{{ $deal_product->unit_price }}
-                                                            Per Unit</span>
+                                                            class="ps-product__price sale">৳{{ $deal_product->unit_price }}</span>
                                                     </div>
                                                 @endif
                                                 <a href="{{ route('cart.store', $deal_product->id) }}"
@@ -1067,53 +1068,6 @@
     </div>
     @include('frontend.layouts.HomeQuickViewModal')
     @push('scripts')
-        <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-        <script>
-            function toggleTestimonialContent(testimonialId, fullMessage) {
-                var testimonial = document.getElementById('testimonial-' + testimonialId);
-                var textElement = testimonial.querySelector('.testimonial-text');
-                var btn = testimonial.querySelector('button');
-
-                // Check if the full content is currently shown
-                if (btn.getAttribute('data-expanded') === 'true') {
-                    // If showing full content, truncate to first 12 words
-                    textElement.innerHTML = fullMessage.split(' ').slice(0, 12).join(' ');
-                    btn.innerHTML = '...'; // Change button text
-                    btn.setAttribute('data-expanded', 'false'); // Update state
-                } else {
-                    // If showing truncated content, show full message
-                    textElement.innerHTML = fullMessage;
-                    btn.innerHTML = 'Less'; // Change button text
-                    btn.setAttribute('data-expanded', 'true'); // Update state
-                }
-            }
-        </script>
-        <script>
-            $('.slick-carousel').slick({
-                vertical: true, // Enable vertical scrolling
-                verticalSwiping: true, // Allow vertical swiping
-                loop: true,
-                items: 1,
-                margin: 10,
-                nav: false,
-                dots: false,
-                autoplay: false,
-                autoplayTimeout: 5000,
-                autoplayHoverPause: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 1
-                    },
-                    1000: {
-                        items: 3
-                    }
-                }
-            });
-        </script>
-
         <script>
             $(document).ready(function() {
                 $('.dealCarousel').owlCarousel({
@@ -1193,16 +1147,15 @@
         <script>
             $(document).ready(function() {
                 $('.ps-categories__list').owlCarousel({
-                    loop: true, // Enable infinite loop
-                    margin: 10, // Space between items
-                    nav: false, // Disable navigation arrows
-                    dots: false, // Disable dots
-                    autoplay: true, // Enable autoplay
-                    autoplayTimeout: 5000, // 4 seconds delay for sliding
-                    autoplaySpeed: 5000, // Transition speed (2 seconds)
-                    smartSpeed: 5000, // Smooth transition between items
-                    slideTransition: 'linear', // Linear transition for smooth effect
-                    autoplayHoverPause: true, // Pause autoplay on hover
+                    items: 6, // Number of items visible
+                    loop: true, // Enable infinite looping
+                    autoplay: true, // Enable automatic sliding
+                    autoplayTimeout: 4000, // Slide change interval (ms)
+                    autoplaySpeed: 4000, // Slide transition speed (ms)
+                    smartSpeed: 2000,
+                    autoplayHoverPause: true, // Pause on hover
+                    nav: false, // Navigation buttons (optional)
+                    dots: false, // Dots indicator (optional)
                     responsive: {
                         0: {
                             items: 3, // 3 items on extra small screens
@@ -1217,21 +1170,51 @@
                             items: 6, // 6 items on large screens
                         },
                     },
+
+
+                    // loop: true, // Enable infinite loop
+                    // margin: 10, // Space between items
+                    // nav: false, // Disable navigation arrows
+                    // dots: false, // Disable dots
+                    // autoplay: true, // Enable autoplay
+                    // autoplayTimeout: 5000, // 4 seconds delay for sliding
+                    // autoplaySpeed: 0, // Transition speed (2 seconds)
+                    // smartSpeed: 5000, // Smooth transition between items
+                    // slideTransition: 'linear', // Linear transition for smooth effect
+                    // autoplayHoverPause: true, // Pause autoplay on hover
+                    // responsive: {
+                    //     0: {
+                    //         items: 3, // 3 items on extra small screens
+                    //     },
+                    //     576: {
+                    //         items: 3, // 3 items on small screens
+                    //     },
+                    //     768: {
+                    //         items: 4, // 4 items on medium screens
+                    //     },
+                    //     1024: {
+                    //         items: 6, // 6 items on large screens
+                    //     },
+                    // },
                 });
             });
         </script>
         <script>
-            $(function() {
-                var owl = $(".testigmonial-slider");
-                owl.owlCarousel({
-                    items: 1,
-                    margin: 10,
-                    loop: true,
-                    nav: false,
+            $(document).ready(function() {
+                $('.testigmonial-slider').owlCarousel({
+                    animateOut: 'animate__slideOutDown', // Animate.css class (use "animate__" prefix)
+                    animateIn: 'animate__flipInX', // Animate.css class (use "animate__" prefix)
+                    items: 1, // Display one item at a time
+                    margin: 30, // Space between items
+                    stagePadding: 30, // Padding around the stage
+                    smartSpeed: 500, // Transition speed in ms
                     dots: false,
-                    autoplay: true,
-                    autoplayTimeout: 5000,
-                    autoplayHoverPause: true,
+                    loop: true, // Infinite loop
+                    autoplay: true, // Auto-scroll slides
+                    autoplayTimeout: 3000, // Time between auto-scroll
+                    autoplayHoverPause: true, // Pause on hover
+                    mouseDrag: true, // Enable mouse scroll/drag
+                    touchDrag: true, // Enable touch support
                 });
             });
         </script>

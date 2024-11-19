@@ -323,60 +323,118 @@
 
     .marquee-text {
         font-size: 14px;
+        font-weight: 300;
     }
 </style>
 <header class="ps-header ps-header--2">
+
     @if (!empty(optional($setting)->website_name) || !empty(optional($setting)->site_motto))
         <div class="ps-noti">
-            <div class="container-fluid">
-                {{-- <p class="m-0">Welcome to {{ optional($setting)->website_name }}, {{ optional($setting)->site_motto }}
-                </p> --}}
-                <div class="scrolling-text">
-                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        {{ optional($setting)->site_motto }}
-                    </a>
-                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        {{ optional($setting)->site_motto }}
-                    </a>
-                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        {{ optional($setting)->site_motto }}
-                    </a>
-                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        {{ optional($setting)->site_motto }}
-                    </a>
-                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        {{ optional($setting)->site_motto }}
-                    </a>
-                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        {{ optional($setting)->site_motto }}
-                    </a>
-                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        {{ optional($setting)->site_motto }}
-                    </a>
-                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        {{ optional($setting)->site_motto }}
-                    </a>
-                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        {{ optional($setting)->site_motto }}
-                    </a>
-                    <a href="{{ route('special.products') }}" class="mb-0 py-2 marquee-text">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        {{ optional($setting)->site_motto }}
-                    </a>
+            <section>
+                <div class="marquee marquee--hover-pause">
+                    <ul class="marquee__content">
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul aria-hidden="true" class="marquee__content">
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('special.products') }}">
+                                <span class="text-white marquee-text"><i class="fa-solid fa-cart-shopping pr-3"></i>
+                                    {{ optional($setting)->site_motto }}</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            {{-- <a class="ps-noti__close">
-                <i class="icon-cross"></i>
-            </a> --}}
+            </section>
         </div>
     @endif
     <div class="ps-header__top">
@@ -450,7 +508,8 @@
                             <li>
                                 {{-- Log Out --}}
                                 <a class="ps-header__item" href="javascript:void(0)" id="login-modal">
-                                    <img src="{{ asset('images/icon-profile.svg') }}" class="header-icons" alt="">
+                                    <img src="{{ asset('images/icon-profile.svg') }}" class="header-icons"
+                                        alt="">
                                 </a>
                                 @auth
                                     <div class="ps-login--modal">
@@ -509,7 +568,8 @@
                             <li>
                                 <a class="ps-header__item" href="{{ route('user.wishlist') }}">
                                     {{-- <i class="fa fa-heart-o"></i> --}}
-                                    <img src="{{ asset('images/icon-heart.svg') }}" class="header-icons" alt="">
+                                    <img src="{{ asset('images/icon-heart.svg') }}" class="header-icons"
+                                        alt="">
                                     @php
                                         $wishlistCount = 0; // Default value in case user is not authenticated
                                         if (Auth::check()) {
@@ -524,7 +584,8 @@
                             <li>
                                 <a class="ps-header__item" href="#" id="cart-mini">
                                     {{-- <i class="icon-cart-empty"></i> --}}
-                                    <img src="{{ asset('images/icon-cart.svg') }}" class="header-icons" alt="">
+                                    <img src="{{ asset('images/icon-cart.svg') }}" class="header-icons"
+                                        alt="">
                                     <span class="badge cartCount">{{ Cart::instance('cart')->count() }}</span></a>
                                 <div class="ps-cart--mini miniCart">
                                     @include('frontend.pages.cart.partials.minicart')
@@ -812,5 +873,12 @@
         if (menuItems.length >= 5) {
             menuItems[4].classList.add("transparent-before");
         }
+    });
+</script>
+<script>
+    const sections = document.querySelectorAll("section");
+
+    sections.forEach((section) => {
+        section.classList.toggle("enable-animation");
     });
 </script>
