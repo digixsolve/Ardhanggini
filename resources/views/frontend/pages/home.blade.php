@@ -1023,7 +1023,7 @@
                 @endif
             </div>
         @endif
-        @if ($blog_posts->count() > 0)
+        {{-- @if ($blog_posts->count() > 0)
             <section class="ps-section--blog container-fluid bg-white pb-5 cst-blog mt-0">
                 <div class="container px-0">
                     <div class="py-5">
@@ -1075,7 +1075,7 @@
                     </div>
                 </div>
             </section>
-        @endif
+        @endif --}}
     </div>
     </div>
     @include('frontend.layouts.HomeQuickViewModal')
