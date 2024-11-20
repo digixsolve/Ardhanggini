@@ -762,7 +762,7 @@
                                                                 class="d-flex justify-content-between align-items-center mt-5">
                                                                 <div class="profile d-flex align-items-center">
                                                                     <div>
-                                                                        <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
+                                                                        <img src="{{ !empty($testimonial->image) ? asset('storage/'.$testimonial->image) : asset('images/testimonial.png') }}"
                                                                             alt="">
 
                                                                     </div>
@@ -810,7 +810,7 @@
                                         <a href="{{ route('product.details', $deal->product->slug) }}">
                                             @if ($deal->image)
                                                 <img class="ps-promo__banner"
-                                                    src="{{ asset('storage/' . $deal->image) }}" alt="alt" />
+                                                    src="{{ !empty($deal->image) && file_exists(public_path('storage/' . $deal->image)) ? asset('storage/' . $deal->image) : asset('images/no_image.png') }}" alt="alt" />
                                             @endif
                                             <div class="ps-promo__content">
                                                 @if ($deal->badge)
