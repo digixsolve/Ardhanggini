@@ -141,7 +141,7 @@ class HomeController extends Controller
     {
         $data = [
             'product'          => Product::where('slug', $slug)->first(),
-            'related_products' => Product::select('id', 'slug', 'meta_title', 'thumbnail', 'name', 'box_discount_price', 'box_price')->with('multiImages')->where('status', 'published')->inRandomOrder()->limit(12)->get(),
+            'related_products' => Product::select('id', 'slug', 'meta_title', 'thumbnail', 'name', 'box_discount_price','unit_discount_price', 'box_price', 'unit_price')->with('multiImages')->where('status', 'published')->inRandomOrder()->limit(12)->get(),
         ];
         return view('frontend.pages.product.productDetails', $data);
     }
@@ -172,7 +172,7 @@ class HomeController extends Controller
     {
         $data = [
             'cartItems' => Cart::instance('cart')->content(),
-            'related_products' => Product::select('id', 'slug', 'meta_title', 'thumbnail', 'name', 'box_discount_price', 'box_price')->with('multiImages')->where('status', 'published')->inRandomOrder()->limit(12)->get(),
+            'related_products' => Product::select('id', 'slug', 'meta_title', 'thumbnail', 'name', 'unit_discount_price', 'unit_price')->with('multiImages')->where('status', 'published')->inRandomOrder()->limit(12)->get(),
         ];
         return view('frontend.pages.cart.mycart', $data);
     }
@@ -223,7 +223,7 @@ class HomeController extends Controller
             ->where('products.status', 'published')
             ->where('brands.status', 'active')
             ->limit(10)
-            ->get(['products.id', 'products.name', 'products.slug', 'products.thumbnail', 'products.box_price', 'products.box_discount_price', 'products.box_stock', 'products.short_description']);
+            ->get(['products.id', 'products.name', 'products.slug', 'products.thumbnail', 'products.box_price', 'products.box_discount_price','products.unit_price', 'products.unit_discount_price', 'products.box_stock', 'products.short_description']);
 
         $data['categorys'] = Category::where('name', 'LIKE', '%' . $query . '%')->limit(2)->get(['id', 'name', 'slug']);
         $data['brands'] = Brand::where('name', 'LIKE', '%' . $query . '%')->where('status', 'active')->limit(5)->get(['id', 'name', 'slug']);

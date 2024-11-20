@@ -63,16 +63,16 @@
                                                             @endif
                                                         </td>
                                                         <td class="text-center">
-                                                            @if (!empty($product->box_discount_price))
+                                                            @if (!empty($product->unit_discount_price))
                                                                 <div class="ps-product__meta">
                                                                     <span
-                                                                        class="ps-product__price sale">৳{{ $product->box_discount_price }}</span>
+                                                                        class="ps-product__price sale">৳{{ $product->unit_discount_price }}</span>
                                                                     <span
-                                                                        class="ps-product__del">৳{{ $product->box_price }}</span>
+                                                                        class="ps-product__del">৳{{ $product->unit_price }}</span>
                                                                 </div>
                                                             @else
                                                                 <div class="ps-product__meta"><span
-                                                                        class="ps-product__price sale">৳{{ $product->box_price }}</span>
+                                                                        class="ps-product__price sale">৳{{ $product->unit_price }}</span>
                                                                 </div>
                                                             @endif
                                                         </td>
@@ -154,7 +154,7 @@
                                                                     class="fa fa-search"></i></a></div>
 
                                                     </div>
-                                                    @if (!empty($related_product->box_discount_price))
+                                                    @if (!empty($related_product->unit_discount_price))
                                                         <div class="ps-product__badge">
                                                             <div class="ps-badge ps-badge--sale">Offer</div>
                                                         </div>
@@ -168,17 +168,17 @@
                                                         </a>
                                                     </h5>
                                                     @if (Auth::check() && Auth::user()->status == 'active')
-                                                        @if (!empty($related_product->box_discount_price))
+                                                        @if (!empty($related_product->unit_discount_price))
                                                             <div class="ps-product__meta">
                                                                 <span
-                                                                    class="ps-product__price sale">৳{{ $related_product->box_discount_price }}</span>
+                                                                    class="ps-product__price sale">৳{{ $related_product->unit_discount_price }}</span>
                                                                 <span
-                                                                    class="ps-product__del">৳{{ $related_product->box_price }}</span>
+                                                                    class="ps-product__del">৳{{ $related_product->unit_price }}</span>
                                                             </div>
                                                         @else
                                                             <div class="ps-product__meta">
                                                                 <span
-                                                                    class="ps-product__price sale">৳{{ $related_product->box_price }}</span>
+                                                                    class="ps-product__price sale">৳{{ $related_product->unit_price }}</span>
                                                             </div>
                                                         @endif
                                                         <a href="{{ route('cart.store', $related_product->id) }}"

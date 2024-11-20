@@ -422,16 +422,16 @@
                                             <div class="ps-product__desc">
                                                 <p>{!! $product->short_description !!}</p>
                                             </div>
-                                            @if (!empty($product->box_discount_price))
+                                            @if (!empty($product->unit_discount_price))
                                                 <div class="ps-product__meta">
                                                     <span
-                                                        class="ps-product__price sale">৳{{ $product->box_discount_price }}</span>
-                                                    <span class="ps-product__del">৳{{ $product->box_price }}</span>
+                                                        class="ps-product__price sale">৳{{ $product->unit_discount_price }}</span>
+                                                    <span class="ps-product__del">৳{{ $product->unit_price }}</span>
                                                 </div>
                                             @else
                                                 <div class="ps-product__meta">
                                                     <span
-                                                        class="ps-product__price sale">৳{{ $product->box_price }}</span>
+                                                        class="ps-product__price sale">৳{{ $product->unit_price }}</span>
                                                 </div>
                                             @endif
 

@@ -104,7 +104,7 @@
                                             @endif
                                         </td>
 
-                                        <td class="text-center">৳{{ $review->box_price }}</td>
+                                        <td class="text-center">৳{{ $review->unit_price }}</td>
                                         <td>
                                             <span
                                                 class="badge {{ $review->status == 'published' ? 'bg-success' : 'bg-danger' }}">

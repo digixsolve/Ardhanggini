@@ -49,8 +49,8 @@
                         <th width="5%">{{ __('Sl') }}</th>
                         <th width="10%">{{ __('Product Image') }}</th>
                         <th width="25%">{{ __('Product Name') }}</th>
-                        <th width="15%" class="text-center">{{ __('Box Stock') }}</th>
-                        <th width="15%" class="text-center">{{ __('Box Price') }}</th>
+                        <th width="15%" class="text-center">{{ __('Stock') }}</th>
+                        <th width="15%" class="text-center">{{ __('Price') }}</th>
                         <th width="10%">{{ __('Product Status') }}</th>
                         <th width="10%" class="text-center">{{ __('Action') }}</th>
                     </tr>
@@ -97,7 +97,7 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    {{ $product->box_stock }}
+                                    {{ $product->stock }}
                                 @else
                                     <span title="No Box Stock">
                                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
@@ -123,7 +123,7 @@
                                 @endif
                             </td>
 
-                            <td class="text-center">৳{{ $product->box_price }}</td>
+                            <td class="text-center">৳{{ $product->unit_price }}</td>
                             <td>
                                 <span class="badge {{ $product->status == 'published' ? 'bg-success' : 'bg-danger' }}">
                                     {{ $product->status == 'published' ? 'Published' : 'Unpublished' }}</span>
