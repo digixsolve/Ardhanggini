@@ -49,7 +49,8 @@
                                                             <div>
                                                                 <img src="{{ asset('storage/' . $product->thumbnail) }}"
                                                                     class="" width="50px" height="50px"
-                                                                    alt="" onerror="this.onerror=null; this.src='{{ asset('frontend/img/no-image.png') }}';">
+                                                                    alt=""
+                                                                    onerror="this.onerror=null; this.src='{{ asset('frontend/img/no-image.png') }}';">
                                                             </div>
                                                         </td>
                                                         <td>{{ $product->name }}</td>
@@ -120,8 +121,7 @@
                                                                 @endphp
                                                                 <img src="{{ $thumbnailSrc }}"
                                                                     alt="{{ $related_product->meta_title }}"
-                                                                    width="210" height="210"
-                                                                    />
+                                                                    width="210" height="210" />
                                                             @else
                                                                 @foreach ($related_product->multiImages->slice(0, 2) as $image)
                                                                     @php
@@ -133,8 +133,7 @@
                                                                     @endphp
                                                                     <img src="{{ $imageSrc }}"
                                                                         alt="{{ $related_product->meta_title }}"
-                                                                        width="210" height="210"
-                                                                        />
+                                                                        width="210" height="210" />
                                                                 @endforeach
                                                             @endif
                                                         </figure>
@@ -167,25 +166,25 @@
                                                             {{ $related_product->name }}
                                                         </a>
                                                     </h5>
-                                                    
-                                                        @if (!empty($related_product->unit_discount_price))
-                                                            <div class="ps-product__meta">
-                                                                <span
-                                                                    class="ps-product__price sale">৳{{ $related_product->unit_discount_price }}</span>
-                                                                <span
-                                                                    class="ps-product__del">৳{{ $related_product->unit_price }}</span>
-                                                            </div>
-                                                        @else
-                                                            <div class="ps-product__meta">
-                                                                <span
-                                                                    class="ps-product__price sale">৳{{ $related_product->unit_price }}</span>
-                                                            </div>
-                                                        @endif
-                                                        <a href="{{ route('cart.store', $related_product->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart"
-                                                            data-product_id="{{ $related_product->id }}"
-                                                            data-product_qty="1">Add To
-                                                            Cart</a>
+
+                                                    @if (!empty($related_product->unit_discount_price))
+                                                        <div class="ps-product__meta">
+                                                            <span
+                                                                class="ps-product__price sale">৳{{ $related_product->unit_discount_price }}</span>
+                                                            <span
+                                                                class="ps-product__del">৳{{ $related_product->unit_price }}</span>
+                                                        </div>
+                                                    @else
+                                                        <div class="ps-product__meta">
+                                                            <span
+                                                                class="ps-product__price sale">৳{{ $related_product->unit_price }}</span>
+                                                        </div>
+                                                    @endif
+                                                    <a href="{{ route('cart.store', $related_product->id) }}"
+                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart"
+                                                        data-product_id="{{ $related_product->id }}"
+                                                        data-product_qty="1">Add To
+                                                        Cart</a>
 
                                                     <div class="ps-product__actions ps-product__group-mobile">
                                                         <div class="ps-product__quantity">

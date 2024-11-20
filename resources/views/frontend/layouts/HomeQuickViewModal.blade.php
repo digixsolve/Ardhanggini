@@ -87,7 +87,6 @@
                                         <div class="ps-product__desc">
                                             <p>{!! $latest_product->short_description !!}</p>
                                         </div>
-                                        @if (Auth::check() && Auth::user()->status == 'active')
                                             @if (!empty($latest_product->unit_discount_price))
                                                 <div class="ps-product__meta">
                                                     <span
@@ -120,12 +119,7 @@
                                             <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
                                                 data-product_id="{{ $latest_product->id }}" href="#">Add to
                                                 cart</a>
-                                        @else
-                                            <div class="ps-product__meta">
-                                                <a href="{{ route('login') }}" class="btn btn-info btn-block">Login to
-                                                    view price</a>
-                                            </div>
-                                        @endif
+
                                         <div class="ps-product__type">
                                             <ul class="ps-product__list">
 
@@ -235,7 +229,6 @@
                                         <div class="ps-product__desc">
                                             <p>{!! $deal_product->short_description !!}</p>
                                         </div>
-                                        @if (Auth::check() && Auth::user()->status == 'active')
                                             @if (!empty($deal_product->unit_discount_price))
                                                 <div class="ps-product__meta">
                                                     <span
@@ -268,14 +261,7 @@
                                             <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
                                                 data-product_id="{{ $deal_product->id }}" href="#">Add to
                                                 cart</a>
-                                        @else
-                                            <div class="ps-product__meta">
-                                                <a href="{{ route('login') }}" class="btn btn-info btn-block">Login
-                                                    to
-                                                    view
-                                                    price</a>
-                                            </div>
-                                        @endif
+                                        
                                         <div class="ps-product__type">
                                             <ul class="ps-product__list">
 
