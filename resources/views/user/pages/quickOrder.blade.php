@@ -167,7 +167,7 @@
                                                             {{ $related_product->name }}
                                                         </a>
                                                     </h5>
-                                                    @if (Auth::check() && Auth::user()->status == 'active')
+                                                    
                                                         @if (!empty($related_product->unit_discount_price))
                                                             <div class="ps-product__meta">
                                                                 <span
@@ -186,13 +186,7 @@
                                                             data-product_id="{{ $related_product->id }}"
                                                             data-product_qty="1">Add To
                                                             Cart</a>
-                                                    @else
-                                                        <div class="ps-product__meta">
-                                                            <a href="{{ route('login') }}"
-                                                                class="btn btn-info btn-block">Login
-                                                                to view price</a>
-                                                        </div>
-                                                    @endif
+
                                                     <div class="ps-product__actions ps-product__group-mobile">
                                                         <div class="ps-product__quantity">
                                                             <div class="def-number-input number-input safari_only">
