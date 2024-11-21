@@ -64,7 +64,7 @@
                 <section class="ps-section--categories">
                     <div class="container px-0" style="border-radius: 5px; background-color: #ffffffe6;">
                         {{-- <h3 class="ps-section__title py-5" style="font-size: 30px;">Popular Categories</h3> --}}
-                        <div class="ps-section__content py-5">
+                        <div class="ps-section__content py-0 py-lg-5">
                             <div class="ps-categories__list owl-carousel">
                                 @foreach ($categorys as $category)
                                     <div class="ps-categories__item">

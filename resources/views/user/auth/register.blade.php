@@ -428,15 +428,13 @@
                                         <input type="radio" class="form-check-input" id="newsletterYes"
                                             name="newsletter_preference" value="yes">
                                         <label class="form-check-label" for="newsletterYes">Yes please,
-                                            send
-                                            me email newsletters</label>
+                                            send me email newsletters</label>
                                     </div> <br>
                                     <div class="form-check ml-0">
                                         <input type="radio" class="form-check-input" id="newsletterNo"
                                             name="newsletter_preference" value="no" checked>
                                         <label class="form-check-label" for="newsletterNo">No thanks,
-                                            please
-                                            don't send me email newsletters</label>
+                                            please don't send me email newsletters</label>
                                     </div>
                                 </div>
                                 <div class="col-12 col-xl-12">

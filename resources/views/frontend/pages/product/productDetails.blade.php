@@ -125,24 +125,30 @@
                                                         <td>{{ $product->sku_code }}</td>
                                                     </tr>
                                                 @endif
-                                                @if (!empty($product->barcode_id))
+                                                @if (!empty(optional($product->brand)->name))
                                                     <tr>
-                                                        <th class="ps-table__th">BARCODE </th>
-                                                        <td>{{ $product->barcode_id }}</td>
+                                                        <th class="ps-table__th">BRAND </th>
+                                                        <td>{{ optional($product->brand)->name }}</td>
                                                     </tr>
                                                 @endif
-                                                @if (!empty($product->weight))
+                                                @if (!empty($product->stock) && !empty($product->contains))
+                                                    <tr>
+                                                        <th class="ps-table__th">PALLET QUANTITY </th>
+                                                        <td>{{ $product->stock * $product->contains }}</td>
+                                                    </tr>
+                                                @endif
+                                                {{-- @if (!empty($product->weight))
                                                     <tr>
                                                         <th class="ps-table__th">Weight </th>
                                                         <td>{{ $product->weight }} gm</td>
                                                     </tr>
-                                                @endif
-                                                @if (!empty($product->length))
+                                                @endif --}}
+                                                {{-- @if (!empty($product->length))
                                                     <tr>
-                                                        <th class="ps-table__th">Length </th>
+                                                        <th class="ps-table__th">Height </th>
                                                         <td>{{ $product->length }} cm</td>
                                                     </tr>
-                                                @endif
+                                                @endif --}}
                                                 @if (!empty($product->width))
                                                     <tr>
                                                         <th class="ps-table__th">Width </th>
@@ -155,24 +161,13 @@
                                                         <td>{{ $product->height }} cm</td>
                                                     </tr>
                                                 @endif
-                                                @if (!empty(optional($product->brand)->name))
-                                                    <tr>
-                                                        <th class="ps-table__th">BRAND </th>
-                                                        <td>{{ optional($product->brand)->name }}</td>
-                                                    </tr>
-                                                @endif
-                                                @if (!empty($product->box_stock))
+                                                {{-- @if (!empty($product->stock))
                                                     <tr>
                                                         <th class="ps-table__th">NO. OF CARTONS </th>
-                                                        <td>{{ $product->box_stock }}</td>
+                                                        <td>{{ $product->stock }}</td>
                                                     </tr>
-                                                @endif
-                                                @if (!empty($product->box_stock) && !empty($product->box_contains))
-                                                    <tr>
-                                                        <th class="ps-table__th">PALLET QUANTITY </th>
-                                                        <td>{{ $product->box_stock * $product->box_contains }}</td>
-                                                    </tr>
-                                                @endif
+                                                @endif --}}
+
                                             </tbody>
                                         </table>
                                         <div class="ps-product__group mt-20">
@@ -183,12 +178,12 @@
                                                     <th>Stock</th>
                                                 </tr>
                                                 <tr>
-                                                    <td>{{ $product->box_contains }}</td>
+                                                    <td>{{ $product->contains }}</td>
                                                     <td>
                                                         {{ $product->unit_price }}
                                                     </td>
                                                     <td>
-                                                        @if (!empty($product->box_stock) && $product->box_stock > 0)
+                                                        @if (!empty($product->stock) && $product->stock > 0)
                                                             <i class="fa fa-check"></i>
                                                         @else
                                                             <span class="text-danger">X</span>
@@ -196,6 +191,9 @@
                                                     </td>
                                                 </tr>
                                             </table> --}}
+                                            <div>
+                                                <p>{!! \Illuminate\Support\Str::words($product->overview, 30) !!}</p>
+                                            </div>
 
                                             <div class="pt-4">
                                                 <p class="fw-bold">Color Variation</p>
@@ -203,11 +201,12 @@
                                                     @if (is_array($product->color) && !empty($product->color))
                                                         @foreach ($product->color as $color)
                                                             <div class="round">
-                                                                <input type="checkbox" id="{{ $color }}"
-                                                                    value="{{ $color }}">
+                                                                <input type="checkbox" id="{{ $color }}" value="{{ $color }}">
                                                                 <label for="{{ $color }}"></label>
                                                             </div>
                                                         @endforeach
+                                                    @else
+                                                        <p class="site-color">No colors available</p> <!-- Default text when no color is available -->
                                                     @endif
                                                 </div>
                                             </div>
@@ -218,9 +217,9 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="ps-product__feature">
-                                @if (!empty($product->box_stock) && $product->box_stock > 0)
+                                @if (!empty($product->stock) && $product->stock > 0)
                                     <div class="ps-product__badge mb-0"><span
-                                            class="ps-badge bg-success">{{ $product->box_stock }} In Stock</span></div>
+                                            class="ps-badge bg-success">{{ $product->stock }} In Stock</span></div>
                                 @else
                                     <div class="ps-product__badge mb-0"><span class="ps-badge ps-badge--outstock">Out Of
                                             Stock</span></div>
@@ -257,10 +256,9 @@
 
                                 <ul class="ps-product__bundle">
                                     <li><i class="icon-bag2"></i>Full cash on delivery</li>
-                                    <li><i class="icon-truck"></i>Inside Dhaka -70 TK <br> (24-48 hrs)</li>
-                                    <li><i class="icon-truck"></i>Outside Dhaka -150 TK <br> (2-4 Days)</li>
-                                    <li><i class="icon-truck"></i>Dhaka sub-area -100 TK <br> (Keraniganj, Tangi, Savar,
-                                        Gazipur, Narayanganj, Asulia) (2-4 Days)</li>
+                                    <li><i class="icon-truck"></i>Inside Dhaka-70 TK</li>
+                                    <li><i class="icon-truck"></i>Outside Dhaka-150 TK</li>
+                                    <li><i class="icon-truck"></i>Dhaka Sub-area-100 TK </li>
                                 </ul>
                             </div>
                         </div>
@@ -268,17 +266,17 @@
                     <div class="ps-product__content">
                         <ul class="nav nav-tabs ps-tab-list bg-white p-3" id="productContentTabs" role="tablist">
                             <li class="nav-item ml-3 pr-info-tabs" role="presentation">
-                                <a class="nav-link active" id="description-tab" data-toggle="tab"
-                                    href="#description-content" role="tab" aria-controls="description-content"
-                                    aria-selected="true">
-                                    Key Features
-                                </a>
-                            </li>
-                            <li class="nav-item ml-3 pr-info-tabs" role="presentation">
-                                <a class="nav-link" id="information-tab" data-toggle="tab"
+                                <a class="nav-link show active" id="information-tab" data-toggle="tab"
                                     href="#information-content" role="tab" aria-controls="information-content"
                                     aria-selected="false">
                                     Description
+                                </a>
+                            </li>
+                            <li class="nav-item ml-3 pr-info-tabs" role="presentation">
+                                <a class="nav-link" id="description-tab" data-toggle="tab"
+                                    href="#description-content" role="tab" aria-controls="description-content"
+                                    aria-selected="true">
+                                    Key Features
                                 </a>
                             </li>
                             <li class="nav-item ml-3 pr-inf-tabs" role="presentation">
@@ -296,22 +294,22 @@
                             </li>
                         </ul>
                         <div class="tab-content bg-white p-5" id="productContent">
-                            <div class="tab-pane fade show active" id="description-content" role="tabpanel"
-                                aria-labelledby="description-tab">
-                                <div class="ps-document">
-                                    <div class="row row-reverse">
-                                        <div class="col-12">
-                                            {!! $product->overview !!}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="information-content" role="tabpanel"
+                            <div class="tab-pane fade show active" id="information-content" role="tabpanel"
                                 aria-labelledby="information-tab">
                                 <div class="ps-document">
                                     <div class="row row-reverse">
                                         <div class="col-12">
                                             {!! $product->description !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="description-content" role="tabpanel"
+                                aria-labelledby="description-tab">
+                                <div class="ps-document">
+                                    <div class="row row-reverse">
+                                        <div class="col-12">
+                                            {!! $product->overview !!}
                                         </div>
                                     </div>
                                 </div>
@@ -595,7 +593,7 @@
                                         <div class="ps-product__info">
                                             <div class="ps-product__badge">
                                                 <span
-                                                    class="ps-badge ps-badge--instock">{{ $related_product->box_stock > 0 ? 'IN STOCK' : 'OUT OF STOCK' }}</span>
+                                                    class="ps-badge ps-badge--instock">{{ $related_product->stock > 0 ? 'IN STOCK' : 'OUT OF STOCK' }}</span>
                                             </div>
                                             <div class="ps-product__branch">
                                                 <a href="#">{{ optional($related_product->brand)->name }}</a>
