@@ -44,14 +44,14 @@
                                 @endif
                             </td>
                             <td>
-                                @if (!empty($product->box_discount_price))
+                                @if (!empty($product->unit_discount_price))
                                     <div class="">
-                                        <span class="ps-product__price sale">৳{{ $product->box_discount_price }}</span>
-                                        <span class="ps-product__del">৳{{ $product->box_price }}</span>
+                                        <span class="ps-product__price sale">৳{{ $product->unit_discount_price }}</span>
+                                        <span class="ps-product__del">৳{{ $product->unit_price }}</span>
                                     </div>
                                 @else
                                     <div class="">
-                                        <span class="ps-product__price sale">৳{{ $product->box_price }}</span>
+                                        <span class="ps-product__price sale">৳{{ $product->unit_price }}</span>
                                     </div>
                                 @endif
                             </td>
@@ -130,21 +130,21 @@
                                                         {{-- <div class="mb-7 col-4">
                                                             <x-metronic.label class="form-label">Box
                                                                 Price</x-metronic.label>
-                                                            <x-metronic.input type="number" name="box_price"
-                                                                id="box_price" class="form-control mb-2 box_price"
+                                                            <x-metronic.input type="number" name="unit_price"
+                                                                id="unit_price" class="form-control mb-2 unit_price"
                                                                 placeholder="how much the box price"
-                                                                :value="old('box_price', $product->box_price)"></x-metronic.file-input>
+                                                                :value="old('unit_price', $product->unit_price)"></x-metronic.file-input>
                                                                 <div class="text-muted fs-7">How much box price.</div>
                                                         </div>
                                                         <div class="mb-7 col-4">
                                                             <x-metronic.label class="form-label">Box Discount
                                                                 Price</x-metronic.label>
-                                                            <x-metronic.input type="number" name="box_discount_price"
-                                                                id="box_discount_price" class="form-control mb-2 box_discount_price"
+                                                            <x-metronic.input type="number" name="unit_discount_price"
+                                                                id="unit_discount_price" class="form-control mb-2 unit_discount_price"
                                                                 placeholder="how much the box discount price"
                                                                 :value="old(
-                                                                    'box_discount_price',
-                                                                    $product->box_discount_price,
+                                                                    'unit_discount_price',
+                                                                    $product->unit_discount_price,
                                                                 )"></x-metronic.file-input>
                                                                 <div class="text-muted fs-7">How much box discount
                                                                     price.</div>
@@ -282,8 +282,8 @@
         <script>
             function calculatePrices() {
                 const boxContains = parseFloat(document.querySelector('box_contains').value) || 0;
-                const boxPrice = parseFloat(document.querySelector('box_price').value) || 0;
-                const boxDiscountPrice = parseFloat(document.querySelector('box_discount_price').value) || 0;
+                const boxPrice = parseFloat(document.querySelector('unit_price').value) || 0;
+                const boxDiscountPrice = parseFloat(document.querySelector('unit_discount_price').value) || 0;
 
                 const unitPrice = boxContains ? (boxPrice / boxContains).toFixed(2) : 0;
                 const unitDiscount = boxContains ? (boxDiscountPrice / boxContains).toFixed(2) : 0;
@@ -293,8 +293,8 @@
             }
 
             document.getElementById('box_contains').addEventListener('input', calculatePrices);
-            document.getElementById('box_price').addEventListener('input', calculatePrices);
-            document.getElementById('box_discount_price').addEventListener('input', calculatePrices);
+            document.getElementById('unit_price').addEventListener('input', calculatePrices);
+            document.getElementById('unit_discount_price').addEventListener('input', calculatePrices);
         </script>
     @endpush
 </x-admin-app-layout>

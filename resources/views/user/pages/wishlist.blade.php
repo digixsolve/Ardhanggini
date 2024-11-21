@@ -45,18 +45,18 @@
                                             </div>
                                             <div class="ps-product__content">
                                                 <h5 class="ps-product__title">
-                                                    <a href="{{ route('product.details', $wishlist->product->slug) }}">
-                                                        {{ $wishlist->product->name }}
+                                                    <a href="{{ route('product.details', optional($wishlist->product)->slug) }}">
+                                                        {{ optional($wishlist->product)->name }}
                                                     </a>
                                                 </h5>
-                                                @if (!empty($wishlist->product->box_discount_price))
+                                                @if (!empty(optional($wishlist->product)->unit_discount_price))
                                                     <div class="ps-product__row">
                                                         <div class="ps-product__label">Price:</div>
                                                         <div class="ps-product__value">
                                                             <span
-                                                                class="ps-product__price sale">৳{{ $wishlist->product->box_discount_price }}</span>
+                                                                class="ps-product__price sale">৳{{ optional($wishlist->product)->unit_discount_price }}</span>
                                                             <span
-                                                                class="ps-product__del">৳{{ $wishlist->product->box_price }}</span>
+                                                                class="ps-product__del">৳{{ optional($wishlist->product)->unit_price }}</span>
                                                         </div>
                                                     </div>
                                                 @else
@@ -64,7 +64,7 @@
                                                         <div class="ps-product__label">Price:</div>
                                                         <div class="ps-product__value">
                                                             <span class="ps-product__price sale">৳
-                                                                {{ $wishlist->product->box_price }}
+                                                                {{ optional($wishlist->product)->unit_price }}
                                                         </div>
                                                     </div>
                                                 @endif
@@ -125,25 +125,25 @@
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        @if (!empty($wishlist->product->box_discount_price))
+                                                        @if (!empty($wishlist->product->unit_discount_price))
                                                             <div class="ps-product__row">
                                                                 <div class="ps-product__value">
                                                                     <span
-                                                                        class="ps-product__price sale">৳{{ $wishlist->product->box_discount_price }}</span>
+                                                                        class="ps-product__price sale">৳{{ $wishlist->product->unit_discount_price }}</span>
                                                                     <span
-                                                                        class="ps-product__del">৳{{ $wishlist->product->box_price }}</span>
+                                                                        class="ps-product__del">৳{{ $wishlist->product->unit_price }}</span>
                                                                 </div>
                                                             </div>
                                                         @else
                                                             <div class="ps-product__row">
                                                                 <div class="ps-product__value">
                                                                     <span
-                                                                        class="ps-product__price sale">৳{{ $wishlist->product->box_price }}
+                                                                        class="ps-product__price sale">৳{{ $wishlist->product->unit_price }}
                                                                 </div>
                                                             </div>
                                                         @endif
                                                         {{-- <span
-                                                                class="ps-product__price">{{ $wishlist->product->box_price }}</span> --}}
+                                                                class="ps-product__price">{{ $wishlist->product->unit_price }}</span> --}}
                                                     </td>
                                                     <td class="ps-product__status">
                                                         <span>

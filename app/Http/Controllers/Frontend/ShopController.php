@@ -77,10 +77,10 @@ class ShopController extends Controller
                     $query->orderBy('name', 'desc');
                     break;
                 case 'price-asc':
-                    $query->orderBy('box_price', 'asc');
+                    $query->orderBy('unit_price', 'asc');
                     break;
                 case 'price-desc':
-                    $query->orderBy('box_price', 'desc');
+                    $query->orderBy('unit_price', 'desc');
                     break;
             }
         }
