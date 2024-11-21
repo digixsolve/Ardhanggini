@@ -328,15 +328,16 @@
                                             <x-metronic.label class="form-label">Stock</x-metronic.label>
                                             <x-metronic.input type="number" name="stock" id="stock"
                                                 class="form-control mb-2" placeholder="how much thestock"
-                                                :value="old('stock')"></x-metronic.file-input>
-                                                <div class="text-muted fs-7">How muchstock. Eg: 50</div>
+                                                :value="old('stock')">
+                                                </x-metronic.file-input>
+                                                <div class="text-muted fs-7">How much stock. Eg: 50</div>
                                         </div>
                                         <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Vat</x-metronic.label>
                                             <x-metronic.input type="number" name="vat" id="vat"
                                                 class="form-control mb-2" placeholder="how much the vat"
                                                 :value="old('vat')"></x-metronic.file-input>
-                                                <div class="text-muted fs-7">How muchvat. Eg: 5%</div>
+                                                <div class="text-muted fs-7">How much vat. Eg: 5%</div>
                                         </div>
                                         <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Tax</x-metronic.label>

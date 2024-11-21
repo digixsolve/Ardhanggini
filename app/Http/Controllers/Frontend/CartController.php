@@ -40,18 +40,22 @@ class CartController extends Controller
                     'price' => !empty($product->unit_discount_price) ? $product->unit_discount_price : $product->unit_price,
                 ])->associate('App\Models\Product');
 
+                $formattedSubtotal = Cart::instance('cart')->subtotal();
+                $cleanSubtotal = preg_replace('/[^\d.]/', '', $formattedSubtotal);
+                $subTotal = (float)$cleanSubtotal;
                 // Get the updated cart content
                 $data = [
                     'cartItems' => Cart::instance('cart')->content(),
                     'total'     => Cart::instance('cart')->total(),
                     'cartCount' => Cart::instance('cart')->count(),
-                    'subTotal'  => Cart::instance('cart')->subtotal(),
+                    'subTotal'  => $subTotal,
                 ];
 
                 // Return the JSON response with cart data
                 return response()->json([
-                    'success' => 'Successfully added to your cart.',
-                    'cartCount' => $data['cartCount'],
+                    'success'    => 'Successfully added to your cart.',
+                    'cartCount'  => $data['cartCount'],
+                    'subTotal'   => $subTotal,
                     'cartHeader' => view('frontend.pages.cart.partials.minicart', $data)->render(),
                 ]);
             } else {
