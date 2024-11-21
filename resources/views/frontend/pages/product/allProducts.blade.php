@@ -579,7 +579,14 @@
                                 icon: 'success',
                                 title: data.success
                             });
-
+                            // alert(data.subTotal);
+                            if (data.subTotal > 4000) {
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: 'Congratulations!',
+                                    text: "Your shipping is now free. Happy Shopping!",
+                                })
+                            };
                             // Update mini cart
                             cartHeader.html(data.cartHeader);
                             $(".cartCount").html(data.cartCount);

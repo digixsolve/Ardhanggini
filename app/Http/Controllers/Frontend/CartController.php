@@ -53,8 +53,9 @@ class CartController extends Controller
 
                 // Return the JSON response with cart data
                 return response()->json([
-                    'success' => 'Successfully added to your cart.',
-                    'cartCount' => $data['cartCount'],
+                    'success'    => 'Successfully added to your cart.',
+                    'cartCount'  => $data['cartCount'],
+                    'subTotal'   => $subTotal,
                     'cartHeader' => view('frontend.pages.cart.partials.minicart', $data)->render(),
                 ]);
             } else {

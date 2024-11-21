@@ -232,7 +232,21 @@
                         button.innerText = 'Already added'; // Change button text
                         document.querySelector(".cartCount").innerHTML = data.cartCount;
                         cartHeader.innerHTML = data.cartHeader;
-
+                        if (data.subTotal > 4000) {
+                            Toast.fire({
+                                title: 'Congratulations!',
+                                text: "Your shipping is now free. Happy Shopping!",
+                                icon: 'success',
+                                showCancelButton: true,
+                                // confirmButtonText: 'Yes, delete it!',
+                                cancelButtonText: 'Close',
+                                buttonsStyling: false,
+                                customClass: {
+                                    // confirmButton: 'btn btn-danger',
+                                    cancelButton: 'btn btn-success'
+                                }
+                            })
+                        }
                     } else if (data.error) {
                         Toast.fire({
                             icon: 'error',
@@ -363,7 +377,7 @@
                             title: data.success
                         });
                         if (data.subTotal > 4000) {
-                            Swal.fire({
+                            Toast.fire({
                                 title: 'Congratulations!',
                                 text: "Your shipping is now free. Happy Shopping!",
                                 icon: 'success',
@@ -463,7 +477,7 @@
                             button.text('Already added'); // Change button text
                             $(".cartCount").html(data.cartCount);
                             if (data.subTotal > 4000) {
-                                Swal.fire({
+                                Toast.fire({
                                     title: 'Congratulations!',
                                     text: "Your shipping is now free. Happy Shopping!",
                                     icon: 'success',
@@ -549,7 +563,7 @@
                             location.reload(); // Reload the page to reflect changes
                         });
                         if (data.subTotal > 4000) {
-                            Swal.fire({
+                            Toast.fire({
                                 title: 'Congratulations!',
                                 text: "Your shipping is now free. Happy Shopping!",
                                 icon: 'success',
