@@ -847,9 +847,11 @@
                                                 <input class="form-check-input" name="shipping_id" type="radio"
                                                     id="shipping-{{ $shippingmethod->id }}"
                                                     data-shipping_price="{{ $shippingmethod->price }}"
-                                                    value="{{ $shippingmethod->id }}" @checked($loop->first)/>
+                                                    value="{{ $shippingmethod->id }}"
+                                                    @if ($subTotal > 4000) @checked($loop->first) @endif />
                                                 <label class="form-check-label"
-                                                    for="shipping-{{ $shippingmethod->id }}">{{ $shippingmethod->title }} {{ $shippingmethod->duration }}
+                                                    for="shipping-{{ $shippingmethod->id }}">{{ $shippingmethod->title }}
+                                                    {{ $shippingmethod->duration }}
                                                     <span>(৳{{ number_format($shippingmethod->price, 2) }})</span></label>
                                             </div>
                                         @endforeach
@@ -876,8 +878,9 @@
                                             </div> --}}
                                             <div class="form-check">
                                                 <input class="form-check-input" name="payment_method" type="radio"
-                                                    id="stripe" value="stripe" checked/>
-                                                <label class="form-check-label mt-0" for="stripe">Cash On Delivery</label>
+                                                    id="stripe" value="stripe" checked />
+                                                <label class="form-check-label mt-0" for="stripe">Cash On
+                                                    Delivery</label>
                                             </div>
                                             {{-- <div class="form-check">
                                                 <input class="form-check-input" name="payment_method" type="radio"
@@ -911,7 +914,7 @@
                 const subtotal = parseFloat('{{ $subTotal }}');
                 const totalInput = document.getElementById('total-input');
                 const totalPriceSpan = document.getElementById('total-price');
-
+                
                 document.querySelectorAll('input[name="shipping_id"]').forEach(function(radio) {
                     radio.addEventListener('change', function() {
                         const shippingPrice = parseFloat(this.getAttribute('data-shipping_price')) || 0;

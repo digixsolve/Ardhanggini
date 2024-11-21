@@ -232,6 +232,21 @@
                         button.innerText = 'Already added'; // Change button text
                         document.querySelector(".cartCount").innerHTML = data.cartCount;
                         cartHeader.innerHTML = data.cartHeader;
+                        if (data.subTotal > 4000) {
+                            Swal.fire({
+                                title: 'Congratulations!',
+                                text: "Your shipping is now free. Happy Shopping!",
+                                icon: 'success',
+                                showCancelButton: true,
+                                // confirmButtonText: 'Yes, delete it!',
+                                cancelButtonText: 'Close',
+                                buttonsStyling: false,
+                                customClass: {
+                                    // confirmButton: 'btn btn-danger',
+                                    cancelButton: 'btn btn-success'
+                                }
+                            })
+                        }
                     } else if (data.error) {
                         Toast.fire({
                             icon: 'error',

@@ -40,12 +40,15 @@ class CartController extends Controller
                     'price' => !empty($product->box_discount_price) ? $product->box_discount_price : $product->box_price,
                 ])->associate('App\Models\Product');
 
+                $formattedSubtotal = Cart::instance('cart')->subtotal();
+                $cleanSubtotal = preg_replace('/[^\d.]/', '', $formattedSubtotal);
+                $subTotal = (float)$cleanSubtotal;
                 // Get the updated cart content
                 $data = [
                     'cartItems' => Cart::instance('cart')->content(),
                     'total'     => Cart::instance('cart')->total(),
                     'cartCount' => Cart::instance('cart')->count(),
-                    'subTotal'  => Cart::instance('cart')->subtotal(),
+                    'subTotal'  => $subTotal,
                 ];
 
                 // Return the JSON response with cart data
@@ -302,7 +305,7 @@ class CartController extends Controller
             }
 
             // Commit the transaction
-            DB::commit(); 
+            DB::commit();
 
             // Clear the cart after successful order
             Cart::instance('cart')->destroy();
