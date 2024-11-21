@@ -76,7 +76,8 @@
                                                     ? asset($logoPath)
                                                     : asset('frontend/img/no-category.png');
                                             @endphp
-                                            <img src="{{ $logoSrc }}" alt="{{ $category->name }}">
+                                            <img src="{{ $logoSrc }}" alt="{{ $category->name }}"
+                                                onerror="this.onerror=null; this.src='frontend/img/no-category.png';">
                                         </a>
                                         <a class="ps-categories__name"
                                             href="{{ route('category.products', $category->slug) }}">
@@ -95,7 +96,7 @@
             @if ($latest_products->count() > 0)
                 <section class="ps-section--latest-horizontal">
                     <section class="container px-0">
-                        <h3 class="ps-section__title pb-5" style="font-size: 30px;">Latest products</h3>
+                        <h3 class="ps-section__title pb-3 pb-lg-5" style="font-size: 30px;">Latest products</h3>
                         <div class="ps-section__content">
                             <div class="row m-0">
                                 @foreach ($latest_products as $latest_product)
@@ -154,7 +155,9 @@
                                                     @if (!empty($latest_product->unit_discount_price))
                                                         <div class="ps-product__badge">
                                                             <div class="ps-badge ps-badge--sale">
-                                                                - {{ !empty($latest_product->unit_discount_price) && $latest_product->unit_discount_price > 0 ? number_format((($latest_product->unit_price - $latest_product->unit_discount_price) / $latest_product->unit_price) * 100,1) : 0 }} %
+                                                                -
+                                                                {{ !empty($latest_product->unit_discount_price) && $latest_product->unit_discount_price > 0 ? number_format((($latest_product->unit_price - $latest_product->unit_discount_price) / $latest_product->unit_price) * 100, 1) : 0 }}
+                                                                %
                                                             </div>
                                                         </div>
                                                     @endif
@@ -245,7 +248,7 @@
             @if ($categoryone && $categoryoneproducts->count() > 0)
                 <div class="container px-0">
                     <div class="ps-home--block">
-                        <h3 class="ps-section__title text-center pb-5" style="font-size: 30px;">
+                        <h3 class="ps-section__title text-center pb-3 pb-lg-5" style="font-size: 30px;">
                             {{ optional($categoryone)->name }}</h3>
                         <div class="ps-section__content">
                             <div class="row m-0">
@@ -305,7 +308,9 @@
                                                     @if (!empty($categoryoneproduct->unit_discount_price))
                                                         <div class="ps-product__badge">
                                                             <div class="ps-badge ps-badge--sale">
-                                                                - {{ !empty($categoryoneproduct->unit_discount_price) && $categoryoneproduct->unit_discount_price > 0 ? number_format((($categoryoneproduct->unit_price - $categoryoneproduct->unit_discount_price) / $categoryoneproduct->unit_price) * 100,1) : 0 }} %
+                                                                -
+                                                                {{ !empty($categoryoneproduct->unit_discount_price) && $categoryoneproduct->unit_discount_price > 0 ? number_format((($categoryoneproduct->unit_price - $categoryoneproduct->unit_discount_price) / $categoryoneproduct->unit_price) * 100, 1) : 0 }}
+                                                                %
                                                             </div>
                                                         </div>
                                                     @endif
@@ -393,7 +398,7 @@
                 </div>
             @endif
             <div class="container px-0">
-                <div class="ps-delivery ps-delivery--info my-5"
+                <div class="ps-delivery ps-delivery--info my-3 my-lg-5"
                     data-background="{{ asset('images/delivery_banner.jpg') }}"
                     style="background-image: url({{ asset('images/delivery_banner.jpg') }});">
                     <div class="ps-delivery__content">
@@ -469,7 +474,9 @@
                                                         @if (!empty($categorytwoproduct->unit_discount_price))
                                                             <div class="ps-product__badge">
                                                                 <div class="ps-badge ps-badge--sale">
-                                                                    - {{ !empty($categorytwoproduct->unit_discount_price) && $categorytwoproduct->unit_discount_price > 0 ? number_format((($categorytwoproduct->unit_price - $categorytwoproduct->unit_discount_price) / $categorytwoproduct->unit_price) * 100,1) : 0 }} %
+                                                                    -
+                                                                    {{ !empty($categorytwoproduct->unit_discount_price) && $categorytwoproduct->unit_discount_price > 0 ? number_format((($categorytwoproduct->unit_price - $categorytwoproduct->unit_discount_price) / $categorytwoproduct->unit_price) * 100, 1) : 0 }}
+                                                                    %
                                                                 </div>
                                                             </div>
                                                         @endif
@@ -561,7 +568,7 @@
             @if ($categorythree && $categorythreeproducts->count() > 0)
                 <div class="container px-0">
                     <div class="ps-home--block">
-                        <h3 class="ps-section__title text-center pb-5" style="font-size: 30px;">
+                        <h3 class="ps-section__title text-center pb-3 pb-lg-5" style="font-size: 30px;">
                             {{ optional($categorythree)->name }}</h3>
                         <div class="ps-section__content">
                             <div class="row m-0">
@@ -621,7 +628,9 @@
                                                     @if (!empty($categorythreeproduct->unit_discount_price))
                                                         <div class="ps-product__badge">
                                                             <div class="ps-badge ps-badge--sale">
-                                                                - {{ !empty($categorythreeproduct->unit_discount_price) && $categorythreeproduct->unit_discount_price > 0 ? number_format((($categorythreeproduct->unit_price - $categorythreeproduct->unit_discount_price) / $categorythreeproduct->unit_price) * 100,1) : 0 }} %
+                                                                -
+                                                                {{ !empty($categorythreeproduct->unit_discount_price) && $categorythreeproduct->unit_discount_price > 0 ? number_format((($categorythreeproduct->unit_price - $categorythreeproduct->unit_discount_price) / $categorythreeproduct->unit_price) * 100, 1) : 0 }}
+                                                                %
                                                             </div>
                                                         </div>
                                                     @endif
@@ -713,82 +722,109 @@
                 </div>
             @endif
         </div>
-        <section style="background-color: #353C44;" class="mt-5 mb-0">
-            <div class="container-fluid py-5">
-                <div class="container py-5">
-                    <div class="row py-5 align-items-center">
-                        <div class="col-lg-6">
-                            <div>
-                                <p class="text-white">Clients</p>
-                                <h2 class="text-white fw-normal">Happy With</h2>
-                                <h1 class="text-white fw-bold">Customers & Clients</h1>
-                                <p class="mb-5 text-white">If you need any industrial solution we are available for
-                                    you. Lorem ipsum dolor sit
-                                    amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua.</p>
-                                <div class="mt-4">
-                                    <a href="#" class="tst-btn text-white px-5">Shop Now</a>
-                                </div>
+        <section class="container-fluid section-bg mt-5">
+            <!-- Circles Background -->
+            <!-- Circles Background -->
+            <ul class="circles">
+                <!-- Add more circle elements -->
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+            <!-- Foreground Content -->
+            <div class="container position-relative py-5" style="z-index: 1;">
+                <div class="row py-5 align-items-center testimonial-content">
+                    <div class="col-lg-6">
+                        <div>
+                            <p class="text-white">Trusted by Thousands</p>
+                            <h2 class="text-white fw-normal testi-monial-title">What Customers Say</h2>
+                            <h1 class="text-white fw-bold">About Our Products</h1>
+                            <p class="mb-5 text-white">Our customers love the quality, craftsmanship, and care we bring
+                                to every product. At Ardhanggini, we go beyond expectations to deliver products that
+                                inspire trust and satisfaction. Don’t just take our word for it—read their stories
+                                below.</p>
+                            <div class="pt-5">
+                                <a href="{{ route('allproducts') }}" class="tst-btn text-white px-5">Shop Now</a>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div>
-                                <div class="home-demo">
-                                    <div class="owl-carousel testigmonial-slider owl-theme">
-                                        @foreach ($testimonials as $testimonial)
-                                            <div class="card testi-card">
-                                                <div class="card-body">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-lg-12">
-                                                            <div class="d-flex">
+                    </div>
+                    <div class="col-lg-6">
+                        <div>
+                            <div class="home-demo">
+                                <div class="owl-carousel testigmonial-slider owl-theme">
+                                    @foreach ($testimonials as $testimonial)
+                                        <div class="card testi-card">
+                                            <div class="card-body">
+                                                <div class="row align-items-center">
+                                                    <div class="col-lg-12">
+                                                        <div class="d-flex">
+                                                            <div>
                                                                 <div>
-                                                                    <div>
-                                                                        <p class="testimonial-message"
-                                                                            id="testimonial-{{ $testimonial->id }}">
-                                                                            <span class="testimonial-text">
-                                                                                <i
-                                                                                    class="fa-solid fa-quote-left pr-3 testi-dots pb-4"></i>
-                                                                                <br>
-                                                                                <span>
-                                                                                    {{ $testimonial->message }}</span>
-                                                                            </span>
-                                                                        </p>
-                                                                    </div>
+                                                                    <p class="testimonial-message"
+                                                                        id="testimonial-{{ $testimonial->id }}">
+                                                                        <span class="testimonial-text">
+                                                                            <i
+                                                                                class="fa-solid fa-quote-left pr-3 testi-dots pb-4"></i>
+                                                                            <br>
+                                                                            <span>
+                                                                                {{ $testimonial->message }}</span>
+                                                                        </span>
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-12">
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center mt-5">
-                                                                <div class="profile d-flex align-items-center">
-                                                                    <div>
-                                                                        <img src="{{ !empty($testimonial->image) ? asset('storage/'.$testimonial->image) : asset('images/testimonial.png') }}"
-                                                                            alt="">
-
-                                                                    </div>
-                                                                    <div class="pl-3">
-                                                                        <h4 class="text-white fw-semibold mb-0">
-                                                                            {{ $testimonial->name }}</h4>
-                                                                        <p class="text-white mb-0">
-                                                                            <small>{{ $testimonial->company_name }}</small>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div
+                                                            class="d-flex justify-content-between align-items-center mt-3 mt-lg-5 testimonial-author">
+                                                            <div class="profile d-flex align-items-center">
                                                                 <div>
-                                                                    @for ($i = 1; $i <= $testimonial->rating; $i++)
-                                                                        <i class="fa-solid fa-star"
-                                                                            style="color: goldenrod"></i>
-                                                                    @endfor
-                                                                    <span
-                                                                        class="text-white pl-2">{{ $testimonial->rating }}.0</span>
+                                                                    <img src="{{ !empty($testimonial->image) ? asset('storage/' . $testimonial->image) : asset('images/testimonial.png') }}"
+                                                                        alt="">
+
                                                                 </div>
+                                                                <div class="pl-3">
+                                                                    <h4 class="text-white fw-semibold mb-0">
+                                                                        {{ $testimonial->name }}</h4>
+                                                                    <p class="text-white mb-0">
+                                                                        <small>{{ $testimonial->company_name }}</small>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                @for ($i = 1; $i <= $testimonial->rating; $i++)
+                                                                    <i class="fa-solid fa-star"
+                                                                        style="color: goldenrod"></i>
+                                                                @endfor
+                                                                <span
+                                                                    class="text-white pl-2">{{ $testimonial->rating }}.0</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
-                                    </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -796,7 +832,6 @@
                 </div>
             </div>
         </section>
-
         @if ($deals->count() > 0 || $deal_products->count() > 0)
             <div class="container px-0">
                 @if ($deals->count() > 0)
@@ -810,12 +845,12 @@
                                         <a href="{{ route('product.details', $deal->product->slug) }}">
                                             @if ($deal->image)
                                                 <img class="ps-promo__banner"
-                                                    src="{{ !empty($deal->image) && file_exists(public_path('storage/' . $deal->image)) ? asset('storage/' . $deal->image) : asset('images/no_image.png') }}" alt="alt" />
+                                                    src="{{ !empty($deal->image) && file_exists(public_path('storage/' . $deal->image)) ? asset('storage/' . $deal->image) : asset('images/no_image.png') }}"
+                                                    alt="alt" />
                                             @endif
                                             <div class="ps-promo__content">
                                                 @if ($deal->badge)
-                                                    <span
-                                                        class="ps-promo__badge">
+                                                    <span class="ps-promo__badge">
                                                         {{ $deal->badge ?? round(100 - ($deal->offer_price / $deal->price) * 100) . '%' }}
                                                     </span>
                                                 @endif
@@ -944,7 +979,9 @@
                                                 @if (!empty($deal_product->unit_discount_price))
                                                     <div class="ps-product__badge">
                                                         <div class="ps-badge ps-badge--sale">
-                                                            - {{ !empty($deal_product->unit_discount_price) && $deal_product->unit_discount_price > 0 ? number_format((($deal_product->unit_price - $deal_product->unit_discount_price) / $deal_product->unit_price) * 100,1) : 0 }} %
+                                                            -
+                                                            {{ !empty($deal_product->unit_discount_price) && $deal_product->unit_discount_price > 0 ? number_format((($deal_product->unit_price - $deal_product->unit_discount_price) / $deal_product->unit_price) * 100, 1) : 0 }}
+                                                            %
                                                         </div>
                                                     </div>
                                                 @endif
@@ -1216,17 +1253,31 @@
                 $('.testigmonial-slider').owlCarousel({
                     animateOut: 'animate__slideOutDown', // Animate.css class (use "animate__" prefix)
                     animateIn: 'animate__flipInX', // Animate.css class (use "animate__" prefix)
-                    items: 1, // Display one item at a time
-                    margin: 30, // Space between items
+                    items: 1, // Default number of items
+                    margin: 30, // Remove margin between items
                     stagePadding: 30, // Padding around the stage
                     smartSpeed: 500, // Transition speed in ms
-                    dots: false,
+                    dots: true, // Show dots navigation
                     loop: true, // Infinite loop
                     autoplay: true, // Auto-scroll slides
-                    autoplayTimeout: 3000, // Time between auto-scroll
+                    autoplayTimeout: 10000, // Time between auto-scroll
                     autoplayHoverPause: true, // Pause on hover
                     mouseDrag: true, // Enable mouse scroll/drag
                     touchDrag: true, // Enable touch support
+                    responsive: {
+                        0: {
+                            items: 1, // Display 1 item on small screens (up to 480px)
+                        },
+                        768: {
+                            items: 1, // Display 2 items on medium screens (up to 768px)
+                        },
+                        1024: {
+                            items: 1, // Display 3 items on larger screens (up to 1024px)
+                        },
+                        1200: {
+                            items: 1, // Display 4 items on extra-large screens (above 1200px)
+                        },
+                    },
                 });
             });
         </script>
