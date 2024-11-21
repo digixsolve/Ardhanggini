@@ -343,7 +343,7 @@
                         </li>
                         <li>
                             <a href="{{ route('special.products') }}">
-                               <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
                                     <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
                                     <span>{{ optional($setting)->site_motto }}</span>
                                 </p>
@@ -359,7 +359,7 @@
                         </li>
                         <li>
                             <a href="{{ route('special.products') }}">
-                               <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
                                     <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
                                     <span>{{ optional($setting)->site_motto }}</span>
                                 </p>
@@ -367,7 +367,7 @@
                         </li>
                         <li>
                             <a href="{{ route('special.products') }}">
-                               <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
                                     <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
                                     <span>{{ optional($setting)->site_motto }}</span>
                                 </p>
@@ -375,7 +375,7 @@
                         </li>
                         <li>
                             <a href="{{ route('special.products') }}">
-                               <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
                                     <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
                                     <span>{{ optional($setting)->site_motto }}</span>
                                 </p>
@@ -383,7 +383,7 @@
                         </li>
                         <li>
                             <a href="{{ route('special.products') }}">
-                               <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
                                     <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
                                     <span>{{ optional($setting)->site_motto }}</span>
                                 </p>
@@ -391,7 +391,7 @@
                         </li>
                         <li>
                             <a href="{{ route('special.products') }}">
-                               <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
                                     <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
                                     <span>{{ optional($setting)->site_motto }}</span>
                                 </p>
@@ -402,7 +402,7 @@
                     <ul aria-hidden="true" class="marquee__content">
                         <li>
                             <a href="{{ route('special.products') }}">
-                               <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
                                     <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
                                     <span>{{ optional($setting)->site_motto }}</span>
                                 </p>
@@ -410,7 +410,7 @@
                         </li>
                         <li>
                             <a href="{{ route('special.products') }}">
-                               <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
                                     <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
                                     <span>{{ optional($setting)->site_motto }}</span>
                                 </p>
@@ -418,7 +418,7 @@
                         </li>
                         <li>
                             <a href="{{ route('special.products') }}">
-                               <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
                                     <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
                                     <span>{{ optional($setting)->site_motto }}</span>
                                 </p>
@@ -426,7 +426,7 @@
                         </li>
                         <li>
                             <a href="{{ route('special.products') }}">
-                               <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
                                     <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
                                     <span>{{ optional($setting)->site_motto }}</span>
                                 </p>
@@ -434,7 +434,7 @@
                         </li>
                         <li>
                             <a href="{{ route('special.products') }}">
-                               <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
                                     <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
                                     <span>{{ optional($setting)->site_motto }}</span>
                                 </p>
@@ -442,7 +442,7 @@
                         </li>
                         <li>
                             <a href="{{ route('special.products') }}">
-                               <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
                                     <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
                                     <span>{{ optional($setting)->site_motto }}</span>
                                 </p>
@@ -450,7 +450,7 @@
                         </li>
                         <li>
                             <a href="{{ route('special.products') }}">
-                               <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
                                     <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
                                     <span>{{ optional($setting)->site_motto }}</span>
                                 </p>
@@ -458,7 +458,7 @@
                         </li>
                         <li>
                             <a href="{{ route('special.products') }}">
-                               <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
                                     <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
                                     <span>{{ optional($setting)->site_motto }}</span>
                                 </p>
@@ -659,7 +659,7 @@
                                         </button>
                                         <!-- Menu Items -->
                                         <ul class="menu">
-                                            @foreach ($categories->slice(0, 6) as $index => $category)
+                                            @foreach ($categories->slice(0, 8) as $index => $category)
                                                 <li class="menu-item menus-items-head"
                                                     data-index="{{ $index }}">
                                                     <a
@@ -901,8 +901,11 @@
         const menuItems = document.querySelectorAll(".menu .menus-items-head");
 
         // Check if there are at least 5 items and set the fifth item's ::before color to transparent
-        if (menuItems.length >= 5) {
-            menuItems[4].classList.add("transparent-before");
+        if (menuItems.length >= 7) {
+            menuItems[6].classList.add("transparent-before");
+        }
+        if (menuItems.length >= 6) {
+            menuItems[5].classList.add("transparent-before");
         }
     });
 </script>

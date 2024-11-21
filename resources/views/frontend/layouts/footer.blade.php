@@ -65,7 +65,7 @@
                     <p class="text-center">
                         <a class="ps-footer__link" href="#">
                             <i class="icon-truck"></i>Inside
-                            Dhaka- 70 TK (24-48 hrs)
+                            Dhaka- 70 TK
                         </a>
                     </p>
                 </div>

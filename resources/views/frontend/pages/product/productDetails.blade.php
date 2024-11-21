@@ -201,12 +201,14 @@
                                                     @if (is_array($product->color) && !empty($product->color))
                                                         @foreach ($product->color as $color)
                                                             <div class="round">
-                                                                <input type="checkbox" id="{{ $color }}" value="{{ $color }}">
+                                                                <input type="checkbox" id="{{ $color }}"
+                                                                    value="{{ $color }}">
                                                                 <label for="{{ $color }}"></label>
                                                             </div>
                                                         @endforeach
                                                     @else
-                                                        <p class="site-color">No colors available</p> <!-- Default text when no color is available -->
+                                                        <p class="site-color">No colors available</p>
+                                                        <!-- Default text when no color is available -->
                                                     @endif
                                                 </div>
                                             </div>
@@ -227,12 +229,13 @@
 
 
                                 @if (!empty($product->unit_discount_price))
-                                    <div class="ps-product__meta">
-                                        <span class="ps-product__price sale">৳{{ $product->unit_discount_price }}</span>
+                                    <div class="ps-product__meta py-3">
+                                        <span
+                                            class="ps-product__price sale">৳{{ $product->unit_discount_price }}</span>
                                         <span class="ps-product__del">৳{{ $product->unit_price }}</span>
                                     </div>
                                 @else
-                                    <div class="ps-product__meta">
+                                    <div class="ps-product__meta py-3">
                                         <span class="ps-product__price sale">৳{{ $product->unit_price }}</span>
                                     </div>
                                 @endif
@@ -256,9 +259,15 @@
 
                                 <ul class="ps-product__bundle">
                                     <li><i class="icon-bag2"></i>Full cash on delivery</li>
-                                    <li><i class="icon-truck"></i>Inside Dhaka-70 TK</li>
-                                    <li><i class="icon-truck"></i>Outside Dhaka-150 TK</li>
+                                    <li><i class="icon-truck"></i>Inside Dhaka-70 TK (24-48 hrs)</li>
+                                    <li><i class="icon-truck"></i>Outside Dhaka-150 TK (2-4 Days)</li>                                 </li>
                                     <li><i class="icon-truck"></i>Dhaka Sub-area-100 TK </li>
+                                    <li><i class="icon-location"></i>
+                                        Sub-areas: <br>
+                                        <span class="pt-2"
+                                            style="position: relative;left: 32px;width: 94%;display: inline-block;">Keraniganj,
+                                            Tangi, Savar, Gazipur, Narayanganj, Asulia (2-4 Days)</span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

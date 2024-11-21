@@ -4182,7 +4182,7 @@ textarea.form-control {
 }
 
 .ps-product--detail .ps-product__bundle li {
-    font-size: 14px;
+    font-size: 13px;
     color: #4e4d4d;
     padding: 5px 0;
     font-weight: 600;
@@ -4197,7 +4197,7 @@ textarea.form-control {
 .ps-product--detail .ps-product__feature {
     background-color: #8cbf4440;
     border-radius: 4px;
-    padding: 30px;
+    padding: 15px;
     margin-top: 50px;
 }
 
@@ -18729,8 +18729,9 @@ table.dataTable tbody td:last-child {
     background-color: transparent;
 }
 
-.menus-items-head:nth-child(5)::before {
-    background-color: transparent; /* Transparent for the 5th item */
+
+.menus-items-head:nth-child(8)::before {
+    background-color: white; /* Transparent for the 5th item */
 }
 .top-up-section {
     margin-top: -70px;
@@ -19196,6 +19197,12 @@ table.dataTable tbody td:last-child {
 
 .tst-btn {
     border: 1px solid #fff;
+    padding: 10px;
+}
+.tst-btn:hover {
+    background-color: #fff;
+    border: 1px solid #fff;
+    color: var(--site-green) !important;
     padding: 10px;
 }
 
