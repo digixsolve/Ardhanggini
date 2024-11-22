@@ -41,7 +41,8 @@ class AppServiceProvider extends ServiceProvider
             if (Schema::hasTable('categories')) {
                 View::share('categories', Category::active()->get());
             }
-            $randomNumber = rand(15, 30);
+            // $randomNumber = rand(15, 30);
+            $randomNumber = rand(10, 15);
             View::share('online', $randomNumber);
         } catch (Exception $e) {
             // Log the exception if needed
