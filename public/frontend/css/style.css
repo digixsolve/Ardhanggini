@@ -9830,6 +9830,7 @@ textarea.form-control {
 
 .ps-section--also .ps-product--standard {
     border-left: 1px solid #f0f2f5;
+    height: 500px;
 }
 
 .ps-section--also .ps-product--standard .ps-product__title {
@@ -11102,6 +11103,10 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
+    .ps-section--also .ps-product--standard {
+        border-left: 1px solid #f0f2f5;
+        height: 100%;
+    }
     .ps-section--categories .ps-categories__item {
         width: 100%;
         flex-basis: 100%;
