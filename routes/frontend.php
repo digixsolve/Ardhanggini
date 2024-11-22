@@ -38,7 +38,7 @@ Route::post('/stripe/pay', [StripeController::class, 'stripePost'])->name('strip
 
 
 // Shop
-Route::get('allproducts', [ShopController::class, 'allproducts'])->name('allproducts');
+Route::get('shop', [ShopController::class, 'allproducts'])->name('allproducts');
 Route::get('/products/filter', [ShopController::class, 'filterProducts'])->name('products.filter');
 Route::post('global-search', [HomeController::class, 'globalSearch'])->name('global.search');
 

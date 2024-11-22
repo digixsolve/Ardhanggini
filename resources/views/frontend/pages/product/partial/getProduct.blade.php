@@ -42,7 +42,7 @@
                             {!! $limitedWords !!}...
                         </div>
                         <div class="pt-3">
-                            <p class="fw-semibold">Reviews <span class="text-info">(02)</span></p>
+                            <p class="fw-semibold">Reviews <span class="text-info">({{ count($product->reviews) }})</span></p>
                         </div>
                     </div>
                 </div>

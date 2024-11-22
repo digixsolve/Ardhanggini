@@ -72,8 +72,8 @@ class HomeController extends Controller
             'categorytwoproducts'       => $categorytwoproducts,
             'categorythree'             => $categorythree ?? '',
             'categorythreeproducts'     => $categorythreeproducts,
-            'latest_products'           => Product::with('multiImages')->inRandomOrder()->where('status', 'published')->paginate(8),
-            'deal_products'             => Product::with('multiImages')->whereNotNull('box_discount_price')->where('status', 'published')->inRandomOrder()->limit(10)->get(),
+            'latest_products'           => Product::with('multiImages','reviews')->inRandomOrder()->where('status', 'published')->paginate(8),
+            'deal_products'             => Product::with('multiImages','reviews')->whereNotNull('box_discount_price')->where('status', 'published')->inRandomOrder()->limit(10)->get(),
         ];
         // dd($data['deal_products']);
         return view('frontend.pages.home', $data);

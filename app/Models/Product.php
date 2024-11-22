@@ -41,6 +41,10 @@ class Product extends Model
     {
         return $this->hasMany(ProductImage::class,'product_id');
     }
+    public function reviews()
+    {
+        return $this->hasMany(ProductReview::class,'product_id');
+    }
     public function scopeActive($query)
     {
         return $query->where('status', 'published');

@@ -169,23 +169,70 @@
                                                             {{ implode(' ', array_slice(explode(' ', $latest_product->name), 0, 8)) }}
                                                         </a>
                                                     </h5>
+                                                    @php
+                                                        $review =
+                                                            count($latest_product->reviews) > 0
+                                                                ? optional($latest_product->reviews)->sum('rating') /
+                                                                    count($latest_product->reviews)
+                                                                : 0;
+                                                        // dd($latest_product->name, $review);
+                                                    @endphp
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div class="ps-product__rating">
-                                                            <div class="br-wrapper br-theme-fontawesome-stars"><select
-                                                                    class="ps-rating" data-read-only="true"
-                                                                    style="display: none;">
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-                                                                    <option value="3">3</option>
-                                                                    <option value="4">4</option>
-                                                                    <option value="5">5</option>
-                                                                </select>
-                                                            </div>
+                                                            @if ($review > 0)
+                                                                {{-- <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                    <select class="ps-rating" data-read-only="true"
+                                                                        style="display: none;">
+                                                                        @if ($review > 0 && $review < 2)
+                                                                            <option value="1">1</option>
+                                                                        @endif
+                                                                        @if ($review > 1 && $review < 3)
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                        @endif
+                                                                        @if ($review > 2 && $review < 4)
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                        @endif
+                                                                        @if ($review > 3 && $review < 5)
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                        @endif
+                                                                        @if ($review > 4 && $review < 6)
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                        @endif
+                                                                    </select>
+                                                                </div> --}}
+                                                                <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                    <select class="ps-rating" data-read-only="true"
+                                                                        style="display: none;">
+                                                                        @php
+                                                                            $maxRating = min(5, max(1, floor($review))); // Get the highest full rating value
+                                                                        @endphp
+                                                                        @for ($i = 1; $i <= $maxRating; $i++)
+                                                                            <option value="{{ $i }}">
+                                                                                {{ $i }}</option>
+                                                                        @endfor
+                                                                    </select>
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                         <div>
-                                                            Reviews(02)
+                                                            @if (count($latest_product->reviews) > 0)
+                                                                Reviews ({{ count($latest_product->reviews) }})
+                                                            @else
+                                                                No Reviews Yet
+                                                            @endif
                                                         </div>
                                                     </div>
+
                                                     @if (!empty($latest_product->unit_discount_price))
                                                         <div class="ps-product__meta">
                                                             <span
@@ -322,21 +369,37 @@
                                                             {{ implode(' ', array_slice(explode(' ', $categoryoneproduct->name), 0, 8)) }}
                                                         </a>
                                                     </h5>
+                                                    @php
+                                                        $review =
+                                                            count($categoryoneproduct->reviews) > 0
+                                                                ? optional($categoryoneproduct->reviews)->sum(
+                                                                        'rating',
+                                                                    ) / count($categoryoneproduct->reviews)
+                                                                : 0;
+                                                    @endphp
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div class="ps-product__rating">
-                                                            <div class="br-wrapper br-theme-fontawesome-stars"><select
-                                                                    class="ps-rating" data-read-only="true"
-                                                                    style="display: none;">
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-                                                                    <option value="3">3</option>
-                                                                    <option value="4">4</option>
-                                                                    <option value="5">5</option>
-                                                                </select>
-                                                            </div>
+                                                            @if ($review > 0)
+                                                                <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                    <select class="ps-rating" data-read-only="true"
+                                                                        style="display: none;">
+                                                                        @php
+                                                                            $maxRating = min(5, max(1, floor($review))); // Get the highest full rating value
+                                                                        @endphp
+                                                                        @for ($i = 1; $i <= $maxRating; $i++)
+                                                                            <option value="{{ $i }}">
+                                                                                {{ $i }}</option>
+                                                                        @endfor
+                                                                    </select>
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                         <div>
-                                                            Reviews(02)
+                                                            @if (count($categoryoneproduct->reviews) > 0)
+                                                                Reviews ({{ count($categoryoneproduct->reviews) }})
+                                                            @else
+                                                                No Reviews Yet
+                                                            @endif
                                                         </div>
                                                     </div>
                                                     @if (!empty($categoryoneproduct->unit_discount_price))
@@ -488,21 +551,36 @@
                                                                 {{ implode(' ', array_slice(explode(' ', $categorytwoproduct->name), 0, 8)) }}
                                                             </a>
                                                         </h5>
-                                                        <div>
+                                                        @php
+                                                            $review =
+                                                                count($categorytwoproduct->reviews) > 0
+                                                                    ? optional($categorytwoproduct->reviews)->sum(
+                                                                            'rating',
+                                                                        ) / count($categorytwoproduct->reviews)
+                                                                    : 0;
+                                                        @endphp
+                                                        <div class="d-flex justify-content-between align-items-center">
                                                             <div class="ps-product__rating">
-                                                                <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                    <select class="ps-rating" data-read-only="true"
-                                                                        style="display: none;">
-                                                                        <option value="1">1</option>
-                                                                        <option value="2">2</option>
-                                                                        <option value="3">3</option>
-                                                                        <option value="4">4</option>
-                                                                        <option value="5">5</option>
-                                                                    </select>
-                                                                </div>
+                                                                @if ($review > 0)
+                                                                    <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                        <select class="ps-rating"
+                                                                            data-read-only="true"
+                                                                            style="display: none;">
+                                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                                <option value="{{ $i }}"
+                                                                                    @if ($i <= round($review)) selected @endif>
+                                                                                    {{ $i }}</option>
+                                                                            @endfor
+                                                                        </select>
+                                                                    </div>
+                                                                @endif
                                                             </div>
                                                             <div>
-                                                                Reviews
+                                                                @if (count($categorytwoproduct->reviews) > 0)
+                                                                    Reviews ({{ count($categorytwoproduct->reviews) }})
+                                                                @else
+                                                                    No Reviews Yet
+                                                                @endif
                                                             </div>
                                                         </div>
                                                         @if (!empty($categorytwoproduct->unit_discount_price))
@@ -642,21 +720,37 @@
                                                             {{ implode(' ', array_slice(explode(' ', $categorythreeproduct->name), 0, 8)) }}
                                                         </a>
                                                     </h5>
+                                                    @php
+                                                        $review =
+                                                            count($categorythreeproduct->reviews) > 0
+                                                                ? optional($categorythreeproduct->reviews)->sum(
+                                                                        'rating',
+                                                                    ) / count($categorythreeproduct->reviews)
+                                                                : 0;
+                                                    @endphp
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div class="ps-product__rating">
-                                                            <div class="br-wrapper br-theme-fontawesome-stars"><select
-                                                                    class="ps-rating" data-read-only="true"
-                                                                    style="display: none;">
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-                                                                    <option value="3">3</option>
-                                                                    <option value="4">4</option>
-                                                                    <option value="5">5</option>
-                                                                </select>
-                                                            </div>
+                                                            @if ($review > 0)
+                                                                <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                    <select class="ps-rating" data-read-only="true"
+                                                                        style="display: none;">
+                                                                        @php
+                                                                            $maxRating = min(5, max(1, floor($review))); // Get the highest full rating value
+                                                                        @endphp
+                                                                        @for ($i = 1; $i <= $maxRating; $i++)
+                                                                            <option value="{{ $i }}">
+                                                                                {{ $i }}</option>
+                                                                        @endfor
+                                                                    </select>
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                         <div>
-                                                            Reviews(02)
+                                                            @if (count($categorythreeproduct->reviews) > 0)
+                                                                Reviews ({{ count($categorythreeproduct->reviews) }})
+                                                            @else
+                                                                No Reviews Yet
+                                                            @endif
                                                         </div>
                                                     </div>
                                                     @if (!empty($categorythreeproduct->unit_discount_price))
@@ -992,21 +1086,34 @@
                                                         {{ implode(' ', array_slice(explode(' ', $deal_product->name), 0, 8)) }}
                                                     </a>
                                                 </h5>
+                                                @php
+                                                    $review =
+                                                        count($deal_product->reviews) > 0
+                                                            ? optional($deal_product->reviews)->sum('rating') /
+                                                                count($deal_product->reviews)
+                                                            : 0;
+                                                @endphp
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div class="ps-product__rating">
-                                                        <div class="br-wrapper br-theme-fontawesome-stars"><select
-                                                                class="ps-rating" data-read-only="true"
-                                                                style="display: none;">
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
-                                                            </select>
-                                                        </div>
+                                                        @if ($review > 0)
+                                                            <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                <select class="ps-rating" data-read-only="true"
+                                                                    style="display: none;">
+                                                                    @for ($i = 1; $i <= 5; $i++)
+                                                                        <option value="{{ $i }}"
+                                                                            @if ($i <= round($review)) selected @endif>
+                                                                            {{ $i }}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                     <div>
-                                                        Reviews
+                                                        @if (count($deal_product->reviews) > 0)
+                                                            Reviews ({{ count($deal_product->reviews) }})
+                                                        @else
+                                                            No Reviews Yet
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 @if (!empty($deal_product->unit_discount_price))
