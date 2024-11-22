@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         // Set default values
         View::share('setting', null);
         View::share('categories', null);
+        View::share('online', null);
 
         try {
             // Check for table existence and set actual values
@@ -40,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
             if (Schema::hasTable('categories')) {
                 View::share('categories', Category::active()->get());
             }
+            
         } catch (Exception $e) {
             // Log the exception if needed
         }

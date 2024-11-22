@@ -140,7 +140,7 @@ class HomeController extends Controller
     public function productDetails($slug)
     {
         $data = [
-            'product'          => Product::where('slug', $slug)->first(),
+            'product'          => Product::with('reviews')->where('slug', $slug)->first(),
             'related_products' => Product::select('id', 'slug', 'meta_title', 'thumbnail', 'name', 'box_discount_price','unit_discount_price', 'box_price', 'unit_price')->with('multiImages')->where('status', 'published')->inRandomOrder()->limit(12)->get(),
         ];
         return view('frontend.pages.product.productDetails', $data);
