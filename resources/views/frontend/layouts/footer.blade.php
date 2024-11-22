@@ -228,7 +228,7 @@
                                 <h5 class="ps-block__title text-center mb-0">Visitor Count</h5>
                                 <div class="visitor-box">
                                     <div class="main-counter">
-                                        <h1 class="mb-0">00</h1>
+                                        <h1 class="mb-0">{{ $online }}</h1>
                                         <div class="sub-counter">
                                             <p>ONLINE NOW</p>
                                         </div>
