@@ -95,7 +95,8 @@
                                     </a>
                                 </div>
                                 <div class="ps-footer__title">Our store</div>
-                                <p class="pb-3">{{ optional($setting)->address_line_one }}<br>{{ optional($setting)->address_line_two }}
+                                <p class="pb-3">
+                                    {{ optional($setting)->address_line_one }}<br>{{ optional($setting)->address_line_two }}
                                 </p>
 
                                 <!-- In your Blade view (e.g., resources/views/your_view_name.blade.php) -->
@@ -186,14 +187,16 @@
                                 <h5 class="ps-footer__title">Need help</h5>
                                 <div class="ps-footer__fax">
                                     <div class="d-flex align-items-center">
-                                        <img src="{{ asset('images/whatsapp-icons.gif') }}" alt="" width="55px">
+                                        <img src="{{ asset('images/whatsapp-icons.gif') }}" alt=""
+                                            width="55px">
                                         {{ optional($setting)->primary_phone }}
                                     </div>
 
                                 </div>
                                 <p class="ps-footer__work">
                                     Monday – Friday: 9:00-20:00<br>Saturday: 11:00 – 15:00 <br>
-                                    <a href="mailto:{{ optional($setting)->contact_email }}">{{ optional($setting)->contact_email }}</a>
+                                    <a
+                                        href="mailto:{{ optional($setting)->contact_email }}">{{ optional($setting)->contact_email }}</a>
                                 </p>
                             </div>
                         </div>
@@ -236,11 +239,11 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="today-count">
                                             <small class="mb-0 text-white">Today</small>
-                                            <small class="mb-0 text-white fw-bold">70</small>
+                                            <small class="mb-0 text-white fw-bold">{{ $online + 210 }}</small>
                                         </div>
                                         <div class="total-count">
                                             <small class="mb-0 text-white">Total</small>
-                                            <small class="mb-0 text-white fw-bold">70</small>
+                                            <small class="mb-0 text-white fw-bold">{{ $online + 1010 }}</small>
                                         </div>
                                     </div>
                                 </div>
