@@ -816,25 +816,6 @@
                 </div>
             @endif
         </div>
-<<<<<<< HEAD
-        {{-- style="background-color: #353C44;" --}}
-        <section class="mt-5 mb-0">
-            <div class="container-fluid py-5 context" >
-                <div class="container py-5">
-                    <div class="row py-5 align-items-center">
-                        <div class="col-lg-6">
-                            <div>
-                                <p class="text-white">Clients</p>
-                                <h2 class="text-white fw-normal">Happy With</h2>
-                                <h1 class="text-white fw-bold">Customers & Clients</h1>
-                                <p class="mb-5 text-white">If you need any industrial solution we are available for
-                                    you. Lorem ipsum dolor sit
-                                    amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua.</p>
-                                <div class="mt-4">
-                                    <a href="#" class="tst-btn text-white px-5">Shop Now</a>
-                                </div>
-=======
         <section class="container-fluid section-bg mt-5">
             <!-- Circles Background -->
             <!-- Circles Background -->
@@ -878,7 +859,6 @@
                                 below.</p>
                             <div class="pt-5">
                                 <a href="{{ route('allproducts') }}" class="tst-btn text-white px-5">Shop Now</a>
->>>>>>> a66c613ab0edfdba7fc69d64f2a7abbe03ba2a7c
                             </div>
                         </div>
                     </div>
