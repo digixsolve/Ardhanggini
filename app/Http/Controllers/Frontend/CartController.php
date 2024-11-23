@@ -372,7 +372,7 @@ class CartController extends Controller
             DB::rollback();
             Session::flash('error', $e->getMessage());
             // Session::flush();
-            return redirect()->route('cart')->withInput();
+            return redirect()->back()->withInput();
         }
     }
 
