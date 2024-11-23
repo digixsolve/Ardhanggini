@@ -829,6 +829,14 @@
                                     <div class="ps-title col-lg-12">Shipping <span class="text-danger">*</span></div>
                                     <div class="ps-checkout__checkbox col-lg-12">
                                         @if ($subTotal > 3999)
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" name="shipping_id" type="radio"
+                                                    id="shipping-0" data-shipping_price="0" value="0" />
+                                                <label class="form-check-label" for="shipping-0">Free Delivery
+                                                    <span>(৳ 0)</span></label>
+                                            </div>
+                                        @else
                                             @foreach ($shippingmethods as $index => $shippingmethod)
                                                 <div class="form-check">
                                                     <input class="form-check-input" name="shipping_id" type="radio"
@@ -841,13 +849,6 @@
                                                         <span>(৳{{ number_format($shippingmethod->price, 2) }})</span></label>
                                                 </div>
                                             @endforeach
-                                        @else
-                                            <div class="form-check">
-                                                <input class="form-check-input" name="shipping_id" type="radio"
-                                                    id="shipping-0" data-shipping_price="0" value="0" />
-                                                <label class="form-check-label" for="shipping-0">Free Delivery
-                                                    <span>(৳ 0)</span></label>
-                                            </div>
                                         @endif
                                     </div>
                                 </div>
