@@ -19,7 +19,7 @@ class ShopController extends Controller
             // 'category'                => $category,
             'categories'   => Category::orderBy('name', 'ASC')->active()->get(),
             'brands'       => Brand::orderBy('name', 'ASC')->active()->get(),
-            'products'     => Product::latest('id')->active()->paginate(10),
+            'products'     => Product::with('reviews')->latest('id')->active()->paginate(10),
             'deal'        => DealBanner::active()->inRandomOrder()->first(),
             // 'productCount' => Product::active()->count(),
         ];

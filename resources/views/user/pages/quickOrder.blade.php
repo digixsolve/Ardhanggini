@@ -34,9 +34,10 @@
                                                 <tr>
                                                     <th width="5%">SL</th>
                                                     <th width="10%">Image</th>
-                                                    <th width="40%">Name</th>
+                                                    <th width="25%">Name</th>
                                                     <th width="15%" class="text-center">Status</th>
                                                     <th width="15%" class="text-center">Price</th>
+                                                    <th width="15%" class="text-center">Old Price</th>
                                                     <th width="15%" class="text-center">To Cart</th>
                                                 </tr>
                                             </thead>
@@ -64,16 +65,20 @@
                                                             @endif
                                                         </td>
                                                         <td class="text-center">
+                                                            <div class="ps-product__meta">
+                                                                <span
+                                                                    class="ps-product__price sale">৳{{ $product->unit_price }}</span>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
                                                             @if (!empty($product->unit_discount_price))
                                                                 <div class="ps-product__meta">
                                                                     <span
-                                                                        class="ps-product__price sale">৳{{ $product->unit_discount_price }}</span>
-                                                                    <span
-                                                                        class="ps-product__del">৳{{ $product->unit_price }}</span>
+                                                                        class="ps-product__del">৳{{ $product->unit_discount_price }}</span>
                                                                 </div>
                                                             @else
-                                                                <div class="ps-product__meta"><span
-                                                                        class="ps-product__price sale">৳{{ $product->unit_price }}</span>
+                                                                <div class="ps-product__meta">
+                                                                    <span class="ps-product__del">N/A</span>
                                                                 </div>
                                                             @endif
                                                         </td>

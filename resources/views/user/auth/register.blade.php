@@ -130,7 +130,7 @@
                                 </div> --}}
 
                                 <!-- City/Country -->
-                                <div class="ps-form__group col-12 col-xl-3">
+                                <div class="ps-form__group col-12 col-xl-4">
                                     <label class="ps-form__label" for="City">City<span
                                             class="text-danger">*</span></label>
                                     <div class="input-group">
@@ -141,7 +141,7 @@
                                     <x-input-error :messages="$errors->get('address_two')" class="mt-2" />
                                 </div>
                                 <!-- Zip Code -->
-                                <div class="ps-form__group col-12 col-xl-3">
+                                <div class="ps-form__group col-12 col-xl-4">
                                     <label class="ps-form__label" for="Zip Code">Post Code<span
                                             class="text-danger">*</span></label>
                                     <div class="input-group">
@@ -150,15 +150,7 @@
                                     </div>
                                     <x-input-error :messages="$errors->get('zipcode')" class="mt-2" />
                                 </div>
-                                <div class="ps-form__group col-12 col-xl-3">
-                                    <label class="ps-form__label" for="state">County</label>
-                                    <div class="input-group">
-                                        <input id="state" class="form-control ps-form__input" type="text"
-                                            value="{{ old('state') }}" placeholder="Enter Your County" name="state" autocomplete="state" />
-                                    </div>
-                                    <x-input-error :messages="$errors->get('state')" class="mt-2" />
-                                </div>
-                                <div class="ps-form__group col-12 col-xl-3">
+                                <div class="ps-form__group col-12 col-xl-4">
                                     <label class="ps-form__label" for="Country">Country<span
                                             class="text-danger">*</span></label>
                                     <div class="input-group">
@@ -181,7 +173,7 @@
                                             <option value="Azerbaijan">Azerbaijan</option>
                                             <option value="Bahamas">Bahamas</option>
                                             <option value="Bahrain">Bahrain</option>
-                                            <option value="Bangladesh">Bangladesh</option>
+                                            <option value="Bangladesh" selected>Bangladesh</option>
                                             <option value="Barbados">Barbados</option>
                                             <option value="Belarus">Belarus</option>
                                             <option value="Belgium">Belgium</option>
@@ -399,7 +391,7 @@
                                             <option value="Uganda">Uganda</option>
                                             <option value="Ukraine">Ukraine</option>
                                             <option value="United Arab Emirates">United Arab Emirates</option>
-                                            <option value="United Kingdom" selected>United Kingdom</option>
+                                            <option value="United Kingdom">United Kingdom</option>
                                             <option value="United State" >United State</option>
                                             <option value="Uruguay">Uruguay</option>
                                             <option value="U.S. Minor Outlying Islands">U.S. Minor Outlying Islands
@@ -428,15 +420,13 @@
                                         <input type="radio" class="form-check-input" id="newsletterYes"
                                             name="newsletter_preference" value="yes">
                                         <label class="form-check-label" for="newsletterYes">Yes please,
-                                            send
-                                            me email newsletters</label>
+                                            send me email newsletters</label>
                                     </div> <br>
                                     <div class="form-check ml-0">
                                         <input type="radio" class="form-check-input" id="newsletterNo"
                                             name="newsletter_preference" value="no" checked>
                                         <label class="form-check-label" for="newsletterNo">No thanks,
-                                            please
-                                            don't send me email newsletters</label>
+                                            please don't send me email newsletters</label>
                                     </div>
                                 </div>
                                 <div class="col-12 col-xl-12">
@@ -460,7 +450,7 @@
                                         Now</a>
                                 </h6>
                             </div>
-                            <div class="ps-form__submit">
+                            <div class="ps-form__submit pt-3">
                                 <x-primary-button class="ps-btn ps-btn--warning" type="submit">
                                     {{ __('Register') }}
                                 </x-primary-button>

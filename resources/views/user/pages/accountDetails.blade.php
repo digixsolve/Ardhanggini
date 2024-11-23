@@ -40,7 +40,7 @@
                                             enctype="multipart/form-data">
                                             @csrf
                                             @method('PATCH')
-                                            <div class="row">
+                                            <div class="row pt-5">
                                                 <div class="col-12 col-lg-12">
                                                     <div class="ps-checkout__form">
                                                         <div class="row">
@@ -67,7 +67,7 @@
                                                                         type="text" required>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12">
+                                                            <div class="col-12 col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="ps-checkout__label">Phone <span
                                                                             class="text-danger">*</span> </label>
@@ -76,45 +76,6 @@
                                                                         type="text" required>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-lg-6">
-                                                                <div class="form-group">
-                                                                    <label class="ps-checkout__label">Company Name
-                                                                        <span class="text-danger">*</span> </label>
-                                                                    <input class="form-control" name="company_name"
-                                                                        value="{{ old('company_name', Auth::user()->company_name) }}"
-                                                                        type="text" required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-lg-6">
-                                                                <div class="form-group">
-                                                                    <label class="ps-checkout__label">Company
-                                                                        Registration Number</label>
-                                                                    <input class="form-control"
-                                                                        name="company_registration_number"
-                                                                        value="{{ old('company_registration_number', Auth::user()->company_registration_number) }}"
-                                                                        type="text">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-lg-6">
-                                                                <div class="form-group">
-                                                                    <label class="ps-checkout__label">Company VAT
-                                                                        Number</label>
-                                                                    <input class="form-control"
-                                                                        name="company_vat_number"
-                                                                        value="{{ old('company_vat_number', Auth::user()->company_vat_number) }}"
-                                                                        type="text">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-lg-6">
-                                                                <div class="form-group">
-                                                                    <label class="ps-checkout__label">Website
-                                                                        Address</label>
-                                                                    <input class="form-control" name="website_address"
-                                                                        value="{{ old('website_address', Auth::user()->website_address) }}"
-                                                                        type="text">
-                                                                </div>
-                                                            </div>
-
                                                             <!-- Billing Information Section -->
                                                             <div class="col-12 mt-4">
                                                                 <h4>Billing Information</h4>
@@ -164,7 +125,7 @@
                                                                 <h4>Login Information</h4>
                                                                 <hr>
                                                             </div>
-                                                            <div class="col-12">
+                                                            <div class="col-12 col-md-6">
                                                                 <div class="form-group">
                                                                     <label class="ps-checkout__label">Email address
                                                                         <span class="text-danger">*</span> </label>
@@ -173,7 +134,7 @@
                                                                         type="email" required>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12">
+                                                            <div class="col-12 col-md-6">
                                                                 <div>
                                                                     <label class="ps-checkout__label pb-2">Password
                                                                         <span class="text-danger">*</span>

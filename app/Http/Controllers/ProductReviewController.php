@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\ProductReview;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,10 @@ class ProductReviewController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.productReview.create');
+        $data = [
+            'products' => Product::latest('id')->get(['id','name']),
+        ];
+        return view('admin.pages.productReview.create',$data);
     }
 
     /**
@@ -105,10 +109,11 @@ class ProductReviewController extends Controller
      */
     public function edit(string $id)
     {
-        // $data =[
-        //     'reviews' => Testimonial::findOrFail($id),
-        // ];
-        // return view('admin.pages.pro.edit',$data);
+        $data = [
+            'review'   => ProductReview::find($id),
+            'products' => Product::latest('id')->get(['id','name']),
+        ];
+        return view('admin.pages.productReview.edit',$data);
     }
 
     /**
