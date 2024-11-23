@@ -88,7 +88,7 @@
                                                     <div style="font-family:Arial,Helvetica,sans-serif">Shipping Charge
                                                     </div>
                                                     <div style="font-family:Arial,Helvetica,sans-serif">৳
-                                                        {{ $data['order']->shippingCharge->price }}</div>
+                                                        {{ optional($data['order']->shippingCharge)->price }}</div>
                                                 </div>
 
 
