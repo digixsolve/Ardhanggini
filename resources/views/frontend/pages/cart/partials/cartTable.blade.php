@@ -152,7 +152,7 @@
                 <div class="ps-shopping__label">Subtotal</div>
                 <div class="ps-shopping__price">৳{{ Cart::subtotal() }}</div>
             </div>
-            <div class="ps-shopping__row flex-column py-3">
+            {{-- <div class="ps-shopping__row flex-column py-3">
                 <div class="row">
                     <div class="col-lg-12">
                         <p class="ps-shopping__label text-left">Delivery Charge</p>
@@ -188,7 +188,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="ps-shopping__row">
                 <div class="ps-shopping__label">Total</div>
                 <div class="ps-shopping__price">৳{{ Cart::subtotal() }}</div>
