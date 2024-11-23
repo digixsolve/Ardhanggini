@@ -96,11 +96,14 @@
             @if ($latest_products->count() > 0)
                 <section class="ps-section--latest-horizontal">
                     <section class="container px-0">
-                        <h3 class="ps-section__title pb-3 pb-lg-5" style="font-size: 30px;">Latest products</h3>
+                        <h3 class="ps-section__title pb-3 pb-lg-5" style="font-size: 30px;">Latest products <img
+                                width="20px"
+                                src="https://static.vecteezy.com/system/resources/previews/011/999/958/non_2x/fire-icon-free-png.png"
+                                alt=""></h3>
                         <div class="ps-section__content">
                             <div class="row m-0">
                                 @foreach ($latest_products as $latest_product)
-                                    <div class="col-12 col-md-4 col-lg-3 dot4 p-0">
+                                    <div class="col-6 col-md-4 col-lg-3 dot4 p-0">
                                         <div class="ps-section__product">
                                             <div class="ps-product ps-product--standard">
                                                 <div class="ps-product__thumbnail">
@@ -270,8 +273,7 @@
 
                                                         <div class="ps-product__item cart" data-toggle="tooltip"
                                                             data-placement="left" title="Add to cart"><a
-                                                                href="#"><i
-                                                                    class="fa fa-shopping-basket"></i></a>
+                                                                href="#"><i class="fa fa-eye"></i></a>
                                                         </div>
                                                         <div class="ps-product__item" data-toggle="tooltip"
                                                             data-placement="left" title="Wishlist"><a
@@ -300,7 +302,7 @@
                         <div class="ps-section__content">
                             <div class="row m-0">
                                 @foreach ($categoryoneproducts as $categoryoneproduct)
-                                    <div class="col-12 col-md-4 col-lg-3 dot4 p-0">
+                                    <div class="col-6 col-md-4 col-lg-3 dot4 p-0">
                                         <div class="ps-section__product">
                                             <div class="ps-product ps-product--standard">
                                                 <div class="ps-product__thumbnail">
@@ -440,7 +442,7 @@
                                                         <div class="ps-product__item cart" data-toggle="tooltip"
                                                             data-placement="left" title="Add to cart"><a
                                                                 href="#"><i
-                                                                    class="fa fa-shopping-basket"></i></a>
+                                                                    class="fa fa-eye"></i></a>
                                                         </div>
                                                         <div class="ps-product__item" data-toggle="tooltip"
                                                             data-placement="left" title="Wishlist"><a
@@ -622,7 +624,7 @@
                                                             <div class="ps-product__item cart" data-toggle="tooltip"
                                                                 data-placement="left" title="Add to cart"><a
                                                                     href="#"><i
-                                                                        class="fa fa-shopping-basket"></i></a>
+                                                                        class="fa fa-eye"></i></a>
                                                             </div>
                                                             <div class="ps-product__item" data-toggle="tooltip"
                                                                 data-placement="left" title="Wishlist"><a
@@ -651,7 +653,7 @@
                         <div class="ps-section__content">
                             <div class="row m-0">
                                 @foreach ($categorythreeproducts as $categorythreeproduct)
-                                    <div class="col-12 col-md-4 col-lg-3 dot4 p-0">
+                                    <div class="col-6 col-md-4 col-lg-3 dot4 p-0">
                                         <div class="ps-section__product">
                                             <div class="ps-product ps-product--standard">
                                                 <div class="ps-product__thumbnail">
@@ -791,7 +793,7 @@
                                                         <div class="ps-product__item cart" data-toggle="tooltip"
                                                             data-placement="left" title="Add to cart"><a
                                                                 href="#"><i
-                                                                    class="fa fa-shopping-basket"></i></a>
+                                                                    class="fa fa-eye"></i></a>
                                                         </div>
                                                         <div class="ps-product__item" data-toggle="tooltip"
                                                             data-placement="left" title="Wishlist"><a
@@ -821,17 +823,6 @@
             <!-- Circles Background -->
             <ul class="circles">
                 <!-- Add more circle elements -->
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
                 <li></li>
                 <li></li>
                 <li></li>
@@ -887,31 +878,11 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-<<<<<<< HEAD
-                                                        <div class="col-lg-12">
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center mt-5">
-                                                                <div class="profile d-flex align-items-center">
-                                                                    <div>
-                                                                        <img src="{{ !empty($testimonial->image) ? asset('storage/' . $testimonial->image) : asset('images/testimonial.png') }}"
-                                                                            alt="">
-
-                                                                    </div>
-                                                                    <div class="pl-3">
-                                                                        <h4 class="text-white fw-semibold mb-0">
-                                                                            {{ $testimonial->name }}</h4>
-                                                                        <p class="text-white mb-0">
-                                                                            <small>{{ $testimonial->company_name }}</small>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-=======
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <div
                                                             class="d-flex justify-content-between align-items-center mt-3 mt-lg-5 testimonial-author">
                                                             <div class="profile d-flex align-items-center">
->>>>>>> a66c613ab0edfdba7fc69d64f2a7abbe03ba2a7c
                                                                 <div>
                                                                     <img src="{{ !empty($testimonial->image) ? asset('storage/' . $testimonial->image) : asset('images/testimonial.png') }}"
                                                                         alt="">
@@ -968,7 +939,7 @@
                         <!-- First Row: First Three Deals -->
                         <div class="row">
                             @foreach ($deals->slice(0, 3) as $deal)
-                                <div class="col-12 col-md-4">
+                                <div class="col-6 col-md-4">
                                     <div class="ps-promo__item">
                                         <a href="{{ route('product.details', $deal->product->slug) }}">
                                             @if ($deal->image)
@@ -1170,26 +1141,20 @@
                                                     Cart</a>
                                                 <div class="ps-product__actions ps-product__group-mobile">
 
-                                                    <div class="ps-product__item cart" data-toggle="tooltip"
-                                                        data-placement="left" title="Add to cart">
+                                                    <div class="ps-product__item cart">
                                                         <a class="add_to_cart"
                                                             href="{{ route('cart.store', $deal_product->id) }}"
                                                             data-product_id="{{ $deal_product->id }}"
                                                             data-product_qty="1">
-                                                            <i class="fa fa-shopping-basket"></i>
+                                                            <i class="fa fa-eye"></i>
                                                         </a>
                                                     </div>
-                                                    <div class="ps-product__item" data-toggle="tooltip"
-                                                        data-placement="left" title="Wishlist">
+                                                    <div class="ps-product__item">
                                                         <a class="add_to_wishlist"
                                                             href="{{ route('wishlist.store', $deal_product->id) }}">
                                                             <i class="fa fa-heart-o"></i>
                                                         </a>
                                                     </div>
-                                                    {{-- <div class="ps-product__item rotate" data-toggle="tooltip"
-                                                        data-placement="left" title="Add to compare"><a
-                                                            href="compare.html"><i class="fa fa-align-left"></i></a>
-                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
