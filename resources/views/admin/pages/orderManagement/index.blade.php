@@ -274,8 +274,12 @@
                 <tbody>
                     @foreach ($orders as $userId => $userOrders)
                         <tr>
-                            <td colspan="9" class="fw-bold text-gray-800">User:
-                                {{ $userOrders->first()->user->first_name }} {{ $userOrders->first()->user->last_name }}
+                            <td colspan="9" class="fw-bold text-gray-800">
+                                <h5 class="text-start">
+                                    Client :
+                                    {{ $userOrders->first()->user->first_name }}
+                                    {{ $userOrders->first()->user->last_name }}
+                                </h5>
                             </td>
                         </tr>
 
