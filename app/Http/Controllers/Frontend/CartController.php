@@ -246,7 +246,12 @@ class CartController extends Controller
 
             $billingAddress = $request->input('billing_address_1') . ', ' . $request->input('billing_address_2');
             $shippingAddress = !empty($request->input('shipping_address')) ? $request->input('shipping_address') : $billingAddress;
-
+            $shipping_method =ShippingMethod::find($request->input('shipping_id'));
+            if ($shipping_method) {
+                $shipping_charge = $shipping_method->price;
+            } else {
+                $shipping_charge = "0";
+            }
 
             $order = Order::create([
                 'order_number'                 => $code, // Generate a unique order number
@@ -257,7 +262,7 @@ class CartController extends Controller
                 'discount'                     => $request->input('discount', 0),
                 'total_amount'                 => $totalAmount,
                 'quantity'                     => Cart::instance('cart')->count(), // Total quantity of items in cart
-                'shipping_charge'              => ShippingMethod::find($request->input('shipping_id'))->price,
+                'shipping_charge'              => $shipping_charge,
                 'payment_method'               => $request->input('payment_method'),
                 'payment_status'               => 'unpaid',
                 'status'                       => 'pending',
