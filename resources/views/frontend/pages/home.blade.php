@@ -154,7 +154,9 @@
                                                     @if (!empty($latest_product->unit_discount_price))
                                                         <div class="ps-product__badge">
                                                             <div class="ps-badge ps-badge--sale">
-                                                                - {{ !empty($latest_product->unit_discount_price) && $latest_product->unit_discount_price > 0 ? number_format((($latest_product->unit_price - $latest_product->unit_discount_price) / $latest_product->unit_price) * 100,1) : 0 }} %
+                                                                -
+                                                                {{ !empty($latest_product->unit_discount_price) && $latest_product->unit_discount_price > 0 ? number_format((($latest_product->unit_price - $latest_product->unit_discount_price) / $latest_product->unit_price) * 100, 1) : 0 }}
+                                                                %
                                                             </div>
                                                         </div>
                                                     @endif
@@ -305,7 +307,9 @@
                                                     @if (!empty($categoryoneproduct->unit_discount_price))
                                                         <div class="ps-product__badge">
                                                             <div class="ps-badge ps-badge--sale">
-                                                                - {{ !empty($categoryoneproduct->unit_discount_price) && $categoryoneproduct->unit_discount_price > 0 ? number_format((($categoryoneproduct->unit_price - $categoryoneproduct->unit_discount_price) / $categoryoneproduct->unit_price) * 100,1) : 0 }} %
+                                                                -
+                                                                {{ !empty($categoryoneproduct->unit_discount_price) && $categoryoneproduct->unit_discount_price > 0 ? number_format((($categoryoneproduct->unit_price - $categoryoneproduct->unit_discount_price) / $categoryoneproduct->unit_price) * 100, 1) : 0 }}
+                                                                %
                                                             </div>
                                                         </div>
                                                     @endif
@@ -469,7 +473,9 @@
                                                         @if (!empty($categorytwoproduct->unit_discount_price))
                                                             <div class="ps-product__badge">
                                                                 <div class="ps-badge ps-badge--sale">
-                                                                    - {{ !empty($categorytwoproduct->unit_discount_price) && $categorytwoproduct->unit_discount_price > 0 ? number_format((($categorytwoproduct->unit_price - $categorytwoproduct->unit_discount_price) / $categorytwoproduct->unit_price) * 100,1) : 0 }} %
+                                                                    -
+                                                                    {{ !empty($categorytwoproduct->unit_discount_price) && $categorytwoproduct->unit_discount_price > 0 ? number_format((($categorytwoproduct->unit_price - $categorytwoproduct->unit_discount_price) / $categorytwoproduct->unit_price) * 100, 1) : 0 }}
+                                                                    %
                                                                 </div>
                                                             </div>
                                                         @endif
@@ -621,7 +627,9 @@
                                                     @if (!empty($categorythreeproduct->unit_discount_price))
                                                         <div class="ps-product__badge">
                                                             <div class="ps-badge ps-badge--sale">
-                                                                - {{ !empty($categorythreeproduct->unit_discount_price) && $categorythreeproduct->unit_discount_price > 0 ? number_format((($categorythreeproduct->unit_price - $categorythreeproduct->unit_discount_price) / $categorythreeproduct->unit_price) * 100,1) : 0 }} %
+                                                                -
+                                                                {{ !empty($categorythreeproduct->unit_discount_price) && $categorythreeproduct->unit_discount_price > 0 ? number_format((($categorythreeproduct->unit_price - $categorythreeproduct->unit_discount_price) / $categorythreeproduct->unit_price) * 100, 1) : 0 }}
+                                                                %
                                                             </div>
                                                         </div>
                                                     @endif
@@ -713,8 +721,9 @@
                 </div>
             @endif
         </div>
-        <section style="background-color: #353C44;" class="mt-5 mb-0">
-            <div class="container-fluid py-5">
+        {{-- style="background-color: #353C44;" --}}
+        <section class="mt-5 mb-0">
+            <div class="container-fluid py-5 context" >
                 <div class="container py-5">
                     <div class="row py-5 align-items-center">
                         <div class="col-lg-6">
@@ -762,7 +771,7 @@
                                                                 class="d-flex justify-content-between align-items-center mt-5">
                                                                 <div class="profile d-flex align-items-center">
                                                                     <div>
-                                                                        <img src="{{ !empty($testimonial->image) ? asset('storage/'.$testimonial->image) : asset('images/testimonial.png') }}"
+                                                                        <img src="{{ !empty($testimonial->image) ? asset('storage/' . $testimonial->image) : asset('images/testimonial.png') }}"
                                                                             alt="">
 
                                                                     </div>
@@ -795,6 +804,20 @@
                     </div>
                 </div>
             </div>
+            <div class="area">
+                <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
         </section>
 
         @if ($deals->count() > 0 || $deal_products->count() > 0)
@@ -810,12 +833,12 @@
                                         <a href="{{ route('product.details', $deal->product->slug) }}">
                                             @if ($deal->image)
                                                 <img class="ps-promo__banner"
-                                                    src="{{ !empty($deal->image) && file_exists(public_path('storage/' . $deal->image)) ? asset('storage/' . $deal->image) : asset('images/no_image.png') }}" alt="alt" />
+                                                    src="{{ !empty($deal->image) && file_exists(public_path('storage/' . $deal->image)) ? asset('storage/' . $deal->image) : asset('images/no_image.png') }}"
+                                                    alt="alt" />
                                             @endif
                                             <div class="ps-promo__content">
                                                 @if ($deal->badge)
-                                                    <span
-                                                        class="ps-promo__badge">
+                                                    <span class="ps-promo__badge">
                                                         {{ $deal->badge ?? round(100 - ($deal->offer_price / $deal->price) * 100) . '%' }}
                                                     </span>
                                                 @endif
@@ -944,7 +967,9 @@
                                                 @if (!empty($deal_product->unit_discount_price))
                                                     <div class="ps-product__badge">
                                                         <div class="ps-badge ps-badge--sale">
-                                                            - {{ !empty($deal_product->unit_discount_price) && $deal_product->unit_discount_price > 0 ? number_format((($deal_product->unit_price - $deal_product->unit_discount_price) / $deal_product->unit_price) * 100,1) : 0 }} %
+                                                            -
+                                                            {{ !empty($deal_product->unit_discount_price) && $deal_product->unit_discount_price > 0 ? number_format((($deal_product->unit_price - $deal_product->unit_discount_price) / $deal_product->unit_price) * 100, 1) : 0 }}
+                                                            %
                                                         </div>
                                                     </div>
                                                 @endif
