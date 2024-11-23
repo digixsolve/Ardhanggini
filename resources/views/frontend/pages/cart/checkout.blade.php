@@ -832,7 +832,7 @@
 
                                             <div class="form-check">
                                                 <input class="form-check-input" name="shipping_id" type="radio"
-                                                    id="shipping-0" data-shipping_price="0" value="0" />
+                                                    id="shipping-0" data-shipping_price="0" value="0" checked/>
                                                 <label class="form-check-label" for="shipping-0">Free Delivery
                                                     <span>(৳ 0)</span></label>
                                             </div>
@@ -842,7 +842,7 @@
                                                     <input class="form-check-input" name="shipping_id" type="radio"
                                                         id="shipping-{{ $shippingmethod->id }}"
                                                         data-shipping_price="{{ $shippingmethod->price }}"
-                                                        value="{{ $shippingmethod->id }}" />
+                                                        value="{{ $shippingmethod->id }}" required @checked($loop->first)/>
                                                     <label class="form-check-label"
                                                         for="shipping-{{ $shippingmethod->id }}">{{ $shippingmethod->title }}
                                                         {{ $shippingmethod->duration }}

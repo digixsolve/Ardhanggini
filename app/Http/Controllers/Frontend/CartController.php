@@ -319,26 +319,26 @@ class CartController extends Controller
             // dd($data['order']);
             // return view('pdf.invoice', $data);
             // Generate and save PDF
-            $pdf = Pdf::loadView('pdf.invoice', $data);
-            $pdfPath = storage_path('app/public/order/' . $order->order_number . '_invoice.pdf');
+            // $pdf = Pdf::loadView('pdf.invoice', $data);
+            // $pdfPath = storage_path('app/public/order/' . $order->order_number . '_invoice.pdf');
 
-            // Ensure the directory exists
-            $directory = dirname($pdfPath);
-            if (!File::exists($directory)) {
-                File::makeDirectory($directory, 0755, true);
-            }
+            // // Ensure the directory exists
+            // $directory = dirname($pdfPath);
+            // if (!File::exists($directory)) {
+            //     File::makeDirectory($directory, 0755, true);
+            // }
 
-            try {
-                $pdf->save($pdfPath);
-                $order->update([
-                    'invoice' => 'order/' . $order->order_number . '_invoice.pdf',
-                ]);
-            } catch (\Exception $e) {
-                // Handle PDF save exception
-                // flash()->error('Failed to generate PDF: ' . $e->getMessage());
-                Session::flash('error', 'Failed to generate PDF: ' . $e->getMessage());
-                // Session::flush();
-            }
+            // try {
+            //     $pdf->save($pdfPath);
+            //     $order->update([
+            //         'invoice' => 'order/' . $order->order_number . '_invoice.pdf',
+            //     ]);
+            // } catch (\Exception $e) {
+            //     // Handle PDF save exception
+            //     // flash()->error('Failed to generate PDF: ' . $e->getMessage());
+            //     Session::flash('error', 'Failed to generate PDF: ' . $e->getMessage());
+            //     // Session::flush();
+            // }
             try {
                 $setting = Setting::first();
                 $data = [
