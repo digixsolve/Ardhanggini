@@ -248,15 +248,17 @@ class CartController extends Controller
             $shippingAddress = !empty($request->input('shipping_address')) ? $request->input('shipping_address') : $billingAddress;
             $shipping_method =ShippingMethod::find($request->input('shipping_id'));
             if ($shipping_method) {
+                $shipping_method_id = $shipping_method->id;
                 $shipping_charge = $shipping_method->price;
             } else {
                 $shipping_charge = "0";
+                $shipping_method_id = "";
             }
 
             $order = Order::create([
                 'order_number'                 => $code, // Generate a unique order number
                 'user_id'                      => auth()->id(), // Assuming user is logged in
-                'shipping_method_id'           => $request->input('shipping_id'),
+                'shipping_method_id'           => $shipping_method_id,
                 'sub_total'                    => $request->input('sub_total'), // Use Cart instance
                 'coupon'                       => $request->input('coupon', 0),
                 'discount'                     => $request->input('discount', 0),
