@@ -252,7 +252,7 @@ class CartController extends Controller
                 $shipping_charge = $shipping_method->price;
             } else {
                 $shipping_charge = "0";
-                $shipping_method_id = "";
+                $shipping_method_id = null;
             }
 
             $order = Order::create([
