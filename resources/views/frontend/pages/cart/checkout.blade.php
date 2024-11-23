@@ -841,19 +841,36 @@
                                 </div>
                                 <div class="ps-checkout__row">
                                     <div class="ps-title">Shipping <span class="text-danger">*</span></div>
-                                    <div class="ps-checkout__checkbox">
-                                        @foreach ($shippingmethods as $index => $shippingmethod)
-                                            <div class="form-check">
-                                                <input class="form-check-input" name="shipping_id" type="radio"
-                                                    id="shipping-{{ $shippingmethod->id }}"
-                                                    data-shipping_price="{{ $shippingmethod->price }}"
-                                                    value="{{ $shippingmethod->id }}" @checked($loop->first)/>
-                                                <label class="form-check-label"
-                                                    for="shipping-{{ $shippingmethod->id }}">{{ $shippingmethod->title }}
-                                                    <span>(৳{{ number_format($shippingmethod->price, 2) }})</span></label>
-                                            </div>
-                                        @endforeach
-                                    </div>
+                                    @if ($subTotal > 3999)
+                                        <div class="ps-checkout__checkbox">
+                                            @foreach ($shippingmethods as $index => $shippingmethod)
+                                                <div class="form-check">
+                                                    <input class="form-check-input" name="shipping_id" type="radio"
+                                                        id="shipping-{{ $shippingmethod->id }}"
+                                                        data-shipping_price="{{ $shippingmethod->price }}"
+                                                        value="{{ $shippingmethod->id }}"
+                                                        @checked($loop->first) />
+                                                    <label class="form-check-label"
+                                                        for="shipping-{{ $shippingmethod->id }}">{{ $shippingmethod->title }}
+                                                        <span>(৳{{ number_format($shippingmethod->price, 2) }})</span></label>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @else
+                                        <div class="ps-checkout__checkbox">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" name="shipping_id" type="radio"
+                                                        id="shipping-{{ $shippingmethod->id }}"
+                                                        data-shipping_price="{{ $shippingmethod->price }}"
+                                                        value="{{ $shippingmethod->id }}"
+                                                        @checked($loop->first) />
+                                                    <label class="form-check-label"
+                                                        for="shipping-{{ $shippingmethod->id }}">{{ $shippingmethod->title }}
+                                                        <span>(৳{{ number_format($shippingmethod->price, 2) }})</span></label>
+                                                </div>
+                                        </div>
+                                    @endif
+
                                 </div>
                                 <div class="ps-checkout__row">
                                     <div class="ps-title">Total</div>
@@ -876,8 +893,9 @@
                                             </div> --}}
                                             <div class="form-check">
                                                 <input class="form-check-input" name="payment_method" type="radio"
-                                                    id="stripe" value="stripe" checked/>
-                                                <label class="form-check-label mt-0" for="stripe">Cash On Delivery</label>
+                                                    id="stripe" value="stripe" checked />
+                                                <label class="form-check-label mt-0" for="stripe">Cash On
+                                                    Delivery</label>
                                             </div>
                                             {{-- <div class="form-check">
                                                 <input class="form-check-input" name="payment_method" type="radio"
