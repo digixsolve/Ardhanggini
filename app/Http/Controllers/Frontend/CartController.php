@@ -153,6 +153,7 @@ class CartController extends Controller
     {
         ini_set('max_execution_time', 300);
         // Validate the request data
+        $totalAmount = preg_replace('/[^0-9.]/', '', $request->input('total_amount'));
         $validator = Validator::make($request->all(), [
             'billing_email' => 'required|email',
             'billing_first_name' => 'required|string|max:255',
@@ -170,7 +171,7 @@ class CartController extends Controller
             'order_note' => 'nullable|string',
             'payment_method' => 'required|in:cod,stripe,paypal',
             'sub_total' => 'required',
-            'total_amount' => 'required|numeric|min:0',
+            'total_amount' => 'required|min:0',
             // 'shipping_id' => 'required|exists:shipping_methods,id'
         ], [
             'billing_email.required' => 'The billing email is required.',
@@ -254,7 +255,7 @@ class CartController extends Controller
                 'sub_total'                    => $request->input('sub_total'), // Use Cart instance
                 'coupon'                       => $request->input('coupon', 0),
                 'discount'                     => $request->input('discount', 0),
-                'total_amount'                 => $request->input('total_amount'),
+                'total_amount'                 => $totalAmount,
                 'quantity'                     => Cart::instance('cart')->count(), // Total quantity of items in cart
                 'shipping_charge'              => ShippingMethod::find($request->input('shipping_id'))->price,
                 'payment_method'               => $request->input('payment_method'),
