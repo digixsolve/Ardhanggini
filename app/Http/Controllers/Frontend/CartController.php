@@ -287,16 +287,16 @@ class CartController extends Controller
             // Add items to order_items table
             foreach (Cart::instance('cart')->content() as $item) {
                 OrderItem::create([
-                    'order_id' => $order->id,
-                    'product_id' => $item->id,
-                    'user_id' => auth()->id(),
-                    'product_name' => $item->name,
+                    'order_id'      => $order->id,
+                    'product_id'    => $item->id,
+                    'user_id'       => auth()->id(),
+                    'product_name'  => $item->name,
                     'product_color' => $item->model->color ?? null,
-                    'product_sku' => $item->model->sku ?? null,
-                    'price' => $item->price,
-                    'tax' => $item->tax ?? 0,
-                    'quantity' => $item->qty,
-                    'subtotal' => $item->qty * $item->price,
+                    'product_sku'   => $item->model->sku ?? null,
+                    'price'         => $item->price,
+                    'tax'           => $item->tax ?? 0,
+                    'quantity'      => $item->qty,
+                    'subtotal'      => $item->qty * $item->price,
                 ]);
 
                 // Update product stock
