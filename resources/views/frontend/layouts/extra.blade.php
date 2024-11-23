@@ -2,18 +2,18 @@
     <div>
         <a href="{{ route('home') }}">
             <img src="{{ !empty(optional($setting)->site_logo_white) ? asset('storage/' . optional($setting)->site_logo_white) : asset('frontend/img/logo.png') }}"
-                style="width: 90px; padding: 10px; border-radius: 12px" onerror="this.onerror=null; this.src='/images/default_logo-2.jpg';">
+                style="width: 80px; padding: 8px; border-radius: 12px" onerror="this.onerror=null; this.src='/images/default_logo-2.jpg';">
         </a>
     </div>
     <div class="d-flex align-items-center">
         <div class="ps-nav__item"><a href="{{ route('login') }}">
-                <img src="{{ asset('images/icon-profile.svg') }}" style="width: 25px" alt="">
+                <img src="{{ asset('images/icon-profile.svg') }}" style="width: 20px" alt="">
             </a>
         </div>
         <div class="ps-nav__item">
             <a href="{{ route('user.wishlist') }}">
                 {{-- <i class="fa fa-heart-o"></i> --}}
-                <img src="{{ asset('images/icon-heart.svg') }}" style="width: 25px" alt="">
+                <img src="{{ asset('images/icon-heart.svg') }}" style="width: 20px" alt="">
                 @php
                     $wishlistCount = 0; // Default value in case user is not authenticated
                     if (Auth::check()) {
@@ -26,7 +26,7 @@
         </div>
         <div class="ps-nav__item">
             <a href="{{ route('cart') }}">
-                <img src="{{ asset('images/icon-cart.svg') }}" style="width: 25px" alt="">
+                <img src="{{ asset('images/icon-cart.svg') }}" style="width: 20px" alt="">
                 <span class="badge cartCount">{{ Cart::instance('cart')->count() }}</span>
             </a>
         </div>

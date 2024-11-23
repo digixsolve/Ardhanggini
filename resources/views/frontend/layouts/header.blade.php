@@ -719,9 +719,12 @@
 </header>
 <header class="ps-header ps-header--13 ps-header--mobile">
     <div class="ps-noti">
-        <div class="container">
-            <p class="m-0">{{ optional($setting)->website_name }}, {{ optional($setting)->site_motto }}</p>
-        </div><a class="ps-noti__close"><i class="icon-cross"></i></a>
+        <div class="">
+           <a href="{{ route('special.products') }}"><p class="m-0">{{ optional($setting)->site_motto }}</p></a>
+        </div>
+        {{-- <a class="ps-noti__close">
+            <i class="icon-cross"></i>
+        </a> --}}
     </div>
     <div class="ps-header__middle">
         <div class="container">

@@ -1348,10 +1348,10 @@
                     dots: false, // Dots indicator (optional)
                     responsive: {
                         0: {
-                            items: 3, // 3 items on extra small screens
+                            items: 5, // 3 items on extra small screens
                         },
                         576: {
-                            items: 3, // 3 items on small screens
+                            items: 5, // 3 items on small screens
                         },
                         768: {
                             items: 4, // 4 items on medium screens
