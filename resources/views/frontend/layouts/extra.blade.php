@@ -1,18 +1,19 @@
 <div class="ps-navigation--footer">
     <div>
         <a href="{{ route('home') }}">
-            <img src="{{ asset('images/default_logo.png') }}" style="width: 110px; padding: 10px;">
+            <img src="{{ !empty(optional($setting)->site_logo_white) ? asset('storage/' . optional($setting)->site_logo_white) : asset('frontend/img/logo.png') }}"
+                style="width: 80px; padding: 8px; border-radius: 12px" onerror="this.onerror=null; this.src='/images/default_logo-2.jpg';">
         </a>
     </div>
     <div class="d-flex align-items-center">
         <div class="ps-nav__item"><a href="{{ route('login') }}">
-                <img src="images/icons_black/Profile-black.svg" style="width: 25px" alt="">
+                <img src="{{ asset('images/icon-profile.svg') }}" style="width: 20px" alt="">
             </a>
         </div>
         <div class="ps-nav__item">
             <a href="{{ route('user.wishlist') }}">
                 {{-- <i class="fa fa-heart-o"></i> --}}
-                <img src="images/icons_black/Heart-black.svg" style="width: 25px" alt="">
+                <img src="{{ asset('images/icon-heart.svg') }}" style="width: 20px" alt="">
                 @php
                     $wishlistCount = 0; // Default value in case user is not authenticated
                     if (Auth::check()) {
@@ -25,17 +26,17 @@
         </div>
         <div class="ps-nav__item">
             <a href="{{ route('cart') }}">
-                <img src="images/icons_black/Cart-black.svg" style="width: 25px" alt="">
+                <img src="{{ asset('images/icon-cart.svg') }}" style="width: 20px" alt="">
                 <span class="badge cartCount">{{ Cart::instance('cart')->count() }}</span>
             </a>
         </div>
         <div class="ps-nav__item">
             <a href="#" id="open-menu">
                 {{-- <i class="icon-menu"></i> --}}
-                <i class="fa-solid fa-bars pt-2"></i>
+                <i class="fa-solid fa-bars pt-2 text-white"></i>
             </a>
             <a href="#" id="close-menu">
-                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-xmark text-white"></i>
             </a>
         </div>
     </div>
@@ -60,7 +61,71 @@
     </div>
     <div class="ps-menu__footer">
         <div class="ps-menu__item">
-            <div class="ps-menu__contact">Need help? <strong>{{ optional($setting)->primary_phone }}</strong></div>
+            <div class="col-12 col-md-7">
+                <div class="ps-footer--contact mobile-help">
+                    <h5 class="ps-footer__title">Need help</h5>
+                    <div class="ps-footer__fax number-mobile">
+                        <div class="d-flex align-items-center">
+                            <img class="" src="{{ asset('images/whatsapp-icons.gif') }}" alt="" width="55px">
+                            {{ optional($setting)->primary_phone }}
+                        </div>
+
+                    </div>
+                    <p class="ps-footer__work">
+                        Monday – Friday: 9:00-20:00<br>Saturday: 11:00 – 15:00 <br>
+                        <a href="mailto:{{ optional($setting)->contact_email }}">{{ optional($setting)->contact_email }}</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-7">
+                <div class="row">
+                    <div class="col-6 col-md-4">
+                        <div class="ps-footer--block">
+                            <h5 class="ps-block__title">Account</h5>
+                            <ul class="ps-block__list">
+                                <li><a href="{{ route('user.account.details') }}">My Account</a></li>
+                                <li><a href="{{ route('user.order.history') }}">My Orders</a></li>
+                                <li><a href="{{ route('user.quick.order') }}">Quick Order</a></li>
+                                <li><a href="{{ route('user.wishlist') }}">Shopping List</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="ps-footer--block">
+                            <h5 class="ps-block__title">Policy</h5>
+                            <ul class="ps-block__list">
+                                <li><a href="{{ asset('return-policy') }}">Returns</a></li>
+                                <li><a href="{{ asset('privacy/policy') }}">Privacy & Policy</a></li>
+                                <li><a href="{{ asset('terms-condition') }}">Terms & Conditions</a></li>
+                                <li><a href="{{ asset('faq') }}">Faq</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="ps-footer--block">
+                            <h5 class="ps-block__title text-center mb-0">Visitor Count</h5>
+                            <div class="visitor-box">
+                                <div class="main-counter">
+                                    <h1 class="mb-0">00</h1>
+                                    <div class="sub-counter">
+                                        <p>ONLINE NOW</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="today-count">
+                                        <small class="mb-0 text-white">Today</small>
+                                        <small class="mb-0 text-white fw-bold">70</small>
+                                    </div>
+                                    <div class="total-count">
+                                        <small class="mb-0 text-white">Total</small>
+                                        <small class="mb-0 text-white fw-bold">70</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

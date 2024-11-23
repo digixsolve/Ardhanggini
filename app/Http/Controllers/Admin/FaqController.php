@@ -113,16 +113,16 @@ class FaqController extends Controller
         $faq = Faq::findOrFail($id);
 
         $validator = Validator::make($request->all(), [
-            'category_id'    => 'nullable|exists:faq_categories,id',
-            'question'       => 'required|string|max:255',
-            'answer'         => 'required|string',
-            'tag'            => 'nullable|string|max:255',
-            'order'          => 'integer|min:0|unique:faqs,order,' . $faq->id,
-            'status'         => 'required|in:active,inactive',
-            'views'          => 'integer|min:0',
-            'related_faqs'   => 'nullable|json',
-            'is_featured'    => 'boolean',
-            'additional_info' => 'nullable|string',
+            'category_id'       => 'nullable|exists:faq_categories,id',
+            'question'          => 'required|string|max:255',
+            'answer'            => 'required|string',
+            'tag'               => 'nullable|string|max:255',
+            'order'             => 'integer|min:0|unique:faqs,order,' . $faq->id,
+            'status'            => 'required|in:active,inactive',
+            'views'             => 'integer|min:0',
+            'related_faqs'      => 'nullable|json',
+            'is_featured'       => 'boolean',
+            'additional_info'   => 'nullable|string',
         ], [
             'category_id.exists'        => 'The selected category does not exist.',
             'question.required'         => 'The question field is required.',
@@ -152,16 +152,16 @@ class FaqController extends Controller
         }
 
         $faq->update([
-            'category_id'  => $request->category_id,
-            'question'     => $request->question,
-            'answer'       => $request->answer,
-            'tag'          => $request->tag,
-            'order'        => $request->order,
-            'status'       => $request->status,
-            'views'        => $request->views,
-            'related_faqs' => $request->related_faqs,
-            'is_featured'  => $request->is_featured,
-            'additional_info' => $request->additional_info,
+            'category_id'       => $request->category_id,
+            'question'          => $request->question,
+            'answer'            => $request->answer,
+            'tag'               => $request->tag,
+            'order'             => $request->order,
+            'status'            => $request->status,
+            'views'             => $request->views,
+            'related_faqs'      => $request->related_faqs,
+            'is_featured'       => $request->is_featured,
+            'additional_info'   => $request->additional_info,
         ]);
 
         return redirect()->back()->with('success', 'Data has been updated successfully!');

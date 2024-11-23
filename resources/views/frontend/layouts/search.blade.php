@@ -65,17 +65,16 @@
                                     </a>
                                 </h4>
                                 <p class="ps-product__desc d-none" style="display: block">{!! $search_product->short_description !!}</p>
-                                @if (Auth::check() && Auth::user()->status == 'active')
                                     {{-- Display product pricing information outside of the <a> tag --}}
-                                    @if (!empty($search_product->box_discount_price))
+                                    @if (!empty($search_product->unit_discount_price))
                                         <div class="ps-product__meta">
-                                            <span class="">৳{{ $search_product->box_discount_price }}</span>
-                                            <span class="ps-product__del">৳{{ $search_product->box_price }}</span>
+                                            <span class="">৳{{ $search_product->unit_discount_price }}</span>
+                                            <span class="ps-product__del">৳{{ $search_product->unit_price }}</span>
                                         </div>
                                     @else
                                         <div class="ps-product__meta">
                                             <span
-                                                class="ps-product__price sale">৳{{ $search_product->box_price }}</span>
+                                                class="ps-product__price sale">৳{{ $search_product->unit_price }}</span>
                                         </div>
                                     @endif
 
@@ -86,12 +85,7 @@
                                         onclick="addToCart(event, '{{ csrf_token() }}', '{{ route('cart.store', $search_product->id) }}')">
                                         <span>Add To Cart</span>
                                     </a>
-                                @else
-                                    <div class="ps-product__meta">
-                                        <a href="{{ route('login') }}" class="btn btn-info btn-block">Login
-                                            to view price</a>
-                                    </div>
-                                @endif
+
                             </div>
                         </div>
                     @endforeach

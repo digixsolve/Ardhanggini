@@ -32,26 +32,30 @@ class CartController extends Controller
             $product = Product::findOrFail($id);
             $quantity = $request->input('quantity', 1); // Default to 1 if no quantity is provided
 
-            if (!empty($product->box_price) || !empty($product->box_discount_price)) {
+            if (!empty($product->unit_price) || !empty($product->unit_discount_price)) {
                 Cart::instance('cart')->add([
                     'id' => $product->id,
                     'name' => $product->name,
                     'qty' => $quantity,
-                    'price' => !empty($product->box_discount_price) ? $product->box_discount_price : $product->box_price,
+                    'price' => !empty($product->unit_discount_price) ? $product->unit_discount_price : $product->unit_price,
                 ])->associate('App\Models\Product');
 
+                $formattedSubtotal = Cart::instance('cart')->subtotal();
+                $cleanSubtotal = preg_replace('/[^\d.]/', '', $formattedSubtotal);
+                $subTotal = (float)$cleanSubtotal;
                 // Get the updated cart content
                 $data = [
                     'cartItems' => Cart::instance('cart')->content(),
                     'total'     => Cart::instance('cart')->total(),
                     'cartCount' => Cart::instance('cart')->count(),
-                    'subTotal'  => Cart::instance('cart')->subtotal(),
+                    'subTotal'  => $subTotal,
                 ];
 
                 // Return the JSON response with cart data
                 return response()->json([
-                    'success' => 'Successfully added to your cart.',
-                    'cartCount' => $data['cartCount'],
+                    'success'    => 'Successfully added to your cart.',
+                    'cartCount'  => $data['cartCount'],
+                    'subTotal'   => $subTotal,
                     'cartHeader' => view('frontend.pages.cart.partials.minicart', $data)->render(),
                 ]);
             } else {
@@ -302,7 +306,7 @@ class CartController extends Controller
             }
 
             // Commit the transaction
-            DB::commit(); 
+            DB::commit();
 
             // Clear the cart after successful order
             Cart::instance('cart')->destroy();
@@ -350,19 +354,19 @@ class CartController extends Controller
                 // Session::flush();
             }
             // Redirect to a confirmation page or thank you page
-            if ($order->payment_method == "stripe") {
-                Session::flash('success', 'Order placed successfully!');
-                // Session::flush();
-                // flash()->success('Order placed successfully!');
-                return redirect()->route('stripe.payment', $order->order_number);
-            } else if ($order->payment_method == "paypal") {
-                return view('frontend.pages.cart.paypal', $data);
-            } else {
+            // if ($order->payment_method == "stripe") {
+            //     Session::flash('success', 'Order placed successfully!');
+            //     // Session::flush();
+            //     // flash()->success('Order placed successfully!');
+            //     return redirect()->route('stripe.payment', $order->order_number);
+            // } else if ($order->payment_method == "paypal") {
+            //     return view('frontend.pages.cart.paypal', $data);
+            // } else {
                 // flash()->success('Order placed successfully!');
                 Session::flash('success', 'Order placed successfully!');
                 // Session::flush();
                 return redirect()->route('checkout.success', $order->order_number);
-            }
+            // }
         } catch (\Exception $e) {
             DB::rollback();
             Session::flash('error', $e->getMessage());

@@ -19,7 +19,7 @@ class ShopController extends Controller
             // 'category'                => $category,
             'categories'   => Category::orderBy('name', 'ASC')->active()->get(),
             'brands'       => Brand::orderBy('name', 'ASC')->active()->get(),
-            'products'     => Product::latest('id')->active()->paginate(10),
+            'products'     => Product::with('reviews')->latest('id')->active()->paginate(10),
             'deal'        => DealBanner::active()->inRandomOrder()->first(),
             // 'productCount' => Product::active()->count(),
         ];
@@ -77,10 +77,10 @@ class ShopController extends Controller
                     $query->orderBy('name', 'desc');
                     break;
                 case 'price-asc':
-                    $query->orderBy('box_price', 'asc');
+                    $query->orderBy('unit_price', 'asc');
                     break;
                 case 'price-desc':
-                    $query->orderBy('box_price', 'desc');
+                    $query->orderBy('unit_price', 'desc');
                     break;
             }
         }

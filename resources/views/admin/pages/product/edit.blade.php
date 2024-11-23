@@ -168,7 +168,7 @@
                                 </x-metronic.label>
                                 <!-- Input element for Tagify -->
                                 <input class="form-control d-flex align-items-center" name="color"
-                                    :value="old('color', $product->color)" id="kt_tagify_color" />
+                                    :value="old('color', $product - > color)" id="kt_tagify_color" />
                             </div>
                         </div>
                     </div>
@@ -422,7 +422,8 @@
                                             <x-metronic.label class="form-label">Price</x-metronic.label>
                                             <x-metronic.input type="number" name="unit_price" id="unit_price"
                                                 class="form-control mb-2" placeholder="how much the unit price"
-                                                :value="old('unit_price', $product->unit_price)" readonly></x-metronic.file-input>
+                                                :value="old('unit_price', $product->unit_price)" readonly>
+                                                </x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much unit price.</div>
                                         </div>
                                         <div class="mb-5 fv-row col-4">

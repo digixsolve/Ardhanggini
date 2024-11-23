@@ -1,5 +1,5 @@
 <x-frontend-app-layout :title="'Home Page'">
-    <link rel='stylesheet' href='http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <section class="ps-section--banner">
         <div class="ps-section__overlay">
             <div class="ps-section__loading"></div>
@@ -64,7 +64,7 @@
                 <section class="ps-section--categories">
                     <div class="container px-0" style="border-radius: 5px; background-color: #ffffffe6;">
                         {{-- <h3 class="ps-section__title py-5" style="font-size: 30px;">Popular Categories</h3> --}}
-                        <div class="ps-section__content py-5">
+                        <div class="ps-section__content py-0 py-lg-5">
                             <div class="ps-categories__list owl-carousel">
                                 @foreach ($categorys as $category)
                                     <div class="ps-categories__item">
@@ -76,7 +76,8 @@
                                                     ? asset($logoPath)
                                                     : asset('frontend/img/no-category.png');
                                             @endphp
-                                            <img src="{{ $logoSrc }}" alt="{{ $category->name }}">
+                                            <img src="{{ $logoSrc }}" alt="{{ $category->name }}"
+                                                onerror="this.onerror=null; this.src='frontend/img/no-category.png';">
                                         </a>
                                         <a class="ps-categories__name"
                                             href="{{ route('category.products', $category->slug) }}">
@@ -95,11 +96,14 @@
             @if ($latest_products->count() > 0)
                 <section class="ps-section--latest-horizontal">
                     <section class="container px-0">
-                        <h3 class="ps-section__title pb-5" style="font-size: 30px;">Latest products</h3>
+                        <h3 class="ps-section__title pb-3 pb-lg-5" style="font-size: 30px;">Latest products <img
+                                width="20px"
+                                src="https://static.vecteezy.com/system/resources/previews/011/999/958/non_2x/fire-icon-free-png.png"
+                                alt=""></h3>
                         <div class="ps-section__content">
                             <div class="row m-0">
                                 @foreach ($latest_products as $latest_product)
-                                    <div class="col-12 col-md-4 col-lg-3 dot4 p-0">
+                                    <div class="col-6 col-md-4 col-lg-3 dot4 p-0">
                                         <div class="ps-section__product">
                                             <div class="ps-product ps-product--standard">
                                                 <div class="ps-product__thumbnail">
@@ -154,7 +158,9 @@
                                                     @if (!empty($latest_product->unit_discount_price))
                                                         <div class="ps-product__badge">
                                                             <div class="ps-badge ps-badge--sale">
-                                                                - {{ !empty($latest_product->unit_discount_price) && $latest_product->unit_discount_price > 0 ? number_format((($latest_product->unit_price - $latest_product->unit_discount_price) / $latest_product->unit_price) * 100,1) : 0 }} %
+                                                                -
+                                                                {{ !empty($latest_product->unit_discount_price) && $latest_product->unit_discount_price > 0 ? number_format((($latest_product->unit_price - $latest_product->unit_discount_price) / $latest_product->unit_price) * 100, 1) : 0 }}
+                                                                %
                                                             </div>
                                                         </div>
                                                     @endif
@@ -166,23 +172,70 @@
                                                             {{ implode(' ', array_slice(explode(' ', $latest_product->name), 0, 8)) }}
                                                         </a>
                                                     </h5>
+                                                    @php
+                                                        $review =
+                                                            count($latest_product->reviews) > 0
+                                                                ? optional($latest_product->reviews)->sum('rating') /
+                                                                    count($latest_product->reviews)
+                                                                : 0;
+                                                        // dd($latest_product->name, $review);
+                                                    @endphp
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div class="ps-product__rating">
-                                                            <div class="br-wrapper br-theme-fontawesome-stars"><select
-                                                                    class="ps-rating" data-read-only="true"
-                                                                    style="display: none;">
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-                                                                    <option value="3">3</option>
-                                                                    <option value="4">4</option>
-                                                                    <option value="5">5</option>
-                                                                </select>
-                                                            </div>
+                                                            @if ($review > 0)
+                                                                {{-- <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                    <select class="ps-rating" data-read-only="true"
+                                                                        style="display: none;">
+                                                                        @if ($review > 0 && $review < 2)
+                                                                            <option value="1">1</option>
+                                                                        @endif
+                                                                        @if ($review > 1 && $review < 3)
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                        @endif
+                                                                        @if ($review > 2 && $review < 4)
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                        @endif
+                                                                        @if ($review > 3 && $review < 5)
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                        @endif
+                                                                        @if ($review > 4 && $review < 6)
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                        @endif
+                                                                    </select>
+                                                                </div> --}}
+                                                                <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                    <select class="ps-rating" data-read-only="true"
+                                                                        style="display: none;">
+                                                                        @php
+                                                                            $maxRating = min(5, max(1, floor($review))); // Get the highest full rating value
+                                                                        @endphp
+                                                                        @for ($i = 1; $i <= $maxRating; $i++)
+                                                                            <option value="{{ $i }}">
+                                                                                {{ $i }}</option>
+                                                                        @endfor
+                                                                    </select>
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                         <div>
-                                                            Reviews(02)
+                                                            @if (count($latest_product->reviews) > 0)
+                                                                Reviews ({{ count($latest_product->reviews) }})
+                                                            @else
+                                                                No Reviews Yet
+                                                            @endif
                                                         </div>
                                                     </div>
+
                                                     @if (!empty($latest_product->unit_discount_price))
                                                         <div class="ps-product__meta">
                                                             <span
@@ -220,8 +273,7 @@
 
                                                         <div class="ps-product__item cart" data-toggle="tooltip"
                                                             data-placement="left" title="Add to cart"><a
-                                                                href="#"><i
-                                                                    class="fa fa-shopping-basket"></i></a>
+                                                                href="#"><i class="fa fa-eye"></i></a>
                                                         </div>
                                                         <div class="ps-product__item" data-toggle="tooltip"
                                                             data-placement="left" title="Wishlist"><a
@@ -245,12 +297,12 @@
             @if ($categoryone && $categoryoneproducts->count() > 0)
                 <div class="container px-0">
                     <div class="ps-home--block">
-                        <h3 class="ps-section__title text-center pb-5" style="font-size: 30px;">
+                        <h3 class="ps-section__title text-center pb-3 pb-lg-5" style="font-size: 30px;">
                             {{ optional($categoryone)->name }}</h3>
                         <div class="ps-section__content">
                             <div class="row m-0">
                                 @foreach ($categoryoneproducts as $categoryoneproduct)
-                                    <div class="col-12 col-md-4 col-lg-3 dot4 p-0">
+                                    <div class="col-6 col-md-4 col-lg-3 dot4 p-0">
                                         <div class="ps-section__product">
                                             <div class="ps-product ps-product--standard">
                                                 <div class="ps-product__thumbnail">
@@ -305,7 +357,9 @@
                                                     @if (!empty($categoryoneproduct->unit_discount_price))
                                                         <div class="ps-product__badge">
                                                             <div class="ps-badge ps-badge--sale">
-                                                                - {{ !empty($categoryoneproduct->unit_discount_price) && $categoryoneproduct->unit_discount_price > 0 ? number_format((($categoryoneproduct->unit_price - $categoryoneproduct->unit_discount_price) / $categoryoneproduct->unit_price) * 100,1) : 0 }} %
+                                                                -
+                                                                {{ !empty($categoryoneproduct->unit_discount_price) && $categoryoneproduct->unit_discount_price > 0 ? number_format((($categoryoneproduct->unit_price - $categoryoneproduct->unit_discount_price) / $categoryoneproduct->unit_price) * 100, 1) : 0 }}
+                                                                %
                                                             </div>
                                                         </div>
                                                     @endif
@@ -317,21 +371,37 @@
                                                             {{ implode(' ', array_slice(explode(' ', $categoryoneproduct->name), 0, 8)) }}
                                                         </a>
                                                     </h5>
+                                                    @php
+                                                        $review =
+                                                            count($categoryoneproduct->reviews) > 0
+                                                                ? optional($categoryoneproduct->reviews)->sum(
+                                                                        'rating',
+                                                                    ) / count($categoryoneproduct->reviews)
+                                                                : 0;
+                                                    @endphp
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div class="ps-product__rating">
-                                                            <div class="br-wrapper br-theme-fontawesome-stars"><select
-                                                                    class="ps-rating" data-read-only="true"
-                                                                    style="display: none;">
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-                                                                    <option value="3">3</option>
-                                                                    <option value="4">4</option>
-                                                                    <option value="5">5</option>
-                                                                </select>
-                                                            </div>
+                                                            @if ($review > 0)
+                                                                <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                    <select class="ps-rating" data-read-only="true"
+                                                                        style="display: none;">
+                                                                        @php
+                                                                            $maxRating = min(5, max(1, floor($review))); // Get the highest full rating value
+                                                                        @endphp
+                                                                        @for ($i = 1; $i <= $maxRating; $i++)
+                                                                            <option value="{{ $i }}">
+                                                                                {{ $i }}</option>
+                                                                        @endfor
+                                                                    </select>
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                         <div>
-                                                            Reviews(02)
+                                                            @if (count($categoryoneproduct->reviews) > 0)
+                                                                Reviews ({{ count($categoryoneproduct->reviews) }})
+                                                            @else
+                                                                No Reviews Yet
+                                                            @endif
                                                         </div>
                                                     </div>
                                                     @if (!empty($categoryoneproduct->unit_discount_price))
@@ -372,7 +442,7 @@
                                                         <div class="ps-product__item cart" data-toggle="tooltip"
                                                             data-placement="left" title="Add to cart"><a
                                                                 href="#"><i
-                                                                    class="fa fa-shopping-basket"></i></a>
+                                                                    class="fa fa-eye"></i></a>
                                                         </div>
                                                         <div class="ps-product__item" data-toggle="tooltip"
                                                             data-placement="left" title="Wishlist"><a
@@ -393,7 +463,7 @@
                 </div>
             @endif
             <div class="container px-0">
-                <div class="ps-delivery ps-delivery--info my-5"
+                <div class="ps-delivery ps-delivery--info my-3 my-lg-5"
                     data-background="{{ asset('images/delivery_banner.jpg') }}"
                     style="background-image: url({{ asset('images/delivery_banner.jpg') }});">
                     <div class="ps-delivery__content">
@@ -469,7 +539,9 @@
                                                         @if (!empty($categorytwoproduct->unit_discount_price))
                                                             <div class="ps-product__badge">
                                                                 <div class="ps-badge ps-badge--sale">
-                                                                    - {{ !empty($categorytwoproduct->unit_discount_price) && $categorytwoproduct->unit_discount_price > 0 ? number_format((($categorytwoproduct->unit_price - $categorytwoproduct->unit_discount_price) / $categorytwoproduct->unit_price) * 100,1) : 0 }} %
+                                                                    -
+                                                                    {{ !empty($categorytwoproduct->unit_discount_price) && $categorytwoproduct->unit_discount_price > 0 ? number_format((($categorytwoproduct->unit_price - $categorytwoproduct->unit_discount_price) / $categorytwoproduct->unit_price) * 100, 1) : 0 }}
+                                                                    %
                                                                 </div>
                                                             </div>
                                                         @endif
@@ -481,21 +553,36 @@
                                                                 {{ implode(' ', array_slice(explode(' ', $categorytwoproduct->name), 0, 8)) }}
                                                             </a>
                                                         </h5>
-                                                        <div>
+                                                        @php
+                                                            $review =
+                                                                count($categorytwoproduct->reviews) > 0
+                                                                    ? optional($categorytwoproduct->reviews)->sum(
+                                                                            'rating',
+                                                                        ) / count($categorytwoproduct->reviews)
+                                                                    : 0;
+                                                        @endphp
+                                                        <div class="d-flex justify-content-between align-items-center">
                                                             <div class="ps-product__rating">
-                                                                <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                    <select class="ps-rating" data-read-only="true"
-                                                                        style="display: none;">
-                                                                        <option value="1">1</option>
-                                                                        <option value="2">2</option>
-                                                                        <option value="3">3</option>
-                                                                        <option value="4">4</option>
-                                                                        <option value="5">5</option>
-                                                                    </select>
-                                                                </div>
+                                                                @if ($review > 0)
+                                                                    <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                        <select class="ps-rating"
+                                                                            data-read-only="true"
+                                                                            style="display: none;">
+                                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                                <option value="{{ $i }}"
+                                                                                    @if ($i <= round($review)) selected @endif>
+                                                                                    {{ $i }}</option>
+                                                                            @endfor
+                                                                        </select>
+                                                                    </div>
+                                                                @endif
                                                             </div>
                                                             <div>
-                                                                Reviews
+                                                                @if (count($categorytwoproduct->reviews) > 0)
+                                                                    Reviews ({{ count($categorytwoproduct->reviews) }})
+                                                                @else
+                                                                    No Reviews Yet
+                                                                @endif
                                                             </div>
                                                         </div>
                                                         @if (!empty($categorytwoproduct->unit_discount_price))
@@ -537,7 +624,7 @@
                                                             <div class="ps-product__item cart" data-toggle="tooltip"
                                                                 data-placement="left" title="Add to cart"><a
                                                                     href="#"><i
-                                                                        class="fa fa-shopping-basket"></i></a>
+                                                                        class="fa fa-eye"></i></a>
                                                             </div>
                                                             <div class="ps-product__item" data-toggle="tooltip"
                                                                 data-placement="left" title="Wishlist"><a
@@ -561,12 +648,12 @@
             @if ($categorythree && $categorythreeproducts->count() > 0)
                 <div class="container px-0">
                     <div class="ps-home--block">
-                        <h3 class="ps-section__title text-center pb-5" style="font-size: 30px;">
+                        <h3 class="ps-section__title text-center pb-3 pb-lg-5" style="font-size: 30px;">
                             {{ optional($categorythree)->name }}</h3>
                         <div class="ps-section__content">
                             <div class="row m-0">
                                 @foreach ($categorythreeproducts as $categorythreeproduct)
-                                    <div class="col-12 col-md-4 col-lg-3 dot4 p-0">
+                                    <div class="col-6 col-md-4 col-lg-3 dot4 p-0">
                                         <div class="ps-section__product">
                                             <div class="ps-product ps-product--standard">
                                                 <div class="ps-product__thumbnail">
@@ -621,7 +708,9 @@
                                                     @if (!empty($categorythreeproduct->unit_discount_price))
                                                         <div class="ps-product__badge">
                                                             <div class="ps-badge ps-badge--sale">
-                                                                - {{ !empty($categorythreeproduct->unit_discount_price) && $categorythreeproduct->unit_discount_price > 0 ? number_format((($categorythreeproduct->unit_price - $categorythreeproduct->unit_discount_price) / $categorythreeproduct->unit_price) * 100,1) : 0 }} %
+                                                                -
+                                                                {{ !empty($categorythreeproduct->unit_discount_price) && $categorythreeproduct->unit_discount_price > 0 ? number_format((($categorythreeproduct->unit_price - $categorythreeproduct->unit_discount_price) / $categorythreeproduct->unit_price) * 100, 1) : 0 }}
+                                                                %
                                                             </div>
                                                         </div>
                                                     @endif
@@ -633,21 +722,37 @@
                                                             {{ implode(' ', array_slice(explode(' ', $categorythreeproduct->name), 0, 8)) }}
                                                         </a>
                                                     </h5>
+                                                    @php
+                                                        $review =
+                                                            count($categorythreeproduct->reviews) > 0
+                                                                ? optional($categorythreeproduct->reviews)->sum(
+                                                                        'rating',
+                                                                    ) / count($categorythreeproduct->reviews)
+                                                                : 0;
+                                                    @endphp
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div class="ps-product__rating">
-                                                            <div class="br-wrapper br-theme-fontawesome-stars"><select
-                                                                    class="ps-rating" data-read-only="true"
-                                                                    style="display: none;">
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-                                                                    <option value="3">3</option>
-                                                                    <option value="4">4</option>
-                                                                    <option value="5">5</option>
-                                                                </select>
-                                                            </div>
+                                                            @if ($review > 0)
+                                                                <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                    <select class="ps-rating" data-read-only="true"
+                                                                        style="display: none;">
+                                                                        @php
+                                                                            $maxRating = min(5, max(1, floor($review))); // Get the highest full rating value
+                                                                        @endphp
+                                                                        @for ($i = 1; $i <= $maxRating; $i++)
+                                                                            <option value="{{ $i }}">
+                                                                                {{ $i }}</option>
+                                                                        @endfor
+                                                                    </select>
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                         <div>
-                                                            Reviews(02)
+                                                            @if (count($categorythreeproduct->reviews) > 0)
+                                                                Reviews ({{ count($categorythreeproduct->reviews) }})
+                                                            @else
+                                                                No Reviews Yet
+                                                            @endif
                                                         </div>
                                                     </div>
                                                     @if (!empty($categorythreeproduct->unit_discount_price))
@@ -688,7 +793,7 @@
                                                         <div class="ps-product__item cart" data-toggle="tooltip"
                                                             data-placement="left" title="Add to cart"><a
                                                                 href="#"><i
-                                                                    class="fa fa-shopping-basket"></i></a>
+                                                                    class="fa fa-eye"></i></a>
                                                         </div>
                                                         <div class="ps-product__item" data-toggle="tooltip"
                                                             data-placement="left" title="Wishlist"><a
@@ -713,87 +818,119 @@
                 </div>
             @endif
         </div>
-        <section style="background-color: #353C44;" class="mt-5 mb-0">
-            <div class="container-fluid py-5">
-                <div class="container py-5">
-                    <div class="row py-5 align-items-center">
-                        <div class="col-lg-6">
-                            <div>
-                                <p class="text-white">Clients</p>
-                                <h2 class="text-white fw-normal">Happy With</h2>
-                                <h1 class="text-white fw-bold">Customers & Clients</h1>
-                                <p class="mb-5 text-white">If you need any industrial solution we are available for
-                                    you. Lorem ipsum dolor sit
-                                    amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua.</p>
-                                <div class="mt-4">
-                                    <a href="#" class="tst-btn text-white px-5">Shop Now</a>
-                                </div>
+        <section class="container-fluid section-bg mt-5">
+            <!-- Circles Background -->
+            <!-- Circles Background -->
+            <ul class="circles">
+                <!-- Add more circle elements -->
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+            <!-- Foreground Content -->
+            <div class="container position-relative py-5" style="z-index: 1;">
+                <div class="row py-5 align-items-center testimonial-content">
+                    <div class="col-lg-6">
+                        <div>
+                            <p class="text-white">Trusted by Thousands</p>
+                            <h2 class="text-white fw-normal testi-monial-title">What Customers Say</h2>
+                            <h1 class="text-white fw-bold">About Our Products</h1>
+                            <p class="mb-5 text-white">Our customers love the quality, craftsmanship, and care we bring
+                                to every product. At Ardhanggini, we go beyond expectations to deliver products that
+                                inspire trust and satisfaction. Don’t just take our word for it—read their stories
+                                below.</p>
+                            <div class="pt-5">
+                                <a href="{{ route('allproducts') }}" class="tst-btn text-white px-5">Shop Now</a>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div>
-                                <div class="home-demo">
-                                    <div class="owl-carousel testigmonial-slider owl-theme">
-                                        @foreach ($testimonials as $testimonial)
-                                            <div class="card testi-card">
-                                                <div class="card-body">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-lg-12">
-                                                            <div class="d-flex">
+                    </div>
+                    <div class="col-lg-6">
+                        <div>
+                            <div class="home-demo">
+                                <div class="owl-carousel testigmonial-slider owl-theme">
+                                    @foreach ($testimonials as $testimonial)
+                                        <div class="card testi-card">
+                                            <div class="card-body">
+                                                <div class="row align-items-center">
+                                                    <div class="col-lg-12">
+                                                        <div class="d-flex">
+                                                            <div>
                                                                 <div>
-                                                                    <div>
-                                                                        <p class="testimonial-message"
-                                                                            id="testimonial-{{ $testimonial->id }}">
-                                                                            <span class="testimonial-text">
-                                                                                <i
-                                                                                    class="fa-solid fa-quote-left pr-3 testi-dots pb-4"></i> <br>
-                                                                               <span> {{ $testimonial->message }}</span>
-                                                                            </span>
-                                                                        </p>
-                                                                    </div>
+                                                                    <p class="testimonial-message"
+                                                                        id="testimonial-{{ $testimonial->id }}">
+                                                                        <span class="testimonial-text">
+                                                                            <i
+                                                                                class="fa-solid fa-quote-left pr-3 testi-dots pb-4"></i>
+                                                                            <br>
+                                                                            <span>
+                                                                                {{ $testimonial->message }}</span>
+                                                                        </span>
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-12">
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center mt-5">
-                                                                <div class="profile d-flex align-items-center">
-                                                                    <div>
-                                                                        <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
-                                                                            alt="">
-
-                                                                    </div>
-                                                                    <div class="pl-3">
-                                                                        <h4 class="text-white fw-semibold mb-0">
-                                                                            {{ $testimonial->name }}</h4>
-                                                                        <p class="text-white mb-0">
-                                                                            <small>{{ $testimonial->company_name }}</small>
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div
+                                                            class="d-flex justify-content-between align-items-center mt-3 mt-lg-5 testimonial-author">
+                                                            <div class="profile d-flex align-items-center">
                                                                 <div>
-                                                                    @for ($i = 1; $i <= $testimonial->rating; $i++)
-                                                                        <i class="fa-solid fa-star"
-                                                                            style="color: goldenrod"></i>
-                                                                    @endfor
-                                                                    <span class="text-white pl-2">{{ $testimonial->rating }}.0</span>
+                                                                    <img src="{{ !empty($testimonial->image) ? asset('storage/' . $testimonial->image) : asset('images/testimonial.png') }}"
+                                                                        alt="">
+
                                                                 </div>
+                                                                <div class="pl-3">
+                                                                    <h4 class="text-white fw-semibold mb-0">
+                                                                        {{ $testimonial->name }}</h4>
+                                                                    <p class="text-white mb-0">
+                                                                        <small>{{ $testimonial->company_name }}</small>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                @for ($i = 1; $i <= $testimonial->rating; $i++)
+                                                                    <i class="fa-solid fa-star"
+                                                                        style="color: goldenrod"></i>
+                                                                @endfor
+                                                                <span
+                                                                    class="text-white pl-2">{{ $testimonial->rating }}.0</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
-                                    </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="area">
+                <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
         </section>
-
         @if ($deals->count() > 0 || $deal_products->count() > 0)
             <div class="container px-0">
                 @if ($deals->count() > 0)
@@ -802,17 +939,17 @@
                         <!-- First Row: First Three Deals -->
                         <div class="row">
                             @foreach ($deals->slice(0, 3) as $deal)
-                                <div class="col-12 col-md-4">
+                                <div class="col-6 col-md-4">
                                     <div class="ps-promo__item">
                                         <a href="{{ route('product.details', $deal->product->slug) }}">
                                             @if ($deal->image)
                                                 <img class="ps-promo__banner"
-                                                    src="{{ asset('storage/' . $deal->image) }}" alt="alt" />
+                                                    src="{{ !empty($deal->image) && file_exists(public_path('storage/' . $deal->image)) ? asset('storage/' . $deal->image) : asset('images/no_image.png') }}"
+                                                    alt="alt" />
                                             @endif
                                             <div class="ps-promo__content">
                                                 @if ($deal->badge)
-                                                    <span
-                                                        class="ps-promo__badge">
+                                                    <span class="ps-promo__badge">
                                                         {{ $deal->badge ?? round(100 - ($deal->offer_price / $deal->price) * 100) . '%' }}
                                                     </span>
                                                 @endif
@@ -941,7 +1078,9 @@
                                                 @if (!empty($deal_product->unit_discount_price))
                                                     <div class="ps-product__badge">
                                                         <div class="ps-badge ps-badge--sale">
-                                                            - {{ !empty($deal_product->unit_discount_price) && $deal_product->unit_discount_price > 0 ? number_format((($deal_product->unit_price - $deal_product->unit_discount_price) / $deal_product->unit_price) * 100,1) : 0 }} %
+                                                            -
+                                                            {{ !empty($deal_product->unit_discount_price) && $deal_product->unit_discount_price > 0 ? number_format((($deal_product->unit_price - $deal_product->unit_discount_price) / $deal_product->unit_price) * 100, 1) : 0 }}
+                                                            %
                                                         </div>
                                                     </div>
                                                 @endif
@@ -952,21 +1091,34 @@
                                                         {{ implode(' ', array_slice(explode(' ', $deal_product->name), 0, 8)) }}
                                                     </a>
                                                 </h5>
+                                                @php
+                                                    $review =
+                                                        count($deal_product->reviews) > 0
+                                                            ? optional($deal_product->reviews)->sum('rating') /
+                                                                count($deal_product->reviews)
+                                                            : 0;
+                                                @endphp
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div class="ps-product__rating">
-                                                        <div class="br-wrapper br-theme-fontawesome-stars"><select
-                                                                class="ps-rating" data-read-only="true"
-                                                                style="display: none;">
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
-                                                            </select>
-                                                        </div>
+                                                        @if ($review > 0)
+                                                            <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                <select class="ps-rating" data-read-only="true"
+                                                                    style="display: none;">
+                                                                    @for ($i = 1; $i <= 5; $i++)
+                                                                        <option value="{{ $i }}"
+                                                                            @if ($i <= round($review)) selected @endif>
+                                                                            {{ $i }}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                     <div>
-                                                        Reviews
+                                                        @if (count($deal_product->reviews) > 0)
+                                                            Reviews ({{ count($deal_product->reviews) }})
+                                                        @else
+                                                            No Reviews Yet
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 @if (!empty($deal_product->unit_discount_price))
@@ -974,14 +1126,12 @@
                                                         <span
                                                             class="ps-product__price sale">৳{{ $deal_product->unit_discount_price }}</span>
                                                         <span
-                                                            class="ps-product__del">৳{{ $deal_product->unit_price }}
-                                                            Per Unit</span>
+                                                            class="ps-product__del">৳{{ $deal_product->unit_price }}</span>
                                                     </div>
                                                 @else
                                                     <div class="ps-product__meta">
                                                         <span
-                                                            class="ps-product__price sale">৳{{ $deal_product->unit_price }}
-                                                            Per Unit</span>
+                                                            class="ps-product__price sale">৳{{ $deal_product->unit_price }}</span>
                                                     </div>
                                                 @endif
                                                 <a href="{{ route('cart.store', $deal_product->id) }}"
@@ -991,26 +1141,20 @@
                                                     Cart</a>
                                                 <div class="ps-product__actions ps-product__group-mobile">
 
-                                                    <div class="ps-product__item cart" data-toggle="tooltip"
-                                                        data-placement="left" title="Add to cart">
+                                                    <div class="ps-product__item cart">
                                                         <a class="add_to_cart"
                                                             href="{{ route('cart.store', $deal_product->id) }}"
                                                             data-product_id="{{ $deal_product->id }}"
                                                             data-product_qty="1">
-                                                            <i class="fa fa-shopping-basket"></i>
+                                                            <i class="fa fa-eye"></i>
                                                         </a>
                                                     </div>
-                                                    <div class="ps-product__item" data-toggle="tooltip"
-                                                        data-placement="left" title="Wishlist">
+                                                    <div class="ps-product__item">
                                                         <a class="add_to_wishlist"
                                                             href="{{ route('wishlist.store', $deal_product->id) }}">
                                                             <i class="fa fa-heart-o"></i>
                                                         </a>
                                                     </div>
-                                                    {{-- <div class="ps-product__item rotate" data-toggle="tooltip"
-                                                        data-placement="left" title="Add to compare"><a
-                                                            href="compare.html"><i class="fa fa-align-left"></i></a>
-                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -1022,7 +1166,7 @@
                 @endif
             </div>
         @endif
-        @if ($blog_posts->count() > 0)
+        {{-- @if ($blog_posts->count() > 0)
             <section class="ps-section--blog container-fluid bg-white pb-5 cst-blog mt-0">
                 <div class="container px-0">
                     <div class="py-5">
@@ -1074,58 +1218,11 @@
                     </div>
                 </div>
             </section>
-        @endif
+        @endif --}}
     </div>
     </div>
     @include('frontend.layouts.HomeQuickViewModal')
     @push('scripts')
-        <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-        <script>
-            function toggleTestimonialContent(testimonialId, fullMessage) {
-                var testimonial = document.getElementById('testimonial-' + testimonialId);
-                var textElement = testimonial.querySelector('.testimonial-text');
-                var btn = testimonial.querySelector('button');
-
-                // Check if the full content is currently shown
-                if (btn.getAttribute('data-expanded') === 'true') {
-                    // If showing full content, truncate to first 12 words
-                    textElement.innerHTML = fullMessage.split(' ').slice(0, 12).join(' ');
-                    btn.innerHTML = '...'; // Change button text
-                    btn.setAttribute('data-expanded', 'false'); // Update state
-                } else {
-                    // If showing truncated content, show full message
-                    textElement.innerHTML = fullMessage;
-                    btn.innerHTML = 'Less'; // Change button text
-                    btn.setAttribute('data-expanded', 'true'); // Update state
-                }
-            }
-        </script>
-        <script>
-            $('.slick-carousel').slick({
-                vertical: true, // Enable vertical scrolling
-                verticalSwiping: true, // Allow vertical swiping
-                loop: true,
-                items: 1,
-                margin: 10,
-                nav: false,
-                dots: false,
-                autoplay: false,
-                autoplayTimeout: 5000,
-                autoplayHoverPause: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 1
-                    },
-                    1000: {
-                        items: 3
-                    }
-                }
-            });
-        </script>
-
         <script>
             $(document).ready(function() {
                 $('.dealCarousel').owlCarousel({
@@ -1205,22 +1302,21 @@
         <script>
             $(document).ready(function() {
                 $('.ps-categories__list').owlCarousel({
-                    loop: true, // Enable infinite loop
-                    margin: 10, // Space between items
-                    nav: false, // Disable navigation arrows
-                    dots: false, // Disable dots
-                    autoplay: true, // Enable autoplay
-                    autoplayTimeout: 5000, // 4 seconds delay for sliding
-                    autoplaySpeed: 5000, // Transition speed (2 seconds)
-                    smartSpeed: 5000, // Smooth transition between items
-                    slideTransition: 'linear', // Linear transition for smooth effect
-                    autoplayHoverPause: true, // Pause autoplay on hover
+                    items: 6, // Number of items visible
+                    loop: true, // Enable infinite looping
+                    autoplay: true, // Enable automatic sliding
+                    autoplayTimeout: 4000, // Slide change interval (ms)
+                    autoplaySpeed: 4000, // Slide transition speed (ms)
+                    smartSpeed: 2000,
+                    autoplayHoverPause: true, // Pause on hover
+                    nav: false, // Navigation buttons (optional)
+                    dots: false, // Dots indicator (optional)
                     responsive: {
                         0: {
-                            items: 3, // 3 items on extra small screens
+                            items: 5, // 3 items on extra small screens
                         },
                         576: {
-                            items: 3, // 3 items on small screens
+                            items: 5, // 3 items on small screens
                         },
                         768: {
                             items: 4, // 4 items on medium screens
@@ -1229,21 +1325,65 @@
                             items: 6, // 6 items on large screens
                         },
                     },
+
+
+                    // loop: true, // Enable infinite loop
+                    // margin: 10, // Space between items
+                    // nav: false, // Disable navigation arrows
+                    // dots: false, // Disable dots
+                    // autoplay: true, // Enable autoplay
+                    // autoplayTimeout: 5000, // 4 seconds delay for sliding
+                    // autoplaySpeed: 0, // Transition speed (2 seconds)
+                    // smartSpeed: 5000, // Smooth transition between items
+                    // slideTransition: 'linear', // Linear transition for smooth effect
+                    // autoplayHoverPause: true, // Pause autoplay on hover
+                    // responsive: {
+                    //     0: {
+                    //         items: 3, // 3 items on extra small screens
+                    //     },
+                    //     576: {
+                    //         items: 3, // 3 items on small screens
+                    //     },
+                    //     768: {
+                    //         items: 4, // 4 items on medium screens
+                    //     },
+                    //     1024: {
+                    //         items: 6, // 6 items on large screens
+                    //     },
+                    // },
                 });
             });
         </script>
         <script>
-            $(function() {
-                var owl = $(".testigmonial-slider");
-                owl.owlCarousel({
-                    items: 1,
-                    margin: 10,
-                    loop: true,
-                    nav: false,
-                    dots: false,
-                    autoplay: true,
-                    autoplayTimeout: 5000,
-                    autoplayHoverPause: true,
+            $(document).ready(function() {
+                $('.testigmonial-slider').owlCarousel({
+                    animateOut: 'animate__slideOutDown', // Animate.css class (use "animate__" prefix)
+                    animateIn: 'animate__flipInX', // Animate.css class (use "animate__" prefix)
+                    items: 1, // Default number of items
+                    margin: 30, // Remove margin between items
+                    stagePadding: 30, // Padding around the stage
+                    smartSpeed: 500, // Transition speed in ms
+                    dots: true, // Show dots navigation
+                    loop: true, // Infinite loop
+                    autoplay: true, // Auto-scroll slides
+                    autoplayTimeout: 10000, // Time between auto-scroll
+                    autoplayHoverPause: true, // Pause on hover
+                    mouseDrag: true, // Enable mouse scroll/drag
+                    touchDrag: true, // Enable touch support
+                    responsive: {
+                        0: {
+                            items: 1, // Display 1 item on small screens (up to 480px)
+                        },
+                        768: {
+                            items: 1, // Display 2 items on medium screens (up to 768px)
+                        },
+                        1024: {
+                            items: 1, // Display 3 items on larger screens (up to 1024px)
+                        },
+                        1200: {
+                            items: 1, // Display 4 items on extra-large screens (above 1200px)
+                        },
+                    },
                 });
             });
         </script>

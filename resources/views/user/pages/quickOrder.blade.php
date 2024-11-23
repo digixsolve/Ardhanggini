@@ -34,9 +34,10 @@
                                                 <tr>
                                                     <th width="5%">SL</th>
                                                     <th width="10%">Image</th>
-                                                    <th width="40%">Name</th>
+                                                    <th width="25%">Name</th>
                                                     <th width="15%" class="text-center">Status</th>
                                                     <th width="15%" class="text-center">Price</th>
+                                                    <th width="15%" class="text-center">Old Price</th>
                                                     <th width="15%" class="text-center">To Cart</th>
                                                 </tr>
                                             </thead>
@@ -49,7 +50,8 @@
                                                             <div>
                                                                 <img src="{{ asset('storage/' . $product->thumbnail) }}"
                                                                     class="" width="50px" height="50px"
-                                                                    alt="" onerror="this.onerror=null; this.src='{{ asset('frontend/img/no-image.png') }}';">
+                                                                    alt=""
+                                                                    onerror="this.onerror=null; this.src='{{ asset('frontend/img/no-image.png') }}';">
                                                             </div>
                                                         </td>
                                                         <td>{{ $product->name }}</td>
@@ -63,16 +65,20 @@
                                                             @endif
                                                         </td>
                                                         <td class="text-center">
-                                                            @if (!empty($product->box_discount_price))
+                                                            <div class="ps-product__meta">
+                                                                <span
+                                                                    class="ps-product__price sale">৳{{ $product->unit_price }}</span>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            @if (!empty($product->unit_discount_price))
                                                                 <div class="ps-product__meta">
                                                                     <span
-                                                                        class="ps-product__price sale">৳{{ $product->box_discount_price }}</span>
-                                                                    <span
-                                                                        class="ps-product__del">৳{{ $product->box_price }}</span>
+                                                                        class="ps-product__del">৳{{ $product->unit_discount_price }}</span>
                                                                 </div>
                                                             @else
-                                                                <div class="ps-product__meta"><span
-                                                                        class="ps-product__price sale">৳{{ $product->box_price }}</span>
+                                                                <div class="ps-product__meta">
+                                                                    <span class="ps-product__del">N/A</span>
                                                                 </div>
                                                             @endif
                                                         </td>
@@ -120,8 +126,7 @@
                                                                 @endphp
                                                                 <img src="{{ $thumbnailSrc }}"
                                                                     alt="{{ $related_product->meta_title }}"
-                                                                    width="210" height="210"
-                                                                    />
+                                                                    width="210" height="210" />
                                                             @else
                                                                 @foreach ($related_product->multiImages->slice(0, 2) as $image)
                                                                     @php
@@ -133,8 +138,7 @@
                                                                     @endphp
                                                                     <img src="{{ $imageSrc }}"
                                                                         alt="{{ $related_product->meta_title }}"
-                                                                        width="210" height="210"
-                                                                        />
+                                                                        width="210" height="210" />
                                                                 @endforeach
                                                             @endif
                                                         </figure>
@@ -154,7 +158,7 @@
                                                                     class="fa fa-search"></i></a></div>
 
                                                     </div>
-                                                    @if (!empty($related_product->box_discount_price))
+                                                    @if (!empty($related_product->unit_discount_price))
                                                         <div class="ps-product__badge">
                                                             <div class="ps-badge ps-badge--sale">Offer</div>
                                                         </div>
@@ -167,32 +171,26 @@
                                                             {{ $related_product->name }}
                                                         </a>
                                                     </h5>
-                                                    @if (Auth::check() && Auth::user()->status == 'active')
-                                                        @if (!empty($related_product->box_discount_price))
-                                                            <div class="ps-product__meta">
-                                                                <span
-                                                                    class="ps-product__price sale">৳{{ $related_product->box_discount_price }}</span>
-                                                                <span
-                                                                    class="ps-product__del">৳{{ $related_product->box_price }}</span>
-                                                            </div>
-                                                        @else
-                                                            <div class="ps-product__meta">
-                                                                <span
-                                                                    class="ps-product__price sale">৳{{ $related_product->box_price }}</span>
-                                                            </div>
-                                                        @endif
-                                                        <a href="{{ route('cart.store', $related_product->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart"
-                                                            data-product_id="{{ $related_product->id }}"
-                                                            data-product_qty="1">Add To
-                                                            Cart</a>
+
+                                                    @if (!empty($related_product->unit_discount_price))
+                                                        <div class="ps-product__meta">
+                                                            <span
+                                                                class="ps-product__price sale">৳{{ $related_product->unit_discount_price }}</span>
+                                                            <span
+                                                                class="ps-product__del">৳{{ $related_product->unit_price }}</span>
+                                                        </div>
                                                     @else
                                                         <div class="ps-product__meta">
-                                                            <a href="{{ route('login') }}"
-                                                                class="btn btn-info btn-block">Login
-                                                                to view price</a>
+                                                            <span
+                                                                class="ps-product__price sale">৳{{ $related_product->unit_price }}</span>
                                                         </div>
                                                     @endif
+                                                    <a href="{{ route('cart.store', $related_product->id) }}"
+                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart"
+                                                        data-product_id="{{ $related_product->id }}"
+                                                        data-product_qty="1">Add To
+                                                        Cart</a>
+
                                                     <div class="ps-product__actions ps-product__group-mobile">
                                                         <div class="ps-product__quantity">
                                                             <div class="def-number-input number-input safari_only">

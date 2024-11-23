@@ -51,7 +51,7 @@
                     @foreach ($staffs as $staff)
                         <tr>
                             <td class="text-center">
-                                1
+                                {{ $loop->iteration }}
                             </td>
 
                             <td class="d-flex align-items-center">
@@ -90,12 +90,12 @@
                                 </a>
                                 <a href="{{ route('admin.staff.edit', $staff->id) }}"
                                     class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px"
-                                    title="Delete This">
+                                    title="Edit">
                                     <i class="fa-solid fa-user-pen"></i>
                                 </a>
                                 <a href="{{ route('admin.staff.destroy', $staff->id) }}"
-                                    class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px"
-                                    title="Delete This">
+                                    class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px delete"
+                                    title="Delete">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                             </td>

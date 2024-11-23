@@ -87,18 +87,17 @@
                                         <div class="ps-product__desc">
                                             <p>{!! $latest_product->short_description !!}</p>
                                         </div>
-                                        @if (Auth::check() && Auth::user()->status == 'active')
-                                            @if (!empty($latest_product->box_discount_price))
+                                            @if (!empty($latest_product->unit_discount_price))
                                                 <div class="ps-product__meta">
                                                     <span
-                                                        class="ps-product__price sale">৳{{ $latest_product->box_discount_price }}</span>
+                                                        class="ps-product__price sale">৳{{ $latest_product->unit_discount_price }}</span>
                                                     <span
-                                                        class="ps-product__del">৳{{ $latest_product->box_price }}</span>
+                                                        class="ps-product__del">৳{{ $latest_product->unit_price }}</span>
                                                 </div>
                                             @else
                                                 <div class="ps-product__meta">
                                                     <span
-                                                        class="ps-product__price sale">৳{{ $latest_product->box_price }}</span>
+                                                        class="ps-product__price sale">৳{{ $latest_product->unit_price }}</span>
                                                 </div>
                                             @endif
 
@@ -120,12 +119,7 @@
                                             <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
                                                 data-product_id="{{ $latest_product->id }}" href="#">Add to
                                                 cart</a>
-                                        @else
-                                            <div class="ps-product__meta">
-                                                <a href="{{ route('login') }}" class="btn btn-info btn-block">Login to
-                                                    view price</a>
-                                            </div>
-                                        @endif
+
                                         <div class="ps-product__type">
                                             <ul class="ps-product__list">
 
@@ -235,18 +229,17 @@
                                         <div class="ps-product__desc">
                                             <p>{!! $deal_product->short_description !!}</p>
                                         </div>
-                                        @if (Auth::check() && Auth::user()->status == 'active')
-                                            @if (!empty($deal_product->box_discount_price))
+                                            @if (!empty($deal_product->unit_discount_price))
                                                 <div class="ps-product__meta">
                                                     <span
-                                                        class="ps-product__price sale">৳{{ $deal_product->box_discount_price }}</span>
+                                                        class="ps-product__price sale">৳{{ $deal_product->unit_discount_price }}</span>
                                                     <span
-                                                        class="ps-product__del">৳{{ $deal_product->box_price }}</span>
+                                                        class="ps-product__del">৳{{ $deal_product->unit_price }}</span>
                                                 </div>
                                             @else
                                                 <div class="ps-product__meta">
                                                     <span
-                                                        class="ps-product__price sale">৳{{ $deal_product->box_price }}</span>
+                                                        class="ps-product__price sale">৳{{ $deal_product->unit_price }}</span>
                                                 </div>
                                             @endif
 
@@ -268,14 +261,7 @@
                                             <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
                                                 data-product_id="{{ $deal_product->id }}" href="#">Add to
                                                 cart</a>
-                                        @else
-                                            <div class="ps-product__meta">
-                                                <a href="{{ route('login') }}" class="btn btn-info btn-block">Login
-                                                    to
-                                                    view
-                                                    price</a>
-                                            </div>
-                                        @endif
+                                        
                                         <div class="ps-product__type">
                                             <ul class="ps-product__list">
 

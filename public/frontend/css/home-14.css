@@ -29,7 +29,7 @@
 }
 
 .ps-home--14 .ps-section--banner .ps-promo .ps-promo__sale {
-  background-color: #FD8D27;
+  background-color: #252525;
   color: white;
   transform: translate(20%, -65%);
   position: absolute;
@@ -121,7 +121,7 @@
 }
 
 .ps-home--14 .ps-product--standard .ps-product__price.sale {
-  color: #FD8D27;
+  color: #252525;
 }
 
 .ps-home--14 .ps-section--deals .ps-section__title {

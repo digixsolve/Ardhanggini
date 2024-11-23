@@ -232,6 +232,21 @@
                         button.innerText = 'Already added'; // Change button text
                         document.querySelector(".cartCount").innerHTML = data.cartCount;
                         cartHeader.innerHTML = data.cartHeader;
+                        if (data.subTotal > 4000) {
+                            Toast.fire({
+                                title: 'Congratulations!',
+                                text: "Your shipping is now free. Happy Shopping!",
+                                icon: 'success',
+                                showCancelButton: true,
+                                // confirmButtonText: 'Yes, delete it!',
+                                cancelButtonText: 'Close',
+                                buttonsStyling: false,
+                                customClass: {
+                                    // confirmButton: 'btn btn-danger',
+                                    cancelButton: 'btn btn-success'
+                                }
+                            })
+                        }
                     } else if (data.error) {
                         Toast.fire({
                             icon: 'error',
@@ -361,7 +376,21 @@
                             icon: 'success',
                             title: data.success
                         });
-
+                        if (data.subTotal > 4000) {
+                            Toast.fire({
+                                title: 'Congratulations!',
+                                text: "Your shipping is now free. Happy Shopping!",
+                                icon: 'success',
+                                showCancelButton: true,
+                                // confirmButtonText: 'Yes, delete it!',
+                                cancelButtonText: 'Close',
+                                buttonsStyling: false,
+                                customClass: {
+                                    // confirmButton: 'btn btn-danger',
+                                    cancelButton: 'btn btn-success'
+                                }
+                            })
+                        }
                         if ($.isEmptyObject(data.error)) {
                             Toast.fire({
                                 icon: 'success',
@@ -447,6 +476,21 @@
                             button.prop('disabled', true); // Disable the button
                             button.text('Already added'); // Change button text
                             $(".cartCount").html(data.cartCount);
+                            if (data.subTotal > 4000) {
+                                Toast.fire({
+                                    title: 'Congratulations!',
+                                    text: "Your shipping is now free. Happy Shopping!",
+                                    icon: 'success',
+                                    showCancelButton: true,
+                                    // confirmButtonText: 'Yes, delete it!',
+                                    cancelButtonText: 'Close',
+                                    buttonsStyling: false,
+                                    customClass: {
+                                        // confirmButton: 'btn btn-danger',
+                                        cancelButton: 'btn btn-success'
+                                    }
+                                })
+                            }
                             cartHeader.html(data.cartHeader);
                         } else if (data.error) {
                             Toast.fire({
@@ -518,6 +562,21 @@
                         ).then(function() {
                             location.reload(); // Reload the page to reflect changes
                         });
+                        if (data.subTotal > 4000) {
+                            Toast.fire({
+                                title: 'Congratulations!',
+                                text: "Your shipping is now free. Happy Shopping!",
+                                icon: 'success',
+                                showCancelButton: true,
+                                // confirmButtonText: 'Yes, delete it!',
+                                cancelButtonText: 'Close',
+                                buttonsStyling: false,
+                                customClass: {
+                                    // confirmButton: 'btn btn-danger',
+                                    cancelButton: 'btn btn-success'
+                                }
+                            })
+                        }
                     },
                     error: function(xhr) {
                         console.log('AJAX Error Response:', xhr
