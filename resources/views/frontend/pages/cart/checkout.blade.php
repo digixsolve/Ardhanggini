@@ -58,14 +58,14 @@
                                         <div class="ps-checkout__group">
                                             <label class="ps-checkout__label">State *</label>
                                             <input class="ps-input" type="text" name="billing_state"
-                                                value="{{ old('billing_state', $user->state) }}" required />
+                                                value="{{ old('billing_state', $user->state) }}"/>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="ps-checkout__group">
                                             <label class="ps-checkout__label">Postcode *</label>
                                             <input class="ps-input" type="text" name="billing_postcode"
-                                                value="{{ old('billing_postcode', $user->zipcode) }}" required />
+                                                value="{{ old('billing_postcode', $user->zipcode) }}"/>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
