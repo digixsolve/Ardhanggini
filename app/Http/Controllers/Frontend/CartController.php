@@ -171,7 +171,7 @@ class CartController extends Controller
             'payment_method' => 'required|in:cod,stripe,paypal',
             'sub_total' => 'required',
             'total_amount' => 'required|numeric|min:0',
-            'shipping_id' => 'required|exists:shipping_methods,id'
+            // 'shipping_id' => 'required|exists:shipping_methods,id'
         ], [
             'billing_email.required' => 'The billing email is required.',
             'billing_email.email' => 'The billing email must be a valid email address.',
