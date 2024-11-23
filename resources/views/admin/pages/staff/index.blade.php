@@ -51,7 +51,7 @@
                     @foreach ($staffs as $staff)
                         <tr>
                             <td class="text-center">
-                                1
+                                {{ $loop->iteration }}
                             </td>
 
                             <td class="d-flex align-items-center">
