@@ -97,7 +97,7 @@
                 <section class="ps-section--latest-horizontal">
                     <section class="container px-0">
                         <h3 class="ps-section__title pb-3 pb-lg-5" style="font-size: 30px;">Latest products <img
-                                width="30px"
+                                width="40px"
                                 src="https://static.vecteezy.com/system/resources/previews/011/999/958/non_2x/fire-icon-free-png.png"
                                 alt="" style="position: relative;top: -3px;left: -6px;"></h3>
                         <div class="ps-section__content">
@@ -296,9 +296,32 @@
 
             @if ($categoryone && $categoryoneproducts->count() > 0)
                 <div class="container px-0">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="d-flex justify-content-center align-items-center pb-3 pb-lg-5">
+                                <div>
+                                    <h3 class="mb-0" style="font-size: 30px;">
+                                        {{ optional($categoryone)->name }}</h3>
+                                </div>
+                                <div class="pl-3">
+                                    <img class="" src="{{ asset('storage/' . $categoryone->logo) }}"
+                                        alt="{{ $categoryone->name }}" width="50px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="ps-home--block">
-                        <h3 class="ps-section__title text-center pb-3 pb-lg-5" style="font-size: 30px;">
-                            {{ optional($categoryone)->name }}</h3>
+
+                        {{-- <figure>
+                                @php
+                                    $logoPath = $category->logo ? 'storage/' . $category->logo : null;
+                                    $logoSrc = $logoPath && file_exists(public_path($logoPath))
+                                        ? asset($logoPath)
+                                        : asset('frontend/img/no-product.jpg');
+                                @endphp
+                                <img src="{{ $logoSrc }}" alt="{{ $category->name }}" width="210" height="210">
+                                <p>{{ $category->name }}</p>
+                            </figure> --}}
                         <div class="ps-section__content">
                             <div class="row m-0">
                                 @foreach ($categoryoneproducts as $categoryoneproduct)
@@ -474,7 +497,20 @@
             </div>
             <section class="ps-section--latest">
                 <div class="container px-0">
-                    <h3 class="ps-section__title" style="font-size: 30px;">{{ optional($categorytwo)->name }}</h3>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="d-flex justify-content-center align-items-center pb-3 pb-lg-5">
+                                <div>
+                                    <h3 class="mb-0" style="font-size: 30px;">
+                                        {{ optional($categorytwo)->name }}</h3>
+                                </div>
+                                <div class="pl-3">
+                                    <img class="" src="{{ asset('storage/' . $categorytwo->logo) }}"
+                                        alt="{{ $categorytwo->name }}" width="50px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="ps-section__carousel mb-0">
                         <div class="takeway-slider owl-carousel owl-loaded owl-drag">
                             <div class="owl-stage-outer">
@@ -845,8 +881,21 @@
                                 to every product. At Ardhanggini, we go beyond expectations to deliver products that
                                 inspire trust and satisfaction. Don’t just take our word for it—read their stories
                                 below.</p>
-                            <div class="pt-5">
-                                <a href="{{ route('allproducts') }}" class="tst-btn text-white px-5">Shop Now</a>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="pt-5">
+                                    <a href="{{ route('allproducts') }}" class="tst-btn text-white px-5">Shop Now</a>
+                                </div>
+                                <div class="circle-rounde">
+                                    <div class="logo-rounde"
+                                        style="background-image: url('{{ file_exists(public_path('storage/' . optional($setting)->site_logo_black)) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}');">
+                                    </div>
+                                    <div class="text-rounde">
+                                        <p>
+                                            {{ optional($setting)->site_motto }} <span
+                                                class="pl-2 pr-2">Ardhanggini</span>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1383,6 +1432,15 @@
                     },
                 });
             });
+        </script>
+        <script>
+            const text = document.querySelector(".text-rounde");
+            text.innerHTML = text.innerText
+                .split("")
+                .map(
+                    (char, i) => `<span style="transform:rotate(${i * 10.3}deg)">${char}</span>`
+                )
+                .join("");
         </script>
     @endpush
 </x-frontend-app-layout>

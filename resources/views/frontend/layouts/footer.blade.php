@@ -50,12 +50,12 @@
     }
 </style>
 <footer class="ps-footer ps-footer--13 ps-footer--14">
-    <div class="ps-footer--top pt-5">
+    <div class="ps-footer--top">
         <div class="container">
             <div class="row m-0">
                 <div class="col-12 col-sm-3 p-0">
                     <p class="text-center">
-                        <a class="ps-footer__link" href="#">
+                        <a class="ps-footer__link site_text_color" href="#">
                             <i class="icon-wallet"></i>
                             Full Cash on Delivery
                         </a>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-12 col-sm-2 p-0">
                     <p class="text-center">
-                        <a class="ps-footer__link" href="#">
+                        <a class="ps-footer__link site_text_color" href="#">
                             <i class="icon-truck"></i>In
                             Dhaka- 70 TK
                         </a>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="col-12 col-sm-3 p-0">
                     <p class="text-center">
-                        <a class="ps-footer__link" href="#">
+                        <a class="ps-footer__link site_text_color" href="#">
                             <i class="icon-truck"></i>
                             Outside Dhaka- 150 TK
                         </a>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="col-12 col-sm-4 p-0">
                     <p class="text-center">
-                        <a class="ps-footer__link" href="#">
+                        <a class="ps-footer__link site_text_color" href="#">
                             <i class="icon-check"></i>
                             Check Product Infront Of Delivery Man
                         </a>
@@ -267,9 +267,18 @@
                             <p>{{ optional($setting)->copyright_title }}</p>
                         </a>
                     </div>
-                    <div class="col-12 col-md-6 text-right">
-                        <img src="{{ asset('frontend/img/payment.png') }}" alt>
-                        <img class="payment-light" src="{{ asset('frontend/img/payment-light.png') }}" alt>
+                    <div class="col-12 col-md-6 d-flex justify-content-end align-items-center">
+                        {{-- <img src="{{ asset('frontend/img/payment.png') }}" alt>
+                        <img class="payment-light" src="{{ asset('frontend/img/payment-light.png') }}" alt> --}}
+                        <div class="">
+                            <p style="margin: 5px 0; font-size: 10px;" class="text-right w-100">
+                                Developed with ❤️ by
+                                <strong>
+                                    <a href="https://www.digiXsolve.com" class="pl-2"
+                                        style="color: #252525; text-decoration: none;">digiXsolve</a>
+                                </strong>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

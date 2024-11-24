@@ -35,8 +35,9 @@
                                             </div>
                                         </th>
                                         <th width="10%">{{ __('category.Sl') }}</th>
-                                        <th width="30%">{{ __('category.Parent') }}</th>
-                                        <th width="20%">{{ __('category.Name') }}</th>
+                                        <th width="10%">{{ __('category.Parent') }}</th>
+                                        <th width="25%">{{ __('category.logo') }}</th>
+                                        <th width="15%">{{ __('category.Name') }}</th>
                                         <th width="10%">{{ __('category.Status') }}</th>
                                         <th width="20%" class="text-end pe-5">{{ __('category.Action') }}</th>
                                     </tr>
@@ -50,6 +51,8 @@
                                                         name="categories[]" value="{{ $category->id }}" />
                                                 </div>
                                             </td>
+                                            <td><img class="w-65px" src="{{ asset('storage/' . $category->logo) }}"
+                                                alt="{{ $category->name }}"></td>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 {{ $category->parent_id ? $category->parent->name : 'N/A' }}
