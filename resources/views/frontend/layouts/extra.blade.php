@@ -2,7 +2,8 @@
     <div>
         <a href="{{ route('home') }}">
             <img src="{{ !empty(optional($setting)->site_logo_white) ? asset('storage/' . optional($setting)->site_logo_white) : asset('frontend/img/logo.png') }}"
-                style="width: 80px; padding: 8px; border-radius: 12px" onerror="this.onerror=null; this.src='/images/default_logo-2.jpg';">
+                style="width: 80px; padding: 8px; border-radius: 12px"
+                onerror="this.onerror=null; this.src='/images/default_logo-2.jpg';">
         </a>
     </div>
     <div class="d-flex align-items-center">
@@ -74,9 +75,9 @@
                         <i class="point"></i>
                     </div>
 
-                    <span class="inner"><svg class="icon" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="2.5">
+                    <span class="inner"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2.5">
                             <polyline
                                 points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37">
                             </polyline>
@@ -92,14 +93,16 @@
                     <h5 class="ps-footer__title">Need help</h5>
                     <div class="ps-footer__fax number-mobile">
                         <div class="d-flex align-items-center">
-                            <img class="" src="{{ asset('images/whatsapp-icons.gif') }}" alt="" width="55px">
+                            <img class="" src="{{ asset('images/whatsapp-icons.gif') }}" alt=""
+                                width="55px">
                             {{ optional($setting)->primary_phone }}
                         </div>
 
                     </div>
                     <p class="ps-footer__work">
                         Monday – Friday: 9:00-20:00<br>Saturday: 11:00 – 15:00 <br>
-                        <a href="mailto:{{ optional($setting)->contact_email }}">{{ optional($setting)->contact_email }}</a>
+                        <a
+                            href="mailto:{{ optional($setting)->contact_email }}">{{ optional($setting)->contact_email }}</a>
                     </p>
                 </div>
             </div>

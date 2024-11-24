@@ -53,7 +53,7 @@
     <div class="ps-footer--top pt-5">
         <div class="container">
             <div class="row m-0">
-                <div class="col-12 col-sm-4 p-0">
+                <div class="col-12 col-sm-3 p-0">
                     <p class="text-center">
                         <a class="ps-footer__link" href="#">
                             <i class="icon-wallet"></i>
@@ -61,19 +61,27 @@
                         </a>
                     </p>
                 </div>
-                <div class="col-12 col-sm-4 p-0">
+                <div class="col-12 col-sm-2 p-0">
                     <p class="text-center">
                         <a class="ps-footer__link" href="#">
-                            <i class="icon-truck"></i>Inside
+                            <i class="icon-truck"></i>In
                             Dhaka- 70 TK
+                        </a>
+                    </p>
+                </div>
+                <div class="col-12 col-sm-3 p-0">
+                    <p class="text-center">
+                        <a class="ps-footer__link" href="#">
+                            <i class="icon-truck"></i>
+                            Outside Dhaka- 150 TK
                         </a>
                     </p>
                 </div>
                 <div class="col-12 col-sm-4 p-0">
                     <p class="text-center">
                         <a class="ps-footer__link" href="#">
-                            <i class="icon-truck"></i>
-                            Outside Dhaka- 150 TK
+                            <i class="icon-check"></i>
+                            Check Product Infront Of Delivery Man
                         </a>
                     </p>
                 </div>

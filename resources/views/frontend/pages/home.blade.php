@@ -885,7 +885,7 @@
                                                                         alt="">
 
                                                                 </div>
-                                                                <div class="pl-3 testimonial-content">
+                                                                <div class="pl-3 testimonial-content-de">
                                                                     <h4 class="text-white fw-semibold mb-0">
                                                                         {{ $testimonial->name }}</h4>
                                                                     <p class="text-white mb-0">

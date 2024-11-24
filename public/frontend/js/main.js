@@ -57,7 +57,7 @@
                             '<i class="fa fa-chevron-left"></i>',
                             '<i class="fa fa-chevron-right"></i>',
                         ],
-                        dots: true, // Shows pagination dots
+                        dots: false, // Shows pagination dots
                         items: 3, // Number of items displayed per slide
                         center: true, // Center the active item
                         responsive: {
