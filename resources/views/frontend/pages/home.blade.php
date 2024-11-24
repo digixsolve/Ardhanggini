@@ -97,9 +97,9 @@
                 <section class="ps-section--latest-horizontal">
                     <section class="container px-0">
                         <h3 class="ps-section__title pb-3 pb-lg-5" style="font-size: 30px;">Latest products <img
-                                width="20px"
+                                width="30px"
                                 src="https://static.vecteezy.com/system/resources/previews/011/999/958/non_2x/fire-icon-free-png.png"
-                                alt=""></h3>
+                                alt="" style="position: relative;top: -3px;left: -6px;"></h3>
                         <div class="ps-section__content">
                             <div class="row m-0">
                                 @foreach ($latest_products as $latest_product)
@@ -441,8 +441,7 @@
 
                                                         <div class="ps-product__item cart" data-toggle="tooltip"
                                                             data-placement="left" title="Add to cart"><a
-                                                                href="#"><i
-                                                                    class="fa fa-eye"></i></a>
+                                                                href="#"><i class="fa fa-eye"></i></a>
                                                         </div>
                                                         <div class="ps-product__item" data-toggle="tooltip"
                                                             data-placement="left" title="Wishlist"><a
@@ -623,8 +622,7 @@
 
                                                             <div class="ps-product__item cart" data-toggle="tooltip"
                                                                 data-placement="left" title="Add to cart"><a
-                                                                    href="#"><i
-                                                                        class="fa fa-eye"></i></a>
+                                                                    href="#"><i class="fa fa-eye"></i></a>
                                                             </div>
                                                             <div class="ps-product__item" data-toggle="tooltip"
                                                                 data-placement="left" title="Wishlist"><a
@@ -792,8 +790,7 @@
 
                                                         <div class="ps-product__item cart" data-toggle="tooltip"
                                                             data-placement="left" title="Add to cart"><a
-                                                                href="#"><i
-                                                                    class="fa fa-eye"></i></a>
+                                                                href="#"><i class="fa fa-eye"></i></a>
                                                         </div>
                                                         <div class="ps-product__item" data-toggle="tooltip"
                                                             data-placement="left" title="Wishlist"><a
@@ -888,7 +885,7 @@
                                                                         alt="">
 
                                                                 </div>
-                                                                <div class="pl-3">
+                                                                <div class="pl-3 testimonial-content">
                                                                     <h4 class="text-white fw-semibold mb-0">
                                                                         {{ $testimonial->name }}</h4>
                                                                     <p class="text-white mb-0">
