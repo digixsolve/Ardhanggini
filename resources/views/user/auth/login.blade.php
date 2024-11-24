@@ -50,9 +50,9 @@
     </style>
     <div class="ps-account my-lg-5 py-lg-5 my-0 py-0">
         <div class="container">
-            <div class="row row-equal-height my-lg-5 my-0 py-5 py-lg-0 align-items-center gx-5 bg-white">
+            <div class="row row-equal-height login-content my-lg-5 my-0 py-5 py-lg-0 align-items-center gx-5 bg-white">
                 <div class="col-12 col-md-6 bg-white column-equal-height">
-                    <div class="row pl-5">
+                    <div class="row">
                         <div class="col-lg-12 pl-5">
                             <div class="p-3">
                                 <div class="pb-5">
@@ -62,7 +62,7 @@
                                             alt="">
                                     </a>
                                 </div>
-                                <div class="mb-5">
+                                <div class="mb-5 text-lg-start text-center">
                                     <h2 class="ps-form__title mb-0">Welcome Back!</h2>
                                     <p>Enter To Get Unlimited Access & Data</p>
                                 </div>

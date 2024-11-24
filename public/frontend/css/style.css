@@ -836,6 +836,7 @@ body {
     .ps-btn--hamburger {
         display: inline-block;
     }
+
 }
 
 .ps-btn--warning {
@@ -3616,7 +3617,7 @@ textarea.form-control {
 .ps-product__thumbnail {
     position: relative;
     margin-bottom: 15px;
-    padding: 20px 20px 0;
+    padding: 0px 0px 0;
 }
 
 .ps-product__thumbnail img {
@@ -3899,6 +3900,23 @@ textarea.form-control {
     .ps-product--horizontal {
         padding-left: 30px;
     }
+    .register-bg {
+        margin-top: 135px;
+    }
+    .login-content{
+        margin-top: 50px !important;
+    }
+}
+.ps-product--detail .ps-product__badge {
+    position: initial;
+    margin-top: -25px;
+    z-index: 60;
+    position: relative !important;
+    top: -22px;
+}
+.slider-nav-thumbnails .slick-slide img {
+    padding: 3px !important;
+    background: transparent;
 }
 
 @media (max-width: 1200px) {
@@ -9830,7 +9848,7 @@ textarea.form-control {
 
 .ps-section--also .ps-product--standard {
     border-left: 1px solid #f0f2f5;
-    height: 500px;
+    height: 470px;
 }
 
 .ps-section--also .ps-product--standard .ps-product__title {
@@ -18695,19 +18713,55 @@ table.dataTable tbody td:last-child {
     width: 2px;
     background-color: #fff; /* Default color */
 }
-.menus-items-head:last-child::before {
-    background-color: transparent; /* Default: Transparent for the last item */
+
+
+.menus-items-head::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: -15px;
+    height: 20px;
+    width: 2px;
+    background-color: #fff; /* Default color */
 }
-.menus-items-head:last-child::before {
-    left: 0px;
-    background-color: white; /* Default: Transparent for the last item */
-}
+
 .menus-items-head.transparent-before::before {
     background-color: transparent;
 }
 
-.menus-items-head:nth-child(8)::before {
+.menus-items-head:nth-child(1)::before {
     background-color: white; /* Transparent for the 5th item */
+}
+.menus-items-head:nth-child(2)::before {
+    background-color: white; /* Transparent for the 5th item */
+}
+.menus-items-head:nth-child(3)::before {
+    background-color: white; /* Transparent for the 5th item */
+}
+.menus-items-head:nth-child(4)::before {
+    background-color: white; /* Transparent for the 5th item */
+}
+.menus-items-head:nth-child(5)::before {
+    background-color: transparent; /* Transparent for the 5th item */
+}
+.menus-items-head:nth-child(6)::before {
+    background-color: transparent; /* Transparent for the 5th item */
+}
+.menus-items-head:nth-child(7)::before {
+    background-color: white; /* Transparent for the 5th item */
+}
+.menus-items-head:nth-child(8)::before {
+    background-color: green; /* Transparent for the 5th item */
+}
+.menus-items-head:nth-child(9)::before {
+    background-color: rgb(56, 1, 1); /* Transparent for the 5th item */
+}
+.menus-items-head:last-child::before {
+    background-color: transparent; /* Default: Transparent for the last item */
+}
+.menus-items-head:nth-last-child(2)::before {
+    right: -20px; /* Moves the line further to the left for second-to-last item */
+    background-color: transparent; /* Optional: Make it transparent */
 }
 .top-up-section {
     margin-top: -70px;
