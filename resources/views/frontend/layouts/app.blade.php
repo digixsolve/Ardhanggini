@@ -220,7 +220,7 @@
                 .then(data => {
                     const Toast = Swal.mixin({
                         showConfirmButton: false,
-                        timer: 3000
+                        timer: 1000
                     });
 
                     if (data.success) {
@@ -287,7 +287,8 @@
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: '{{ $error }}'
+                        text: '{{ $error }}',
+                        timer: 1000
                     });
                 @endforeach
             });
@@ -370,7 +371,7 @@
                     success: function(data) {
                         const Toast = Swal.mixin({
                             showConfirmButton: false,
-                            timer: 3000
+                            timer: 1000
                         });
                         Toast.fire({
                             icon: 'success',
@@ -449,6 +450,7 @@
                     Swal.fire({
                         icon: 'warning',
                         title: 'Invalid Quantity',
+                        timer: 1000,
                         text: 'Please select a valid quantity.'
                     });
                     return;
@@ -465,7 +467,7 @@
                     success: function(data) {
                         const Toast = Swal.mixin({
                             showConfirmButton: false,
-                            timer: 3000
+                            timer: 1000
                         });
 
                         if (data.success) {
@@ -615,7 +617,7 @@
                     success: function(data) {
                         const Toast = Swal.mixin({
                             showConfirmButton: false,
-                            timer: 3000
+                            timer: 1000
                         });
                         Toast.fire({
                             icon: 'success',
@@ -897,14 +899,14 @@
             switch (type) {
                 case 'info':
 
-                    toastr.options.timeOut = 10000;
+                    toastr.options.timeOut = 3000;
                     toastr.info("{{ Session::get('message') }}");
                     var audio = new Audio('audio.mp3');
                     audio.play();
                     break;
                 case 'success':
 
-                    toastr.options.timeOut = 10000;
+                    toastr.options.timeOut = 3000;
                     toastr.success("{{ Session::get('message') }}");
                     var audio = new Audio('audio.mp3');
                     audio.play();
@@ -912,7 +914,7 @@
                     break;
                 case 'warning':
 
-                    toastr.options.timeOut = 10000;
+                    toastr.options.timeOut = 3000;
                     toastr.warning("{{ Session::get('message') }}");
                     var audio = new Audio('audio.mp3');
                     audio.play();
@@ -920,7 +922,7 @@
                     break;
                 case 'error':
 
-                    toastr.options.timeOut = 10000;
+                    toastr.options.timeOut = 3000;
                     toastr.error("{{ Session::get('message') }}");
                     var audio = new Audio('audio.mp3');
                     audio.play();
