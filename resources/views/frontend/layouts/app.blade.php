@@ -302,7 +302,7 @@
                 document.getElementById('preloader').style.display = 'none';
                 // Show the main content
                 document.getElementById('main-content').style.display = 'block';
-            }, 1000); // 2000 milliseconds = 2 seconds
+            }, 700); // 2000 milliseconds = 2 seconds
         });
     </script>
     {{-- Preloader End --}}
