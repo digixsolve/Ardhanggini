@@ -270,7 +270,7 @@
                     <div class="col-12 col-md-6 d-flex justify-content-end align-items-center">
                         {{-- <img src="{{ asset('frontend/img/payment.png') }}" alt>
                         <img class="payment-light" src="{{ asset('frontend/img/payment-light.png') }}" alt> --}}
-                        <div class="">
+                        {{-- <div class="">
                             <p style="margin: 5px 0; font-size: 10px;" class="text-right w-100">
                                 Developed with ❤️ by
                                 <strong>
@@ -278,7 +278,7 @@
                                         style="color: #252525; text-decoration: none;">digiXsolve</a>
                                 </strong>
                             </p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
