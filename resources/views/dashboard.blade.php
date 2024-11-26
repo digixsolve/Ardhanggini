@@ -1174,7 +1174,7 @@
             </section>
         </div>
     @else
-        <section class="user-dashboard py-8">
+        <section class="user-dashboard py-0 py-lg-8">
             <div class="container">
                 <div>
                     <h6 class="text-warning display-4 text-center">Thank you for registering. <br> Our team is

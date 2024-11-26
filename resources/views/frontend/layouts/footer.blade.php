@@ -55,7 +55,7 @@
             <div class="row m-0">
                 <div class="col-12 col-sm-3 p-0">
                     <p class="text-center">
-                        <span class="ps-footer__link site_text_color">
+                        <span class="ps-footer__link">
                             <i class="icon-wallet"></i>
                             Full Cash on Delivery
                         </span>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-12 col-sm-2 p-0">
                     <p class="text-center">
-                        <span class="ps-footer__link site_text_color">
+                        <span class="ps-footer__link">
                             <i class="icon-truck"></i>In
                             Dhaka- 70 TK
                         </span>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="col-12 col-sm-3 p-0">
                     <p class="text-center">
-                        <span class="ps-footer__link site_text_color">
+                        <span class="ps-footer__link">
                             <i class="icon-truck"></i>
                             Outside Dhaka- 150 TK
                         </span>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="col-12 col-sm-4 p-0">
                     <p class="text-center">
-                        <span class="ps-footer__link site_text_color">
+                        <span class="ps-footer__link">
                             <i class="icon-check"></i>
                             Check Product Infront Of Delivery Man
                         </span>

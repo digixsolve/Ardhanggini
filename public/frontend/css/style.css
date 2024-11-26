@@ -3021,8 +3021,8 @@ textarea.form-control {
 }
 
 .ps-product__image figure {
-    width: 100%;
-    height: 255px;
+    width: 260px;
+    height: 210px;
     margin: 0;
     padding: 0;
     position: relative;
@@ -3616,8 +3616,7 @@ textarea.form-control {
 }
 .ps-product__thumbnail {
     position: relative;
-    margin-bottom: 15px;
-    padding: 0px 0px 0;
+    padding: 20px;
 }
 
 .ps-product__thumbnail img {
@@ -3930,7 +3929,8 @@ textarea.form-control {
 }
 
 .ps-product--standard .ps-product__image {
-    display: block;
+    display: flex;
+    justify-content: center;
     transition: 600ms ease 0s;
     border-radius: 4px;
 }
@@ -4214,12 +4214,15 @@ textarea.form-control {
 }
 
 .ps-product--detail .ps-product__feature {
-    background-color: #8cbf4440;
+    background-color: #5000661c;
     border-radius: 4px;
     padding: 15px;
     margin-top: 50px;
 }
-
+.ps-section--also .ps-product--standard .releted-title
+{
+    min-height: 70px !important;
+}
 .ps-product--detail .ps-product__feature .ps-product__variations {
     margin-top: 20px;
 }
@@ -16397,7 +16400,7 @@ textarea.form-control {
     position: relative;
     z-index: 5;
     margin-bottom: 50px;
-    background-color: #d9d9d9e3;
+    padding-top: 35px;
 }
 
 .ps-footer--top .row {
@@ -16414,8 +16417,8 @@ textarea.form-control {
 }
 
 .ps-footer--top .ps-footer__link {
-    color: var(--site-green);
-    font-weight: 600;
+    color: #252525;
+    font-weight: 400;
     font-size: 16px;
 }
 
@@ -19863,30 +19866,34 @@ table.dataTable tbody td:last-child {
 /* For Mobile Responsive End */
 
 .circle-rounde {
-	position: relative;
-	width: 200px;
-	height: 200px;
-	border-radius: 100vmax;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 100vmax;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    top: -30px;
+    z-index: 55;
 }
 
 .logo-rounde {
-	position: absolute;
-	width: 125px;
-	height: 66px;
+    position: absolute;
+    width: 80px;
+    height: 100%;
 	background: url("https://assets.codepen.io/7344750/internal/avatars/users/default.png?fit=crop&format=auto&height=512&version=1657025755&width=512");
-	background-size: cover;
-	border-radius: 0vmax;
-	background-position: center;
+    background-size: contain;
+    border-radius: 0vmax;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .text-rounde {
     position: absolute;
     width: 100%;
     height: 100%;
-    font-family: Consolas, monospace;
+    font-family: "Inter", sans-serif;
     color: #ffffff;
     font-size: 15px;
     animation: textRotation 8s linear infinite;
@@ -19906,10 +19913,14 @@ table.dataTable tbody td:last-child {
 }
 
 .text-rounde span {
-	position: absolute;
-	left: 50%;
-	font-size: 1.2em;
-	transform-origin: 0 100px;
+    position: absolute;
+    left: 50%;
+    font-size: 12px;
+    transform-origin: 0px 63px;
+    top: 2px;
+    word-spacing: 0;
+    font-family: "Inter", sans-serif;
+    line-height: 18px;
 }
 
 .fa-facebook {

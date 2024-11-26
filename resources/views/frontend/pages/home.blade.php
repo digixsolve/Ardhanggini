@@ -303,10 +303,10 @@
                                     <h3 class="mb-0" style="font-size: 30px;">
                                         {{ optional($categoryone)->name }}</h3>
                                 </div>
-                                <div class="pl-3">
+                                {{-- <div class="pl-3">
                                     <img class="" src="{{ asset('storage/' . $categoryone->logo) }}"
                                         alt="{{ $categoryone->name }}" width="50px">
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -504,10 +504,10 @@
                                     <h3 class="mb-0" style="font-size: 30px;">
                                         {{ optional($categorytwo)->name }}</h3>
                                 </div>
-                                <div class="pl-3">
+                                {{-- <div class="pl-3">
                                     <img class="" src="{{ asset('storage/' . $categorytwo->logo) }}"
                                         alt="{{ $categorytwo->name }}" width="50px">
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -881,20 +881,9 @@
                                 to every product. At Ardhanggini, we go beyond expectations to deliver products that
                                 inspire trust and satisfaction. Don’t just take our word for it—read their stories
                                 below.</p>
-                            <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
                                 <div class="pt-5">
                                     <a href="{{ route('allproducts') }}" class="tst-btn text-white px-5">Shop Now</a>
-                                </div>
-                                <div class="circle-rounde">
-                                    <div class="logo-rounde"
-                                        style="background-image: url('{{ file_exists(public_path('storage/' . optional($setting)->site_logo_black)) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}');">
-                                    </div>
-                                    <div class="text-rounde">
-                                        <p>
-                                            {{ optional($setting)->site_motto }} <span
-                                                class="pl-2 pr-2">Ardhanggini</span>
-                                        </p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -959,6 +948,16 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- <div class="circle-rounde">
+                            <div class="logo-rounde"
+                                style="background-image: url('{{ file_exists(public_path('storage/' . optional($setting)->site_logo_black)) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}');">
+                            </div>
+                            <div class="text-rounde">
+                                <p class="" style="text-decoration: uppercase; !important">
+                                    STYLE WITH ELEGANCE YOUR LEGACY
+                                </p>
+                            </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -1437,9 +1436,10 @@
             const text = document.querySelector(".text-rounde");
             text.innerHTML = text.innerText
                 .split("")
-                .map(
-                    (char, i) => `<span style="transform:rotate(${i * 10.3}deg)">${char}</span>`
-                )
+                .map((char, i) => {
+                    const character = char === " " ? "&nbsp;" : char; // Replace spaces with non-breaking spaces
+                    return `<span style="transform:rotate(${i * 10.3}deg)">${character}</span>`;
+                })
                 .join("");
         </script>
     @endpush

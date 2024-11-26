@@ -108,7 +108,7 @@
                                     <p>Billing Address Details</p>
                                 </div>
                                 <!-- House/Block/Road -->
-                                <div class="ps-form__group col-12 col-xl-12">
+                                <div class="ps-form__group col-12 col-xl-8">
                                     <label class="ps-form__label" for="House/Block/Road">House No / Road Name<span
                                             class="text-danger">*</span></label>
                                     <div class="input-group">
@@ -117,6 +117,13 @@
                                             required />
                                     </div>
                                     <x-input-error :messages="$errors->get('address_one')" class="mt-2" />
+                                </div>
+                                <div class="ps-form__group col-12 col-xl-4">
+                                    <div class="ps-checkout__group">
+                                        <label class="ps-form__label">Division *</label>
+                                        <input class="form-control ps-form__input" type="text" name="shipping_state" />
+                                    </div>
+                                    <x-input-error :messages="$errors->get('shipping_state')" class="mt-2" />
                                 </div>
 
                                 <!-- State -->

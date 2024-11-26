@@ -125,7 +125,7 @@
         </div>
     </div>
     <section class="ps-account">
-        <div class="user-dashboard py-8">
+        <div class="user-dashboard py-0 py-lg-8">
             <div class="container">
                 <div class="row g-3 g-xl-4 tab-wrap">
                     <div class="col-lg-4 col-xl-3 sticky">

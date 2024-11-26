@@ -502,7 +502,7 @@
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">State *</label>
+                                                    <label class="ps-checkout__label">Division *</label>
                                                     <input class="ps-input" type="text" name="shipping_state" />
                                                 </div>
                                             </div>

@@ -751,6 +751,7 @@
     -webkit-box-align: start;
     -ms-flex-align: start;
     align-items: flex-start;
+    margin-top: 50px;
 }
 .user-dashboard .tab-wrap .setting-menu {
     margin-bottom: 15px;
@@ -1064,6 +1065,10 @@
         .option-wrap
         > div:not(:last-of-type) {
         border-bottom: 1px solid #ddd !important;
+    }
+    .breadcrumb-wrap {
+        background-color: #fafafa;
+        margin-top: 115px;
     }
 }
 @media only screen and (max-width: 767px) {

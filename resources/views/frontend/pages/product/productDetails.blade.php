@@ -360,7 +360,10 @@
                                                                 <select class="ps-rating" data-read-only="true"
                                                                     style="display: none;">
                                                                     @php
-                                                                        $maxRating = min(5, max(1, floor($review['rating']))); // Get the highest full rating value
+                                                                        $maxRating = min(
+                                                                            5,
+                                                                            max(1, floor($review['rating'])),
+                                                                        ); // Get the highest full rating value
                                                                     @endphp
                                                                     @for ($i = 1; $i <= $maxRating; $i++)
                                                                         <option value="{{ $i }}">
@@ -444,11 +447,13 @@
                                                 @endif
                                             </div>
                                             <div class="ps-product__content">
-                                                <h5 class="ps-product__title">
-                                                    <a href="{{ route('product.details', $related_product->slug) }}">
-                                                        {{ implode(' ', array_slice(explode(' ', $related_product->name), 0, 8)) }}
-                                                    </a>
-                                                </h5>
+                                                <div>
+                                                    <h4 class="" style="height: 70px !important;">
+                                                        <a href="{{ route('product.details', $related_product->slug) }}">
+                                                            {{ implode(' ', array_slice(explode(' ', $related_product->name), 0, 8)) }}
+                                                        </a>
+                                                    </h4>
+                                                </div>
                                                 @php
                                                     $review =
                                                         count($related_product->reviews) > 0
@@ -554,7 +559,7 @@
     @foreach ($related_products as $related_product)
         <div class="modal fade" id="popupQuickview{{ $related_product->id }}" data-backdrop="static"
             data-keyboard="false" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-dialog-centered ps-quickview">
+            <div class="modal-dialog modal-lg modal-dialog-centered ps-quickview">
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="wrap-modal-slider container-fluid ps-quickview__body">
@@ -562,7 +567,7 @@
                                 aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <div class="ps-product--detail">
                                 <div class="row">
-                                    <div class="col-12 col-xl-6">
+                                    <div class="col-12 col-xl-6 pl-0">
                                         <div class="ps-product--gallery">
                                             <div class="ps-product__thumbnail">
                                                 @if ($related_product->multiImages->isNotEmpty())
@@ -624,24 +629,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-xl-6">
-                                        <div class="ps-product__info">
-                                            <div class="ps-product__badge">
+                                    <div class="col-12 col-xl-6 pr-0">
+                                        <div class="ps-product__info mb-0">
+                                            <div class="ps-product__badges">
                                                 <span
-                                                    class="ps-badge ps-badge--instock">{{ $related_product->stock > 0 ? 'IN STOCK' : 'OUT OF STOCK' }}</span>
+                                                    class="ps-badge ps-badge--instock">{{ $related_product->box_stock > 0 ? 'IN STOCK' : 'OUT OF STOCK' }}</span>
                                             </div>
-                                            <div class="ps-product__branch">
-                                                <a href="#">{{ optional($related_product->brand)->name }}</a>
+                                            <div class="ps-product__branch pt-2">
+                                                <a href="#"
+                                                    style="text-transform: uppercase;">{{ optional($related_product->brand)->name }}</a>
                                             </div>
                                             <h5 class="ps-product__title">
                                                 <a href="{{ route('product.details', $related_product->slug) }}">
-                                                    {{ implode(' ', array_slice(explode(' ', $related_product->name), 0, 8)) }}
+                                                    {{ $related_product->name }}
                                                 </a>
                                             </h5>
                                             <div class="ps-product__desc">
                                                 <p>{!! $related_product->short_description !!}</p>
                                             </div>
-                                            @if (!empty($related_product->unit_discount_price))
+                                            {{-- @if (!empty($related_product->unit_discount_price))
                                                 <div class="ps-product__meta">
                                                     <span
                                                         class="ps-product__price sale">৳{{ $related_product->unit_discount_price }}</span>
@@ -653,34 +659,41 @@
                                                     <span
                                                         class="ps-product__price sale">৳{{ $related_product->unit_price }}</span>
                                                 </div>
-                                            @endif
+                                            @endif --}}
 
-                                            <div class="ps-product__quantity">
-                                                <h6>Quantity</h6>
-                                                <div class="def-number-input number-input safari_only">
-                                                    <button class="minus"
-                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i
-                                                            class="icon-minus"></i></button>
-                                                    <input class="quantity" min="1" name="quantity"
-                                                        value="1" type="number"
-                                                        data-product_id="{{ $related_product->id }}" />
-                                                    <button class="plus"
-                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i
-                                                            class="icon-plus"></i></button>
+                                            <div class="ps-product__feature">
+                                                @if (!empty($related_product->unit_discount_price))
+                                                    <div class="ps-product__meta py-3">
+                                                        <span
+                                                            class="ps-product__price sale">৳{{ $related_product->unit_discount_price }}</span>
+                                                        <span
+                                                            class="ps-product__del">৳{{ $related_product->unit_price }}</span>
+                                                    </div>
+                                                @else
+                                                    <div class="ps-product__meta py-3">
+                                                        <span
+                                                            class="ps-product__price sale">৳{{ $related_product->unit_price }}</span>
+                                                    </div>
+                                                @endif
+
+                                                <div class="ps-product__quantity">
+                                                    <h6>Quantity</h6>
+                                                    <div class="def-number-input number-input safari_only">
+                                                        <button class="minus"
+                                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i
+                                                                class="icon-minus"></i></button>
+                                                        <input class="quantity" min="1" name="quantity"
+                                                            value="1" type="number"
+                                                            data-product_id="{{ $related_product->id }}" />
+                                                        <button class="plus"
+                                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i
+                                                                class="icon-plus"></i></button>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
-                                                data-product_id="{{ $related_product->id }}" href="#">Add
-                                                to cart</a>
-                                            <div class="ps-product__type">
-                                                <ul class="ps-product__list">
-
-                                                    <li><span class="ps-list__title">SKU-Code: </span><a
-                                                            class="ps-list__text"
-                                                            href="#">{{ $related_product->sku_code }}</a>
-                                                    </li>
-                                                </ul>
+                                                <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
+                                                    data-product_id="{{ $related_product->id }}" href="#">Add
+                                                    to cart</a>
                                             </div>
                                         </div>
                                     </div>
