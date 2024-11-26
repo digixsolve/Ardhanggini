@@ -27,7 +27,7 @@
                 @method('PUT')
                 <div class="row">
                     <!-- Update for products_id -->
-                    <div class="col-lg-3 mb-7">
+                    <div class="col-lg-12 col-12 mb-7">
                         @php
                             // Ensure $categoryIds is an array
                             $productIds = isset($offer->product_id)

@@ -32,8 +32,8 @@
 
 
                     <!-- Update for brand_id -->
-                    <div class="col-lg-3 mb-7">
-                       
+                    <div class="col-lg-12 col-12 mb-7">
+
                         <x-metronic.label for="product_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select a product') }}</x-metronic.label>
                         <x-metronic.select-option id="product_id" name="product_id[]" multiple multiselect-search="true"
