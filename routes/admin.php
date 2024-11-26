@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\BlogTagController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\ProductReviewController;
 use App\Http\Controllers\Admin\BlogPostController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CatalogueController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\Admin\FaqCategoryController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\EmailSettingController;
+use App\Http\Controllers\Admin\SpecialOfferController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Admin\UserManagementController;
@@ -43,7 +45,6 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\ProductReviewController;
 
 // Route::get('/', function () {
 //     return redirect()->route('admin.dashboard');
@@ -122,6 +123,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
             'blog-post'       => BlogPostController::class,
             'testimonial'     => TestimonialController::class,
             'product-review'  => ProductReviewController::class,
+            'special-offer'   => SpecialOfferController::class,
         ],
         ['except' => ['show']]
     );
