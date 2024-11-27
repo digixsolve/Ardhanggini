@@ -87,21 +87,21 @@
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="start_date"
                             class="col-form-label fw-bold fs-6 required">{{ __('Start Date') }}</x-metronic.label>
-                        <x-metronic.input id="start_date" type="datetime-local" name="start_date"
+                        <x-metronic.input id="start_date" type="date" name="start_date"
                             value="{{ old('start_date', $offer->start_date) }}" />
                     </div>
 
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="end_date"
                             class="col-form-label fw-bold fs-6 required">{{ __('End Date') }}</x-metronic.label>
-                        <x-metronic.input id="end_date" type="datetime-local" name="end_date"
+                        <x-metronic.input id="end_date" type="date" name="end_date"
                             value="{{ old('end_date', $offer->end_date) }}" />
                     </div>
 
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="date"
                             class="col-form-label fw-bold fs-6 required">{{ __('Date') }}</x-metronic.label>
-                        <x-metronic.input id="date" type="datetime-local" name="date"
+                        <x-metronic.input id="date" type="date" name="date"
                             value="{{ old('date', $offer->date) }}" />
                     </div>
 
