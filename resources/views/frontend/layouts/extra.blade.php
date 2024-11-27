@@ -58,32 +58,34 @@
                     Shop
                 </a>
             </li>
-            <li>
-                <a href="{{ route('special.products') }}" class="button-new mt-2">
-                    <span class="fold"></span>
+            @if (!empty(optional($special_offer)->slug))
+                <li>
+                    <a href="{{ route('special.products', optional($special_offer)->slug) }}" class="button-new mt-2">
+                        <span class="fold"></span>
 
-                    <div class="points_wrapper">
-                        <i class="point"></i>
-                        <i class="point"></i>
-                        <i class="point"></i>
-                        <i class="point"></i>
-                        <i class="point"></i>
-                        <i class="point"></i>
-                        <i class="point"></i>
-                        <i class="point"></i>
-                        <i class="point"></i>
-                        <i class="point"></i>
-                    </div>
+                        <div class="points_wrapper">
+                            <i class="point"></i>
+                            <i class="point"></i>
+                            <i class="point"></i>
+                            <i class="point"></i>
+                            <i class="point"></i>
+                            <i class="point"></i>
+                            <i class="point"></i>
+                            <i class="point"></i>
+                            <i class="point"></i>
+                            <i class="point"></i>
+                        </div>
 
-                    <span class="inner"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2.5">
-                            <polyline
-                                points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37">
-                            </polyline>
-                        </svg>11.11 SALE</span>
-                </a>
-            </li>
+                        <span class="inner"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2.5">
+                                <polyline
+                                    points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37">
+                                </polyline>
+                            </svg>11.11 SALE</span>
+                    </a>
+                </li>
+            @endif
         </ul>
     </div>
     <div class="ps-menu__footer">

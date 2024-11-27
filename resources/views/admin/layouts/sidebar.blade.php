@@ -108,6 +108,12 @@
                                 'admin.product.index',
                                 'admin.product.create',
                                 'admin.product.edit',
+                                'admin.special-offer.index',
+                                'admin.special-offer.create',
+                                'admin.special-offer.edit',
+                                'admin.product-review.index',
+                                'admin.product-review.create',
+                                'admin.product-review.edit',
                             ],
                             'subMenu' => [
                                 [
@@ -141,8 +147,21 @@
                                 ],
                                 [
                                     'title' => 'Review',
-                                    'routes' => ['admin.product-review.index'],
+                                    'routes' => [
+                                        'admin.product-review.index',
+                                        'admin.product-review.create',
+                                        'admin.product-review.edit',
+                                    ],
                                     'route' => 'admin.product-review.index',
+                                ],
+                                [
+                                    'title' => 'Special Offer',
+                                    'routes' => [
+                                        'admin.special-offer.index',
+                                        'admin.special-offer.create',
+                                        'admin.special-offer.edit',
+                                    ],
+                                    'route' => 'admin.special-offer.index',
                                 ],
                             ],
                         ],

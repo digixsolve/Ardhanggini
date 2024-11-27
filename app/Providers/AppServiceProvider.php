@@ -2,15 +2,16 @@
 
 namespace App\Providers;
 
-use App\Models\Category;
+use Exception;
 use App\Models\Setting;
+use App\Models\Category;
 use App\Models\Wishlist;
+use App\Models\SpecialOffer;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Exception;
-use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('setting', null);
         View::share('categories', null);
         View::share('online', null);
+        View::share('special_offer', null);
 
         try {
             // Check for table existence and set actual values
@@ -41,6 +43,11 @@ class AppServiceProvider extends ServiceProvider
             if (Schema::hasTable('categories')) {
                 View::share('categories', Category::active()->get());
             }
+
+            if (Schema::hasTable('special_offers')) {
+                View::share('special_offer', SpecialOffer::active()->latest()->first());
+            }
+            
             // $randomNumber = rand(15, 30);
             $randomNumber = rand(10, 15);
             View::share('online', $randomNumber);
