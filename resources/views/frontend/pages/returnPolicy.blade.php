@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="container">
-        <ul class="ps-breadcrumb ">
+        <ul class="ps-breadcrumb faq-breadcumb">
             <li class="ps-breadcrumb__item"><a href="/">Home</a></li>
             <li class="ps-breadcrumb__item active" aria-current="page">Return</li>
         </ul>

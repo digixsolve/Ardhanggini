@@ -14,11 +14,13 @@
         </div>
     </div>
     <div class="container">
-        <ul class="ps-breadcrumb ">
-            <li class="ps-breadcrumb__item"><a href="/">Home</a></li>
-            <li class="ps-breadcrumb__item active" aria-current="page">Privacy</li>
-        </ul>
-        <p>{!! optional($privacy)->content !!}</p>
+        <div class="p-3">
+            <ul class="ps-breadcrumb faq-breadcumb">
+                <li class="ps-breadcrumb__item"><a href="/">Home</a></li>
+                <li class="ps-breadcrumb__item active" aria-current="page">Privacy</li>
+            </ul>
+            <p class="p-3">{!! optional($privacy)->content !!}</p>
+        </div>
 
     </div>
 </x-frontend-app-layout>

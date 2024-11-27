@@ -11,8 +11,8 @@
     <div class="ps-categogy ps-categogy--dark">
         <div class="container pt-0 pt-lg-5">
             <div class="row align-items-center">
-                <div class="col-lg-3">
-                    <div class="bg-white">
+                <div class="col-lg-3 px-0 px-lg-3">
+                    <div class="bg-white bread-crumb-title">
                         <!-- Breadcrumbs -->
                         <ul class="ps-breadcrumb pl-3">
                             <li class="ps-breadcrumb__item pl-4"><a href="{{ url('/') }}">Home</a></li>
@@ -24,7 +24,7 @@
                         </h1>
                     </div>
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-9 px-0 px-lg-3">
                     <div class="category-banner">
                         {{-- <img class="img-fluid" style="object-fit: cover;height: 125px;width: 100%;"
                             src="{{ asset('storage/' . $category->banner_image) }}" alt=""> --}}
@@ -42,7 +42,7 @@
             <div class="ps-categogy__content pt-2">
                 <div class="row row-reverse">
                     <!-- Products Section -->
-                    <div class="col-md-9 col-12 order-12 order-lg-1">
+                    <div class="col-md-9 col-12 order-1 order-lg-1">
                         <div class="tab-content" id="myTabContent">
                             @foreach ($categories as $allcategory)
                                 @php
@@ -185,11 +185,11 @@
                     </div>
 
                     <!-- Sidebar Widgets -->
-                    <div class="col-md-3 col-12 order-1 order-lg-12">
+                    <div class="col-md-3 col-12 order-12 order-lg-12">
                         <div class="category-title-text mb-2">
                             <h4 class="mb-0 text-dark">Category</h4>
                         </div>
-                        <div class="ps-widget ps-widget--product px-0">
+                        <div class="ps-widget ps-widget--product px-0 category-mobile">
                             <div class="ps-widget__block pb-0 px-0">
                                 <a class="ps-block-control" href="#"><i class="fa fa-angle-down"></i></a>
                                 <div class="ps-widget__content ps-widget__category">

@@ -219,13 +219,16 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="ps-product__feature">
-                                @if (!empty($product->stock) && $product->stock > 0)
-                                    <div class="ps-product__badge mb-0"><span
-                                            class="ps-badge bg-success">{{ $product->stock }} In Stock</span></div>
-                                @else
-                                    <div class="ps-product__badge mb-0"><span class="ps-badge ps-badge--outstock">Out Of
-                                            Stock</span></div>
-                                @endif
+                                <div class="mboile-p-stock">
+                                    @if (!empty($product->stock) && $product->stock > 0)
+                                        <div class="ps-product__badge mb-0"><span
+                                                class="ps-badge bg-success">{{ $product->stock }} In Stock</span></div>
+                                    @else
+                                        <div class="ps-product__badge mb-0"><span
+                                                class="ps-badge ps-badge--outstock">Out Of
+                                                Stock</span></div>
+                                    @endif
+                                </div>
 
 
                                 @if (!empty($product->unit_discount_price))
@@ -449,7 +452,8 @@
                                             <div class="ps-product__content">
                                                 <div>
                                                     <h4 class="" style="height: 70px !important;">
-                                                        <a href="{{ route('product.details', $related_product->slug) }}">
+                                                        <a
+                                                            href="{{ route('product.details', $related_product->slug) }}">
                                                             {{ implode(' ', array_slice(explode(' ', $related_product->name), 0, 8)) }}
                                                         </a>
                                                     </h4>

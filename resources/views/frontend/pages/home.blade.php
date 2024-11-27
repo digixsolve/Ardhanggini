@@ -881,7 +881,7 @@
                                 to every product. At Ardhanggini, we go beyond expectations to deliver products that
                                 inspire trust and satisfaction. Don’t just take our word for it—read their stories
                                 below.</p>
-                            <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-center shop-btns">
                                 <div class="pt-5">
                                     <a href="{{ route('allproducts') }}" class="tst-btn text-white px-5">Shop Now</a>
                                 </div>
@@ -1087,8 +1087,7 @@
                                                                     : asset('frontend/img/no-product.jpg');
                                                             @endphp
                                                             <img src="{{ $thumbnailSrc }}"
-                                                                alt="{{ $deal_product->meta_title }}" width="210"
-                                                                height="210" />
+                                                                alt="{{ $deal_product->meta_title }}" class="product-img-main" />
                                                         @else
                                                             @foreach ($deal_product->multiImages->slice(0, 2) as $image)
                                                                 @php
@@ -1100,7 +1099,7 @@
                                                                 @endphp
                                                                 <img src="{{ $imageSrc }}"
                                                                     alt="{{ $deal_product->meta_title }}"
-                                                                    width="210" height="210" />
+                                                                    class="product-img-main" />
                                                             @endforeach
                                                         @endif
                                                     </figure>
