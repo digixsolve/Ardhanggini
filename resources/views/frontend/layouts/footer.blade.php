@@ -56,32 +56,28 @@
                 <div class="col-12 col-sm-3 p-0">
                     <p class="text-center">
                         <span class="ps-footer__link">
-                            <i class="icon-wallet"></i>
-                            Full Cash on Delivery
+                            <i class="icon-wallet"></i>Full Cash on Delivery
                         </span>
                     </p>
                 </div>
                 <div class="col-12 col-sm-2 p-0">
                     <p class="text-center">
                         <span class="ps-footer__link">
-                            <i class="icon-truck"></i>In
-                            Dhaka- 70 TK
+                            <i class="icon-truck"></i>In Dhaka- 70 TK
                         </span>
                     </p>
                 </div>
                 <div class="col-12 col-sm-3 p-0">
                     <p class="text-center">
                         <span class="ps-footer__link">
-                            <i class="icon-truck"></i>
-                            Outside Dhaka- 150 TK
+                            <i class="icon-truck"></i>Outside Dhaka- 150 TK
                         </span>
                     </p>
                 </div>
                 <div class="col-12 col-sm-4 p-0">
                     <p class="text-center">
                         <span class="ps-footer__link">
-                            <i class="icon-check"></i>
-                            Check Product Infront Of Delivery Man
+                            <i class="icon-check"></i>Check Product In Front Of Delivery Man
                         </span>
                     </p>
                 </div>
@@ -202,7 +198,7 @@
 
                                 </div>
                                 <p class="ps-footer__work">
-                                    Monday – Friday: 9:00-20:00<br>Saturday: 11:00 – 15:00 <br>
+                                    Saturday To Friday: 11 AM - 6 PM
                                     <a
                                         href="mailto:{{ optional($setting)->contact_email }}">{{ optional($setting)->contact_email }}</a>
                                 </p>
@@ -263,7 +259,7 @@
             <div class="ps-footer--bottom">
                 <div class="row">
                     <div class="col-12 col-md-6">
-                        <a href="{{ optional($setting)->copyright_url }}">
+                        <a href="{{ optional($setting)->copyright_url }}" target="_blank">
                             <p>{{ optional($setting)->copyright_title }}</p>
                         </a>
                     </div>

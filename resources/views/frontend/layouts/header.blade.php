@@ -369,7 +369,7 @@
                 <div class="ps-top__social">
                     <ul class="ps-social">
                         @if (optional($setting)->facebook_url)
-                            <li><a class="ps-social__link facebook" href="{{ optional($setting)->facebook_url }}">
+                            <li><a class="ps-social__link facebook" href="{{ optional($setting)->facebook_url }}" target="_blank">
                                     <i class="fa fa-facebook" style="color: #3D6AD6;"> </i>
                                     <span class="ps-tooltip">Facebook</span>
                                 </a>
@@ -377,7 +377,7 @@
                         @endif
                         @if (optional($setting)->instagram_url)
                             <li>
-                                <a class="ps-social__link instagram" href="{{ optional($setting)->instagram_url }}">
+                                <a class="ps-social__link instagram" href="{{ optional($setting)->instagram_url }}" target="_blank">
                                     <i class="fa fa-instagram"
                                         style="
                                         background: linear-gradient(90deg, #f68e39 0%, #ea6867 29%, #cb4b98 64%, #9256c6 100%);
@@ -390,6 +390,10 @@
                     </ul>
                 </div>
                 <ul class="menu-top">
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('allproducts') }}">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('about-us') }}">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
                     @auth
                         <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">My Dashboard</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('user.order.history') }}">My Order
@@ -398,11 +402,6 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                     @endauth
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('about-us') }}">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('allproducts') }}">Shop</a></li>
-
                 </ul>
                 @if (!empty(optional($setting)->primary_phone))
                     <div class="ps-header__text">Need help? <strong>{{ optional($setting)->primary_phone }}</strong>

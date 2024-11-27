@@ -180,62 +180,38 @@
                                                                 : 0;
                                                         // dd($latest_product->name, $review);
                                                     @endphp
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="ps-product__rating">
-                                                            @if ($review > 0)
-                                                                {{-- <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                    <select class="ps-rating" data-read-only="true"
-                                                                        style="display: none;">
-                                                                        @if ($review > 0 && $review < 2)
-                                                                            <option value="1">1</option>
-                                                                        @endif
-                                                                        @if ($review > 1 && $review < 3)
-                                                                            <option value="1">1</option>
-                                                                            <option value="2">2</option>
-                                                                        @endif
-                                                                        @if ($review > 2 && $review < 4)
-                                                                            <option value="1">1</option>
-                                                                            <option value="2">2</option>
-                                                                            <option value="3">3</option>
-                                                                        @endif
-                                                                        @if ($review > 3 && $review < 5)
-                                                                            <option value="1">1</option>
-                                                                            <option value="2">2</option>
-                                                                            <option value="3">3</option>
-                                                                            <option value="4">4</option>
-                                                                        @endif
-                                                                        @if ($review > 4 && $review < 6)
-                                                                            <option value="1">1</option>
-                                                                            <option value="2">2</option>
-                                                                            <option value="3">3</option>
-                                                                            <option value="4">4</option>
-                                                                            <option value="5">5</option>
-                                                                        @endif
-                                                                    </select>
-                                                                </div> --}}
-                                                                <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                    <select class="ps-rating" data-read-only="true"
-                                                                        style="display: none;">
-                                                                        @php
-                                                                            $maxRating = min(5, max(1, floor($review))); // Get the highest full rating value
-                                                                        @endphp
-                                                                        @for ($i = 1; $i <= $maxRating; $i++)
-                                                                            <option value="{{ $i }}">
-                                                                                {{ $i }}</option>
-                                                                        @endfor
-                                                                    </select>
-                                                                </div>
-                                                            @endif
+                                                    @if ($review > 0 || count($latest_product->reviews) > 0)
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <div class="ps-product__rating">
+                                                                @if ($review > 0)
+                                                                    <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                        <select class="ps-rating" data-read-only="true"
+                                                                            style="display: none;">
+                                                                            @php
+                                                                                $maxRating = min(
+                                                                                    5,
+                                                                                    max(1, floor($review)),
+                                                                                ); // Get the highest full rating value
+                                                                            @endphp
+                                                                            @for ($i = 1; $i <= $maxRating; $i++)
+                                                                                <option value="{{ $i }}">
+                                                                                    {{ $i }}</option>
+                                                                            @endfor
+                                                                        </select>
+                                                                    </div>
+                                                                @else
+                                                                    No Reviews
+                                                                @endif
+                                                            </div>
+                                                            <div>
+                                                                @if (count($latest_product->reviews) > 0)
+                                                                    Reviews ({{ count($latest_product->reviews) }})
+                                                                @else
+                                                                    No Reviews
+                                                                @endif
+                                                            </div>
                                                         </div>
-                                                        <div>
-                                                            @if (count($latest_product->reviews) > 0)
-                                                                Reviews ({{ count($latest_product->reviews) }})
-                                                            @else
-                                                                No Reviews Yet
-                                                            @endif
-                                                        </div>
-                                                    </div>
-
+                                                    @endif
                                                     @if (!empty($latest_product->unit_discount_price))
                                                         <div class="ps-product__meta">
                                                             <span
@@ -249,12 +225,20 @@
                                                                 class="ps-product__price sale">৳{{ $latest_product->unit_price }}</span>
                                                         </div>
                                                     @endif
-                                                    <a href="{{ route('cart.store', $latest_product->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
-                                                        data-product_id="{{ $latest_product->id }}"
-                                                        data-product_qty="1">
-                                                        Add To Cart
-                                                    </a>
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="{{ route('cart.store', $latest_product->id) }}"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
+                                                            data-product_id="{{ $latest_product->id }}"
+                                                            data-product_qty="1">
+                                                            Add To Cart
+                                                        </a>
+                                                        <a href="{{ route('cart.store', $latest_product->id) }}"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ml-3 buy-now-btn"
+                                                            data-product_id="{{ $latest_product->id }}"
+                                                            data-product_qty="1">
+                                                            Buy Now
+                                                        </a>
+                                                    </div>
                                                     <div class="ps-product__actions ps-product__group-mobile">
                                                         <div class="ps-product__quantity">
                                                             <div class="def-number-input number-input safari_only">
@@ -303,25 +287,10 @@
                                     <h3 class="mb-0" style="font-size: 30px;">
                                         {{ optional($categoryone)->name }}</h3>
                                 </div>
-                                {{-- <div class="pl-3">
-                                    <img class="" src="{{ asset('storage/' . $categoryone->logo) }}"
-                                        alt="{{ $categoryone->name }}" width="50px">
-                                </div> --}}
                             </div>
                         </div>
                     </div>
                     <div class="ps-home--block">
-
-                        {{-- <figure>
-                                @php
-                                    $logoPath = $category->logo ? 'storage/' . $category->logo : null;
-                                    $logoSrc = $logoPath && file_exists(public_path($logoPath))
-                                        ? asset($logoPath)
-                                        : asset('frontend/img/no-product.jpg');
-                                @endphp
-                                <img src="{{ $logoSrc }}" alt="{{ $category->name }}" width="210" height="210">
-                                <p>{{ $category->name }}</p>
-                            </figure> --}}
                         <div class="ps-section__content">
                             <div class="row m-0">
                                 @foreach ($categoryoneproducts as $categoryoneproduct)
@@ -402,31 +371,39 @@
                                                                     ) / count($categoryoneproduct->reviews)
                                                                 : 0;
                                                     @endphp
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="ps-product__rating">
-                                                            @if ($review > 0)
-                                                                <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                    <select class="ps-rating" data-read-only="true"
-                                                                        style="display: none;">
-                                                                        @php
-                                                                            $maxRating = min(5, max(1, floor($review))); // Get the highest full rating value
-                                                                        @endphp
-                                                                        @for ($i = 1; $i <= $maxRating; $i++)
-                                                                            <option value="{{ $i }}">
-                                                                                {{ $i }}</option>
-                                                                        @endfor
-                                                                    </select>
-                                                                </div>
-                                                            @endif
+                                                    @if ($review > 0 || count($categoryoneproduct->reviews) > 0)
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <div class="ps-product__rating">
+                                                                @if ($review > 0)
+                                                                    <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                        <select class="ps-rating"
+                                                                            data-read-only="true"
+                                                                            style="display: none;">
+                                                                            @php
+                                                                                $maxRating = min(
+                                                                                    5,
+                                                                                    max(1, floor($review)),
+                                                                                ); // Get the highest full rating value
+                                                                            @endphp
+                                                                            @for ($i = 1; $i <= $maxRating; $i++)
+                                                                                <option value="{{ $i }}">
+                                                                                    {{ $i }}</option>
+                                                                            @endfor
+                                                                        </select>
+                                                                    </div>
+                                                                @else
+                                                                    No Reviews
+                                                                @endif
+                                                            </div>
+                                                            <div>
+                                                                @if (count($categoryoneproduct->reviews) > 0)
+                                                                    Reviews ({{ count($categoryoneproduct->reviews) }})
+                                                                @else
+                                                                    No Reviews
+                                                                @endif
+                                                            </div>
                                                         </div>
-                                                        <div>
-                                                            @if (count($categoryoneproduct->reviews) > 0)
-                                                                Reviews ({{ count($categoryoneproduct->reviews) }})
-                                                            @else
-                                                                No Reviews Yet
-                                                            @endif
-                                                        </div>
-                                                    </div>
+                                                    @endif
                                                     @if (!empty($categoryoneproduct->unit_discount_price))
                                                         <div class="ps-product__meta">
                                                             <span
@@ -440,12 +417,20 @@
                                                                 class="ps-product__price sale">৳{{ $categoryoneproduct->unit_price }}</span>
                                                         </div>
                                                     @endif
-                                                    <a href="{{ route('cart.store', $categoryoneproduct->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
-                                                        data-product_id="{{ $categoryoneproduct->id }}"
-                                                        data-product_qty="1">
-                                                        Add To Cart
-                                                    </a>
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="{{ route('cart.store', $categoryoneproduct->id) }}"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
+                                                            data-product_id="{{ $categoryoneproduct->id }}"
+                                                            data-product_qty="1">
+                                                            Add To Cart
+                                                        </a>
+                                                        <a href="{{ route('cart.store', $categoryoneproduct->id) }}"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ml-3 buy-now-btn"
+                                                            data-product_id="{{ $categoryoneproduct->id }}"
+                                                            data-product_qty="1">
+                                                            Buy Now
+                                                        </a>
+                                                    </div>
                                                     <div class="ps-product__actions ps-product__group-mobile">
                                                         <div class="ps-product__quantity">
                                                             <div class="def-number-input number-input safari_only">
@@ -633,12 +618,20 @@
                                                                     class="ps-product__price sale">৳{{ $categorytwoproduct->unit_price }}</span>
                                                             </div>
                                                         @endif
-                                                        <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
-                                                            data-product_id="{{ $categorytwoproduct->id }}"
-                                                            data-product_qty="1">
-                                                            Add To Cart
-                                                        </a>
+                                                        <div class="d-flex align-items-center">
+                                                            <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
+                                                                class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
+                                                                data-product_id="{{ $categorytwoproduct->id }}"
+                                                                data-product_qty="1">
+                                                                Add To Cart
+                                                            </a>
+                                                            <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
+                                                                class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ml-3 buy-now-btn"
+                                                                data-product_id="{{ $categorytwoproduct->id }}"
+                                                                data-product_qty="1">
+                                                                Buy Now
+                                                            </a>
+                                                        </div>
                                                         <div class="ps-product__actions ps-product__group-mobile">
                                                             <div class="ps-product__quantity">
                                                                 <div class="def-number-input number-input safari_only">
@@ -764,31 +757,39 @@
                                                                     ) / count($categorythreeproduct->reviews)
                                                                 : 0;
                                                     @endphp
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="ps-product__rating">
-                                                            @if ($review > 0)
-                                                                <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                    <select class="ps-rating" data-read-only="true"
-                                                                        style="display: none;">
-                                                                        @php
-                                                                            $maxRating = min(5, max(1, floor($review))); // Get the highest full rating value
-                                                                        @endphp
-                                                                        @for ($i = 1; $i <= $maxRating; $i++)
-                                                                            <option value="{{ $i }}">
-                                                                                {{ $i }}</option>
-                                                                        @endfor
-                                                                    </select>
-                                                                </div>
-                                                            @endif
+                                                    @if ($review > 0 || count($categorythreeproduct->reviews) > 0)
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <div class="ps-product__rating">
+                                                                @if ($review > 0)
+                                                                    <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                        <select class="ps-rating"
+                                                                            data-read-only="true"
+                                                                            style="display: none;">
+                                                                            @php
+                                                                                $maxRating = min(
+                                                                                    5,
+                                                                                    max(1, floor($review)),
+                                                                                ); // Get the highest full rating value
+                                                                            @endphp
+                                                                            @for ($i = 1; $i <= $maxRating; $i++)
+                                                                                <option value="{{ $i }}">
+                                                                                    {{ $i }}</option>
+                                                                            @endfor
+                                                                        </select>
+                                                                    </div>
+                                                                @else
+                                                                    No Reviews
+                                                                @endif
+                                                            </div>
+                                                            <div>
+                                                                @if (count($categorythreeproduct->reviews) > 0)
+                                                                    Reviews ({{ count($categorythreeproduct->reviews) }})
+                                                                @else
+                                                                    No Reviews
+                                                                @endif
+                                                            </div>
                                                         </div>
-                                                        <div>
-                                                            @if (count($categorythreeproduct->reviews) > 0)
-                                                                Reviews ({{ count($categorythreeproduct->reviews) }})
-                                                            @else
-                                                                No Reviews Yet
-                                                            @endif
-                                                        </div>
-                                                    </div>
+                                                    @endif
                                                     @if (!empty($categorythreeproduct->unit_discount_price))
                                                         <div class="ps-product__meta">
                                                             <span
@@ -802,12 +803,20 @@
                                                                 class="ps-product__price sale">৳{{ $categorythreeproduct->unit_price }}</span>
                                                         </div>
                                                     @endif
-                                                    <a href="{{ route('cart.store', $categorythreeproduct->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
-                                                        data-product_id="{{ $categorythreeproduct->id }}"
-                                                        data-product_qty="1">
-                                                        Add To Cart
-                                                    </a>
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="{{ route('cart.store', $categorythreeproduct->id) }}"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
+                                                            data-product_id="{{ $categorythreeproduct->id }}"
+                                                            data-product_qty="1">
+                                                            Add To Cart
+                                                        </a>
+                                                        <a href="{{ route('cart.store', $categorythreeproduct->id) }}"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ml-3 buy-now-btn"
+                                                            data-product_id="{{ $categorythreeproduct->id }}"
+                                                            data-product_qty="1">
+                                                            Buy Now
+                                                        </a>
+                                                    </div>
                                                     <div class="ps-product__actions ps-product__group-mobile">
                                                         <div class="ps-product__quantity">
                                                             <div class="def-number-input number-input safari_only">
@@ -1087,7 +1096,8 @@
                                                                     : asset('frontend/img/no-product.jpg');
                                                             @endphp
                                                             <img src="{{ $thumbnailSrc }}"
-                                                                alt="{{ $deal_product->meta_title }}" class="product-img-main" />
+                                                                alt="{{ $deal_product->meta_title }}"
+                                                                class="product-img-main" />
                                                         @else
                                                             @foreach ($deal_product->multiImages->slice(0, 2) as $image)
                                                                 @php
@@ -1142,49 +1152,65 @@
                                                                 count($deal_product->reviews)
                                                             : 0;
                                                 @endphp
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <div class="ps-product__rating">
-                                                        @if ($review > 0)
-                                                            <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                <select class="ps-rating" data-read-only="true"
-                                                                    style="display: none;">
-                                                                    @for ($i = 1; $i <= 5; $i++)
-                                                                        <option value="{{ $i }}"
-                                                                            @if ($i <= round($review)) selected @endif>
-                                                                            {{ $i }}</option>
-                                                                    @endfor
-                                                                </select>
-                                                            </div>
-                                                        @endif
+                                                @if ($review > 0 || count($deal_product->reviews) > 0)
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="ps-product__rating">
+                                                            @if ($review > 0)
+                                                                <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                    <select class="ps-rating" data-read-only="true"
+                                                                        style="display: none;">
+                                                                        @php
+                                                                            $maxRating = min(5, max(1, floor($review))); // Get the highest full rating value
+                                                                        @endphp
+                                                                        @for ($i = 1; $i <= $maxRating; $i++)
+                                                                            <option value="{{ $i }}">
+                                                                                {{ $i }}</option>
+                                                                        @endfor
+                                                                    </select>
+                                                                </div>
+                                                            @else
+                                                                No Reviews
+                                                            @endif
+                                                        </div>
+                                                        <div>
+                                                            @if (count($deal_product->reviews) > 0)
+                                                                Reviews ({{ count($deal_product->reviews) }})
+                                                            @else
+                                                                No Reviews
+                                                            @endif
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        @if (count($deal_product->reviews) > 0)
-                                                            Reviews ({{ count($deal_product->reviews) }})
-                                                        @else
-                                                            No Reviews Yet
-                                                        @endif
-                                                    </div>
-                                                </div>
+                                                @endif
                                                 @if (!empty($deal_product->unit_discount_price))
-                                                    <div class="ps-product__meta">
+                                                    <div class="ps-product__meta mb-5">
                                                         <span
                                                             class="ps-product__price sale">৳{{ $deal_product->unit_discount_price }}</span>
                                                         <span
                                                             class="ps-product__del">৳{{ $deal_product->unit_price }}</span>
                                                     </div>
                                                 @else
-                                                    <div class="ps-product__meta">
+                                                    <div class="ps-product__meta mb-5">
                                                         <span
                                                             class="ps-product__price sale">৳{{ $deal_product->unit_price }}</span>
                                                     </div>
                                                 @endif
-                                                <a href="{{ route('cart.store', $deal_product->id) }}"
-                                                    class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
-                                                    data-product_id="{{ $deal_product->id }}"
-                                                    data-product_qty="1">Add To
-                                                    Cart</a>
-                                                <div class="ps-product__actions ps-product__group-mobile">
 
+                                                <div class="d-flex align-items-center">
+                                                    <a href="{{ route('cart.store', $deal_product->id) }}"
+                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
+                                                        data-product_id="{{ $deal_product->id }}"
+                                                        data-product_qty="1">
+                                                        Add To Cart
+                                                    </a>
+                                                    <a href="{{ route('cart.store', $deal_product->id) }}"
+                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ml-3 buy-now-btn"
+                                                        data-product_id="{{ $deal_product->id }}"
+                                                        data-product_qty="1">
+                                                        Buy Now
+                                                    </a>
+                                                </div>
+
+                                                <div class="ps-product__actions ps-product__group-mobile mt-3">
                                                     <div class="ps-product__item cart">
                                                         <a class="add_to_cart"
                                                             href="{{ route('cart.store', $deal_product->id) }}"

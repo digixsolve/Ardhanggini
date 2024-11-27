@@ -842,6 +842,7 @@ body {
     border: 1px solid var(--site-green) !important;
     background-color: var(--site-green) !important;
     color: white !important;
+    border-radius: 5px;
 }
 
 .ps-btn--warning:hover {
@@ -3909,6 +3910,10 @@ textarea.form-control {
     .login-content {
         margin-top: 50px !important;
     }
+    .ps-product--standard .ps-product__content {
+        padding: 0 20px 20px;
+        height: 100%;
+    }
 }
 .ps-product--detail .ps-product__badge {
     position: initial;
@@ -3930,6 +3935,7 @@ textarea.form-control {
 
 .ps-product--standard .ps-product__content {
     padding: 0 20px 20px;
+    height: 200px;
 }
 
 .ps-product--standard .ps-product__image {
@@ -19393,10 +19399,14 @@ table.dataTable tbody td:last-child {
     border-radius: 10px;
     height: 420px;
 }
-
+.buy-now-btn{
+    border-radius: 5px;
+    color: var(--site-green) !important;
+    background-color: transparent !important;
+}
 .testi-dots {
     font-size: 60px;
-    color: #b7a9a8;
+    color: #9c27b0;
 }
 
 .testimonial-slider .item {
