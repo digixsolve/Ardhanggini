@@ -1,5 +1,4 @@
 <x-frontend-app-layout :title="'Home Page'">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <section class="ps-section--banner">
         <div class="ps-section__overlay">
             <div class="ps-section__loading"></div>
@@ -58,41 +57,38 @@
             </div>
         </div>
     </section>
-    <div class="ps-home ps-home--14 top-up-section">
-        <div class="ps-home__content">
-            @if ($categorys->count() > 0)
-                <section class="ps-section--categories">
-                    <div class="container px-0" style="border-radius: 5px; background-color: #ffffffe6;">
-                        {{-- <h3 class="ps-section__title py-5" style="font-size: 30px;">Popular Categories</h3> --}}
-                        <div class="ps-section__content py-0 py-lg-5">
-                            <div class="ps-categories__list owl-carousel">
-                                @foreach ($categorys as $category)
-                                    <div class="ps-categories__item">
-                                        <a class="ps-categories__link"
-                                            href="{{ route('category.products', $category->slug) }}">
-                                            @php
-                                                $logoPath = 'storage/' . $category->logo;
-                                                $logoSrc = file_exists(public_path($logoPath))
-                                                    ? asset($logoPath)
-                                                    : asset('frontend/img/no-category.png');
-                                            @endphp
-                                            <img src="{{ $logoSrc }}" alt="{{ $category->name }}"
-                                                onerror="this.onerror=null; this.src='frontend/img/no-category.png';">
-                                        </a>
-                                        <a class="ps-categories__name"
-                                            href="{{ route('category.products', $category->slug) }}">
-                                            {{ $category->name }}
-                                        </a>
-                                    </div>
-                                @endforeach
-                            </div>
-                            {{-- <div class="text-center pt-5">
-                                <a class="ps-categories__show" href="{{ route('allproducts') }}">Show All</a>
-                            </div> --}}
+    <div class="ps-home ps-home--14">
+        @if ($categorys->count() > 0)
+            <section class="ps-section--categories top-up-section">
+                <div class="container px-0" style="border-radius: 5px; background-color: #ffffffe6;">
+                    {{-- <h3 class="ps-section__title py-5" style="font-size: 30px;">Popular Categories</h3> --}}
+                    <div class="ps-section__content py-0 py-lg-5">
+                        <div class="ps-categories__list owl-carousel">
+                            @foreach ($categorys as $category)
+                                <div class="ps-categories__item">
+                                    <a class="ps-categories__link"
+                                        href="{{ route('category.products', $category->slug) }}">
+                                        @php
+                                            $logoPath = 'storage/' . $category->logo;
+                                            $logoSrc = file_exists(public_path($logoPath))
+                                                ? asset($logoPath)
+                                                : asset('frontend/img/no-category.png');
+                                        @endphp
+                                        <img src="{{ $logoSrc }}" alt="{{ $category->name }}"
+                                            onerror="this.onerror=null; this.src='frontend/img/no-category.png';">
+                                    </a>
+                                    <a class="ps-categories__name"
+                                        href="{{ route('category.products', $category->slug) }}">
+                                        {{ $category->name }}
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
-                </section>
-            @endif
+                </div>
+            </section>
+        @endif
+        <div class="ps-home__content">
             @if ($latest_products->count() > 0)
                 <section class="ps-section--latest-horizontal">
                     <section class="container px-0">
@@ -783,7 +779,8 @@
                                                             </div>
                                                             <div>
                                                                 @if (count($categorythreeproduct->reviews) > 0)
-                                                                    Reviews ({{ count($categorythreeproduct->reviews) }})
+                                                                    Reviews
+                                                                    ({{ count($categorythreeproduct->reviews) }})
                                                                 @else
                                                                     No Reviews
                                                                 @endif
@@ -892,7 +889,8 @@
                                 below.</p>
                             <div class="d-flex align-items-center shop-btns">
                                 <div class="pt-5">
-                                    <a href="{{ route('allproducts') }}" class="tst-btn text-white px-5">Shop Now</a>
+                                    <a href="{{ route('allproducts') }}" class="tst-btn text-white px-5">Shop
+                                        Now</a>
                                 </div>
                             </div>
                         </div>
@@ -1236,60 +1234,6 @@
                 @endif
             </div>
         @endif
-        {{-- @if ($blog_posts->count() > 0)
-            <section class="ps-section--blog container-fluid bg-white pb-5 cst-blog mt-0">
-                <div class="container px-0">
-                    <div class="py-5">
-                        <h3 class="ps-section__title mb-0" style="font-size: 30px;">From the blog</h3>
-                    </div>
-                    <div class="ps-section__carousel">
-                        <div class="blog-slider owl-carousel">
-                            @foreach ($blog_posts as $blog_post)
-                                <div class="ps-section__item">
-                                    <div class="ps-blog--latset">
-                                        <div class="ps-blog__thumbnail">
-                                            <a href="{{ route('blog.details', $blog_post->slug) }}">
-                                                <img src="{{ $blog_post->image ? asset('storage/' . $blog_post->image) : asset('frontend/img/no-blogs.jpg') }}"
-                                                    alt="Blog Post Image"
-                                                    onerror="this.onerror=null; this.src='{{ asset('frontend/img/no-blogs.jpg') }}';">
-                                            </a>
-                                            @if ($blog_post->badge)
-                                                <div class="ps-blog__badge">
-                                                    <span class="ps-badge__item">{{ $blog_post->badge }}</span>
-                                                </div>
-                                            @endif
-                                        </div>
-                                        <div class="ps-blog__content">
-                                            <div class="ps-blog__meta">
-                                                <span
-                                                    class="ps-blog__date">{{ $blog_post->created_at->format('M d Y') }}</span>
-                                                <a class="ps-blog__author"
-                                                    href="#">{{ $blog_post->author }}</a>
-                                            </div>
-                                            <a class="ps-blog__title" style="font-size: 18px;"
-                                                href="{{ route('blog.details', $blog_post->slug) }}">
-                                                {{ $blog_post->title }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-
-                        <div class="owl-nav">
-                            <button type="button" role="presentation" class="owl-prev"><i
-                                    class="fa fa-chevron-left"></i></button push -u origin main>
-                            <button type="button" role="presentation" class="owl-next"><i
-                                    class="fa fa-chevron-right"></i></button>
-                        </div>
-                        <div class="owl-dots">
-                            <button role="button" class="owl-dot"><span></span></button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        @endif --}}
-    </div>
     </div>
     @include('frontend.layouts.HomeQuickViewModal')
     @push('scripts')

@@ -80,7 +80,7 @@
 
                                     {{-- Add to Cart button --}}
                                     <a href="{{ route('cart.store', $search_product->id) }}"
-                                        class="btn ps-btn--warning my-3 btn-block add_to_cart"
+                                        class="ps-btn--warning my-3 add_to_cart"
                                         data-product_id="{{ $search_product->id }}" data-product_qty="1"
                                         onclick="addToCart(event, '{{ csrf_token() }}', '{{ route('cart.store', $search_product->id) }}')">
                                         <span>Add To Cart</span>

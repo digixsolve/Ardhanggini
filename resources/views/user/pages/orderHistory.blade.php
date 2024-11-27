@@ -43,7 +43,7 @@
                                                 <th>Track</th>
                                                 <th>Payment Status</th>
                                                 <th>Status</th>
-                                                <th class="text-center">Action</th>
+                                                {{-- <th class="text-center">Action</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -95,7 +95,7 @@
                                                                 class="badge p-2 rounded-3 fs-7 badge-dangered">Returned</span>
                                                         @endif
                                                     </td>
-                                                    <td class="text-center">
+                                                    {{-- <td class="text-center">
                                                         @if ($order->payment_status == 'unpaid')
                                                             <a class="btn p-2 rounded-3 fs-7 btn-primary"
                                                                 href="{{ route('stripe.payment', $order->order_number) }}">Pay
@@ -106,7 +106,7 @@
                                                                 <i class="fa-solid fa-print"></i>
                                                             </a>
                                                         @endif
-                                                    </td>
+                                                    </td> --}}
                                                 </tr>
                                             @endforeach
                                             <!-- Additional rows go here -->
