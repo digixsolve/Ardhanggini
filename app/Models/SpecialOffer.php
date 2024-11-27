@@ -22,6 +22,12 @@ class SpecialOffer extends Model
     }
     public function products()
     {
-        return Product::whereJsonContains('product_id', json_encode($this->id));
+        // Decode the JSON product_ids
+        $productIds = json_decode($this->product_id, true);
+        if (!empty($productIds)) {
+            return Product::whereIn('id', $productIds)->get();
+        }
+
+        return collect();
     }
 }

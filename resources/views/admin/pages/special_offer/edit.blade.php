@@ -29,7 +29,7 @@
                     <!-- Update for products_id -->
                     <div class="col-lg-12 col-12 mb-7">
                         @php
-                            // Ensure $categoryIds is an array
+                            // Ensure $productIds is an array and decode the JSON if needed
                             $productIds = isset($offer->product_id)
                                 ? (is_string($offer->product_id)
                                     ? json_decode($offer->product_id, true)
@@ -37,26 +37,25 @@
                                 : [];
                         @endphp
 
-                        @foreach ($products as $product)
-                            <option value="{{ $product->id }}"
-                                {{ in_array($product->id, $productIds) ? 'selected' : '' }}>
-                                {{ $product->name }}
-                            </option>
-                        @endforeach
                         <x-metronic.label for="product_id"
                             class="col-form-label fw-bold fs-6">{{ __('Select a product') }}</x-metronic.label>
+
                         <x-metronic.select-option id="product_id" name="product_id[]" multiple multiselect-search="true"
                             multiselect-select-all="true" data-control="select2" data-placeholder="Select an option"
                             data-allow-clear="true">
                             <option></option>
+
                             @foreach ($products as $product)
-                                <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                <option value="{{ $product->id }}"
+                                    {{ in_array((int) $product->id, (array) $productIds) ? 'selected' : '' }}>
+                                    {{ $product->name }}
+                                </option>
                             @endforeach
                         </x-metronic.select-option>
                     </div>
 
                     <!-- Name -->
-                    <div class="col-lg-3 mb-7">
+                    <div class="col-lg-4 mb-7">
                         <x-metronic.label for="name"
                             class="col-form-label fw-bold fs-6 required">{{ __('Name') }}</x-metronic.label>
                         <x-metronic.input id="name" type="text" name="name"
@@ -64,7 +63,7 @@
                     </div>
 
                     <!-- Button Name -->
-                    <div class="col-lg-3 mb-7">
+                    <div class="col-lg-4 mb-7">
                         <x-metronic.label for="button_name"
                             class="col-form-label fw-bold fs-6">{{ __('Button Name') }}</x-metronic.label>
                         <x-metronic.input id="button_name" type="text" name="button_name"
@@ -72,13 +71,13 @@
                     </div>
 
                     <!-- Button Link -->
-                    <div class="col-lg-3 mb-7">
+                    {{-- <div class="col-lg-4 mb-7">
                         <x-metronic.label for="button_link"
                             class="col-form-label fw-bold fs-6">{{ __('Button Link') }}</x-metronic.label>
                         <x-metronic.input id="button_link" type="text" name="button_link"
                             value="{{ old('button_link', $offer->button_link) }}" placeholder="Button Link" />
-                    </div>
-                    <div class="col-lg-3 mb-7">
+                    </div> --}}
+                    <div class="col-lg-4 mb-7">
                         <x-metronic.label for="header_slogan" class="col-form-label fw-bold fs-6">{{ __('Header Slogan') }}
                         </x-metronic.label>
                         <x-metronic.input id="header_slogan" type="text" name="header_slogan" :value="old('header_slogan', $offer->header_slogan)"

@@ -169,7 +169,7 @@ class HomeController extends Controller
         $special_offer = SpecialOffer::where('slug', $slug)->firstOrFail();
         $data = [
             'special_offer'     => $special_offer,
-            'special_products'  => $special_offer->products()->get(),
+            'special_products'  => $special_offer->products(),
         ];
         return view('frontend.pages.special',$data);
     }

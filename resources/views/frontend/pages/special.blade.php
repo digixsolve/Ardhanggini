@@ -141,7 +141,7 @@
                             <li><a href="#">3</a></li>
                             <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
                         </ul> --}}
-                        {{ $special_product->links() }}
+                        {{-- {{ $special_products->links() }} --}}
                     </div>
                     <div class="ps-delivery ps-delivery--info my-5"
                         data-background="{{ asset('images/delivery_banner.jpg') }}"

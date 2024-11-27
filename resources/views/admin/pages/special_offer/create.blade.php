@@ -28,27 +28,23 @@
                 @csrf
 
                 <div class="row">
-
-
-
                     <!-- Update for brand_id -->
                     <div class="col-lg-12 col-12 mb-7">
-
-                        <x-metronic.label for="product_id"
-                            class="col-form-label fw-bold fs-6">{{ __('Select a product') }}</x-metronic.label>
+                        <x-metronic.label for="product_id" class="col-form-label fw-bold fs-6">{{ __('Select a product') }}</x-metronic.label>
                         <x-metronic.select-option id="product_id" name="product_id[]" multiple multiselect-search="true"
                             multiselect-select-all="true" data-control="select2" data-placeholder="Select an option"
                             data-allow-clear="true">
                             <option></option>
                             @foreach ($products as $product)
-                                <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                <option value="{{ $product->id }}" @selected(in_array($product->id, old('product_id', [])))>{{ $product->name }}</option>
                             @endforeach
                         </x-metronic.select-option>
                     </div>
 
 
 
-                    <div class="col-lg-3 mb-7">
+
+                    <div class="col-lg-4 mb-7">
                         <x-metronic.label for="name"
                             class="col-form-label fw-bold fs-6 required">{{ __('Name') }}
                         </x-metronic.label>
@@ -57,7 +53,7 @@
                             placeholder="Enter the Name" required></x-metronic.input>
                     </div>
 
-                    <div class="col-lg-3 mb-7">
+                    <div class="col-lg-4 mb-7">
                         <x-metronic.label for="button_name" class="col-form-label fw-bold fs-6">{{ __('Button Name') }}
                         </x-metronic.label>
 
@@ -65,15 +61,15 @@
                             placeholder="Button Name"></x-metronic.input>
                     </div>
 
-                    <div class="col-lg-3 mb-7">
+                    {{-- <div class="col-lg-4 mb-7">
                         <x-metronic.label for="button_link" class="col-form-label fw-bold fs-6">{{ __('Button Link') }}
                         </x-metronic.label>
 
                         <x-metronic.input id="button_link" type="text" name="button_link" :value="old('button_link')"
                             placeholder="Button Link"></x-metronic.input>
-                    </div>
+                    </div> --}}
 
-                    <div class="col-lg-3 mb-7">
+                    <div class="col-lg-4 mb-7">
                         <x-metronic.label for="header_slogan" class="col-form-label fw-bold fs-6">{{ __('Header Slogan') }}
                         </x-metronic.label>
 
@@ -88,7 +84,7 @@
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="start_date"
                             class="col-form-label fw-bold fs-6 required">{{ __('Start Date') }}</x-metronic.label>
-                        <x-metronic.input id="start_date" type="datetime-local" name="start_date"
+                        <x-metronic.input id="start_date" type="date" name="start_date"
                             :value="old('start_date')"></x-metronic.input>
                     </div>
 
@@ -97,7 +93,7 @@
                             class="col-form-label fw-bold fs-6 required">{{ __('End Date') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="end_date" type="datetime-local" name="end_date"
+                        <x-metronic.input id="end_date" type="date" name="end_date"
                             :value="old('end_date')"></x-metronic.input>
                     </div>
 
@@ -106,7 +102,7 @@
                             class="col-form-label fw-bold fs-6 required">{{ __('Date') }}
                         </x-metronic.label>
 
-                        <x-metronic.input id="date" type="datetime-local" name="date"
+                        <x-metronic.input id="date" type="date" name="date"
                             :value="old('date')"></x-metronic.input>
                     </div>
 
@@ -153,8 +149,8 @@
                         <x-metronic.select-option id="status" name="status" data-hide-search="true"
                             data-placeholder="Select an option">
                             <option></option>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
+                            <option value="active" @selected(old('status') == 'active')>Active</option>
+                            <option value="inactive" @selected(old('status') == 'inactive')>Inactive</option>
                         </x-metronic.select-option>
                     </div>
 
