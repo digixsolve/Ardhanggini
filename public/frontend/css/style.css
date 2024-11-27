@@ -836,7 +836,6 @@ body {
     .ps-btn--hamburger {
         display: inline-block;
     }
-
 }
 
 .ps-btn--warning {
@@ -2955,12 +2954,6 @@ textarea.form-control {
     }
 }
 
-.ps-widget .ps-widget__block {
-    padding: 10px 0;
-    border-bottom: 1px solid #f0f2f5;
-    position: relative;
-}
-
 .ps-widget .ps-widget__block .ps-block-control {
     position: absolute;
     width: 30px;
@@ -2975,8 +2968,11 @@ textarea.form-control {
 }
 
 .ps-widget .ps-widget__block .ps-block-control i {
-    color: var(--site-green);
+    color: #fff;
     font-weight: bold;
+}
+.fa-angle-down {
+    color: white !important;
 }
 
 .ps-widget .ps-widget__block .ps-block-control.active {
@@ -3027,7 +3023,10 @@ textarea.form-control {
     padding: 0;
     position: relative;
 }
-
+.product-img-main {
+    width: 300px;
+    height: 150px;
+}
 .ps-product__image img {
     width: 100%;
     height: 100%;
@@ -3076,13 +3075,8 @@ textarea.form-control {
     align-items: center;
     text-align: center;
 }
-.ps-product__image .category_product_img {
-    width: 150px !important;
-    height: 150px !important;
-    object-fit: contain;
-}
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .ps-widget .ps-widget__title {
         font-size: 18px;
         line-height: 26px;
@@ -3111,6 +3105,16 @@ textarea.form-control {
         border-top: 0;
         padding-top: 0;
     }
+    .category_product_img {
+        width: 100% !important;
+        height: 280px !important;
+        object-fit: cover;
+    }
+}
+.ps-product__image .category_product_img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
 }
 
 .ps-widget--product {
@@ -3902,7 +3906,7 @@ textarea.form-control {
     .register-bg {
         margin-top: 135px;
     }
-    .login-content{
+    .login-content {
         margin-top: 50px !important;
     }
 }
@@ -4095,7 +4099,15 @@ textarea.form-control {
 
 .ps-product--detail .ps-product__badge {
     position: initial;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+}
+.category-mobile {
+    padding: 26px 0;
+    border-bottom: 1px solid #f0f2f5;
+    position: relative;
+    background: #50006633;
+    height: 48px;
+    margin-top: -52px;
 }
 
 .ps-product--detail .ps-product__badge .ps-badge {
@@ -4219,8 +4231,7 @@ textarea.form-control {
     padding: 15px;
     margin-top: 50px;
 }
-.ps-section--also .ps-product--standard .releted-title
-{
+.ps-section--also .ps-product--standard .releted-title {
     min-height: 70px !important;
 }
 .ps-product--detail .ps-product__feature .ps-product__variations {
@@ -16283,8 +16294,7 @@ textarea.form-control {
     }
 }
 @media (max-width: 768px) {
-    ..ps-noti p
-    .ps-navigation--footer .ps-nav__item a {
+    ..ps-noti p .ps-navigation--footer .ps-nav__item a {
         width: 35px;
         height: 44px;
     }
@@ -16298,18 +16308,19 @@ textarea.form-control {
         width: 16px;
         height: 16px;
     }
-    .ps-navigation--footer .ps-nav__item a{
+    .ps-navigation--footer .ps-nav__item a {
         width: 35px;
     }
     .ps-breadcrumb {
         padding: 40px 0px 15px !important;
+        margin-top: 80px !important;
     }
     .ps-home--14 .ps-section--deals {
-    padding: 30px 0 0px !important;
-}
-.ps-footer--top .ps-footer__link{
-    font-size: 15px !important;
-}
+        padding: 30px 0 0px !important;
+    }
+    .ps-footer--top .ps-footer__link {
+        font-size: 15px !important;
+    }
     .ps-menu--slidebar {
         text-align: center;
         background-color: #f7f7f7;
@@ -18403,7 +18414,7 @@ table.dataTable tbody td:last-child {
     }
     .ps-widget .ps-widget__block {
         padding: 10px !important;
-        height: 45px;
+        height: auto;
         max-height: 100%;
         border-bottom: 1px solid #f0f2f5;
         position: relative;
@@ -18702,10 +18713,6 @@ table.dataTable tbody td:last-child {
 .menus-items-head {
     position: relative;
 }
-/* Hide the span for the first item only */
-.menu li:first-child .text-white {
-    display: none;
-}
 
 /* .menus-items-head::before {
     content: "";
@@ -18717,6 +18724,16 @@ table.dataTable tbody td:last-child {
     background-color: #fff;
 }
 
+
+/* .menus-items-head::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: -15px;
+    height: 20px;
+    width: 2px;
+    background-color: #fff;
+} */
 
 
 .menus-items-head.transparent-before::before {
@@ -19202,14 +19219,19 @@ table.dataTable tbody td:last-child {
         width: 100% !important;
         margin: auto !important;
     }
+    .ps-categogy__banner {
+        object-fit: cover !important;
+        height: 100% !important;
+        width: 100% !important;
+    }
 }
 /* Testimonial End */
 
 .profile img {
-    border: 2px solid #000;
+    border: 5px solid #72108d;
     border-radius: 100%;
-    width: 80px;
-    height: 80px;
+    width: 70px !important;
+    height: 70px;
     object-fit: cover;
 }
 
@@ -19678,7 +19700,6 @@ table.dataTable tbody td:last-child {
     }
 }
 
-
 /* For Mobile Responsive */
 @media (max-width: 768px) {
     .ps-section--categories .ps-categories__link img {
@@ -19714,17 +19735,23 @@ table.dataTable tbody td:last-child {
         height: 90px !important;
     }
     .fa-facebook {
-        color: #1877F2; /* Facebook's original blue color */
+        color: #1877f2; /* Facebook's original blue color */
         font-size: 21px;
-      }
-      .fa-instagram {
-        background: linear-gradient(45deg, #F58529, #D62F5D, #8134AF, #515BD4); /* Instagram's gradient colors */
+    }
+    .fa-instagram {
+        background: linear-gradient(
+            45deg,
+            #f58529,
+            #d62f5d,
+            #8134af,
+            #515bd4
+        ); /* Instagram's gradient colors */
         -webkit-background-clip: text;
         color: transparent; /* Make the icon's fill transparent to show the gradient */
         font-size: 25px;
         position: relative;
         top: 3px;
-      }
+    }
 
     .ps-section--latest-horizontal .ps-section__title {
         font-size: 20px !important;
@@ -19772,7 +19799,7 @@ table.dataTable tbody td:last-child {
         padding-top: 0px;
     }
 
-    .fa-quote-left{
+    .fa-quote-left {
         color: #a31aa3 !important;
     }
     .testi-card {
@@ -19785,7 +19812,7 @@ table.dataTable tbody td:last-child {
         text-align: center;
         margin-top: 65px;
     }
-    .profile{
+    .profile {
         margin-bottom: 16px;
     }
     .profile img {
@@ -19794,7 +19821,7 @@ table.dataTable tbody td:last-child {
     .testimonial-author {
         flex-direction: column !important;
     }
-    .testimonial-content{
+    .testimonial-content {
         text-align: center !important;
     }
     .testimonial-content-de {
@@ -19850,12 +19877,69 @@ table.dataTable tbody td:last-child {
     .ps-section__title {
         font-size: 20px !important;
     }
+    .ps-product__thumbnail img {
+        width: 100% !important;
+        margin: auto;
+        border-radius: 4px;
+        object-fit: cover !important;
+        height: 200px !important;
+        background-position: center;
+    }
+    .shop-btns {
+        display: flex;
+        justify-content: center;
+    }
+    .counter-container {
+        justify-content: center !important;
+        width: 70%;
+        margin: auto;
+    }
+    .bread-crumb-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .ps-categogy .ps-categogy__name {
+        color: var(--site-green);
+        font-size: 34px;
+        line-height: 40px;
+        margin: 0;
+        z-index: 33334;
+        position: relative;
+        bottom: -55px;
+    }
+    .text-22 {
+        font-size: 22px !important;
+        padding-top: 25px;
+    }
+    .shop-top-banner {
+        object-fit: contain;
+        position: relative;
+        top: 25px;
+        height: 120px;
+    }
+    .faq-title{
+        font-size: 25px;
+    }
 }
-
+.faq-title-bg{
+    background-color: #50006699;
+    color: #252525;
+}
+.faq-breadcumb {
+    margin-top: 0 !important;
+    padding: 0 !important;
+}
+.mboile-p-stock {
+    position: relative;
+    margin-top: 56px;
+    text-align: start;
+    left: -22px;
+}
 /* For Mobile Responsive End */
 
 .circle-rounde {
-	position: absolute;
+    position: absolute;
     width: 130px;
     height: 130px;
     border-radius: 100vmax;
@@ -19871,7 +19955,7 @@ table.dataTable tbody td:last-child {
     position: absolute;
     width: 80px;
     height: 100%;
-	background: url("https://assets.codepen.io/7344750/internal/avatars/users/default.png?fit=crop&format=auto&height=512&version=1657025755&width=512");
+    background: url("https://assets.codepen.io/7344750/internal/avatars/users/default.png?fit=crop&format=auto&height=512&version=1657025755&width=512");
     background-size: contain;
     border-radius: 0vmax;
     background-position: center;
@@ -19896,9 +19980,9 @@ table.dataTable tbody td:last-child {
 }
 
 @keyframes textRotation {
-	to {
-		transform: rotate(360deg);
-	}
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .text-rounde span {
@@ -19913,14 +19997,20 @@ table.dataTable tbody td:last-child {
 }
 
 .fa-facebook {
-    color: #1877F2; /* Facebook's original blue color */
+    color: #1877f2; /* Facebook's original blue color */
     font-size: 21px;
-  }
-  .fa-instagram {
-    background: linear-gradient(45deg, #F58529, #D62F5D, #8134AF, #515BD4); /* Instagram's gradient colors */
+}
+.fa-instagram {
+    background: linear-gradient(
+        45deg,
+        #f58529,
+        #d62f5d,
+        #8134af,
+        #515bd4
+    ); /* Instagram's gradient colors */
     -webkit-background-clip: text;
     color: transparent; /* Make the icon's fill transparent to show the gradient */
     font-size: 25px;
     position: relative;
     top: 3px;
-  }
+}

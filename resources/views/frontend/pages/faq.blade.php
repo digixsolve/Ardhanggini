@@ -25,6 +25,8 @@
             line-height: 1.9;
             cursor: pointer;
         }
+
+
     </style>
     <div class="breadcrumb-wrap">
         <div class="banner b-top bg-size bread-img">
@@ -48,8 +50,12 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div>
-                    <h1 class="text-start mb-5 display-4"><span class="display-3 fw-bold">{{optional($setting)->website_name}}</span> <br> Frequently Asked Questions (FAQ)</h1>
-                    <p>Find answers to all your questions about shopping at {{optional($setting)->website_name}}. Our FAQ section covers everything
+                    <h1 class="text-start mb-5 display-4">
+                        <span class="display-3 faq-title fw-bold">{{ optional($setting)->website_name }}</span> <br> Frequently
+                        Asked Questions (FAQ)
+                    </h1>
+                    <p>Find answers to all your questions about shopping at {{ optional($setting)->website_name }}. Our
+                        FAQ section covers everything
                         from ordering and shipping to returns and refunds, ensuring a smooth and satisfying shopping
                         experience.</p>
                 </div>
@@ -66,7 +72,7 @@
             <!-- FAQ Item -->
             @foreach ($faqs as $faq)
                 <div class="card mb-0 border-0">
-                    <div class="card-header collapsed bg-info p-4" data-toggle="collapse"
+                    <div class="card-header collapsed faq-title-bg p-4" data-toggle="collapse"
                         data-target="#collapse{{ $faq->id }}">
                         <a class="card-title text-white">
                             Q: {{ $faq->question }}

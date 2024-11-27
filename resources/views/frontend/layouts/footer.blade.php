@@ -244,7 +244,7 @@
                                             <p>ONLINE NOW</p>
                                         </div>
                                     </div>
-                                    <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex justify-content-between align-items-center counter-container">
                                         <div class="today-count">
                                             <small class="mb-0 text-white">Today</small>
                                             <small class="mb-0 text-white fw-bold">{{ $online + 210 }}</small>
