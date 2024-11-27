@@ -158,6 +158,10 @@
             @include('frontend.layouts.footer')
             {{-- Footer --}}
         </div>
+        <button class="cart-sidebar-btn">
+            <span class="cart-values">05</span>
+            <i class="fa fa-shopping-cart"></i>
+        </button>
     </div>
 
     <!-- Scroll to Top Button -->
