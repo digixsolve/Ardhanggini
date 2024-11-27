@@ -134,15 +134,12 @@ class SpecialOfferController extends Controller
                 'name'              => $request->name,
                 'button_name'       => $request->button_name,
                 'button_link'       => $request->button_link,
-
+                'header_slogan'     => $request->header_slogan,
                 'product_id'        => $request->product_id,
-
                 'start_date'        => $request->start_date,
                 'end_date'          => $request->end_date,
                 'date'              => $request->date,
-
                 'status'            => $request->status,
-
                 'logo'              => $uploadedFiles['logo']['status']         == 1 ? $uploadedFiles['logo']['file_path']        : null,
                 'image'             => $uploadedFiles['image']['status']        == 1 ? $uploadedFiles['image']['file_path']       : null,
                 'banner_image'      => $uploadedFiles['banner_image']['status'] == 1 ? $uploadedFiles['banner_image']['file_path'] : null,
@@ -235,6 +232,7 @@ class SpecialOfferController extends Controller
                 'name'          => $request->name,
                 'button_name'   => $request->button_name,
                 'button_link'   => $request->button_link,
+                'header_slogan' => $request->header_slogan,
                 'product_id'    => $request->product_id,
                 'start_date'    => $request->start_date,
                 'end_date'      => $request->end_date,

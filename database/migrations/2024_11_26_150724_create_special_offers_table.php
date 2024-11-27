@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('slug')->nullable();//
             $table->string('button_name')->nullable();//
             $table->text('button_link')->nullable();//
+            $table->text('header_slogan')->nullable();//
 
             $table->timestamp('start_date')->nullable(); // Using timestamp for date and time
             $table->timestamp('end_date')->nullable(); // Using timestamp for date and time

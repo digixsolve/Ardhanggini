@@ -18,6 +18,7 @@ use App\Models\PrivacyPolicy;
 use App\Models\ShippingMethod;
 use App\Models\TermsAndCondition;
 use App\Http\Controllers\Controller;
+use App\Models\SpecialOffer;
 use App\Models\Testimonial;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -163,9 +164,14 @@ class HomeController extends Controller
         ];
         return view('frontend.pages.cart.compareList', $data);
     }
-    public function specialproducts()
+    public function specialproducts($slug)
     {
-        return view('frontend.pages.special');
+        $special_offer = SpecialOffer::where('slug', $slug)->firstOrFail();
+        $data = [
+            'special_offer'     => $special_offer,
+            'special_products'  => $special_offer->products()->get(),
+        ];
+        return view('frontend.pages.special',$data);
     }
 
     public function cart()

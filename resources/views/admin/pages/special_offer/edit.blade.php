@@ -78,7 +78,12 @@
                         <x-metronic.input id="button_link" type="text" name="button_link"
                             value="{{ old('button_link', $offer->button_link) }}" placeholder="Button Link" />
                     </div>
-
+                    <div class="col-lg-3 mb-7">
+                        <x-metronic.label for="header_slogan" class="col-form-label fw-bold fs-6">{{ __('Header Slogan') }}
+                        </x-metronic.label>
+                        <x-metronic.input id="header_slogan" type="text" name="header_slogan" :value="old('header_slogan', $offer->header_slogan)"
+                            placeholder="Button Link"></x-metronic.input>
+                    </div>
                     <!-- Date Fields -->
                     <div class="col-lg-4 mb-7">
                         <x-metronic.label for="start_date"
