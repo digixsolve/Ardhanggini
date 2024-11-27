@@ -18702,66 +18702,55 @@ table.dataTable tbody td:last-child {
 .menus-items-head {
     position: relative;
 }
+/* Hide the span for the first item only */
+.menu li:first-child .text-white {
+    display: none;
+}
 
-.menus-items-head::before {
+/* .menus-items-head::before {
     content: "";
     position: absolute;
     top: 5px;
     right: -15px;
     height: 20px;
     width: 2px;
-    background-color: #fff; /* Default color */
+    background-color: #fff;
 }
 
 
-.menus-items-head::before {
-    content: "";
-    position: absolute;
-    top: 5px;
-    right: -15px;
-    height: 20px;
-    width: 2px;
-    background-color: #fff; /* Default color */
-}
 
 .menus-items-head.transparent-before::before {
     background-color: transparent;
 }
 
-.menus-items-head:nth-child(1)::before {
-    background-color: white; /* Transparent for the 5th item */
+.menus-items-head:nth-child(1)::before,
+.menus-items-head:nth-child(2)::before,
+.menus-items-head:nth-child(3)::before,
+.menus-items-head:nth-child(5)::before
+.menus-items-head:nth-child(6)::before
+.menus-items-head:nth-child(7)::before
+.menus-items-head:nth-child(8)::before
+.menus-items-head:nth-child(9)::before,
+.menus-items-head:nth-child(10)::before,
+.menus-items-head:nth-child(11)::before,
+.menus-items-head:nth-child(12)::before,
+.menus-items-head:nth-child(13)::before,
+.menus-items-head:nth-child(14)::before,
+.menus-items-head:nth-child(15)::before,
+.menus-items-head:nth-child(16)::before {
+    background-color: white;
 }
-.menus-items-head:nth-child(2)::before {
-    background-color: white; /* Transparent for the 5th item */
-}
-.menus-items-head:nth-child(3)::before {
-    background-color: white; /* Transparent for the 5th item */
-}
-.menus-items-head:nth-child(4)::before {
-    background-color: white; /* Transparent for the 5th item */
-}
-.menus-items-head:nth-child(5)::before {
-    background-color: transparent; /* Transparent for the 5th item */
-}
-.menus-items-head:nth-child(6)::before {
-    background-color: transparent; /* Transparent for the 5th item */
-}
-.menus-items-head:nth-child(7)::before {
-    background-color: white; /* Transparent for the 5th item */
-}
-.menus-items-head:nth-child(8)::before {
-    background-color: green; /* Transparent for the 5th item */
-}
-.menus-items-head:nth-child(9)::before {
-    background-color: rgb(56, 1, 1); /* Transparent for the 5th item */
-}
+
+
 .menus-items-head:last-child::before {
-    background-color: transparent; /* Default: Transparent for the last item */
+    background-color: transparent;
 }
+
 .menus-items-head:nth-last-child(2)::before {
-    right: -20px; /* Moves the line further to the left for second-to-last item */
-    background-color: transparent; /* Optional: Make it transparent */
-}
+    right: -20px;
+    background-color: transparent;
+} */
+
 .top-up-section {
     margin-top: -70px;
     position: relative;

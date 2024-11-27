@@ -553,9 +553,10 @@
                                         </button>
                                         <!-- Menu Items -->
                                         <ul class="menu">
-                                            @foreach ($categories->slice(0, 8) as $index => $category)
+                                            @foreach ($categories as $index => $category)
                                                 <li class="menu-item menus-items-head"
                                                     data-index="{{ $index }}">
+                                                    <span class="text-white">| </span>
                                                     <a
                                                         href="{{ route('category.products', $category->slug) }}">{{ $category->name }}</a>
                                                 </li>
@@ -710,7 +711,7 @@
         </div>
     </div>
 </div>
-<script>
+{{-- <script>
     function handleLogout() {
         fetch('{{ route('logout') }}', {
                 method: 'POST',
@@ -768,6 +769,88 @@
     // Initial setup
     updateVisibility();
 </script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuItems = document.querySelectorAll(".menu .menus-items-head");
+
+        // Check if there are at least 5 items and set the fifth item's ::before color to transparent
+        if (menuItems.length >= 7) {
+            menuItems[6].classList.add("transparent-before");
+        }
+        if (menuItems.length >= 6) {
+            menuItems[5].classList.add("transparent-before");
+        }
+    });
+</script>
+<script>
+    const sections = document.querySelectorAll("section");
+
+    sections.forEach((section) => {
+        section.classList.toggle("enable-animation");
+    });
+</script> --}}
+
+@push('scripts')
+<script>
+    let currentIndex = 0;
+    const itemsPerPage = 5;
+    const items = document.querySelectorAll('.menu-item');
+    const totalItems = items.length;
+
+    function updateVisibility() {
+        // Show or hide items based on the current index
+        items.forEach((item, index) => {
+            item.style.display = (index >= currentIndex && index < currentIndex + itemsPerPage) ? 'block' : 'none';
+        });
+
+        // Show/hide buttons based on current index
+        document.getElementById('prevButton').style.display = currentIndex === 0 ? 'none' : 'inline';
+        document.getElementById('nextButton').style.display = currentIndex + itemsPerPage >= totalItems ? 'none' : 'inline';
+
+        // Call function to hide the span in the first visible item
+        hideSpanInFirstVisibleItem();
+    }
+
+    function showNext() {
+        if (currentIndex + itemsPerPage < totalItems) {
+            currentIndex += 1; // Move one item at a time
+            updateVisibility();
+        }
+    }
+
+    function showPrevious() {
+        if (currentIndex > 0) {
+            currentIndex -= 1; // Move one item back at a time
+            updateVisibility();
+        }
+    }
+
+    // Function to hide the span in the first visible item
+    function hideSpanInFirstVisibleItem() {
+        const visibleItems = Array.from(items).slice(currentIndex, currentIndex + itemsPerPage);
+
+        // Ensure the span in the first item is hidden
+        visibleItems.forEach((item, index) => {
+            const span = item.querySelector('.text-white');
+            if (index === 0 && span) {
+                span.style.display = 'none'; // Hide the span of the first item
+            } else if (span) {
+                span.style.display = 'inline'; // Make the span visible in all other items
+            }
+        });
+    }
+
+    // Initial setup
+    updateVisibility();
+
+    // Event listeners for next and previous buttons
+    document.getElementById('nextButton').addEventListener('click', showNext);
+    document.getElementById('prevButton').addEventListener('click', showPrevious);
+</script>
+
+@endpush
 <script>
     const placeholders = [
         "Tote Bag",
@@ -825,25 +908,4 @@
     if (searchInput.value === "") {
         startPlaceholderAnimation();
     }
-</script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const menuItems = document.querySelectorAll(".menu .menus-items-head");
-
-        // Check if there are at least 5 items and set the fifth item's ::before color to transparent
-        if (menuItems.length >= 7) {
-            menuItems[6].classList.add("transparent-before");
-        }
-        if (menuItems.length >= 6) {
-            menuItems[5].classList.add("transparent-before");
-        }
-    });
-</script>
-<script>
-    const sections = document.querySelectorAll("section");
-
-    sections.forEach((section) => {
-        section.classList.toggle("enable-animation");
-    });
 </script>

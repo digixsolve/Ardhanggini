@@ -27,7 +27,7 @@ Route::post('email-subscription/store', [NewsletterController::class, 'store'])-
 Route::get('mycart', [HomeController::class, 'cart'])->name('cart');
 
 Route::get('compare-list', [HomeController::class, 'compareList'])->name('compare.list');
-Route::get('{slug}/product', [HomeController::class, 'specialproducts'])->name('special.products');
+Route::get('{slug}/products', [HomeController::class, 'specialproducts'])->name('special.products');
 Route::get('checkout/success/{id}', [HomeController::class, 'checkoutSuccess'])->name('checkout.success');
 Route::post('/cart/store/{id}', [CartController::class, 'addToCart'])->name('cart.store');
 Route::post('/comparelist/store/{id}', [CartController::class, 'compareList'])->name('compare.store');
