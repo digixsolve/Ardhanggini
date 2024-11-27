@@ -25,8 +25,6 @@
             line-height: 1.9;
             cursor: pointer;
         }
-
-
     </style>
     <div class="breadcrumb-wrap">
         <div class="banner b-top bg-size bread-img">
@@ -43,7 +41,7 @@
         </div>
     </div>
     <div class="container my-5">
-        <ul class="ps-breadcrumb ">
+        <ul class="ps-breadcrumb faq-breadcumb">
             <li class="ps-breadcrumb__item"><a href="/">Home</a></li>
             <li class="ps-breadcrumb__item active" aria-current="page">Faq</li>
         </ul>
@@ -51,7 +49,8 @@
             <div class="col-lg-6">
                 <div>
                     <h1 class="text-start mb-5 display-4">
-                        <span class="display-3 faq-title fw-bold">{{ optional($setting)->website_name }}</span> <br> Frequently
+                        <span class="display-3 faq-title fw-bold">{{ optional($setting)->website_name }}</span> <br>
+                        Frequently
                         Asked Questions (FAQ)
                     </h1>
                     <p>Find answers to all your questions about shopping at {{ optional($setting)->website_name }}. Our

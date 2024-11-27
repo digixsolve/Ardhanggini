@@ -156,12 +156,16 @@
             {{ $slot }}
             {{-- Footer --}}
             @include('frontend.layouts.footer')
-            {{-- Footer --}}
+        {{-- Footer --}}
         </div>
-        <button class="cart-sidebar-btn">
-            <span class="cart-values">05</span>
-            <i class="fa fa-shopping-cart"></i>
-        </button>
+        {{-- Sidebar Cart Common Start --}}
+        <div>
+            <a class="cart-sidebar-btn">
+                <span class="cart-values">{{ Cart::instance('cart')->count() }}</span>
+                <i class="fa fa-shopping-cart"></i>
+            </a>
+        </div>
+        {{-- Sidebar Cart Common End --}}
     </div>
 
     <!-- Scroll to Top Button -->

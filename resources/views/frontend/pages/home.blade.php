@@ -177,7 +177,8 @@
                                                         // dd($latest_product->name, $review);
                                                     @endphp
                                                     @if ($review > 0 || count($latest_product->reviews) > 0)
-                                                        <div class="d-flex justify-content-between align-items-center">
+                                                        <div
+                                                            class="d-flex justify-content-between align-items-center mb-3">
                                                             <div class="ps-product__rating">
                                                                 @if ($review > 0)
                                                                     <div class="br-wrapper br-theme-fontawesome-stars">
@@ -221,7 +222,7 @@
                                                                 class="ps-product__price sale">৳{{ $latest_product->unit_price }}</span>
                                                         </div>
                                                     @endif
-                                                    <div class="d-flex align-items-center">
+                                                    <div class="d-flex align-items-center card-cart-btn">
                                                         <a href="{{ route('cart.store', $latest_product->id) }}"
                                                             class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
                                                             data-product_id="{{ $latest_product->id }}"
@@ -368,7 +369,8 @@
                                                                 : 0;
                                                     @endphp
                                                     @if ($review > 0 || count($categoryoneproduct->reviews) > 0)
-                                                        <div class="d-flex justify-content-between align-items-center">
+                                                        <div
+                                                            class="d-flex justify-content-between align-items-center mb-3">
                                                             <div class="ps-product__rating">
                                                                 @if ($review > 0)
                                                                     <div class="br-wrapper br-theme-fontawesome-stars">
@@ -413,7 +415,7 @@
                                                                 class="ps-product__price sale">৳{{ $categoryoneproduct->unit_price }}</span>
                                                         </div>
                                                     @endif
-                                                    <div class="d-flex align-items-center">
+                                                    <div class="d-flex align-items-center card-cart-btn">
                                                         <a href="{{ route('cart.store', $categoryoneproduct->id) }}"
                                                             class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
                                                             data-product_id="{{ $categoryoneproduct->id }}"
@@ -577,32 +579,45 @@
                                                                         ) / count($categorytwoproduct->reviews)
                                                                     : 0;
                                                         @endphp
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <div class="ps-product__rating">
-                                                                @if ($review > 0)
-                                                                    <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                        <select class="ps-rating"
-                                                                            data-read-only="true"
-                                                                            style="display: none;">
-                                                                            @for ($i = 1; $i <= 5; $i++)
-                                                                                <option value="{{ $i }}"
-                                                                                    @if ($i <= round($review)) selected @endif>
-                                                                                    {{ $i }}</option>
-                                                                            @endfor
-                                                                        </select>
-                                                                    </div>
-                                                                @endif
+                                                        @if ($review > 0 || count($categorytwoproduct->reviews) > 0)
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center mb-3">
+                                                                <div class="ps-product__rating">
+                                                                    @if ($review > 0)
+                                                                        <div
+                                                                            class="br-wrapper br-theme-fontawesome-stars">
+                                                                            <select class="ps-rating"
+                                                                                data-read-only="true"
+                                                                                style="display: none;">
+                                                                                @php
+                                                                                    $maxRating = min(
+                                                                                        5,
+                                                                                        max(1, floor($review)),
+                                                                                    ); // Get the highest full rating value
+                                                                                @endphp
+                                                                                @for ($i = 1; $i <= $maxRating; $i++)
+                                                                                    <option
+                                                                                        value="{{ $i }}">
+                                                                                        {{ $i }}</option>
+                                                                                @endfor
+                                                                            </select>
+                                                                        </div>
+                                                                    @else
+                                                                        No Reviews
+                                                                    @endif
+                                                                </div>
+                                                                <div>
+                                                                    @if (count($categorytwoproduct->reviews) > 0)
+                                                                        Reviews
+                                                                        ({{ count($categorytwoproduct->reviews) }})
+                                                                    @else
+                                                                        No Reviews
+                                                                    @endif
+                                                                </div>
                                                             </div>
-                                                            <div>
-                                                                @if (count($categorytwoproduct->reviews) > 0)
-                                                                    Reviews ({{ count($categorytwoproduct->reviews) }})
-                                                                @else
-                                                                    No Reviews Yet
-                                                                @endif
-                                                            </div>
-                                                        </div>
+                                                        @endif
                                                         @if (!empty($categorytwoproduct->unit_discount_price))
-                                                            <div class="ps-product__meta">
+                                                            <div class="ps-product__meta ctg-two-prices">
                                                                 <span
                                                                     class="ps-product__price sale">৳{{ $categorytwoproduct->unit_discount_price }}</span>
                                                                 <span
@@ -616,13 +631,13 @@
                                                         @endif
                                                         <div class="d-flex align-items-center">
                                                             <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
-                                                                class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
+                                                                class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns"
                                                                 data-product_id="{{ $categorytwoproduct->id }}"
                                                                 data-product_qty="1">
                                                                 Add To Cart
                                                             </a>
                                                             <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
-                                                                class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ml-3 buy-now-btn"
+                                                                class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns ml-3 buy-now-btn"
                                                                 data-product_id="{{ $categorytwoproduct->id }}"
                                                                 data-product_qty="1">
                                                                 Buy Now
@@ -754,7 +769,8 @@
                                                                 : 0;
                                                     @endphp
                                                     @if ($review > 0 || count($categorythreeproduct->reviews) > 0)
-                                                        <div class="d-flex justify-content-between align-items-center">
+                                                        <div
+                                                            class="d-flex justify-content-between align-items-center mb-3">
                                                             <div class="ps-product__rating">
                                                                 @if ($review > 0)
                                                                     <div class="br-wrapper br-theme-fontawesome-stars">
@@ -800,7 +816,7 @@
                                                                 class="ps-product__price sale">৳{{ $categorythreeproduct->unit_price }}</span>
                                                         </div>
                                                     @endif
-                                                    <div class="d-flex align-items-center">
+                                                    <div class="d-flex align-items-center card-cart-btn">
                                                         <a href="{{ route('cart.store', $categorythreeproduct->id) }}"
                                                             class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
                                                             data-product_id="{{ $categorythreeproduct->id }}"
@@ -1151,7 +1167,8 @@
                                                             : 0;
                                                 @endphp
                                                 @if ($review > 0 || count($deal_product->reviews) > 0)
-                                                    <div class="d-flex justify-content-between align-items-center">
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center mb-3">
                                                         <div class="ps-product__rating">
                                                             @if ($review > 0)
                                                                 <div class="br-wrapper br-theme-fontawesome-stars">
@@ -1172,7 +1189,8 @@
                                                         </div>
                                                         <div>
                                                             @if (count($deal_product->reviews) > 0)
-                                                                Reviews ({{ count($deal_product->reviews) }})
+                                                                Reviews
+                                                                ({{ count($deal_product->reviews) }})
                                                             @else
                                                                 No Reviews
                                                             @endif
@@ -1180,14 +1198,14 @@
                                                     </div>
                                                 @endif
                                                 @if (!empty($deal_product->unit_discount_price))
-                                                    <div class="ps-product__meta mb-5">
+                                                    <div class="ps-product__meta mb-3">
                                                         <span
                                                             class="ps-product__price sale">৳{{ $deal_product->unit_discount_price }}</span>
                                                         <span
                                                             class="ps-product__del">৳{{ $deal_product->unit_price }}</span>
                                                     </div>
                                                 @else
-                                                    <div class="ps-product__meta mb-5">
+                                                    <div class="ps-product__meta mb-3">
                                                         <span
                                                             class="ps-product__price sale">৳{{ $deal_product->unit_price }}</span>
                                                     </div>
@@ -1195,13 +1213,13 @@
 
                                                 <div class="d-flex align-items-center">
                                                     <a href="{{ route('cart.store', $deal_product->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
+                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns"
                                                         data-product_id="{{ $deal_product->id }}"
                                                         data-product_qty="1">
                                                         Add To Cart
                                                     </a>
                                                     <a href="{{ route('cart.store', $deal_product->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ml-3 buy-now-btn"
+                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns ml-3 buy-now-btn"
                                                         data-product_id="{{ $deal_product->id }}"
                                                         data-product_qty="1">
                                                         Buy Now

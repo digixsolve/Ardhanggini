@@ -32,7 +32,7 @@
                 <li class="ps-breadcrumb__item active" aria-current="page">Shop</li>
             </ul>
         </div>
-        <div class="ps-categogy__main">
+        <div class="ps-categogy__main mb-0">
             <div class="container">
                 <div class="ps-categogy__product">
                     <div class="row m-0">

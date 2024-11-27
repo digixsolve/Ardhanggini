@@ -14,16 +14,17 @@
         </div>
     </div>
     <div class="container">
-        <ul class="ps-breadcrumb faq-breadcumb">
-            <li class="ps-breadcrumb__item"><a href="/">Home</a></li>
-            <li class="ps-breadcrumb__item active" aria-current="page">Return</li>
-        </ul>
-        <div class="row align-items-center">
+        <div class="row align-items-center pt-4">
             <div class="col-lg-12">
-                <h1 class="text-start mb-5 display-4">{{optional($setting)->website_name}}</h1>
+                <ul class="ps-breadcrumb faq-breadcumb mt-2 mt-lg-0">
+                    <li class="ps-breadcrumb__item"><a href="/">Home</a></li>
+                    <li class="ps-breadcrumb__item active" aria-current="page">Return</li>
+                </ul>
+                <h1 class="text-start mb-5 display-4">{{ optional($setting)->website_name }}</h1>
                 <p class="lead">Last updated: August 11, 2024</p>
-                <p class="mb-5">Thank you for choosing {{optional($setting)->website_name}} for your shopping needs!
-                    At {{optional($setting)->website_name}}, we are committed to ensuring that each of our customers has a positive and satisfying
+                <p class="mb-5">Thank you for choosing {{ optional($setting)->website_name }} for your shopping needs!
+                    At {{ optional($setting)->website_name }}, we are committed to ensuring that each of our customers
+                    has a positive and satisfying
                     shopping experience. Your satisfaction is our top priority. We understand that sometimes things
                     might not turn out as expected, and we're here to assist you if that happens.
 

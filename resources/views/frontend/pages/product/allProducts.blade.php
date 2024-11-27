@@ -117,11 +117,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-3">
-                    <ul class="ps-breadcrumb">
-                        <li class="ps-breadcrumb__item"><a href="/">Home</a></li>
-                        <li class="ps-breadcrumb__item">Shop</li>
-                    </ul>
-                    <h1 class="ps-categogy__name">Shop<sup>({{ $products->count() }})</sup></h1>
+                    <div class="shop-bread">
+                        <ul class="ps-breadcrumb">
+                            <li class="ps-breadcrumb__item"><a href="/">Home</a></li>
+                            <li class="ps-breadcrumb__item">Shop</li>
+                        </ul>
+                        <h1 class="ps-categogy__name">Shop<sup>({{ $products->count() }})</sup></h1>
+                    </div>
                 </div>
                 <div class="col-12 col-md-9 d-flex align-items-center">
                     <div>
@@ -182,7 +184,7 @@
                                 <h4 class="ps-widget__title">Categories</h4>
                                 <a class="ps-block-control" href="#"><i class="fa fa-angle-down"></i>
                                 </a>
-                                <div class="ps-widget__content ps-widget__category pt-3">
+                                <div class="ps-widget__content ps-widget__category pt-3 shop-filter">
                                     <ul class="">
                                         @foreach ($categories as $category)
                                             <li>

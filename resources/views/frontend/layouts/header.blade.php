@@ -331,32 +331,27 @@
     @if (!empty(optional($special_offer)->slug) || !empty(optional($special_offer)->header_slogan))
         <div class="ps-noti">
             <section>
-                <div class="marquee marquee--hover-pause">
-                    <ul class="marquee__content">
-                        @for ($i = 0; $i < 8; $i++)
-                            <li>
-                                <a href="{{ route('special.products', optional($special_offer)->slug) }}">
-                                    <p class="text-white marquee-text mb-0 d-flex align-items-center">
-                                        <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
-                                        <span>{{ optional($special_offer)->header_slogan }}</span>
-                                    </p>
-                                </a>
-                            </li>
+                <div class="marquee marquee--hover-pause enable-animation">
+                    <div class="marquee__content">
+                        @for ($i = 0; $i < 10; $i++)
+                            <a href="{{ route('special.products', optional($special_offer)->slug) }}">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                    <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
+                                    <span>{{ optional($special_offer)->header_slogan }}</span>
+                                </p>
+                            </a>
                         @endfor
-                    </ul>
-
-                    <ul aria-hidden="true" class="marquee__content">
-                        @for ($i = 0; $i < 8; $i++)
-                            <li>
-                                <a href="{{ route('special.products', optional($special_offer)->slug) }}">
-                                    <p class="text-white marquee-text mb-0 d-flex align-items-center">
-                                        <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
-                                        <span>{{ optional($special_offer)->header_slogan }}</span>
-                                    </p>
-                                </a>
-                            </li>
+                    </div>
+                    <div aria-hidden="true" class="marquee__content">
+                        @for ($i = 0; $i < 10; $i++)
+                            <a href="{{ route('special.products', optional($special_offer)->slug) }}">
+                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
+                                    <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
+                                    <span>{{ optional($special_offer)->header_slogan }}</span>
+                                </p>
+                            </a>
                         @endfor
-                    </ul>
+                    </div>
                 </div>
             </section>
         </div>
@@ -369,7 +364,8 @@
                 <div class="ps-top__social">
                     <ul class="ps-social">
                         @if (optional($setting)->facebook_url)
-                            <li><a class="ps-social__link facebook" href="{{ optional($setting)->facebook_url }}" target="_blank">
+                            <li><a class="ps-social__link facebook" href="{{ optional($setting)->facebook_url }}"
+                                    target="_blank">
                                     <i class="fa fa-facebook" style="color: #3D6AD6;"> </i>
                                     <span class="ps-tooltip">Facebook</span>
                                 </a>
@@ -377,7 +373,8 @@
                         @endif
                         @if (optional($setting)->instagram_url)
                             <li>
-                                <a class="ps-social__link instagram" href="{{ optional($setting)->instagram_url }}" target="_blank">
+                                <a class="ps-social__link instagram" href="{{ optional($setting)->instagram_url }}"
+                                    target="_blank">
                                     <i class="fa fa-instagram"
                                         style="
                                         background: linear-gradient(90deg, #f68e39 0%, #ea6867 29%, #cb4b98 64%, #9256c6 100%);
@@ -529,7 +526,7 @@
                                 </div>
                             </form>
                             <div id="search_container" class="ps-search--result search_container d-none"
-                                style="height: 44vh;overflow-y: auto;">
+                                style="height: 50vh;overflow-y: auto;">
                                 <!-- Search results will be injected here -->
                             </div>
                         </div>
@@ -691,7 +688,7 @@
     </div>
 
 </header>
-<div class="ps-search">
+{{-- <div class="ps-search">
     <div class="ps-search__content ps-search--mobile"><a class="ps-search__close" href="#"
             id="close-search"><i class="icon-cross"></i></a>
         <h3>Search</h3>
@@ -709,7 +706,7 @@
             <!-- Search results will be injected here -->
         </div>
     </div>
-</div>
+</div> --}}
 {{-- <script>
     function handleLogout() {
         fetch('{{ route('logout') }}', {
@@ -792,63 +789,64 @@
 </script> --}}
 
 @push('scripts')
-<script>
-    let currentIndex = 0;
-    const itemsPerPage = 5;
-    const items = document.querySelectorAll('.menu-item');
-    const totalItems = items.length;
+    <script>
+        let currentIndex = 0;
+        const itemsPerPage = 5;
+        const items = document.querySelectorAll('.menu-item');
+        const totalItems = items.length;
 
-    function updateVisibility() {
-        // Show or hide items based on the current index
-        items.forEach((item, index) => {
-            item.style.display = (index >= currentIndex && index < currentIndex + itemsPerPage) ? 'block' : 'none';
-        });
+        function updateVisibility() {
+            // Show or hide items based on the current index
+            items.forEach((item, index) => {
+                item.style.display = (index >= currentIndex && index < currentIndex + itemsPerPage) ? 'block' :
+                    'none';
+            });
 
-        // Show/hide buttons based on current index
-        document.getElementById('prevButton').style.display = currentIndex === 0 ? 'none' : 'inline';
-        document.getElementById('nextButton').style.display = currentIndex + itemsPerPage >= totalItems ? 'none' : 'inline';
+            // Show/hide buttons based on current index
+            document.getElementById('prevButton').style.display = currentIndex === 0 ? 'none' : 'inline';
+            document.getElementById('nextButton').style.display = currentIndex + itemsPerPage >= totalItems ? 'none' :
+                'inline';
 
-        // Call function to hide the span in the first visible item
-        hideSpanInFirstVisibleItem();
-    }
-
-    function showNext() {
-        if (currentIndex + itemsPerPage < totalItems) {
-            currentIndex += 1; // Move one item at a time
-            updateVisibility();
+            // Call function to hide the span in the first visible item
+            hideSpanInFirstVisibleItem();
         }
-    }
 
-    function showPrevious() {
-        if (currentIndex > 0) {
-            currentIndex -= 1; // Move one item back at a time
-            updateVisibility();
-        }
-    }
-
-    // Function to hide the span in the first visible item
-    function hideSpanInFirstVisibleItem() {
-        const visibleItems = Array.from(items).slice(currentIndex, currentIndex + itemsPerPage);
-
-        // Ensure the span in the first item is hidden
-        visibleItems.forEach((item, index) => {
-            const span = item.querySelector('.text-white');
-            if (index === 0 && span) {
-                span.style.display = 'none'; // Hide the span of the first item
-            } else if (span) {
-                span.style.display = 'inline'; // Make the span visible in all other items
+        function showNext() {
+            if (currentIndex + itemsPerPage < totalItems) {
+                currentIndex += 1; // Move one item at a time
+                updateVisibility();
             }
-        });
-    }
+        }
 
-    // Initial setup
-    updateVisibility();
+        function showPrevious() {
+            if (currentIndex > 0) {
+                currentIndex -= 1; // Move one item back at a time
+                updateVisibility();
+            }
+        }
 
-    // Event listeners for next and previous buttons
-    document.getElementById('nextButton').addEventListener('click', showNext);
-    document.getElementById('prevButton').addEventListener('click', showPrevious);
-</script>
+        // Function to hide the span in the first visible item
+        function hideSpanInFirstVisibleItem() {
+            const visibleItems = Array.from(items).slice(currentIndex, currentIndex + itemsPerPage);
 
+            // Ensure the span in the first item is hidden
+            visibleItems.forEach((item, index) => {
+                const span = item.querySelector('.text-white');
+                if (index === 0 && span) {
+                    span.style.display = 'none'; // Hide the span of the first item
+                } else if (span) {
+                    span.style.display = 'inline'; // Make the span visible in all other items
+                }
+            });
+        }
+
+        // Initial setup
+        updateVisibility();
+
+        // Event listeners for next and previous buttons
+        document.getElementById('nextButton').addEventListener('click', showNext);
+        document.getElementById('prevButton').addEventListener('click', showPrevious);
+    </script>
 @endpush
 <script>
     const placeholders = [

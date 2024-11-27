@@ -219,26 +219,21 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <div class="ps-product__feature">
-                                <div class="mboile-p-stock">
-                                    @if (!empty($product->stock) && $product->stock > 0)
-                                        <div class="ps-product__badge mb-0"><span
-                                                class="ps-badge bg-success">{{ $product->stock }} In Stock</span></div>
-                                    @else
-                                        <div class="ps-product__badge mb-0"><span
-                                                class="ps-badge ps-badge--outstock">Out Of
-                                                Stock</span></div>
-                                    @endif
-                                </div>
-
-
+                                @if (!empty($product->stock) && $product->stock > 0)
+                                    <div class="mb-0"><span class="ps-badge bg-success">{{ $product->stock }} In
+                                            Stock</span></div>
+                                @else
+                                    <div class="mb-0"><span class="ps-badge ps-badge--outstock">Out Of
+                                            Stock</span></div>
+                                @endif
                                 @if (!empty($product->unit_discount_price))
-                                    <div class="ps-product__meta py-3">
+                                    <div class="ps-product__meta py-3 pr-details-price">
                                         <span
                                             class="ps-product__price sale">৳{{ $product->unit_discount_price }}</span>
                                         <span class="ps-product__del">৳{{ $product->unit_price }}</span>
                                     </div>
                                 @else
-                                    <div class="ps-product__meta py-3">
+                                    <div class="ps-product__meta py-3 pr-details-price">
                                         <span class="ps-product__price sale">৳{{ $product->unit_price }}</span>
                                     </div>
                                 @endif
@@ -299,7 +294,7 @@
                                     Specification
                                 </a>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item ml-3" role="presentation">
                                 <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews-content"
                                     role="tab" aria-controls="reviews-content" aria-selected="false">
                                     Reviews ({{ count($product->reviews) }})
@@ -667,14 +662,14 @@
 
                                             <div class="ps-product__feature">
                                                 @if (!empty($related_product->unit_discount_price))
-                                                    <div class="ps-product__meta py-3">
+                                                    <div class="ps-product__meta py-3 pr-details-price">
                                                         <span
                                                             class="ps-product__price sale">৳{{ $related_product->unit_discount_price }}</span>
                                                         <span
                                                             class="ps-product__del">৳{{ $related_product->unit_price }}</span>
                                                     </div>
                                                 @else
-                                                    <div class="ps-product__meta py-3">
+                                                    <div class="ps-product__meta py-3 pr-details-price">
                                                         <span
                                                             class="ps-product__price sale">৳{{ $related_product->unit_price }}</span>
                                                     </div>
