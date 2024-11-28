@@ -47,6 +47,21 @@
             width: 100px;
             margin: auto;
         }
+        .inner {
+    z-index: 2;
+    position: relative;
+    width: 100%;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(12px, 2vw, 16px); /* Adjust values as needed */
+    font-weight: 500;
+    line-height: 1.5;
+    transition: color 0.2s ease-in-out;
+    text-align: center;
+    word-break: break-word; /* Handles long text */
+}
     </style>
     <div class="ps-account my-lg-5 py-lg-5 my-0 py-0">
         <div class="container">
@@ -55,9 +70,9 @@
                     <div class="row">
                         <div class="col-lg-12 pl-5">
                             <div class="p-3">
-                                <div class="pb-5">
+                                <div class="pb-5 d-flex justify-content-center align-items-center">
                                     <a href="{{ route('home') }}" class="">
-                                        <img class="img-fluid home-logo"
+                                        <img class="img-fluid" width="125px"
                                             src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
                                             alt="">
                                     </a>
@@ -107,7 +122,7 @@
                                                 </div>
                                                 <div>
                                                     @if (Route::has('password.request'))
-                                                        <a class="ps-account__link text-info mt-0"
+                                                        <a class="ps-account__link site-text mt-0"
                                                             href="{{ route('password.request') }}">Forgot your password
                                                             ?</a>
                                                     @endif
@@ -134,7 +149,7 @@
                                         @if (Route::has('password.request'))
                                             <p class="text-center"><span class="ps-5 text-center">
                                                     Don't Have Account
-                                                    <a class="ps-account__link text-info"
+                                                    <a class="ps-account__link site-text"
                                                         href="{{ route('register') }}">
                                                         Create New Accounts
                                                     </a>

@@ -201,7 +201,20 @@ function toggleStatus(route, id) {
             });
         }
     });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const inner = document.querySelector('.inner');
+        const resizeText = () => {
+            if (inner.scrollWidth > inner.clientWidth) {
+                inner.style.fontSize = `${parseFloat(getComputedStyle(inner).fontSize) - 1}px`;
+            }
+        };
+
+        resizeText();
+        window.addEventListener('resize', resizeText);
+    });
 }
+
 
 
 

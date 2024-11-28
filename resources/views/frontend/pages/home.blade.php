@@ -218,13 +218,13 @@
                                                     @endif
                                                     <div class="d-flex align-items-center card-cart-btn">
                                                         <a href="{{ route('cart.store', $latest_product->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-3 buy-now-btn"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-3"
                                                             data-product_id="{{ $latest_product->id }}"
                                                             data-product_qty="1">
                                                             Buy Now
                                                         </a>
                                                         <a href="{{ route('cart.store', $latest_product->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 buy-now-btn"
                                                             data-product_id="{{ $latest_product->id }}"
                                                             data-product_qty="1">
                                                             Add To Cart
@@ -619,13 +619,13 @@
                                                         @endif
                                                         <div class="d-flex align-items-center">
                                                             <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
-                                                                class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns mr-3 buy-now-btn"
+                                                                class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns mr-3"
                                                                 data-product_id="{{ $categorytwoproduct->id }}"
                                                                 data-product_qty="1">
                                                                 Buy Now
                                                             </a>
                                                             <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
-                                                                class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns"
+                                                                class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns buy-now-btn"
                                                                 data-product_id="{{ $categorytwoproduct->id }}"
                                                                 data-product_qty="1">
                                                                 Add To Cart
@@ -802,13 +802,13 @@
                                                     @endif
                                                     <div class="d-flex align-items-center card-cart-btn">
                                                         <a href="{{ route('cart.store', $categorythreeproduct->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-3 buy-now-btn"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-3"
                                                             data-product_id="{{ $categorythreeproduct->id }}"
                                                             data-product_qty="1">
                                                             Buy Now
                                                         </a>
                                                         <a href="{{ route('cart.store', $categorythreeproduct->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 buy-now-btn"
                                                             data-product_id="{{ $categorythreeproduct->id }}"
                                                             data-product_qty="1">
                                                             Add To Cart
@@ -857,7 +857,7 @@
                 </div>
             @endif
         </div>
-        <section class="container-fluid section-bg mt-5">
+        <section class="container-fluid section-bg">
             <!-- Circles Background -->
             <!-- Circles Background -->
             <ul class="circles">
@@ -1195,13 +1195,13 @@
 
                                                 <div class="d-flex align-items-center">
                                                     <a href="{{ route('cart.store', $deal_product->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns mr-3 buy-now-btn"
+                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns mr-3"
                                                         data-product_id="{{ $deal_product->id }}"
                                                         data-product_qty="1">
                                                         Buy Now
                                                     </a>
                                                     <a href="{{ route('cart.store', $deal_product->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns"
+                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns buy-now-btn"
                                                         data-product_id="{{ $deal_product->id }}"
                                                         data-product_qty="1">
                                                         Add To Cart

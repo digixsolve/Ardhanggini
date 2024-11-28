@@ -3576,6 +3576,20 @@ textarea.form-control {
     border-color: var(--site-green);
 }
 
+.owl-prev span {
+    color: #ffffff9f;
+    position: relative;
+    left: -2px;
+    font-size: 30px;
+    top: -1px;
+}
+.owl-next span {
+    color: #ffffff9f;
+    position: relative;
+    right: -2px;
+    font-size: 30px;
+    top: -1px;
+}
 .ps-badge {
     display: inline-block;
     font-size: 12px;
@@ -19426,6 +19440,8 @@ table.dataTable tbody td:last-child {
     background: var(--site-green);
     background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
     overflow: hidden;
+    margin-top: 70px;
+    margin-bottom: 30px;
 }
 
 .section-bg .circles {
