@@ -391,9 +391,9 @@
                             <div class="owl-carousel">
                                 @foreach ($related_products as $related_product)
                                     <div class="ps-section__product">
-                                        <div class="ps-product ps-product--standard">
+                                        <div class="ps-product takeway-products ps-product--standard cst-bought-pr">
                                             <div class="ps-product__thumbnail">
-                                                <a class="ps-product__image"
+                                                <a class="ps-product__image takeway-slider-img"
                                                     href="{{ route('product.details', $related_product->slug) }}">
                                                     <figure>
                                                         @if (!empty($related_product->thumbnail))
@@ -440,7 +440,11 @@
                                                 </div>
                                                 @if (!empty($related_product->unit_discount_price))
                                                     <div class="ps-product__badge">
-                                                        <div class="ps-badge ps-badge--sale">Offer</div>
+                                                        <div class="ps-badge ps-badge--sale">
+                                                            -
+                                                            {{ !empty($related_product->unit_discount_price) && $related_product->unit_discount_price > 0 ? number_format((($related_product->unit_price - $related_product->unit_discount_price) / $related_product->unit_price) * 100, 1) : 0 }}
+                                                            % Off
+                                                        </div>
                                                     </div>
                                                 @endif
                                             </div>
@@ -499,11 +503,20 @@
                                                             class="ps-product__price sale">৳{{ $related_product->unit_price }}</span>
                                                     </div>
                                                 @endif
-                                                <a href="{{ route('cart.store', $related_product->id) }}"
-                                                    class="btn ps-btn--warning my-3 btn-block add_to_cart"
-                                                    data-product_id="{{ $related_product->id }}"
-                                                    data-product_qty="1">Add To
-                                                    Cart</a>
+                                                <div class="d-flex align-items-center">
+                                                    <a href="{{ route('cart.store', $related_product->id) }}"
+                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns mr-3"
+                                                        data-product_id="{{ $related_product->id }}"
+                                                        data-product_qty="1">
+                                                        Buy Now
+                                                    </a>
+                                                    <a href="{{ route('cart.store', $related_product->id) }}"
+                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns buy-now-btn"
+                                                        data-product_id="{{ $related_product->id }}"
+                                                        data-product_qty="1">
+                                                        Add To Cart
+                                                    </a>
+                                                </div>
                                                 <div class="ps-product__actions ps-product__group-mobile">
                                                     <div class="ps-product__quantity">
                                                         <div class="def-number-input number-input safari_only">

@@ -118,7 +118,7 @@
             <div class="row">
                 <div class="col-12 col-md-3">
                     <div class="shop-bread">
-                        <ul class="ps-breadcrumb">
+                        <ul class="ps-breadcrumb shop-breadcrumb">
                             <li class="ps-breadcrumb__item"><a href="/">Home</a></li>
                             <li class="ps-breadcrumb__item">Shop</li>
                         </ul>
@@ -249,7 +249,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="ps-widget__block bg-white p-lg-3 p-0 ">
+                            <div class="ps-widget__block ps-widget__block-shop bg-white p-lg-3 p-0 ">
                                 <h4 class="ps-widget__title">By price</h4><a class="ps-block-control" href="#"><i
                                         class="fa fa-angle-down"></i></a>
                                 <div class="ps-widget__content priceing-filter">
@@ -266,7 +266,7 @@
                                     {{-- <button id="price-filter" class="ps-widget__filter">Filter</button> --}}
                                 </div>
                             </div>
-                            <div class="ps-widget__block bg-white p-3">
+                            <div class="ps-widget__block ps-widget__block-shop bg-white p-3">
                                 <h4 class="ps-widget__title">Brands</h4><a class="ps-block-control" href="#"><i
                                         class="fa fa-angle-down"></i></a>
                                 <div class="ps-widget__content">

@@ -61,7 +61,7 @@
                                             @forelse ($catProducts as $key => $category_product)
                                                 <div
                                                     class="col-12 col-lg-4 col-xl-3 p-0 product-item {{ $key >= 4 ? 'd-none' : '' }}">
-                                                    <div class="ps-product ps-product--standard">
+                                                    <div class="ps-product ps-product--standard category-imges">
                                                         <div class="ps-product__thumbnail">
                                                             <a class="ps-product__image"
                                                                 href="{{ route('product.details', $category_product->slug) }}">
@@ -138,10 +138,20 @@
                                                                         class="ps-product__price sale">৳{{ $category_product->unit_price }}</span>
                                                                 </div>
                                                             @endif
-                                                            <a href="{{ route('cart.store', $category_product->id) }}"
-                                                                class="btn ps-btn--warning my-3 btn-block add_to_cart"
-                                                                data-product_id="{{ $category_product->id }}"
-                                                                data-product_qty="1">Add To Cart</a>
+                                                                <div class="d-flex align-items-center card-cart-btn">
+                                                                    <a href="{{ route('cart.store', $category_product->id) }}"
+                                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-1 mr-lg-3 "
+                                                                        data-product_id="{{ $category_product->id }}"
+                                                                        data-product_qty="1">
+                                                                        Buy Now
+                                                                    </a>
+                                                                    <a href="{{ route('cart.store', $category_product->id) }}"
+                                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 buy-now-btn"
+                                                                        data-product_id="{{ $category_product->id }}"
+                                                                        data-product_qty="1">
+                                                                        Add To Cart
+                                                                    </a>
+                                                                </div>
                                                         </div>
                                                     </div>
                                                 </div>

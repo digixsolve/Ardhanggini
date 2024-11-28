@@ -156,7 +156,7 @@
                                                             <div class="ps-badge ps-badge--sale">
                                                                 -
                                                                 {{ !empty($latest_product->unit_discount_price) && $latest_product->unit_discount_price > 0 ? number_format((($latest_product->unit_price - $latest_product->unit_discount_price) / $latest_product->unit_price) * 100, 1) : 0 }}
-                                                                %
+                                                                % Off
                                                             </div>
                                                         </div>
                                                     @endif
@@ -218,7 +218,7 @@
                                                     @endif
                                                     <div class="d-flex align-items-center card-cart-btn">
                                                         <a href="{{ route('cart.store', $latest_product->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-3"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-1 mr-lg-3 "
                                                             data-product_id="{{ $latest_product->id }}"
                                                             data-product_qty="1">
                                                             Buy Now
@@ -342,7 +342,7 @@
                                                             <div class="ps-badge ps-badge--sale">
                                                                 -
                                                                 {{ !empty($categoryoneproduct->unit_discount_price) && $categoryoneproduct->unit_discount_price > 0 ? number_format((($categoryoneproduct->unit_price - $categoryoneproduct->unit_discount_price) / $categoryoneproduct->unit_price) * 100, 1) : 0 }}
-                                                                %
+                                                                % Off
                                                             </div>
                                                         </div>
                                                     @endif
@@ -407,7 +407,7 @@
                                                     @endif
                                                     <div class="d-flex align-items-center card-cart-btn">
                                                         <a href="{{ route('cart.store', $categoryoneproduct->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-3 buy-now-btn"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-1 mr-lg-3  buy-now-btn"
                                                             data-product_id="{{ $categoryoneproduct->id }}"
                                                             data-product_qty="1">
                                                             Buy Now
@@ -549,7 +549,7 @@
                                                                 <div class="ps-badge ps-badge--sale">
                                                                     -
                                                                     {{ !empty($categorytwoproduct->unit_discount_price) && $categorytwoproduct->unit_discount_price > 0 ? number_format((($categorytwoproduct->unit_price - $categorytwoproduct->unit_discount_price) / $categorytwoproduct->unit_price) * 100, 1) : 0 }}
-                                                                    %
+                                                                    % Off
                                                                 </div>
                                                             </div>
                                                         @endif
@@ -736,7 +736,7 @@
                                                             <div class="ps-badge ps-badge--sale">
                                                                 -
                                                                 {{ !empty($categorythreeproduct->unit_discount_price) && $categorythreeproduct->unit_discount_price > 0 ? number_format((($categorythreeproduct->unit_price - $categorythreeproduct->unit_discount_price) / $categorythreeproduct->unit_price) * 100, 1) : 0 }}
-                                                                %
+                                                                % Off
                                                             </div>
                                                         </div>
                                                     @endif
@@ -802,7 +802,7 @@
                                                     @endif
                                                     <div class="d-flex align-items-center card-cart-btn">
                                                         <a href="{{ route('cart.store', $categorythreeproduct->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-3"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-1 mr-lg-3 "
                                                             data-product_id="{{ $categorythreeproduct->id }}"
                                                             data-product_qty="1">
                                                             Buy Now
@@ -1132,7 +1132,7 @@
                                                         <div class="ps-badge ps-badge--sale">
                                                             -
                                                             {{ !empty($deal_product->unit_discount_price) && $deal_product->unit_discount_price > 0 ? number_format((($deal_product->unit_price - $deal_product->unit_discount_price) / $deal_product->unit_price) * 100, 1) : 0 }}
-                                                            %
+                                                            % Off
                                                         </div>
                                                     </div>
                                                 @endif

@@ -1,9 +1,9 @@
 <div class="ps-categogy--list">
     @if ($products->count() > 0)
         @foreach ($products as $product)
-            <div class="ps-product ps-product--list align-items-center">
-                <div class="ps-product__content">
-                    <div class="ps-product__thumbnail"><a class="ps-product__image" href="#">
+            <div class="ps-product ps-product--list align-items-center all-product-box">
+                <div class="ps-product__content all-product-box">
+                    <div class="ps-product__thumbnail all-product-box-img"><a class="ps-product__image" href="#">
                             <figure>
                                 <img src="{{ asset('storage/' . $product->thumbnail) }}" alt="{{ $product->name }}"
                                     onerror="this.onerror=null; this.src='{{ asset('frontend/img/no-product.jpg') }}';">
@@ -58,37 +58,43 @@
                         </div>
                     @endif
 
-                    <div class="ps-product">
-                        <div class="ps-product__quantity">
-                            <h6>Quantity</h6>
-                            <div class="def-number-input number-input safari_only">
-                                <button class="minus"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                    <i class="icon-minus"></i>
-                                </button>
-                                <input class="quantity" min="1" name="quantity" value="1" type="number" />
-                                <button class="plus"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                    <i class="icon-plus"></i>
-                                </button>
+                    <div class="shop-action-all">
+                        <div class="ps-product all-product-box">
+                            <div class="ps-product__quantity">
+                                <h6>Quantity</h6>
+                                <div class="def-number-input number-input safari_only">
+                                    <button class="minus"
+                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                        <i class="icon-minus"></i>
+                                    </button>
+                                    <input class="quantity" min="1" name="quantity" value="1" type="number" />
+                                    <button class="plus"
+                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                        <i class="icon-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a class="ps-btn ps-btn--warning mr-2" data-product_id="12" href="#"
+                                onclick="addToCartShop(event, {{ $product->id }})">Add to cart</a>
+                            <a class="ps-btn ps-btn--warning buy-now-btn" data-product_id="12" href="#"
+                                onclick="addToCartShop(event, {{ $product->id }})">Buy Now</a>
                             </div>
                         </div>
-                        <a class="ps-btn ps-btn--warning" data-product_id="12" href="#"
-                            onclick="addToCartShop(event, {{ $product->id }})">Add to cart</a>
-                    </div>
 
-                    <div class="ps-product__variations text-center mt-3">
-                        {{-- <a class="ps-product__link add_to_wishlist" href="{{ route('wishlist.store', $product->id) }}"
-                         data-product-id="{{ $product->id }}">Add to wishlist</a> --}}
-                        <a class="ps-product__link" href="javascript:void(0)"
-                            onclick="addToWishlist(event, '{{ route('wishlist.store', $product->id) }}')">Add to
-                            wishlist</a>
+                        <div class="ps-product__variations text-center mt-3">
+                            {{-- <a class="ps-product__link add_to_wishlist" href="{{ route('wishlist.store', $product->id) }}"
+                             data-product-id="{{ $product->id }}">Add to wishlist</a> --}}
+                            <a class="ps-product__link" href="javascript:void(0)"
+                                onclick="addToWishlist(event, '{{ route('wishlist.store', $product->id) }}')">Add to
+                                wishlist</a>
+                        </div>
                     </div>
                 </div>
             </div>
         @endforeach
     @else
-        <div class="ps-product ps-product--list align-items-center">
+        <div class="ps-product ps-product--list align-items-center all-product-box">
             <h5 class="text-warning">No Product Found.</h5>
         </div>
     @endif
