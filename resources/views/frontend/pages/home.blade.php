@@ -273,7 +273,7 @@
                 <div class="container px-0">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="d-flex justify-content-center align-items-center pb-3 pb-lg-5">
+                            <div class="d-flex justify-content-center align-items-center pb-4 pb-lg-5">
                                 <div>
                                     <h3 class="mb-0" style="font-size: 30px;">
                                         {{ optional($categoryone)->name }}</h3>
@@ -472,7 +472,7 @@
                 <div class="container px-0">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="d-flex justify-content-center align-items-center pb-3 pb-lg-5">
+                            <div class="d-flex justify-content-center align-items-center pb-4 pb-lg-5">
                                 <div>
                                     <h3 class="mb-0" style="font-size: 30px;">
                                         {{ optional($categorytwo)->name }}</h3>
@@ -492,9 +492,9 @@
                                     @foreach ($categorytwoproducts as $categorytwoproduct)
                                         <div class="owl-item" style="width: 247.6px;">
                                             <div class="ps-section__product">
-                                                <div class="ps-product ps-product--standard ctg-one-pr">
+                                                <div class="ps-product takeway-products ps-product--standard ctg-one-pr">
                                                     <div class="ps-product__thumbnail">
-                                                        <a class="ps-product__image"
+                                                        <a class="ps-product__image takeway-slider-img"
                                                             href="{{ route('product.details', $categorytwoproduct->slug) }}">
                                                             <figure>
                                                                 @if (!empty($categorytwoproduct->thumbnail))
@@ -509,7 +509,7 @@
                                                                     @endphp
                                                                     <img src="{{ $thumbnailSrc }}"
                                                                         alt="{{ $categorytwoproduct->meta_title }}"
-                                                                        width="210" height="210" />
+                                                                        width="210" height="210" class=""/>
                                                                 @else
                                                                     @foreach ($categorytwoproduct->multiImages->slice(0, 2) as $image)
                                                                         @php
@@ -523,7 +523,7 @@
                                                                         @endphp
                                                                         <img src="{{ $imageSrc }}"
                                                                             alt="{{ $categorytwoproduct->meta_title }}"
-                                                                            width="210" height="210" />
+                                                                            width="210" height="210" class=""/>
                                                                     @endforeach
                                                                 @endif
                                                             </figure>
@@ -1081,9 +1081,9 @@
                             <div class="dealCarousel owl-carousel">
                                 @foreach ($deal_products as $deal_product)
                                     <div class="ps-section__product">
-                                        <div class="ps-product ps-product--standard">
+                                        <div class="ps-product takeway-products ps-product--standard">
                                             <div class="ps-product__thumbnail">
-                                                <a class="ps-product__image"
+                                                <a class="ps-product__image takeway-slider-img"
                                                     href="{{ route('product.details', $deal_product->slug) }}">
                                                     <figure>
                                                         @if (!empty($deal_product->thumbnail))

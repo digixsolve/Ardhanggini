@@ -3920,7 +3920,6 @@ textarea.form-control {
     .login-content {
         margin-top: 50px !important;
     }
-
 }
 .ps-product--detail .ps-product__badge {
     position: initial;
@@ -16334,8 +16333,12 @@ textarea.form-control {
         padding: 40px 0px 15px !important;
         margin-top: 80px !important;
     }
+    .ps-section--latest .ps-section__carousel {
+        padding-bottom: 60px;
+        border-radius: 4px;
+    }
     .ps-home--14 .ps-section--deals {
-        padding: 30px 0 0px !important;
+        padding: 10px 0 0px !important;
     }
     .ps-footer--top .ps-footer__link {
         font-size: 15px !important;
@@ -19882,8 +19885,7 @@ table.dataTable tbody td:last-child {
     visibility: hidden !important;
     padding-bottom: 5px;
 }
-
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     .ps-section--categories .ps-categories__link img {
         max-width: 35px;
     }
@@ -19975,7 +19977,7 @@ table.dataTable tbody td:last-child {
         margin-bottom: 10px;
     }
     .ps-home--14 .ps-section--latest {
-        margin: 10px 0 0px;
+        margin: 10px 0 0px !important;
     }
     .ps-home--block {
         padding-top: 0px;
@@ -19998,7 +20000,8 @@ table.dataTable tbody td:last-child {
         margin-bottom: 16px;
     }
     .profile img {
-        height: 55px !important;
+        height: 70px !important;
+        object-fit: cover;
     }
     .testimonial-author {
         flex-direction: column !important;
@@ -20133,7 +20136,7 @@ table.dataTable tbody td:last-child {
     .ps-product--standard .ps-product__content {
         padding: 0 !important;
     }
-    .cart-sidebar-btn{
+    .cart-sidebar-btn {
         width: 40px !important;
         height: 40px !important;
     }
@@ -20141,10 +20144,16 @@ table.dataTable tbody td:last-child {
         font-size: 16px;
         left: -10px;
     }
-    .cart-sidebar-btn span{
+    .cart-sidebar-btn span {
         top: 18px;
         left: -10px;
         font-size: 13px;
         padding: 0 8px;
+    }
+    .takeway-products {
+        height: 600px !important;
+    }
+    .takeway-slider-img img{
+        height: 320px !important;
     }
 }
