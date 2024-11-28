@@ -327,7 +327,6 @@
     }
 </style>
 <header class="ps-header ps-header--2">
-
     @if (!empty(optional($special_offer)->slug) || !empty(optional($special_offer)->header_slogan))
         <div class="ps-noti">
             <section>
@@ -356,7 +355,6 @@
             </section>
         </div>
     @endif
-
     <div class="ps-header__top">
         <div class="container">
             <div class="ps-header__text"> {{ optional($setting)->site_motto }} </div>

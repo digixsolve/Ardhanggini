@@ -161,7 +161,7 @@
         {{-- Sidebar Cart Common Start --}}
         <div>
             <a class="cart-sidebar-btn">
-                <span class="cart-values">{{ Cart::instance('cart')->count() }}</span>
+                <span class="cart-values cartCount">{{ Cart::instance('cart')->count() }}</span>
                 <i class="fa fa-shopping-cart"></i>
             </a>
         </div>
