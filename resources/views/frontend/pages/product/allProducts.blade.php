@@ -510,7 +510,7 @@
                                 title: data.success
                             });
                             button.prop('disabled', true); // Disable the button
-                            button.text('Already added'); // Change button text
+                            button.text('Included'); // Change button text
                             wishlistCount.html(data.wishlistCount);
                         } else {
                             Toast.fire({

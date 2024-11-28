@@ -42,7 +42,7 @@
 }
 /*1. RESET AND TYPHOGRAPHY */
 body::-webkit-scrollbar {
-    width: 0.5em;
+    width: 0em;
 }
 
 body::-webkit-scrollbar-track {
@@ -50,6 +50,18 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
+    background-color: var(--site-green);
+    outline: 0px solid slategrey;
+}
+.ps-cart__items::-webkit-scrollbar {
+    width: 0.3em;
+}
+
+.ps-cart__items::-webkit-scrollbar-track {
+    box-shadow: none;
+}
+
+.ps-cart__items::-webkit-scrollbar-thumb {
     background-color: var(--site-green);
     outline: 0px solid slategrey;
 }
@@ -66,7 +78,23 @@ body {
     font-size: 16px;
     background-color: #f2f2f0;
 }
-
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+@media only screen and (max-width: 768px) {
+    html,
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+}
+.btn.focus,
+.btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
 h1,
 h2,
 h3,
@@ -3621,10 +3649,16 @@ textarea.form-control {
     width: 100%;
     margin: auto;
     border-radius: 4px;
-    height: 280px;
+    height: 270px;
     object-fit: cover;
 }
-
+.ps-product--mini-cart .ps-product__thumbnail img {
+    width: 170px;
+    margin: auto;
+    border-radius: 4px;
+    height: 60px;
+    object-fit: cover;
+}
 .ps-product__actions {
     position: absolute;
     top: 25px;
@@ -3903,7 +3937,8 @@ textarea.form-control {
     margin-top: -25px;
     z-index: 60;
     position: relative !important;
-    top: -22px;
+    top: -245px;
+    left: 5px;
 }
 .slider-nav-thumbnails .slick-slide img {
     padding: 3px !important;
@@ -4918,6 +4953,7 @@ textarea.form-control {
 
 .ps-product--mini-cart {
     display: flex;
+    align-items: center;
 }
 
 .ps-product--mini-cart .ps-product__price {
@@ -4952,12 +4988,15 @@ textarea.form-control {
 }
 
 .ps-product--mini-cart .ps-product__remove {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--site-green);
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
-    margin-left: 10px;
+    margin-left: 30px;
+    text-align: center;
+    padding-right: 10px;
+
 }
 
 .ps-product--mini-cart .ps-product__remove i {
@@ -4968,10 +5007,6 @@ textarea.form-control {
     color: var(--site-green);
 }
 
-.ps-product--mini-cart .ps-product__thumbnail {
-    width: 100px;
-}
-
 .ps-product--mini-cart .ps-product__thumbnail img {
     max-width: 60px;
 }
@@ -4979,6 +5014,7 @@ textarea.form-control {
 .ps-product--mini-cart .ps-product__content {
     position: relative;
     flex-grow: 1;
+    text-transform: capitalize;
 }
 
 .ps-product--list {
@@ -9831,9 +9867,8 @@ textarea.form-control {
     background-position: center;
     background-size: cover;
     margin-bottom: 30px;
-    padding: 70px 0 25px;
+    padding: 30px 0 25px;
 }
-
 .ps-section--also .ps-section__title {
     color: #4e4d4d;
     text-align: center;
@@ -9849,7 +9884,7 @@ textarea.form-control {
 
 .ps-section--also .ps-product--standard {
     border-left: 1px solid #f0f2f5;
-    height: 470px;
+    height: auto;
 }
 
 .ps-section--also .ps-product--standard .ps-product__title {
@@ -12820,9 +12855,11 @@ textarea.form-control {
 .ps-product__title {
     width: 100%;
     text-transform: capitalize;
-    height: 70px;
+    height: auto; /* Allow height to adjust based on content */
+    min-height: 50px; /* Set the minimum height */
     font-size: 16px;
     line-height: 20px;
+    padding-top: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
@@ -19845,6 +19882,7 @@ table.dataTable tbody td:last-child {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     color: #fff;
+    right: -10px !important;
 }
 
 .cart-sidebar-btn i {
@@ -19852,7 +19890,7 @@ table.dataTable tbody td:last-child {
     position: relative;
     color: #fff;
     top: 0px;
-    left: -18px;
+    left: -22px;
 }
 .cart-sidebar-btn span {
     background-color: var(--site-green);
@@ -19861,15 +19899,10 @@ table.dataTable tbody td:last-child {
     top: 30px;
     left: -14px;
     font-size: 13px;
-    padding: 5px 14px 5px;
+    padding: 0px 9px 0px;
     text-align: center;
     line-height: 2;
     border-radius: 5px;
-}
-
-.ps-product {
-    background-color: white;
-    height: 540px;
 }
 
 .no-found {
@@ -20155,10 +20188,6 @@ table.dataTable tbody td:last-child {
     }
     .rating-area {
         flex-direction: column;
-    }
-    .ps-product {
-        background-color: white;
-        height: 440px !important;
     }
     .all-product-box {
         background-color: white;

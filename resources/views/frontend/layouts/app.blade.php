@@ -160,7 +160,7 @@
         </div>
         {{-- Sidebar Cart Common Start --}}
         <div>
-            <a class="cart-sidebar-btn">
+            <a class="cart-sidebar-btn" href="{{ route('cart') }}">
                 <span class="cart-values cartCount">{{ Cart::instance('cart')->count() }}</span>
                 <i class="fa fa-shopping-cart"></i>
             </a>
@@ -237,7 +237,7 @@
                             title: data.success
                         });
                         button.disabled = true; // Disable the button
-                        button.innerText = 'Already added'; // Change button text
+                        button.innerText = 'Included'; // Change button text
                         document.querySelector(".cartCount").innerHTML = data.cartCount;
                         cartHeader.innerHTML = data.cartHeader;
                         if (data.subTotal > 4000) {
@@ -484,7 +484,7 @@
                                 title: data.success
                             });
                             button.prop('disabled', true); // Disable the button
-                            button.text('Already added'); // Change button text
+                            button.text('Included'); // Change button text
                             $(".cartCount").html(data.cartCount);
                             if (data.subTotal > 4000) {
                                 Toast.fire({
@@ -638,7 +638,7 @@
                                 title: data.success
                             });
                             button.prop('disabled', true); // Disable the button
-                            // button.text('Already added'); // Change button text
+                            // button.text('Included'); // Change button text
                             wishlistCount.html(data.wishlistCount);
                         } else {
                             Toast.fire({

@@ -9,7 +9,7 @@
                     <a class="ps-product__thumbnail" href="{{ route('product.details', $item->model->slug) }}">
                         <img src="{{ asset('storage/' . $item->model->thumbnail) }}" alt="alt" />
                     </a>
-                    <div class="ps-product__content">
+                    <div class="ps-product__content p-0">
                         <a class="ps-product__name" href="{{ route('product.details', $item->model->slug) }}">
                             {{ $item->model->name }}</a>
                         <p class="ps-product__meta">
