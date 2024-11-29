@@ -112,7 +112,7 @@
                                                             @if (!empty($category_product->unit_discount_price))
                                                                 <div class="ps-product__badge">
                                                                     <div class="ps-badge ps-badge--sale">
-                                                                        {{ $category_product->unit_price > 0 ? number_format((($category_product->unit_price - $category_product->unit_discount_price) / $category_product->unit_price) * 100,1) : 0 }}
+                                                                        - {{ $category_product->unit_price > 0 ? number_format((($category_product->unit_price - $category_product->unit_discount_price) / $category_product->unit_price) * 100,1) : 0 }} %
                                                                     </div>
                                                                 </div>
                                                             @endif

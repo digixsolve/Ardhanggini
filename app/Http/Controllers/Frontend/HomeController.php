@@ -178,7 +178,7 @@ class HomeController extends Controller
     {
         $data = [
             'cartItems' => Cart::instance('cart')->content(),
-            'related_products' => Product::select('id', 'slug', 'meta_title', 'thumbnail', 'name', 'unit_discount_price', 'unit_price')->with('multiImages')->where('status', 'published')->inRandomOrder()->limit(12)->get(),
+            'related_products' => Product::select('id', 'slug', 'meta_title', 'thumbnail', 'name', 'unit_discount_price', 'unit_price')->with('multiImages')->inRandomOrder()->limit(12)->get(),
         ];
         return view('frontend.pages.cart.mycart', $data);
     }
