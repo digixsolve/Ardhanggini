@@ -155,7 +155,7 @@
                                                             data-placement="left" title="Quick view"><a href="#"
                                                                 data-toggle="modal"
                                                                 data-target="#popupQuickview{{ $related_product->id }}"><i
-                                                                    class="fa fa-search"></i></a></div>
+                                                                    class="fa fa-eye"></i></a></div>
 
                                                     </div>
                                                     @if (!empty($related_product->unit_discount_price))

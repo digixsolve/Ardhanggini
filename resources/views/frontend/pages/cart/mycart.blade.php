@@ -12,128 +12,169 @@
                 <div class="row cartTable">
                     @include('frontend.pages.cart.partials.cartTable')
                 </div>
-                <section class="ps-section--latest">
-                    <div class="container">
-                        <h3 class="ps-section__title">You may be interested in…</h3>
-                        <div class="ps-section__carousel">
-                            <div class="dealCarousel owl-carousel">
-                                @foreach ($related_products as $related_product)
-                                    <div class="ps-section__product">
-                                        <div class="ps-product ps-product--standard">
-                                            <div class="ps-product__thumbnail">
-                                                <a class="ps-product__image"
-                                                    href="{{ route('product.details', $related_product->slug) }}">
-                                                    <div>
-                                                        @if (!empty($related_product->thumbnail))
-                                                            @php
-                                                                $thumbnailPath =
-                                                                    'storage/' . $related_product->thumbnail;
-                                                                $thumbnailSrc = file_exists(public_path($thumbnailPath))
-                                                                    ? asset($thumbnailPath)
-                                                                    : asset('frontend/img/no-product.jpg');
-                                                            @endphp
-                                                            <img src="{{ $thumbnailSrc }}"
-                                                                alt="{{ $related_product->meta_title }}" width="210"
-                                                                height="210" />
-                                                        @else
-                                                            @foreach ($related_product->multiImages->slice(0, 2) as $image)
+                @if ($related_products->count() > 0)
+                    {{-- @dd($related_products) --}}
+                    <section class="ps-section--latest">
+                        <div class="container">
+                            <h3 class="ps-section__title">You may be interested in…</h3>
+                            <div class="ps-section__carousel">
+                                <div class="dealCarousel owl-carousel">
+                                    @foreach ($related_products as $deal_product)
+                                        <div class="ps-section__product">
+                                            <div class="ps-product takeway-products ps-product--standard">
+                                                <div class="ps-product__thumbnail">
+                                                    <a class="ps-product__image takeway-slider-img"
+                                                        href="{{ route('product.details', $deal_product->slug) }}">
+                                                        <figure>
+                                                            @if (!empty($deal_product->thumbnail))
                                                                 @php
-                                                                    $imagePath = 'storage/' . $image->photo;
-                                                                    $imageSrc = file_exists(public_path($imagePath))
-                                                                        ? asset($imagePath)
-                                                                        : // : asset('frontend/img/no-product.jpg');
-                                                                        asset('frontend/img/no-product.jpg');
+                                                                    $thumbnailPath =
+                                                                        'storage/' . $deal_product->thumbnail;
+                                                                    $thumbnailSrc = file_exists(
+                                                                        public_path($thumbnailPath),
+                                                                    )
+                                                                        ? asset($thumbnailPath)
+                                                                        : asset('frontend/img/no-product.jpg');
                                                                 @endphp
-                                                                <img src="{{ $imageSrc }}"
-                                                                    alt="{{ $related_product->meta_title }}"
-                                                                    width="210" height="210"  />
-                                                            @endforeach
-                                                        @endif
-                                                    </div>
-                                                </a>
-                                                <div class="ps-product__actions">
-                                                    <div class="ps-product__item" data-toggle="tooltip"
-                                                        data-placement="left" title="Wishlist">
-                                                        <a class="add_to_wishlist"
-                                                            href="{{ route('wishlist.store', $related_product->id) }}">
-                                                            <i class="fa fa-heart-o"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="ps-product__item" data-toggle="tooltip"
-                                                        data-placement="left" title="Quick view"><a href="#"
-                                                            data-toggle="modal"
-                                                            data-target="#popupQuickview{{ $related_product->id }}"><i
-                                                                class="fa fa-search"></i></a></div>
-
-                                                </div>
-                                                @if (!empty($related_product->unit_discount_price))
-                                                    <div class="ps-product__badge">
-                                                        <div class="ps-badge ps-badge--sale">Offer</div>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                            <div class="ps-product__content">
-                                                <h5 class="ps-product__title">
-                                                    <a href="{{ route('product.details', $related_product->slug) }}">
-                                                        {{ $related_product->name }}
+                                                                <img src="{{ $thumbnailSrc }}"
+                                                                    alt="{{ $deal_product->meta_title }}"
+                                                                    class="product-img-main" />
+                                                            @else
+                                                                @foreach ($deal_product->multiImages->slice(0, 2) as $image)
+                                                                    @php
+                                                                        $imagePath = 'storage/' . $image->photo;
+                                                                        $imageSrc = file_exists(public_path($imagePath))
+                                                                            ? asset($imagePath)
+                                                                            : // : asset('frontend/img/no-product.jpg');
+                                                                            asset('frontend/img/no-product.jpg');
+                                                                    @endphp
+                                                                    <img src="{{ $imageSrc }}"
+                                                                        alt="{{ $deal_product->meta_title }}"
+                                                                        class="product-img-main" />
+                                                                @endforeach
+                                                            @endif
+                                                        </figure>
                                                     </a>
-                                                </h5>
-
-                                                    @if (!empty($related_product->unit_discount_price))
-                                                        <div class="ps-product__meta">
-                                                            <span
-                                                                class="ps-product__price sale">৳{{ $related_product->unit_discount_price }}</span>
-                                                            <span
-                                                                class="ps-product__del">৳{{ $related_product->unit_price }}</span>
+                                                    <div class="ps-product__actions">
+                                                        <div class="ps-product__item" data-toggle="tooltip"
+                                                            data-placement="left" title="Wishlist">
+                                                            <a class="add_to_wishlist"
+                                                                href="{{ route('wishlist.store', $deal_product->id) }}">
+                                                                <i class="fa fa-heart-o"></i>
+                                                            </a>
                                                         </div>
-                                                    @else
-                                                        <div class="ps-product__meta">
-                                                            <span
-                                                                class="ps-product__price sale">৳{{ $related_product->unit_price }}</span>
+                                                        <div class="ps-product__item" data-toggle="tooltip"
+                                                            data-placement="left" title="Quick view"><a href="#"
+                                                                data-toggle="modal"
+                                                                data-target="#popupQuickview{{ $deal_product->id }}"><i
+                                                                    class="fa fa-eye"></i></a></div>
+
+                                                    </div>
+                                                    @if (!empty($deal_product->unit_discount_price))
+                                                        <div class="ps-product__badge">
+                                                            <div class="ps-badge ps-badge--sale">
+                                                                -
+                                                                {{ !empty($deal_product->unit_discount_price) && $deal_product->unit_discount_price > 0 ? number_format((($deal_product->unit_price - $deal_product->unit_discount_price) / $deal_product->unit_price) * 100, 1) : 0 }}
+                                                                % Off
+                                                            </div>
                                                         </div>
                                                     @endif
-                                                    <a href="{{ route('cart.store', $related_product->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cartPage"
-                                                        data-product_id="{{ $related_product->id }}"
-                                                        data-product_qty="1">Add To
-                                                        Cart</a>
-                                                
-                                                <div class="ps-product__actions ps-product__group-mobile">
-                                                    <div class="ps-product__quantity">
-                                                        <div class="def-number-input number-input safari_only">
-                                                            <button class="minus"
-                                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i
-                                                                    class="icon-minus"></i></button>
-                                                            <input class="quantity" min="0" name="quantity"
-                                                                value="1" type="number" />
-                                                            <button class="plus"
-                                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i
-                                                                    class="icon-plus"></i></button>
+                                                </div>
+                                                <div class="ps-product__content">
+                                                    <h5 class="ps-product__title">
+                                                        <a href="{{ route('product.details', $deal_product->slug) }}">
+                                                            {{ implode(' ', array_slice(explode(' ', $deal_product->name), 0, 8)) }}
+                                                        </a>
+                                                    </h5>
+                                                    @php
+                                                        $review =
+                                                            count($deal_product->reviews) > 0
+                                                                ? optional($deal_product->reviews)->sum('rating') /
+                                                                    count($deal_product->reviews)
+                                                                : 0;
+                                                    @endphp
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center mb-3 rating-area">
+                                                        <div class="ps-product__rating"
+                                                            style="{{ $review <= 0 ? 'visibility: hidden;' : '' }}">
+                                                            @if ($review > 0)
+                                                                <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                    <select class="ps-rating" data-read-only="true"
+                                                                        style="display: none;">
+                                                                        @php
+                                                                            $maxRating = min(5, max(1, floor($review)));
+                                                                        @endphp
+                                                                        @for ($i = 1; $i <= $maxRating; $i++)
+                                                                            <option value="{{ $i }}">
+                                                                                {{ $i }}</option>
+                                                                        @endfor
+                                                                    </select>
+                                                                </div>
+                                                            @else
+                                                                <span class="no-found">N/A</span>
+                                                            @endif
+                                                        </div>
+                                                        <div
+                                                            style="{{ count($deal_product->reviews) == 0 ? 'visibility: hidden;' : '' }}">
+                                                            @if (count($deal_product->reviews) > 0)
+                                                                Reviews ({{ count($deal_product->reviews) }})
+                                                            @else
+                                                                <span class="no-found">N/A</span>
+                                                            @endif
                                                         </div>
                                                     </div>
-                                                    <div class="ps-product__item cart" data-toggle="tooltip"
-                                                        data-placement="left" title="Add to cart"><a href="#"><i
-                                                                class="fa fa-shopping-basket"></i></a></div>
-                                                    <div class="ps-product__item" data-toggle="tooltip"
-                                                        data-placement="left" title="Wishlist">
-                                                        <a class="add_to_wishlist"
-                                                            href="{{ route('wishlist.store', $related_product->id) }}">
-                                                            <i class="fa fa-heart-o"></i>
+                                                    @if (!empty($deal_product->unit_discount_price))
+                                                        <div class="ps-product__meta mb-3">
+                                                            <span
+                                                                class="ps-product__price sale">৳{{ $deal_product->unit_discount_price }}</span>
+                                                            <span
+                                                                class="ps-product__del">৳{{ $deal_product->unit_price }}</span>
+                                                        </div>
+                                                    @else
+                                                        <div class="ps-product__meta mb-3">
+                                                            <span
+                                                                class="ps-product__price sale">৳{{ $deal_product->unit_price }}</span>
+                                                        </div>
+                                                    @endif
+
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="{{ route('buy.now', $deal_product->id) }}"
+                                                            class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
+                                                            Buy Now
+                                                        </a>
+                                                        <a href="{{ route('cart.store', $deal_product->id) }}"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns buy-now-btn"
+                                                            data-product_id="{{ $deal_product->id }}"
+                                                            data-product_qty="1">
+                                                            Add To Cart
                                                         </a>
                                                     </div>
-                                                    {{-- <div class="ps-product__item rotate" data-toggle="tooltip"
-                                                        data-placement="left" title="Add to compare"><a
-                                                            href="compare.html"><i class="fa fa-align-left"></i></a>
-                                                    </div> --}}
+
+                                                    <div class="ps-product__actions ps-product__group-mobile mt-3">
+                                                        <div class="ps-product__item cart">
+                                                            <a class="add_to_cart"
+                                                                href="{{ route('cart.store', $deal_product->id) }}"
+                                                                data-product_id="{{ $deal_product->id }}"
+                                                                data-product_qty="1">
+                                                                <i class="fa fa-eye"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="ps-product__item">
+                                                            <a class="add_to_wishlist"
+                                                                href="{{ route('wishlist.store', $deal_product->id) }}">
+                                                                <i class="fa fa-heart-o"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                @endif
             </div>
         </div>
     </div>
@@ -187,6 +228,34 @@
                             });
                         }
                     });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('.dealCarousel').owlCarousel({
+                    loop: true,
+                    margin: 10,
+                    nav: true,
+                    dots: true,
+                    autoplay: false,
+                    autoplayTimeout: 5000,
+                    autoplayHoverPause: true,
+                    navText: [
+                        '<div class="dealCarousel-prev">←</div>',
+                        '<div class="dealCarousel-next">→</div>'
+                    ],
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        600: {
+                            items: 2
+                        },
+                        1000: {
+                            items: 4
+                        }
+                    }
                 });
             });
         </script>

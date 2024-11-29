@@ -1,4 +1,4 @@
-@if ($cartItems->Count() > 0)
+@if ($cartItems->count() > 0)
     <div class="col-12 col-md-7 col-lg-9">
         <ul class="ps-shopping__list">
             @foreach ($cartItems as $item)
@@ -9,8 +9,8 @@
                                 <i class="icon-cross"></i>
                             </a>
                         </div>
-                        <div class="ps-product__thumbnail">
-                            <a class="ps-product__image" href="{{ route('product.details', $item->model->slug) }}">
+                        <div class="">
+                            <a class="" href="{{ route('product.details', $item->model->slug) }}">
                                 <div>
                                     <img src="{{ asset('storage/' . $item->model->thumbnail) }}" alt
                                         onerror="this.onerror=null; this.src='{{ asset('images/no-preview.png') }}';" />
@@ -99,8 +99,8 @@
                                     <i class="icon-cross"></i>
                                 </a>
                             </td>
-                            <td class="ps-product__thumbnail">
-                                <a class="ps-product__image" href="{{ route('product.details', $item->model->slug) }}">
+                            <td class="">
+                                <a class="" href="{{ route('product.details', $item->model->slug) }}">
                                     <div>
                                         <img class="cart-table-img" src="{{ asset('storage/' . $item->model->thumbnail) }}" alt=""
                                             onerror="this.onerror=null; this.src='{{ asset('images/no-preview.png') }}';" />
@@ -152,43 +152,7 @@
                 <div class="ps-shopping__label">Subtotal</div>
                 <div class="ps-shopping__price">৳{{ Cart::subtotal() }}</div>
             </div>
-            {{-- <div class="ps-shopping__row flex-column py-3">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p class="ps-shopping__label text-left">Delivery Charge</p>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="delivery-charge text-left">
-                            <input type="checkbox" id="cbx-46" name="delivery_option" class="inp-cbx" name="" value="70"/>
-                            <label for="cbx-46" class="cbx ps-shopping__label"><span>
-                                    <svg viewBox="0 0 12 10" height="10px" width="12px">
-                                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                    </svg></span><span>Inside Dhaka-70 TK</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="delivery-charge text-left">
-                            <input type="checkbox" id="cbx-47" name="delivery_option" class="inp-cbx" name="" value="150"/>
-                            <label for="cbx-47" class="cbx ps-shopping__label"><span>
-                                    <svg viewBox="0 0 12 10" height="10px" width="12px">
-                                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                    </svg></span><span>Outside Dhaka-150 TK</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="delivery-charge text-left">
-                            <input type="checkbox" id="cbx-48" name="delivery_option" class="inp-cbx" name="" value="100"/>
-                            <label for="cbx-48" class="cbx ps-shopping__label"><span>
-                                    <svg viewBox="0 0 12 10" height="10px" width="12px">
-                                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                    </svg></span><span>Dhaka Sub-area-100 TK</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
+
             <div class="ps-shopping__row">
                 <div class="ps-shopping__label">Total</div>
                 <div class="ps-shopping__price">৳{{ Cart::subtotal() }}</div>

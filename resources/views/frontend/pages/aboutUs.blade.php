@@ -14,10 +14,8 @@
                             <h2 class="ps-banner__title">A Trusted Online Shop Where you can find stylish womens's bag &
                                 baggage</h2>
                             <div class="ps-banner__btn-group">
-                                <div class="ps-banner__btn"><img src="{{ asset('frontend/img/icon/virus.svg') }}"
-                                        alt>Bulk Savings</div>
-                                <div class="ps-banner__btn"><img src="{{ asset('frontend/img/icon/ribbon.svg') }}"
-                                        alt>Diverse Selection</div>
+                                <div class="ps-banner__btn">Bulk Savings</div>
+                                <div class="ps-banner__btn">Diverse Selection</div>
                             </div>
                         </div>
                         <div class="ps-banner__thumnail"><img class="ps-banner__round"
@@ -174,97 +172,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            {{-- <section class="ps-section--reviews"
-                style="background-image: url('{{ asset('frontend/img/roundbg.png') }}')">
-                <h3 class="ps-section__title"> <img src="{{ asset('frontend/img/quote-icon.png') }}" alt>Latest
-                    reviews</h3>
-                <div class="ps-section__content">
-                    <div class="owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="ps-review">
-                                <div class="ps-review__text">There was a small mistake in the order. In return, I got
-                                    the correct order and I could keep the wrong one for myself.</div>
-                                <div class="ps-review__name">Esther Howard</div>
-                                <div class="ps-review__review">
-                                    <div class="br-wrapper br-theme-fontawesome-stars"><select class="ps-rating"
-                                            data-read-only="true" style="display: none;">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4" selected="selected">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                        <div class="br-widget br-readonly"><a href="#" data-rating-value="1"
-                                                data-rating-text="1" class="br-selected"></a><a href="#"
-                                                data-rating-value="2" data-rating-text="2" class="br-selected"></a><a
-                                                href="#" data-rating-value="3" data-rating-text="3"
-                                                class="br-selected"></a><a href="#" data-rating-value="4"
-                                                data-rating-text="4" class="br-selected br-current"></a><a
-                                                href="#" data-rating-value="5" data-rating-text="5"></a>
-                                            <div class="br-current-rating">4</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> --}}
-        </div>
-        <div class="container">
-            <section class="ps-section--blog">
-                <h3 class="ps-section__title">From the blog</h3>
-                <div class="ps-section__carousel">
-                    <div class="owl-carousel" data-owl-auto="false" data-owl-loop="true" data-owl-speed="13000"
-                        data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="3"
-                        data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="2" data-owl-item-lg="3"
-                        data-owl-item-xl="3" data-owl-duration="1000" data-owl-mousedrag="on">
-                        @foreach ($blog_posts as $blog_post)
-                            <div class="ps-section__item">
-                                <div class="ps-blog--latset">
-                                    <div class="ps-blog__thumbnail">
-                                        <a href="{{ route('blog.details', $blog_post->slug) }}">
-                                            <img src="{{ asset('storage/' . $blog_post->image) }}" alt="alt" />
-                                        </a>
-                                        <div class="ps-blog__badge">
-                                            <span class="ps-badge__item">{{ $blog_post->badge }}</span>
-                                            {{-- @foreach ($blog_post->blogTag as $tag)
-                                                <span class="ps-badge__item">{{ $tag->name }}</span>
-                                            @endforeach --}}
-                                        </div>
-                                    </div>
-                                    <div class="ps-blog__content">
-                                        <div class="ps-blog__meta"> <span
-                                                class="ps-blog__date">{{ $blog_post->created_at->format('M d Y') }}</span>
-                                            <a class="ps-blog__author" href="#">{{ $blog_post->author }}</a>
-                                        </div>
-                                        <a class="ps-blog__title"
-                                            href="{{ route('blog.details', $blog_post->slug) }}">{{ $blog_post->title }}</a>
-                                        <p class="ps-blog__desc">{{ $blog_post->header }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </section>
-            <section class="ps-section--newsletter"
-                style="background-image: url('{{ asset('frontend/img/newsletter-bg.jpg') }}')">
-                <h3 class="ps-section__title pt-5">Join our newsletter and get <br> $20 discount for your first order
-                </h3>
-                <div class="ps-section__content">
-                    <form action="{{ route('subscription.add') }}" method="post">
-                        @csrf
-                        <div class="ps-form--subscribe">
-                            <div class="ps-form__control">
-                                <input class="form-control ps-input" type="email" name="email"
-                                    placeholder="Enter your email address">
-                                <button class="ps-btn ps-btn--warning">Subscribe</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </section>
         </div>

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Exception;
 use Carbon\Carbon;
 use App\Models\Setting;
+use App\Models\Visitor;
 use App\Models\Category;
 use App\Models\Wishlist;
 use App\Models\SpecialOffer;
@@ -34,6 +35,8 @@ class AppServiceProvider extends ServiceProvider
         View::share('categories', null);
         View::share('online', null);
         View::share('special_offer', null);
+        View::share('getOnlineVisitorCount', null);
+        View::share('getTodayVisitorCount', null);
 
         try {
             // Check for table existence and set actual values
@@ -48,6 +51,13 @@ class AppServiceProvider extends ServiceProvider
             if (Schema::hasTable('special_offers')) {
                 View::share('special_offer', SpecialOffer::active()->latest()->first());
             }
+            if (Schema::hasTable('visitors')) {
+                $fiveMinutesAgo = Carbon::now()->subMinutes(5);
+                View::share('getOnlineVisitorCount', Visitor::where('created_at', '>=', $fiveMinutesAgo)->count());
+            }
+            if (Schema::hasTable('visitors')) {
+                View::share('getTodayVisitorCount', Visitor::whereDate('created_at', Carbon::today())->count());
+            }
 
             // $randomNumber = rand(15, 30);
             $randomNumber = rand(10, 15);
@@ -58,7 +68,7 @@ class AppServiceProvider extends ServiceProvider
         // Set the default timezone for Carbon
         Carbon::setLocale('en'); // Optional: Set the locale to English (can be changed if needed)
         date_default_timezone_set('Asia/Dhaka'); // Set PHP default timezone
-        
+
         Paginator::useBootstrap();
     }
 }

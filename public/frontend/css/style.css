@@ -3639,6 +3639,7 @@ textarea.form-control {
     margin-bottom: 0 !important;
     padding: 10px !important;
     margin: 0;
+    width: 300px !important;
 }
 .ps-product__thumbnail {
     position: relative;

@@ -47,21 +47,24 @@
             width: 100px;
             margin: auto;
         }
+
         .inner {
-    z-index: 2;
-    position: relative;
-    width: 100%;
-    color: white;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: clamp(12px, 2vw, 16px); /* Adjust values as needed */
-    font-weight: 500;
-    line-height: 1.5;
-    transition: color 0.2s ease-in-out;
-    text-align: center;
-    word-break: break-word; /* Handles long text */
-}
+            z-index: 2;
+            position: relative;
+            width: 100%;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(12px, 2vw, 16px);
+            /* Adjust values as needed */
+            font-weight: 500;
+            line-height: 1.5;
+            transition: color 0.2s ease-in-out;
+            text-align: center;
+            word-break: break-word;
+            /* Handles long text */
+        }
     </style>
     <div class="ps-account my-lg-5 py-lg-5 my-0 py-0">
         <div class="container">

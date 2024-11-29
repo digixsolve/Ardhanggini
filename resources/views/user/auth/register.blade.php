@@ -149,8 +149,7 @@
                                 </div>
                                 <!-- Zip Code -->
                                 <div class="ps-form__group col-12 col-xl-4">
-                                    <label class="ps-form__label" for="Zip Code">Post Code<span
-                                            class="text-danger">*</span></label>
+                                    <label class="ps-form__label" for="Zip Code">Post Code</label>
                                     <div class="input-group">
                                         <input id="zipcode" class="form-control ps-form__input" type="text"
                                             value="{{ old('zipcode') }}" placeholder="Enter Your Post Code" name="zipcode" autocomplete="zipcode" required />

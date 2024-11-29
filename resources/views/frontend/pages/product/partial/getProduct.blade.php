@@ -15,7 +15,7 @@
                         <div class="ps-product__actions">
                             <div class="ps-product__item" data-toggle="tooltip" data-placement="left" title=""
                                 data-original-title="Quick view"><a href="#" data-toggle="modal"
-                                    data-target="#popupQuickview{{ $product->id }}"><i class="fa fa-search"></i></a>
+                                    data-target="#popupQuickview{{ $product->id }}"><i class="fa fa-eye"></i></a>
                             </div>
                         </div>
 

@@ -145,7 +145,7 @@
                                                                     <div class="input-group-append">
                                                                         <button class="btn btn-primary"
                                                                             type="button">
-                                                                            <i class="fa fa-search"></i>
+                                                                            <i class="fa fa-eye"></i>
                                                                         </button>
                                                                     </div>
                                                                 </div>

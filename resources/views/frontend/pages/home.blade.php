@@ -146,7 +146,7 @@
                                                             data-placement="left" title="Quick view">
                                                             <a href="#" data-toggle="modal"
                                                                 data-target="#popupQuickview{{ $latest_product->id }}">
-                                                                <i class="fa fa-search"></i>
+                                                                <i class="fa fa-eye"></i>
                                                             </a>
                                                         </div>
 
@@ -244,10 +244,10 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="ps-product__item cart" data-toggle="tooltip"
+                                                        {{-- <div class="ps-product__item cart" data-toggle="tooltip"
                                                             data-placement="left" title="Add to cart"><a
                                                                 href="#"><i class="fa fa-eye"></i></a>
-                                                        </div>
+                                                        </div> --}}
                                                         <div class="ps-product__item" data-toggle="tooltip"
                                                             data-placement="left" title="Wishlist"><a
                                                                 class="add_to_wishlist"
@@ -330,7 +330,7 @@
                                                             data-placement="left" title="Quick view">
                                                             <a href="#" data-toggle="modal"
                                                                 data-target="#popupQuickview{{ $categoryoneproduct->id }}">
-                                                                <i class="fa fa-search"></i>
+                                                                <i class="fa fa-eye"></i>
                                                             </a>
                                                         </div>
 
@@ -535,7 +535,7 @@
                                                                 data-placement="left" title="Quick view">
                                                                 <a href="#" data-toggle="modal"
                                                                     data-target="#popupQuickview{{ $categorytwoproduct->id }}">
-                                                                    <i class="fa fa-search"></i>
+                                                                    <i class="fa fa-eye"></i>
                                                                 </a>
                                                             </div>
 
@@ -720,7 +720,7 @@
                                                             data-placement="left" title="Quick view">
                                                             <a href="#" data-toggle="modal"
                                                                 data-target="#popupQuickview{{ $categorythreeproduct->id }}">
-                                                                <i class="fa fa-search"></i>
+                                                                <i class="fa fa-eye"></i>
                                                             </a>
                                                         </div>
 
@@ -1116,7 +1116,7 @@
                                                         data-placement="left" title="Quick view"><a href="#"
                                                             data-toggle="modal"
                                                             data-target="#popupQuickview{{ $deal_product->id }}"><i
-                                                                class="fa fa-search"></i></a></div>
+                                                                class="fa fa-eye"></i></a></div>
 
                                                 </div>
                                                 @if (!empty($deal_product->unit_discount_price))
