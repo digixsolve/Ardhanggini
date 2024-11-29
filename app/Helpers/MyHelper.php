@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+use App\Models\Visitor;
 use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
@@ -15,7 +17,7 @@ if (!function_exists('customUpload')) {
             $fileExtention    = $mainFile->getClientOriginalExtension();
             $currentTime      = Str::random(10) . time();
             $name = Str::limit($originalName, 100);
-            $fileName = $currentTime . '.' . $fileExtention ;
+            $fileName = $currentTime . '.' . $fileExtention;
             $fullUploadPath  = "public/$uploadPath";
 
             // Ensure directory exists
@@ -123,4 +125,22 @@ if (!function_exists('noImage')) {
     {
         return 'https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
     }
+}
+
+function getTodayVisitorCount()
+{
+    return Visitor::whereDate('created_at', Carbon::today())->count();
+}
+
+// Get total visitor count
+function getTotalVisitorCount()
+{
+    return Visitor::count();
+}
+
+// Get online visitor count (within the last 5 minutes)
+function getOnlineVisitorCount()
+{
+    $fiveMinutesAgo = Carbon::now()->subMinutes(5);
+    return Visitor::where('created_at', '>=', $fiveMinutesAgo)->count();
 }

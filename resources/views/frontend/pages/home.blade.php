@@ -217,10 +217,8 @@
                                                         </div>
                                                     @endif
                                                     <div class="d-flex align-items-center card-cart-btn">
-                                                        <a href="{{ route('cart.store', $latest_product->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-1 mr-lg-3 "
-                                                            data-product_id="{{ $latest_product->id }}"
-                                                            data-product_qty="1">
+                                                        <a href="{{ route('buy.now', $latest_product->id) }}"
+                                                            class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
                                                             Buy Now
                                                         </a>
                                                         <a href="{{ route('cart.store', $latest_product->id) }}"
@@ -406,10 +404,8 @@
                                                         </div>
                                                     @endif
                                                     <div class="d-flex align-items-center card-cart-btn">
-                                                        <a href="{{ route('cart.store', $categoryoneproduct->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-1 mr-lg-3  buy-now-btn"
-                                                            data-product_id="{{ $categoryoneproduct->id }}"
-                                                            data-product_qty="1">
+                                                        <a href="{{ route('buy.now', $categoryoneproduct->id) }}"
+                                                            class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
                                                             Buy Now
                                                         </a>
                                                         <a href="{{ route('cart.store', $categoryoneproduct->id) }}"
@@ -618,10 +614,8 @@
                                                             </div>
                                                         @endif
                                                         <div class="d-flex align-items-center">
-                                                            <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
-                                                                class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns mr-3"
-                                                                data-product_id="{{ $categorytwoproduct->id }}"
-                                                                data-product_qty="1">
+                                                            <a href="{{ route('buy.now', $categorytwoproduct->id) }}"
+                                                                class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
                                                                 Buy Now
                                                             </a>
                                                             <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
@@ -801,10 +795,8 @@
                                                         </div>
                                                     @endif
                                                     <div class="d-flex align-items-center card-cart-btn">
-                                                        <a href="{{ route('cart.store', $categorythreeproduct->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-1 mr-lg-3 "
-                                                            data-product_id="{{ $categorythreeproduct->id }}"
-                                                            data-product_qty="1">
+                                                        <a href="{{ route('buy.now', $categorythreeproduct->id) }}"
+                                                            class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
                                                             Buy Now
                                                         </a>
                                                         <a href="{{ route('cart.store', $categorythreeproduct->id) }}"
@@ -1194,10 +1186,8 @@
                                                 @endif
 
                                                 <div class="d-flex align-items-center">
-                                                    <a href="{{ route('cart.store', $deal_product->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns mr-3"
-                                                        data-product_id="{{ $deal_product->id }}"
-                                                        data-product_qty="1">
+                                                    <a href="{{ route('buy.now', $deal_product->id) }}"
+                                                        class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
                                                         Buy Now
                                                     </a>
                                                     <a href="{{ route('cart.store', $deal_product->id) }}"

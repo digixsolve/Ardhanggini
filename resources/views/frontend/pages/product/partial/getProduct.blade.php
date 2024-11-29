@@ -130,7 +130,8 @@
                                 {!! $limitedWords !!}...
                             </div>
                             <div class="pt-3">
-                                <p class="fw-semibold">Reviews <span class="text-info">({{ count($product->reviews) }})</span></p>
+                                <p class="fw-semibold">Reviews <span
+                                        class="text-info">({{ count($product->reviews) }})</span></p>
                             </div>
                         </div>
                     </div>
@@ -149,18 +150,24 @@
                             <div class="ps-product__quantity">
                                 <h6>Quantity</h6>
                                 <div class="def-number-input number-input safari_only">
-                                    <button class="minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                    <button class="minus"
+                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                         <i class="icon-minus"></i>
                                     </button>
-                                    <input class="quantity" min="1" name="quantity" value="1" type="number" />
-                                    <button class="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                    <input class="quantity" min="1" name="quantity" value="1"
+                                        type="number" />
+                                    <button class="plus"
+                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                         <i class="icon-plus"></i>
                                     </button>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <a class="ps-btn ps-btn--warning mr-2" href="#" onclick="addToCartShop(event, {{ $product->id }})">Add to cart</a>
-                                <a class="ps-btn ps-btn--warning buy-now-btn" href="#" onclick="addToCartShop(event, {{ $product->id }})">Buy Now</a>
+                                <a class="ps-btn ps-btn--warning mr-2" href="#"
+                                    onclick="addToCartShop(event, {{ $product->id }})">Add to cart</a>
+                                <a class="ps-btn ps-btn--warning buy-now-btn"
+                                    href="{{ route('buy.now', $product->id) }}">Buy Now</a>
+                                </a>
                             </div>
                         </div>
                     </div>

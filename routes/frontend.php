@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\StripeController;
 
+Route::middleware(['trackVisitor'])->group(function () {
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('privacy/policy', [HomeController::class, 'privacyPolicy'])->name('privacyPolicy');
@@ -25,6 +26,7 @@ Route::post('email-subscription/store', [NewsletterController::class, 'store'])-
 
 // Cart routes
 Route::get('mycart', [HomeController::class, 'cart'])->name('cart');
+Route::get('buy-now/{id}', [HomeController::class, 'buyNow'])->name('buy.now');
 
 Route::get('compare-list', [HomeController::class, 'compareList'])->name('compare.list');
 Route::get('{slug}/products', [HomeController::class, 'specialproducts'])->name('special.products');
@@ -48,4 +50,4 @@ Route::delete('cart/clear', [CartController::class, 'cartClear'])->name('cart.cl
 Route::post('cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 // Route::get('/filter-products', [filterProducts::class, 'filterProducts'])->name('filterProducts');
 
-
+});
