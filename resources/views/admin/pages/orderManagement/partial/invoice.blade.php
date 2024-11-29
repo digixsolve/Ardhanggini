@@ -35,8 +35,8 @@
 
                                         <div class="d-flex flex-column gap-7 gap-md-10">
                                             <div class="fw-bold fs-2">
-                                                Dear {{ $order->user->first_name }} <span
-                                                    class="fs-6">({{ $order->user->email }} )</span>,<br>
+                                                Dear {{ optional($order->user)->first_name }} <span
+                                                    class="fs-6">({{ optional($order->user)->email }} )</span>,<br>
                                                 <span class="text-muted fs-5">Here are your order details. Thank you for
                                                     your purchase.</span>
                                             </div>
@@ -115,7 +115,7 @@
                                                                         </div>
                                                                     </td>
                                                                     <td class="text-end">
-                                                                        {{ optional($item)->product->sku_code }} </td>
+                                                                        {{ optional($item->product)->sku_code }} </td>
                                                                     <td class="text-end">
                                                                         {{ optional($item)->quantity }}
                                                                     </td>
