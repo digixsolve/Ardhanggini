@@ -4701,11 +4701,11 @@ textarea.form-control {
         font-size: 16px;
     }
     .ps-product--detail .ps-product__price {
-        font-size: 25px;
+        font-size: 20px;
         line-height: 50px;
     }
     .ps-product--detail .ps-product__del {
-        font-size: 22px;
+        font-size: 16px;
     }
     .ps-product--detail .ps-tab-list li a {
         font-size: 18px;
@@ -18466,7 +18466,7 @@ table.dataTable tbody td:last-child {
         border-radius: 5px;
         width: 50%;
         font-size: 12px !important;
-        padding: 0px;
+        padding: 10px;
     }
     .marquee {
         padding: 2px;
@@ -19881,7 +19881,7 @@ table.dataTable tbody td:last-child {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     color: #fff;
-    right: -10px !important;
+    right: -20px !important;
 }
 
 .cart-sidebar-btn i {

@@ -386,7 +386,7 @@
                         </div>
                     </div>
                     <section class="ps-section--also" data-background="img/related-bg.jpg">
-                        <div class="container">
+                        <div class="container px-0">
                             <h3 class="ps-section__title">Customer also bought</h3>
                             <div class="owl-carousel">
                                 @foreach ($related_products as $related_product)
@@ -486,7 +486,7 @@
                                                         @if (count($related_product->reviews) > 0)
                                                             Reviews ({{ count($related_product->reviews) }})
                                                         @else
-                                                            No Reviews Yet
+
                                                         @endif
                                                     </div>
                                                 </div>
