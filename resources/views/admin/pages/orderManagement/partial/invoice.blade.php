@@ -4,7 +4,6 @@
             aria-labelledby="printInovice{{ optional($order)->id }}Label" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-
                     <div class="modal-body">
                         <div class="row" id="invoiceContent{{ optional($order)->id }}">
                             <div class="card card-print">
@@ -27,7 +26,6 @@
                                                             , {{ optional($setting)->address_line_two }}
                                                         @endif
                                                     </div>
-
                                                     <div>{{ optional($setting)->primary_phone }}</div>
                                                 </div>
                                             </div>
