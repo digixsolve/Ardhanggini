@@ -82,7 +82,7 @@
                                 <polyline
                                     points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37">
                                 </polyline>
-                            </svg>11.11 SALE</span>
+                            </svg>{{ optional($special_offer)->button_name }}</span>
                     </a>
                 </li>
             @endif

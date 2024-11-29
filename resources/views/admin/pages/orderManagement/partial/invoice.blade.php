@@ -1,12 +1,12 @@
 @foreach ($orders as $userId => $userOrders)
     @foreach ($userOrders as $order)
-        <div class="modal fade" id="printInovice{{ $order->id }}" tabindex="-1"
-            aria-labelledby="printInovice{{ $order->id }}Label" aria-hidden="true">
+        <div class="modal fade" id="printInovice{{ optional($order)->id }}" tabindex="-1"
+            aria-labelledby="printInovice{{ optional($order)->id }}Label" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
 
                     <div class="modal-body">
-                        <div class="row" id="invoiceContent{{ $order->id }}">
+                        <div class="row" id="invoiceContent{{ optional($order)->id }}">
                             <div class="card card-print">
                                 <div class="card-body">
                                     <div class="mx-auto w-100">
@@ -46,18 +46,18 @@
                                             <div class="d-flex flex-column flex-sm-row gap-7 gap-md-10 fw-bold">
                                                 <div class="flex-root d-flex flex-column">
                                                     <span class="text-muted">Order ID</span>
-                                                    <span class="fs-5">#{{ $order->order_number }}</span>
+                                                    <span class="fs-5">#{{ optional($order)->order_number }}</span>
                                                 </div>
 
                                                 <div class="flex-root d-flex flex-column">
                                                     <span class="text-muted">Date</span>
                                                     <span
-                                                        class="fs-5">{{ $order->created_at->format('d M, Y') }}</span>
+                                                        class="fs-5">{{ optional($order)->created_at->format('d M, Y') }}</span>
                                                 </div>
 
                                                 <div class="flex-root d-flex flex-column">
                                                     <span class="text-muted">Invoice ID</span>
-                                                    <span class="fs-5">#{{ $order->order_number }}</span>
+                                                    <span class="fs-5">#{{ optional($order)->order_number }}</span>
                                                 </div>
 
                                                 {{-- <div class="flex-root d-flex flex-column">
@@ -70,14 +70,14 @@
                                                 <div class="flex-root d-flex flex-column">
                                                     <span class="text-muted">Billing Address</span>
                                                     <span class="fs-6">
-                                                        {{ $order->billing_address }}
+                                                        {{ optional($order)->billing_address }}
                                                     </span>
                                                 </div>
 
                                                 <div class="flex-root d-flex flex-column">
                                                     <span class="text-muted">Shipping Address</span>
                                                     <span class="fs-6">
-                                                        {{ $order->shipping_address }}
+                                                        {{ optional($order)->shipping_address }}
                                                     </span>
                                                 </div>
                                             </div>
@@ -95,7 +95,7 @@
                                                         </thead>
 
                                                         <tbody class="fw-semibold text-gray-600">
-                                                            @foreach ($order->orderItems as $item)
+                                                            @foreach (optional($order)->orderItems as $item)
                                                                 <tr>
                                                                     <td>
                                                                         <div class="d-flex align-items-center">

@@ -105,11 +105,11 @@
                 Product Data Download
             </a>
         </li> --}}
-        <li class="nav-item" role="presentation">
+        {{-- <li class="nav-item" role="presentation">
             <a href="{{ route('user.view.catalouge') }}" class="nav-link {{ Route::is('user.view.catalouge') ? 'active' : '' }}">
                 Product Data
             </a>
-        </li>
+        </li> --}}
         <li class="nav-item" role="presentation">
             <a href="{{ route('user.wishlist') }}"
                 class="nav-link {{ Route::is('user.wishlist') ? 'active' : '' }}">

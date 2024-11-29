@@ -36,11 +36,11 @@
                                     <table class="table table-striped order-history-table">
                                         <thead>
                                             <tr>
-                                                <th>Order</th>
+                                                <th>Order Number</th>
                                                 <th>Date</th>
                                                 <th>Items</th>
                                                 <th>Amount</th>
-                                                <th>Track</th>
+                                                {{-- <th>Track</th> --}}
                                                 <th>Payment Status</th>
                                                 <th>Status</th>
                                                 {{-- <th class="text-center">Action</th> --}}
@@ -53,10 +53,11 @@
                                                     <td>{{ $order->order_number }}</td>
                                                     <td>{{ $order->created_at->format('d M, Y') }}</td>
                                                     <td>{{ $order->quantity }}</td>
-                                                    <td><span
+                                                    <td>
+                                                        <span
                                                             class="text-info fw-bold">৳</span>{{ $order->total_amount }}
                                                     </td>
-                                                    <td>
+                                                    {{-- <td>
                                                         @if (!empty($order->external_order_id))
                                                             <a href="https://www.royalmail.com/track-your-item#/tracking-results/{{ $order->external_order_id }}"
                                                                 class="btn btn-sm btn-warning" target="_blank">Track</a>
@@ -64,7 +65,7 @@
                                                             <span
                                                                 class="badge p-2 rounded-3 fs-7 badge-info">Processing</span>
                                                         @endif
-                                                    </td>
+                                                    </td> --}}
                                                     <td>
                                                         @if ($order->payment_status == 'unpaid')
                                                             <span

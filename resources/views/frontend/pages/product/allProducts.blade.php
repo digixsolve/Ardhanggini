@@ -164,9 +164,9 @@
                         <div id="productContainer">
                             @include('frontend.pages.product.partial.getProduct')
                         </div>
-                        <div class="ps-pagination">
+                        {{-- <div class="ps-pagination">
                             {{ $products->links() }}
-                        </div>
+                        </div> --}}
                         <div class="ps-delivery ps-delivery--info mb-5"
                             data-background="{{ asset('images/delivery_banner.jpg') }}"
                             style="background-image: url({{ asset('images/delivery_banner.jpg') }});">
@@ -626,39 +626,91 @@
             }
         </script>
         <script>
+            // $(document).ready(function() {
+            //     // Initialize noUiSlider
+            //     var priceSlider = document.getElementById('slide-price');
+            //     noUiSlider.create(priceSlider, {
+            //         start: [1, 10000], // Default values
+            //         connect: true,
+            //         range: {
+            //             'min': [0],
+            //             'max': [10000]
+            //         },
+            //         step: 1,
+            //         format: {
+            //             to: function(value) {
+            //                 return '৳' + value.toFixed(2);
+            //             },
+            //             from: function(value) {
+            //                 return Number(value.replace('৳', ''));
+            //             }
+            //         }
+            //     });
+
+            //     // Update hidden inputs and displayed values, and trigger filtering
+            //     priceSlider.noUiSlider.on('update', function(values, handle) {
+            //         $('#slide-price-min').text(values[0]);
+            //         $('#slide-price-max').text(values[1]);
+            //         $('#price-min').val(values[0].replace('৳', ''));
+            //         $('#price-max').val(values[1].replace('৳', ''));
+
+            //         // Trigger filtering when slider values change
+            //         filterProducts();
+            //     });
+
+            //     function filterProducts() {
+            //         let categories = [];
+            //         let subcategories = [];
+            //         let brands = [];
+            //         let priceMin = $('#price-min').val();
+            //         let priceMax = $('#price-max').val();
+            //         let sortBy = $('#sort-by').val();
+            //         let showPage = $('#show-per-page').val();
+
+            //         $('.category-filter:checked').each(function() {
+            //             categories.push($(this).data('id'));
+            //         });
+
+            //         $('.subcategory-filter:checked').each(function() {
+            //             subcategories.push($(this).data('id'));
+            //         });
+
+            //         $('.brand-filter:checked').each(function() {
+            //             brands.push($(this).data('id'));
+            //         });
+
+            //         $.ajax({
+            //             url: '{{ route('products.filter') }}',
+            //             method: 'GET',
+            //             data: {
+            //                 categories: categories,
+            //                 subcategories: subcategories,
+            //                 brands: brands,
+            //                 price_min: priceMin,
+            //                 price_max: priceMax,
+            //                 sort_by: sortBy,
+            //                 showPage: showPage,
+            //             },
+            //             success: function(response) {
+            //                 $('#productContainer').html(response);
+            //             }
+            //         });
+            //     }
+
+            //     // Trigger filtering on change
+            //     $('.category-filter, .subcategory-filter, .brand-filter, #sort-by, #price-filter, #show-per-page').on(
+            //         'change',
+            //         function() {
+            //             filterProducts();
+            //         });
+
+            //     // Initial filtering
+            //     filterProducts();
+            // });
+
             $(document).ready(function() {
-                // Initialize noUiSlider
-                var priceSlider = document.getElementById('slide-price');
-                noUiSlider.create(priceSlider, {
-                    start: [1, 10000], // Default values
-                    connect: true,
-                    range: {
-                        'min': [0],
-                        'max': [10000]
-                    },
-                    step: 1,
-                    format: {
-                        to: function(value) {
-                            return '৳' + value.toFixed(2);
-                        },
-                        from: function(value) {
-                            return Number(value.replace('৳', ''));
-                        }
-                    }
-                });
-
-                // Update hidden inputs and displayed values, and trigger filtering
-                priceSlider.noUiSlider.on('update', function(values, handle) {
-                    $('#slide-price-min').text(values[0]);
-                    $('#slide-price-max').text(values[1]);
-                    $('#price-min').val(values[0].replace('৳', ''));
-                    $('#price-max').val(values[1].replace('৳', ''));
-
-                    // Trigger filtering when slider values change
-                    filterProducts();
-                });
-
-                function filterProducts() {
+                function fetchProducts(page = 1) {
+                    // Collect filter data
                     let categories = [];
                     let subcategories = [];
                     let brands = [];
@@ -668,17 +720,18 @@
                     let showPage = $('#show-per-page').val();
 
                     $('.category-filter:checked').each(function() {
-                        categories.push($(this).data('id'));
+                        categories.push($(this).val());
                     });
 
                     $('.subcategory-filter:checked').each(function() {
-                        subcategories.push($(this).data('id'));
+                        subcategories.push($(this).val());
                     });
 
                     $('.brand-filter:checked').each(function() {
-                        brands.push($(this).data('id'));
+                        brands.push($(this).val());
                     });
 
+                    // Send AJAX request
                     $.ajax({
                         url: '{{ route('products.filter') }}',
                         method: 'GET',
@@ -690,22 +743,34 @@
                             price_max: priceMax,
                             sort_by: sortBy,
                             showPage: showPage,
+                            page: page // Pagination page number
+                        },
+                        beforeSend: function() {
+                            $('#productContainer').html('<div class="loading-spinner">Loading...</div>');
                         },
                         success: function(response) {
                             $('#productContainer').html(response);
+                            $('html, body').animate({
+                                scrollTop: $('#productContainer').offset().top
+                            }, 500);
+                        },
+                        error: function(xhr) {
+                            console.error("Error fetching products:", xhr.responseText);
                         }
                     });
                 }
 
-                // Trigger filtering on change
-                $('.category-filter, .subcategory-filter, .brand-filter, #sort-by, #price-filter, #show-per-page').on(
-                    'change',
-                    function() {
-                        filterProducts();
-                    });
+                // Filter form change event
+                $('#filterForm input, #filterForm select').on('change', function() {
+                    fetchProducts();
+                });
 
-                // Initial filtering
-                filterProducts();
+                // Pagination click event
+                $(document).on('click', '.pagination a', function(event) {
+                    event.preventDefault();
+                    let page = $(this).attr('href').split('page=')[1];
+                    fetchProducts(page);
+                });
             });
         </script>
     @endpush
