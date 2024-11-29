@@ -66,15 +66,15 @@ class HomeController extends Controller
             'deals'                     => DealBanner::active()->inRandomOrder()->limit(7)->get(),
             'blog'                      => BlogPost::inRandomOrder()->active()->first(),
             'categorys'                 => Category::orderBy('name', 'ASC')->active()->get(),
-            'testimonials'              => Testimonial::latest()->where('status','active')->get(),
+            'testimonials'              => Testimonial::latest()->where('status', 'active')->get(),
             'categoryone'               => $categoryone ?? '',
             'categoryoneproducts'       => $categoryoneproducts,
             'categorytwo'               => $categorytwo ?? '',
             'categorytwoproducts'       => $categorytwoproducts,
             'categorythree'             => $categorythree ?? '',
             'categorythreeproducts'     => $categorythreeproducts,
-            'latest_products'           => Product::with('multiImages','reviews')->inRandomOrder()->where('status', 'published')->paginate(8),
-            'deal_products'             => Product::with('multiImages','reviews')->whereNotNull('box_discount_price')->where('status', 'published')->inRandomOrder()->limit(10)->get(),
+            'latest_products'           => Product::with('multiImages', 'reviews')->inRandomOrder()->where('status', 'published')->paginate(8),
+            'deal_products'             => Product::with('multiImages', 'reviews')->whereNotNull('box_discount_price')->where('status', 'published')->inRandomOrder()->limit(10)->get(),
         ];
         // dd($data['deal_products']);
         return view('frontend.pages.home', $data);
@@ -142,7 +142,7 @@ class HomeController extends Controller
     {
         $data = [
             'product'          => Product::with('reviews')->where('slug', $slug)->first(),
-            'related_products' => Product::select('id', 'slug', 'meta_title', 'thumbnail', 'name', 'box_discount_price','unit_discount_price', 'box_price', 'unit_price')->with('multiImages')->where('status', 'published')->inRandomOrder()->limit(12)->get(),
+            'related_products' => Product::select('id', 'slug', 'meta_title', 'thumbnail', 'name', 'box_discount_price', 'unit_discount_price', 'box_price', 'unit_price')->with('multiImages')->where('status', 'published')->inRandomOrder()->limit(12)->get(),
         ];
         return view('frontend.pages.product.productDetails', $data);
     }
@@ -171,7 +171,7 @@ class HomeController extends Controller
             'special_offer'     => $special_offer,
             'special_products'  => $special_offer->products(),
         ];
-        return view('frontend.pages.special',$data);
+        return view('frontend.pages.special', $data);
     }
 
     public function cart()
@@ -203,8 +203,30 @@ class HomeController extends Controller
             return view('frontend.pages.cart.checkout', $data);
         } else {
             // Redirect back with error message
-            Session::flash('error', 'The added product price must be greater than 500£ to proceed to check out.');
+            Session::flash('error', "'The added product price must be greater than'. $minimumOrderAmount . 'to proceed to check out.'");
             // Session::flush();
+            return redirect()->back();
+        }
+    }
+    public function buyNow($id)
+    {
+        try {
+            $product = Product::findOrFail($id);
+            $quantity = 1;
+            if (!empty($product->unit_price) || !empty($product->unit_discount_price)) {
+                Cart::instance('cart')->add([
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'qty' => $quantity,
+                    'price' => !empty($product->unit_discount_price) ? $product->unit_discount_price : $product->unit_price,
+                ])->associate('App\Models\Product');
+                return redirect()->route('cart');
+            } else {
+                Session::flash('error', 'Failed to add this product to your cart. Contact our support team.');
+                return redirect()->back();
+            }
+        } catch (\Exception $e) {
+            Session::flash('error', $e->getMessage());
             return redirect()->back();
         }
     }
@@ -229,7 +251,7 @@ class HomeController extends Controller
             ->where('products.status', 'published')
             ->where('brands.status', 'active')
             ->limit(10)
-            ->get(['products.id', 'products.name', 'products.slug', 'products.thumbnail', 'products.box_price', 'products.box_discount_price','products.unit_price', 'products.unit_discount_price', 'products.box_stock', 'products.short_description']);
+            ->get(['products.id', 'products.name', 'products.slug', 'products.thumbnail', 'products.box_price', 'products.box_discount_price', 'products.unit_price', 'products.unit_discount_price', 'products.box_stock', 'products.short_description']);
 
         $data['categorys'] = Category::where('name', 'LIKE', '%' . $query . '%')->limit(2)->get(['id', 'name', 'slug']);
         $data['brands'] = Brand::where('name', 'LIKE', '%' . $query . '%')->where('status', 'active')->limit(5)->get(['id', 'name', 'slug']);

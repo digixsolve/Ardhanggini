@@ -14,5 +14,5 @@ class Visitor extends Model
      *
      * @var array
      */
-    protected $guarded = [];
+    protected $fillable = ['ip_address', 'user_agent', 'division'];
 }

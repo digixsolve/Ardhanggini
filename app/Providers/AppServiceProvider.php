@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Exception;
+use Carbon\Carbon;
 use App\Models\Setting;
 use App\Models\Category;
 use App\Models\Wishlist;
@@ -47,14 +48,17 @@ class AppServiceProvider extends ServiceProvider
             if (Schema::hasTable('special_offers')) {
                 View::share('special_offer', SpecialOffer::active()->latest()->first());
             }
-            
+
             // $randomNumber = rand(15, 30);
             $randomNumber = rand(10, 15);
             View::share('online', $randomNumber);
         } catch (Exception $e) {
             // Log the exception if needed
         }
-
+        // Set the default timezone for Carbon
+        Carbon::setLocale('en'); // Optional: Set the locale to English (can be changed if needed)
+        date_default_timezone_set('Asia/Dhaka'); // Set PHP default timezone
+        
         Paginator::useBootstrap();
     }
 }

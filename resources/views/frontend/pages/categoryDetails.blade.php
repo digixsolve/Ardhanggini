@@ -139,10 +139,8 @@
                                                                 </div>
                                                             @endif
                                                                 <div class="d-flex align-items-center card-cart-btn">
-                                                                    <a href="{{ route('cart.store', $category_product->id) }}"
-                                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 mr-1 mr-lg-3 "
-                                                                        data-product_id="{{ $category_product->id }}"
-                                                                        data-product_qty="1">
+                                                                    <a href="{{ route('buy.now', $category_product->id) }}"
+                                                                        class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
                                                                         Buy Now
                                                                     </a>
                                                                     <a href="{{ route('cart.store', $category_product->id) }}"

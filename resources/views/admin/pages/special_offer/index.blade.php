@@ -123,62 +123,62 @@
         </div>
 
         <div class="card-body pt-0">
-            <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
-                <thead class="bg-dark text-light">
-                    <tr>
-                        <th width="5%">No</th>
-                        <th width="5%">Image</th>
-                        <th width="8%">Name</th>
-                        <th width="5%">Start Day</th>
-                        <th width="5%">End Day</th>
-                        <th width="5%">Added By</th>
-                        <th width="5%">Status</th>
-                        <th width="5%">Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="fw-bold text-gray-600">
-
-                    @foreach ($items as $key => $offer)
+            <div class="table-responsive">
+                <table class="table table-striped gy-5 gs-7 rounded">
+                    <thead class="bg-dark text-light">
                         <tr>
-                            <td>{{ $key + 1 }}</td>
-
-                            <td class="">
-                                <img src="{{ !empty($offer->image) ? url('storage/' . $offer->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
-                                    height="40" width="40" alt="{{ $offer->name }}">
-
-                            </td>
-
-                            <td class="text-start">{{ $offer->name }}</td>
-                            <td class="text-start">{{ $offer->start_date }}</td>
-                            <td class="text-start">{{ $offer->end_date }}</td>
-
-                            <td class="text-start">{{ optional($offer->added)->name }}</td>
-
-                            <td class="text-start">
-                                <label class="switch">
-                                    <input type="checkbox" class="status-toggle" data-id="{{ $offer->id }}"
-                                        {{ $offer->status == 'active' ? 'checked' : '' }}>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-
-
-                            <td>
-                                <a href="{{ route('admin.special-offer.edit', $offer->id) }}" class="text-primary">
-                                    <i class="fa-solid fa-pencil text-primary"></i>
-                                </a>
-
-                                <a href="{{ route('admin.special-offer.destroy', $offer->id) }}" class="delete">
-                                    <i class="fa-solid fa-trash text-danger"></i>
-                                </a>
-
-                            </td>
+                            <th width="5%">No</th>
+                            <th width="5%">Image</th>
+                            <th width="8%">Name</th>
+                            <th width="5%">Start Day</th>
+                            <th width="5%">End Day</th>
+                            <th width="5%">Added By</th>
+                            <th width="5%">Status</th>
+                            <th width="5%">Actions</th>
                         </tr>
-                    @endforeach
+                    </thead>
+                    <tbody class="fw-bold text-gray-600">
+
+                        @foreach ($items as $key => $offer)
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+
+                                <td class="">
+                                    <img src="{{ !empty($offer->image) ? url('storage/' . $offer->image) : 'https://ui-avatars.com/api/?name=' . urlencode($offer->name) }}"
+                                        height="40" width="40" alt="{{ $offer->name }}">
+
+                                </td>
+
+                                <td class="text-start">{{ $offer->name }}</td>
+                                <td class="text-start">{{ $offer->start_date }}</td>
+                                <td class="text-start">{{ $offer->end_date }}</td>
+
+                                <td class="text-start">{{ optional($offer->added)->name }}</td>
+
+                                <td class="text-start">
+                                    <label class="switch">
+                                        <input type="checkbox" class="status-toggle" data-id="{{ $offer->id }}"
+                                            {{ $offer->status == 'active' ? 'checked' : '' }}>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
 
 
-                </tbody>
-            </table>
+                                <td>
+                                    <a href="{{ route('admin.special-offer.edit', $offer->id) }}" class="text-primary">
+                                        <i class="fa-solid fa-pencil text-primary"></i>
+                                    </a>
+
+                                    <a href="{{ route('admin.special-offer.destroy', $offer->id) }}" class="delete">
+                                        <i class="fa-solid fa-trash text-danger"></i>
+                                    </a>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     </div>
