@@ -19925,6 +19925,10 @@ table.dataTable tbody td:last-child {
     border-top: 2px solid #f0f2f5 !important;
     border-bottom: 0px solid #f0f2f5 !important;
 }
+.cart-table-img{
+    height: 90px;
+    object-fit: cover;
+}
 @media only screen and (max-width: 768px) {
     .shop-action-all {
         display: flex;

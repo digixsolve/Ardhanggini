@@ -102,7 +102,7 @@
                             <td class="ps-product__thumbnail">
                                 <a class="ps-product__image" href="{{ route('product.details', $item->model->slug) }}">
                                     <div>
-                                        <img src="{{ asset('storage/' . $item->model->thumbnail) }}" alt=""
+                                        <img class="cart-table-img" src="{{ asset('storage/' . $item->model->thumbnail) }}" alt=""
                                             onerror="this.onerror=null; this.src='{{ asset('images/no-preview.png') }}';" />
                                         <!-- Fallback image -->
                                     </div>
