@@ -10,54 +10,20 @@
         <tr>
             <td align="center">
                 <table class="container" width="600" cellspacing="0" cellpadding="0" border="0"
-                    style="
-              max-width: 480px;
-              margin: 0 auto;
-              background-color: #ffffff;
-              padding: 0px;
-              border: 1px solid #ddd;
-              border-radius: 5px;
-            ">
+                    style="max-width: 480px;margin: 0 auto;background-color: #ffffff;padding: 0px;border: 1px solid #ddd;border-radius: 5px;">
                     <tr>
                         <td class="header"
-                            style="
-                  text-align: center;
-                  padding: 0px 0;
-                  background: linear-gradient(
-                    to top right,
-                    #f68e39 0%,
-                    #ea6867 29%,
-                    #cb4b98 64%,
-                    #9256c6 100%
-                  );
-                  color: #ffffff;
-                  border-radius: 5px 5px 0 0;
-                ">
+                            style="text-align: center;padding: 0px 0;background: linear-gradient(to top right,#f68e39 0%,#ea6867 29%,#cb4b98 64%,#9256c6 100%); color: #ffffff; border-radius: 5px 5px 0 0; ">
                             <div style="display: flex; justify-content: center">
-                                <img src="http://127.0.0.1:8000/storage/webSetting/site_logo_black/vdw9m6B5rf1731814496.png"
-                                    alt=""
-                                    style="
-                      max-width: 100%;
-                      height: 60px;
-                      display: block;
-                      padding: 20px;
-                    " />
+                                <img src="{{ asset('storage/' . optional($setting)->site_logo_black) }}" alt=""
+                                    style="max-width: 100%;height: 60px;display: block;padding: 20px;" />
                             </div>
                             <div
-                                style="
-                    text-align: center;
-                    color: #fff;
-                    width: 75%;
-                    margin: auto;
-                    padding-top: 0px;
-                    padding-bottom: 30px;
-                  ">
+                                style="text-align: center;color: #fff;width: 75%;margin: auto;padding-top: 0px;padding-bottom: 30px;">
                                 <h1>Your order is on the way!</h1>
                                 <p style="font-weight: 500">
-                                    We received your order today <span style="font-weight: bold;">" 12/23/19 "</span>
-                                    and it should arrive
-                                    in
-                                    2.5 business days(depending on the speed of the USPS).
+                                    We received your order today <span style="font-weight: bold;">" {{ $data['order']->order_created_at }}"</span>
+                                    . Thank you for your order!
                                 </p>
                             </div>
                         </td>
@@ -65,28 +31,17 @@
                     <tr>
                         <td>
                             <div>
-                                <img style="
-                      height: 250px;
-                      width: 100%;
-                      object-fit: cover;
-                      margin-bottom: -6px;
-                    "
-                                    src="https://i.pinimg.com/originals/21/cc/d0/21ccd0e8897e00e9c19eeac49dc47288.gif"
+                                <img style="height: 250px;width: 100%;object-fit: cover;margin-bottom: -6px;"
+                                    src="{{ asset('fro') }}"
                                     alt="" />
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td class="content"
-                            style="
-                  text-align: center;
-                  padding: 20px;
-                  background-color: #e0e0e04a;
-                  color: #ffffff;
-                  border-radius: 5px 5px 0 0;
-                ">
+                            style="text-align: center;padding: 20px;background-color: #e0e0e04a;color: #ffffff;border-radius: 5px 5px 0 0;">
                             <h1 style="color: #252525">
-                                Order Number : <span style="color: #9c27b0">800346</span>
+                                Order Number : <span style="color: #9c27b0">{{ $data['order']->order_number }}</span>
                             </h1>
                             <div style="padding-bottom: 15px;">
                                 <a class="" href="/" style="color: #252525; font-weight: bold">
@@ -98,13 +53,7 @@
                     <tr>
                         <td>
                             <div class=""
-                                style="
-                    padding-left: 30px;
-                    padding-top: 30px;
-                    padding-bottom: 30px;
-                    padding-right: 30px;
-                    font-weight: 500;
-                  ">
+                                style="padding-left: 30px;padding-top: 30px;padding-bottom: 30px;padding-right: 30px;font-weight: 500;">
                                 <p>Order Summary</p>
                                 <div class="">
                                     <table class="table" style="width: 100%">
@@ -121,53 +70,27 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($data['order_items'] as $item)
+                                                <tr class="">
+                                                    <td style="padding: 10px; text-align: start">{{ $loop->iteration }}</td>
+                                                    <td style="padding: 10px; text-align: start">
+                                                        {{ $item->product_name }}
+                                                    </td>
+                                                    <td style="padding: 10px; text-align: center">{{ $item->quantity }}</td>
+                                                    <td style="text-align: end; padding-right: 10px">
+                                                        ৳ {{ optional($item)->price }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+
                                             <tr class="">
-                                                <td style="padding: 10px; text-align: start">01</td>
-                                                <td style="padding: 10px; text-align: start">
-                                                    Premium letter Crosbody bag
-                                                </td>
-                                                <td style="padding: 10px; text-align: center">4</td>
-                                                <td style="text-align: end; padding-right: 10px">
-                                                    $ 21.00
-                                                </td>
-                                            </tr>
-                                            <tr class="">
-                                                <td style="padding: 10px; text-align: start">02</td>
-                                                <td style="padding: 10px; text-align: start">
-                                                    Premium letter Crosbody bag
-                                                </td>
-                                                <td style="padding: 10px; text-align: center">4</td>
-                                                <td style="text-align: end; padding-right: 10px">
-                                                    $ 21.00
-                                                </td>
-                                            </tr>
-                                            <tr class="">
-                                                <td style="padding: 10px; text-align: start">03</td>
-                                                <td style="padding: 10px; text-align: start">
-                                                    Premium letter Crosbody bag
-                                                </td>
-                                                <td style="padding: 10px; text-align: center">4</td>
-                                                <td style="text-align: end; padding-right: 10px">
-                                                    $ 21.00
-                                                </td>
-                                            </tr>
-                                            <tr class="">
-                                                <td style="
-                              text-align: end;
-                              font-weight: bold;
-                              padding: 10px;
-                              border-top: 1px solid #252525;
-                            "
+                                                <td style="text-align: end;font-weight: bold;padding: 10px;border-top: 1px solid #252525;"
                                                     colspan="3">
                                                     Total
                                                 </td>
                                                 <td
-                                                    style="
-                              text-align: end;
-                              padding: 10px;
-                              border-top: 1px solid #252525;
-                            ">
-                                                    $ 30.00
+                                                    style="text-align: end;padding: 10px;border-top: 1px solid #252525;">
+                                                    ৳ {{ number_format($data['order']->total_amount, 2) }}
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -178,21 +101,9 @@
                     </tr>
                     <tr>
                         <td class="footer"
-                            style="
-                  text-align: center;
-                  padding: 10px 0;
-                  background: linear-gradient(
-                    to top right,
-                    #f68e39 0%,
-                    #ea6867 29%,
-                    #cb4b98 64%,
-                    #9256c6 100%
-                  );
-                  color: #fff;
-                  border-radius: 0 0 5px 5px;
-                ">
+                            style="text-align: center;padding: 10px 0;background: linear-gradient(to top right,#f68e39 0%,#ea6867 29%,#cb4b98 64%,#9256c6 100%);color: #fff;border-radius: 0 0 5px 5px;">
                             <p style="margin: 0; font-size: 16px; padding: 15px;">
-                                &copy; Copyright @ 2024 Ardhanggini, All rights reserved.
+                                &copy; Copyright @ 2024 {{ optional($setting)->website_name }}, All rights reserved.
                                 <br> You are receiving this email because you ordered on our
                                 website ardhanggini.com
                             </p>
@@ -205,7 +116,7 @@
 </div>
 
 
-
+{{--
 <div class="d-flex flex-column flex-root" id="kt_app_root">
     <div class="d-flex flex-column flex-column-fluid">
         <div class="scroll-y flex-column-fluid px-10 py-10" data-kt-scroll="true" data-kt-scroll-activate="true"
@@ -311,14 +222,9 @@
                                                         ৳ {{ number_format($data['order']->total_amount, 2) }}</div>
 
                                                 </div>
-
                                             </div>
-
                                         </div>
-
-
                                     </div>
-
                                 </td>
                             </tr>
 
@@ -366,4 +272,4 @@
 
 
 </div>
-</div>
+</div> --}}
