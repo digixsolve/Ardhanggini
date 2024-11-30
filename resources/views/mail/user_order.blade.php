@@ -32,7 +32,7 @@
                         <td>
                             <div>
                                 <img style="height: 250px;width: 100%;object-fit: cover;margin-bottom: -6px;"
-                                    src="{{ asset('fro') }}"
+                                    src="{{ asset('frontend/img/order_mail.gif') }}"
                                     alt="" />
                             </div>
                         </td>
