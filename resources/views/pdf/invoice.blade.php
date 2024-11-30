@@ -97,7 +97,7 @@
                             <p class="mb-0">{{ optional($order->user)->first_name }}</p>
                             <p class="mb-0">{{ optional($order->user)->phone }}</p>
                             <p class="mb-0">{{ optional($order->user)->email }}</p>
-                            <p class="mb-0">{{ $order->billing_address }}</p>
+                            <p class="mb-0">{{ optional($order)->shipping_address }}</p>
                         </div>
                     </div>
                     <div class="col-lg-6">

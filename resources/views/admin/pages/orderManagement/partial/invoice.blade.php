@@ -64,12 +64,7 @@
                                         </div>
 
                                         <div class="d-flex flex-column flex-sm-row gap-7 gap-md-10 fw-bold">
-                                            <div class="flex-root d-flex flex-column">
-                                                <span class="text-muted">Billing Address</span>
-                                                <span class="fs-6">
-                                                    {{ optional($order)->billing_address }}
-                                                </span>
-                                            </div>
+                                            
 
                                             <div class="flex-root d-flex flex-column">
                                                 <span class="text-muted">Shipping Address</span>
