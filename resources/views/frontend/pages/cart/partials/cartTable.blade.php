@@ -141,10 +141,8 @@
         <div class="ps-shopping__footer justify-content-center">
             <div class="ps-shopping__button d-flex justify-content-center align-items-center">
                 <a href="{{ route('cart.clear') }}" class="ps-btn ps-btn--primary delete">Clear All</a>
-                <button class="ps-btn ps-btn--primary d-none d-lg-inline-block" type="button" id="update-cart">Update
-                    cart</button>
-                <button class="ps-btn ps-btn--primary d-lg-none" type="button" id="update-mobile-cart">Update
-                    cart</button>
+                <button class="ps-btn ps-btn--primary d-none d-lg-inline-block" type="button" id="update-cart">Update cart</button>
+                <button class="ps-btn ps-btn--primary d-lg-none" type="button" id="update-mobile-cart">Update cart</button>
 
             </div>
         </div>
@@ -164,9 +162,9 @@
                 <div class="ps-shopping__label">Total</div>
                 <div class="ps-shopping__price">৳ {{ Cart::subtotal() }}</div>
             </div>
-            <div class="ps-shopping__checkout">
-                <a class="btn btn-primary" href="{{ route('checkout') }}">Place Order</a>
-                <a class="ps-shopping__link btn btn-outline-primary" href="{{ route('allproducts') }}">Continue To Shopping</a>
+            <div class="d-flex align-items-center justify-content-between mt-3">
+                <a class="btn btn-primary mr-2" href="{{ route('allproducts') }}">Continue</a>
+                <a class="btn btn-outline-primary" href="{{ route('checkout') }}">Place Order</a>
             </div>
         </div>
         {{-- Pricing Side End --}}
