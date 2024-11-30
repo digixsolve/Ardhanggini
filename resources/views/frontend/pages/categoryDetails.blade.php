@@ -112,7 +112,9 @@
                                                             @if (!empty($category_product->unit_discount_price))
                                                                 <div class="ps-product__badge">
                                                                     <div class="ps-badge ps-badge--sale">
-                                                                        - {{ $category_product->unit_price > 0 ? number_format((($category_product->unit_price - $category_product->unit_discount_price) / $category_product->unit_price) * 100,1) : 0 }} %
+                                                                        -
+                                                                        {{ $category_product->unit_price > 0 ? number_format((($category_product->unit_price - $category_product->unit_discount_price) / $category_product->unit_price) * 100, 1) : 0 }}
+                                                                        %
                                                                     </div>
                                                                 </div>
                                                             @endif
@@ -138,18 +140,18 @@
                                                                         class="ps-product__price sale">৳{{ $category_product->unit_price }}</span>
                                                                 </div>
                                                             @endif
-                                                                <div class="d-flex align-items-center card-cart-btn">
-                                                                    <a href="{{ route('buy.now', $category_product->id) }}"
-                                                                        class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
-                                                                        Buy Now
-                                                                    </a>
-                                                                    <a href="{{ route('cart.store', $category_product->id) }}"
-                                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 buy-now-btn"
-                                                                        data-product_id="{{ $category_product->id }}"
-                                                                        data-product_qty="1">
-                                                                        Add To Cart
-                                                                    </a>
-                                                                </div>
+                                                            <div class="d-flex align-items-center card-cart-btn">
+                                                                <a href="{{ route('buy.now', $category_product->id) }}"
+                                                                    class="btn btn-primary mr-1 mr-lg-3 ">
+                                                                    Buy Now
+                                                                </a>
+                                                                <a href="{{ route('cart.store', $category_product->id) }}"
+                                                                    class="btn btn-outline-primary add_to_cart"
+                                                                    data-product_id="{{ $category_product->id }}"
+                                                                    data-product_qty="1">
+                                                                    Add To Cart
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

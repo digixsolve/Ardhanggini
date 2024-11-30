@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="col-12 col-xl-6">
                                     <div class="ps-product__info">
-                                        <div class="text-22" style="height: auto;">
+                                        <div class="text-22 text-dark" style="height: auto;">
                                             {{ $product->name }}
                                         </div>
                                         <table class="table ps-table ps-table--oriented m-0">
@@ -252,8 +252,15 @@
                                     </div>
                                 </div>
 
-                                <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
-                                    data-product_id="{{ $product->id }}" href="#">Add to cart</a>
+                                {{-- <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
+                                    data-product_id="{{ $product->id }}" href="#">Add to cart</a> --}}
+
+                                    <div class="d-flex align-items-center">
+                                        <a class="btn btn-primary mr-1 mr-lg-3"
+                                            data-product_id="{{ $product->id }}" href="#">Buy Now</a>
+                                        <a class="btn btn-outline-primary add_to_cart"
+                                            data-product_id="{{ $product->id }}" href="#">Add to cart</a>
+                                    </div>
 
                                 <ul class="ps-product__bundle">
                                     <li><i class="icon-bag2"></i>Full cash on delivery</li>
@@ -491,25 +498,25 @@
                                                     </div>
                                                 </div>
                                                 @if (!empty($related_product->unit_discount_price))
-                                                    <div class="ps-product__meta">
+                                                    <div class="ps-product__meta pb-3">
                                                         <span
                                                             class="ps-product__price sale">৳{{ $related_product->unit_discount_price }}</span>
                                                         <span
                                                             class="ps-product__del">৳{{ $related_product->unit_price }}</span>
                                                     </div>
                                                 @else
-                                                    <div class="ps-product__meta">
+                                                    <div class="ps-product__meta pb-3">
                                                         <span
                                                             class="ps-product__price sale">৳{{ $related_product->unit_price }}</span>
                                                     </div>
                                                 @endif
                                                 <div class="d-flex align-items-center">
                                                     <a href="{{ route('buy.now', $related_product->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
+                                                        class="btn btn-primary mr-1 mr-lg-3">
                                                         Buy Now
                                                     </a>
                                                     <a href="{{ route('cart.store', $related_product->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns buy-now-btn"
+                                                        class="btn btn-outline-primary add_to_cart"
                                                         data-product_id="{{ $related_product->id }}"
                                                         data-product_qty="1">
                                                         Add To Cart
@@ -704,6 +711,7 @@
                                                 <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
                                                     data-product_id="{{ $related_product->id }}" href="#">Add
                                                     to cart</a>
+
                                             </div>
                                         </div>
                                     </div>

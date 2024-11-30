@@ -167,11 +167,11 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <a class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3" href="#"
-                                    onclick="addToCartShop(event, {{ $product->id }})">Add to cart</a>
-                                <a class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 buy-now-btn"
+                                <a class="btn btn-primary add_to_cart"
                                     href="{{ route('buy.now', $product->id) }}">Buy Now</a>
                                 </a>
+                                <a class="btn btn-outline-primary mr-1 mr-lg-3" href="#"
+                                    onclick="addToCartShop(event, {{ $product->id }})">Add to cart</a>
                             </div>
                         </div>
                     </div>

@@ -141,11 +141,11 @@
 
                                                     <div class="d-flex align-items-center">
                                                         <a href="{{ route('buy.now', $deal_product->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
+                                                            class="btn btn-primary mr-1 mr-lg-3">
                                                             Buy Now
                                                         </a>
                                                         <a href="{{ route('cart.store', $deal_product->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns buy-now-btn"
+                                                            class="btn btn-outline-primary add_to_cart"
                                                             data-product_id="{{ $deal_product->id }}"
                                                             data-product_qty="1">
                                                             Add To Cart

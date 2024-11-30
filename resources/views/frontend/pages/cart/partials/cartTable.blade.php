@@ -165,8 +165,8 @@
                 <div class="ps-shopping__price">৳ {{ Cart::subtotal() }}</div>
             </div>
             <div class="ps-shopping__checkout">
-                <a class="ps-btn ps-btn--warning" href="{{ route('checkout') }}">Place Order</a>
-                <a class="ps-shopping__link" href="{{ route('allproducts') }}">Continue To Shopping</a>
+                <a class="btn btn-primary" href="{{ route('checkout') }}">Place Order</a>
+                <a class="ps-shopping__link btn btn-outline-primary" href="{{ route('allproducts') }}">Continue To Shopping</a>
             </div>
         </div>
         {{-- Pricing Side End --}}

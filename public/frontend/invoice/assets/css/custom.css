@@ -1,31 +1,5 @@
-Background: #F8F9FD, #FFFFFF 
-Content: #505050S, #12151C
-
-a (visited): #000000
-a (standard): #000000   
-a (hover):  #000000  
-a (active): #000000
-
------------------------------------------------------------------- */
-
 /************************* 1.Default CSS **************************/
 
-html {
-	scroll-behavior: smooth;
-	-webkit-text-size-adjust: 100%;
-}
-body {
-	background: #F8F9FD;
-	width: auto;
-	height: 100%;
-	color: #ffffff;
-	font-family: 'Inter', sans-serif;
-	margin: 0;
-}
-body {
-	margin: 0;
-	padding: 0;
-}
 h1,
 h2,
 h3,
@@ -43,7 +17,7 @@ a:focus, a {
 	outline: none;
 	text-decoration: none;
 	cursor: pointer;
-} 
+}
 .bg-black {
 	background: #00A198;
 }
@@ -62,7 +36,7 @@ a:focus, a {
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 22px; 
+	line-height: 22px;
 }
 .font-sm-700{
 	font-family: Inter;
@@ -77,7 +51,7 @@ a:focus, a {
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 22px; 
+	line-height: 22px;
 }
 .font-md{
 	font-family: Inter;
@@ -92,7 +66,7 @@ a:focus, a {
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 24px; 
+	line-height: 24px;
 }
 .font-md-grey{
 	font-family: Inter;
@@ -114,7 +88,7 @@ a:focus, a {
 	font-size: 18px;
 	font-style: normal;
 	font-weight: 700;
-	line-height: 24px; 
+	line-height: 24px;
 }
 .font-18-500{
 	font-family: Inter;
@@ -128,7 +102,7 @@ a:focus, a {
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 700;
-	line-height: 24px; 
+	line-height: 24px;
 }
 .color-blue{
 	color: #1D4ED8
@@ -505,7 +479,7 @@ a:focus, a {
 	flex-wrap: wrap;
 }
 img.txt-img {
-	position: absolute; 
+	position: absolute;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -551,9 +525,9 @@ table.invo-payment-table.invo-payment-table {
 .invo-payment-table {
 	border-collapse: collapse;
 }
-.payemnt-wid, 
-.date-wid, 
-.trans-wid, 
+.payemnt-wid,
+.date-wid,
+.trans-wid,
 .amount-wid {
 	width: 33.33%;
 	text-align: left;
@@ -913,7 +887,7 @@ table.invo-payment-table.invo-payment-table {
 }
 .bus-conatct-img{
 	padding-right: 10px;
-}  
+}
 .bus-mail-img{
 	padding-right: 10px;
 }
@@ -1256,7 +1230,7 @@ table.invo-payment-table.invo-payment-table {
 .booking-info.booking-info-flight:before{
 	border-left: 2px solid #6A00FF;
 }
-.flight-booking-wrap .payemnt-wid, 
+.flight-booking-wrap .payemnt-wid,
 .date-wid, .trans-wid, .amount-wid{
 	width: 25%;
 }
@@ -1815,7 +1789,7 @@ table.invo-payment-table.invo-payment-table {
 	color:#00BAFF;
 }
 .blue-img1{
-	
+
 	width: 176px;
 	height: 176px;
 	transform: rotate(-45deg);
@@ -2005,7 +1979,7 @@ table.invo-payment-table.invo-payment-table {
 	font-size: 40px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 40px; 
+	line-height: 40px;
 	letter-spacing: 6px;
 }
 .student-header-details {
@@ -2132,7 +2106,7 @@ table.invo-payment-table.invo-payment-table {
 	width: 260px;
 	height: 130px;
 	position: absolute;
-	right: 0;  
+	right: 0;
 	top:-1.2px;
 }
 .coffee-triangle-image:before{
@@ -2251,7 +2225,7 @@ table.invo-payment-table.invo-payment-table {
 .domain-footer-image:after{
 	content: "";
 	position: absolute;
-	background-image: url(../images/domain/footer-black.svg); 
+	background-image: url(../images/domain/footer-black.svg);
 	background-repeat: no-repeat;
 	width: calc(100% + 50px);
 	height: 100%;
@@ -2273,7 +2247,7 @@ table.invo-payment-table.invo-payment-table {
 .domain-footer-image>div:after{
 	content: "";
 	position: absolute;
-	background-image: url(../images/domain/footer-orange.svg); 
+	background-image: url(../images/domain/footer-orange.svg);
 	background-repeat: no-repeat;
 	width: calc(100% + 50px);
 	height: 100%;
@@ -2286,7 +2260,7 @@ table.invo-payment-table.invo-payment-table {
 	padding-bottom: 118px;
 }
 .invoice-logo-domain img{
-	position: relative;	
+	position: relative;
 	z-index: 4;
 	padding-left: 50px;
 }
@@ -2305,7 +2279,7 @@ table.invo-payment-table.invo-payment-table {
 	font-style: normal;
 	font-weight: 400;
 	line-height: 40px;
-	letter-spacing: 6px;	
+	letter-spacing: 6px;
 }
 .domain-color{
 	color: #FF3F34;

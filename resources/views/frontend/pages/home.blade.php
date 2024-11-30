@@ -204,25 +204,25 @@
                                                         </div>
                                                     </div>
                                                     @if (!empty($latest_product->unit_discount_price))
-                                                        <div class="ps-product__meta">
+                                                        <div class="ps-product__meta pb-3">
                                                             <span
                                                                 class="ps-product__price sale">৳{{ $latest_product->unit_discount_price }}</span>
                                                             <span
                                                                 class="ps-product__del">৳{{ $latest_product->unit_price }}</span>
                                                         </div>
                                                     @else
-                                                        <div class="ps-product__meta">
+                                                        <div class="ps-product__meta pb-3">
                                                             <span
                                                                 class="ps-product__price sale">৳{{ $latest_product->unit_price }}</span>
                                                         </div>
                                                     @endif
                                                     <div class="d-flex align-items-center card-cart-btn">
                                                         <a href="{{ route('buy.now', $latest_product->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
+                                                            class="btn btn-primary mr-1 mr-lg-3">
                                                             Buy Now
                                                         </a>
                                                         <a href="{{ route('cart.store', $latest_product->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 buy-now-btn"
+                                                            class="btn btn-outline-primary add_to_cart"
                                                             data-product_id="{{ $latest_product->id }}"
                                                             data-product_qty="1">
                                                             Add To Cart
@@ -391,25 +391,25 @@
                                                         </div>
                                                     </div>
                                                     @if (!empty($categoryoneproduct->unit_discount_price))
-                                                        <div class="ps-product__meta">
+                                                        <div class="ps-product__meta pb-3">
                                                             <span
                                                                 class="ps-product__price sale">৳{{ $categoryoneproduct->unit_discount_price }}</span>
                                                             <span
                                                                 class="ps-product__del">৳{{ $categoryoneproduct->unit_price }}</span>
                                                         </div>
                                                     @else
-                                                        <div class="ps-product__meta">
+                                                        <div class="ps-product__meta pb-3">
                                                             <span
                                                                 class="ps-product__price sale">৳{{ $categoryoneproduct->unit_price }}</span>
                                                         </div>
                                                     @endif
                                                     <div class="d-flex align-items-center card-cart-btn">
                                                         <a href="{{ route('buy.now', $categoryoneproduct->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
+                                                            class="btn btn-primary mr-1 mr-lg-3 ">
                                                             Buy Now
                                                         </a>
                                                         <a href="{{ route('cart.store', $categoryoneproduct->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 buy-now-btn"
+                                                            class="btn btn-outline-primary add_to_cart py-2 buy-now-btn"
                                                             data-product_id="{{ $categoryoneproduct->id }}"
                                                             data-product_qty="1">
                                                             Add To Cart
@@ -608,18 +608,18 @@
                                                                     class="ps-product__del">৳{{ $categorytwoproduct->unit_price }}</span>
                                                             </div>
                                                         @else
-                                                            <div class="ps-product__meta">
+                                                            <div class="ps-product__meta pb-3">
                                                                 <span
                                                                     class="ps-product__price sale">৳{{ $categorytwoproduct->unit_price }}</span>
                                                             </div>
                                                         @endif
                                                         <div class="d-flex align-items-center">
                                                             <a href="{{ route('buy.now', $categorytwoproduct->id) }}"
-                                                                class="btn ps-btn--warning my-3 warning-2 btn-block py-2 mr-1 mr-lg-3 ">
+                                                                class="btn btn-primary btn-block mr-1 mr-lg-3 ">
                                                                 Buy Now
                                                             </a>
                                                             <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
-                                                                class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns buy-now-btn"
+                                                                class="btn btn-outline-primary add_to_cart "
                                                                 data-product_id="{{ $categorytwoproduct->id }}"
                                                                 data-product_qty="1">
                                                                 Add To Cart
@@ -782,25 +782,25 @@
                                                         </div>
                                                     </div>
                                                     @if (!empty($categorythreeproduct->unit_discount_price))
-                                                        <div class="ps-product__meta">
+                                                        <div class="ps-product__meta pb-3">
                                                             <span
                                                                 class="ps-product__price sale">৳{{ $categorythreeproduct->unit_discount_price }}</span>
                                                             <span
                                                                 class="ps-product__del">৳{{ $categorythreeproduct->unit_price }}</span>
                                                         </div>
                                                     @else
-                                                        <div class="ps-product__meta">
+                                                        <div class="ps-product__meta pb-3">
                                                             <span
                                                                 class="ps-product__price sale">৳{{ $categorythreeproduct->unit_price }}</span>
                                                         </div>
                                                     @endif
                                                     <div class="d-flex align-items-center card-cart-btn">
                                                         <a href="{{ route('buy.now', $categorythreeproduct->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
+                                                            class="btn btn-primary mr-1 mr-lg-3 ">
                                                             Buy Now
                                                         </a>
                                                         <a href="{{ route('cart.store', $categorythreeproduct->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 buy-now-btn"
+                                                            class="btn btn-outline-primary add_to_cart"
                                                             data-product_id="{{ $categorythreeproduct->id }}"
                                                             data-product_qty="1">
                                                             Add To Cart
@@ -1187,11 +1187,11 @@
 
                                                 <div class="d-flex align-items-center">
                                                     <a href="{{ route('buy.now', $deal_product->id) }}"
-                                                        class="btn ps-btn--warning my-3 warning-2 btn-block py-2 mr-1 mr-lg-3 ">
+                                                        class="btn btn-primary btn-block mr-1 mr-lg-3">
                                                         Buy Now
                                                     </a>
                                                     <a href="{{ route('cart.store', $deal_product->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 ctg-btns buy-now-btn"
+                                                        class="btn btn-outline-primary add_to_cart"
                                                         data-product_id="{{ $deal_product->id }}"
                                                         data-product_qty="1">
                                                         Add To Cart
