@@ -1,8 +1,9 @@
 <style>
-    label{
+    label {
         color: black;
     }
-    .dataTables_wrapper .dataTables_info{
+
+    .dataTables_wrapper .dataTables_info {
         color: black;
     }
 </style>
@@ -124,17 +125,18 @@
                 My Shopping List
             </a>
         </li>
-        <li class="nav-item" role="presentation">
-            <a href="javascript:void(0)" onclick="event.preventDefault(); document.getElementById('user-logout-form').submit();"
-                class="nav-link">
-                {{ __('Log Out') }}
-            </a>
-            <!-- Hidden logout form -->
-            <form id="user-logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
-                @csrf
-            </form>
-        </li>
     </ul>
+    <div class="mt-4">
+        <a href="javascript:void(0)"
+            onclick="event.preventDefault(); document.getElementById('user-logout-form').submit();"
+            class="btn btn-outline-primary w-100">
+            <i class="fa-solid fa-arrow-right-from-bracket pr-2"></i>  {{ __('Log Out') }}
+        </a>
+        <!-- Hidden logout form -->
+        <form id="user-logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
+            @csrf
+        </form>
+    </div>
 </div>
 
 <script>
