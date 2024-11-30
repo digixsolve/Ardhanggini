@@ -10,9 +10,9 @@
 
     <div class="ps-categogy ps-categogy--dark">
         <div class="container pt-0 pt-lg-5">
-            <div class="row align-items-center">
+            <div class="row">
                 <div class="col-lg-3 px-0 px-lg-3">
-                    <div class="bg-white bread-crumb-title">
+                    <div class="bg-white bread-crumb-title ctg-products">
                         <!-- Breadcrumbs -->
                         <ul class="ps-breadcrumb pl-3">
                             <li class="ps-breadcrumb__item pl-4"><a href="{{ url('/') }}">Home</a></li>
@@ -60,7 +60,7 @@
                                         <div class="row m-0">
                                             @forelse ($catProducts as $key => $category_product)
                                                 <div
-                                                    class="col-12 col-lg-4 col-xl-3 p-0 product-item {{ $key >= 4 ? 'd-none' : '' }}">
+                                                    class="col-12 col-lg-4 p-0 product-item {{ $key >= 4 ? 'd-none' : '' }}">
                                                     <div class="ps-product ps-product--standard category-imges">
                                                         <div class="ps-product__thumbnail">
                                                             <a class="ps-product__image"
@@ -140,7 +140,7 @@
                                                                         class="ps-product__price sale">৳{{ $category_product->unit_price }}</span>
                                                                 </div>
                                                             @endif
-                                                            <div class="d-flex align-items-center card-cart-btn">
+                                                            <div class="d-flex align-items-center card-cart-btn mt-3">
                                                                 <a href="{{ route('buy.now', $category_product->id) }}"
                                                                     class="btn btn-primary mr-1 mr-lg-3 ">
                                                                     Buy Now
@@ -178,7 +178,7 @@
                                         </div>
                                     @endif
                                     <!-- Delivery Info -->
-                                    <div class="ps-delivery ps-delivery--info"
+                                    <div class="ps-delivery ps-delivery--info mt-4"
                                         data-background="{{ asset('frontend/img/promotion/banner-delivery-2.jpg') }}">
                                         <div class="ps-delivery__content">
                                             <div class="ps-delivery__text text-center">
@@ -206,7 +206,7 @@
                                     <ul class="menu--mobile nav nav-tabs border-0" id="myTab" role="tablist">
                                         @foreach ($categories as $allcategory)
                                             <li class="nav-item col-12 py-0 mb-0">
-                                                <a class="nav-link p-4 category-menus {{ $allcategory->id == $category->id ? 'active' : '' }}"
+                                                <a class="nav-link p-3 category-menus pl-4 {{ $allcategory->id == $category->id ? 'active' : '' }}"
                                                     id="home-tab{{ $allcategory->id }}" data-toggle="tab"
                                                     href="#home{{ $allcategory->id }}" role="tab"
                                                     aria-controls="home{{ $allcategory->id }}"

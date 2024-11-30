@@ -99,7 +99,7 @@
     .button-new {
         --h-button: 48px;
         --w-button: 102px;
-        --round: 0.75rem;
+        --round: 0.35rem;
         cursor: pointer;
         position: relative;
         display: inline-flex;
@@ -146,7 +146,7 @@
         top: 0;
         right: 0;
         height: 1rem;
-        width: 1rem;
+        /* width: 1rem; */
         display: inline-block;
         transition: all 0.5s ease-in-out;
         border-bottom-left-radius: 0.5rem;
@@ -449,13 +449,13 @@
                                         @guest
                                             <div>
                                                 <p>Already Have An Account?</p>
-                                                <a class="ps-btn ps-btn--warning" href="{{ route('login') }}">
+                                                <a class="btn btn-primary w-100" href="{{ route('login') }}">
                                                     Log in
                                                 </a>
                                             </div>
-                                            <div>
+                                            <div class="mt-3">
                                                 <p>Don't Have An Account?</p>
-                                                <a class="ps-btn ps-btn--warning" href="{{ route('register') }}">
+                                                <a class="btn btn-primary w-100" href="{{ route('register') }}">
                                                     Register
                                                 </a>
                                             </div>
@@ -465,13 +465,13 @@
                                         @auth
                                             <div>
                                                 <p>Manage Your Dashboard?</p>
-                                                <a class="ps-btn ps-btn--warning" href="{{ route('dashboard') }}">
+                                                <a class="btn btn-primary w-100" href="{{ route('dashboard') }}">
                                                     Dashboard
                                                 </a>
                                             </div>
                                             <div>
                                                 <p>Want to Log Out?</p>
-                                                <a class="ps-btn ps-btn--warning" href="#"
+                                                <a class="btn btn-primary w-100" href="#"
                                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                                     Log Out
                                                 </a>
