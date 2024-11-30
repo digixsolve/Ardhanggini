@@ -93,47 +93,49 @@
                                                                     count($deal_product->reviews)
                                                                 : 0;
                                                     @endphp
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center mb-3 rating-area">
-                                                        <div class="ps-product__rating"
-                                                            style="{{ $review <= 0 ? 'visibility: hidden;' : '' }}">
-                                                            @if ($review > 0)
-                                                                <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                    <select class="ps-rating" data-read-only="true"
-                                                                        style="display: none;">
-                                                                        @php
-                                                                            $maxRating = min(5, max(1, floor($review)));
-                                                                        @endphp
-                                                                        @for ($i = 1; $i <= $maxRating; $i++)
-                                                                            <option value="{{ $i }}">
-                                                                                {{ $i }}</option>
-                                                                        @endfor
-                                                                    </select>
-                                                                </div>
-                                                            @else
-                                                                <span class="no-found">N/A</span>
-                                                            @endif
-                                                        </div>
+                                                    @if (count($deal_product->reviews) > 0)
                                                         <div
-                                                            style="{{ count($deal_product->reviews) == 0 ? 'visibility: hidden;' : '' }}">
-                                                            @if (count($deal_product->reviews) > 0)
-                                                                Reviews ({{ count($deal_product->reviews) }})
-                                                            @else
-                                                                <span class="no-found">N/A</span>
-                                                            @endif
+                                                            class="d-flex justify-content-between align-items-center mb-3 rating-area">
+                                                            <div class="ps-product__rating"
+                                                                style="{{ $review <= 0 ? 'visibility: hidden;' : '' }}">
+                                                                @if ($review > 0)
+                                                                    <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                        <select class="ps-rating" data-read-only="true"
+                                                                            style="display: none;">
+                                                                            @php
+                                                                                $maxRating = min(5, max(1, floor($review)));
+                                                                            @endphp
+                                                                            @for ($i = 1; $i <= $maxRating; $i++)
+                                                                                <option value="{{ $i }}">
+                                                                                    {{ $i }}</option>
+                                                                            @endfor
+                                                                        </select>
+                                                                    </div>
+                                                                @else
+                                                                    <span class="no-found">N/A</span>
+                                                                @endif
+                                                            </div>
+                                                            <div
+                                                                style="{{ count($deal_product->reviews) == 0 ? 'visibility: hidden;' : '' }}">
+                                                                @if (count($deal_product->reviews) > 0)
+                                                                    Reviews ({{ count($deal_product->reviews) }})
+                                                                @else
+                                                                    <span class="no-found">N/A</span>
+                                                                @endif
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    @endif
                                                     @if (!empty($deal_product->unit_discount_price))
                                                         <div class="ps-product__meta mb-3">
                                                             <span
-                                                                class="ps-product__price sale">৳{{ $deal_product->unit_discount_price }}</span>
+                                                                class="ps-product__price sale">৳ {{ $deal_product->unit_discount_price }}</span>
                                                             <span
-                                                                class="ps-product__del">৳{{ $deal_product->unit_price }}</span>
+                                                                class="ps-product__del">৳ {{ $deal_product->unit_price }}</span>
                                                         </div>
                                                     @else
                                                         <div class="ps-product__meta mb-3">
                                                             <span
-                                                                class="ps-product__price sale">৳{{ $deal_product->unit_price }}</span>
+                                                                class="ps-product__price sale">৳ {{ $deal_product->unit_price }}</span>
                                                         </div>
                                                     @endif
 

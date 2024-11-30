@@ -23,3 +23,17 @@
 .text-22{
     font-size: 22px !important;
 }
+
+
+
+/* d-sm-none */
+@media only screen and (max-width: 768px) {
+    .ps-shopping .ps-shopping__checkout .ps-btn{
+        padding: 10px 5px;
+        width: 100px;
+    }
+    .ps-shopping .ps-shopping__link {
+        margin-left: 5px;
+        font-size: 15px;
+    }
+}

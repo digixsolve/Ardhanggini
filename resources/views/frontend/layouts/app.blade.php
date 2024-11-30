@@ -899,6 +899,56 @@
                     }
                 });
             });
+            $('#update-mobile-cart').click(function() {
+                var cartItems = [];
+
+                // Collect all quantities and row IDs
+                $('.quantity_mobile').each(function() {
+                    var rowId = $(this).data(
+                        'row_id'); // Use data-row_id as specified in your Blade file
+                    var qty = $(this).val();
+
+                    // Ensure rowId and qty are valid
+                    if (rowId && !isNaN(qty) && qty >= 0) {
+                        cartItems.push({
+                            rowId: rowId,
+                            qty: parseInt(qty, 10) // Ensure qty is an integer
+                        });
+                    }
+                });
+
+                // Send the updated quantities to the server
+                $.ajax({
+                    url: "{{ route('cart.update') }}",
+                    type: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        items: cartItems
+                    },
+                    success: function(data) {
+                        Swal.fire(
+                            'Updated!',
+                            data.success,
+                            'success'
+                        ).then(function() {
+                            location.reload(); // Reload the page to reflect changes
+                        });
+                    },
+                    error: function(xhr) {
+                        console.log('AJAX Error Response:', xhr
+                            .responseText); // Log full response for debugging
+                        let errorMessage = xhr.responseJSON && xhr.responseJSON.error ? xhr
+                            .responseJSON.error : 'An unexpected error occurred.';
+                        Swal.fire(
+                            'Oops...',
+                            errorMessage,
+                            'error'
+                        );
+                    }
+                });
+            });
         });
     </script>
     <script>

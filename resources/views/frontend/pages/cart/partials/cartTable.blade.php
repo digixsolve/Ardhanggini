@@ -11,7 +11,7 @@
                         </div>
                         <div class="">
                             <a class="" href="{{ route('product.details', $item->model->slug) }}">
-                                <div>
+                                <div class="text-center">
                                     <img src="{{ asset('storage/' . $item->model->thumbnail) }}" alt
                                         onerror="this.onerror=null; this.src='{{ asset('images/no-preview.png') }}';" />
                                 </div>
@@ -25,7 +25,7 @@
                             <div class="ps-product__row">
                                 <div class="ps-product__label">Price:</div>
                                 <div class="ps-product__value">
-                                    <span class="ps-product__price">৳{{ $item->price }}</span>
+                                    <span class="ps-product__price">৳ {{ $item->price }}</span>
                                 </div>
                             </div>
                             <div class="ps-product__row ps-product__stock">
@@ -49,12 +49,13 @@
                             </div> --}}
                             <div class="ps-product__row ps-product__quantity d-flex justify-content-center">
                                 <div class="ps-product__value">
+
                                     <div class="def-number-input number-input safari_only">
                                         <button class="minus"
                                             onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                             <i class="icon-minus"></i>
                                         </button>
-                                        <input class="quantity" min="0" name="quantity"
+                                        <input class="quantity_mobile" min="0" name="quantity"
                                             value="{{ $item->qty }}" type="number"
                                             data-row_id="{{ $item->rowId }}" />
                                         <button class="plus"
@@ -63,10 +64,11 @@
                                         </button>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="ps-product__row ps-product__subtotal">
                                 <div class="ps-product__label">Subtotal:</div>
-                                <div class="ps-product__value">৳{{ $item->price * $item->qty }}
+                                <div class="ps-product__value">৳ {{ $item->price * $item->qty }}
                                 </div>
                             </div>
                         </div>
@@ -102,7 +104,8 @@
                             <td class="">
                                 <a class="" href="{{ route('product.details', $item->model->slug) }}">
                                     <div>
-                                        <img class="cart-table-img" src="{{ asset('storage/' . $item->model->thumbnail) }}" alt=""
+                                        <img class="cart-table-img"
+                                            src="{{ asset('storage/' . $item->model->thumbnail) }}" alt=""
                                             onerror="this.onerror=null; this.src='{{ asset('images/no-preview.png') }}';" />
                                         <!-- Fallback image -->
                                     </div>
@@ -113,7 +116,7 @@
                                     href="{{ route('product.details', $item->model->slug) }}">{{ $item->model->name }}</a>
                             </td>
                             <td class="ps-product__meta">
-                                <span class="ps-product__price">৳{{ $item->price }}</span>
+                                <span class="ps-product__price">৳ {{ $item->price }}</span>
                             </td>
                             <td class="ps-product__quantity">
                                 <div class="def-number-input number-input safari_only">
@@ -129,7 +132,7 @@
                                     </button>
                                 </div>
                             </td>
-                            <td class="ps-product__subtotal text-center">৳{{ $item->price * $item->qty }}</td>
+                            <td class="ps-product__subtotal text-center">৳ {{ $item->price * $item->qty }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -138,7 +141,11 @@
         <div class="ps-shopping__footer justify-content-center">
             <div class="ps-shopping__button d-flex justify-content-center align-items-center">
                 <a href="{{ route('cart.clear') }}" class="ps-btn ps-btn--primary delete">Clear All</a>
-                <button class="ps-btn ps-btn--primary" type="button" id="update-cart">Update cart</button>
+                <button class="ps-btn ps-btn--primary d-none d-lg-inline-block" type="button" id="update-cart">Update
+                    cart</button>
+                <button class="ps-btn ps-btn--primary d-lg-none" type="button" id="update-mobile-cart">Update
+                    cart</button>
+
             </div>
         </div>
     </div>
@@ -150,12 +157,12 @@
         <div class="ps-shopping__box">
             <div class="ps-shopping__row">
                 <div class="ps-shopping__label">Subtotal</div>
-                <div class="ps-shopping__price">৳{{ Cart::subtotal() }}</div>
+                <div class="ps-shopping__price">৳ {{ Cart::subtotal() }}</div>
             </div>
 
             <div class="ps-shopping__row">
                 <div class="ps-shopping__label">Total</div>
-                <div class="ps-shopping__price">৳{{ Cart::subtotal() }}</div>
+                <div class="ps-shopping__price">৳ {{ Cart::subtotal() }}</div>
             </div>
             <div class="ps-shopping__checkout">
                 <a class="ps-btn ps-btn--warning" href="{{ route('checkout') }}">Place Order</a>
@@ -173,4 +180,3 @@
         </a>
     </div>
 @endif
-
