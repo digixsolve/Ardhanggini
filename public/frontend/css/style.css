@@ -20719,11 +20719,6 @@ table.dataTable tbody td:last-child {
         border-top: 1px solid #f0f2f5;
         border-bottom: none;
     }
-
-    .ps-widget .ps-widget__block .ps-block-control {
-        display: none;
-    }
-
     .ps-widget .ps-widget__block .ps-widget__content {
         display: block;
         padding-bottom: 0;
