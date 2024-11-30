@@ -3647,7 +3647,7 @@ textarea.form-control {
 }
 
 .ps-product__thumbnail img {
-    width: 100%;
+    width: 100% !important;
     margin: auto;
     border-radius: 4px;
     height: 270px;
@@ -18466,7 +18466,7 @@ table.dataTable tbody td:last-child {
         color: white !important;
         border-radius: 5px;
         width: 50%;
-        font-size: 12px !important;
+        font-size: 10px !important;
         padding: 10px;
     }
     .marquee {
@@ -20259,6 +20259,13 @@ table.dataTable tbody td:last-child {
     .category_product_img {
         width: 100% !important;
         height: 280px !important;
+        object-fit: cover;
+    }
+    .ps-product__thumbnail img {
+        width: 100% !important;
+        margin: auto;
+        border-radius: 4px;
+        height: 140px;
         object-fit: cover;
     }
 }
