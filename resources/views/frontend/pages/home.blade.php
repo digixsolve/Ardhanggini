@@ -165,7 +165,7 @@
                                                     <h5 class="ps-product__title">
                                                         <a
                                                             href="{{ route('product.details', $latest_product->slug) }}">
-                                                            {{ implode(' ', array_slice(explode(' ', $latest_product->name), 0, 8)) }}
+                                                            {{ implode(' ', array_slice(explode(' ', $latest_product->name), 0, 5)) }}
                                                         </a>
                                                     </h5>
                                                     @php
@@ -349,7 +349,7 @@
                                                     <h5 class="ps-product__title">
                                                         <a
                                                             href="{{ route('product.details', $categoryoneproduct->slug) }}">
-                                                            {{ implode(' ', array_slice(explode(' ', $categoryoneproduct->name), 0, 8)) }}
+                                                            {{ implode(' ', array_slice(explode(' ', $categoryoneproduct->name), 0, 5)) }}
                                                         </a>
                                                     </h5>
                                                     @php
@@ -554,7 +554,7 @@
                                                         <h5 class="ps-product__title">
                                                             <a
                                                                 href="{{ route('product.details', $categorytwoproduct->slug) }}">
-                                                                {{ implode(' ', array_slice(explode(' ', $categorytwoproduct->name), 0, 8)) }}
+                                                                {{ implode(' ', array_slice(explode(' ', $categorytwoproduct->name), 0, 5)) }}
                                                             </a>
                                                         </h5>
                                                         @php
@@ -739,7 +739,7 @@
                                                     <h5 class="ps-product__title">
                                                         <a
                                                             href="{{ route('product.details', $categorythreeproduct->slug) }}">
-                                                            {{ implode(' ', array_slice(explode(' ', $categorythreeproduct->name), 0, 8)) }}
+                                                            {{ implode(' ', array_slice(explode(' ', $categorythreeproduct->name), 0, 5)) }}
                                                         </a>
                                                     </h5>
                                                     @php
@@ -1132,7 +1132,7 @@
                                             <div class="ps-product__content">
                                                 <h5 class="ps-product__title">
                                                     <a href="{{ route('product.details', $deal_product->slug) }}">
-                                                        {{ implode(' ', array_slice(explode(' ', $deal_product->name), 0, 8)) }}
+                                                        {{ implode(' ', array_slice(explode(' ', $deal_product->name), 0, 5)) }}
                                                     </a>
                                                 </h5>
                                                 @php
