@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="col-12 col-xl-6">
                                     <div class="ps-product__info">
-                                        <div class="ps-product__title text-22" style="height: auto;">
+                                        <div class="text-22" style="height: auto;">
                                             {{ $product->name }}
                                         </div>
                                         <table class="table ps-table ps-table--oriented m-0">
@@ -261,7 +261,7 @@
                                     <li><i class="icon-truck"></i>Outside Dhaka-150 TK (2-4 Days)</li>
                                     </li>
                                     <li><i class="icon-truck"></i>Dhaka Sub-area-100 TK </li>
-                                    <li><i class="icon-location"></i>
+                                    <li><i class="fa-solid fa-location-dot"></i>
                                         Sub-areas: <br>
                                         <span class="pt-2"
                                             style="position: relative;left: 32px;width: 94%;display: inline-block;">Keraniganj,

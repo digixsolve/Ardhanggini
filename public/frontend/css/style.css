@@ -4284,7 +4284,6 @@ textarea.form-control {
     margin-bottom: 11px;
     padding: 11px 0 0;
     list-style: none;
-    border-top: 1px solid #f0f2f5;
 }
 
 .ps-product--detail .ps-product__bundle li {
@@ -20404,7 +20403,9 @@ table.dataTable tbody td:last-child {
         margin-top: 10px;
         margin-bottom: -22px;
     }
+.fa-location-dot{
 
+}
     .ps-product__title {
         width: 100%;
         height: auto;
