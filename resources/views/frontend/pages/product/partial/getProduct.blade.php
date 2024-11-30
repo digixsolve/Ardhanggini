@@ -109,11 +109,15 @@
                                         onerror="this.onerror=null; this.src='{{ asset('frontend/img/no-product.jpg') }}';">
                                 </figure>
                             </a>
-                            <div class="ps-product__badge">
-                                <div class="ps-badge ps-badge--hot">
-                                    -{{ number_format($product->unit_price > 0 ? (($product->unit_price - $product->unit_discount_price) / $product->unit_price) * 100 : 0, 2) }}%
+                            @if (!empty($product->unit_discount_price))
+                                <div class="ps-product__badge">
+                                    <div class="ps-badge ps-badge--sale">
+                                        -
+                                        {{ !empty($product->unit_discount_price) && $product->unit_discount_price > 0 ? number_format((($product->unit_price - $product->unit_discount_price) / $product->unit_price) * 100, 1) : 0 }}
+                                        % Off
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                         <div class="ps-product__info">
                             <h5 class="ps-product__title shop_product-title">

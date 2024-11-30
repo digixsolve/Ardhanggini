@@ -20207,6 +20207,7 @@ table.dataTable tbody td:last-child {
     .cart-sidebar-btn {
         width: 40px !important;
         height: 40px !important;
+        right: -5px !important;
     }
     .cart-sidebar-btn i {
         font-size: 16px;

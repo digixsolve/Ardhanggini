@@ -761,9 +761,14 @@
                 }
 
                 // Filter form change event
-                $('#filterForm input, #filterForm select').on('change', function() {
-                    fetchProducts();
-                });
+                    $('.category-filter, .subcategory-filter, .brand-filter, #sort-by, #price-filter, #show-per-page').on(
+                    'change',
+                    function() {
+                        fetchProducts();
+                    });
+                // $('#filterForm input, #filterForm select').on('change', function() {
+                //     fetchProducts();
+                // });
 
                 // Pagination click event
                 $(document).on('click', '.pagination a', function(event) {

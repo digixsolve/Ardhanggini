@@ -177,13 +177,13 @@
                                     @endif
                                     <!-- Delivery Info -->
                                     <div class="ps-delivery ps-delivery--info"
-                                        data-background="{{ asset('frontend/img/promotion/banner-delivery-3.jpg') }}">
+                                        data-background="{{ asset('frontend/img/promotion/banner-delivery-2.jpg') }}">
                                         <div class="ps-delivery__content">
-                                            <div class="ps-delivery__text">
+                                            <div class="ps-delivery__text text-center">
                                                 <i class="icon-shield-check"></i><span><strong>100% Secure
                                                         delivery</strong> without contacting the courier</span>
                                             </div>
-                                            <a class="ps-delivery__more" href="#">More</a>
+                                            {{-- <a class="ps-delivery__more" href="#">More</a> --}}
                                         </div>
                                     </div>
                                 </div>
