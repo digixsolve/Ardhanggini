@@ -1,3 +1,11 @@
+<style>
+    label{
+        color: black;
+    }
+    .dataTables_wrapper .dataTables_info{
+        color: black;
+    }
+</style>
 <div class="side-bar">
     <span class="back-side d-lg-none">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -53,8 +61,8 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="profileImageUpload">Choose a new profile image</label>
-                            <input type="file" class="form-control-file" name="profile_image" id="profileImageUploadModal"
-                                required>
+                            <input type="file" class="form-control-file" name="profile_image"
+                                id="profileImageUploadModal" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -115,6 +123,16 @@
                 class="nav-link {{ Route::is('user.wishlist') ? 'active' : '' }}">
                 My Shopping List
             </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a href="javascript:void(0)" onclick="event.preventDefault(); document.getElementById('user-logout-form').submit();"
+                class="nav-link">
+                {{ __('Log Out') }}
+            </a>
+            <!-- Hidden logout form -->
+            <form id="user-logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
+                @csrf
+            </form>
         </li>
     </ul>
 </div>

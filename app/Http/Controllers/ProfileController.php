@@ -56,6 +56,7 @@ class ProfileController extends Controller
             'address_two'                   => 'nullable|string|max:255',
             'zipcode'                       => 'nullable|string|max:10',
             'state'                         => 'nullable|string|max:100',
+            'state'                         => 'country|string|max:100',
             'company_name'                  => 'nullable|string|max:255',
             'company_registration_number'   => 'nullable|string|max:255',
             'company_vat_number'            => 'nullable|string|max:255',

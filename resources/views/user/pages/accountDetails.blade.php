@@ -78,21 +78,17 @@
                                                             </div>
                                                             <!-- Billing Information Section -->
                                                             <div class="col-12 mt-4">
-                                                                <h4>Billing Information</h4>
+                                                                <h4>Shipping Information</h4>
                                                                 <hr>
                                                             </div>
-                                                            <div class="col-12 col-md-3">
-                                                                <div class="form-group">
-                                                                    <label class="ps-checkout__label">House/Block/Road
-                                                                        <span class="text-danger">*</span> </label>
-                                                                    <input class="form-control mb-3" name="address_one"
-                                                                        value="{{ old('address_one', Auth::user()->address_one) }}"
-                                                                        type="text"
-                                                                        placeholder="House number and street name"
-                                                                        required>
+                                                            <div class="col-12 col-md-6">
+                                                                <div class="ps-checkout__group">
+                                                                    <label class="ps-checkout__label">Full
+                                                                        Address</label>
+                                                                    <textarea class="form-control form-control-solid-bg ps-textarea mb-3" name="address_one" rows="1" placeholder="House number and street name">{{ old('address_one', Auth::user()->address_one) }}</textarea>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-md-3">
+                                                            {{-- <div class="col-12 col-md-3">
                                                                 <div class="form-group">
                                                                     <label class="ps-checkout__label">Postcode
                                                                         <span class="text-danger">*</span> </label>
@@ -100,11 +96,10 @@
                                                                         value="{{ old('zipcode', Auth::user()->zipcode) }}"
                                                                         type="text" required>
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
                                                             <div class="col-12 col-md-3">
                                                                 <div class="form-group">
-                                                                    <label class="ps-checkout__label">State
-                                                                        <span class="text-danger">*</span> </label>
+                                                                    <label class="ps-checkout__label">Division</label>
                                                                     <input class="form-control" name="state"
                                                                         value="{{ old('state', Auth::user()->state) }}"
                                                                         type="text" required>
@@ -112,11 +107,20 @@
                                                             </div>
                                                             <div class="col-12 col-md-3">
                                                                 <div class="form-group">
-                                                                    <label class="ps-checkout__label">City/Country
-                                                                        <span class="text-danger">*</span> </label>
-                                                                    <input class="form-control" name="address_two"
-                                                                        value="{{ old('address_two', Auth::user()->address_two) }}"
-                                                                        type="text" required>
+                                                                    <label class="ps-checkout__label">Country</label>
+                                                                    <select name="country" class="form-control select"
+                                                                        id="country">
+                                                                        <option value="Bangladesh"
+                                                                            @selected(Auth::user()->country == 'Bangladesh')>Bangladesh
+                                                                        </option>
+                                                                        <option value="India"
+                                                                            @selected(Auth::user()->country == 'India')>India</option>
+                                                                        <option value="Pakistan"
+                                                                            @selected(Auth::user()->country == 'Pakistan')>Pakistan
+                                                                        </option>
+                                                                        <option value="Nepal"
+                                                                            @selected(Auth::user()->country == 'Nepal')>Nepal</option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
 
@@ -127,8 +131,8 @@
                                                             </div>
                                                             <div class="col-12 col-md-6">
                                                                 <div class="form-group">
-                                                                    <label class="ps-checkout__label">Email address
-                                                                        <span class="text-danger">*</span> </label>
+                                                                    <label class="ps-checkout__label">Email
+                                                                        address</label>
                                                                     <input class="form-control" name="email"
                                                                         value="{{ old('email', Auth::user()->email) }}"
                                                                         type="email" required>
@@ -136,21 +140,20 @@
                                                             </div>
                                                             <div class="col-12 col-md-6">
                                                                 <div>
-                                                                    <label class="ps-checkout__label pb-2">Password
-                                                                        <span class="text-danger">*</span>
-                                                                    </label>
+                                                                    <label
+                                                                        class="ps-checkout__label pb-2">Password</label>
                                                                 </div>
                                                                 <div class="input-group mb-3">
                                                                     <input id="password-field" type="password"
                                                                         class="form-control" name="password"
                                                                         value="*****">
-                                                                    <div class="input-group-append">
+                                                                    {{-- <div class="input-group-append">
                                                                         <button id="toggle-password"
                                                                             class="bg-warning border-0 text-white" type="button">
                                                                             <i id="password-icon"
                                                                                 class="fa fa-eye"></i>
                                                                         </button>
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>
                                                             </div>
                                                             <div class="col-12 mt-4">
