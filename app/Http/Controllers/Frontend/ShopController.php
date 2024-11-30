@@ -30,7 +30,7 @@ class ShopController extends Controller
     public function filterProducts(Request $request)
     {
         $query = Product::query();
-
+        // dd($request->all());
         // Filter by Categories
         if ($request->has('categories') && !empty($request->categories)) {
             $categories = $request->categories;
@@ -50,7 +50,6 @@ class ShopController extends Controller
                 }
             });
         }
-
         // Filter by Brand
         if ($request->has('brands')) {
             $query->whereIn('brand_id', $request->brands);
@@ -87,8 +86,12 @@ class ShopController extends Controller
 
         $perPage = $request->has('showPage') ? (int)$request->showPage : 10;
         $products = $query->active()->paginate($perPage);
-
-        return view('frontend.pages.product.partial.getProduct', compact('products'))->render();
+        $productCount = $products->count();
+        // return view('frontend.pages.product.partial.getProduct', compact('products'))->render();
+        return response()->json([
+            'productCount'   => $productCount,
+            'html' => view('frontend.pages.product.partial.getProduct', compact('products'))->render(),
+        ]);
     }
 
     // public function filterProducts(Request $request)

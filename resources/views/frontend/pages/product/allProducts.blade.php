@@ -5,6 +5,11 @@
             box-sizing: border-box;
         }
 
+        .ps-categogy .ps-categogy__sort select,
+        .ps-categogy .ps-categogy__onsale select {
+            max-width: 250px;
+        }
+
         .checkbox-shop .cbx {
             -webkit-user-select: none;
             user-select: none;
@@ -122,7 +127,7 @@
                             <li class="ps-breadcrumb__item"><a href="/">Home</a></li>
                             <li class="ps-breadcrumb__item">Shop</li>
                         </ul>
-                        <h1 class="ps-categogy__name">Shop<sup>({{ $products->count() }})</sup></h1>
+                        <h1 class="ps-categogy__name">Shop <sup>(<span class="productCount">{{ $products->count() }}</span>)</sup></h1>
                     </div>
                 </div>
                 <div class="col-12 col-md-9 d-flex align-items-center">
@@ -142,7 +147,7 @@
                                         <option value="latest">Latest</option>
                                         <option value="oldest">Oldest</option>
                                         <option value="name-asc">Product Name Ascending(A to Z)</option>
-                                        <option value="name-desc">Product Name Descendind(Z to A)</option>
+                                        <option value="name-desc">Product Name Descending(Z to A)</option>
                                         <option value="price-asc">Price: low to high</option>
                                         <option value="price-desc">Price: high to low</option>
                                     </select>
@@ -257,10 +262,10 @@
                                         <div id="slide-price" class="noUi-target noUi-ltr noUi-horizontal"></div>
                                     </div>
                                     <div class="ps-widget__input">
-                                        <span class="ps-price" id="slide-price-min">৳1.00</span><span
+                                        <span class="ps-price" id="slide-price-min">৳10</span><span
                                             class="bridge">-</span><span class="ps-price"
-                                            id="slide-price-max">৳10000.00</span>
-                                        <input type="hidden" id="price-min" name="price_min" value="1" />
+                                            id="slide-price-max">৳10000</span>
+                                        <input type="hidden" id="price-min" name="price_min" value="10" />
                                         <input type="hidden" id="price-max" name="price_max" value="10000" />
                                     </div>
                                     {{-- <button id="price-filter" class="ps-widget__filter">Filter</button> --}}
@@ -707,8 +712,37 @@
             //     // Initial filtering
             //     filterProducts();
             // });
-
             $(document).ready(function() {
+                var priceSlider = document.getElementById('slide-price');
+                noUiSlider.create(priceSlider, {
+                    start: [1, 10000], // Default values
+                    connect: true,
+                    range: {
+                        'min': [0],
+                        'max': [10000]
+                    },
+                    step: 1,
+                    format: {
+                        to: function(value) {
+                            return '৳' + value.toFixed(2);
+                        },
+                        from: function(value) {
+                            return Number(value.replace('৳', ''));
+                        }
+                    }
+                });
+
+                // Update hidden inputs and displayed values, and trigger filtering
+                priceSlider.noUiSlider.on('update', function(values, handle) {
+                    $('#slide-price-min').text(values[0]);
+                    $('#slide-price-max').text(values[1]);
+                    $('#price-min').val(values[0].replace('৳', ''));
+                    $('#price-max').val(values[1].replace('৳', ''));
+
+                    // Trigger filtering when slider values change
+                    fetchProducts();
+                });
+
                 function fetchProducts(page = 1) {
                     // Collect filter data
                     let categories = [];
@@ -720,15 +754,15 @@
                     let showPage = $('#show-per-page').val();
 
                     $('.category-filter:checked').each(function() {
-                        categories.push($(this).val());
+                        categories.push($(this).data('id'));
                     });
 
                     $('.subcategory-filter:checked').each(function() {
-                        subcategories.push($(this).val());
+                        subcategories.push($(this).data('id'));
                     });
 
                     $('.brand-filter:checked').each(function() {
-                        brands.push($(this).val());
+                        brands.push($(this).data('id'));
                     });
 
                     // Send AJAX request
@@ -749,7 +783,8 @@
                             $('#productContainer').html('<div class="loading-spinner">Loading...</div>');
                         },
                         success: function(response) {
-                            $('#productContainer').html(response);
+                            $('#productContainer').html(response.html);
+                            $('.productCount').html(response.productCount);
                             $('html, body').animate({
                                 scrollTop: $('#productContainer').offset().top
                             }, 500);
@@ -761,7 +796,7 @@
                 }
 
                 // Filter form change event
-                    $('.category-filter, .subcategory-filter, .brand-filter, #sort-by, #price-filter, #show-per-page').on(
+                $('.category-filter, .subcategory-filter, .brand-filter, #sort-by, #price-filter, #show-per-page').on(
                     'change',
                     function() {
                         fetchProducts();

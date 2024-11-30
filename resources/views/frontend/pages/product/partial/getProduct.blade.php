@@ -167,8 +167,8 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <a class="btn btn-primary add_to_cart"
-                                    href="{{ route('buy.now', $product->id) }}">Buy Now</a>
+                                <a class="btn btn-primary add_to_cart" href="{{ route('buy.now', $product->id) }}">Buy
+                                    Now</a>
                                 </a>
                                 <a class="btn btn-outline-primary mr-1 mr-lg-3" href="#"
                                     onclick="addToCartShop(event, {{ $product->id }})">Add to cart</a>
@@ -178,8 +178,8 @@
                 </div>
             @endforeach
         @else
-            <div class="ps-product ps-product--list align-items-center all-product-box">
-                <h5 class="text-warning">No Product Found.</h5>
+            <div class="ps-product ps-product--list align-items-center all-product-box justify-content-center p-4">
+                <h5 class="text-warning m-0 p-4 text-center">No Product Found.</h5>
             </div>
         @endif
     </div>
