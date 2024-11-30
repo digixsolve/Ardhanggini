@@ -17,7 +17,7 @@
 
     <div class="ps-account">
         <section class="user-dashboard py-0 py-lg-8">
-            <div class="container">
+            <div class="container mb-5">
                 <div class="row g-3 g-xl-4 tab-wrap">
                     <div class="col-lg-4 col-xl-3 sticky">
                         <!-- Sidebar here -->
@@ -27,7 +27,7 @@
                         <div class="dashboard-tab bg-white p-5">
                             <div class="title-box3">
                                 <h3>Your Accounts Details</h3>
-                                <p>
+                                <p class="mb-0">
                                     Manage and review your personal account information. Here, you can view and update
                                     essential details related to your profile, including your contact information,
                                     account settings, and security preferences
@@ -136,7 +136,7 @@
                                                             </div>
                                                             <div class="col-12 col-md-6">
                                                                 <div>
-                                                                    <label class="ps-checkout__label pb-2">Password
+                                                                    <label class="ps-checkout__label pb-2 text-black">Password
                                                                         <span class="text-danger">*</span>
                                                                     </label>
                                                                 </div>
@@ -153,7 +153,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 mt-4">
+                                                            <div class="col-12">
                                                                 <input type="submit" value="Save Changes"
                                                                     class="updatebutton btn btn-info w-100">
                                                             </div>
