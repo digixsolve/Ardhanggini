@@ -105,15 +105,15 @@
                                 </div>
                                 <!-- Title -->
                                 <div class="col-12 col-xl-12">
-                                    <p>Billing Address Details</p>
+                                    <p>Address Details</p>
                                 </div>
                                 <!-- House/Block/Road -->
                                 <div class="ps-form__group col-12 col-xl-8">
-                                    <label class="ps-form__label" for="House/Block/Road">House No / Road Name<span
+                                    <label class="ps-form__label" for="House/Block/Road">Full Address<span
                                             class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <input id="address_one" class="form-control ps-form__input" type="text"
-                                            value="{{ old('address_one') }}" placeholder="Enter Your House No / Road Name"  name="address_one" autocomplete="address_one"
+                                            value="{{ old('address_one') }}" placeholder="Enter Your Full Address"  name="address_one" autocomplete="address_one"
                                             required />
                                     </div>
                                     <x-input-error :messages="$errors->get('address_one')" class="mt-2" />
