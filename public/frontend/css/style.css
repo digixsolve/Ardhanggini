@@ -20412,7 +20412,7 @@ table.dataTable tbody td:last-child {
         line-height: 21px;
         display: inline-block !important;
         /* height: 65px !important; */
-        height: 85px !important;
+        height: 60px !important;
     }
 
     .fa-facebook {
@@ -20699,7 +20699,7 @@ table.dataTable tbody td:last-child {
     }
 
     .takeway-products {
-        height: 600px !important;
+        height: 630px !important;
     }
 
     .takeway-slider-img img {
