@@ -122,7 +122,7 @@
                         <div class="ps-product__info">
                             <h5 class="ps-product__title shop_product-title">
                                 <a href="{{ route('product.details', $product->slug) }}">
-                                    {{ $product->name }}
+                                    {{ implode(' ', array_slice(explode(' ', $product->name), 0, 6)) }}
                                 </a>
                             </h5>
                             <div class="ps-product__desc">
@@ -167,9 +167,9 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <a class="ps-btn ps-btn--warning mr-2" href="#"
+                                <a class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3" href="#"
                                     onclick="addToCartShop(event, {{ $product->id }})">Add to cart</a>
-                                <a class="ps-btn ps-btn--warning buy-now-btn"
+                                <a class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 buy-now-btn"
                                     href="{{ route('buy.now', $product->id) }}">Buy Now</a>
                                 </a>
                             </div>

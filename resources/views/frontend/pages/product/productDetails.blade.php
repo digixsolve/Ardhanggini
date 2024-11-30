@@ -452,8 +452,8 @@
                                                 <div>
                                                     <h4 class="" style="height: 70px !important;">
                                                         <a
-                                                            href="{{ route('product.details', $related_product->slug) }}">
-                                                            {{ implode(' ', array_slice(explode(' ', $related_product->name), 0, 8)) }}
+                                                            href="{{ route('product.details', $related_product->slug) }}" style="text-transform: capitalize;">
+                                                            {{ implode(' ', array_slice(explode(' ', $related_product->name), 0, 5)) }}
                                                         </a>
                                                     </h4>
                                                 </div>

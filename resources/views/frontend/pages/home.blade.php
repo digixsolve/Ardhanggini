@@ -409,7 +409,7 @@
                                                             Buy Now
                                                         </a>
                                                         <a href="{{ route('cart.store', $categoryoneproduct->id) }}"
-                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2"
+                                                            class="btn ps-btn--warning my-3 btn-block add_to_cart py-2 buy-now-btn"
                                                             data-product_id="{{ $categoryoneproduct->id }}"
                                                             data-product_qty="1">
                                                             Add To Cart
@@ -615,7 +615,7 @@
                                                         @endif
                                                         <div class="d-flex align-items-center">
                                                             <a href="{{ route('buy.now', $categorytwoproduct->id) }}"
-                                                                class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
+                                                                class="btn ps-btn--warning my-3 warning-2 btn-block py-2 mr-1 mr-lg-3 ">
                                                                 Buy Now
                                                             </a>
                                                             <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
@@ -1187,7 +1187,7 @@
 
                                                 <div class="d-flex align-items-center">
                                                     <a href="{{ route('buy.now', $deal_product->id) }}"
-                                                        class="btn ps-btn--warning my-3 btn-block py-2 mr-1 mr-lg-3 ">
+                                                        class="btn ps-btn--warning my-3 warning-2 btn-block py-2 mr-1 mr-lg-3 ">
                                                         Buy Now
                                                     </a>
                                                     <a href="{{ route('cart.store', $deal_product->id) }}"
@@ -1370,7 +1370,7 @@
                     dots: true, // Show dots navigation
                     loop: true, // Infinite loop
                     autoplay: true, // Auto-scroll slides
-                    autoplayTimeout: 10000, // Time between auto-scroll
+                    autoplayTimeout: 3000, // Time between auto-scroll
                     autoplayHoverPause: true, // Pause on hover
                     mouseDrag: true, // Enable mouse scroll/drag
                     touchDrag: true, // Enable touch support

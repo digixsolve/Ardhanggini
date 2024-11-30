@@ -121,7 +121,7 @@
                                                             <h5 class="ps-product__title">
                                                                 <a
                                                                     href="{{ route('product.details', $category_product->slug) }}">
-                                                                    {{ implode(' ', array_slice(explode(' ', $category_product->name), 0, 8)) }}
+                                                                    {{ implode(' ', array_slice(explode(' ', $category_product->name), 0, 5)) }}
                                                                 </a>
                                                             </h5>
                                                             @if (!empty($category_product->unit_discount_price))
@@ -194,8 +194,8 @@
 
                     <!-- Sidebar Widgets -->
                     <div class="col-md-3 col-12 order-12 order-lg-12">
-                        <div class="category-title-text mb-2">
-                            <h4 class="mb-0 text-dark">Category</h4>
+                        <div class="category-title-text">
+                            <h4 class="mb-0">Category</h4>
                         </div>
                         <div class="ps-widget ps-widget--product px-0 category-mobile">
                             <div class="ps-widget__block pb-0 px-0">

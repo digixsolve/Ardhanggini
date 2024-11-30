@@ -102,7 +102,7 @@
                                             <div class="ps-product__content">
                                                 <h5 class="ps-product__title">
                                                     <a href="{{ route('product.details', $latest_product->slug) }}">
-                                                        {{ implode(' ', array_slice(explode(' ', $latest_product->name), 0, 8)) }}
+                                                        {{ implode(' ', array_slice(explode(' ', $latest_product->name), 0, 5)) }}
                                                     </a>
                                                 </h5>
                                                 @php
