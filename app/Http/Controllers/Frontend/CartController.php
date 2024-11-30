@@ -155,23 +155,25 @@ class CartController extends Controller
         // Validate the request data
         $totalAmount = preg_replace('/[^0-9.]/', '', $request->input('total_amount'));
         $validator = Validator::make($request->all(), [
-            'billing_email' => 'required|email',
-            'billing_first_name' => 'required|string|max:255',
-            'billing_last_name' => 'required|string|max:255',
-            'billing_address_1' => 'required|string|max:255',
-            'billing_state' => 'required|string|max:255',
-            'billing_postcode' => 'required|string|max:20',
-            'billing_phone' => 'required|string|max:20',
+            // 'billing_email' => 'required|email',
+            // 'billing_first_name' => 'required|string|max:255',
+            // 'billing_last_name' => 'required|string|max:255',
+            // 'billing_address_1' => 'required|string|max:255',
+            // 'billing_state' => 'required|string|max:255',
+            // 'billing_postcode' => 'required|string|max:20',
+            // 'billing_phone' => 'required|string|max:20',
             'shipping_first_name' => 'nullable|string|max:255',
-            'shipping_last_name' => 'nullable|string|max:255',
-            'shipping_address_1' => 'nullable|string|max:255',
-            'shipping_state' => 'nullable|string|max:255',
-            'shipping_postcode' => 'nullable|string|max:20',
-            'shipping_phone' => 'nullable|string|max:20',
-            'order_note' => 'nullable|string',
-            'payment_method' => 'required|in:cod,stripe,paypal',
-            'sub_total' => 'required',
-            'total_amount' => 'required|min:0',
+            'shipping_last_name'  => 'nullable|string|max:255',
+            'shipping_address'    => 'nullable|string|max:255',
+            'shipping_email'      => 'required|email',
+            'shipping_phone'      => 'required|string|max:20',
+            'shipping_state'      => 'nullable|string|max:255',
+            'shipping_postcode'   => 'nullable|string|max:20',
+            'shipping_phone'      => 'nullable|string|max:20',
+            'order_note'          => 'nullable|string',
+            'payment_method'      => 'required|in:cod,stripe,paypal',
+            'sub_total'           => 'required',
+            'total_amount'        => 'required|min:0',
             // 'shipping_id' => 'required|exists:shipping_methods,id'
         ], [
             'billing_email.required' => 'The billing email is required.',
@@ -182,9 +184,9 @@ class CartController extends Controller
             'billing_last_name.required' => 'The billing last name is required.',
             'billing_last_name.string' => 'The billing last name must be a string.',
             'billing_last_name.max' => 'The billing last name may not be greater than 255 characters.',
-            'billing_address_1.required' => 'The billing address is required.',
-            'billing_address_1.string' => 'The billing address must be a string.',
-            'billing_address_1.max' => 'The billing address may not be greater than 255 characters.',
+            'billing_address.required' => 'The billing address is required.',
+            'billing_address.string' => 'The billing address must be a string.',
+            'billing_address.max' => 'The billing address may not be greater than 255 characters.',
             'billing_state.required' => 'The billing state is required.',
             'billing_state.string' => 'The billing state must be a string.',
             'billing_state.max' => 'The billing state may not be greater than 255 characters.',
@@ -198,8 +200,8 @@ class CartController extends Controller
             'shipping_first_name.max' => 'The shipping first name may not be greater than 255 characters.',
             'shipping_last_name.string' => 'The shipping last name must be a string.',
             'shipping_last_name.max' => 'The shipping last name may not be greater than 255 characters.',
-            'shipping_address_1.string' => 'The shipping address must be a string.',
-            'shipping_address_1.max' => 'The shipping address may not be greater than 255 characters.',
+            'shipping_address.string' => 'The shipping address must be a string.',
+            'shipping_address.max' => 'The shipping address may not be greater than 255 characters.',
             'shipping_state.string' => 'The shipping state must be a string.',
             'shipping_state.max' => 'The shipping state may not be greater than 255 characters.',
             'shipping_postcode.string' => 'The shipping postcode must be a string.',
@@ -246,7 +248,7 @@ class CartController extends Controller
 
             $billingAddress = $request->input('billing_address_1') . ', ' . $request->input('billing_address_2');
             $shippingAddress = !empty($request->input('shipping_address')) ? $request->input('shipping_address') : $billingAddress;
-            $shipping_method =ShippingMethod::find($request->input('shipping_id'));
+            $shipping_method = ShippingMethod::find($request->input('shipping_id'));
             if ($shipping_method) {
                 $shipping_method_id = $shipping_method->id;
                 $shipping_charge = $shipping_method->price;
@@ -370,10 +372,10 @@ class CartController extends Controller
             // } else if ($order->payment_method == "paypal") {
             //     return view('frontend.pages.cart.paypal', $data);
             // } else {
-                // flash()->success('Order placed successfully!');
-                Session::flash('success', 'Order placed successfully!');
-                // Session::flush();
-                return redirect()->route('checkout.success', $order->order_number);
+            // flash()->success('Order placed successfully!');
+            Session::flash('success', 'Order placed successfully!');
+            // Session::flush();
+            return redirect()->route('checkout.success', $order->order_number);
             // }
         } catch (\Exception $e) {
             DB::rollback();
