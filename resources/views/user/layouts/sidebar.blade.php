@@ -18,8 +18,8 @@
     </span>
     <div class="profile-box">
         <div class="img-box">
-            @if (Auth::user()->image)
-                <img class="img-fluid" src="{{ asset('storage/' . Auth::user()->image) }}"
+            @if (Auth::user()->profile_image)
+                <img class="img-fluid" src="{{ asset('storage/' . Auth::user()->profile_image) }}"
                     alt="{{ Auth::user()->name }}">
             @else
                 <div class="symbol-label" style="background-color: #d3d3d3;">
@@ -57,8 +57,9 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('image.update') }}" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="profileImageUpload">Choose a new profile image</label>

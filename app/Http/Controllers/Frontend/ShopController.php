@@ -54,7 +54,7 @@ class ShopController extends Controller
         if ($request->has('brands')) {
             $query->whereIn('brand_id', $request->brands);
         }
-
+ 
         // Filter by Price Range
         if ($request->has('price_min') && $request->has('price_max')) {
             $query->whereBetween('unit_price', [$request->price_min, $request->price_max]);
