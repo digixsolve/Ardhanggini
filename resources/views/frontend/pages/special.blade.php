@@ -15,26 +15,36 @@
             width: 100%;
             object-fit: cover;
         }
+
+        @media (max-width: 480px) {
+            .special-banner {
+                height: 75px;
+                width: 100%;
+                object-fit: cover;
+                margin-top: 110px;
+            }
+        }
     </style>
     <div class="container-fluid px-0">
         <div class="row">
             <div class="col-lg-12">
                 <div class="special-banner-container">
                     <img class="special-banner" src="{{ asset('storage/' . $special_offer->banner_image) }}"
-                    onerror="this.onerror=null; this.src='{{ asset('images/no-preview2.png') }}';" alt="Special Banner">
+                        onerror="this.onerror=null; this.src='{{ asset('images/no-preview2.png') }}';"
+                        alt="Special Banner">
                 </div>
             </div>
         </div>
     </div>
     <div class="ps-categogy ps-categogy--separate">
         <div class="container">
-            <ul class="ps-breadcrumb">
+            <ul class="ps-breadcrumb faq-breadcumb">
                 <li class="ps-breadcrumb__item"><a href="{{ route('home') }}">Home</a></li>
                 <li class="ps-breadcrumb__item active" aria-current="page">Shop</li>
             </ul>
         </div>
         <div class="ps-categogy__main mb-0">
-            <div class="container">
+            <div class="container px-0">
                 <div class="ps-categogy__product">
                     <div class="row m-0">
                         @if ($special_products)
@@ -114,7 +124,7 @@
                                                     // dd($latest_product->name, $review);
                                                 @endphp
                                                 <div
-                                                    class="d-flex justify-content-between align-items-center mb-3 rating-area">
+                                                    class="d-flex justify-content-between align-items-center rating-area">
                                                     <div class="ps-product__rating">
                                                         @if ($review > 0)
                                                             <div class="br-wrapper br-theme-fontawesome-stars">
@@ -142,14 +152,14 @@
                                                     </div>
                                                 </div>
                                                 @if (!empty($latest_product->unit_discount_price))
-                                                    <div class="ps-product__meta">
+                                                    <div class="ps-product__meta mb-3">
                                                         <span
                                                             class="ps-product__price sale">৳{{ $latest_product->unit_discount_price }}</span>
                                                         <span
                                                             class="ps-product__del">৳{{ $latest_product->unit_price }}</span>
                                                     </div>
                                                 @else
-                                                    <div class="ps-product__meta">
+                                                    <div class="ps-product__meta mb-3">
                                                         <span
                                                             class="ps-product__price sale">৳{{ $latest_product->unit_price }}</span>
                                                     </div>
@@ -160,8 +170,7 @@
                                                         Buy Now
                                                     </a>
                                                     <a href="{{ route('cart.store', $latest_product->id) }}"
-                                                        class="btn btn-outline-primary add_to_cart" ps-btn--wa buy-now-btn"
-                                                        data-product_id="{{ $latest_product->id }}"
+                                                        class="btn btn-outline-primary add_to_cart p-2 p-lg-1" data-product_id="{{ $latest_product->id }}"
                                                         data-product_qty="1">
                                                         Add To Cart
                                                     </a>

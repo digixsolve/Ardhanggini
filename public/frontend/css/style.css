@@ -3755,6 +3755,8 @@ textarea.form-control {
     width: 220px !important;
     margin: 0 !important;
     border-radius: 10px !important;
+    height: 180px !important;
+    object-fit: cover !important;
 }
 
 .top-search-product-img {
@@ -3829,7 +3831,7 @@ textarea.form-control {
     display: block;
     font-size: 16px;
     line-height: 26px;
-    margin-bottom: 13px;
+    /* margin-bottom: 13px; */
     min-height: 44px;
     font-weight: 400;
     color: var(--site-green);
@@ -15084,7 +15086,7 @@ textarea.form-control {
     z-index: 50;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     /* padding-top: 20px; */
-    width: 880px;
+    width: 83%;
     transition: all 0.4s ease;
     /* opacity: 0;
     visibility: hidden; */
@@ -16870,7 +16872,7 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
-    ..ps-noti p .ps-navigation--footer .ps-nav__item a {
+    .ps-noti p .ps-navigation--footer .ps-nav__item a {
         width: 35px;
         height: 44px;
     }
@@ -20901,7 +20903,7 @@ table.dataTable tbody td:last-child {
 
     .ps-navigation--footer {
         position: fixed !important;
-        top: 34px !important;
+        top: 38px !important;
         border-top: 0 !important;
     }
 
@@ -21058,6 +21060,17 @@ table.dataTable tbody td:last-child {
     }
 }
 
+.wishlist-img {
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: cover !important;
+}
+.wishlist-img-td {
+    width: 100% !important;
+    height: 70px !important;
+    object-fit: cover !important;
+    border-radius: 5px;
+}
 @media (max-width: 768px) {
     .ps-product--list .ps-product__quantity {
         padding-bottom: 5px;
@@ -21141,4 +21154,23 @@ table.dataTable tbody td:last-child {
         padding-bottom: 10px !important;
         font-size: 10px !important;
     }
+    .accordion .card-header.collapsed:after {
+        content: "\f067";
+        color: white;
+        border: 1px solid white;
+        border-radius: 100%;
+        width: 20px !important;
+        height: 20px !important;
+        text-align: center;
+        line-height: 1.2 !important;
+        cursor: pointer;
+    }
+    .faq-title{
+        font-size: 12px;
+    }
+}
+.ps-badge-2{
+    top: 12px;
+    left: 0px !important;
+    margin-bottom: 15px !important;
 }

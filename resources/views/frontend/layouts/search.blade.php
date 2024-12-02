@@ -68,13 +68,18 @@
                                     @endif
 
                                     {{-- Add to Cart button --}}
-                                    <a href="{{ route('cart.store', $search_product->id) }}"
-                                        class="ps-btn--warning mb-3 add_to_cart w-100 d-block py-2 text-center"
-                                        data-product_id="{{ $search_product->id }}" data-product_qty="1"
-                                        onclick="addToCart(event, '{{ csrf_token() }}', '{{ route('cart.store', $search_product->id) }}')">
-                                        <span>Add To Cart</span>
-                                    </a>
-
+                                    <div class="d-flex align-items-center">
+                                        <a href="{{ route('buy.now', $search_product->id) }}"
+                                            class="btn btn-primary mr-1 mr-lg-3">
+                                            Buy Now
+                                        </a>
+                                        <a href="{{ route('cart.store', $search_product->id) }}"
+                                            class="btn btn-outline-primary add_to_cart"
+                                            data-product_id="{{ $search_product->id }}" data-product_qty="1"
+                                            onclick="addToCart(event, '{{ csrf_token() }}', '{{ route('cart.store', $search_product->id) }}')">
+                                            Add To Cart
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach

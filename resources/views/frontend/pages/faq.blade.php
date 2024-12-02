@@ -73,7 +73,7 @@
                 <div class="card mb-0 border-0">
                     <div class="card-header collapsed faq-title-bg p-4" data-toggle="collapse"
                         data-target="#collapse{{ $faq->id }}">
-                        <a class="card-title text-white">
+                        <a class="card-title text-white faq-title">
                             Q: {{ $faq->question }}
                         </a>
                     </div>
