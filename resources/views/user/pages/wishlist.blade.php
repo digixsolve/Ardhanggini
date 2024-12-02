@@ -39,13 +39,14 @@
                                                     href="{{ route('product.details', $wishlist->product->slug) }}">
                                                     <div>
                                                         <img src="{{ asset('storage/' . $wishlist->product->thumbnail) }}"
-                                                            alt="alt">
+                                                            alt="alt" class="wishlist-img">
                                                     </div>
                                                 </a>
                                             </div>
                                             <div class="ps-product__content">
                                                 <h5 class="ps-product__title">
-                                                    <a href="{{ route('product.details', optional($wishlist->product)->slug) }}">
+                                                    <a
+                                                        href="{{ route('product.details', optional($wishlist->product)->slug) }}">
                                                         {{ optional($wishlist->product)->name }}
                                                     </a>
                                                 </h5>
@@ -81,11 +82,22 @@
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <div class="ps-product__cart">
+                                                {{-- <div class="ps-product__cart">
                                                     <a href="{{ route('cart.store', $wishlist->product->id) }}"
                                                         class="btn ps-btn--warning add_to_cart"
                                                         data-product_id="{{ $wishlist->product->id }}"
                                                         data-product_qty="1">Add To Cart</a>
+                                                </div> --}}
+                                                <div class="d-flex align-items-center card-cart-btn">
+                                                    <a href="{{ route('buy.now', $wishlist->id) }}"
+                                                        class="btn btn-primary mr-1 mr-lg-3">
+                                                        Buy Now
+                                                    </a>
+                                                    <a href="{{ route('cart.store', $wishlist->id) }}"
+                                                        class="btn btn-outline-primary add_to_cart"
+                                                        data-product_id="{{ $wishlist->id }}" data-product_qty="1">
+                                                        Add To Cart
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -102,10 +114,7 @@
                                                 <th width="30%">Product Name</th>
                                                 <th width="20%">Unit price</th>
                                                 <th width="15%">Stock</th>
-                                                <th width="15%">Add Cart</th>
-                                                <th width="5%">
-                                                    <i class="fa fa-trash" title="Delete quick order"></i>
-                                                </th>
+                                                <th width="20%" class="text-center">Action</th>
                                             </tr>
                                         <tbody>
                                             @foreach ($wishlists as $wishlist)
@@ -115,7 +124,7 @@
                                                         <a class="ps-product__image"
                                                             href="{{ route('product.details', $wishlist->product->slug) }}">
                                                             <img src="{{ asset('storage/' . $wishlist->product->thumbnail) }}"
-                                                                alt="alt">
+                                                                alt="alt" class="wishlist-img-td rounded-2">
                                                         </a>
                                                     </td>
                                                     <td>
@@ -155,16 +164,18 @@
                                                         </span>
                                                     </td>
                                                     <td class="ps-product__cart">
-                                                        <a href="{{ route('cart.store', $wishlist->product->id) }}"
-                                                            class="btn ps-btn--warning add_to_cart"
-                                                            data-product_id="{{ $wishlist->product->id }}"
-                                                            data-product_qty="1">Add To Cart</a>
-                                                    </td>
-                                                    <td>
-                                                        <a class="delete"
-                                                            href="{{ route('wishlist.destroy', $wishlist->id) }}">
-                                                            <i class="icon-cross"></i>
-                                                        </a>
+                                                        <div class="d-flex">
+                                                            <a href="{{ route('cart.store', $wishlist->product->id) }}"
+                                                                class="btn btn-sm btn-outline-primary add_to_cart mr-2"
+                                                                data-product_id="{{ $wishlist->product->id }}"
+                                                                data-product_qty="1">
+                                                                <i class="fa-solid fa-cart-shopping"></i>
+                                                            </a>
+                                                            <a class="delete btn btn-sm btn-outline-primary mr-2"
+                                                                href="{{ route('wishlist.destroy', $wishlist->id) }}">
+                                                                <i class="icon-trash"></i>
+                                                            </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach

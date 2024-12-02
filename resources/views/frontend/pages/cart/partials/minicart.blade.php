@@ -28,9 +28,9 @@
         <span>Subtotal </span>
         <span>৳{{ $subTotal }}</span>
     </div>
-    <div class="ps-cart__footer">
-        <a class="ps-btn ps-btn--outline" href="{{ route('cart') }}">View Cart
+    <div class="ps-cart__footer d-flex">
+        <a class="btn btn-outline-primary mr-2" href="{{ route('cart') }}">View Cart
         </a>
-        <a class="ps-btn ps-btn--warning" href="{{ route('checkout') }}">Checkout</a>
+        <a class="btn btn-primary" href="{{ route('checkout') }}">Checkout</a>
     </div>
 

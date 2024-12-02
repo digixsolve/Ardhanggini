@@ -533,7 +533,7 @@
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Country (optional)</label>
-                                                    <select name="shipping_country" class="select2-selection--single "
+                                                    <select name="shipping_country" class="form-select ps-form__input select2-selection--single "
                                                         id="shipping_country">
                                                         <option value="Bangladesh" selected>Bangladesh</option>
                                                         <option value="India">India</option>
@@ -547,7 +547,7 @@
                                     <div class="col-12">
                                         <div class="ps-checkout__group">
                                             <label class="ps-checkout__label">Order notes (optional)</label>
-                                            <textarea class="ps-textarea" name="order_note" rows="10"
+                                            <textarea class="ps-textarea" name="order_note" rows="6"
                                                 placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                                         </div>
                                     </div>
@@ -654,7 +654,7 @@
                                                 I have read and agree to the website terms and conditions *</label>
                                         </div>
                                     </div>
-                                    <button type="submit" class="ps-btn ps-btn--warning">
+                                    <button type="submit" class="btn btn-primary w-100 mt-4">
                                         Place order
                                     </button>
                                 </div>

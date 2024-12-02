@@ -85,7 +85,7 @@
                                                                 <div class="ps-checkout__group">
                                                                     <label class="ps-checkout__label">Full
                                                                         Address</label>
-                                                                    <textarea class="form-control form-control-solid-bg ps-textarea mb-3" name="address_one" rows="1" placeholder="House number and street name">{{ old('address_one', Auth::user()->address_one) }}</textarea>
+                                                                    <textarea class="form-control form-control-solid-bg ps-textarea mt-2 p-2" name="address_one" rows="1" placeholder="House number and street name">{{ old('address_one', Auth::user()->address_one) }}</textarea>
                                                                 </div>
                                                             </div>
                                                             {{-- <div class="col-12 col-md-3">
