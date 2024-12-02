@@ -241,14 +241,14 @@
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center counter-container">
-                                        <div class="today-count">
+                                        {{-- <div class="today-count">
                                             <small class="mb-0 text-white">Today</small>
                                             <small class="mb-0 text-white fw-bold">{{ $getTodayVisitorCount + 500 }}</small>
-                                        </div>
-                                        {{-- <div class="total-count">
-                                            <small class="mb-0 text-white">Total</small>
-                                            <small class="mb-0 text-white fw-bold">{{ getTotalVisitorCount() + 1000 }}</small>
                                         </div> --}}
+                                        <div class="total-count">
+                                            <small class="mb-0 text-white">Total Visitor</small>
+                                            <small class="mb-0 text-white fw-bold">{{ getTotalVisitorCount() + 1000 }}</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
