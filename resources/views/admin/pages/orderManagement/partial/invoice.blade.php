@@ -1,4 +1,4 @@
-@foreach ($orders as $order)
+@foreach ($userOrders as $order)
     <div class="modal fade" id="printInovice{{ optional($order)->id }}" tabindex="-1"
         aria-labelledby="printInovice{{ optional($order)->id }}Label" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -64,7 +64,7 @@
                                         </div>
 
                                         <div class="d-flex flex-column flex-sm-row gap-7 gap-md-10 fw-bold">
-                                            
+
 
                                             <div class="flex-root d-flex flex-column">
                                                 <span class="text-muted">Shipping Address</span>
