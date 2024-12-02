@@ -9,6 +9,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\ProfileUpdateRequest;
@@ -94,6 +95,52 @@ class ProfileController extends Controller
     /**
      * Delete the user's account.
      */
+
+
+
+    public function imageUpdate(Request $request)
+    {
+        // Validate the uploaded image
+        $validator = Validator::make($request->all(), [
+            'profile_image'  => 'nullable|image|mimes:png,jpg,jpeg,webp|max:3072',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Get the authenticated user
+        $user = $request->user();
+
+        // Check if a new file is uploaded
+        if ($request->hasFile('profile_image')) {
+            $file = $request->file('profile_image');
+            $filePath = 'client/profile_images'; // Folder to save the file
+            $oldFile = $user->profile_image; // Old profile image file path
+
+            // Delete the old profile image if it exists
+            if ($oldFile && Storage::exists("public/$oldFile")) {
+                Storage::delete("public/$oldFile");
+            }
+
+            // Upload the new image
+            $imageName = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs("public/$filePath", $imageName);
+
+            // Update the user's profile image field
+            $user->profile_image = "$filePath/$imageName";
+
+            // Save the user model with the updated profile image
+            $user->save(); // This should work if $user is a valid Eloquent model
+        }
+
+        // Flash success message and redirect back
+        Session::flash('success', 'Profile image updated successfully');
+        return redirect()->back();
+    }
+
+
+
     public function destroy(Request $request)
     {
         // $request->validateWithBag('userDeletion', [

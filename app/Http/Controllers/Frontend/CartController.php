@@ -279,14 +279,14 @@ class CartController extends Controller
                 'billing_zipcode'              => $request->input('billing_postcode'),
                 'billing_state'                => $request->input('billing_state'),
                 'billing_country'              => $request->input('billing_country', 'UK'),
-                'shipping_first_name'          => $request->input('shipping_first_name', $request->input('billing_first_name')),
-                'shipping_last_name'           => $request->input('shipping_last_name', $request->input('billing_last_name')),
-                'shipping_email'               => $request->input('shipping_email', $request->input('billing_email')),
-                'shipping_phone'               => $request->input('shipping_phone', $request->input('billing_phone')),
+                'shipping_first_name'          => $request->input('shipping_first_name'),
+                'shipping_last_name'           => $request->input('shipping_last_name'),
+                'shipping_email'               => $request->input('shipping_email'),
+                'shipping_phone'               => $request->input('shipping_phone'),
                 'shipping_address'             => $shippingAddress,
-                'shipping_zipcode'             => $request->input('shipping_postcode', $request->input('billing_postcode')),
-                'shipping_state'               => $request->input('shipping_state', $request->input('billing_state')),
-                'shipping_country'             => $request->input('shipping_country', $request->input('billing_country')),
+                'shipping_zipcode'             => $request->input('shipping_postcode'),
+                'shipping_state'               => $request->input('shipping_state'),
+                'shipping_country'             => $request->input('shipping_country'),
                 'order_note'                   => $request->input('order_note'),
                 'created_by'                   => auth()->id(),
                 'order_created_at'             => Carbon::now(),
@@ -356,7 +356,7 @@ class CartController extends Controller
                     'order_items' => $order->orderItems,
                     'user'        => $user,
                 ];
-                Mail::to([$request->input('billing_email'), $user->email])->send(new UserOrderMail($user->name, $data, $setting));
+                Mail::to([$request->input('shipping_email'), $user->email])->send(new UserOrderMail($user->name, $data, $setting));
             } catch (\Exception $e) {
                 // Handle PDF save exception
                 // flash()->error('Failed to generate PDF: ' . $e->getMessage());

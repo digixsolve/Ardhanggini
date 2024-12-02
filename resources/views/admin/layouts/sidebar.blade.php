@@ -323,7 +323,6 @@
                                 'admin.deal-banner.index',
                                 'admin.deal-banner.create',
                                 'admin.deal-banner.edit',
-                                'admin.catalogue.index',
                                 'admin.privacy-policy.index',
                                 'admin.privacy-policy.create',
                                 'admin.privacy-policy.edit',
@@ -342,11 +341,6 @@
                                         'admin.deal-banner.edit',
                                     ],
                                     'route' => 'admin.deal-banner.index',
-                                ],
-                                [
-                                    'title' => 'Catalogue',
-                                    'routes' => ['admin.catalogue.index'],
-                                    'route' => 'admin.catalogue.index',
                                 ],
                                 [
                                     'title' => 'Terms & Condition',

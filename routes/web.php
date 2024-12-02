@@ -5,7 +5,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\VendorProfileController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -31,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::patch('/profile', [ProfileController::class, 'profileUpdate'])->name('profile.update');
+    Route::put('/image/update', [ProfileController::class, 'imageUpdate'])->name('image.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout');
     Route::post('checkout/store', [CartController::class, 'checkoutStore'])->name('checkout.store');
