@@ -1,5 +1,5 @@
-@if (optional($userOrders))
-    @foreach ($userOrders as $order)
+@if (optional($orders))
+    @foreach ($orders as $order)
         <div class="modal fade" id="printInovice{{ optional($order)->id }}" tabindex="-1"
             aria-labelledby="printInovice{{ optional($order)->id }}Label" aria-hidden="true">
             <div class="modal-dialog modal-lg">
