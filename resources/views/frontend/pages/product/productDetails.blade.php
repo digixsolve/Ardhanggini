@@ -201,9 +201,13 @@
                                                     @if (is_array($product->color) && !empty($product->color))
                                                         @foreach ($product->color as $color)
                                                             <div class="round">
-                                                                <input type="checkbox" id="{{ $color }}"
-                                                                    value="{{ $color }}">
-                                                                <label for="{{ $color }}"></label>
+                                                                <input type="checkbox"
+                                                                    id="color-{{ strtolower(str_replace(' ', '-', $color)) }}"
+                                                                    value="{{ strtolower($color) }}" name="colors[]"
+                                                                    @if (in_array(strtolower($color), $selectedColors)) checked @endif>
+                                                                <!-- Check if the color is selected -->
+                                                                <label
+                                                                    for="color-{{ strtolower(str_replace(' ', '-', $color)) }}">{{ $color }}</label>
                                                             </div>
                                                         @endforeach
                                                     @else
