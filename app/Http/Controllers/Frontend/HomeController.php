@@ -245,14 +245,28 @@ class HomeController extends Controller
 
     public function globalSearch(Request $request)
     {
-        $query = $request->get('term', '');
+        $query = trim($request->get('term', '')); // Trim leading/trailing spaces
+        $query = preg_replace('/\s+/', ' ', $query); // Normalize multiple spaces to a single space
+        $query = addslashes($query);  // Sanitize special characters
+
+        // Step 3: Get products with a case-insensitive match for the name
         $data['products'] = Product::join('brands', 'products.brand_id', '=', 'brands.id')
             ->whereRaw('LOWER(products.name) LIKE ?', ['%' . strtolower($query) . '%'])
             ->where('products.status', 'published')
             ->where('brands.status', 'active')
-            ->limit(10)
-            ->get(['products.id', 'products.name', 'products.slug', 'products.thumbnail', 'products.box_price', 'products.box_discount_price', 'products.unit_price', 'products.unit_discount_price', 'products.box_stock', 'products.short_description']);
-
+            ->limit(50)  // Temporarily increase the limit for debugging
+            ->get([
+                'products.id',
+                'products.name',
+                'products.slug',
+                'products.thumbnail',
+                'products.box_price',
+                'products.box_discount_price',
+                'products.unit_price',
+                'products.unit_discount_price',
+                'products.box_stock',
+                'products.short_description'
+            ]);
         $data['categorys'] = Category::where('name', 'LIKE', '%' . $query . '%')->limit(2)->get(['id', 'name', 'slug']);
         $data['brands'] = Brand::where('name', 'LIKE', '%' . $query . '%')->where('status', 'active')->limit(5)->get(['id', 'name', 'slug']);
 

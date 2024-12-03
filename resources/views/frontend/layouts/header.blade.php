@@ -536,7 +536,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-10 pr-0">
-                        <div class="d-flex justify-content-center align-items-center pt-5">
+                        <div class="d-flex justify-content-center align-items-center" style="padding-top: 2rem;">
                             <div class="ps-navigation__left">
                                 <nav class="ps-main-menu">
                                     <div class="menu-container">
