@@ -187,11 +187,11 @@
                                                                     data-hide-search="true" name="status"
                                                                     data-placeholder="Select an option">
                                                                     <option></option>
-                                                                    <option value="processing">Processing</option>
-                                                                    <option value="shipped">Shipped</option>
-                                                                    <option value="delivered">Delivered</option>
-                                                                    <option value="cancelled">Cancelled</option>
-                                                                    <option value="returned">Returned</option>
+                                                                    <option value="processing" @selected($order->status == 'processing')>Processing</option>
+                                                                    <option value="shipped" @selected($order->status == 'shipped')>Shipped</option>
+                                                                    <option value="delivered" @selected($order->status == 'delivered')>Delivered</option>
+                                                                    <option value="cancelled" @selected($order->status == 'cancelled')>Cancelled</option>
+                                                                    <option value="returned" @selected($order->status == 'returned')>Returned</option>
                                                                 </x-metronic.select-option>
                                                             </div>
                                                             {{-- <div class="mt-4">
