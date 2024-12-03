@@ -198,28 +198,32 @@
                                             <div class="pt-4">
                                                 <p class="fw-bold">Color Variation</p>
                                                 <div class="color-one">
-                                                    @if (is_array($product->color) && !empty($product->color))
-                                                        @foreach ($product->color as $color)
-                                                            <div class="round">
-                                                                <!-- Check if the 'value' field exists and generate checkbox with color name -->
-                                                                <input type="checkbox"
-                                                                    id="color-{{ strtolower(str_replace(' ', '-', $color['value'])) }}"
-                                                                    value="{{ strtolower($color['value']) }}"
-                                                                    name="colors[]"
-                                                                    @if (in_array(strtolower($color['value']), $selectedColors)) checked @endif>
-                                                                <label
-                                                                    for="color-{{ strtolower(str_replace(' ', '-', $color['value'])) }}">
-                                                                    {{ $color['value'] }}
-                                                                </label>
-                                                            </div>
-                                                        @endforeach
+                                                    @php
+                                                        // Decode the JSON string if it's not already an array
+                                                        $colors = is_string($product->color)
+                                                            ? json_decode($product->color, true)
+                                                            : $product->color;
+                                                    @endphp
+
+                                                    @if (is_array($colors) && !empty($colors))
+                                                        <div class="color-options">
+                                                            <!-- Multi-select dropdown -->
+                                                            <select name="color" id="color-select"
+                                                                class="form-control select">
+                                                                @foreach ($colors as $color)
+                                                                    <option value="{{ strtolower($color['value']) }}">
+                                                                        {{ ucfirst($color['value']) }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
                                                     @else
                                                         <p class="site-color">No colors available</p>
-                                                        <!-- Display when no color is available -->
                                                     @endif
-
                                                 </div>
                                             </div>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -264,9 +268,9 @@
                                     data-product_id="{{ $product->id }}" href="#">Add to cart</a> --}}
 
                                 <div class="d-flex align-items-center">
-                                    <a class="btn btn-primary mr-1 mr-lg-3" data-product_id="{{ $product->id }}"
-                                        href="#">Buy Now</a>
-                                    <a class="btn btn-outline-primary add_to_cart"
+                                    <a class="btn btn-primary mr-1 mr-lg-3"
+                                        href="{{ route('buy.now',$product->id) }}">Buy Now</a>
+                                    <a class="btn btn-outline-primary add_to_cart_btn_product_single"
                                         data-product_id="{{ $product->id }}" href="#">Add to cart</a>
                                 </div>
 
