@@ -17,9 +17,9 @@ class ClientController extends Controller
     {
         $data = [
 
-            'pendingOrdersCount'   => Order::latest('created_at')->where('status', 'pending')->count(),
-            'deliveredOrdersCount' => Order::latest('created_at')->where('status', 'delivered')->count(),
-            'orders'               => Order::with('orderItems')->where('user_id', Auth::user()->id)->latest('created_at')->get(),
+            'pendingOrdersCount'   => Order::latest('id')->where('status', 'pending')->count(),
+            'deliveredOrdersCount' => Order::latest('id')->where('status', 'delivered')->count(),
+            'orders'               => Order::with('orderItems')->where('user_id', Auth::user()->id)->latest('id')->get(),
         ];
         return view('user.pages.orderHistory', $data);
     }
