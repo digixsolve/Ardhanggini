@@ -98,8 +98,8 @@
                                                                                     style="background-image:url({{ asset('storage/' . optional($item->product)->thumbnail) }});"></span>
                                                                             </a>
 
-                                                                            <div class="ms-5">
-                                                                                <div class="fw-bold">
+                                                                            <div class="ms-5 text-start">
+                                                                                <div class="fw-bold text-start">
                                                                                     {{ optional($item->product)->name }}
                                                                                 </div>
                                                                                 {{-- <div class="fs-7 text-muted">Delivery Date:
