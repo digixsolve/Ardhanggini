@@ -13,7 +13,7 @@
                     style="max-width: 480px;margin: 0 auto;background-color: #ffffff;padding: 0px;border: 1px solid #ddd;border-radius: 5px;">
                     <tr>
                         <td class="header"
-                            style="text-align: center;padding: 0px 0;background: #500066; color: #ffffff; border-radius: 5px 5px 0 0; ">
+                            style="text-align: center;padding: 0px 0;background-color: #500066; color: #ffffff; border-radius: 5px 5px 0 0; ">
                             <div style="display: flex; justify-content: center">
                                 {{-- <img src="{{ asset('storage/' . optional($setting)->site_logo_black) }}" alt=""
                                     style="max-width: 100%;height: 60px;display: block;padding: 20px;" /> --}}
@@ -106,11 +106,14 @@
                     </tr>
                     <tr>
                         <td class="footer"
-                            style="text-align: center;padding: 10px 0;background: #eee;color: #252525;border-radius: 0 0 5px 5px;">
-                            <p style="margin: 0; font-size: 16px; padding: 15px;">
+                            style="text-align: center;padding: 10px 0;background-color: #eee;color: #252525;border-radius: 0 0 5px 5px;">
+                            {{-- <p style="margin: 0; font-size: 16px; padding: 15px;">
                                 &copy; Copyright @ 2024 {{ optional($setting)->website_name }}, All rights reserved.
                                 <br> You are receiving this email because you ordered on our
                                 website ardhanggini.com
+                            </p> --}}
+                            <p style="margin: 0; font-size: 16px; padding: 15px;">
+                                &copy; Copyright @ 2024 Ardhanggini, All rights reserved <a href="ardhanggini.com">ardhanggini.com</a>
                             </p>
                         </td>
                     </tr>
