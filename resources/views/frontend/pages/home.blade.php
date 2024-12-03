@@ -92,7 +92,7 @@
             @if ($latest_products->count() > 0)
                 <section class="ps-section--latest-horizontal pb-5">
                     <section class="container px-0">
-                        <h3 class="ps-section__title pb-3 pb-lg-5" style="font-size: 30px;">Latest products <img
+                        <h3 class="ps-section__title pb-3 pb-lg-5 mb-0" style="font-size: 30px;">Latest products <img
                                 width="40px"
                                 src="https://static.vecteezy.com/system/resources/previews/011/999/958/non_2x/fire-icon-free-png.png"
                                 alt="" style="position: relative;top: -3px;left: -6px;"></h3>
@@ -273,7 +273,7 @@
                         <div class="col-lg-12">
                             <div class="d-flex justify-content-center align-items-center pb-4 pb-lg-5">
                                 <div>
-                                    <h3 class="mb-0" style="font-size: 30px;">
+                                    <h3 class="ps-section__title mb-0" style="font-size: 30px;">
                                         {{ optional($categoryone)->name }}</h3>
                                 </div>
                             </div>
@@ -470,7 +470,7 @@
                         <div class="col-lg-12">
                             <div class="d-flex justify-content-center align-items-center pb-4 pb-lg-5">
                                 <div>
-                                    <h3 class="mb-0" style="font-size: 30px;">
+                                    <h3 class="ps-section__title mb-0" style="font-size: 30px;">
                                         {{ optional($categorytwo)->name }}</h3>
                                 </div>
                                 {{-- <div class="pl-3">
@@ -668,7 +668,7 @@
             @if ($categorythree && $categorythreeproducts->count() > 0)
                 <div class="container px-0">
                     <div class="ps-home--block">
-                        <h3 class="ps-section__title text-center pb-3 pb-lg-5" style="font-size: 30px;">
+                        <h3 class="ps-section__title pb-3 pb-lg-5 mb-0 text-center" style="font-size: 30px;">
                             {{ optional($categorythree)->name }}</h3>
                         <div class="ps-section__content">
                             <div class="row m-0">
@@ -978,7 +978,7 @@
         @if ($deals->count() > 0 || $deal_products->count() > 0)
             <div class="container px-0">
                 @if ($deals->count() > 0)
-                    <h3 class="ps-section__title text-center" style="font-size: 30px;">This week deals</h3>
+                <h3 class="ps-section__title pb-3 pb-lg-5 mb-0" style="font-size: 30px;">This week deals</h3>
                     <div class="ps-promo ps-promo--home">
                         <!-- First Row: First Three Deals -->
                         <div class="row">
@@ -1067,7 +1067,7 @@
                 @if ($deal_products->count() > 0)
                     <section class="ps-section--deals">
                         <div class="ps-section__header">
-                            <h3 class="ps-section__title" style="font-size: 30px;">Best Deals of the week!</h3>
+                            <h3 class="ps-section__title pb-3 pb-lg-5 mb-0" style="font-size: 30px;">Best Deals of the week!</h3>
                         </div>
                         <div class="ps-section__carousel">
                             <div class="dealCarousel owl-carousel">
