@@ -785,9 +785,9 @@
                         success: function(response) {
                             $('#productContainer').html(response.html);
                             $('.productCount').html(response.productCount);
-                            $('html, body').animate({
-                                scrollTop: $('#productContainer').offset().top
-                            }, 500);
+                            // $('html, body').animate({
+                            //     scrollTop: $('#productContainer').offset().top
+                            // }, 500);
                         },
                         error: function(xhr) {
                             console.error("Error fetching products:", xhr.responseText);
