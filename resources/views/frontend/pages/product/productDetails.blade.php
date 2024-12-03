@@ -255,12 +255,12 @@
                                 {{-- <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
                                     data-product_id="{{ $product->id }}" href="#">Add to cart</a> --}}
 
-                                    <div class="d-flex align-items-center">
-                                        <a class="btn btn-primary mr-1 mr-lg-3"
-                                            data-product_id="{{ $product->id }}" href="#">Buy Now</a>
-                                        <a class="btn btn-outline-primary add_to_cart"
-                                            data-product_id="{{ $product->id }}" href="#">Add to cart</a>
-                                    </div>
+                                <div class="d-flex align-items-center">
+                                    <a class="btn btn-primary mr-1 mr-lg-3" data-product_id="{{ $product->id }}"
+                                        href="#">Buy Now</a>
+                                    <a class="btn btn-outline-primary add_to_cart"
+                                        data-product_id="{{ $product->id }}" href="#">Add to cart</a>
+                                </div>
 
                                 <ul class="ps-product__bundle">
                                     <li><i class="icon-bag2"></i>Full cash on delivery</li>
@@ -457,9 +457,9 @@
                                             </div>
                                             <div class="ps-product__content">
                                                 <div>
-                                                    <h4 class="" style="height: 70px !important;">
-                                                        <a
-                                                            href="{{ route('product.details', $related_product->slug) }}" style="text-transform: capitalize;">
+                                                    <h4 class="" style="height: 50px !important;">
+                                                        <a href="{{ route('product.details', $related_product->slug) }}"
+                                                            style="text-transform: capitalize;">
                                                             {{ implode(' ', array_slice(explode(' ', $related_product->name), 0, 5)) }}
                                                         </a>
                                                     </h4>
@@ -493,7 +493,7 @@
                                                         @if (count($related_product->reviews) > 0)
                                                             Reviews ({{ count($related_product->reviews) }})
                                                         @else
-
+                                                            <p class="no-found mb-1 pb-0">N/A</p>
                                                         @endif
                                                     </div>
                                                 </div>
