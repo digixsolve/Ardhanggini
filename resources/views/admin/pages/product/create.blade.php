@@ -122,7 +122,7 @@
                                         <div class="mb-5 fv-row">
                                             <x-metronic.label class="form-label">Tags</x-metronic.label>
                                             <input class="form-control" name="tags" id="product_Tags"
-                                                :value="old('tags')" />
+                                                value="old('tags')" />
                                         </div>
                                         <div class="mb-5 fv-row">
                                             <x-metronic.label class="form-label">Short Description</x-metronic.label>
@@ -483,7 +483,7 @@
                                 </x-metronic.label>
                                 <!-- Input element for Tagify -->
                                 <input class="form-control d-flex align-items-center" name="color"
-                                    :value="old('color')" id="color" />
+                                    value="old('color')" id="color" />
                             </div>
                         </div>
                     </div>
