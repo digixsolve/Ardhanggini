@@ -483,7 +483,7 @@
                                 </x-metronic.label>
                                 <!-- Input element for Tagify -->
                                 <input class="form-control d-flex align-items-center" name="color"
-                                    value="old('color')" id="color" />
+                                    value="{{ old('color') }}" id="color" />
                             </div>
                         </div>
                     </div>
