@@ -483,7 +483,7 @@
                                 </x-metronic.label>
                                 <!-- Input element for Tagify -->
                                 <input class="form-control d-flex align-items-center" name="color"
-                                    :value="old('color')" id="kt_tagify_color" />
+                                    :value="old('color')" id="color" />
                             </div>
                         </div>
                     </div>
@@ -499,11 +499,13 @@
                 var input1 = document.querySelector("#product_Tags");
                 var input2 = document.querySelector("#product_meta_tags");
                 var input3 = document.querySelector("#product_meta_keyword");
+                var input4 = document.querySelector("#color");
 
                 // Initialize Tagify components on the above inputs
                 new Tagify(input1);
                 new Tagify(input2);
                 new Tagify(input3);
+                new Tagify(input4);
             });
 
 
