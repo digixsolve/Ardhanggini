@@ -464,207 +464,209 @@
                     </div>
                 </div>
             </div>
-            <section class="ps-section--latest">
-                <div class="container px-0">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="d-flex justify-content-center align-items-center pb-4 pb-lg-5">
-                                <div>
-                                    <h3 class="ps-section__title mb-0" style="font-size: 30px;">
-                                        {{ optional($categorytwo)->name }}</h3>
+            @if ($categorytwo && $categorytwoproducts->count() > 0)
+                <section class="ps-section--latest">
+                    <div class="container px-0">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="d-flex justify-content-center align-items-center pb-4 pb-lg-5">
+                                    <div>
+                                        <h3 class="ps-section__title mb-0" style="font-size: 30px;">
+                                            {{ optional($categorytwo)->name }}</h3>
+                                    </div>
+                                    {{-- <div class="pl-3">
+                                        <img class="" src="{{ asset('storage/' . $categorytwo->logo) }}"
+                                            alt="{{ $categorytwo->name }}" width="50px">
+                                    </div> --}}
                                 </div>
-                                {{-- <div class="pl-3">
-                                    <img class="" src="{{ asset('storage/' . $categorytwo->logo) }}"
-                                        alt="{{ $categorytwo->name }}" width="50px">
-                                </div> --}}
                             </div>
                         </div>
-                    </div>
-                    <div class="ps-section__carousel mb-0">
-                        <div class="takeway-slider owl-carousel owl-loaded owl-drag">
-                            <div class="owl-stage-outer">
-                                <div class="owl-stage"
-                                    style="transform: translate3d(-2228px, 0px, 0px); transition: 1s; width: 4952px;">
-                                    @foreach ($categorytwoproducts as $categorytwoproduct)
-                                        <div class="owl-item" style="width: 247.6px;">
-                                            <div class="ps-section__product">
-                                                <div class="ps-product takeway-products ps-product--standard ctg-one-pr">
-                                                    <div class="ps-product__thumbnail">
-                                                        <a class="ps-product__image takeway-slider-img"
-                                                            href="{{ route('product.details', $categorytwoproduct->slug) }}">
-                                                            <figure>
-                                                                @if (!empty($categorytwoproduct->thumbnail))
-                                                                    @php
-                                                                        $thumbnailPath =
-                                                                            'storage/' . $categorytwoproduct->thumbnail;
-                                                                        $thumbnailSrc = file_exists(
-                                                                            public_path($thumbnailPath),
-                                                                        )
-                                                                            ? asset($thumbnailPath)
-                                                                            : asset('frontend/img/no-product.jpg');
-                                                                    @endphp
-                                                                    <img src="{{ $thumbnailSrc }}"
-                                                                        alt="{{ $categorytwoproduct->meta_title }}"
-                                                                        width="210" height="210" class=""/>
-                                                                @else
-                                                                    @foreach ($categorytwoproduct->multiImages->slice(0, 2) as $image)
+                        <div class="ps-section__carousel mb-0">
+                            <div class="takeway-slider owl-carousel owl-loaded owl-drag">
+                                <div class="owl-stage-outer">
+                                    <div class="owl-stage"
+                                        style="transform: translate3d(-2228px, 0px, 0px); transition: 1s; width: 4952px;">
+                                        @foreach ($categorytwoproducts as $categorytwoproduct)
+                                            <div class="owl-item" style="width: 247.6px;">
+                                                <div class="ps-section__product">
+                                                    <div class="ps-product takeway-products ps-product--standard ctg-one-pr">
+                                                        <div class="ps-product__thumbnail">
+                                                            <a class="ps-product__image takeway-slider-img"
+                                                                href="{{ route('product.details', $categorytwoproduct->slug) }}">
+                                                                <figure>
+                                                                    @if (!empty($categorytwoproduct->thumbnail))
                                                                         @php
-                                                                            $imagePath = 'storage/' . $image->photo;
-                                                                            $imageSrc = file_exists(
-                                                                                public_path($imagePath),
+                                                                            $thumbnailPath =
+                                                                                'storage/' . $categorytwoproduct->thumbnail;
+                                                                            $thumbnailSrc = file_exists(
+                                                                                public_path($thumbnailPath),
                                                                             )
-                                                                                ? asset($imagePath)
-                                                                                : // : asset('frontend/img/no-product.jpg');
-                                                                                asset('frontend/img/no-product.jpg');
+                                                                                ? asset($thumbnailPath)
+                                                                                : asset('frontend/img/no-product.jpg');
                                                                         @endphp
-                                                                        <img src="{{ $imageSrc }}"
+                                                                        <img src="{{ $thumbnailSrc }}"
                                                                             alt="{{ $categorytwoproduct->meta_title }}"
                                                                             width="210" height="210" class=""/>
-                                                                    @endforeach
-                                                                @endif
-                                                            </figure>
-                                                        </a>
-                                                        <div class="ps-product__actions">
-                                                            <div class="ps-product__item" data-toggle="tooltip"
-                                                                data-placement="left" title="Wishlist">
-                                                                <a class="add_to_wishlist"
-                                                                    href="{{ route('wishlist.store', $categorytwoproduct->id) }}"><i
-                                                                        class="fa fa-heart-o"></i></a>
+                                                                    @else
+                                                                        @foreach ($categorytwoproduct->multiImages->slice(0, 2) as $image)
+                                                                            @php
+                                                                                $imagePath = 'storage/' . $image->photo;
+                                                                                $imageSrc = file_exists(
+                                                                                    public_path($imagePath),
+                                                                                )
+                                                                                    ? asset($imagePath)
+                                                                                    : // : asset('frontend/img/no-product.jpg');
+                                                                                    asset('frontend/img/no-product.jpg');
+                                                                            @endphp
+                                                                            <img src="{{ $imageSrc }}"
+                                                                                alt="{{ $categorytwoproduct->meta_title }}"
+                                                                                width="210" height="210" class=""/>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </figure>
+                                                            </a>
+                                                            <div class="ps-product__actions">
+                                                                <div class="ps-product__item" data-toggle="tooltip"
+                                                                    data-placement="left" title="Wishlist">
+                                                                    <a class="add_to_wishlist"
+                                                                        href="{{ route('wishlist.store', $categorytwoproduct->id) }}"><i
+                                                                            class="fa fa-heart-o"></i></a>
+                                                                </div>
+                                                                <div class="ps-product__item" data-toggle="tooltip"
+                                                                    data-placement="left" title="Quick view">
+                                                                    <a href="#" data-toggle="modal"
+                                                                        data-target="#popupQuickview{{ $categorytwoproduct->id }}">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </a>
+                                                                </div>
+
                                                             </div>
-                                                            <div class="ps-product__item" data-toggle="tooltip"
-                                                                data-placement="left" title="Quick view">
-                                                                <a href="#" data-toggle="modal"
-                                                                    data-target="#popupQuickview{{ $categorytwoproduct->id }}">
-                                                                    <i class="fa fa-eye"></i>
+                                                            @if (!empty($categorytwoproduct->unit_discount_price))
+                                                                <div class="ps-product__badge">
+                                                                    <div class="ps-badge ps-badge--sale">
+                                                                        -
+                                                                        {{ !empty($categorytwoproduct->unit_discount_price) && $categorytwoproduct->unit_discount_price > 0 ? number_format((($categorytwoproduct->unit_price - $categorytwoproduct->unit_discount_price) / $categorytwoproduct->unit_price) * 100, 1) : 0 }}
+                                                                        % Off
+                                                                    </div>
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                        <div class="ps-product__content">
+                                                            <h5 class="ps-product__title">
+                                                                <a
+                                                                    href="{{ route('product.details', $categorytwoproduct->slug) }}">
+                                                                    {{ implode(' ', array_slice(explode(' ', $categorytwoproduct->name), 0, 5)) }}
+                                                                </a>
+                                                            </h5>
+                                                            @php
+                                                                $review =
+                                                                    count($categorytwoproduct->reviews) > 0
+                                                                        ? optional($categorytwoproduct->reviews)->sum(
+                                                                                'rating',
+                                                                            ) / count($categorytwoproduct->reviews)
+                                                                        : 0;
+                                                            @endphp
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center mb-3 rating-area">
+                                                                <div class="ps-product__rating"
+                                                                    style="{{ $review <= 0 ? 'visibility: hidden;' : '' }}">
+                                                                    @if ($review > 0)
+                                                                        <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                            <select class="ps-rating"
+                                                                                data-read-only="true"
+                                                                                style="display: none;">
+                                                                                @php
+                                                                                    $maxRating = min(
+                                                                                        5,
+                                                                                        max(1, floor($review)),
+                                                                                    );
+                                                                                @endphp
+                                                                                @for ($i = 1; $i <= $maxRating; $i++)
+                                                                                    <option value="{{ $i }}">
+                                                                                        {{ $i }}</option>
+                                                                                @endfor
+                                                                            </select>
+                                                                        </div>
+                                                                    @else
+                                                                        <span class="no-found">N/A</span>
+                                                                    @endif
+                                                                </div>
+                                                                <div
+                                                                    style="{{ count($categorytwoproduct->reviews) == 0 ? 'visibility: hidden;' : '' }}">
+                                                                    @if (count($categorytwoproduct->reviews) > 0)
+                                                                        Reviews
+                                                                        ({{ count($categorytwoproduct->reviews) }})
+                                                                    @else
+                                                                        <span class="no-found">N/A</span>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                            @if (!empty($categorytwoproduct->unit_discount_price))
+                                                                <div class="ps-product__meta ctg-two-prices">
+                                                                    <span
+                                                                        class="ps-product__price sale">৳{{ $categorytwoproduct->unit_discount_price }}</span>
+                                                                    <span
+                                                                        class="ps-product__del">৳{{ $categorytwoproduct->unit_price }}</span>
+                                                                </div>
+                                                            @else
+                                                                <div class="ps-product__meta pb-3">
+                                                                    <span
+                                                                        class="ps-product__price sale">৳{{ $categorytwoproduct->unit_price }}</span>
+                                                                </div>
+                                                            @endif
+                                                            <div class="d-flex align-items-center">
+                                                                <a href="{{ route('buy.now', $categorytwoproduct->id) }}"
+                                                                    class="btn btn-primary btn-block mr-1 mr-lg-3 ">
+                                                                    Buy Now
+                                                                </a>
+                                                                <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
+                                                                    class="btn btn-outline-primary add_to_cart "
+                                                                    data-product_id="{{ $categorytwoproduct->id }}"
+                                                                    data-product_qty="1">
+                                                                    Add To Cart
                                                                 </a>
                                                             </div>
-
-                                                        </div>
-                                                        @if (!empty($categorytwoproduct->unit_discount_price))
-                                                            <div class="ps-product__badge">
-                                                                <div class="ps-badge ps-badge--sale">
-                                                                    -
-                                                                    {{ !empty($categorytwoproduct->unit_discount_price) && $categorytwoproduct->unit_discount_price > 0 ? number_format((($categorytwoproduct->unit_price - $categorytwoproduct->unit_discount_price) / $categorytwoproduct->unit_price) * 100, 1) : 0 }}
-                                                                    % Off
-                                                                </div>
-                                                            </div>
-                                                        @endif
-                                                    </div>
-                                                    <div class="ps-product__content">
-                                                        <h5 class="ps-product__title">
-                                                            <a
-                                                                href="{{ route('product.details', $categorytwoproduct->slug) }}">
-                                                                {{ implode(' ', array_slice(explode(' ', $categorytwoproduct->name), 0, 5)) }}
-                                                            </a>
-                                                        </h5>
-                                                        @php
-                                                            $review =
-                                                                count($categorytwoproduct->reviews) > 0
-                                                                    ? optional($categorytwoproduct->reviews)->sum(
-                                                                            'rating',
-                                                                        ) / count($categorytwoproduct->reviews)
-                                                                    : 0;
-                                                        @endphp
-                                                        <div
-                                                            class="d-flex justify-content-between align-items-center mb-3 rating-area">
-                                                            <div class="ps-product__rating"
-                                                                style="{{ $review <= 0 ? 'visibility: hidden;' : '' }}">
-                                                                @if ($review > 0)
-                                                                    <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                        <select class="ps-rating"
-                                                                            data-read-only="true"
-                                                                            style="display: none;">
-                                                                            @php
-                                                                                $maxRating = min(
-                                                                                    5,
-                                                                                    max(1, floor($review)),
-                                                                                );
-                                                                            @endphp
-                                                                            @for ($i = 1; $i <= $maxRating; $i++)
-                                                                                <option value="{{ $i }}">
-                                                                                    {{ $i }}</option>
-                                                                            @endfor
-                                                                        </select>
+                                                            <div class="ps-product__actions ps-product__group-mobile">
+                                                                <div class="ps-product__quantity">
+                                                                    <div class="def-number-input number-input safari_only">
+                                                                        <button class="minus"
+                                                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i
+                                                                                class="icon-minus"></i>
+                                                                        </button>
+                                                                        <input class="quantity" min="0"
+                                                                            name="quantity" value="1"
+                                                                            type="number" />
+                                                                        <button class="plus"
+                                                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i
+                                                                                class="icon-plus"></i>
+                                                                        </button>
                                                                     </div>
-                                                                @else
-                                                                    <span class="no-found">N/A</span>
-                                                                @endif
-                                                            </div>
-                                                            <div
-                                                                style="{{ count($categorytwoproduct->reviews) == 0 ? 'visibility: hidden;' : '' }}">
-                                                                @if (count($categorytwoproduct->reviews) > 0)
-                                                                    Reviews
-                                                                    ({{ count($categorytwoproduct->reviews) }})
-                                                                @else
-                                                                    <span class="no-found">N/A</span>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                        @if (!empty($categorytwoproduct->unit_discount_price))
-                                                            <div class="ps-product__meta ctg-two-prices">
-                                                                <span
-                                                                    class="ps-product__price sale">৳{{ $categorytwoproduct->unit_discount_price }}</span>
-                                                                <span
-                                                                    class="ps-product__del">৳{{ $categorytwoproduct->unit_price }}</span>
-                                                            </div>
-                                                        @else
-                                                            <div class="ps-product__meta pb-3">
-                                                                <span
-                                                                    class="ps-product__price sale">৳{{ $categorytwoproduct->unit_price }}</span>
-                                                            </div>
-                                                        @endif
-                                                        <div class="d-flex align-items-center">
-                                                            <a href="{{ route('buy.now', $categorytwoproduct->id) }}"
-                                                                class="btn btn-primary btn-block mr-1 mr-lg-3 ">
-                                                                Buy Now
-                                                            </a>
-                                                            <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
-                                                                class="btn btn-outline-primary add_to_cart "
-                                                                data-product_id="{{ $categorytwoproduct->id }}"
-                                                                data-product_qty="1">
-                                                                Add To Cart
-                                                            </a>
-                                                        </div>
-                                                        <div class="ps-product__actions ps-product__group-mobile">
-                                                            <div class="ps-product__quantity">
-                                                                <div class="def-number-input number-input safari_only">
-                                                                    <button class="minus"
-                                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i
-                                                                            class="icon-minus"></i>
-                                                                    </button>
-                                                                    <input class="quantity" min="0"
-                                                                        name="quantity" value="1"
-                                                                        type="number" />
-                                                                    <button class="plus"
-                                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i
-                                                                            class="icon-plus"></i>
-                                                                    </button>
                                                                 </div>
-                                                            </div>
 
-                                                            <div class="ps-product__item cart" data-toggle="tooltip"
-                                                                data-placement="left" title="Add to cart"><a
-                                                                    href="#"><i class="fa fa-eye"></i></a>
-                                                            </div>
-                                                            <div class="ps-product__item" data-toggle="tooltip"
-                                                                data-placement="left" title="Wishlist"><a
-                                                                    class="add_to_wishlist"
-                                                                    href="{{ route('wishlist.store', $categorytwoproduct->id) }}"><i
-                                                                        class="fa fa-heart-o"></i></a>
-                                                            </div>
+                                                                <div class="ps-product__item cart" data-toggle="tooltip"
+                                                                    data-placement="left" title="Add to cart"><a
+                                                                        href="#"><i class="fa fa-eye"></i></a>
+                                                                </div>
+                                                                <div class="ps-product__item" data-toggle="tooltip"
+                                                                    data-placement="left" title="Wishlist"><a
+                                                                        class="add_to_wishlist"
+                                                                        href="{{ route('wishlist.store', $categorytwoproduct->id) }}"><i
+                                                                            class="fa fa-heart-o"></i></a>
+                                                                </div>
 
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            @endif
             @if ($categorythree && $categorythreeproducts->count() > 0)
                 <div class="container px-0">
                     <div class="ps-home--block">
