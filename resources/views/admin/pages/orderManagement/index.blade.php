@@ -180,7 +180,7 @@
                                                         @method('PUT')
                                                         <div class="card-body pt-0 justify-content-start text-start">
                                                             <div class="text-start">
-                                                                <x-metronic.label>Change The Delivery Status</x-metronic.label>
+                                                                <x-metronic.label class="col-lg-12">Change The Delivery Status</x-metronic.label>
                                                                 <x-metronic.select-option
                                                                     id="kt_ecommerce_add_product_status_select"
                                                                     class="form-select mb-2" data-control="select2"
