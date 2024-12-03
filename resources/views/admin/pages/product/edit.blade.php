@@ -167,8 +167,6 @@
                                     {{ __('Add Color') }}
                                 </x-metronic.label>
                                 <!-- Input element for Tagify -->
-                                <input class="form-control" name="color" id="product_color"
-                                                value="{{ old('color', $product->color) }}" />
                                 <input class="form-control d-flex align-items-center" name="color"
                                     :value="old('color', $product->color)" id="kt_tagify_color" />
                             </div>

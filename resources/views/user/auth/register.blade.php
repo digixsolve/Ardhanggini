@@ -138,12 +138,10 @@
 
                                 <!-- City/Country -->
                                 <div class="ps-form__group col-12 col-xl-4">
-                                    <label class="ps-form__label" for="City">City<span
-                                            class="text-danger">*</span></label>
+                                    <label class="ps-form__label" for="City">City</label>
                                     <div class="input-group">
                                         <input id="address_two" class="form-control ps-form__input" type="text"
-                                            name="address_two" placeholder="Enter Your City Name" value="{{ old('address_two') }}" autocomplete="address_two"
-                                            required />
+                                            name="address_two" placeholder="Enter Your City Name" value="{{ old('address_two') }}" autocomplete="address_two"/>
                                     </div>
                                     <x-input-error :messages="$errors->get('address_two')" class="mt-2" />
                                 </div>
