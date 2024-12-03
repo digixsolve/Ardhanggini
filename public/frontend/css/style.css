@@ -20679,7 +20679,7 @@ table.dataTable tbody td:last-child {
 }
 
 .ps-block-control {
-    display: none;
+    display: none !important;
 }
 
 .ps-widget__block-shop {
@@ -20722,7 +20722,7 @@ table.dataTable tbody td:last-child {
     }
 
     .ps-block-control {
-        display: block;
+        display: block !important;
     }
 
     .cst-bought-pr {

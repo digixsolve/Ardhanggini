@@ -167,10 +167,10 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <a class="btn btn-primary add_to_cart" href="{{ route('buy.now', $product->id) }}">Buy
+                                <a class="btn btn-primary add_to_cart mr-1 mr-lg-3" href="{{ route('buy.now', $product->id) }}">Buy
                                     Now</a>
                                 </a>
-                                <a class="btn btn-outline-primary mr-1 mr-lg-3" href="#"
+                                <a class="btn btn-outline-primary " href="#"
                                     onclick="addToCartShop(event, {{ $product->id }})">Add to cart</a>
                             </div>
                         </div>
