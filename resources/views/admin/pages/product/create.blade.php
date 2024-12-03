@@ -482,8 +482,8 @@
                                     {{ __('Add Color') }}
                                 </x-metronic.label>
                                 <!-- Input element for Tagify -->
-                                <input class="form-control" name="color" id="product_colors"
-                                    :value="old('color')" />
+                                <input class="form-control d-flex align-items-center" name="color"
+                                    :value="old('color')" id="kt_tagify_color" />
                             </div>
                         </div>
                     </div>
@@ -499,13 +499,11 @@
                 var input1 = document.querySelector("#product_Tags");
                 var input2 = document.querySelector("#product_meta_tags");
                 var input3 = document.querySelector("#product_meta_keyword");
-                var input4 = document.querySelector("#product_colors");
 
                 // Initialize Tagify components on the above inputs
                 new Tagify(input1);
                 new Tagify(input2);
                 new Tagify(input3);
-                new Tagify(input4);
             });
 
 
