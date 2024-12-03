@@ -88,21 +88,20 @@
                                                                     <textarea class="form-control form-control-solid-bg ps-textarea mt-2 p-2" name="address_one" rows="1" placeholder="House number and street name">{{ old('address_one', Auth::user()->address_one) }}</textarea>
                                                                 </div>
                                                             </div>
-                                                            {{-- <div class="col-12 col-md-3">
-                                                                <div class="form-group">
-                                                                    <label class="ps-checkout__label">Postcode
-                                                                        <span class="text-danger">*</span> </label>
-                                                                    <input class="form-control" name="zipcode"
-                                                                        value="{{ old('zipcode', Auth::user()->zipcode) }}"
-                                                                        type="text" required>
-                                                                </div>
-                                                            </div> --}}
                                                             <div class="col-12 col-md-3">
                                                                 <div class="form-group">
-                                                                    <label class="ps-checkout__label">Division</label>
+                                                                    <label class="ps-checkout__label">Upazila</label>
+                                                                    <input class="form-control" name="zipcode"
+                                                                        value="{{ old('zipcode', Auth::user()->zipcode) }}"
+                                                                        type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-md-3">
+                                                                <div class="form-group">
+                                                                    <label class="ps-checkout__label">District</label>
                                                                     <input class="form-control" name="state"
                                                                         value="{{ old('state', Auth::user()->state) }}"
-                                                                        type="text" required>
+                                                                        type="text">
                                                                 </div>
                                                             </div>
                                                             <div class="col-12 col-md-3">

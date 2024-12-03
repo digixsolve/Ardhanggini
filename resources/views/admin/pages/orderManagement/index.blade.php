@@ -93,7 +93,7 @@
                         <th>Created At</th>
                         <th>Price</th>
                         <th>QTY</th>
-                        <th>Payment Status</th>
+                        {{-- <th>Payment Status</th> --}}
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -122,13 +122,13 @@
                                 <td>{{ $order->created_at->format('Y-m-d') }}</td>
                                 <td><span class="text-info fw-bold">৳</span>{{ $order->total_amount }}</td>
                                 <td>{{ $order->quantity }}</td>
-                                <td>
+                                {{-- <td>
                                     @if ($order->payment_status == 'unpaid')
                                         <span class="badge py-3 px-4 fs-7 badge-danger">Unpaid</span>
                                     @elseif ($order->payment_status == 'paid')
                                         <span class="badge py-3 px-4 fs-7 badge-light-success">Paid</span>
                                     @endif
-                                </td>
+                                </td> --}}
                                 <td>
                                     @if ($order->status == 'pending')
                                         <span class="badge py-3 px-4 fs-7 badge-light-primary">Pending</span>
@@ -168,7 +168,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="changeDeliveryStatusLabel">Change
-                                                        Delivery Status</h5>
+                                                        Delivery Status (Order Number : #{{ $order->order_number }})</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
@@ -178,30 +178,34 @@
                                                         enctype="multipart/form-data">
                                                         @csrf
                                                         @method('PUT')
-                                                        <div class="card-body pt-0">
-                                                            <div>
-                                                                <div class="text-muted fs-7">Change The Delivery Status
-                                                                </div>
+                                                        <div class="card-body pt-0 justify-content-start text-start">
+                                                            <div class="text-start">
+                                                                <x-metronic.label class="col-lg-12">Change The Delivery Status</x-metronic.label>
                                                                 <x-metronic.select-option
                                                                     id="kt_ecommerce_add_product_status_select"
                                                                     class="form-select mb-2" data-control="select2"
                                                                     data-hide-search="true" name="status"
                                                                     data-placeholder="Select an option">
                                                                     <option></option>
-                                                                    <option value="processing">Processing</option>
-                                                                    <option value="shipped">Shipped</option>
-                                                                    <option value="delivered">Delivered</option>
-                                                                    <option value="cancelled">Cancelled</option>
-                                                                    <option value="returned">Returned</option>
+                                                                    <option value="processing" @selected($order->status == 'processing')>Processing</option>
+                                                                    <option value="shipped" @selected($order->status == 'shipped')>Shipped</option>
+                                                                    <option value="delivered" @selected($order->status == 'delivered')>Delivered</option>
+                                                                    <option value="cancelled" @selected($order->status == 'cancelled')>Cancelled</option>
+                                                                    <option value="returned" @selected($order->status == 'returned')>Returned</option>
                                                                 </x-metronic.select-option>
                                                             </div>
-                                                            <div class="mt-4">
+                                                            {{-- <div class="mt-4">
                                                                 <x-metronic.label class="form-label">Delivery Tracking
                                                                     ID</x-metronic.label>
                                                                 <x-metronic.input type="text"
                                                                     name="external_order_id" class="form-control mb-2"
                                                                     placeholder="Add Product Delivery ID By Royal Mail"></x-metronic.input>
-                                                            </div>
+                                                            </div> --}}
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <x-metronic.button type="submit" class="primary">
+                                                                {{ __('Update') }}
+                                                            </x-metronic.button>
                                                         </div>
                                                     </form>
                                                 </div>

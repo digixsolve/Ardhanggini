@@ -519,17 +519,17 @@
 
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">Division *</label>
+                                                    <label class="ps-checkout__label">District </label>
                                                     <input class="ps-input" type="text" name="shipping_state" />
                                                 </div>
                                             </div>
-                                            {{-- <div class="col-12 col-md-6">
+                                            <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">Postcode *</label>
+                                                    <label class="ps-checkout__label">Upazila </label>
                                                     <input class="ps-input" type="text"
                                                         name="shipping_postcode" />
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Country (optional)</label>
