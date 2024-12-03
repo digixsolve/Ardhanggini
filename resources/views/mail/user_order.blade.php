@@ -14,11 +14,11 @@
                     <tr>
                         <td class="header"
                             style="text-align: center;padding: 0px 0;background-color: #500066; color: #ffffff; border-radius: 5px 5px 0 0; ">
-                            <div style="display: flex; justify-content: center">
+                            <div style="display:flex;justify-content: center;">
                                 {{-- <img src="{{ asset('storage/' . optional($setting)->site_logo_black) }}" alt=""
                                     style="max-width: 100%;height: 60px;display: block;padding: 20px;" /> --}}
                                 <img src="https://i.ibb.co.com/PrHfD92/Ardhanggini-logo-White.png" alt=""
-                                    style="max-width: 100%;height: 60px;display: block;padding: 20px;" />
+                                    style="max-width: 100%;height: 60px;display:flex;justify-content: center;padding: 20px;" />
                             </div>
                             <div
                                 style="text-align: center;color: #fff;width: 75%;margin: auto;padding-top: 0px;padding-bottom: 30px;">
