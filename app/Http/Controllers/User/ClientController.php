@@ -17,9 +17,9 @@ class ClientController extends Controller
     {
         $data = [
 
-            'pendingOrdersCount' => Order::where('status', 'pending')->count(),
-            'deliveredOrdersCount' => Order::where('status', 'delivered')->count(),
-            'orders' => Order::with('orderItems')->where('user_id', Auth::user()->id)->latest('created_at')->get(),
+            'pendingOrdersCount'   => Order::latest('created_at')->where('status', 'pending')->count(),
+            'deliveredOrdersCount' => Order::latest('created_at')->where('status', 'delivered')->count(),
+            'orders'               => Order::with('orderItems')->where('user_id', Auth::user()->id)->latest('created_at')->get(),
         ];
         return view('user.pages.orderHistory', $data);
     }
@@ -34,7 +34,7 @@ class ClientController extends Controller
     public function quickOrder()
     {
         $data = [
-            'products' => Product::inRandomOrder()->active()->get(),
+            'products'         => Product::inRandomOrder()->active()->get(),
             'related_products' => Product::select('id', 'slug', 'meta_title', 'thumbnail', 'name', 'box_discount_price','unit_discount_price', 'box_price', 'unit_price')->with('multiImages')->where('status', 'published')->inRandomOrder()->limit(12)->get(),
         ];
         return view('user.pages.quickOrder', $data);
