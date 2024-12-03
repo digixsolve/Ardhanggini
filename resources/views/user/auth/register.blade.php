@@ -455,7 +455,7 @@
                                 </h6>
                             </div>
                             <div class="ps-form__submit pt-3">
-                                <x-primary-button class="ps-btn ps-btn--warning text-primary" type="submit">
+                                <x-primary-button class="btn btn-primary" type="submit">
                                     {{ __('Register') }}
                                 </x-primary-button>
                             </div>
