@@ -247,7 +247,7 @@ class HomeController extends Controller
     {
         $query = $request->get('term', '');
         $data['products'] = Product::join('brands', 'products.brand_id', '=', 'brands.id')
-            ->where('products.name', 'LIKE', '%' . $query . '%')
+            ->whereRaw('LOWER(products.name) LIKE ?', ['%' . strtolower($query) . '%'])
             ->where('products.status', 'published')
             ->where('brands.status', 'active')
             ->limit(10)
