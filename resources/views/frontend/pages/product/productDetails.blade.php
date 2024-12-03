@@ -201,19 +201,23 @@
                                                     @if (is_array($product->color) && !empty($product->color))
                                                         @foreach ($product->color as $color)
                                                             <div class="round">
+                                                                <!-- Check if the 'value' field exists and generate checkbox with color name -->
                                                                 <input type="checkbox"
-                                                                    id="color-{{ strtolower(str_replace(' ', '-', $color)) }}"
-                                                                    value="{{ strtolower($color) }}" name="colors[]"
-                                                                    @if (in_array(strtolower($color), $selectedColors)) checked @endif>
-                                                                <!-- Check if the color is selected -->
+                                                                    id="color-{{ strtolower(str_replace(' ', '-', $color['value'])) }}"
+                                                                    value="{{ strtolower($color['value']) }}"
+                                                                    name="colors[]"
+                                                                    @if (in_array(strtolower($color['value']), $selectedColors)) checked @endif>
                                                                 <label
-                                                                    for="color-{{ strtolower(str_replace(' ', '-', $color)) }}">{{ $color }}</label>
+                                                                    for="color-{{ strtolower(str_replace(' ', '-', $color['value'])) }}">
+                                                                    {{ $color['value'] }}
+                                                                </label>
                                                             </div>
                                                         @endforeach
                                                     @else
                                                         <p class="site-color">No colors available</p>
-                                                        <!-- Default text when no color is available -->
+                                                        <!-- Display when no color is available -->
                                                     @endif
+
                                                 </div>
                                             </div>
                                         </div>
