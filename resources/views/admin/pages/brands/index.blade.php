@@ -38,7 +38,7 @@
         </div>
         <div class="card-body table-responsive">
             <table class="table my-datatable table-striped table-row-bordered gy-5 gs-7 border rounded">
-                <thead>
+                <thead align="center">
                     <tr class="fw-bold fs-6 text-gray-800 px-7">
                         <th width="10%">SL No.</th>
                         <th width="25%">Logo</th>
