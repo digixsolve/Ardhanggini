@@ -30,8 +30,8 @@
 .btn-primary {
     width: 50%;
     color: #fff;
-    background-color: #500066;
-    border: 1px solid #500066;
+    background-color: var(--site-green);
+    border: 1px solid var(--site-green);
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 5px;
@@ -44,9 +44,9 @@
 }
 .btn-primary:hover {
     width: 50%;
-    color: #500066;
+    color: var(--site-green);
     background-color: transparent;
-    border: 1px solid #500066;
+    border: 1px solid var(--site-green);
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 5px;
@@ -54,9 +54,9 @@
 }
 .btn-outline-primary {
     width: 50%;
-    color: #500066;
+    color: var(--site-green);
     background-color: transparent;
-    border: 1px solid #500066;
+    border: 1px solid var(--site-green);
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 5px;
@@ -65,8 +65,8 @@
 .btn-outline-primary:hover {
     width: 50%;
     color: #fff;
-    background-color: #500066;
-    border: 1px solid #500066;
+    background-color: var(--site-green);
+    border: 1px solid var(--site-green);
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 5px;
@@ -3191,7 +3191,7 @@ textarea.form-control {
     display: none;
     width: 60px;
     height: 60px;
-    background-color: #500066;
+    background-color: var(--site-green);
     border-radius: 3px;
     color: white;
     font-size: 12px;
@@ -3206,7 +3206,7 @@ textarea.form-control {
     display: none;
     width: 290px;
     height: 160px;
-    background-color: #500066;
+    background-color: var(--site-green);
     border-radius: 3px;
     color: white;
     font-size: 12px;
@@ -3220,7 +3220,7 @@ textarea.form-control {
 .category-banner .no-preview-2 {
     display: none;
     height: 160px;
-    background-color: #500066;
+    background-color: var(--site-green);
     border-radius: 3px;
     color: white;
     font-size: 20px;
@@ -13569,11 +13569,11 @@ textarea.form-control {
 }
 
 .ps-social__link.whatsapp .ps-tooltip {
-    background-color: #500066;
+    background-color: var(--site-green);
 }
 
 .ps-social__link.whatsapp .ps-tooltip::before {
-    border-top-color: #500066;
+    border-top-color: var(--site-green);
 }
 
 .ps-social__link:hover .ps-tooltip {
@@ -13607,7 +13607,7 @@ textarea.form-control {
 }
 
 .ps-social__link:hover.envelope {
-    color: #500066;
+    color: var(--site-green);
 }
 
 .ps-social--color li {
@@ -13646,7 +13646,7 @@ textarea.form-control {
 }
 
 .ps-social--color .ps-social__link.whatsapp {
-    background-color: #500066;
+    background-color: var(--site-green);
 }
 
 .ps-social--color .ps-social__link.envelope {
@@ -14815,7 +14815,7 @@ textarea.form-control {
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
-    color: #500066;
+    color: var(--site-green);
 }
 
 .ps-header .ps-header__icons .ps-header__item i {
@@ -19479,8 +19479,8 @@ table.dataTable tbody td:last-child {
     height: 34px;
     margin: 0 4px;
     font-size: 14px;
-    background-color: #500066;
-    border-color: #500066;
+    background-color: var(--site-green);
+    border-color: var(--site-green);
     font-weight: bold;
     display: inline-flex;
     justify-content: center;
@@ -20055,7 +20055,7 @@ table.dataTable tbody td:last-child {
     text-align: center;
     font-size: 122px;
     font-weight: bold;
-    color: #500066;
+    color: var(--site-green);
 }
 
 .sub-counter p {
@@ -20695,7 +20695,7 @@ table.dataTable tbody td:last-child {
 .category-title-text {
     background: white;
     padding: 10px;
-    border-bottom: 2px solid #500066;
+    border-bottom: 2px solid var(--site-green);
 }
 .dataTables_wrapper .dataTables_length,
 .dataTables_wrapper .dataTables_filter,
@@ -20704,7 +20704,19 @@ table.dataTable tbody td:last-child {
 .dataTables_wrapper .dataTables_paginate {
     color: #4a0e6d !important;
 }
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: var(--site-green);
+    border-color: var(--site-green);
+}
+.mobile-center{
+    justify-content: center !important;
+    margin-bottom: 48px;
+}
 @media only screen and (max-width: 768px) {
+.text-m-center{
+    text-align: center !important;
+}
     .shop-action-all {
         display: flex;
         justify-content: space-between;
@@ -21124,8 +21136,8 @@ table.dataTable tbody td:last-child {
     .btn-primary {
         width: 50%;
         color: #fff;
-        background-color: #500066;
-        border: 1px solid #500066;
+        background-color: var(--site-green);
+        border: 1px solid var(--site-green);
         padding-left: 15px;
         padding-right: 15px;
         padding-top: 10px;
@@ -21134,9 +21146,9 @@ table.dataTable tbody td:last-child {
     }
     .btn-primary:hover {
         width: 50%;
-        color: #fff;
+        color: var(--site-green);
         background-color: transparent;
-        border: 1px solid #500066;
+        border: 1px solid var(--site-green);
         padding-left: 15px;
         padding-right: 15px;
         padding-top: 10px;
@@ -21145,9 +21157,9 @@ table.dataTable tbody td:last-child {
     }
     .btn-outline-primary {
         width: 50%;
-        color: #500066;
+        color: var(--site-green);
         background-color: transparent;
-        border-color: #500066;
+        border-color: var(--site-green);
         padding-left: 15px;
         padding-right: 15px !important;
         padding-top: 10px !important;
