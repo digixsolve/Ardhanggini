@@ -137,19 +137,19 @@
                             <h5 class="ps-block__title text-center mb-0">Visitor Count</h5>
                             <div class="visitor-box">
                                 <div class="main-counter">
-                                    <h1 class="mb-0">00</h1>
+                                    <h1 class="mb-0">{{ $getOnlineVisitorCount + 10 }}</h1>
                                     <div class="sub-counter">
                                         <p>ONLINE NOW</p>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="today-count">
+                                    {{-- <div class="today-count">
                                         <small class="mb-0 text-white">Today</small>
                                         <small class="mb-0 text-white fw-bold">70</small>
-                                    </div>
+                                    </div> --}}
                                     <div class="total-count">
                                         <small class="mb-0 text-white">Total</small>
-                                        <small class="mb-0 text-white fw-bold">70</small>
+                                        <small class="mb-0 text-white fw-bold">{{ getTotalVisitorCount() + 1000 }}</small>
                                     </div>
                                 </div>
                             </div>

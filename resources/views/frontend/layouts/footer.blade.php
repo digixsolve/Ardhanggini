@@ -198,7 +198,7 @@
 
                                 </div>
                                 <p class="ps-footer__work">
-                                    Saturday to Friday: 11 AM - 6 PM
+                                    Saturday to Friday: 11 AM - 6PM
                                     <a
                                         href="mailto:{{ optional($setting)->contact_email }}">{{ optional($setting)->contact_email }}</a>
                                 </p>
