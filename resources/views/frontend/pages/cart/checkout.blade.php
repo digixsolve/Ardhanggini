@@ -526,14 +526,14 @@
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Upazila </label>
-                                                    <input class="ps-input" type="text"
-                                                        name="shipping_postcode" />
+                                                    <input class="ps-input" type="text" name="shipping_postcode" />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Country (optional)</label>
-                                                    <select name="shipping_country" class="form-select ps-form__input select2-selection--single "
+                                                    <select name="shipping_country"
+                                                        class="form-select ps-form__input select2-selection--single "
                                                         id="shipping_country">
                                                         <option value="Bangladesh" selected>Bangladesh</option>
                                                         <option value="India">India</option>
@@ -581,7 +581,6 @@
                                     <div class="ps-title col-lg-12">Shipping <span class="text-danger">*</span></div>
                                     <div class="ps-checkout__checkbox col-lg-12">
                                         @if ($subTotal > 3999)
-
                                             <div class="form-check">
                                                 <input class="form-check-input" name="shipping_id" type="radio"
                                                     id="shipping-0" data-shipping_price="0" value="0" checked />
@@ -704,6 +703,11 @@
                         totalPriceSpan.textContent = total.toFixed(2); // Update the visible total price
                     });
                 });
+                const defaultShippingRadio = document.querySelector('input[name="shipping_id"]:checked');
+                if (defaultShippingRadio) {
+                    defaultShippingRadio.dispatchEvent(new Event('change'));
+                }
+
             });
         </script>
     @endpush

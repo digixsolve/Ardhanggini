@@ -13,22 +13,29 @@
                     style="max-width: 480px;margin: 0 auto;background-color: #ffffff;padding: 0px;border: 1px solid #ddd;border-radius: 5px;">
                     <tr>
                         <td class="header"
-                            style="text-align: center;padding: 0px 0;background-color: #500066; color: #ffffff; border-radius: 5px 5px 0 0; ">
-                            <div style="display:flex;justify-content: center;">
-                                {{-- <img src="{{ asset('storage/' . optional($setting)->site_logo_black) }}" alt=""
-                                    style="max-width: 100%;height: 60px;display: block;padding: 20px;" /> --}}
-                                <img src="https://i.ibb.co.com/PrHfD92/Ardhanggini-logo-White.png" alt=""
-                                    style="max-width: 100%;height: 60px;display:flex;justify-content: center;padding: 20px;" />
-                            </div>
-                            <div
-                                style="text-align: center;color: #fff;width: 75%;margin: auto;padding-top: 0px;padding-bottom: 30px;">
-                                <h1>Your order is on the way!</h1>
-                                <p style="font-weight: 500">
-                                    We received your order today <span style="font-weight: bold;">"
-                                        {{ $data['order']->order_created_at }}"</span>
-                                    . Thank you for your order!
-                                </p>
-                            </div>
+                            style="text-align: center; padding: 0px; background-color: #500066; color: #ffffff; border-radius: 5px 5px 0 0;">
+                            <table style="width: 100%; border-spacing: 0; text-align: center;">
+                                <tr>
+                                    <td>
+                                        <img src="https://i.ibb.co.com/PrHfD92/Ardhanggini-logo-White.png"
+                                            alt="Logo"
+                                            style="max-width: 100%; height: 60px; margin: 20px auto; display: block;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="text-align: center; color: #fff; width: 75%; margin: auto; padding-top: 0px; padding-bottom: 30px;">
+                                        <div style="padding-left: 5px; padding-right: 5px;">
+                                            <h1>Your order is on the way!</h1>
+                                            <p style="font-weight: 500; margin: 0;">
+                                                We received your order today <span style="font-weight: bold;">"
+                                                    {{ $data['order']->order_created_at }}"</span>. Thank you for your
+                                                order!
+                                            </p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                     <tr>
@@ -113,7 +120,8 @@
                                 website ardhanggini.com
                             </p> --}}
                             <p style="margin: 0; font-size: 16px; padding: 15px;">
-                                &copy; Copyright @ 2024 Ardhanggini, All rights reserved <a href="ardhanggini.com">ardhanggini.com</a>
+                                &copy; Copyright @ 2024 Ardhanggini, All rights reserved <a
+                                    href="ardhanggini.com">ardhanggini.com</a>
                             </p>
                         </td>
                     </tr>

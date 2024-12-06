@@ -80,7 +80,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div
-                            style="background-color: #e1ecff; clip-path: polygon(90% 0, 100% 50%, 90% 99%, 0% 100%, 0 53%, 0% 0%);">
+                            style="background-color: var(--site-green); clip-path: polygon(90% 0, 100% 50%, 90% 99%, 0% 100%, 0 53%, 0% 0%);">
                             <p class="mb-0 p-3"><span class="text-dark">Invoice No:</span>
                                 #{{ $order->order_number }}</p>
                         </div>

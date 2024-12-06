@@ -1,8 +1,8 @@
-<div class="card bg-white p-0 card-print">
+<div class="card bg-white p-0 card-print mt-5">
     <div class="card-header bg-white border-0 p-5">
         <div class="row">
             <div class="col-lg-6">
-                <div class="pb-5">
+                <div class="pb-5 text-m-center">
                     <img class="text-right" width="150px"
                         src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
                         alt=""
@@ -10,23 +10,23 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <h1 class="text-right mb-0">Invoice</h1>
+                <h1 class="text-right mb-0 text-m-center pb-2 pb-lg-0">Invoice</h1>
             </div>
             <div class="col-lg-4">
                 <div
-                    style="background-color: #e1ecff; clip-path: polygon(90% 0, 100% 50%, 90% 99%, 0% 100%, 0 53%, 0% 0%);">
-                    <p class="mb-0 p-3"><span class="text-dark">Invoice No:</span>
+                    style="background-color: var(--site-green); clip-path: polygon(90% 0, 100% 50%, 90% 99%, 0% 100%, 0 53%, 0% 0%);">
+                    <p class="mb-0 p-3 text-white"><span class="text-white">Invoice No:</span>
                         #{{ optional($order)->order_number }}</p>
                 </div>
             </div>
             <div class="col-lg-8">
                 {{-- <p class="mb-0 p-3 text-right">Date: {{ optional($order)->created_at->format('d/m/Y') }}</p> --}}
-                <p class="mb-0 p-3 text-right">Date: {{ optional($order)->created_at->format('d M, Y') }}</p>
+                <p class="mb-0 p-3 text-right text-m-center">Date: {{ optional($order)->created_at->format('d M, Y') }}</p>
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-2 mt-lg-5">
             <div class="col-lg-6">
-                <div>
+                <div class="text-m-center">
                     <span class="font-weight-bold">Invoice To:</span>
                     <p class="mb-0">{{ optional($order->user)->first_name }}</p>
                     <p class="mb-0">{{ optional($order->user)->phone }}</p>
@@ -35,9 +35,9 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="text-right">
+                <div class="text-right text-m-center pt-3 pt-lg-0">
                     <span class="font-weight-bold">Shipping From:</span>
-                    <p class="mb-0">{{ optional($setting)->website_name}}</p>
+                    <p class="mb-0">{{ optional($setting)->website_name }}</p>
                     <p class="mb-0">{{ optional($setting)->primary_phone }}</p>
                     <p class="mb-0">{{ optional($setting)->contact_email }}</p>
                     <p class="mb-0">{{ optional($setting)->address_line_one }}</p>
@@ -45,19 +45,19 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-5 pt-5">
+        <div class="row mt-3 pt-3 mt-lg-5 pt-lg-5">
             <div class="col-lg-12">
-                <h4>Order Information:</h4>
+                <h4 class="text-m-center">Order Information:</h4>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
-                            <tr style="background-color: #e1ecff;">
-                                <th width="5%">Sl.</th>
-                                <th width="10%">Img</th>
-                                <th width="35%">Product Description</th>
-                                <th width="15%">Price</th>
-                                <th width="10%" class="text-center">Qty</th>
-                                <th width="15%" class="text-right">Amount</th>
+                            <tr style="background-color: var(--site-green);">
+                                <th width="5%" class="text-white">Sl.</th>
+                                <th width="10%" class="text-white">Img</th>
+                                <th width="35%" class="text-white">Product Description</th>
+                                <th width="15%" class="text-white">Price</th>
+                                <th width="10%" class="text-center text-white">Qty</th>
+                                <th width="15%" class="text-right text-white">Amount</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -114,7 +114,8 @@
                                         <span>Shipping Charge</span>
                                     </td>
                                     <td class="text-right">
-                                        <span><span class="text-info">(৳)</span>{{ optional($order->shippingCharge)->price }}</span>
+                                        <span><span
+                                                class="text-info">(৳)</span>{{ optional($order->shippingCharge)->price }}</span>
                                     </td>
                                 </tr>
                             @endif
@@ -134,24 +135,24 @@
         </div>
         <div class="row mt-3 pt-3">
             <div class="col-lg-12">
-                <p class="text-center">
+                <p class="text-center text-m-center">
                     <i class="fa-solid fa-file"></i> <strong>NOTE:</strong> This is a
                     computer-generated receipt and does not require a physical signature.
                 </p>
             </div>
         </div>
     </div>
-    <div class="card-footer p-4 text-center border-0" style="background-color: #e1ecff;">
-        © {{optional($setting)->website_name}}, LTD 2024.
+    <div class="card-footer p-4 text-white text-center border-0" style="background-color: var(--site-green);">
+        © {{ optional($setting)->website_name }} 2024.
     </div>
 </div>
-<div class="card border-0">
-    <div class="card-body border-0 d-flex justify-content-center align-items-center">
+<div class="mt-5">
+    <div class="d-flex justify-content-end align-items-center mobile-center">
         {{-- <a class="btn btn-info print p-3" href="{{ asset('storage/'.$order->invoice) }}">
             <i class="fa-solid fa-print"></i> Print Invoice
         </a> --}}
         <button class="btn btn-info ml-3 p-3" onclick="downloadInvoice()">
-            <i class="fa-solid fa-file-download"></i> Download Invoice
+            <i class="fa-solid fa-file-download"></i> Download Order Invoice
         </button>
     </div>
 </div>
