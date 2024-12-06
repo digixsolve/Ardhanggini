@@ -20,7 +20,7 @@ class ShopController extends Controller
             'categories'   => Category::orderBy('name', 'ASC')->active()->get(),
             'brands'       => Brand::orderBy('name', 'ASC')->active()->get(),
             'products'     => Product::with('reviews')->latest('id')->active()->paginate(10),
-            'deal'        => DealBanner::active()->inRandomOrder()->first(),
+            'deal'         => DealBanner::active()->inRandomOrder()->first(),
             // 'productCount' => Product::active()->count(),
         ];
         return view('frontend.pages.product.allProducts', $data);
@@ -54,7 +54,7 @@ class ShopController extends Controller
         if ($request->has('brands')) {
             $query->whereIn('brand_id', $request->brands);
         }
- 
+
         // Filter by Price Range
         if ($request->has('price_min') && $request->has('price_max')) {
             $query->whereBetween('unit_price', [$request->price_min, $request->price_max]);
