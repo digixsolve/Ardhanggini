@@ -42,4 +42,9 @@ class Category extends Model
     {
         return $query->where('status', 'active');
     }
+
+    public function catProducts()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

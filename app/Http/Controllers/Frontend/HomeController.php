@@ -155,7 +155,7 @@ class HomeController extends Controller
     public function productDetails($slug)
     {
         $data = [
-            'product'          => Product::with('reviews','multiImages')->where('slug', $slug)->first(),
+            'product'          => Product::with('reviews', 'multiImages')->where('slug', $slug)->first(),
             'related_products' => Product::select('id', 'slug', 'color', 'meta_title', 'thumbnail', 'name', 'box_discount_price', 'unit_discount_price', 'box_price', 'unit_price')->with('multiImages')->where('status', 'published')->inRandomOrder()->limit(12)->get(),
         ];
         return view('frontend.pages.product.productDetails', $data);
@@ -177,14 +177,14 @@ class HomeController extends Controller
         });
 
         // Use eager loading to prevent N+1 problem
-        $category = Category::with(['products' => function ($query) {
-            $query->with(['multiImages', 'reviews'])
-                  ->select('id', 'name', 'slug', 'unit_price', 'unit_discount_price', 'thumbnail', 'meta_title');
-        }])->where('slug', $slug)->firstOrFail();
+        $category = Category::with(['catProducts.multiImages', 'catProducts.reviews'])
+            ->where('slug', $slug)
+            ->firstOrFail();
 
+        // Pass the data to the view
         $data = [
-            'category'    => $category,
-            'categories'  => $categories,  // This is the cached categories
+            'category'   => $category,
+            'categories' => $categories,
         ];
 
         return view('frontend.pages.categoryDetails', $data);
