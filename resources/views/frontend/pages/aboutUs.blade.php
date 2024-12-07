@@ -152,12 +152,12 @@
                             </div>
                             <div>
                                 <div class="ps-section__content">
-                                    <h3 class="ps-section__title site-text mb-2 about-title">Premium Quality:</h3>
+                                    <h3 class="ps-section__title site-text mb-2 about-title">Premium Quality</h3>
                                     <div class="ps-section__desc mb-1 about-description">We partner with trusted suppliers to ensure that every
                                         product meets the highest standards of quality and durability.</div>
                                 </div>
                                 <div class="ps-section__content">
-                                    <h3 class="ps-section__title site-text mb-2 about-title">Affordable Luxury:</h3>
+                                    <h3 class="ps-section__title site-text mb-2 about-title">Affordable Luxury</h3>
                                     <div class="ps-section__desc mb-1 about-description">Enjoy the perfect balance of style and affordability.
                                         At Ardhanggini, we believe that everyone deserves access to high-quality,
                                         fashionable bags without breaking the bank.</div>
@@ -175,7 +175,7 @@
                             </div>
                             <div>
                                 <div class="ps-section__content">
-                                    <h3 class="ps-section__title mb-2 about-title">Effortless Shopping:</h3>
+                                    <h3 class="ps-section__title mb-2 about-title">Effortless Shopping</h3>
                                     <div class="ps-section__desc mb-1 about-description">
                                         Our user-friendly online platform makes finding and ordering your favorite bags
                                         a breeze.
@@ -202,7 +202,7 @@
                                     src="{{ asset('frontend/img/about/about-us-3-mission.jpg') }}" alt=""
                                     style="border-radius: 5px;"></a></div>
                         <div class="ps-section__content mb-3  mb-lg-0">
-                            <h3 class="ps-section__title mb-2 about-title">Our Mission:</h3>
+                            <h3 class="ps-section__title mb-2 about-title">Our Mission</h3>
                             <div class="ps-section__desc pb-3 mb-0 about-description">
                                 At Ardhanggini, we are passionate about empowering women with bags that reflect their
                                 style and confidence. We are committed to providing products that combine beauty,

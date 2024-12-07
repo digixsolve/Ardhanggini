@@ -21265,4 +21265,9 @@ table.dataTable tbody td:last-child {
         text-align: center;
         font-size: 28px;
     }
+    .register-btns{
+        width: 100%;
+        font-size: 16px !important;
+        border: 1px solid var(--site-green) !important;
+    }
 }

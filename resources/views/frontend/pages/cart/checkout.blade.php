@@ -508,28 +508,20 @@
                                                         value="{{ old('shipping_phone', $user->phone) }}" required />
                                                 </div>
                                             </div>
-                                            <div class="col-12">
-                                                <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">Full Address *</label>
-                                                    <textarea class="ps-textarea" name="shipping_address" id="" rows="2">{{ old('shipping_address', Auth::user()->address_one) }}</textarea>
-                                                    {{-- <input class="ps-input mb-3" type="text" name="shipping_address"
-                                                        placeholder="House number and street name" /> --}}
-                                                </div>
-                                            </div>
 
-                                            <div class="col-12 col-md-6">
+                                            <div class="col-12 col-md-4">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">District </label>
                                                     <input class="ps-input" type="text" name="shipping_state" />
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-6">
+                                            <div class="col-12 col-md-4">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Upazila </label>
                                                     <input class="ps-input" type="text" name="shipping_postcode" />
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-6">
+                                            <div class="col-12 col-md-4">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Country (optional)</label>
                                                     <select name="shipping_country"
@@ -540,6 +532,14 @@
                                                         <option value="Pakistan">Pakistan</option>
                                                         <option value="Nepal">Nepal</option>
                                                     </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="ps-checkout__group">
+                                                    <label class="ps-checkout__label">Full Address *</label>
+                                                    <textarea class="ps-textarea" name="shipping_address" id="" rows="2">{{ old('shipping_address', Auth::user()->address_one) }}</textarea>
+                                                    {{-- <input class="ps-input mb-3" type="text" name="shipping_address"
+                                                        placeholder="House number and street name" /> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -654,7 +654,7 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary w-100 mt-4 register-btns">
-                                        <i class="fa-solid fa-clipboard-check pr-2"></i>   Place order
+                                        <i class="fa-solid fa-clipboard-check pr-2"></i> Place order
                                     </button>
                                 </div>
                             </div>
