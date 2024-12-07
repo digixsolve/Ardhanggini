@@ -455,8 +455,8 @@
                                 </h6>
                             </div>
                             <div class="ps-form__submit pt-3">
-                                <x-primary-button class="btn btn-primary" type="submit">
-                                    {{ __('Register') }}
+                                <x-primary-button class="btn btn-primary register-btns" type="submit">
+                                    <i class="fa-regular fa-id-badge pr-2"></i>  {{ __('Register') }}
                                 </x-primary-button>
                             </div>
                         </div>

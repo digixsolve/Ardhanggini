@@ -130,7 +130,7 @@
     <div class="mt-4">
         <a href="javascript:void(0)"
             onclick="event.preventDefault(); document.getElementById('user-logout-form').submit();"
-            class="btn btn-outline-primary w-100">
+            class="btn btn-outline-primary btn-logins w-100">
             <i class="fa-solid fa-arrow-right-from-bracket pr-2"></i>  {{ __('Log Out') }}
         </a>
         <!-- Hidden logout form -->

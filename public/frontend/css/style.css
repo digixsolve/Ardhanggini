@@ -21083,6 +21083,59 @@ table.dataTable tbody td:last-child {
     object-fit: cover !important;
     border-radius: 5px;
 }
+
+.ps-badge-2{
+    top: 12px;
+    left: 0px !important;
+    margin-bottom: 15px !important;
+}
+
+.register-btns{
+    width: 100%;
+    font-size: 16px !important;
+    border: 1px solid var(--site-green) !important;
+}
+.register-btns:hover{
+    width: 100%;
+    border: 1px solid var(--site-green);
+    background-color: transparent;
+    color: var(--site-green) !important;
+    font-size: 16px !important;
+}
+.about-bg-shape{
+    width: 450px;
+    height: 450px;
+    margin: auto;
+    object-fit: cover;
+}
+
+.about-middle-img{
+    width: 450px;
+    margin: 0;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin-bottom: -48px;
+    margin-top: -150px;
+}
+
+.about-middle-img-box{
+    display: flex;
+    justify-content: end;
+}
+.rounded-pill-btn{
+    font-weight: 500;
+    border-radius: 40px;
+    padding: 8px 15px;
+    display: inline-block;
+    min-width: 150px;
+    text-align: center;
+}
+.box-padding{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
 @media (max-width: 768px) {
     .ps-product--list .ps-product__quantity {
         padding-bottom: 5px;
@@ -21180,9 +21233,36 @@ table.dataTable tbody td:last-child {
     .faq-title{
         font-size: 12px;
     }
-}
-.ps-badge-2{
-    top: 12px;
-    left: 0px !important;
-    margin-bottom: 15px !important;
+    .about-middle-img {
+        width: 450px;
+        margin: 0;
+        display: flex;
+        justify-content: end;
+        align-items: end;
+        margin-bottom: -48px;
+        margin-top: 25px;
+    }
+    .about-content{
+        text-align: center;
+    }
+    .box-padding {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .about-title{
+        padding-top: 20px;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+    .about-description{
+        text-align: center;
+    }
+    .about-infos{
+        padding: 0 !important;
+        padding-top: 40px !important;
+    }
+    .about-main-title{
+        text-align: center;
+        font-size: 28px;
+    }
 }

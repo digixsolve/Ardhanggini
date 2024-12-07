@@ -29,8 +29,8 @@
                                             <h1>Your order is on the way!</h1>
                                             <p style="font-weight: 500; margin: 0;">
                                                 We received your order today <span style="font-weight: bold;">"
-                                                    {{ $data['order']->order_created_at }}"</span>. Thank you for your
-                                                order!
+                                                    {{ $data['order']->order_created_at }}"
+                                                </span>.<br>Thank you for your order!
                                             </p>
                                         </div>
                                     </td>
@@ -95,13 +95,32 @@
                                                 </tr>
                                             @endforeach
 
-                                            <tr class="">
+                                            {{-- <tr class="">
                                                 <td style="text-align: end;font-weight: bold;padding: 10px;border-top: 1px solid #252525;"
                                                     colspan="3">
                                                     Total
                                                 </td>
                                                 <td
                                                     style="text-align: end;padding: 10px;border-top: 1px solid #252525;">
+                                                    ৳ {{ number_format($data['order']->total_amount, 2) }}
+                                                </td>
+                                            </tr> --}}
+                                            <tr class="">
+                                                <td colspan="2"
+                                                    style="text-align: end; font-weight: bold; padding: 10px;">
+                                                    Delivery Charge
+                                                </td>
+                                                <td colspan="2" style="text-align: end; padding: 10px;">
+                                                    ৳ 50.00
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td colspan="2"
+                                                    style="text-align: end; font-weight: bold; padding: 10px; border-top: 1px solid #252525;">
+                                                    Total
+                                                </td>
+                                                <td colspan="2"
+                                                    style="text-align: end; padding: 10px; border-top: 1px solid #252525;">
                                                     ৳ {{ number_format($data['order']->total_amount, 2) }}
                                                 </td>
                                             </tr>
@@ -114,11 +133,6 @@
                     <tr>
                         <td class="footer"
                             style="text-align: center;padding: 10px 0;background-color: #eee;color: #252525;border-radius: 0 0 5px 5px;">
-                            {{-- <p style="margin: 0; font-size: 16px; padding: 15px;">
-                                &copy; Copyright @ 2024 {{ optional($setting)->website_name }}, All rights reserved.
-                                <br> You are receiving this email because you ordered on our
-                                website ardhanggini.com
-                            </p> --}}
                             <p style="margin: 0; font-size: 16px; padding: 15px;">
                                 &copy; Copyright @ 2024 Ardhanggini, All rights reserved <a
                                     href="ardhanggini.com">ardhanggini.com</a>

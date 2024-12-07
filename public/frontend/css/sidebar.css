@@ -1056,6 +1056,23 @@
     }
 }
 @media only screen and (max-width: 575px) {
+    .btn-logins{
+        font-size: 16px !important;
+    }
+    .user-dashboard .tab-wrap .side-bar {
+        position: relative;
+        left: 15px;
+        margin-top: 40px;
+        box-shadow: none;
+        background: #f2f2f0;
+    }
+    .user-dashboard .tab-wrap .side-bar .profile-box .img-box {
+        width: 100px;
+        height: 100px;
+    }
+    .user-dashboard .tab-wrap .side-bar .back-side{
+        display: none;
+    }
     .user-dashboard .tab-wrap .right-content .option-wrap > div {
         border: none !important;
     }
@@ -4814,8 +4831,3 @@
     margin-top: -3px;
     font-weight: 600;
 }
-
-
-
-
-

@@ -653,8 +653,8 @@
                                                 I have read and agree to the website terms and conditions *</label>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary w-100 mt-4">
-                                        Place order
+                                    <button type="submit" class="btn btn-primary w-100 mt-4 register-btns">
+                                        <i class="fa-solid fa-clipboard-check pr-2"></i>   Place order
                                     </button>
                                 </div>
                             </div>
