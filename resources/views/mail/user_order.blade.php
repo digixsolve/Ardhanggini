@@ -42,7 +42,7 @@
                         <td>
                             <div>
                                 <img style="height: 250px;width: 100%;object-fit: cover;margin-bottom: -6px;"
-                                    src="{{ asset('frontend/img/order_mail.gif') }}" alt="" />
+                                    src="{{ asset('frontend/img/order_mail.gif') }}" alt=""/>
                             </div>
                         </td>
                     </tr>
@@ -108,10 +108,10 @@
                                             <tr class="">
                                                 <td colspan="2"
                                                     style="text-align: end; font-weight: bold; padding: 10px;">
-                                                    Delivery Charge
+                                                    Delivery Charge ({{ ($data['shipping_charge'] > 0) ? $data['shipping_method'] : 'Free Shipping' }})
                                                 </td>
                                                 <td colspan="2" style="text-align: end; padding: 10px;">
-                                                    ৳ 50.00
+                                                    ৳ {{ $data['shipping_charge'] }}
                                                 </td>
                                             </tr>
                                             <tr class="">

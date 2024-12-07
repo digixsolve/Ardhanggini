@@ -352,9 +352,11 @@ class CartController extends Controller
             try {
                 $setting = Setting::first();
                 $data = [
-                    'order'       => $order,
-                    'order_items' => $order->orderItems,
-                    'user'        => $user,
+                    'order'             => $order,
+                    'order_items'       => $order->orderItems,
+                    'user'              => $user,
+                    'shipping_charge'   => $shipping_charge,
+                    'shipping_method'   => ($shipping_method) ? $shipping_method->title : null ,
                 ];
                 Mail::to([$request->input('shipping_email'), $user->email])->send(new UserOrderMail($user->name, $data, $setting));
             } catch (\Exception $e) {
