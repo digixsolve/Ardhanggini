@@ -192,14 +192,14 @@
                                                                     </select>
                                                                 </div>
                                                             @else
-                                                                <span class="no-found">N/A</span>
+                                                                <span class="pb-1">No Review</span>
                                                             @endif
                                                         </div>
                                                         <div>
                                                             @if (count($latest_product->reviews) > 0)
                                                                 Reviews ({{ count($latest_product->reviews) }})
                                                             @else
-                                                                <span class="no-found">N/A</span>
+                                                                Reviews (0)
                                                             @endif
                                                         </div>
                                                     </div>

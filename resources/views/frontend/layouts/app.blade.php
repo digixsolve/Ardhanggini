@@ -170,7 +170,7 @@
 
     <!-- Scroll to Top Button -->
     <a href="#" class="scroll-top" style="display: none;">↑</a>
-
+ 
     @include('frontend.layouts.extra')
     <script src="{{ asset('frontend/plugins/jquery.min.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery-ui.min.js') }}"></script>

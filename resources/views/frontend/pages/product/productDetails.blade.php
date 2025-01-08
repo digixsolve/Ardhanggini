@@ -269,7 +269,7 @@
 
                                 <div class="d-flex align-items-center">
                                     <a class="btn btn-primary mr-1 mr-lg-3"
-                                        href="{{ route('buy.now',$product->id) }}">Buy Now</a>
+                                        href="{{ route('buy.now', $product->id) }}">Buy Now</a>
                                     <a class="btn btn-outline-primary add_to_cart_btn_product_single"
                                         data-product_id="{{ $product->id }}" href="#">Add to cart</a>
                                 </div>

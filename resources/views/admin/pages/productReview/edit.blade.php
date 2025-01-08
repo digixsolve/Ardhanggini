@@ -74,7 +74,7 @@
                                 <div class="col-lg-12">
                                     <div class="mb-5 fv-row">
                                         <x-metronic.label class="form-label">Review</x-metronic.label>
-                                        <textarea name="meta_description" class="ckeditor">{!! old('meta_description',$review->meta_description) !!}</textarea>
+                                        <textarea name="message" class="ckeditor">{!! old('message',$review->message) !!}</textarea>
                                         <div class="text-muted fs-7">
                                             Add Meta Meta details.
                                         </div>
