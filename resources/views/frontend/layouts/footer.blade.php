@@ -191,9 +191,12 @@
                                 <h5 class="ps-footer__title">Need help</h5>
                                 <div class="ps-footer__fax">
                                     <div class="d-flex align-items-center">
-                                        <img src="{{ asset('images/whatsapp-icons.gif') }}" alt=""
-                                            width="55px">
-                                        {{ optional($setting)->primary_phone }}
+                                        <a href="https://wa.me/{{ optional($setting)->primary_phone }}" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <img src="{{ asset('images/whatsapp-icons.gif') }}" alt=""
+                                                width="55px">
+                                            {{ optional($setting)->primary_phone }}
+                                        </a>
                                     </div>
 
                                 </div>
@@ -247,7 +250,8 @@
                                         </div> --}}
                                         <div class="total-count">
                                             <small class="mb-0 text-white">Total Visitor</small>
-                                            <small class="mb-0 text-white fw-bold">{{ getTotalVisitorCount() + 1000 }}</small>
+                                            <small
+                                                class="mb-0 text-white fw-bold">{{ getTotalVisitorCount() + 1000 }}</small>
                                         </div>
                                     </div>
                                 </div>

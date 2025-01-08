@@ -1,5 +1,4 @@
-@if (
-    (is_countable($brands) && count($brands) > 0) ||
+@if ((is_countable($brands) && count($brands) > 0) ||
         (is_countable($categorys) && count($categorys) > 0) ||
         (is_countable($products) && count($products) > 0))
     <div class="ps-result__content">
