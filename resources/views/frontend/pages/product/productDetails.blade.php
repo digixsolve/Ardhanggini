@@ -391,7 +391,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="ps-review__desc">
-                                                        <p>{{ $review['message'] }}</p>
+                                                        <p>{!! $review['message'] !!}</p>
                                                     </div>
                                                 </div>
                                             @endforeach
