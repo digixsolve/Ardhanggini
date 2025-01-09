@@ -170,7 +170,7 @@
 
     <!-- Scroll to Top Button -->
     <a href="#" class="scroll-top" style="display: none;">↑</a>
- 
+
     @include('frontend.layouts.extra')
     <script src="{{ asset('frontend/plugins/jquery.min.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery-ui.min.js') }}"></script>
@@ -179,7 +179,7 @@
     <script src="{{ asset('frontend/plugins/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('frontend/plugins/owl-carousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontend/plugins/jquery-bar-rating/dist/jquery.barrating.min.js') }}"></script>
-    <script src="{{ asset('frontend/plugins/lightGallery/dist/js/lightgallery-all.min.js') }}"></script>
+    {{-- <script src="{{ asset('frontend/plugins/lightGallery/dist/js/lightgallery-all.min.js') }}"></script> --}}
     <script src="{{ asset('frontend/plugins/slick/slick/slick.min.js') }}"></script>
     <script src="{{ asset('frontend/plugins/noUiSlider/nouislider.min.js') }}"></script>
     <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>

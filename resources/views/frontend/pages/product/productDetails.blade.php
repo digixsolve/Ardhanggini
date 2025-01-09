@@ -7,47 +7,69 @@
             $metaImage = $product->thumbnail ?? ''; // Default image
         @endphp
     @endpush
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.css">
     <style>
-        .slider-nav-thumbnails {
-            margin-top: 10px;
+        .gallery {
+            width: 100%;
+            max-width: 620px;
         }
 
-        .slider-nav-thumbnails .slick-slide {
-            cursor: pointer;
-            outline: none;
+        .gallery-slider {
+            width: 100%;
+            height: auto;
+            margin: 0 0 10px 0;
         }
 
-        .slider-nav-thumbnails .slick-slide.slick-current.slick-active {
+        .gallery-slider .swiper-slide {
+            width: auto;
+            height: 400px;
+        }
+
+        .gallery-slider .swiper-slide img {
+            display: block;
+            width: auto;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .gallery-thumbs {
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .gallery-thumbs .swiper-slide {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            overflow: hidden;
+            opacity: 0.1;
+        }
+
+        .gallery-thumbs .swiper-slide-active {
             opacity: 1;
         }
 
-        .slider-nav-thumbnails .slick-slide img {
-            padding: 5px;
-            background: transparent;
+        .gallery-thumbs .swiper-slide img {
+            width: auto;
+            height: 100%;
         }
 
-        .slider-nav-thumbnails .slick-slide.slick-current.slick-active img {
-            background: #500066;
+        .swiper-button-next,
+        .swiper-button-prev {
+            top: 47% !important;
         }
 
-        .slider-nav-thumbnails img {
-            width: 100px;
-            object-fit: cover;
-            margin: 0 5px;
+        .swiper-button-prev,
+        .swiper-container-rtl .swiper-button-next {
+            left: -6px !important;
         }
 
-        .slider-nav-thumbnails .slick-slide:first-child img {
-            margin-left: 0;
-        }
-
-        .slider-nav-thumbnails .slick-slide:last-child img {
-            margin-right: 0;
-        }
-
-        .main_product_img img {
-            width: 530px;
-            height: 430px;
-            object-fit: contain;
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 20px !important;
+            font-weight: 800;
+            color: transparent;
         }
     </style>
     <div class="ps-page--product3">
@@ -63,7 +85,62 @@
                         <div class="col-12 col-md-9">
                             <div class="row">
                                 <div class="col-12 col-xl-6">
-
+                                    <div class="gallery">
+                                        <div class="swiper-container gallery-slider">
+                                            {{-- For Main Image --}}
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img src="https://into-the-program.com/demo/images/sample010.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img src="https://into-the-program.com/demo/images/sample012.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div class="swiper-slide"><img
+                                                        src="https://into-the-program.com/demo/images/sample007.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div class="swiper-slide"><img
+                                                        src="https://into-the-program.com/demo/images/sample008.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div class="swiper-slide"><img
+                                                        src="https://into-the-program.com/demo/images/sample009.jpg"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- For Thumbnail --}}
+                                        <div class="swiper-container gallery-thumbs">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide yt-thumb-img"><img
+                                                        src="https://into-the-program.com/demo/images/sample010.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div class="swiper-slide"><img
+                                                        src="https://into-the-program.com/demo/images/sample012.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div class="swiper-slide"><img
+                                                        src="https://into-the-program.com/demo/images/sample007.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div class="swiper-slide"><img
+                                                        src="https://into-the-program.com/demo/images/sample008.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div class="swiper-slide"><img
+                                                        src="https://into-the-program.com/demo/images/sample009.jpg"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-button-prev"></div>
+                                            <div class="swiper-button-next"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div class="col-12 col-xl-6">
                                     <div class="videos-slider-2">
                                         <div class="main_product_img">
                                             <img class="img-fluid" src="{{ asset('storage/' . $product->thumbnail) }}"
@@ -91,27 +168,7 @@
                                             </div>
                                         @endforeach
                                     </div>
-                                    {{-- <div class="ps-product--gallery">
-                                        <div class="ps-product__thumbnail">
-                                            @foreach ($product->multiImages as $image)
-                                                <div class="slide">
-                                                    <img src="{{ asset('storage/' . $image->photo) }}"
-                                                        alt="{{ $product->meta_title }}" />
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                        <div class="ps-gallery--image">
-                                            @foreach ($product->multiImages as $image)
-                                                <div class="slide">
-                                                    <div class="ps-gallery__item">
-                                                        <img src="{{ asset('storage/' . $image->photo) }}"
-                                                            alt="{{ $product->meta_title }}" />
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div> --}}
-                                </div>
+                                </div> --}}
                                 <div class="col-12 col-xl-6">
                                     <div class="ps-product__info">
                                         <div class="text-22 text-dark" style="height: auto;">
@@ -137,18 +194,6 @@
                                                         <td>{{ $product->stock * $product->contains }}</td>
                                                     </tr>
                                                 @endif
-                                                {{-- @if (!empty($product->weight))
-                                                    <tr>
-                                                        <th class="ps-table__th">Weight </th>
-                                                        <td>{{ $product->weight }} gm</td>
-                                                    </tr>
-                                                @endif --}}
-                                                {{-- @if (!empty($product->length))
-                                                    <tr>
-                                                        <th class="ps-table__th">Height </th>
-                                                        <td>{{ $product->length }} cm</td>
-                                                    </tr>
-                                                @endif --}}
                                                 @if (!empty($product->width))
                                                     <tr>
                                                         <th class="ps-table__th">Width </th>
@@ -161,36 +206,10 @@
                                                         <td>{{ $product->height }} cm</td>
                                                     </tr>
                                                 @endif
-                                                {{-- @if (!empty($product->stock))
-                                                    <tr>
-                                                        <th class="ps-table__th">NO. OF CARTONS </th>
-                                                        <td>{{ $product->stock }}</td>
-                                                    </tr>
-                                                @endif --}}
 
                                             </tbody>
                                         </table>
                                         <div class="ps-product__group mt-20">
-                                            {{-- <table class="table ps-table ps-table--oriented m-0">
-                                                <tr>
-                                                    <th>Carton / Box</th>
-                                                    <th>Unit Price</th>
-                                                    <th>Stock</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>{{ $product->contains }}</td>
-                                                    <td>
-                                                        {{ $product->unit_price }}
-                                                    </td>
-                                                    <td>
-                                                        @if (!empty($product->stock) && $product->stock > 0)
-                                                            <i class="fa fa-check"></i>
-                                                        @else
-                                                            <span class="text-danger">X</span>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                            </table> --}}
                                             <div>
                                                 <p>{!! \Illuminate\Support\Str::words($product->overview, 30) !!}</p>
                                             </div>
@@ -199,7 +218,6 @@
                                                 <p class="fw-bold">Color Variation</p>
                                                 <div class="color-one">
                                                     @php
-                                                        // Decode the JSON string if it's not already an array
                                                         $colors = is_string($product->color)
                                                             ? json_decode($product->color, true)
                                                             : $product->color;
@@ -222,8 +240,6 @@
                                                     @endif
                                                 </div>
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -263,17 +279,12 @@
                                                 class="icon-plus"></i></button>
                                     </div>
                                 </div>
-
-                                {{-- <a class="ps-btn ps-btn--warning add_to_cart_btn_product_single"
-                                    data-product_id="{{ $product->id }}" href="#">Add to cart</a> --}}
-
                                 <div class="d-flex align-items-center">
                                     <a class="btn btn-primary mr-1 mr-lg-3"
                                         href="{{ route('buy.now', $product->id) }}">Buy Now</a>
                                     <a class="btn btn-outline-primary add_to_cart_btn_product_single"
                                         data-product_id="{{ $product->id }}" href="#">Add to cart</a>
                                 </div>
-
                                 <ul class="ps-product__bundle">
                                     <li><i class="icon-bag2"></i>Full cash on delivery</li>
                                     <li><i class="icon-truck"></i>Inside Dhaka-70 TK (24-48 hrs)</li>
@@ -577,14 +588,12 @@
                 style="background-image: url({{ asset('images/delivery_banner.jpg') }});">
                 <div class="ps-delivery__content">
                     <div class="ps-delivery__text"> <i class="icon-shield-check"></i><span> <strong>100%
-                                Secure
-                                delivery </strong>without courier communication</span></div><a
+                                Secure delivery </strong>without courier communication</span></div><a
                         class="ps-delivery__more" href="{{ route('allproducts') }}">Shop</a>
                 </div>
             </div>
         </div>
     </div>
-
     @foreach ($related_products as $related_product)
         <div class="modal fade" id="popupQuickview{{ $related_product->id }}" data-backdrop="static"
             data-keyboard="false" tabindex="-1" aria-hidden="true">
@@ -739,68 +748,55 @@
     @push('scripts')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
         <script>
-            //メインスライド
+            function stopAllYouTubeVideos() {
+                $('.swiper-slide iframe').each(function() {
+                    var youtubePlayer = $(this).get(0);
+                    if (youtubePlayer) {
+                        youtubePlayer.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}',
+                            '*');
+                    }
+                });
+            };
             var slider = new Swiper('.gallery-slider', {
                 slidesPerView: 1,
+                navigation: false,
                 centeredSlides: true,
                 loop: true,
-                loopedSlides: 6, //スライドの枚数と同じ値を指定
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
+                loopedSlides: 6,
+                autoplay: {
+                    delay: 3000, // Adjust the delay (in milliseconds) as needed
+                    disableOnInteraction: false,
                 },
+                on: {
+                    slideChangeTransitionStart: function() {
+                        stopAllYouTubeVideos();
+                    },
+                },
+
             });
 
-            //サムネイルスライド
             var thumbs = new Swiper('.gallery-thumbs', {
                 slidesPerView: 'auto',
                 spaceBetween: 10,
-                centeredSlides: true,
+                centeredSlides: false,
                 loop: true,
+                touchRatio: 0.2,
+                loopedSlides: 6,
+                autoplay: {
+                    delay: 3000, // Adjust the delay (in milliseconds) as needed
+                    disableOnInteraction: false,
+                },
                 slideToClickedSlide: true,
+                on: {
+                    slideChangeTransitionStart: function() {
+                        stopAllYouTubeVideos();
+                    },
+                },
             });
 
-            //3系
-            //slider.params.control = thumbs;
-            //thumbs.params.control = slider;
 
-            //4系～
             slider.controller.control = thumbs;
             thumbs.controller.control = slider;
-        </script>
-        <script>
-            $('.videos-slider-2').slick({
-                autoplay: true,
-                slidesToScroll: 1,
-                slidesToShow: 1,
-                arrows: false,
-                dots: false,
-                asNavFor: '.slider-nav-thumbnails',
-            });
-
-            $('.slider-nav-thumbnails').slick({
-                autoplay: true,
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                asNavFor: '.videos-slider-2',
-                dots: false,
-                arrows: false,
-                focusOnSelect: true,
-                variableWidth: true
-            });
-
-            // Remove active class from all thumbnail slides
-            $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
-
-            // Set active class to first thumbnail slides
-            $('.slider-nav-thumbnails .slick-slide').eq(0).addClass('slick-active');
-
-            // On before slide change match active thumbnail to current slide
-            $('.videos-slider-2').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-                var mySlideNumber = nextSlide;
-                $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
-                $('.slider-nav-thumbnails .slick-slide').eq(mySlideNumber).addClass('slick-active');
-            });
         </script>
         <script>
             $(document).ready(function() {
