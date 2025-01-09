@@ -188,14 +188,14 @@
                         </div>
                         <div class="col-12 col-md-7">
                             <div class="ps-footer--contact">
-                                <h5 class="ps-footer__title">Need help</h5>
+                                <h5 class="ps-footer__title">Need help?</h5>
                                 <div class="ps-footer__fax">
                                     <div class="d-flex align-items-center">
                                         <a href="https://wa.me/{{ optional($setting)->primary_phone }}" target="_blank"
                                             rel="noopener noreferrer">
                                             <img src="{{ asset('images/whatsapp-icons.gif') }}" alt=""
                                                 width="55px">
-                                            {{ optional($setting)->primary_phone }}
+                                            <span style="position: relative; left: -14px;font-size: 22px;">{{ optional($setting)->primary_phone }}</span>
                                         </a>
                                     </div>
 
