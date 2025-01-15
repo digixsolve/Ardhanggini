@@ -388,6 +388,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('allproducts') }}">Shop</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('about-us') }}">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('allBlog') }}">Blogs</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
                     @auth
                         <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">My Dashboard</a></li>

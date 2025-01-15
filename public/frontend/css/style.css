@@ -3776,7 +3776,7 @@ textarea.form-control {
     margin: auto;
     border-radius: 4px;
     height: 270px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .ps-product--mini-cart .ps-product__thumbnail img {

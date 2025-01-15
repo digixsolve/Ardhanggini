@@ -7,69 +7,169 @@
             $metaImage = $product->thumbnail ?? ''; // Default image
         @endphp
     @endpush
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <style>
-        .gallery {
+        .magnifier-container {
+            position: relative;
+            overflow: hidden;
             width: 100%;
-            max-width: 620px;
-        }
-
-        .gallery-slider {
-            width: 100%;
-            height: auto;
-            margin: 0 0 10px 0;
-        }
-
-        .gallery-slider .swiper-slide {
-            width: auto;
-            height: 400px;
-        }
-
-        .gallery-slider .swiper-slide img {
-            display: block;
-            width: auto;
+            /* Adjust width as needed */
             height: 100%;
-            margin: 0 auto;
+            /* Adjust height as needed */
+            cursor: crosshair;
         }
 
-        .gallery-thumbs {
+        .magnifier-container img {
+            display: block;
             width: 100%;
-            padding: 0;
-            overflow: hidden;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            /* Smooth zoom */
         }
 
-        .gallery-thumbs .swiper-slide {
-            width: 100px;
-            height: 100px;
+        .magnifier-container:hover img {
+            transform: scale(1.5);
+            /* Adjust zoom level */
+            transition: transform 0.3s ease;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
             text-align: center;
-            overflow: hidden;
-            opacity: 0.1;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .gallery-thumbs .swiper-slide-active {
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .mySwiper2 {
+            height: 80%;
+            width: 100%;
+        }
+
+        .mySwiper {
+            height: 20%;
+            box-sizing: border-box;
+            padding: 10px 0;
+        }
+
+        .mySwiper .swiper-slide,
+        .mySwiperDesktop .swiper-slide {
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+        }
+
+        .mySwiper .swiper-slide-thumb-active,
+        .mySwiperDesktop .swiper-slide-thumb-active {
             opacity: 1;
         }
 
-        .gallery-thumbs .swiper-slide img {
-            width: auto;
+        .mySwiperDesktop {
+            margin-bottom: 10px;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
             height: 100%;
+            object-fit: cover;
         }
 
         .swiper-button-next,
         .swiper-button-prev {
-            top: 47% !important;
+            color: #fff !important;
         }
 
-        .swiper-button-prev,
-        .swiper-container-rtl .swiper-button-next {
-            left: -6px !important;
+
+
+        @media (min-width: 768px) {
+            .mySwiper {
+                display: none;
+            }
+
+            .kovi-product-slider-wrapper {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .mySwiper2 {
+                height: 100%;
+            }
+
+            .swiper {
+                width: 100%;
+                height: 520px;
+            }
+
+            .mySwiperDesktop .swiper-slide {
+                width: 100%;
+            }
+
+            .mySwiperDesktop {
+                width: calc(22% - 20px);
+            }
+
+            .mySwiper2 {
+                width: 81%;
+            }
         }
 
-        .swiper-button-next:after,
-        .swiper-button-prev:after {
-            font-size: 20px !important;
-            font-weight: 800;
-            color: transparent;
+        @media (max-width: 767px) {
+            .kovi-product-slider-wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .mySwiperDesktop {
+                display: none;
+            }
+
+            .kovi-product-slider-wrapper {
+                width: 100%;
+                height: 70%;
+            }
+
+            .mySwiperDesktop {
+                height: 250px;
+            }
+        }
+
+        .cst-product {
+            height: 485px;
+            overflow-y: scroll;
+            background: #f2f2f0;
+        }
+
+        .cst-product::-webkit-scrollbar {
+            width: 0.3em;
+        }
+
+        .cst-product::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .cst-product::-webkit-scrollbar-thumb {
+            background-color: var(--site-green);
+            outline: 0px solid slategrey;
         }
     </style>
     <div class="ps-page--product3">
@@ -84,92 +184,33 @@
                     <div class="row">
                         <div class="col-12 col-md-9">
                             <div class="row">
-                                <div class="col-12 col-xl-6">
-                                    <div class="gallery">
-                                        <div class="swiper-container gallery-slider">
-                                            {{-- For Main Image --}}
+                                <div class="col-12 col-xl-7 pr-0">
+                                    <div class="kovi-product-slider-wrapper">
+                                        <div thumbsSlider="" class="swiper mySwiperDesktop">
                                             <div class="swiper-wrapper">
-                                                <div class="swiper-slide">
-                                                    <img src="https://into-the-program.com/demo/images/sample010.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <img src="https://into-the-program.com/demo/images/sample012.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div class="swiper-slide"><img
-                                                        src="https://into-the-program.com/demo/images/sample007.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div class="swiper-slide"><img
-                                                        src="https://into-the-program.com/demo/images/sample008.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div class="swiper-slide"><img
-                                                        src="https://into-the-program.com/demo/images/sample009.jpg"
-                                                        alt="">
-                                                </div>
+                                                @foreach ($product->multiImages as $image)
+                                                    <div class="swiper-slide ">
+                                                        <img src="{{ asset('storage/' . $image->photo) }}" />
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
-                                        {{-- For Thumbnail --}}
-                                        <div class="swiper-container gallery-thumbs">
+                                        <!-- Swiper -->
+                                        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+                                            class="swiper mySwiper2">
                                             <div class="swiper-wrapper">
-                                                <div class="swiper-slide yt-thumb-img"><img
-                                                        src="https://into-the-program.com/demo/images/sample010.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div class="swiper-slide"><img
-                                                        src="https://into-the-program.com/demo/images/sample012.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div class="swiper-slide"><img
-                                                        src="https://into-the-program.com/demo/images/sample007.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div class="swiper-slide"><img
-                                                        src="https://into-the-program.com/demo/images/sample008.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div class="swiper-slide"><img
-                                                        src="https://into-the-program.com/demo/images/sample009.jpg"
-                                                        alt="">
-                                                </div>
+                                                @foreach ($product->multiImages as $image)
+                                                    <div class="swiper-slide magnifier-container">
+                                                        <img src="{{ asset('storage/' . $image->photo) }}" />
+                                                    </div>
+                                                @endforeach
                                             </div>
-                                            <div class="swiper-button-prev"></div>
-                                            <div class="swiper-button-next"></div>
+                                            <div class="swiper-button-next d-none"></div>
+                                            <div class="swiper-button-prev d-none"></div>
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <div class="col-12 col-xl-6">
-                                    <div class="videos-slider-2">
-                                        <div class="main_product_img">
-                                            <img class="img-fluid" src="{{ asset('storage/' . $product->thumbnail) }}"
-                                                alt="{{ $product->meta_title }}" />
-                                        </div>
-                                        @foreach ($product->multiImages as $image)
-                                            <div class="main_product_img">
-                                                <img class="img-fluid" src="{{ asset('storage/' . $image->photo) }}"
-                                                    alt="{{ $product->meta_title }}"
-                                                    onerror="this.onerror=null;this.src='{{ asset('images/no-preview.png') }}';" />
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                    <div class="slider-nav-thumbnails">
-                                        <div>
-                                            <img class="img-fluid" src="{{ asset('storage/' . $product->thumbnail) }}"
-                                                alt="{{ $product->meta_title }}"
-                                                onerror="this.onerror=null;this.src='{{ asset('images/no-preview.png') }}';" />
-                                        </div>
-                                        @foreach ($product->multiImages as $image)
-                                            <div>
-                                                <img class="img-fluid" src="{{ asset('storage/' . $image->photo) }}"
-                                                    alt="{{ $product->meta_title }}"
-                                                    onerror="this.onerror=null;this.src='{{ asset('images/no-preview.png') }}';" />
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div> --}}
-                                <div class="col-12 col-xl-6">
+                                <div class="col-12 col-xl-5">
                                     <div class="ps-product__info">
                                         <div class="text-22 text-dark" style="height: auto;">
                                             {{ $product->name }}
@@ -301,115 +342,133 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ps-product__content">
-                        <ul class="nav nav-tabs ps-tab-list bg-white p-3" id="productContentTabs" role="tablist">
-                            <li class="nav-item ml-3 pr-info-tabs" role="presentation">
-                                <a class="nav-link show active" id="information-tab" data-toggle="tab"
-                                    href="#information-content" role="tab" aria-controls="information-content"
-                                    aria-selected="false">
-                                    Description
-                                </a>
-                            </li>
-                            <li class="nav-item ml-3 pr-info-tabs" role="presentation">
-                                <a class="nav-link" id="description-tab" data-toggle="tab"
-                                    href="#description-content" role="tab" aria-controls="description-content"
-                                    aria-selected="true">
-                                    Key Features
-                                </a>
-                            </li>
-                            <li class="nav-item ml-3 pr-inf-tabs" role="presentation">
-                                <a class="nav-link" id="specification-tab" data-toggle="tab"
-                                    href="#specification-content" role="tab"
-                                    aria-controls="specification-content" aria-selected="false">
-                                    Specification
-                                </a>
-                            </li>
-                            <li class="nav-item ml-3" role="presentation">
-                                <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews-content"
-                                    role="tab" aria-controls="reviews-content" aria-selected="false">
-                                    Reviews ({{ count($product->reviews) }})
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="tab-content bg-white p-5" id="productContent">
-                            <div class="tab-pane fade show active" id="information-content" role="tabpanel"
-                                aria-labelledby="information-tab">
-                                <div class="ps-document">
-                                    <div class="row row-reverse">
-                                        <div class="col-12">
-                                            {!! $product->description !!}
-                                        </div>
-                                    </div>
+                    <div class="row align-items-center mt-4">
+                        <div class="col-lg-5">
+                            <div class="card border-0 rounded-0">
+                                <div class="card-body border-0 rounded-0">
+                                    <iframe width="100%" height="440" src="{{ $product->video_link }}"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="description-content" role="tabpanel"
-                                aria-labelledby="description-tab">
-                                <div class="ps-document">
-                                    <div class="row row-reverse">
-                                        <div class="col-12">
-                                            {!! $product->overview !!}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="specification-content" role="tabpanel"
-                                aria-labelledby="specification-tab">
-                                <div class="ps-document">
-                                    <div class="row row-reverse">
-                                        <div class="col-12">
-                                            {!! $product->specification !!}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="reviews-content" role="tabpanel"
-                                aria-labelledby="reviews-tab">
-                                <div class="ps-product__tabreview">
-                                    <div class="ps-review--product">
-                                        {{-- Check if $reviews is not empty --}}
-                                        @if (!empty($product->reviews) && count($product->reviews) > 0)
-                                            @foreach ($product->reviews as $review)
-                                                <div class="ps-review__row">
-                                                    <div class="ps-review__avatar">
-
-                                                        <img src="{{ !empty($review['image']) ? asset('storage/' . $review['image']) : asset('images/testimonial.png') }}"
-                                                            alt="{{ $review['name'] }}" />
-                                                    </div>
-                                                    <div class="ps-review__info">
-                                                        <div class="ps-review__name">{{ $review['name'] }}</div>
-                                                        <div class="ps-review__date">
-                                                            {{ \Carbon\Carbon::parse($review['date'])->format('M d, Y') }}
-                                                        </div>
-                                                    </div>
-                                                    <div class="ps-review__rating">
-
-                                                        @if ($review['rating'] > 0)
-                                                            <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                <select class="ps-rating" data-read-only="true"
-                                                                    style="display: none;">
-                                                                    @php
-                                                                        $maxRating = min(
-                                                                            5,
-                                                                            max(1, floor($review['rating'])),
-                                                                        ); // Get the highest full rating value
-                                                                    @endphp
-                                                                    @for ($i = 1; $i <= $maxRating; $i++)
-                                                                        <option value="{{ $i }}">
-                                                                            {{ $i }}</option>
-                                                                    @endfor
-                                                                </select>
-                                                            </div>
-                                                        @endif
-                                                    </div>
-                                                    <div class="ps-review__desc">
-                                                        <p>{!! $review['message'] !!}</p>
-                                                    </div>
+                        </div>
+                        <div class="col-lg-7 pl-0">
+                            <div class="ps-product__content cst-product p-0">
+                                <ul class="nav nav-tabs ps-tab-list bg-white p-3" id="productContentTabs"
+                                    role="tablist">
+                                    <li class="nav-item ml-3 pr-info-tabs" role="presentation">
+                                        <a class="nav-link show active" id="information-tab" data-toggle="tab"
+                                            href="#information-content" role="tab"
+                                            aria-controls="information-content" aria-selected="false">
+                                            Description
+                                        </a>
+                                    </li>
+                                    <li class="nav-item ml-3 pr-info-tabs" role="presentation">
+                                        <a class="nav-link" id="description-tab" data-toggle="tab"
+                                            href="#description-content" role="tab"
+                                            aria-controls="description-content" aria-selected="true">
+                                            Key Features
+                                        </a>
+                                    </li>
+                                    <li class="nav-item ml-3 pr-inf-tabs" role="presentation">
+                                        <a class="nav-link" id="specification-tab" data-toggle="tab"
+                                            href="#specification-content" role="tab"
+                                            aria-controls="specification-content" aria-selected="false">
+                                            Specification
+                                        </a>
+                                    </li>
+                                    <li class="nav-item ml-3" role="presentation">
+                                        <a class="nav-link" id="reviews-tab" data-toggle="tab"
+                                            href="#reviews-content" role="tab" aria-controls="reviews-content"
+                                            aria-selected="false">
+                                            Reviews ({{ count($product->reviews) }})
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content bg-white p-5 h-100 bg-white" id="productContent">
+                                    <div class="tab-pane fade show active" id="information-content" role="tabpanel"
+                                        aria-labelledby="information-tab">
+                                        <div class="ps-document">
+                                            <div class="row row-reverse">
+                                                <div class="col-12">
+                                                    {!! $product->description !!}
                                                 </div>
-                                            @endforeach
-                                        @else
-                                            <p>No reviews available.</p>
-                                        @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="description-content" role="tabpanel"
+                                        aria-labelledby="description-tab">
+                                        <div class="ps-document">
+                                            <div class="row row-reverse">
+                                                <div class="col-12">
+                                                    {!! $product->overview !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="specification-content" role="tabpanel"
+                                        aria-labelledby="specification-tab">
+                                        <div class="ps-document">
+                                            <div class="row row-reverse">
+                                                <div class="col-12">
+                                                    {!! $product->specification !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="reviews-content" role="tabpanel"
+                                        aria-labelledby="reviews-tab">
+                                        <div class="ps-product__tabreview">
+                                            <div class="ps-review--product">
+                                                {{-- Check if $reviews is not empty --}}
+                                                @if (!empty($product->reviews) && count($product->reviews) > 0)
+                                                    @foreach ($product->reviews as $review)
+                                                        <div class="ps-review__row">
+                                                            <div class="ps-review__avatar">
 
+                                                                <img src="{{ !empty($review['image']) ? asset('storage/' . $review['image']) : asset('images/testimonial.png') }}"
+                                                                    alt="{{ $review['name'] }}" />
+                                                            </div>
+                                                            <div class="ps-review__info">
+                                                                <div class="ps-review__name">{{ $review['name'] }}
+                                                                </div>
+                                                                <div class="ps-review__date">
+                                                                    {{ \Carbon\Carbon::parse($review['date'])->format('M d, Y') }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="ps-review__rating">
+
+                                                                @if ($review['rating'] > 0)
+                                                                    <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                        <select class="ps-rating"
+                                                                            data-read-only="true"
+                                                                            style="display: none;">
+                                                                            @php
+                                                                                $maxRating = min(
+                                                                                    5,
+                                                                                    max(1, floor($review['rating'])),
+                                                                                ); // Get the highest full rating value
+                                                                            @endphp
+                                                                            @for ($i = 1; $i <= $maxRating; $i++)
+                                                                                <option value="{{ $i }}">
+                                                                                    {{ $i }}</option>
+                                                                            @endfor
+                                                                        </select>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                            <div class="ps-review__desc">
+                                                                <p>{!! $review['message'] !!}</p>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                @else
+                                                    <p>No reviews available.</p>
+                                                @endif
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -746,57 +805,136 @@
     @endforeach
 
     @push('scripts')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script>
-            function stopAllYouTubeVideos() {
-                $('.swiper-slide iframe').each(function() {
-                    var youtubePlayer = $(this).get(0);
-                    if (youtubePlayer) {
-                        youtubePlayer.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}',
-                            '*');
-                    }
+            document.querySelectorAll('.magnifier-container').forEach(container => {
+                const img = container.querySelector('img');
+
+                container.addEventListener('mousemove', (e) => {
+                    const rect = container.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const xPercent = (x / rect.width) * 100;
+                    const yPercent = (y / rect.height) * 100;
+
+                    img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+                    img.style.transform = "scale(2)"; // Zoom level
                 });
-            };
-            var slider = new Swiper('.gallery-slider', {
-                slidesPerView: 1,
-                navigation: false,
-                centeredSlides: true,
-                loop: true,
-                loopedSlides: 6,
-                autoplay: {
-                    delay: 3000, // Adjust the delay (in milliseconds) as needed
-                    disableOnInteraction: false,
-                },
-                on: {
-                    slideChangeTransitionStart: function() {
-                        stopAllYouTubeVideos();
-                    },
-                },
 
+                container.addEventListener('mouseleave', () => {
+                    img.style.transform = "scale(1)";
+                    img.style.transformOrigin = "center center";
+                });
             });
+        </script>
+        <script>
+            $(function() {
+                var galleryTop, galleryThumbs;
 
-            var thumbs = new Swiper('.gallery-thumbs', {
-                slidesPerView: 'auto',
-                spaceBetween: 10,
-                centeredSlides: false,
-                loop: true,
-                touchRatio: 0.2,
-                loopedSlides: 6,
-                autoplay: {
-                    delay: 3000, // Adjust the delay (in milliseconds) as needed
-                    disableOnInteraction: false,
-                },
-                slideToClickedSlide: true,
-                on: {
-                    slideChangeTransitionStart: function() {
-                        stopAllYouTubeVideos();
-                    },
-                },
+                function initSwiper() {
+                    // Destroy existing Swiper instances if they exist
+                    if (galleryTop) {
+                        galleryTop.destroy(true, true);
+                    }
+                    if (galleryThumbs) {
+                        galleryThumbs.destroy(true, true);
+                    }
+
+                    if ($(window).width() > 768) {
+                        // Initialize Swiper for mobile
+                        galleryTop = new Swiper(".mySwiperDesktop", {
+                            spaceBetween: 10,
+                            slidesPerView: 4,
+                            direction: 'vertical', // Default slides per view for mobile
+                            freeMode: true,
+                            loop: true, // Enable looping
+                            autoplay: {
+                                delay: 3000, // 3 seconds delay
+                                disableOnInteraction: false, // Keep autoplay after user interaction
+                            },
+                            watchSlidesProgress: true,
+                            breakpoints: {
+                                768: {
+                                    slidesPerView: 4,
+                                },
+                                530: {
+                                    slidesPerView: 3,
+                                },
+                                300: {
+                                    slidesPerView: 2,
+                                },
+                            }
+                        });
+                        galleryThumbs = new Swiper(".mySwiper2", {
+                            spaceBetween: 10,
+                            navigation: {
+                                nextEl: ".swiper-button-next",
+                                prevEl: ".swiper-button-prev",
+                            },
+                            a11y: {
+                                prevSlideMessage: "Previous slide",
+                                nextSlideMessage: "Next slide",
+                            },
+                            thumbs: {
+                                swiper: galleryTop,
+                            },
+                            loop: true, // Enable looping
+                            autoplay: {
+                                delay: 3000, // 3 seconds delay
+                                disableOnInteraction: false, // Keep autoplay after user interaction
+                            },
+                        });
+                    } else {
+                        // Initialize Swiper for desktop
+                        galleryTop = new Swiper(".mySwiper", {
+                            spaceBetween: 10,
+                            slidesPerView: 4,
+                            freeMode: false,
+                            watchSlidesProgress: true,
+                            loop: true, // Enable looping
+                            autoplay: {
+                                delay: 3000, // 3 seconds delay
+                                disableOnInteraction: false, // Keep autoplay after user interaction
+                            },
+                        });
+                        galleryThumbs = new Swiper(".mySwiper2", {
+                            spaceBetween: 10,
+                            navigation: {
+                                nextEl: ".swiper-button-next",
+                                prevEl: ".swiper-button-prev",
+                            },
+                            a11y: {
+                                prevSlideMessage: "Previous slide",
+                                nextSlideMessage: "Next slide",
+                            },
+                            thumbs: {
+                                swiper: galleryTop,
+                            },
+                            loop: true, // Enable looping
+                            autoplay: {
+                                delay: 3000, // 3 seconds delay
+                                disableOnInteraction: false, // Keep autoplay after user interaction
+                            },
+                        });
+                    }
+
+                    // Sync the slide change between galleryTop and galleryThumbs
+                    galleryTop.on("slideChangeTransitionStart", function() {
+                        galleryThumbs.slideTo(galleryTop.activeIndex);
+                    });
+                    galleryThumbs.on("transitionStart", function() {
+                        galleryTop.slideTo(galleryThumbs.activeIndex);
+                    });
+                }
+
+                initSwiper();
+
+                // Reinitialize Swiper on window resize
+                $(window).resize(function() {
+                    initSwiper();
+                });
             });
-
-
-            slider.controller.control = thumbs;
-            thumbs.controller.control = slider;
         </script>
         <script>
             $(document).ready(function() {
