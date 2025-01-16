@@ -48,12 +48,12 @@
             align-items: center;
         }
 
-        .swiper-slide img {
+        /* .swiper-slide img {
             display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
+        } */
 
         .swiper-slide {
             background-size: cover;
@@ -87,12 +87,12 @@
             margin-bottom: 10px;
         }
 
-        .swiper-slide img {
+        /* .swiper-slide img {
             display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
+        } */
 
         .swiper-button-next,
         .swiper-button-prev {
@@ -100,6 +100,18 @@
         }
 
 
+
+        .thumb-img img {
+            height: 120px !important;
+            object-fit: cover;
+            width: 100% !important;
+        }
+
+        .main-img img {
+            height: 100% !important;
+            object-fit: fill;
+            width: 100%;
+        }
 
         @media (min-width: 768px) {
             .mySwiper {
@@ -143,13 +155,15 @@
                 display: none;
             }
 
-            .kovi-product-slider-wrapper {
-                width: 100%;
-                height: 70%;
-            }
-
             .mySwiperDesktop {
                 height: 250px;
+            }
+
+            .main-img img {
+                height: 100% !important;
+                object-fit: contain;
+                width: 100%;
+                margin-right: 25px;
             }
         }
 
@@ -191,12 +205,12 @@
                                             <div class="swiper-wrapper">
                                                 @if (count($product->multiImages) > 0)
                                                     @foreach ($product->multiImages as $image)
-                                                        <div class="swiper-slide">
+                                                        <div class="swiper-slide thumb-img">
                                                             <img src="{{ asset('storage/' . $image->photo) }}" />
                                                         </div>
                                                     @endforeach
                                                 @else
-                                                    <div class="swiper-slide">
+                                                    <div class="swiper-slide thumb-img">
                                                         <img src="{{ asset('storage/' . $product->thumbnail) }}" />
                                                     </div>
                                                 @endif
@@ -206,21 +220,26 @@
                                         <!-- Main image slider (with magnifier) -->
                                         <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
                                             class="swiper mySwiper2">
-                                            @if (count($product->multiImages) > 0)
-                                                @foreach ($product->multiImages as $image)
-                                                    <div class="swiper-slide magnifier-container">
-                                                        <img src="{{ asset('storage/' . $image->photo) }}" />
+                                            <div class="swiper-wrapper">
+                                                @if (count($product->multiImages) > 0)
+                                                    @foreach ($product->multiImages as $image)
+                                                        <div class="swiper-slide main-img magnifier-container">
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('storage/' . $image->photo) }}" />
+                                                        </div>
+                                                    @endforeach
+                                                @else
+                                                    <div class="swiper-slide main-img magnifier-container">
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('storage/' . $product->thumbnail) }}" />
                                                     </div>
-                                                @endforeach
-                                            @else
-                                                <div class="swiper-slide magnifier-container">
-                                                    <img src="{{ asset('storage/' . $product->thumbnail) }}" />
-                                                </div>
-                                            @endif
+                                                @endif
+                                            </div>
                                             <div class="swiper-button-next d-none"></div>
                                             <div class="swiper-button-prev d-none"></div>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="col-12 col-xl-5">
                                     <div class="ps-product__info">
@@ -859,12 +878,7 @@
                             spaceBetween: 10,
                             slidesPerView: 4,
                             direction: 'vertical', // Default slides per view for mobile
-                            freeMode: true,
-                            loop: true, // Enable looping
-                            autoplay: {
-                                delay: 3000, // 3 seconds delay
-                                disableOnInteraction: false, // Keep autoplay after user interaction
-                            },
+                            freeMode: false,
                             watchSlidesProgress: true,
                             breakpoints: {
                                 768: {
@@ -891,11 +905,6 @@
                             thumbs: {
                                 swiper: galleryTop,
                             },
-                            loop: true, // Enable looping
-                            autoplay: {
-                                delay: 3000, // 3 seconds delay
-                                disableOnInteraction: false, // Keep autoplay after user interaction
-                            },
                         });
                     } else {
                         // Initialize Swiper for desktop
@@ -904,11 +913,6 @@
                             slidesPerView: 4,
                             freeMode: false,
                             watchSlidesProgress: true,
-                            loop: true, // Enable looping
-                            autoplay: {
-                                delay: 3000, // 3 seconds delay
-                                disableOnInteraction: false, // Keep autoplay after user interaction
-                            },
                         });
                         galleryThumbs = new Swiper(".mySwiper2", {
                             spaceBetween: 10,
@@ -922,11 +926,6 @@
                             },
                             thumbs: {
                                 swiper: galleryTop,
-                            },
-                            loop: true, // Enable looping
-                            autoplay: {
-                                delay: 3000, // 3 seconds delay
-                                disableOnInteraction: false, // Keep autoplay after user interaction
                             },
                         });
                     }
