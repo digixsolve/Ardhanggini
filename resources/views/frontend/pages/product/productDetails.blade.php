@@ -188,22 +188,37 @@
                                     <div class="kovi-product-slider-wrapper">
                                         <div thumbsSlider="" class="swiper mySwiperDesktop">
                                             <div class="swiper-wrapper">
-                                                @foreach ($product->multiImages as $image)
+                                                @if ($product->multiImages)
+                                                    @foreach ($product->multiImages as $image)
+                                                        <div class="swiper-slide ">
+                                                            <img src="{{ asset('storage/' . $image->photo) }}" />
+                                                        </div>
+                                                    @endforeach
+                                                @else
                                                     <div class="swiper-slide ">
-                                                        <img src="{{ asset('storage/' . $image->photo) }}" />
+                                                        <img src="{{ asset('storage/' . $product->thumbnail) }}" />
                                                     </div>
-                                                @endforeach
+                                                @endif
                                             </div>
                                         </div>
                                         <!-- Swiper -->
                                         <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
                                             class="swiper mySwiper2">
-                                            <div class="swiper-wrapper">
+                                            @if ($product->multiImages)
                                                 @foreach ($product->multiImages as $image)
                                                     <div class="swiper-slide magnifier-container">
                                                         <img src="{{ asset('storage/' . $image->photo) }}" />
                                                     </div>
                                                 @endforeach
+                                            @else
+                                                @foreach ($product->multiImages as $image)
+                                                    <div class="swiper-slide magnifier-container">
+                                                        <img src="{{ asset('storage/' . $product->thumbnail) }}" />
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                            <div class="swiper-wrapper">
+
                                             </div>
                                             <div class="swiper-button-next d-none"></div>
                                             <div class="swiper-button-prev d-none"></div>
