@@ -205,18 +205,16 @@
                                         <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
                                             class="swiper mySwiper2">
                                             @if (count($product->multiImages) > 0)
-                                            @foreach ($product->multiImages as $image)
-                                            <div class="swiper-slide magnifier-container">
-                                                <img src="{{ asset('storage/' . $image->photo) }}" />
-                                            </div>
-                                        @endforeach
-                                                @else
                                                 @foreach ($product->multiImages as $image)
                                                     <div class="swiper-slide magnifier-container">
-                                                        <img src="{{ asset('storage/' . $product->thumbnail) }}" />
+                                                        <img src="{{ asset('storage/' . $image->photo) }}" />
                                                     </div>
                                                 @endforeach
-                                                @endif
+                                            @else
+                                                <div class="swiper-slide magnifier-container">
+                                                    <img src="{{ asset('storage/' . $product->thumbnail) }}" />
+                                                </div>
+                                            @endif
                                             <div class="swiper-wrapper">
 
                                             </div>
