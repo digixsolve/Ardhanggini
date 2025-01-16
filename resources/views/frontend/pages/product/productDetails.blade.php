@@ -215,9 +215,6 @@
                                                     <img src="{{ asset('storage/' . $product->thumbnail) }}" />
                                                 </div>
                                             @endif
-                                            <div class="swiper-wrapper">
-
-                                            </div>
                                             <div class="swiper-button-next d-none"></div>
                                             <div class="swiper-button-prev d-none"></div>
                                         </div>
