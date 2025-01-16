@@ -816,7 +816,7 @@
         </div>
     @endforeach
 
-    {{-- @push('scripts')
+    @push('scripts')
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script>
             document.querySelectorAll('.magnifier-container').forEach(container => {
@@ -993,127 +993,7 @@
                 });
             });
         </script>
-    @endpush --}}
-    @push('scripts')
-        <!-- Load jQuery first -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-        <!-- Then load Swiper -->
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-        <!-- Then load lightGallery -->
-        <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.1.0/lightgallery.min.js"></script>
-
-        <script>
-            $(document).ready(function() {
-                // Initialize Swiper
-                function initSwiper() {
-                    let galleryTop, galleryThumbs;
-
-                    // Destroy existing Swiper instances if they exist
-                    if (galleryTop) {
-                        galleryTop.destroy(true, true);
-                    }
-                    if (galleryThumbs) {
-                        galleryThumbs.destroy(true, true);
-                    }
-
-                    // Desktop Version
-                    if ($(window).width() > 768) {
-                        galleryTop = new Swiper('.mySwiperDesktop', {
-                            spaceBetween: 10,
-                            slidesPerView: 4,
-                            direction: 'vertical',
-                            freeMode: true,
-                            loop: $(".mySwiperDesktop .swiper-slide").length > 1,
-                            autoplay: {
-                                delay: 3000,
-                                disableOnInteraction: false,
-                            },
-                            watchSlidesProgress: true,
-                        });
-
-                        galleryThumbs = new Swiper('.mySwiper2', {
-                            spaceBetween: 10,
-                            thumbs: {
-                                swiper: galleryTop,
-                            },
-                            loop: true,
-                            autoplay: {
-                                delay: 3000,
-                                disableOnInteraction: false,
-                            },
-                        });
-
-                    } else { // Mobile Version
-                        galleryTop = new Swiper('.mySwiper', {
-                            spaceBetween: 10,
-                            slidesPerView: 1,
-                            freeMode: false,
-                            watchSlidesProgress: true,
-                            loop: $(".mySwiper .swiper-slide").length > 1,
-                            autoplay: {
-                                delay: 3000,
-                                disableOnInteraction: false,
-                            },
-                        });
-
-                        galleryThumbs = new Swiper('.mySwiper2', {
-                            spaceBetween: 10,
-                            thumbs: {
-                                swiper: galleryTop,
-                            },
-                            loop: true,
-                            autoplay: {
-                                delay: 3000,
-                                disableOnInteraction: false,
-                            },
-                        });
-                    }
-
-                    // Sync slide changes between the top and thumbs Swipers
-                    galleryTop.on('slideChangeTransitionStart', function() {
-                        galleryThumbs.slideTo(galleryTop.activeIndex);
-                    });
-
-                    galleryThumbs.on('transitionStart', function() {
-                        galleryTop.slideTo(galleryThumbs.activeIndex);
-                    });
-                }
-
-                // Initialize Swiper on document ready
-                initSwiper();
-
-                // Reinitialize Swiper on window resize
-                $(window).resize(function() {
-                    initSwiper();
-                });
-
-                // Optional: Initialize lightGallery if needed
-                if ($('#lightgallery').length) {
-                    $('#lightgallery').lightGallery();
-                }
-
-                // Initialize magnifier effect for zoom on images
-                document.querySelectorAll('.magnifier-container').forEach(container => {
-                    const img = container.querySelector('img');
-                    container.addEventListener('mousemove', (e) => {
-                        const rect = container.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-                        const xPercent = (x / rect.width) * 100;
-                        const yPercent = (y / rect.height) * 100;
-
-                        img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-                        img.style.transform = 'scale(2)';
-                    });
-                    container.addEventListener('mouseleave', () => {
-                        img.style.transform = 'scale(1)';
-                        img.style.transformOrigin = 'center center';
-                    });
-                });
-            });
-        </script>
     @endpush
+
 
 </x-frontend-app-layout>
