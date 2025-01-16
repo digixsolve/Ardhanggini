@@ -60,11 +60,7 @@
             </li>
             <li class="has-mega-menu">
                 <a href="{{ route('allBlog') }}">
-<<<<<<< HEAD
                     Blogs
-=======
-                    Blog
->>>>>>> 0b870ade86546790fdcbc3aab9119d8229116d3b
                 </a>
             </li>
             @if (!empty(optional($special_offer)->slug))
