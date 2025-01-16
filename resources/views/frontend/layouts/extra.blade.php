@@ -58,6 +58,11 @@
                     Shop
                 </a>
             </li>
+            <li class="has-mega-menu">
+                <a href="{{ route('allBlog') }}">
+                    Blogs
+                </a>
+            </li>
             @if (!empty(optional($special_offer)->slug))
                 <li>
                     <a href="{{ route('special.products', optional($special_offer)->slug) }}" class="button-new mt-2">
