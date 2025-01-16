@@ -814,7 +814,7 @@
         </div>
     @endforeach
 
-    @push('scripts')
+    {{-- @push('scripts')
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script>
             document.querySelectorAll('.magnifier-container').forEach(container => {
@@ -991,5 +991,176 @@
                 });
             });
         </script>
+    @endpush --}}
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+        <!-- Then load lightGallery -->
+        <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.1.0/lightgallery.min.js"></script>
+
+        <script>
+            // Initialize Swiper
+            function initSwiper() {
+                let galleryTop, galleryThumbs;
+
+                // Destroy existing Swiper instances if they exist
+                if (galleryTop) {
+                    galleryTop.destroy(true, true);
+                }
+                if (galleryThumbs) {
+                    galleryThumbs.destroy(true, true);
+                }
+
+                if ($(window).width() > 768) {
+                    // Initialize Swiper for desktop
+                    galleryTop = new Swiper(".mySwiperDesktop", {
+                        spaceBetween: 10,
+                        slidesPerView: 4,
+                        direction: 'vertical', // Default slides per view for desktop
+                        freeMode: true,
+                        loop: $(".mySwiperDesktop .swiper-slide").length > 1, // Check if enough slides for loop
+                        autoplay: {
+                            delay: 3000, // 3 seconds delay
+                            disableOnInteraction: false, // Keep autoplay after user interaction
+                        },
+                        watchSlidesProgress: true,
+                        breakpoints: {
+                            768: {
+                                slidesPerView: 4,
+                            },
+                            530: {
+                                slidesPerView: 3,
+                            },
+                            300: {
+                                slidesPerView: 2,
+                            },
+                        }
+                    });
+
+                    galleryThumbs = new Swiper(".mySwiper2", {
+                        spaceBetween: 10,
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        },
+                        a11y: {
+                            prevSlideMessage: "Previous slide",
+                            nextSlideMessage: "Next slide",
+                        },
+                        thumbs: {
+                            swiper: galleryTop,
+                        },
+                        loop: true, // Enable looping
+                        autoplay: {
+                            delay: 3000, // 3 seconds delay
+                            disableOnInteraction: false, // Keep autoplay after user interaction
+                        },
+                    });
+                } else {
+                    // Initialize Swiper for mobile
+                    galleryTop = new Swiper(".mySwiper", {
+                        spaceBetween: 10,
+                        slidesPerView: 4,
+                        freeMode: false,
+                        watchSlidesProgress: true,
+                        loop: $(".mySwiper .swiper-slide").length > 1, // Check if enough slides for loop
+                        autoplay: {
+                            delay: 3000, // 3 seconds delay
+                            disableOnInteraction: false, // Keep autoplay after user interaction
+                        },
+                    });
+
+                    galleryThumbs = new Swiper(".mySwiper2", {
+                        spaceBetween: 10,
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        },
+                        a11y: {
+                            prevSlideMessage: "Previous slide",
+                            nextSlideMessage: "Next slide",
+                        },
+                        thumbs: {
+                            swiper: galleryTop,
+                        },
+                        loop: true, // Enable looping
+                        autoplay: {
+                            delay: 3000, // 3 seconds delay
+                            disableOnInteraction: false, // Keep autoplay after user interaction
+                        },
+                    });
+                }
+
+                // Sync the slide change between galleryTop and galleryThumbs
+                galleryTop.on("slideChangeTransitionStart", function() {
+                    galleryThumbs.slideTo(galleryTop.activeIndex);
+                });
+
+                galleryThumbs.on("transitionStart", function() {
+                    galleryTop.slideTo(galleryThumbs.activeIndex);
+                });
+            }
+
+            $(document).ready(function() {
+                // Initialize Swiper on document ready
+                initSwiper();
+
+                // Initialize lightGallery if the element exists
+                if ($('#lightgallery').length) {
+                    $('#lightgallery').lightGallery();
+                }
+            });
+
+            // Reinitialize Swiper on window resize
+            $(window).resize(function() {
+                initSwiper();
+            });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                // Initialize the owl carousel for product images (if you are using it)
+                $(".owl-carousel").owlCarousel({
+                    items: 4, // Change this to 4
+                    loop: true,
+                    nav: true,
+                    dots: true,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        600: {
+                            items: 2
+                        },
+                        1000: {
+                            items: 4 // Change this to 4 as well
+                        }
+                    }
+                });
+
+                // Initialize the magnifier effect for zoom on images
+                document.querySelectorAll('.magnifier-container').forEach(container => {
+                    const img = container.querySelector('img');
+
+                    container.addEventListener('mousemove', (e) => {
+                        const rect = container.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+
+                        const xPercent = (x / rect.width) * 100;
+                        const yPercent = (y / rect.height) * 100;
+
+                        img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+                        img.style.transform = "scale(2)"; // Zoom level
+                    });
+
+                    container.addEventListener('mouseleave', () => {
+                        img.style.transform = "scale(1)";
+                        img.style.transformOrigin = "center center";
+                    });
+                });
+            });
+        </script>
     @endpush
+
 </x-frontend-app-layout>
