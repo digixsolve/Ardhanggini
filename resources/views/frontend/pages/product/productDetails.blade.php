@@ -775,20 +775,7 @@
                                             <div class="ps-product__desc">
                                                 <p>{!! $related_product->short_description !!}</p>
                                             </div>
-                                            {{-- @if (!empty($related_product->unit_discount_price))
-                                                <div class="ps-product__meta">
-                                                    <span
-                                                        class="ps-product__price sale">৳{{ $related_product->unit_discount_price }}</span>
-                                                    <span
-                                                        class="ps-product__del">৳{{ $related_product->unit_price }}</span>
-                                                </div>
-                                            @else
-                                                <div class="ps-product__meta">
-                                                    <span
-                                                        class="ps-product__price sale">৳{{ $related_product->unit_price }}</span>
-                                                </div>
-                                            @endif --}}
-
+                                            
                                             <div class="ps-product__feature">
                                                 @if (!empty($related_product->unit_discount_price))
                                                     <div class="ps-product__meta py-3 pr-details-price mt-3">
