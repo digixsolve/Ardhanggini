@@ -200,6 +200,7 @@
                             <div class="row">
                                 <div class="col-12 col-xl-7 pr-0">
                                     <div class="kovi-product-slider-wrapper">
+                                        <!-- Thumbs Slider for the gallery -->
                                         <div thumbsSlider="" class="swiper mySwiperDesktop">
                                             <div class="swiper-wrapper">
                                                 @if (count($product->multiImages) > 0)
@@ -215,7 +216,8 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <!-- Swiper -->
+
+                                        <!-- Main image slider (with magnifier) -->
                                         <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
                                             class="swiper mySwiper2">
                                             <div class="swiper-wrapper">
@@ -991,4 +993,6 @@
             });
         </script>
     @endpush
+
+
 </x-frontend-app-layout>
