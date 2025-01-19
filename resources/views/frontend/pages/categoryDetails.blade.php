@@ -26,14 +26,14 @@
                 </div>
                 <div class="col-lg-9 px-0 px-lg-3">
                     <div class="category-banner">
-                        {{-- <img class="img-fluid" style="object-fit: cover;height: 125px;width: 100%;"
-                            src="{{ asset('storage/' . $category->banner_image) }}" alt=""> --}}
-                            @dd(asset('storage/' . $category->banner_image))
-                        <img class="img-fluid ps-categogy__banner"
+                        <img class="img-fluid" style="object-fit: cover;height: 125px;width: 100%;"
+                            src="{{ asset('storage/' . $category->banner_image) }}" alt="">
+                            {{-- @dd(asset('storage/' . $category->banner_image)) --}}
+                        {{-- <img class="img-fluid ps-categogy__banner"
                             style="object-fit: cover; height: 200px; width: 100%;"
                             src="{{ asset('storage/' . $category->banner_image) }}"
                             onerror="this.onerror=null; this.src='{{ asset('images/no-preview2.png') }}';"
-                            alt="">
+                            alt=""> --}}
                         <!-- Fallback for missing image -->
                     </div>
                 </div>
