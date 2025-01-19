@@ -24,20 +24,20 @@
                         </h1>
                     </div>
                 </div>
+                @php
+
+                    $imageUrl =
+                        !empty($category->banner_image) &&
+                        file_exists(public_path('storage/' . $category->banner_image))
+                            ? asset('storage/' . $category->banner_image)
+                            : asset('images/no-preview2.png');
+                @endphp
                 <div class="col-lg-9 px-0 px-lg-3">
-                    @if (!empty($category->banner_image) && file_exists(public_path('storage/' . $category->banner_image)))
-                        <div class="category-banner">
-                            <img class="img-fluid ps-categogy__banner"
-                                {{-- style="object-fit: cover; height: 200px; width: 100%;" --}}
-                                src="{{ asset('storage/' . $category->banner_image) }}" alt="">
-                        </div>
-                    @else
-                        <div class="category-banner">
-                            <img class="img-fluid ps-categogy__banner"
-                                style="object-fit: cover; height: 200px; width: 100%;"
-                                src="{{ asset('images/no-preview2.png') }}" alt="">
-                        </div>
-                    @endif
+                    <div class="category-banner">
+                        <img class="img-fluid ps-categogy__banner"
+                            style="object-fit: cover; height: 200px; width: 100%;" src="{{ $imageUrl }}"
+                            alt="">
+                    </div>
                 </div>
             </div>
 
