@@ -92,11 +92,13 @@
                                                                 <tr>
                                                                     <td>
                                                                         <div class="d-flex align-items-center">
-                                                                            <a href="{{ route('product.details', optional($item->product)->slug) }}"
-                                                                                class="symbol symbol-50px">
-                                                                                <span class="symbol-label"
-                                                                                    style="background-image:url({{ asset('storage/' . optional($item->product)->thumbnail) }});"></span>
-                                                                            </a>
+                                                                            @if (!emty(optional($item->product)->slug))
+                                                                                <a href="{{ route('product.details', optional($item->product)->slug) }}"
+                                                                                    class="symbol symbol-50px">
+                                                                                    <span class="symbol-label"
+                                                                                        style="background-image:url({{ asset('storage/' . optional($item->product)->thumbnail) }});"></span>
+                                                                                </a>
+                                                                            @endif
 
                                                                             <div class="ms-5 text-start">
                                                                                 <div class="fw-bold text-start">
