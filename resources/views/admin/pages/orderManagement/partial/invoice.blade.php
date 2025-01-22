@@ -88,15 +88,16 @@
                                                         </thead>
 
                                                         <tbody class="fw-semibold text-gray-600">
-                                                            @foreach (optional($order)->orderItems as $item)
+                                                            @foreach ($order->orderItems as $item)
+                                                                {{-- @dd(optional($item->product)->slug) --}}
                                                                 <tr>
                                                                     <td>
                                                                         <div class="d-flex align-items-center">
-                                                                            <a href="{{ route('product.details', optional($item->product)->slug) }}"
+                                                                            <span
                                                                                 class="symbol symbol-50px">
                                                                                 <span class="symbol-label"
                                                                                     style="background-image:url({{ asset('storage/' . optional($item->product)->thumbnail) }});"></span>
-                                                                            </a>
+                                                                            </span>
 
                                                                             <div class="ms-5 text-start">
                                                                                 <div class="fw-bold text-start">
