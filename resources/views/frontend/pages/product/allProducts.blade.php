@@ -326,7 +326,7 @@
                                                     href="{{ optional($deal)->button_link }}">{{ optional($deal)->button_name }}</a>
                                             @elseif (!empty(optional($deal)->product_id))
                                                 <a class="btn-green ps-promo__btn"
-                                                    href="{{ route('product.details', optional($deal)->product->slug) }}">Buy
+                                                    href="{{ route('product.details', optional($deal->product)->slug) }}">Buy
                                                     now</a>
                                             @endif
                                         </div>
