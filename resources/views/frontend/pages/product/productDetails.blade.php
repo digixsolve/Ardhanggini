@@ -775,7 +775,7 @@
                                             <div class="ps-product__desc">
                                                 <p>{!! $related_product->short_description !!}</p>
                                             </div>
-                                            
+
                                             <div class="ps-product__feature">
                                                 @if (!empty($related_product->unit_discount_price))
                                                     <div class="ps-product__meta py-3 pr-details-price mt-3">
