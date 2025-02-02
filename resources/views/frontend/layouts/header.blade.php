@@ -334,9 +334,9 @@
                     <div class="marquee__content">
                         @for ($i = 0; $i < 10; $i++)
                             <a href="{{ route('special.products', optional($special_offer)->slug) }}">
-                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
-                                    <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
-                                    <span>{{ optional($special_offer)->header_slogan }}</span>
+                                <p class="mb-0 text-white marquee-text d-flex align-items-center">
+                                    <span><i class="pr-3 fa-solid fa-cart-shopping"></i></span>
+                                    <span>{{ optional($special_offer)->header_slogan ?? 'Bags' }}</span>
                                 </p>
                             </a>
                         @endfor
@@ -344,13 +344,46 @@
                     <div aria-hidden="true" class="marquee__content">
                         @for ($i = 0; $i < 10; $i++)
                             <a href="{{ route('special.products', optional($special_offer)->slug) }}">
-                                <p class="text-white marquee-text mb-0 d-flex align-items-center">
-                                    <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
-                                    <span>{{ optional($special_offer)->header_slogan }}</span>
+                                <p class="mb-0 text-white marquee-text d-flex align-items-center">
+                                    <span><i class="pr-3 fa-solid fa-cart-shopping"></i></span>
+                                    <span>{{ optional($special_offer)->header_slogan ?? 'Bags' }}</span>
                                 </p>
                             </a>
                         @endfor
                     </div>
+                </div>
+            </section>
+        </div>
+    @endif
+    @if (!empty(optional($special_offer)->slug) || !empty(optional($special_offer)->header_slogan))
+        <div class="ps-noti">
+            <section>
+                <div class="marquee marquee--hover-pause enable-animation">
+                    <ul class="marquee__content">
+                        @for ($i = 0; $i < 8; $i++)
+                            <li>
+                                <a href="{{ route('special.products', optional($special_offer)->slug) }}">
+                                    <p class="mb-0 text-white marquee-text d-flex align-items-center">
+                                        <span><i class="pr-3 fa-solid fa-cart-shopping"></i></span>
+                                        <span>{{ optional($special_offer)->header_slogan ?? 'Step Into Style' }}</span>
+                                    </p>
+                                </a>
+                            </li>
+                        @endfor
+                    </ul>
+
+                    <ul aria-hidden="true" class="marquee__content">
+                        @for ($i = 0; $i < 8; $i++)
+                            <li>
+                                <a href="{{ route('special.products', optional($special_offer)->slug) }}">
+                                    <p class="mb-0 text-white marquee-text d-flex align-items-center">
+                                        <span><i class="pr-3 fa-solid fa-cart-shopping"></i></span>
+                                        <span>{{ optional($special_offer)->header_slogan ?? 'Step Into Style' }}</span>
+                                    </p>
+                                </a>
+                            </li>
+                        @endfor
+                    </ul>
                 </div>
             </section>
         </div>
@@ -536,7 +569,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-10 pr-0">
+                    <div class="pr-0 col-lg-10">
                         <div class="d-flex justify-content-center align-items-center" style="padding-top: 2rem;">
                             <div class="ps-navigation__left">
                                 <nav class="ps-main-menu">
@@ -544,7 +577,7 @@
                                         <!-- Previous Button -->
                                         <button id="prevButton" onclick="showPrevious()"
                                             class="button-nav-arrow-prev" style="display: none;">
-                                            <i class="fa fa-chevron-left text-white"></i>
+                                            <i class="text-white fa fa-chevron-left"></i>
                                         </button>
                                         <!-- Menu Items -->
                                         <ul class="menu">
@@ -559,7 +592,7 @@
                                         </ul>
                                         <!-- Next Button -->
                                         <button id="nextButton" onclick="showNext()" class="button-nav-arrow">
-                                            <i class="fa fa-chevron-right text-white"></i>
+                                            <i class="text-white fa fa-chevron-right"></i>
                                         </button>
                                     </div>
                                 </nav>
@@ -568,10 +601,10 @@
                     </div>
                     @if (!empty(optional($special_offer)->slug))
                         <div class="col-lg-2">
-                            <div class="text-right pt-3">
+                            <div class="pt-3 text-right">
                                 {{-- <a href="#" class="animated-button">11:11 SALE</a> --}}
                                 <a href="{{ route('special.products', optional($special_offer)->slug) }}"
-                                    class="button-new mt-2">
+                                    class="mt-2 button-new">
                                     <span class="fold"></span>
 
                                     <div class="points_wrapper">
@@ -603,7 +636,7 @@
         </div>
     </div>
     {{-- <div class="ps-navigation">
-        <div class="container-fluid text-center" style="border-bottom: 1px solid #f0f2f5;">
+        <div class="text-center container-fluid" style="border-bottom: 1px solid #f0f2f5;">
             <div class="container">
 
             </div>
@@ -622,8 +655,8 @@
                         @for ($i = 0; $i < 8; $i++)
                             <li>
                                 <a href="{{ route('special.products', optional($special_offer)->slug) }}">
-                                    <p class="text-white marquee-text mb-0 d-flex align-items-center">
-                                        <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
+                                    <p class="mb-0 text-white marquee-text d-flex align-items-center">
+                                        <span><i class="pr-3 fa-solid fa-cart-shopping"></i></span>
                                         <span>{{ optional($special_offer)->header_slogan }}</span>
                                     </p>
                                 </a>
@@ -635,8 +668,8 @@
                         @for ($i = 0; $i < 8; $i++)
                             <li>
                                 <a href="{{ route('special.products', optional($special_offer)->slug) }}">
-                                    <p class="text-white marquee-text mb-0 d-flex align-items-center">
-                                        <span><i class="fa-solid fa-cart-shopping pr-3"></i></span>
+                                    <p class="mb-0 text-white marquee-text d-flex align-items-center">
+                                        <span><i class="pr-3 fa-solid fa-cart-shopping"></i></span>
                                         <span>{{ optional($special_offer)->header_slogan }}</span>
                                     </p>
                                 </a>
@@ -694,7 +727,7 @@
         <form action="{{ route('allproducts') }}">
             <div class="ps-search-table">
                 <div class="input-group">
-                    <input id="search_text" class="form-control form-control search_text" type="text"
+                    <input id="search_text" class="form-control search_text" type="text"
                         placeholder="Search for products">
                     <div class="input-group-append"><a href="#"><i class="fa fa-search"></i></a></div>
                 </div>
