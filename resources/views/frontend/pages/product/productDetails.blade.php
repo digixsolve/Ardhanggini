@@ -373,7 +373,7 @@
                                 <ul class="ps-product__bundle">
                                     <li><i class="icon-bag2"></i>Full cash on delivery</li>
                                     @foreach ($shippingmethods as $shippingmethod)
-                                        <li><i class="icon-truck"></i>{{ $shippingmethod->title }} - {{ number_format($shippingmethod->price, 2) }} TK ({{ $shippingmethod->duration }})</li>
+                                        <li><i class="icon-truck"></i>{{ $shippingmethod->title }} - {{ $shippingmethod->price }} TK ({{ $shippingmethod->duration }})</li>
                                     @endforeach
                                     {{-- <li><i class="fa-solid fa-location-dot"></i>
                                         Sub-areas: <br>
