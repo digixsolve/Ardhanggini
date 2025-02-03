@@ -81,7 +81,7 @@
             <table class="table ps-table ps-table--product">
                 <thead>
                     <tr>
-                        <th width="10%" class="ps-product__remove text-center">
+                        <th width="10%" class="text-center ps-product__remove">
                             <div>
                                 <i class="fa-solid fa-trash"></i>
                             </div>
@@ -96,7 +96,7 @@
                 <tbody>
                     @foreach ($cartItems as $item)
                         <tr>
-                            <td class="ps-product__remove text-center">
+                            <td class="text-center ps-product__remove">
                                 <a href="{{ route('cart.destroy', $item->rowId) }}" class="remove-from-cart delete">
                                     <i class="icon-cross"></i>
                                 </a>
@@ -132,7 +132,7 @@
                                     </button>
                                 </div>
                             </td>
-                            <td class="ps-product__subtotal text-center">৳ {{ $item->price * $item->qty }}</td>
+                            <td class="text-center ps-product__subtotal">৳ {{ $item->price * $item->qty }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -162,18 +162,18 @@
                 <div class="ps-shopping__label">Total</div>
                 <div class="ps-shopping__price">৳ {{ Cart::subtotal() }}</div>
             </div>
-            <div class="d-flex align-items-center justify-content-between mt-3">
-                <a class="btn btn-primary mr-2" href="{{ route('allproducts') }}">Continue</a>
-                <a class="btn btn-outline-primary" href="{{ route('checkout') }}">Place Order</a>
+            <div class="mt-3 d-flex align-items-center justify-content-between">
+                <a class="mr-2 btn btn-outline-primary" href="{{ route('allproducts') }}">Continue</a>
+                <a class="btn btn-primary" href="{{ route('checkout') }}">Place Order</a>
             </div>
         </div>
         {{-- Pricing Side End --}}
     </div>
 @else
-    <div class="col-md-12 text-center">
+    <div class="text-center col-md-12">
         <h2>Your cart is empty !</h2>
         <h5 class="mt-3">Add Items to it now.</h5>
-        <a href="{{ route('allproducts') }}" class="btn btn-warning mt-5 mb-4">
+        <a href="{{ route('allproducts') }}" class="mt-5 mb-4 btn btn-warning">
             Shop Now
         </a>
     </div>
