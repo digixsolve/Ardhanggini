@@ -185,7 +185,8 @@
             background-color: var(--site-green);
             outline: 0px solid slategrey;
         }
-        .ps-badge{
+
+        .ps-badge {
             left: 0%;
         }
     </style>
@@ -371,16 +372,15 @@
                                 </div>
                                 <ul class="ps-product__bundle">
                                     <li><i class="icon-bag2"></i>Full cash on delivery</li>
-                                    <li><i class="icon-truck"></i>Inside Dhaka-70 TK (24-48 hrs)</li>
-                                    <li><i class="icon-truck"></i>Outside Dhaka-150 TK (2-4 Days)</li>
-                                    </li>
-                                    <li><i class="icon-truck"></i>Dhaka Sub-area-100 TK </li>
-                                    <li><i class="fa-solid fa-location-dot"></i>
+                                    @foreach ($shippingmethods as $shippingmethod)
+                                        <li><i class="icon-truck"></i>{{ $shippingmethod->title }} - {{ number_format($shippingmethod->price, 2) }} TK ({{ $shippingmethod->duration }})</li>
+                                    @endforeach
+                                    {{-- <li><i class="fa-solid fa-location-dot"></i>
                                         Sub-areas: <br>
                                         <span class="pt-2"
                                             style="position: relative;left: 32px;width: 94%;display: inline-block;">Keraniganj,
                                             Tangi, Savar, Gazipur, Narayanganj, Asulia (2-4 Days)</span>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>
@@ -398,303 +398,299 @@
                                 </div>
                             </div>
                             <div class="pl-0 col-lg-7">
-                        @else
-                            <div class="pl-0 col-lg-12">
+                            @else
+                                <div class="pl-0 col-lg-12">
                         @endif
-                                <div class="p-0 ps-product__content cst-product">
-                                    <ul class="p-2 bg-white p-lg-3 nav nav-tabs ps-tab-list" id="productContentTabs"
-                                        role="tablist">
-                                        <li class="ml-3 nav-item pr-info-tabs" role="presentation">
-                                            <a class="nav-link show active" id="information-tab" data-toggle="tab"
-                                                href="#information-content" role="tab"
-                                                aria-controls="information-content" aria-selected="false">
-                                                Description
-                                            </a>
-                                        </li>
-                                        <li class="ml-3 nav-item pr-info-tabs" role="presentation">
-                                            <a class="nav-link" id="description-tab" data-toggle="tab"
-                                                href="#description-content" role="tab"
-                                                aria-controls="description-content" aria-selected="true">
-                                                Key Features
-                                            </a>
-                                        </li>
-                                        <li class="ml-3 nav-item pr-inf-tabs" role="presentation">
-                                            <a class="nav-link" id="specification-tab" data-toggle="tab"
-                                                href="#specification-content" role="tab"
-                                                aria-controls="specification-content" aria-selected="false">
-                                                Specification
-                                            </a>
-                                        </li>
-                                        <li class="ml-3 nav-item" role="presentation">
-                                            <a class="nav-link" id="reviews-tab" data-toggle="tab"
-                                                href="#reviews-content" role="tab" aria-controls="reviews-content"
-                                                aria-selected="false">
-                                                Reviews ({{ count($product->reviews) }})
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="p-5 bg-white tab-content" id="productContent">
-                                        <div class="tab-pane fade show active" id="information-content" role="tabpanel"
-                                            aria-labelledby="information-tab">
-                                            <div class="ps-document">
-                                                <div class="row row-reverse">
-                                                    <div class="col-12">
-                                                        {!! $product->description !!}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="description-content" role="tabpanel"
-                                            aria-labelledby="description-tab">
-                                            <div class="ps-document">
-                                                <div class="row row-reverse">
-                                                    <div class="col-12">
-                                                        {!! $product->overview !!}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="specification-content" role="tabpanel"
-                                            aria-labelledby="specification-tab">
-                                            <div class="ps-document">
-                                                <div class="row row-reverse">
-                                                    <div class="col-12">
-                                                        {!! $product->specification !!}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="reviews-content" role="tabpanel"
-                                            aria-labelledby="reviews-tab">
-                                            <div class="ps-product__tabreview">
-                                                <div class="ps-review--product">
-                                                    {{-- Check if $reviews is not empty --}}
-                                                    @if (!empty($product->reviews) && count($product->reviews) > 0)
-                                                        @foreach ($product->reviews as $review)
-                                                            <div class="ps-review__row">
-                                                                <div class="ps-review__avatar">
-                                                                    <img src="{{ !empty($review['image']) ? asset('storage/' . $review['image']) : asset('images/testimonial.png') }}"
-                                                                        alt="{{ $review['name'] }}" />
-                                                                </div>
-                                                                <div class="ps-review__info">
-                                                                    <div class="ps-review__name">{{ $review['name'] }}</div>
-                                                                    <div class="ps-review__date">
-                                                                        {{ \Carbon\Carbon::parse($review['date'])->format('M d, Y') }}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="ps-review__rating">
-                                                                    @if ($review['rating'] > 0)
-                                                                        <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                            <select class="ps-rating"
-                                                                                data-read-only="true"
-                                                                                style="display: none;">
-                                                                                @php
-                                                                                    $maxRating = min(
-                                                                                        5,
-                                                                                        max(1, floor($review['rating'])),
-                                                                                    ); // Get the highest full rating value
-                                                                                @endphp
-                                                                                @for ($i = 1; $i <= $maxRating; $i++)
-                                                                                    <option value="{{ $i }}">
-                                                                                        {{ $i }}</option>
-                                                                                @endfor
-                                                                            </select>
-                                                                        </div>
-                                                                    @endif
-                                                                </div>
-                                                                <div class="ps-review__desc">
-                                                                    <p>{!! $review['message'] !!}</p>
-                                                                </div>
-                                                            </div>
-                                                        @endforeach
-                                                    @else
-                                                        <p>No reviews available.</p>
-                                                    @endif
-                                                </div>
+                        <div class="p-0 ps-product__content cst-product">
+                            <ul class="p-2 bg-white p-lg-3 nav nav-tabs ps-tab-list" id="productContentTabs"
+                                role="tablist">
+                                <li class="ml-3 nav-item pr-info-tabs" role="presentation">
+                                    <a class="nav-link show active" id="information-tab" data-toggle="tab"
+                                        href="#information-content" role="tab"
+                                        aria-controls="information-content" aria-selected="false">
+                                        Description
+                                    </a>
+                                </li>
+                                <li class="ml-3 nav-item pr-info-tabs" role="presentation">
+                                    <a class="nav-link" id="description-tab" data-toggle="tab"
+                                        href="#description-content" role="tab"
+                                        aria-controls="description-content" aria-selected="true">
+                                        Key Features
+                                    </a>
+                                </li>
+                                <li class="ml-3 nav-item pr-inf-tabs" role="presentation">
+                                    <a class="nav-link" id="specification-tab" data-toggle="tab"
+                                        href="#specification-content" role="tab"
+                                        aria-controls="specification-content" aria-selected="false">
+                                        Specification
+                                    </a>
+                                </li>
+                                <li class="ml-3 nav-item" role="presentation">
+                                    <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews-content"
+                                        role="tab" aria-controls="reviews-content" aria-selected="false">
+                                        Reviews ({{ count($product->reviews) }})
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="p-5 bg-white tab-content" id="productContent">
+                                <div class="tab-pane fade show active" id="information-content" role="tabpanel"
+                                    aria-labelledby="information-tab">
+                                    <div class="ps-document">
+                                        <div class="row row-reverse">
+                                            <div class="col-12">
+                                                {!! $product->description !!}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                    </div>
-                    <section class="ps-section--also" data-background="img/related-bg.jpg">
-                        <div class="container px-0">
-                            <h3 class="ps-section__title">Customer also bought</h3>
-                            <div class="owl-carousel">
-                                @foreach ($related_products as $related_product)
-                                    <div class="ps-section__product">
-                                        <div class="ps-product takeway-products ps-product--standard cst-bought-pr">
-                                            <div class="ps-product__thumbnail">
-                                                <a class="ps-product__image takeway-slider-img"
-                                                    href="{{ route('product.details', $related_product->slug) }}">
-                                                    <figure>
-                                                        @if (!empty($related_product->thumbnail))
-                                                            @php
-                                                                $thumbnailPath =
-                                                                    'storage/' . $related_product->thumbnail;
-                                                                $thumbnailSrc = file_exists(public_path($thumbnailPath))
-                                                                    ? asset($thumbnailPath)
-                                                                    : asset('frontend/img/no-product.jpg');
-                                                            @endphp
-                                                            <img src="{{ $thumbnailSrc }}"
-                                                                alt="{{ $related_product->meta_title }}"
-                                                                width="210" height="210" />
-                                                        @else
-                                                            @foreach ($related_product->multiImages->slice(0, 2) as $image)
-                                                                @php
-                                                                    $imagePath = 'storage/' . $image->photo;
-                                                                    $imageSrc = file_exists(public_path($imagePath))
-                                                                        ? asset($imagePath)
-                                                                        : // : asset('frontend/img/no-product.jpg');
-                                                                        asset('frontend/img/no-product.jpg');
-                                                                @endphp
-                                                                <img src="{{ $imageSrc }}"
-                                                                    alt="{{ $related_product->meta_title }}"
-                                                                    width="210" height="210" />
-                                                            @endforeach
-                                                        @endif
-                                                    </figure>
-                                                </a>
-                                                <div class="ps-product__actions">
-                                                    <div class="ps-product__item" data-toggle="tooltip"
-                                                        data-placement="left" title="Wishlist">
-                                                        <a class="add_to_wishlist"
-                                                            href="{{ route('wishlist.store', $related_product->id) }}">
-                                                            <i class="fa fa-heart-o"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="ps-product__item" data-toggle="tooltip"
-                                                        data-placement="left" title="Quick view"><a href="#"
-                                                            data-toggle="modal"
-                                                            data-target="#popupQuickview{{ $related_product->id }}"><i
-                                                                class="fa fa-eye"></i></a></div>
-
-                                                </div>
-                                                @if (!empty($related_product->unit_discount_price))
-                                                    <div class="ps-product__badge">
-                                                        <div class="ps-badge ps-badge--sale">
-                                                            -
-                                                            {{ !empty($related_product->unit_discount_price) && $related_product->unit_discount_price > 0 ? number_format((($related_product->unit_price - $related_product->unit_discount_price) / $related_product->unit_price) * 100, 1) : 0 }}
-                                                            % Off
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                            <div class="ps-product__content">
-                                                <div>
-                                                    <h4 class="" style="height: 50px !important;">
-                                                        <a href="{{ route('product.details', $related_product->slug) }}"
-                                                            style="text-transform: capitalize;">
-                                                            {{ implode(' ', array_slice(explode(' ', $related_product->name), 0, 5)) }}
-                                                        </a>
-                                                    </h4>
-                                                </div>
-                                                @php
-                                                    $review =
-                                                        count($related_product->reviews) > 0
-                                                            ? optional($related_product->reviews)->sum('rating') /
-                                                                count($related_product->reviews)
-                                                            : 0;
-                                                    // dd($related_product->name, $review);
-                                                @endphp
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <div class="ps-product__rating">
-                                                        @if ($review > 0)
-                                                            <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                <select class="ps-rating" data-read-only="true"
-                                                                    style="display: none;">
-                                                                    @php
-                                                                        $maxRating = min(5, max(1, floor($review))); // Get the highest full rating value
-                                                                    @endphp
-                                                                    @for ($i = 1; $i <= $maxRating; $i++)
-                                                                        <option value="{{ $i }}">
-                                                                            {{ $i }}</option>
-                                                                    @endfor
-                                                                </select>
-                                                            </div>
-                                                        @endif
-                                                    </div>
-                                                    <div>
-                                                        @if (count($related_product->reviews) > 0)
-                                                            Reviews ({{ count($related_product->reviews) }})
-                                                        @else
-                                                            <p class="pb-0 mb-1 no-found">N/A</p>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                                @if (!empty($related_product->unit_discount_price))
-                                                    <div class="pb-3 ps-product__meta">
-                                                        <span
-                                                            class="ps-product__price sale">৳{{ $related_product->unit_discount_price }}</span>
-                                                        <span
-                                                            class="ps-product__del">৳{{ $related_product->unit_price }}</span>
-                                                    </div>
-                                                @else
-                                                    <div class="pb-3 ps-product__meta">
-                                                        <span
-                                                            class="ps-product__price sale">৳{{ $related_product->unit_price }}</span>
-                                                    </div>
-                                                @endif
-                                                <div class="d-flex align-items-center">
-                                                    <a href="{{ route('buy.now', $related_product->id) }}"
-                                                        class="mr-1 btn btn-primary mr-lg-3">
-                                                        Buy Now
-                                                    </a>
-                                                    <a href="{{ route('cart.store', $related_product->id) }}"
-                                                        class="btn btn-outline-primary add_to_cart"
-                                                        data-product_id="{{ $related_product->id }}"
-                                                        data-product_qty="1">
-                                                        Add To Cart
-                                                    </a>
-                                                </div>
-                                                <div class="ps-product__actions ps-product__group-mobile">
-                                                    <div class="ps-product__quantity">
-                                                        <div class="def-number-input number-input safari_only">
-                                                            <button class="minus"
-                                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i
-                                                                    class="icon-minus"></i></button>
-                                                            <input class="quantity" min="0" name="quantity"
-                                                                value="1" type="number" />
-                                                            <button class="plus"
-                                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i
-                                                                    class="icon-plus"></i></button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ps-product__item cart" data-toggle="tooltip"
-                                                        data-placement="left" title="Add to cart"><a
-                                                            href="#"><i class="fa fa-shopping-basket"></i></a>
-                                                    </div>
-                                                    <div class="ps-product__item" data-toggle="tooltip"
-                                                        data-placement="left" title="Wishlist">
-                                                        <a class="add_to_wishlist"
-                                                            href="{{ route('wishlist.store', $related_product->id) }}">
-                                                            <i class="fa fa-heart-o"></i>
-                                                        </a>
-                                                    </div>
-                                                    {{-- <div class="ps-product__item rotate" data-toggle="tooltip"
-                                                        data-placement="left" title="Add to compare"><a
-                                                            href="compare.html"><i class="fa fa-align-left"></i></a>
-                                                    </div> --}}
-                                                </div>
+                                <div class="tab-pane fade" id="description-content" role="tabpanel"
+                                    aria-labelledby="description-tab">
+                                    <div class="ps-document">
+                                        <div class="row row-reverse">
+                                            <div class="col-12">
+                                                {!! $product->overview !!}
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
+                                <div class="tab-pane fade" id="specification-content" role="tabpanel"
+                                    aria-labelledby="specification-tab">
+                                    <div class="ps-document">
+                                        <div class="row row-reverse">
+                                            <div class="col-12">
+                                                {!! $product->specification !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="reviews-content" role="tabpanel"
+                                    aria-labelledby="reviews-tab">
+                                    <div class="ps-product__tabreview">
+                                        <div class="ps-review--product">
+                                            {{-- Check if $reviews is not empty --}}
+                                            @if (!empty($product->reviews) && count($product->reviews) > 0)
+                                                @foreach ($product->reviews as $review)
+                                                    <div class="ps-review__row">
+                                                        <div class="ps-review__avatar">
+                                                            <img src="{{ !empty($review['image']) ? asset('storage/' . $review['image']) : asset('images/testimonial.png') }}"
+                                                                alt="{{ $review['name'] }}" />
+                                                        </div>
+                                                        <div class="ps-review__info">
+                                                            <div class="ps-review__name">{{ $review['name'] }}</div>
+                                                            <div class="ps-review__date">
+                                                                {{ \Carbon\Carbon::parse($review['date'])->format('M d, Y') }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="ps-review__rating">
+                                                            @if ($review['rating'] > 0)
+                                                                <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                    <select class="ps-rating" data-read-only="true"
+                                                                        style="display: none;">
+                                                                        @php
+                                                                            $maxRating = min(
+                                                                                5,
+                                                                                max(1, floor($review['rating'])),
+                                                                            ); // Get the highest full rating value
+                                                                        @endphp
+                                                                        @for ($i = 1; $i <= $maxRating; $i++)
+                                                                            <option value="{{ $i }}">
+                                                                                {{ $i }}</option>
+                                                                        @endfor
+                                                                    </select>
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                        <div class="ps-review__desc">
+                                                            <p>{!! $review['message'] !!}</p>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                <p>No reviews available.</p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
                 </div>
-            </div>
-            <div class="my-5 ps-delivery ps-delivery--info"
-                data-background="{{ asset('images/delivery_banner.jpg') }}"
-                style="background-image: url({{ asset('images/delivery_banner.jpg') }});">
-                <div class="ps-delivery__content">
-                    <div class="ps-delivery__text"> <i class="icon-shield-check"></i><span> <strong>100%
-                                Secure delivery </strong>without courier communication</span></div><a
-                        class="ps-delivery__more" href="{{ route('allproducts') }}">Shop</a>
-                </div>
+                <section class="ps-section--also" data-background="img/related-bg.jpg">
+                    <div class="container px-0">
+                        <h3 class="ps-section__title">Customer also bought</h3>
+                        <div class="owl-carousel">
+                            @foreach ($related_products as $related_product)
+                                <div class="ps-section__product">
+                                    <div class="ps-product takeway-products ps-product--standard cst-bought-pr">
+                                        <div class="ps-product__thumbnail">
+                                            <a class="ps-product__image takeway-slider-img"
+                                                href="{{ route('product.details', $related_product->slug) }}">
+                                                <figure>
+                                                    @if (!empty($related_product->thumbnail))
+                                                        @php
+                                                            $thumbnailPath = 'storage/' . $related_product->thumbnail;
+                                                            $thumbnailSrc = file_exists(public_path($thumbnailPath))
+                                                                ? asset($thumbnailPath)
+                                                                : asset('frontend/img/no-product.jpg');
+                                                        @endphp
+                                                        <img src="{{ $thumbnailSrc }}"
+                                                            alt="{{ $related_product->meta_title }}" width="210"
+                                                            height="210" />
+                                                    @else
+                                                        @foreach ($related_product->multiImages->slice(0, 2) as $image)
+                                                            @php
+                                                                $imagePath = 'storage/' . $image->photo;
+                                                                $imageSrc = file_exists(public_path($imagePath))
+                                                                    ? asset($imagePath)
+                                                                    : // : asset('frontend/img/no-product.jpg');
+                                                                    asset('frontend/img/no-product.jpg');
+                                                            @endphp
+                                                            <img src="{{ $imageSrc }}"
+                                                                alt="{{ $related_product->meta_title }}"
+                                                                width="210" height="210" />
+                                                        @endforeach
+                                                    @endif
+                                                </figure>
+                                            </a>
+                                            <div class="ps-product__actions">
+                                                <div class="ps-product__item" data-toggle="tooltip"
+                                                    data-placement="left" title="Wishlist">
+                                                    <a class="add_to_wishlist"
+                                                        href="{{ route('wishlist.store', $related_product->id) }}">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="ps-product__item" data-toggle="tooltip"
+                                                    data-placement="left" title="Quick view"><a href="#"
+                                                        data-toggle="modal"
+                                                        data-target="#popupQuickview{{ $related_product->id }}"><i
+                                                            class="fa fa-eye"></i></a></div>
+
+                                            </div>
+                                            @if (!empty($related_product->unit_discount_price))
+                                                <div class="ps-product__badge">
+                                                    <div class="ps-badge ps-badge--sale">
+                                                        -
+                                                        {{ !empty($related_product->unit_discount_price) && $related_product->unit_discount_price > 0 ? number_format((($related_product->unit_price - $related_product->unit_discount_price) / $related_product->unit_price) * 100, 1) : 0 }}
+                                                        % Off
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div class="ps-product__content">
+                                            <div>
+                                                <h4 class="" style="height: 50px !important;">
+                                                    <a href="{{ route('product.details', $related_product->slug) }}"
+                                                        style="text-transform: capitalize;">
+                                                        {{ implode(' ', array_slice(explode(' ', $related_product->name), 0, 5)) }}
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            @php
+                                                $review =
+                                                    count($related_product->reviews) > 0
+                                                        ? optional($related_product->reviews)->sum('rating') /
+                                                            count($related_product->reviews)
+                                                        : 0;
+                                                // dd($related_product->name, $review);
+                                            @endphp
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="ps-product__rating">
+                                                    @if ($review > 0)
+                                                        <div class="br-wrapper br-theme-fontawesome-stars">
+                                                            <select class="ps-rating" data-read-only="true"
+                                                                style="display: none;">
+                                                                @php
+                                                                    $maxRating = min(5, max(1, floor($review))); // Get the highest full rating value
+                                                                @endphp
+                                                                @for ($i = 1; $i <= $maxRating; $i++)
+                                                                    <option value="{{ $i }}">
+                                                                        {{ $i }}</option>
+                                                                @endfor
+                                                            </select>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                <div>
+                                                    @if (count($related_product->reviews) > 0)
+                                                        Reviews ({{ count($related_product->reviews) }})
+                                                    @else
+                                                        <p class="pb-0 mb-1 no-found">N/A</p>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            @if (!empty($related_product->unit_discount_price))
+                                                <div class="pb-3 ps-product__meta">
+                                                    <span
+                                                        class="ps-product__price sale">৳{{ $related_product->unit_discount_price }}</span>
+                                                    <span
+                                                        class="ps-product__del">৳{{ $related_product->unit_price }}</span>
+                                                </div>
+                                            @else
+                                                <div class="pb-3 ps-product__meta">
+                                                    <span
+                                                        class="ps-product__price sale">৳{{ $related_product->unit_price }}</span>
+                                                </div>
+                                            @endif
+                                            <div class="d-flex align-items-center">
+                                                <a href="{{ route('buy.now', $related_product->id) }}"
+                                                    class="mr-1 btn btn-primary mr-lg-3">
+                                                    Buy Now
+                                                </a>
+                                                <a href="{{ route('cart.store', $related_product->id) }}"
+                                                    class="btn btn-outline-primary add_to_cart"
+                                                    data-product_id="{{ $related_product->id }}"
+                                                    data-product_qty="1">
+                                                    Add To Cart
+                                                </a>
+                                            </div>
+                                            <div class="ps-product__actions ps-product__group-mobile">
+                                                <div class="ps-product__quantity">
+                                                    <div class="def-number-input number-input safari_only">
+                                                        <button class="minus"
+                                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i
+                                                                class="icon-minus"></i></button>
+                                                        <input class="quantity" min="0" name="quantity"
+                                                            value="1" type="number" />
+                                                        <button class="plus"
+                                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i
+                                                                class="icon-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="ps-product__item cart" data-toggle="tooltip"
+                                                    data-placement="left" title="Add to cart"><a href="#"><i
+                                                            class="fa fa-shopping-basket"></i></a>
+                                                </div>
+                                                <div class="ps-product__item" data-toggle="tooltip"
+                                                    data-placement="left" title="Wishlist">
+                                                    <a class="add_to_wishlist"
+                                                        href="{{ route('wishlist.store', $related_product->id) }}">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </a>
+                                                </div>
+                                                {{-- <div class="ps-product__item rotate" data-toggle="tooltip"
+                                                        data-placement="left" title="Add to compare"><a
+                                                            href="compare.html"><i class="fa fa-align-left"></i></a>
+                                                    </div> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
+        <div class="my-5 ps-delivery ps-delivery--info" data-background="{{ asset('images/delivery_banner.jpg') }}"
+            style="background-image: url({{ asset('images/delivery_banner.jpg') }});">
+            <div class="ps-delivery__content">
+                <div class="ps-delivery__text"> <i class="icon-shield-check"></i><span> <strong>100%
+                            Secure delivery </strong>without courier communication</span></div><a
+                    class="ps-delivery__more" href="{{ route('allproducts') }}">Shop</a>
+            </div>
+        </div>
+    </div>
     </div>
     @foreach ($related_products as $related_product)
         <div class="modal fade" id="popupQuickview{{ $related_product->id }}" data-backdrop="static"

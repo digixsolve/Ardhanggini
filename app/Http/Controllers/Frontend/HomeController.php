@@ -155,6 +155,7 @@ class HomeController extends Controller
     public function productDetails($slug)
     {
         $data = [
+            'shippingmethods'  => ShippingMethod::latest()->active()->get(),
             'product'          => Product::with('reviews', 'multiImages')->where('slug', $slug)->first(),
             'related_products' => Product::select('id', 'slug', 'color', 'meta_title', 'thumbnail', 'name', 'box_discount_price', 'unit_discount_price', 'box_price', 'unit_price')->with('multiImages')->where('status', 'published')->inRandomOrder()->limit(12)->get(),
         ];
@@ -227,7 +228,7 @@ class HomeController extends Controller
 
         if ($subTotal > $minimumOrderAmount) {
             $data = [
-                'shippingmethods' => ShippingMethod::active()->get(),
+                'shippingmethods' => ShippingMethod::latest()->active()->get(),
                 'cartItems'       => Cart::instance('cart')->content(),
                 'total'           => Cart::instance('cart')->total(),
                 'cartCount'       => Cart::instance('cart')->count(),
