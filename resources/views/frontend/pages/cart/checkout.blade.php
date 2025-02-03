@@ -1,4 +1,9 @@
 <x-frontend-app-layout :title="'Checkout'">
+    <style>
+        ::placeholder{
+            color: #7a7a7a !important;
+        }
+    </style>
     <div class="ps-checkout">
         <div class="container">
             <ul class="ps-breadcrumb">
@@ -458,7 +463,7 @@
                                     <div class="col-12">
                                         <div class="ps-checkout__group">
                                             <label class="ps-checkout__label">Street address *</label>
-                                            <input class="ps-input mb-3" type="text" name="billing_address_1"
+                                            <input class="mb-3 ps-input" type="text" name="billing_address_1"
                                                 value="{{ old('billing_address_1', $user->address_one) }}"
                                                 placeholder="House number and street name" required />
                                             <input class="ps-input" type="text" name="billing_address_2"
@@ -481,7 +486,7 @@
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">First name *</label>
-                                                    <input class="ps-input" type="text"
+                                                    <input class="ps-input" type="text" placeholder="Enter Your First Name."
                                                         value="{{ old('shipping_first_name', $user->first_name) }}"
                                                         name="shipping_first_name" />
                                                 </div>
@@ -489,7 +494,7 @@
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Last name *</label>
-                                                    <input class="ps-input" type="text"
+                                                    <input class="ps-input" type="text" placeholder="Enter Your Last Name."
                                                         value="{{ old('shipping_last_name', $user->last_name) }}"
                                                         name="shipping_last_name" />
                                                 </div>
@@ -497,14 +502,14 @@
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Email address *</label>
-                                                    <input class="ps-input" type="email" name="shipping_email"
+                                                    <input class="ps-input" type="email" name="shipping_email" placeholder="Enter Your Email Address."
                                                         value="{{ old('shipping_email', $user->email) }}" required />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Phone *</label>
-                                                    <input class="ps-input" type="text" name="shipping_phone"
+                                                    <input class="ps-input" type="text" name="shipping_phone" placeholder="Enter Your Phone Number."
                                                         value="{{ old('shipping_phone', $user->phone) }}" required />
                                                 </div>
                                             </div>
@@ -512,13 +517,13 @@
                                             <div class="col-12 col-md-4">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">District </label>
-                                                    <input class="ps-input" type="text" name="shipping_state" />
+                                                    <input class="ps-input" type="text" name="shipping_state"  placeholder="Enter Your District." required/>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-4">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Upazila </label>
-                                                    <input class="ps-input" type="text" name="shipping_postcode" />
+                                                    <input class="ps-input" type="text" name="shipping_postcode" placeholder="Enter Your Upazila."/>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-4">
@@ -527,6 +532,7 @@
                                                     <select name="shipping_country"
                                                         class="form-select ps-form__input select2-selection--single "
                                                         id="shipping_country">
+                                                        <option selected>Bangladesh</option>
                                                         <option value="Bangladesh" selected>Bangladesh</option>
                                                         <option value="India">India</option>
                                                         <option value="Pakistan">Pakistan</option>
@@ -537,8 +543,8 @@
                                             <div class="col-12">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Full Address *</label>
-                                                    <textarea class="ps-textarea" name="shipping_address" id="" rows="2">{{ old('shipping_address', Auth::user()->address_one) }}</textarea>
-                                                    {{-- <input class="ps-input mb-3" type="text" name="shipping_address"
+                                                    <textarea class="ps-textarea" name="shipping_address" id="" rows="2" placeholder="Enter Full Address (House, Road, Area, City).">{{ old('shipping_address', Auth::user()->address_one) }}</textarea>
+                                                    {{-- <input class="mb-3 ps-input" type="text" name="shipping_address"
                                                         placeholder="House number and street name" /> --}}
                                                 </div>
                                             </div>
@@ -548,7 +554,7 @@
                                         <div class="ps-checkout__group">
                                             <label class="ps-checkout__label">Order notes (optional)</label>
                                             <textarea class="ps-textarea" name="order_note" rows="6"
-                                                placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                                placeholder="Have any special note?"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -635,7 +641,7 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" name="payment_method" type="radio"
                                                     id="stripe" value="stripe" checked />
-                                                <label class="form-check-label mt-0" for="stripe">Cash On
+                                                <label class="mt-0 form-check-label" for="stripe">Cash On
                                                     Delivery</label>
                                             </div>
                                             {{-- <div class="form-check">
@@ -653,8 +659,8 @@
                                                 I have read and agree to the website terms and conditions *</label>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary w-100 mt-4 register-btns">
-                                        <i class="fa-solid fa-clipboard-check pr-2"></i> Place order
+                                    <button type="submit" class="mt-4 btn btn-primary w-100 register-btns">
+                                        <i class="pr-2 fa-solid fa-clipboard-check"></i> Place order
                                     </button>
                                 </div>
                             </div>

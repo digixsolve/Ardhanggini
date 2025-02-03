@@ -355,39 +355,6 @@
             </section>
         </div>
     @endif
-    @if (!empty(optional($special_offer)->slug) || !empty(optional($special_offer)->header_slogan))
-        <div class="ps-noti">
-            <section>
-                <div class="marquee marquee--hover-pause enable-animation">
-                    <ul class="marquee__content">
-                        @for ($i = 0; $i < 8; $i++)
-                            <li>
-                                <a href="{{ route('special.products', optional($special_offer)->slug) }}">
-                                    <p class="mb-0 text-white marquee-text d-flex align-items-center">
-                                        <span><i class="pr-3 fa-solid fa-cart-shopping"></i></span>
-                                        <span>{{ optional($special_offer)->header_slogan ?? 'Step Into Style' }}</span>
-                                    </p>
-                                </a>
-                            </li>
-                        @endfor
-                    </ul>
-
-                    <ul aria-hidden="true" class="marquee__content">
-                        @for ($i = 0; $i < 8; $i++)
-                            <li>
-                                <a href="{{ route('special.products', optional($special_offer)->slug) }}">
-                                    <p class="mb-0 text-white marquee-text d-flex align-items-center">
-                                        <span><i class="pr-3 fa-solid fa-cart-shopping"></i></span>
-                                        <span>{{ optional($special_offer)->header_slogan ?? 'Step Into Style' }}</span>
-                                    </p>
-                                </a>
-                            </li>
-                        @endfor
-                    </ul>
-                </div>
-            </section>
-        </div>
-    @endif
     <div class="ps-header__top">
         <div class="container">
             <div class="ps-header__text"> {{ optional($setting)->site_motto }} </div>

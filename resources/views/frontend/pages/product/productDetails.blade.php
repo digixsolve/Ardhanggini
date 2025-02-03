@@ -185,6 +185,9 @@
             background-color: var(--site-green);
             outline: 0px solid slategrey;
         }
+        .ps-badge{
+            left: 0%;
+        }
     </style>
     <div class="ps-page--product3">
         <div class="container">
@@ -383,136 +386,136 @@
                         </div>
                     </div>
                     <div class="mt-4 row align-items-center">
-                        <div class="col-lg-5">
-                            <div class="border-0 card rounded-0">
-                                <div class="border-0 card-body rounded-0">
-                                    <iframe width="100%" height="440" src="{{ $product->video_link }}"
-                                        title="YouTube video player" frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        @if (!empty($product->video_link))
+                            <div class="col-lg-5">
+                                <div class="border-0 card rounded-0">
+                                    <div class="border-0 card-body rounded-0">
+                                        <iframe width="100%" height="440" src="{{ $product->video_link }}"
+                                            title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="pl-0 col-lg-7">
-                            <div class="p-0 ps-product__content cst-product">
-                                <ul class="p-3 bg-white nav nav-tabs ps-tab-list" id="productContentTabs"
-                                    role="tablist">
-                                    <li class="ml-3 nav-item pr-info-tabs" role="presentation">
-                                        <a class="nav-link show active" id="information-tab" data-toggle="tab"
-                                            href="#information-content" role="tab"
-                                            aria-controls="information-content" aria-selected="false">
-                                            Description
-                                        </a>
-                                    </li>
-                                    <li class="ml-3 nav-item pr-info-tabs" role="presentation">
-                                        <a class="nav-link" id="description-tab" data-toggle="tab"
-                                            href="#description-content" role="tab"
-                                            aria-controls="description-content" aria-selected="true">
-                                            Key Features
-                                        </a>
-                                    </li>
-                                    <li class="ml-3 nav-item pr-inf-tabs" role="presentation">
-                                        <a class="nav-link" id="specification-tab" data-toggle="tab"
-                                            href="#specification-content" role="tab"
-                                            aria-controls="specification-content" aria-selected="false">
-                                            Specification
-                                        </a>
-                                    </li>
-                                    <li class="ml-3 nav-item" role="presentation">
-                                        <a class="nav-link" id="reviews-tab" data-toggle="tab"
-                                            href="#reviews-content" role="tab" aria-controls="reviews-content"
-                                            aria-selected="false">
-                                            Reviews ({{ count($product->reviews) }})
-                                        </a>
-                                    </li>
-                                </ul>
-                                <div class="p-5 bg-white tab-content h-100" id="productContent">
-                                    <div class="tab-pane fade show active" id="information-content" role="tabpanel"
-                                        aria-labelledby="information-tab">
-                                        <div class="ps-document">
-                                            <div class="row row-reverse">
-                                                <div class="col-12">
-                                                    {!! $product->description !!}
+                            <div class="pl-0 col-lg-7">
+                        @else
+                            <div class="pl-0 col-lg-12">
+                        @endif
+                                <div class="p-0 ps-product__content cst-product">
+                                    <ul class="p-2 bg-white p-lg-3 nav nav-tabs ps-tab-list" id="productContentTabs"
+                                        role="tablist">
+                                        <li class="ml-3 nav-item pr-info-tabs" role="presentation">
+                                            <a class="nav-link show active" id="information-tab" data-toggle="tab"
+                                                href="#information-content" role="tab"
+                                                aria-controls="information-content" aria-selected="false">
+                                                Description
+                                            </a>
+                                        </li>
+                                        <li class="ml-3 nav-item pr-info-tabs" role="presentation">
+                                            <a class="nav-link" id="description-tab" data-toggle="tab"
+                                                href="#description-content" role="tab"
+                                                aria-controls="description-content" aria-selected="true">
+                                                Key Features
+                                            </a>
+                                        </li>
+                                        <li class="ml-3 nav-item pr-inf-tabs" role="presentation">
+                                            <a class="nav-link" id="specification-tab" data-toggle="tab"
+                                                href="#specification-content" role="tab"
+                                                aria-controls="specification-content" aria-selected="false">
+                                                Specification
+                                            </a>
+                                        </li>
+                                        <li class="ml-3 nav-item" role="presentation">
+                                            <a class="nav-link" id="reviews-tab" data-toggle="tab"
+                                                href="#reviews-content" role="tab" aria-controls="reviews-content"
+                                                aria-selected="false">
+                                                Reviews ({{ count($product->reviews) }})
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="p-5 bg-white tab-content" id="productContent">
+                                        <div class="tab-pane fade show active" id="information-content" role="tabpanel"
+                                            aria-labelledby="information-tab">
+                                            <div class="ps-document">
+                                                <div class="row row-reverse">
+                                                    <div class="col-12">
+                                                        {!! $product->description !!}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="description-content" role="tabpanel"
-                                        aria-labelledby="description-tab">
-                                        <div class="ps-document">
-                                            <div class="row row-reverse">
-                                                <div class="col-12">
-                                                    {!! $product->overview !!}
+                                        <div class="tab-pane fade" id="description-content" role="tabpanel"
+                                            aria-labelledby="description-tab">
+                                            <div class="ps-document">
+                                                <div class="row row-reverse">
+                                                    <div class="col-12">
+                                                        {!! $product->overview !!}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="specification-content" role="tabpanel"
-                                        aria-labelledby="specification-tab">
-                                        <div class="ps-document">
-                                            <div class="row row-reverse">
-                                                <div class="col-12">
-                                                    {!! $product->specification !!}
+                                        <div class="tab-pane fade" id="specification-content" role="tabpanel"
+                                            aria-labelledby="specification-tab">
+                                            <div class="ps-document">
+                                                <div class="row row-reverse">
+                                                    <div class="col-12">
+                                                        {!! $product->specification !!}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="reviews-content" role="tabpanel"
-                                        aria-labelledby="reviews-tab">
-                                        <div class="ps-product__tabreview">
-                                            <div class="ps-review--product">
-                                                {{-- Check if $reviews is not empty --}}
-                                                @if (!empty($product->reviews) && count($product->reviews) > 0)
-                                                    @foreach ($product->reviews as $review)
-                                                        <div class="ps-review__row">
-                                                            <div class="ps-review__avatar">
-
-                                                                <img src="{{ !empty($review['image']) ? asset('storage/' . $review['image']) : asset('images/testimonial.png') }}"
-                                                                    alt="{{ $review['name'] }}" />
-                                                            </div>
-                                                            <div class="ps-review__info">
-                                                                <div class="ps-review__name">{{ $review['name'] }}
+                                        <div class="tab-pane fade" id="reviews-content" role="tabpanel"
+                                            aria-labelledby="reviews-tab">
+                                            <div class="ps-product__tabreview">
+                                                <div class="ps-review--product">
+                                                    {{-- Check if $reviews is not empty --}}
+                                                    @if (!empty($product->reviews) && count($product->reviews) > 0)
+                                                        @foreach ($product->reviews as $review)
+                                                            <div class="ps-review__row">
+                                                                <div class="ps-review__avatar">
+                                                                    <img src="{{ !empty($review['image']) ? asset('storage/' . $review['image']) : asset('images/testimonial.png') }}"
+                                                                        alt="{{ $review['name'] }}" />
                                                                 </div>
-                                                                <div class="ps-review__date">
-                                                                    {{ \Carbon\Carbon::parse($review['date'])->format('M d, Y') }}
-                                                                </div>
-                                                            </div>
-                                                            <div class="ps-review__rating">
-
-                                                                @if ($review['rating'] > 0)
-                                                                    <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                        <select class="ps-rating"
-                                                                            data-read-only="true"
-                                                                            style="display: none;">
-                                                                            @php
-                                                                                $maxRating = min(
-                                                                                    5,
-                                                                                    max(1, floor($review['rating'])),
-                                                                                ); // Get the highest full rating value
-                                                                            @endphp
-                                                                            @for ($i = 1; $i <= $maxRating; $i++)
-                                                                                <option value="{{ $i }}">
-                                                                                    {{ $i }}</option>
-                                                                            @endfor
-                                                                        </select>
+                                                                <div class="ps-review__info">
+                                                                    <div class="ps-review__name">{{ $review['name'] }}</div>
+                                                                    <div class="ps-review__date">
+                                                                        {{ \Carbon\Carbon::parse($review['date'])->format('M d, Y') }}
                                                                     </div>
-                                                                @endif
+                                                                </div>
+                                                                <div class="ps-review__rating">
+                                                                    @if ($review['rating'] > 0)
+                                                                        <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                            <select class="ps-rating"
+                                                                                data-read-only="true"
+                                                                                style="display: none;">
+                                                                                @php
+                                                                                    $maxRating = min(
+                                                                                        5,
+                                                                                        max(1, floor($review['rating'])),
+                                                                                    ); // Get the highest full rating value
+                                                                                @endphp
+                                                                                @for ($i = 1; $i <= $maxRating; $i++)
+                                                                                    <option value="{{ $i }}">
+                                                                                        {{ $i }}</option>
+                                                                                @endfor
+                                                                            </select>
+                                                                        </div>
+                                                                    @endif
+                                                                </div>
+                                                                <div class="ps-review__desc">
+                                                                    <p>{!! $review['message'] !!}</p>
+                                                                </div>
                                                             </div>
-                                                            <div class="ps-review__desc">
-                                                                <p>{!! $review['message'] !!}</p>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
-                                                @else
-                                                    <p>No reviews available.</p>
-                                                @endif
-
+                                                        @endforeach
+                                                    @else
+                                                        <p>No reviews available.</p>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                     <section class="ps-section--also" data-background="img/related-bg.jpg">
                         <div class="container px-0">

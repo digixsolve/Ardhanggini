@@ -21013,6 +21013,7 @@ table.dataTable tbody td:last-child {
     .ps-product--detail .ps-tab-list li a {
         font-size: 12px !important;
         line-height: 14px;
+        margin-bottom: 18px;
     }
 
     .ps-categogy--grid {
@@ -21184,7 +21185,7 @@ table.dataTable tbody td:last-child {
         margin: auto;
         border-radius: 4px;
         /* height: 140px; */
-        height: 200px;
+        height: 160px;
         object-fit: fill;
     }
     .btn-primary {
