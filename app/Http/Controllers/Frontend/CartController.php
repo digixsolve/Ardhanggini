@@ -2,22 +2,28 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Log;
+
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Setting;
 use App\Models\Wishlist;
 use App\Models\OrderItem;
+use App\Mail\UserOrderMail;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\ShippingMethod;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Mail\UserRegistrationMail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Mail\UserOrderMail;
-use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\UserCheckoutRegistration;
 use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
@@ -151,51 +157,65 @@ class CartController extends Controller
     }
     public function checkoutStore(Request $request)
     {
+        if (Auth::check()) {
+            $user_id = auth()->id();
+        } else {
+            $user = User::where('email', $request->input('shipping_email'))->first();
+            if ($user) {
+                Auth::login($user);
+                $request->session()->regenerate();
+            } else {
+                $password = Str::random(8);
+                $hashedPassword = Hash::make($password);
+                $user = User::create([
+                    'first_name'  => $request->input('shipping_first_name'),
+                    'last_name'   => $request->input('shipping_last_name'),
+                    'email'       => $request->input('shipping_email'),
+                    'phone'       => $request->input('shipping_phone'),
+                    'address_one' => $request->input('shipping_address'),
+                    'zipcode'     => $request->input('shipping_postcode'),
+                    'status'      => 'active',
+                    'password'    => $hashedPassword,
+                ]);
+                $setting = Setting::first(); // Get settings to pass to email
+
+                // Send email
+                $data = [
+                    'name'     => $request->input('shipping_first_name') . ' ' . $request->input('shipping_last_name'),
+                    'email'    => $request->input('shipping_email'),
+                    'password' => $password, // send plain password to user (for new accounts)
+                ];
+
+                // Send mail (ensure Mail is configured)
+                try {
+                    Mail::to($user->email)->send(new UserCheckoutRegistration($data, $setting));
+                } catch (\Exception $e) {
+                    Log::error('Error sending registration email: ' . $e->getMessage());
+                    Session::flash('error' , 'Mail Not Send');
+                }
+
+                // Log the user in
+                Auth::login($user);
+                $request->session()->regenerate();
+            }
+            $user_id = auth()->id();
+        }
         ini_set('max_execution_time', 300);
         // Validate the request data
         $totalAmount = preg_replace('/[^0-9.]/', '', $request->input('total_amount'));
         $validator = Validator::make($request->all(), [
-            // 'billing_email' => 'required|email',
-            // 'billing_first_name' => 'required|string|max:255',
-            // 'billing_last_name' => 'required|string|max:255',
-            // 'billing_address_1' => 'required|string|max:255',
-            // 'billing_state' => 'required|string|max:255',
-            // 'billing_postcode' => 'required|string|max:20',
-            // 'billing_phone' => 'required|string|max:20',
             'shipping_first_name' => 'nullable|string|max:255',
             'shipping_last_name'  => 'nullable|string|max:255',
+            'shipping_phone'      => 'required|string|max:20',
             'shipping_address'    => 'nullable|string|max:255',
             'shipping_email'      => 'required|email',
-            'shipping_phone'      => 'required|string|max:20',
             'shipping_state'      => 'nullable|string|max:255',
             'shipping_postcode'   => 'nullable|string|max:20',
-            'shipping_phone'      => 'nullable|string|max:20',
             'order_note'          => 'nullable|string',
             'payment_method'      => 'required|in:cod,stripe,paypal',
             'sub_total'           => 'required',
             'total_amount'        => 'required|min:0',
-            // 'shipping_id' => 'required|exists:shipping_methods,id'
         ], [
-            'billing_email.required' => 'The billing email is required.',
-            'billing_email.email' => 'The billing email must be a valid email address.',
-            'billing_first_name.required' => 'The billing first name is required.',
-            'billing_first_name.string' => 'The billing first name must be a string.',
-            'billing_first_name.max' => 'The billing first name may not be greater than 255 characters.',
-            'billing_last_name.required' => 'The billing last name is required.',
-            'billing_last_name.string' => 'The billing last name must be a string.',
-            'billing_last_name.max' => 'The billing last name may not be greater than 255 characters.',
-            'billing_address.required' => 'The billing address is required.',
-            'billing_address.string' => 'The billing address must be a string.',
-            'billing_address.max' => 'The billing address may not be greater than 255 characters.',
-            'billing_state.required' => 'The billing state is required.',
-            'billing_state.string' => 'The billing state must be a string.',
-            'billing_state.max' => 'The billing state may not be greater than 255 characters.',
-            'billing_postcode.required' => 'The billing postcode is required.',
-            'billing_postcode.string' => 'The billing postcode must be a string.',
-            'billing_postcode.max' => 'The billing postcode may not be greater than 20 characters.',
-            'billing_phone.required' => 'The billing phone number is required.',
-            'billing_phone.string' => 'The billing phone number must be a string.',
-            'billing_phone.max' => 'The billing phone number may not be greater than 20 characters.',
             'shipping_first_name.string' => 'The shipping first name must be a string.',
             'shipping_first_name.max' => 'The shipping first name may not be greater than 255 characters.',
             'shipping_last_name.string' => 'The shipping last name must be a string.',
@@ -326,7 +346,7 @@ class CartController extends Controller
                 'order' =>  $order,
                 'user'  => $user,
             ];
-            
+
             try {
                 $setting = Setting::first();
                 $data = [
@@ -334,7 +354,7 @@ class CartController extends Controller
                     'order_items'       => $order->orderItems,
                     'user'              => $user,
                     'shipping_charge'   => $shipping_charge,
-                    'shipping_method'   => ($shipping_method) ? $shipping_method->title : null ,
+                    'shipping_method'   => ($shipping_method) ? $shipping_method->title : null,
                 ];
                 Mail::to([$request->input('shipping_email'), $user->email])->send(new UserOrderMail($user->name, $data, $setting));
             } catch (\Exception $e) {

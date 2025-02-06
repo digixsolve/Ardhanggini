@@ -33,8 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/image/update', [ProfileController::class, 'imageUpdate'])->name('image.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout');
-    Route::post('checkout/store', [CartController::class, 'checkoutStore'])->name('checkout.store');
 });
+Route::post('checkout/store', [CartController::class, 'checkoutStore'])->name('checkout.store');
 
 Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:admin'])->prefix(LaravelLocalization::setLocale() . '/admin')->name('admin.')->group(function () {
     Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
