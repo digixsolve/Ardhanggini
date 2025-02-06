@@ -11615,6 +11615,15 @@ textarea.form-control {
         line-height: 50px;
     }
 }
+@media (max-width: 485px) {
+    .ps-blog .ps-blog__title {
+        font-size: 45px;
+        line-height: 50px;
+    }
+    .ps-section--categories .ps-categories__list{
+           height: 100px;
+    }
+}
 
 @media (min-width: 1280px) {
     .ps-blog .ps-blog__title {
@@ -21185,7 +21194,7 @@ table.dataTable tbody td:last-child {
         margin: auto;
         border-radius: 4px;
         /* height: 140px; */
-        height: 160px;
+        height: 240px;
         object-fit: fill;
     }
     .btn-primary {
