@@ -95,7 +95,7 @@
                                             <div class="col-12">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Full Address *</label>
-                                                    <textarea class="ps-textarea" name="shipping_address" id="" rows="2" placeholder="Enter Full Address (House, Road, Area, City).">{{ old('shipping_address', Auth::user()->address_one) }}</textarea>
+                                                    <textarea class="ps-textarea" name="shipping_address" id="" rows="2" placeholder="Enter Full Address (House, Road, Area, City).">{{ old('shipping_address', optional($user)->address_one) }}</textarea>
                                                     {{-- <input class="mb-3 ps-input" type="text" name="shipping_address"
                                                         placeholder="House number and street name" /> --}}
                                                 </div>
