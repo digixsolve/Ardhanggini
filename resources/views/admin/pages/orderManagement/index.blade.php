@@ -104,8 +104,8 @@
                             <td colspan="9" class="fw-bold text-gray-800">
                                 <h5 class="text-start">
                                     Client :
-                                    {{ $userOrders->first()->user->first_name }}
-                                    {{ $userOrders->first()->user->last_name }}
+                                    {{ optional($userOrders->first()->user)->first_name }}
+                                    {{ optional($userOrders->first()->user)->last_name }}
                                 </h5>
                             </td>
                         </tr>
