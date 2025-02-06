@@ -191,7 +191,7 @@ class CartController extends Controller
                     Mail::to($user->email)->send(new UserCheckoutRegistration($data, $setting));
                 } catch (\Exception $e) {
                     Log::error('Error sending registration email: ' . $e->getMessage());
-                    Session::flash('error' , 'Mail Not Send');
+                    Session::flash('error' , 'Mail Not Send :'. $e->getMessage());
                 }
 
                 // Log the user in

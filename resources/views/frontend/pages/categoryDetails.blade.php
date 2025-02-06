@@ -63,7 +63,7 @@
                                         <div class="row m-0">
                                             @forelse ($catProducts as $key => $category_product)
                                                 <div
-                                                    class="col-12 col-lg-4 p-0 product-item {{ $key >= 4 ? 'd-none' : '' }}">
+                                                    class="col-12 col-lg-4 p-0 product-item {{ $key >= 6 ? 'd-none' : '' }}">
                                                     <div class="ps-product ps-product--standard category-imges">
                                                         <div class="ps-product__thumbnail">
                                                             <a class="ps-product__image"
@@ -168,15 +168,15 @@
                                         </div>
                                     </div>
                                     <!-- "Show All" Button for this tab -->
-                                    @if ($catProducts->count() > 4)
+                                    @if ($catProducts->count() > 6)
                                         <!-- "Show All" Button for this tab -->
                                         <div class="text-center my-4 if-show-none">
                                             <button id="showAllBtn{{ $allcategory->id }}"
-                                                class="btn ps-btn--warning my-3 py-3 show-all-btn"
+                                                class="btn btn-primary ps-btn--warning my-3 py-3 show-all-btn"
                                                 data-category-id="{{ $allcategory->id }}">Show All Product</button>
 
                                             <button id="showLessBtn{{ $allcategory->id }}"
-                                                class="btn ps-btn--warning my-3 py-3 show-less-btn d-none"
+                                                class="btn btn-secondary ps-btn--warning my-3 py-3 show-less-btn d-none"
                                                 data-category-id="{{ $allcategory->id }}">Show Less Product</button>
                                         </div>
                                     @endif
@@ -471,7 +471,7 @@
                     const items = document.querySelectorAll('#home' + categoryId + ' .product-item');
 
                     items.forEach(function(item, index) {
-                        if (index >= 4) {
+                        if (index >= 6) {
                             item.classList.add('d-none'); // Hide items after the first 4
                         }
                     });
