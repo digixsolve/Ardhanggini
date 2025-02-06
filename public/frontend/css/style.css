@@ -21194,7 +21194,7 @@ table.dataTable tbody td:last-child {
         margin: auto;
         border-radius: 4px;
         /* height: 140px; */
-        height: 160px;
+        height: 240px;
         object-fit: fill;
     }
     .btn-primary {
