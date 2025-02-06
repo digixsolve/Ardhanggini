@@ -31,7 +31,7 @@
                             <div class="ps-checkout__form">
                                 {{-- <h3 class="ps-checkout__heading">Billing details</h3> --}}
                                 <div class="row">
-                                   
+
                                     <div class="col-12">
                                         <h3 class="ps-checkout__heading">Shipping details</h3>
                                         <div class="row">
@@ -39,7 +39,7 @@
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">First name *</label>
                                                     <input class="ps-input" type="text" placeholder="Enter Your First Name."
-                                                        value="{{ old('shipping_first_name', $user->first_name) }}"
+                                                        value="{{ old('shipping_first_name', optional($user)->first_name) }}"
                                                         name="shipping_first_name" />
                                                 </div>
                                             </div>
@@ -47,7 +47,7 @@
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Last name *</label>
                                                     <input class="ps-input" type="text" placeholder="Enter Your Last Name."
-                                                        value="{{ old('shipping_last_name', $user->last_name) }}"
+                                                        value="{{ old('shipping_last_name', optional($user)->last_name) }}"
                                                         name="shipping_last_name" />
                                                 </div>
                                             </div>
@@ -55,14 +55,14 @@
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Email address *</label>
                                                     <input class="ps-input" type="email" name="shipping_email" placeholder="Enter Your Email Address."
-                                                        value="{{ old('shipping_email', $user->email) }}" required />
+                                                        value="{{ old('shipping_email', optional($user)->email) }}" required />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Phone *</label>
                                                     <input class="ps-input" type="text" name="shipping_phone" placeholder="Enter Your Phone Number."
-                                                        value="{{ old('shipping_phone', $user->phone) }}" required />
+                                                        value="{{ old('shipping_phone', optional($user)->phone) }}" required />
                                                 </div>
                                             </div>
 
