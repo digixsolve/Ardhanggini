@@ -191,7 +191,7 @@ class CartController extends Controller
                     Mail::to($user->email)->send(new UserCheckoutRegistration($data, $setting));
                 } catch (\Exception $e) {
                     Log::error('Error sending registration email: ' . $e->getMessage());
-                    Session::flash('error' , 'Mail Not Send :'. $e->getMessage());
+                    Session::flash('error', 'Mail Not Send :' . $e->getMessage());
                 }
 
                 // Log the user in
@@ -400,6 +400,34 @@ class CartController extends Controller
         Cart::instance('cart')->destroy();
     }
 
+    // public function updateCart(Request $request)
+    // {
+    //     try {
+    //         $items = $request->input('items');
+    //         if (!is_array($items)) {
+    //             throw new \Exception('Invalid data format');
+    //         }
+
+    //         foreach ($items as $item) {
+    //             $rowId = $item['rowId'];
+    //             $quantity = $item['qty'];
+    //             if (empty($rowId) || !is_numeric($quantity)) {
+    //                 throw new \Exception('Invalid item data');
+    //             }
+    //             Cart::instance('cart')->update($rowId, $quantity);
+    //         }
+
+    //         return response()->json([
+    //             'success' => 'Cart updated successfully.',
+    //         ], 200);
+    //     } catch (\Exception $e) {
+    //         // \Log::error('Cart update error: ' . $e->getMessage());
+    //         return response()->json([
+    //             'error' => $e->getMessage(),
+    //         ], 500);
+    //     }
+    // }
+
     public function updateCart(Request $request)
     {
         try {
@@ -414,14 +442,19 @@ class CartController extends Controller
                 if (empty($rowId) || !is_numeric($quantity)) {
                     throw new \Exception('Invalid item data');
                 }
-                Cart::instance('cart')->update($rowId, $quantity);
+                Cart::instance('cart')->update($rowId, $quantity); // Update cart
             }
+
+            // Get the updated cart data
+            $cartCount = Cart::instance('cart')->count();
+            $cartTotal = Cart::instance('cart')->subtotal();
 
             return response()->json([
                 'success' => 'Cart updated successfully.',
+                'cartCount' => $cartCount,
+                'cartTotal' => '৳ ' . $cartTotal
             ], 200);
         } catch (\Exception $e) {
-            // \Log::error('Cart update error: ' . $e->getMessage());
             return response()->json([
                 'error' => $e->getMessage(),
             ], 500);

@@ -87,13 +87,13 @@
                                                         </a>
                                                     </h5>
                                                     @php
-                                                    $review =
-                                                        count($deal_product->reviews) > 0
-                                                            ? optional($deal_product->reviews)->sum('rating') /
-                                                                count($deal_product->reviews)
-                                                            : 0;
-                                                    // dd($related_product->name, $review);
-                                                @endphp
+                                                        $review =
+                                                            count($deal_product->reviews) > 0
+                                                                ? optional($deal_product->reviews)->sum('rating') /
+                                                                    count($deal_product->reviews)
+                                                                : 0;
+                                                        // dd($related_product->name, $review);
+                                                    @endphp
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <div class="ps-product__rating">
                                                             @if ($review > 0)
@@ -121,15 +121,15 @@
                                                     </div>
                                                     @if (!empty($deal_product->unit_discount_price))
                                                         <div class="ps-product__meta mb-3">
-                                                            <span
-                                                                class="ps-product__price sale">৳ {{ $deal_product->unit_discount_price }}</span>
-                                                            <span
-                                                                class="ps-product__del">৳ {{ $deal_product->unit_price }}</span>
+                                                            <span class="ps-product__price sale">৳
+                                                                {{ $deal_product->unit_discount_price }}</span>
+                                                            <span class="ps-product__del">৳
+                                                                {{ $deal_product->unit_price }}</span>
                                                         </div>
                                                     @else
                                                         <div class="ps-product__meta mb-3">
-                                                            <span
-                                                                class="ps-product__price sale">৳ {{ $deal_product->unit_price }}</span>
+                                                            <span class="ps-product__price sale">৳
+                                                                {{ $deal_product->unit_price }}</span>
                                                         </div>
                                                     @endif
 
@@ -252,6 +252,52 @@
                             items: 4
                         }
                     }
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                // Handle the plus and minus buttons
+                $('.plus, .minus').click(function() {
+                    var quantityInput = $(this).parent().find('input[type=number]'); // Get the quantity input
+                    var rowId = quantityInput.data('row_id'); // Get the row ID
+                    var newQty = parseInt(quantityInput.val()); // Get the new quantity value
+
+                    // Increment or decrement the quantity
+                    if ($(this).hasClass('plus')) {
+                        newQty++;
+                    } else if ($(this).hasClass('minus') && newQty > 1) {
+                        newQty--;
+                    }
+
+                    // Update the input value
+                    quantityInput.val(newQty);
+
+                    // Send the updated quantity via AJAX
+                    $.ajax({
+                        type: "POST",
+                        url: '/cart/update', // Update the cart route
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            items: [{
+                                rowId: rowId,
+                                qty: newQty
+                            }]
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                // Update the subtotal in the UI
+                                Swal.fire('Success', 'Cart updated successfully!', 'success');
+
+                                // Optionally, update the cart count, subtotal, etc.
+                                $('.cartCount').text(response.cartCount);
+                                $('.cartTotal').text(response.cartTotal);
+                            }
+                        },
+                        error: function(xhr) {
+                            Swal.fire('Error', 'There was a problem updating the cart.', 'error');
+                        }
+                    });
                 });
             });
         </script>

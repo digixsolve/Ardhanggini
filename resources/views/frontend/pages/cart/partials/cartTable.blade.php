@@ -155,12 +155,12 @@
         <div class="ps-shopping__box">
             <div class="ps-shopping__row">
                 <div class="ps-shopping__label">Subtotal</div>
-                <div class="ps-shopping__price">৳ {{ Cart::subtotal() }}</div>
+                <div class="ps-shopping__price cartTotal">৳ {{ Cart::subtotal() }}</div>
             </div>
 
             <div class="ps-shopping__row">
                 <div class="ps-shopping__label">Total</div>
-                <div class="ps-shopping__price">৳ {{ Cart::subtotal() }}</div>
+                <div class="ps-shopping__price cartTotal">৳ {{ Cart::subtotal() }}</div>
             </div>
             <div class="mt-3 d-flex align-items-center justify-content-between">
                 <a class="mr-2 btn btn-outline-primary" href="{{ route('allproducts') }}">Continue</a>
