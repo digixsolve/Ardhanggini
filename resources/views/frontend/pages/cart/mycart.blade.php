@@ -256,50 +256,51 @@
             });
         </script>
         <script>
-            $(document).ready(function() {
-                // Handle the plus and minus buttons
-                $('.plus, .minus').click(function() {
-                    var quantityInput = $(this).parent().find('input[type=number]'); // Get the quantity input
-                    var rowId = quantityInput.data('row_id'); // Get the row ID
-                    var newQty = parseInt(quantityInput.val()); // Get the new quantity value
+            function updateCart(action, button) {
+                var quantityInput = $(button).parent().find('input[type=number]'); // Get the quantity input
+                var rowId = quantityInput.data('row_id'); // Get the row ID
+                var currentQty = parseInt(quantityInput.val()); // Get the current quantity value
+                var cartContainer = $('.cartTable'); // Get the current quantity value
 
-                    // Increment or decrement the quantity
-                    if ($(this).hasClass('plus')) {
-                        newQty++;
-                    } else if ($(this).hasClass('minus') && newQty > 1) {
-                        newQty--;
-                    }
+                var newQty = currentQty;
 
-                    // Update the input value
-                    quantityInput.val(newQty);
+                // Increment or decrement the quantity based on action
+                if (action === 'plus') {
+                    newQty++;
+                } else if (action === 'minus' && newQty > 1) {
+                    newQty--;
+                }
 
-                    // Send the updated quantity via AJAX
-                    $.ajax({
-                        type: "POST",
-                        url: '/cart/update', // Update the cart route
-                        data: {
-                            _token: "{{ csrf_token() }}",
-                            items: [{
-                                rowId: rowId,
-                                qty: newQty
-                            }]
-                        },
-                        success: function(response) {
-                            if (response.success) {
-                                // Update the subtotal in the UI
-                                Swal.fire('Success', 'Cart updated successfully!', 'success');
+                // Update the input field with the new quantity
+                quantityInput.val(newQty);
 
-                                // Optionally, update the cart count, subtotal, etc.
-                                $('.cartCount').text(response.cartCount);
-                                $('.cartTotal').text(response.cartTotal);
-                            }
-                        },
-                        error: function(xhr) {
-                            Swal.fire('Error', 'There was a problem updating the cart.', 'error');
+                // Send the updated quantity via AJAX to update the cart
+                $.ajax({
+                    type: "POST",
+                    url: '/cart/update', // Route to handle cart update
+                    data: {
+                        _token: "{{ csrf_token() }}", // CSRF token for security
+                        items: [{
+                            rowId: rowId,
+                            qty: newQty
+                        }]
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            // Display success message
+                            Swal.fire('Success', 'Cart updated successfully!', 'success');
+                            cartContainer.html(response.cartTable);  // Use this if updating the cart table
+
+                            // Optionally, update other cart details like totals or counts
+                            $('.cartCount').text(response.cartCount); // Update the total price if it's returned
                         }
-                    });
+                    },
+                    error: function(xhr) {
+                        // Handle errors
+                        Swal.fire('Error', 'There was a problem updating the cart.', 'error');
+                    }
                 });
-            });
+            }
         </script>
     @endpush
 </x-frontend-app-layout>

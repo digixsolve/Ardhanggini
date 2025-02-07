@@ -448,8 +448,11 @@ class CartController extends Controller
             // Get the updated cart data
             $cartCount = Cart::instance('cart')->count();
             $cartTotal = Cart::instance('cart')->subtotal();
-
+            $data = [
+                'cartItems' => Cart::instance('cart')->content(),
+            ];
             return response()->json([
+                'cartTable' => view('frontend.pages.cart.partials.cartTable', $data)->render(),
                 'success' => 'Cart updated successfully.',
                 'cartCount' => $cartCount,
                 'cartTotal' => '৳ ' . $cartTotal
