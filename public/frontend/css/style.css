@@ -88,7 +88,7 @@
 
 /*1. RESET AND TYPHOGRAPHY */
 body::-webkit-scrollbar {
-    width: 0em;
+    width: 0.5em;
 }
 
 body::-webkit-scrollbar-track {
@@ -11620,8 +11620,8 @@ textarea.form-control {
         font-size: 45px;
         line-height: 50px;
     }
-    .ps-section--categories .ps-categories__list{
-           height: 100px;
+    .ps-section--categories .ps-categories__list {
+        height: 100px;
     }
 }
 
@@ -13178,41 +13178,6 @@ textarea.form-control {
         font-size: 18px;
     }
 }
-
-.scroll-top {
-    display: none;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    width: 40px;
-    height: 40px;
-    position: fixed;
-    bottom: 60px;
-    right: 20px;
-    padding: 0;
-}
-
-.scroll-top i {
-    color: white;
-    font-size: 22px;
-    line-height: 40px;
-    font-weight: 600;
-}
-
-.scroll-top:focus {
-    outline: none;
-    box-shadow: none;
-}
-
-.scroll-top:hover {
-    background-color: var(--site-green);
-}
-
-@media (min-width: 768px) {
-    .scroll-top {
-        bottom: 20px;
-    }
-}
-
 .ps-compare .ps-compare__content {
     padding: 20px 0 40px;
 }
@@ -15123,31 +15088,6 @@ textarea.form-control {
     text-decoration: underline;
     font-weight: 600;
 }
-
-.scroll-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    background-color: #333;
-    color: #fff;
-    padding: 10px 15px;
-    font-size: 18px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    transition: opacity 0.5s ease-in-out;
-    /* Smooth transition */
-}
-
-.search_container {
-    background-color: #ffff;
-}
-
-.scroll-top:hover {
-    background-color: #555;
-}
-
 .ps-search--result.active {
     opacity: 1;
     visibility: visible;
@@ -16907,7 +16847,7 @@ textarea.form-control {
     }
 
     .ps-section--latest .ps-section__carousel {
-        padding-bottom: 60px;
+        padding-bottom: 0px;
         border-radius: 4px;
     }
 
@@ -20713,19 +20653,21 @@ table.dataTable tbody td:last-child {
 .dataTables_wrapper .dataTables_paginate {
     color: #4a0e6d !important;
 }
-.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
     color: #fff;
     background-color: var(--site-green);
     border-color: var(--site-green);
 }
-.mobile-center{
+.mobile-center {
     justify-content: center !important;
     margin-bottom: 48px;
 }
 @media only screen and (max-width: 768px) {
-.text-m-center{
-    text-align: center !important;
-}
+    .text-m-center {
+        text-align: center !important;
+    }
     .shop-action-all {
         display: flex;
         justify-content: space-between;
@@ -20822,7 +20764,7 @@ table.dataTable tbody td:last-child {
 
     .hero-banner {
         width: 100% !important;
-        height: 118px !important;
+        height: 150px !important;
         position: relative;
         object-fit: contain !important;
         margin-top: 110px;
@@ -20838,7 +20780,7 @@ table.dataTable tbody td:last-child {
     }
 
     .top-up-section {
-        margin-top: -12px !important;
+        margin-top: 0px !important;
         position: relative;
         z-index: 5;
     }
@@ -20866,12 +20808,15 @@ table.dataTable tbody td:last-child {
     .testi-card {
         background-color: #69277b !important;
         border: 1px solid #9c27b0 !important;
-        padding: 10px 14px !important;
+        padding: 0px 0px !important;
         border-radius: 10px;
         height: 100% !important;
-        width: 100%;
+        width: 95%;
         text-align: center;
-        margin-top: 65px;
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .profile {
@@ -21074,12 +21019,37 @@ table.dataTable tbody td:last-child {
     }
 
     .takeway-products {
-        height: 630px !important;
+        height: 100% !important;
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-bottom: 0px;
+        padding-bottom: 20px;
+        width: 88%;
     }
 
     .takeway-slider-img img {
         height: 320px !important;
     }
+    .takeway-slider-img figure img {
+        height: 400px !important;
+        object-fit: cover;
+    }
+    .hide-mobile {
+        display: none !important;
+    }
+    .only-mobile {
+        display: block !important;
+    }
+    .mobile-search .ps-search-table .form-control {
+        height: 35px;
+        font-size: 12px;
+    }
+}
+.hide-mobile {
+    display: block !important;
+}
+.only-mobile {
+    display: none !important;
 }
 
 .wishlist-img {
@@ -21094,32 +21064,32 @@ table.dataTable tbody td:last-child {
     border-radius: 5px;
 }
 
-.ps-badge-2{
+.ps-badge-2 {
     top: 12px;
     left: 0px !important;
     margin-bottom: 15px !important;
 }
 
-.register-btns{
+.register-btns {
     width: 100%;
     font-size: 16px !important;
     border: 1px solid var(--site-green) !important;
 }
-.register-btns:hover{
+.register-btns:hover {
     width: 100%;
     border: 1px solid var(--site-green);
     background-color: transparent;
     color: var(--site-green) !important;
     font-size: 16px !important;
 }
-.about-bg-shape{
+.about-bg-shape {
     width: 450px;
     height: 450px;
     margin: auto;
     object-fit: cover;
 }
 
-.about-middle-img{
+.about-middle-img {
     width: 450px;
     margin: 0;
     display: flex;
@@ -21129,11 +21099,11 @@ table.dataTable tbody td:last-child {
     margin-top: -150px;
 }
 
-.about-middle-img-box{
+.about-middle-img-box {
     display: flex;
     justify-content: end;
 }
-.rounded-pill-btn{
+.rounded-pill-btn {
     font-weight: 500;
     border-radius: 40px;
     padding: 8px 15px;
@@ -21141,7 +21111,7 @@ table.dataTable tbody td:last-child {
     min-width: 150px;
     text-align: center;
 }
-.box-padding{
+.box-padding {
     padding-top: 100px;
     padding-bottom: 100px;
 }
@@ -21206,7 +21176,7 @@ table.dataTable tbody td:last-child {
         padding-right: 15px;
         padding-top: 10px;
         padding-bottom: 10px;
-        font-size: 10px !important;
+        font-size: 14px !important;
     }
     .btn-primary:hover {
         width: 50%;
@@ -21217,7 +21187,7 @@ table.dataTable tbody td:last-child {
         padding-right: 15px;
         padding-top: 10px;
         padding-bottom: 10px;
-        font-size: 10px !important;
+        font-size: 14px !important;
     }
     .btn-outline-primary {
         width: 50%;
@@ -21228,7 +21198,7 @@ table.dataTable tbody td:last-child {
         padding-right: 15px !important;
         padding-top: 10px !important;
         padding-bottom: 10px !important;
-        font-size: 10px !important;
+        font-size: 14px !important;
     }
     .accordion .card-header.collapsed:after {
         content: "\f067";
@@ -21241,7 +21211,7 @@ table.dataTable tbody td:last-child {
         line-height: 1.2 !important;
         cursor: pointer;
     }
-    .faq-title{
+    .faq-title {
         font-size: 12px;
     }
     .about-middle-img {
@@ -21253,30 +21223,30 @@ table.dataTable tbody td:last-child {
         margin-bottom: -48px;
         margin-top: 25px;
     }
-    .about-content{
+    .about-content {
         text-align: center;
     }
     .box-padding {
         padding-top: 20px;
         padding-bottom: 20px;
     }
-    .about-title{
+    .about-title {
         padding-top: 20px;
         padding-bottom: 10px;
         text-align: center;
     }
-    .about-description{
+    .about-description {
         text-align: center;
     }
-    .about-infos{
+    .about-infos {
         padding: 0 !important;
         padding-top: 40px !important;
     }
-    .about-main-title{
+    .about-main-title {
         text-align: center;
         font-size: 28px;
     }
-    .register-btns{
+    .register-btns {
         width: 100%;
         font-size: 16px !important;
         border: 1px solid var(--site-green) !important;

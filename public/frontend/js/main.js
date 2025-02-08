@@ -352,23 +352,13 @@
         //         }, 500);
         //     }
 
-        //     // Scroll top button functionality
-        //     if (scroll > 100) {
-        //         $(".scroll-top").fadeIn(1000); // Show button with fade-in effect
-        //     } else {
-        //         $(".scroll-top").fadeOut(1000); // Hide button with fade-out effect
-        //     }
+        //
         // });
+
 
         $(".ps-menu--sticky").on("click", function (event) {
             event.preventDefault();
             $(".ps-navigation").slideToggle();
-        });
-
-        // Scroll to top functionality
-        $(".scroll-top").on("click", function (e) {
-            e.preventDefault();
-            $("html,body").animate({ scrollTop: 0 }, 500); // Smooth scroll to the top
         });
 
         $('a[href="#home-block"]').on("click", function (event) {
