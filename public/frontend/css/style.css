@@ -21025,6 +21025,7 @@ table.dataTable tbody td:last-child {
         margin-bottom: 0px;
         padding-bottom: 20px;
         width: 88%;
+        margin-bottom: 18px;
     }
 
     .takeway-slider-img img {
@@ -21176,7 +21177,7 @@ table.dataTable tbody td:last-child {
         padding-right: 15px;
         padding-top: 10px;
         padding-bottom: 10px;
-        font-size: 14px !important;
+        font-size: 12px !important;
     }
     .btn-primary:hover {
         width: 50%;
@@ -21187,7 +21188,7 @@ table.dataTable tbody td:last-child {
         padding-right: 15px;
         padding-top: 10px;
         padding-bottom: 10px;
-        font-size: 14px !important;
+        font-size: 12px !important;
     }
     .btn-outline-primary {
         width: 50%;
@@ -21198,7 +21199,7 @@ table.dataTable tbody td:last-child {
         padding-right: 15px !important;
         padding-top: 10px !important;
         padding-bottom: 10px !important;
-        font-size: 14px !important;
+        font-size: 12px !important;
     }
     .accordion .card-header.collapsed:after {
         content: "\f067";
