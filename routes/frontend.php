@@ -38,6 +38,8 @@ Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('ca
 Route::get('/{id}/stripe/payment', [StripeController::class, 'stripePayment'])->name('stripe.payment');
 Route::post('/stripe/pay', [StripeController::class, 'stripePost'])->name('stripe.pay');
 
+Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout');
+Route::post('checkout/store', [CartController::class, 'checkoutStore'])->name('checkout.store');
 
 // Shop
 Route::get('shop', [ShopController::class, 'allproducts'])->name('allproducts');

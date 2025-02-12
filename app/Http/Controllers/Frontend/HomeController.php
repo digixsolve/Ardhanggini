@@ -84,8 +84,8 @@ class HomeController extends Controller
                 'categorytwoproducts'       => $categorytwoproducts,
                 'categorythree'             => $categorythree ?? '',
                 'categorythreeproducts'     => $categorythreeproducts,
-                'latest_products'           => Product::with('multiImages', 'reviews')->inRandomOrder()->where('status', 'published')->paginate(8),
-                'deal_products'             => Product::with('multiImages', 'reviews')->whereNotNull('box_discount_price')->inRandomOrder()->limit(10)->get(),
+                'latest_products'           => Product::with('multiImages', 'reviews')->inRandomOrder()->where('status', 'published')->active()->paginate(8),
+                'deal_products'             => Product::with('multiImages', 'reviews')->whereNotNull('box_discount_price')->inRandomOrder()->limit(10)->active()->get(),
             ];
         });
 
@@ -213,7 +213,7 @@ class HomeController extends Controller
     {
         $data = [
             'cartItems' => Cart::instance('cart')->content(),
-            'related_products' => Product::select('id', 'slug', 'meta_title', 'thumbnail', 'name', 'unit_discount_price', 'unit_price')->with('multiImages')->inRandomOrder()->limit(12)->get(),
+            'related_products' => Product::select('id', 'slug', 'meta_title', 'thumbnail', 'name', 'unit_discount_price', 'unit_price')->with('multiImages')->inRandomOrder()->limit(12)->active()->get(),
         ];
         return view('frontend.pages.cart.mycart', $data);
     }

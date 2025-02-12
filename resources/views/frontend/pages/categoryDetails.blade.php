@@ -49,7 +49,7 @@
                         <div class="tab-content" id="myTabContent">
                             @foreach ($categories as $allcategory)
                                 @php
-                                    $catProducts = $allcategory->products()->get(); // Fetch all products
+                                    $catProducts = $allcategory->products()->where('status','published')->get(); // Fetch all products
                                 @endphp
                                 <div class="tab-pane fade {{ $allcategory->id == $category->id ? 'show active' : '' }}"
                                     id="home{{ $allcategory->id }}" role="tabpanel"

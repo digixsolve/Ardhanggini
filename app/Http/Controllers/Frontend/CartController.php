@@ -151,8 +151,8 @@ class CartController extends Controller
     }
     public function checkoutStore(Request $request)
     {
+        
         ini_set('max_execution_time', 300);
-        // Validate the request data
         $totalAmount = preg_replace('/[^0-9.]/', '', $request->input('total_amount'));
         $validator = Validator::make($request->all(), [
             // 'billing_email' => 'required|email',
@@ -326,7 +326,7 @@ class CartController extends Controller
                 'order' =>  $order,
                 'user'  => $user,
             ];
-            
+
             try {
                 $setting = Setting::first();
                 $data = [
