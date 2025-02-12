@@ -94,7 +94,7 @@
 
     </div>
 @else
-    <div class="ps-result__content">
+    <div class="ps-result__content bg-white" style="border-radius: 5px;margin-top: 2px;width: 99%;">
         <div class="row m-0">
             <div class="col-12 col-lg-5">
                 <div class="text-center p-4">
