@@ -181,8 +181,7 @@
                                         </div>
                                     @endif
                                     <!-- Delivery Info -->
-                                    <div class="ps-delivery ps-delivery--info mt-4"
-                                        data-background="{{ asset('frontend/img/promotion/banner-delivery-2.jpg') }}">
+                                    <div class="ps-delivery ps-delivery--info mt-4" style="background:{{ asset('frontend/img/promotion/banner-delivery-2.jpg') }}">
                                         <div class="ps-delivery__content">
                                             <div class="ps-delivery__text text-center">
                                                 <i class="icon-shield-check"></i><span><strong>100% Secure
