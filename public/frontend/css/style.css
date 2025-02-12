@@ -15058,7 +15058,7 @@ textarea.form-control {
     top: 100%;
     left: 16px;
     z-index: 50;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
     /* padding-top: 20px; */
     width: 83%;
     transition: all 0.4s ease;
