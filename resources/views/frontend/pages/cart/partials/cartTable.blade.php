@@ -49,17 +49,14 @@
                             </div> --}}
                             <div class="ps-product__row ps-product__quantity d-flex justify-content-center">
                                 <div class="ps-product__value">
-
                                     <div class="def-number-input number-input safari_only">
-                                        <button class="minus"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                        <button class="minus" onclick="updateCart('minus', this)">
                                             <i class="icon-minus"></i>
                                         </button>
-                                        <input class="quantity_mobile" min="0" name="quantity"
+                                        <input class="quantity" min="0" name="quantity"
                                             value="{{ $item->qty }}" type="number"
                                             data-row_id="{{ $item->rowId }}" />
-                                        <button class="plus"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                        <button class="plus" onclick="updateCart('plus', this)">
                                             <i class="icon-plus"></i>
                                         </button>
                                     </div>
@@ -88,9 +85,9 @@
                         </th>
                         <th width="15%" class="ps-product__thumbnail">Image</th>
                         <th width="35%" class="ps-product__name">Product name</th>
-                        <th width="20%" class="ps-product__meta">Unit price</th>
+                        <th width="15%" class="ps-product__meta">Unit price</th>
                         <th width="10%" class="ps-product__quantity">Quantity</th>
-                        <th width="10%" class="ps-product__subtotal">Subtotal</th>
+                        <th width="15%" class="ps-product__subtotal">Subtotal</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -120,14 +117,12 @@
                             </td>
                             <td class="ps-product__quantity">
                                 <div class="def-number-input number-input safari_only">
-                                    <button class="minus"
-                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                    <button class="minus" onclick="updateCart('minus', this)">
                                         <i class="icon-minus"></i>
                                     </button>
                                     <input class="quantity" min="0" name="quantity" value="{{ $item->qty }}"
                                         type="number" data-row_id="{{ $item->rowId }}" />
-                                    <button class="plus"
-                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                    <button class="plus" onclick="updateCart('plus', this)">
                                         <i class="icon-plus"></i>
                                     </button>
                                 </div>
@@ -141,8 +136,8 @@
         <div class="ps-shopping__footer justify-content-center">
             <div class="ps-shopping__button d-flex justify-content-center align-items-center">
                 <a href="{{ route('cart.clear') }}" class="ps-btn ps-btn--primary delete">Clear All</a>
-                <button class="ps-btn ps-btn--primary d-none d-lg-inline-block" type="button" id="update-cart">Update cart</button>
-                <button class="ps-btn ps-btn--primary d-lg-none" type="button" id="update-mobile-cart">Update cart</button>
+                {{-- <button class="ps-btn ps-btn--primary d-none d-lg-inline-block" type="button" id="update-cart">Update cart</button>
+                <button class="ps-btn ps-btn--primary d-lg-none" type="button" id="update-mobile-cart">Update cart</button> --}}
 
             </div>
         </div>
@@ -155,12 +150,12 @@
         <div class="ps-shopping__box">
             <div class="ps-shopping__row">
                 <div class="ps-shopping__label">Subtotal</div>
-                <div class="ps-shopping__price">৳ {{ Cart::subtotal() }}</div>
+                <div class="ps-shopping__price cartTotal">৳ {{ Cart::subtotal() }}</div>
             </div>
 
             <div class="ps-shopping__row">
                 <div class="ps-shopping__label">Total</div>
-                <div class="ps-shopping__price">৳ {{ Cart::subtotal() }}</div>
+                <div class="ps-shopping__price cartTotal">৳ {{ Cart::subtotal() }}</div>
             </div>
             <div class="mt-3 d-flex align-items-center justify-content-between">
                 <a class="mr-2 btn btn-outline-primary" href="{{ route('allproducts') }}">Continue</a>

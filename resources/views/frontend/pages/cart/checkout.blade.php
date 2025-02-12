@@ -31,44 +31,44 @@
                             <div class="ps-checkout__form">
                                 {{-- <h3 class="ps-checkout__heading">Billing details</h3> --}}
                                 <div class="row">
-                                   
+
                                     <div class="col-12">
                                         <h3 class="ps-checkout__heading">Shipping details</h3>
                                         <div class="row">
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">First name *</label>
+                                                    <label class="ps-checkout__label">First name <span class="text-danger">*</span></label>
                                                     <input class="ps-input" type="text" placeholder="Enter Your First Name."
-                                                        value="{{ old('shipping_first_name', $user->first_name) }}"
-                                                        name="shipping_first_name" />
+                                                        value="{{ old('shipping_first_name', optional($user)->first_name) }}"
+                                                        name="shipping_first_name" required/>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">Last name *</label>
+                                                    <label class="ps-checkout__label">Last name </label>
                                                     <input class="ps-input" type="text" placeholder="Enter Your Last Name."
-                                                        value="{{ old('shipping_last_name', $user->last_name) }}"
+                                                        value="{{ old('shipping_last_name', optional($user)->last_name) }}"
                                                         name="shipping_last_name" />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">Email address *</label>
+                                                    <label class="ps-checkout__label">Email address <span class="text-danger">*</span></label>
                                                     <input class="ps-input" type="email" name="shipping_email" placeholder="Enter Your Email Address."
-                                                        value="{{ old('shipping_email', $user->email) }}" required />
+                                                        value="{{ old('shipping_email', optional($user)->email) }}" required />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">Phone *</label>
+                                                    <label class="ps-checkout__label">Phone <span class="text-danger">*</span></label>
                                                     <input class="ps-input" type="text" name="shipping_phone" placeholder="Enter Your Phone Number."
-                                                        value="{{ old('shipping_phone', $user->phone) }}" required />
+                                                        value="{{ old('shipping_phone', optional($user)->phone) }}" required />
                                                 </div>
                                             </div>
 
                                             <div class="col-12 col-md-4">
                                                 <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">District </label>
+                                                    <label class="ps-checkout__label">District <span class="text-danger">*</span></label>
                                                     <input class="ps-input" type="text" name="shipping_state"  placeholder="Enter Your District." required/>
                                                 </div>
                                             </div>
@@ -94,8 +94,8 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">Full Address *</label>
-                                                    <textarea class="ps-textarea" name="shipping_address" id="" rows="2" placeholder="Enter Full Address (House, Road, Area, City).">{{ old('shipping_address', Auth::user()->address_one) }}</textarea>
+                                                    <label class="ps-checkout__label">Full Address <span class="text-danger">*</span></label>
+                                                    <textarea class="ps-textarea" name="shipping_address" id="" rows="2" placeholder="Enter Full Address (House, Road, Area, City)." required>{{ old('shipping_address', optional($user)->address_one) }}</textarea>
                                                     {{-- <input class="mb-3 ps-input" type="text" name="shipping_address"
                                                         placeholder="House number and street name" /> --}}
                                                 </div>

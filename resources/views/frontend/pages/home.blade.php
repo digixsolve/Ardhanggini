@@ -22,10 +22,10 @@
                                 <div class="container container-initial">
                                     <div class="ps-banner__block">
                                         <div class="ps-banner__content">
-                                            <h2 class="ps-banner__title text-white">{{ $slider->title }}</h2>
-                                            <div class="ps-banner__desc text-white">{{ $slider->subtitle }}</div>
+                                            <h2 class="text-white ps-banner__title">{{ $slider->title }}</h2>
+                                            <div class="text-white ps-banner__desc">{{ $slider->subtitle }}</div>
                                             <div class="ps-banner__btn-group">
-                                                <div class="ps-banner__btn text-white">{{ $slider->badge }}</div>
+                                                <div class="text-white ps-banner__btn">{{ $slider->badge }}</div>
                                             </div>
                                             @if (!empty($slider->button_link) || !empty($slider->button_name))
                                                 <a class="bg-warning ps-banner__shop" href="{{ $slider->button_link }}">
@@ -49,10 +49,10 @@
             </div>
             <div class="owl-nav">
                 {{-- <button type="button" role="presentation" class="owl-prev">
-                    <i class="fa fa-chevron-left text-white"></i>
+                    <i class="text-white fa fa-chevron-left"></i>
                 </button>
                 <button type="button" role="presentation" class="owl-next">
-                    <i class="fa fa-chevron-right text-white"></i>
+                    <i class="text-white fa fa-chevron-right"></i>
                 </button> --}}
             </div>
         </div>
@@ -61,8 +61,8 @@
         @if ($categorys->count() > 0)
             <section class="ps-section--categories top-up-section">
                 <div class="container px-0" style="border-radius: 5px; background-color: #ffffffe6;">
-                    {{-- <h3 class="ps-section__title py-5" style="font-size: 30px;">Popular Categories</h3> --}}
-                    <div class="ps-section__content py-0 py-lg-5">
+                    {{-- <h3 class="py-5 ps-section__title" style="font-size: 30px;">Popular Categories</h3> --}}
+                    <div class="py-0 ps-section__content py-lg-5">
                         <div class="ps-categories__list owl-carousel">
                             @foreach ($categorys as $category)
                                 <div class="ps-categories__item">
@@ -90,16 +90,16 @@
         @endif
         <div class="ps-home__content">
             @if ($latest_products->count() > 0)
-                <section class="ps-section--latest-horizontal pb-5">
+                <section class="pb-5 ps-section--latest-horizontal">
                     <section class="container px-0">
-                        <h3 class="ps-section__title pb-3 pb-lg-5 mb-0" style="font-size: 30px;">Latest products <img
+                        <h3 class="pb-3 mb-0 ps-section__title pb-lg-5" style="font-size: 30px;">Latest products <img
                                 width="40px"
                                 src="https://static.vecteezy.com/system/resources/previews/011/999/958/non_2x/fire-icon-free-png.png"
                                 alt="" style="position: relative;top: -3px;left: -6px;"></h3>
                         <div class="ps-section__content">
-                            <div class="row m-0">
+                            <div class="m-0 row">
                                 @foreach ($latest_products as $latest_product)
-                                    <div class="col-6 col-md-4 col-lg-3 dot4 p-0">
+                                    <div class="p-0 col-6 col-md-4 col-lg-3 dot4">
                                         <div class="ps-section__product">
                                             <div class="ps-product ps-product--standard">
                                                 <div class="ps-product__thumbnail">
@@ -176,7 +176,8 @@
                                                                 : 0;
                                                         // dd($latest_product->name, $review);
                                                     @endphp
-                                                    <div class="d-flex justify-content-between align-items-center mb-3 rating-area">
+                                                    <div
+                                                        class="mb-3 d-flex justify-content-between align-items-center rating-area">
                                                         <div class="ps-product__rating">
                                                             @if ($review > 0)
                                                                 <div class="br-wrapper br-theme-fontawesome-stars">
@@ -204,21 +205,21 @@
                                                         </div>
                                                     </div>
                                                     @if (!empty($latest_product->unit_discount_price))
-                                                        <div class="ps-product__meta pb-3">
+                                                        <div class="pb-3 ps-product__meta">
                                                             <span
                                                                 class="ps-product__price sale">৳{{ $latest_product->unit_discount_price }}</span>
                                                             <span
                                                                 class="ps-product__del">৳{{ $latest_product->unit_price }}</span>
                                                         </div>
                                                     @else
-                                                        <div class="ps-product__meta pb-3">
+                                                        <div class="pb-3 ps-product__meta">
                                                             <span
                                                                 class="ps-product__price sale">৳{{ $latest_product->unit_price }}</span>
                                                         </div>
                                                     @endif
                                                     <div class="d-flex align-items-center card-cart-btn">
                                                         <a href="{{ route('buy.now', $latest_product->id) }}"
-                                                            class="btn btn-primary mr-1 mr-lg-3">
+                                                            class="mr-1 btn btn-primary mr-lg-3">
                                                             Buy Now
                                                         </a>
                                                         <a href="{{ route('cart.store', $latest_product->id) }}"
@@ -271,9 +272,9 @@
                 <div class="container px-0">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="d-flex justify-content-center align-items-center pb-4 pb-lg-5">
+                            <div class="pb-4 d-flex justify-content-center align-items-center pb-lg-5">
                                 <div>
-                                    <h3 class="ps-section__title mb-0" style="font-size: 30px;">
+                                    <h3 class="mb-0 ps-section__title" style="font-size: 30px;">
                                         {{ optional($categoryone)->name }}</h3>
                                 </div>
                             </div>
@@ -281,9 +282,9 @@
                     </div>
                     <div class="ps-home--block">
                         <div class="ps-section__content">
-                            <div class="row m-0">
+                            <div class="m-0 row">
                                 @foreach ($categoryoneproducts as $categoryoneproduct)
-                                    <div class="col-6 col-md-4 col-lg-3 dot4 p-0">
+                                    <div class="p-0 col-6 col-md-4 col-lg-3 dot4">
                                         <div class="ps-section__product">
                                             <div class="ps-product ps-product--standard ctg-one-pr">
                                                 <div class="ps-product__thumbnail">
@@ -361,7 +362,7 @@
                                                                 : 0;
                                                     @endphp
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center mb-3 rating-area">
+                                                        class="mb-3 d-flex justify-content-between align-items-center rating-area">
                                                         <div class="ps-product__rating"
                                                             style="{{ $review <= 0 ? 'visibility: hidden;' : '' }}">
                                                             @if ($review > 0)
@@ -391,25 +392,25 @@
                                                         </div>
                                                     </div>
                                                     @if (!empty($categoryoneproduct->unit_discount_price))
-                                                        <div class="ps-product__meta pb-3">
+                                                        <div class="pb-3 ps-product__meta">
                                                             <span
                                                                 class="ps-product__price sale">৳{{ $categoryoneproduct->unit_discount_price }}</span>
                                                             <span
                                                                 class="ps-product__del">৳{{ $categoryoneproduct->unit_price }}</span>
                                                         </div>
                                                     @else
-                                                        <div class="ps-product__meta pb-3">
+                                                        <div class="pb-3 ps-product__meta">
                                                             <span
                                                                 class="ps-product__price sale">৳{{ $categoryoneproduct->unit_price }}</span>
                                                         </div>
                                                     @endif
                                                     <div class="d-flex align-items-center card-cart-btn">
                                                         <a href="{{ route('buy.now', $categoryoneproduct->id) }}"
-                                                            class="btn btn-primary mr-1 mr-lg-3 ">
+                                                            class="mr-1 btn btn-primary mr-lg-3 ">
                                                             Buy Now
                                                         </a>
                                                         <a href="{{ route('cart.store', $categoryoneproduct->id) }}"
-                                                            class="btn btn-outline-primary add_to_cart py-2 buy-now-btn"
+                                                            class="py-2 btn btn-outline-primary add_to_cart buy-now-btn"
                                                             data-product_id="{{ $categoryoneproduct->id }}"
                                                             data-product_qty="1">
                                                             Add To Cart
@@ -454,7 +455,7 @@
                 </div>
             @endif
             <div class="container px-0">
-                <div class="ps-delivery ps-delivery--info my-3 my-lg-5"
+                <div class="my-3 ps-delivery ps-delivery--info my-lg-5"
                     data-background="{{ asset('images/delivery_banner.jpg') }}"
                     style="background-image: url({{ asset('images/delivery_banner.jpg') }});">
                     <div class="ps-delivery__content">
@@ -469,9 +470,9 @@
                     <div class="container px-0">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="d-flex justify-content-center align-items-center pb-4 pb-lg-5">
+                                <div class="pb-4 d-flex justify-content-center align-items-center pb-lg-5">
                                     <div>
-                                        <h3 class="ps-section__title mb-0" style="font-size: 30px;">
+                                        <h3 class="mb-0 ps-section__title" style="font-size: 30px;">
                                             {{ optional($categorytwo)->name }}</h3>
                                     </div>
                                     {{-- <div class="pl-3">
@@ -481,7 +482,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="ps-section__carousel mb-0">
+                        <div class="mb-0 ps-section__carousel">
                             <div class="takeway-slider owl-carousel owl-loaded owl-drag">
                                 <div class="owl-stage-outer">
                                     <div class="owl-stage"
@@ -489,7 +490,8 @@
                                         @foreach ($categorytwoproducts as $categorytwoproduct)
                                             <div class="owl-item" style="width: 247.6px;">
                                                 <div class="ps-section__product">
-                                                    <div class="ps-product takeway-products ps-product--standard ctg-one-pr">
+                                                    <div
+                                                        class="ps-product takeway-products ps-product--standard ctg-one-pr">
                                                         <div class="ps-product__thumbnail">
                                                             <a class="ps-product__image takeway-slider-img"
                                                                 href="{{ route('product.details', $categorytwoproduct->slug) }}">
@@ -497,7 +499,8 @@
                                                                     @if (!empty($categorytwoproduct->thumbnail))
                                                                         @php
                                                                             $thumbnailPath =
-                                                                                'storage/' . $categorytwoproduct->thumbnail;
+                                                                                'storage/' .
+                                                                                $categorytwoproduct->thumbnail;
                                                                             $thumbnailSrc = file_exists(
                                                                                 public_path($thumbnailPath),
                                                                             )
@@ -506,7 +509,8 @@
                                                                         @endphp
                                                                         <img src="{{ $thumbnailSrc }}"
                                                                             alt="{{ $categorytwoproduct->meta_title }}"
-                                                                            width="210" height="210" class=""/>
+                                                                            width="210" height="210"
+                                                                            class="" />
                                                                     @else
                                                                         @foreach ($categorytwoproduct->multiImages->slice(0, 2) as $image)
                                                                             @php
@@ -516,11 +520,14 @@
                                                                                 )
                                                                                     ? asset($imagePath)
                                                                                     : // : asset('frontend/img/no-product.jpg');
-                                                                                    asset('frontend/img/no-product.jpg');
+                                                                                    asset(
+                                                                                        'frontend/img/no-product.jpg',
+                                                                                    );
                                                                             @endphp
                                                                             <img src="{{ $imageSrc }}"
                                                                                 alt="{{ $categorytwoproduct->meta_title }}"
-                                                                                width="210" height="210" class=""/>
+                                                                                width="210" height="210"
+                                                                                class="" />
                                                                         @endforeach
                                                                     @endif
                                                                 </figure>
@@ -566,12 +573,14 @@
                                                                             ) / count($categorytwoproduct->reviews)
                                                                         : 0;
                                                             @endphp
+                                                            {{-- Show Only Mobile --}}
                                                             <div
-                                                                class="d-flex justify-content-between align-items-center mb-3 rating-area">
+                                                                class="mb-3 only-mobile d-flex justify-content-between align-items-center rating-area">
                                                                 <div class="ps-product__rating"
                                                                     style="{{ $review <= 0 ? 'visibility: hidden;' : '' }}">
                                                                     @if ($review > 0)
-                                                                        <div class="br-wrapper br-theme-fontawesome-stars">
+                                                                        <div
+                                                                            class="br-wrapper br-theme-fontawesome-stars">
                                                                             <select class="ps-rating"
                                                                                 data-read-only="true"
                                                                                 style="display: none;">
@@ -582,13 +591,12 @@
                                                                                     );
                                                                                 @endphp
                                                                                 @for ($i = 1; $i <= $maxRating; $i++)
-                                                                                    <option value="{{ $i }}">
+                                                                                    <option
+                                                                                        value="{{ $i }}">
                                                                                         {{ $i }}</option>
                                                                                 @endfor
                                                                             </select>
                                                                         </div>
-                                                                    @else
-                                                                        <span class="no-found">N/A</span>
                                                                     @endif
                                                                 </div>
                                                                 <div
@@ -596,11 +604,44 @@
                                                                     @if (count($categorytwoproduct->reviews) > 0)
                                                                         Reviews
                                                                         ({{ count($categorytwoproduct->reviews) }})
-                                                                    @else
-                                                                        <span class="no-found">N/A</span>
                                                                     @endif
                                                                 </div>
                                                             </div>
+                                                            {{-- Show Only Mobile End --}}
+                                                            <div
+                                                                class="mb-3 hide-mobile d-flex justify-content-between align-items-center rating-area">
+                                                                <div class="ps-product__rating"
+                                                                    style="{{ $review <= 0 ? 'visibility: hidden;' : '' }}">
+                                                                    @if ($review > 0)
+                                                                        <div
+                                                                            class="br-wrapper br-theme-fontawesome-stars">
+                                                                            <select class="ps-rating"
+                                                                                data-read-only="true"
+                                                                                style="display: none;">
+                                                                                @php
+                                                                                    $maxRating = min(
+                                                                                        5,
+                                                                                        max(1, floor($review)),
+                                                                                    );
+                                                                                @endphp
+                                                                                @for ($i = 1; $i <= $maxRating; $i++)
+                                                                                    <option
+                                                                                        value="{{ $i }}">
+                                                                                        {{ $i }}</option>
+                                                                                @endfor
+                                                                            </select>
+                                                                        </div>
+                                                                    @endif
+                                                                </div>
+                                                                <div
+                                                                    style="{{ count($categorytwoproduct->reviews) == 0 ? 'visibility: hidden;' : '' }}">
+                                                                    @if (count($categorytwoproduct->reviews) > 0)
+                                                                        Reviews
+                                                                        ({{ count($categorytwoproduct->reviews) }})
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                            {{-- Show Only Desktop End --}}
                                                             @if (!empty($categorytwoproduct->unit_discount_price))
                                                                 <div class="ps-product__meta ctg-two-prices">
                                                                     <span
@@ -609,14 +650,14 @@
                                                                         class="ps-product__del">৳{{ $categorytwoproduct->unit_price }}</span>
                                                                 </div>
                                                             @else
-                                                                <div class="ps-product__meta pb-3">
+                                                                <div class="pb-3 ps-product__meta">
                                                                     <span
                                                                         class="ps-product__price sale">৳{{ $categorytwoproduct->unit_price }}</span>
                                                                 </div>
                                                             @endif
                                                             <div class="d-flex align-items-center">
                                                                 <a href="{{ route('buy.now', $categorytwoproduct->id) }}"
-                                                                    class="btn btn-primary btn-block mr-1 mr-lg-3 ">
+                                                                    class="mr-1 btn btn-primary btn-block mr-lg-3 ">
                                                                     Buy Now
                                                                 </a>
                                                                 <a href="{{ route('cart.store', $categorytwoproduct->id) }}"
@@ -628,7 +669,8 @@
                                                             </div>
                                                             <div class="ps-product__actions ps-product__group-mobile">
                                                                 <div class="ps-product__quantity">
-                                                                    <div class="def-number-input number-input safari_only">
+                                                                    <div
+                                                                        class="def-number-input number-input safari_only">
                                                                         <button class="minus"
                                                                             onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i
                                                                                 class="icon-minus"></i>
@@ -643,9 +685,10 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="ps-product__item cart" data-toggle="tooltip"
-                                                                    data-placement="left" title="Add to cart"><a
-                                                                        href="#"><i class="fa fa-eye"></i></a>
+                                                                <div class="ps-product__item cart"
+                                                                    data-toggle="tooltip" data-placement="left"
+                                                                    title="Add to cart"><a href="#"><i
+                                                                            class="fa fa-eye"></i></a>
                                                                 </div>
                                                                 <div class="ps-product__item" data-toggle="tooltip"
                                                                     data-placement="left" title="Wishlist"><a
@@ -670,12 +713,12 @@
             @if ($categorythree && $categorythreeproducts->count() > 0)
                 <div class="container px-0">
                     <div class="ps-home--block">
-                        <h3 class="ps-section__title pb-3 pb-lg-5 mb-0 text-center" style="font-size: 30px;">
+                        <h3 class="pb-3 mb-0 text-center ps-section__title pb-lg-5" style="font-size: 30px;">
                             {{ optional($categorythree)->name }}</h3>
                         <div class="ps-section__content">
-                            <div class="row m-0">
+                            <div class="m-0 row">
                                 @foreach ($categorythreeproducts as $categorythreeproduct)
-                                    <div class="col-6 col-md-4 col-lg-3 dot4 p-0">
+                                    <div class="p-0 col-6 col-md-4 col-lg-3 dot4">
                                         <div class="ps-section__product">
                                             <div class="ps-product ps-product--standard ctg-one-pr">
                                                 <div class="ps-product__thumbnail">
@@ -753,7 +796,7 @@
                                                                 : 0;
                                                     @endphp
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center mb-3 rating-area">
+                                                        class="mb-3 d-flex justify-content-between align-items-center rating-area">
                                                         <div class="ps-product__rating"
                                                             style="{{ $review <= 0 ? 'visibility: hidden;' : '' }}">
                                                             @if ($review > 0)
@@ -769,8 +812,6 @@
                                                                         @endfor
                                                                     </select>
                                                                 </div>
-                                                            @else
-                                                                <span class="no-found">N/A</span>
                                                             @endif
                                                         </div>
                                                         <div
@@ -778,27 +819,25 @@
                                                             @if (count($categorythreeproduct->reviews) > 0)
                                                                 Reviews
                                                                 ({{ count($categorythreeproduct->reviews) }})
-                                                            @else
-                                                                <span class="no-found">N/A</span>
                                                             @endif
                                                         </div>
                                                     </div>
                                                     @if (!empty($categorythreeproduct->unit_discount_price))
-                                                        <div class="ps-product__meta pb-3">
+                                                        <div class="pb-3 ps-product__meta">
                                                             <span
                                                                 class="ps-product__price sale">৳{{ $categorythreeproduct->unit_discount_price }}</span>
                                                             <span
                                                                 class="ps-product__del">৳{{ $categorythreeproduct->unit_price }}</span>
                                                         </div>
                                                     @else
-                                                        <div class="ps-product__meta pb-3">
+                                                        <div class="pb-3 ps-product__meta">
                                                             <span
                                                                 class="ps-product__price sale">৳{{ $categorythreeproduct->unit_price }}</span>
                                                         </div>
                                                     @endif
                                                     <div class="d-flex align-items-center card-cart-btn">
                                                         <a href="{{ route('buy.now', $categorythreeproduct->id) }}"
-                                                            class="btn btn-primary mr-1 mr-lg-3 ">
+                                                            class="mr-1 btn btn-primary mr-lg-3 ">
                                                             Buy Now
                                                         </a>
                                                         <a href="{{ route('cart.store', $categorythreeproduct->id) }}"
@@ -870,8 +909,8 @@
             </ul>
 
             <!-- Foreground Content -->
-            <div class="container position-relative py-5" style="z-index: 1;">
-                <div class="row py-5 align-items-center testimonial-content">
+            <div class="container py-5 position-relative" style="z-index: 1;">
+                <div class="py-5 row align-items-center testimonial-content">
                     <div class="col-lg-6">
                         <div>
                             <p class="text-white">Trusted by Thousands</p>
@@ -883,7 +922,7 @@
                                 below.</p>
                             <div class="d-flex align-items-center shop-btns">
                                 <div class="pt-5">
-                                    <a href="{{ route('allproducts') }}" class="tst-btn text-white px-5">Shop
+                                    <a href="{{ route('allproducts') }}" class="px-5 text-white tst-btn">Shop
                                         Now</a>
                                 </div>
                             </div>
@@ -905,7 +944,7 @@
                                                                         id="testimonial-{{ $testimonial->id }}">
                                                                         <span class="testimonial-text">
                                                                             <i
-                                                                                class="fa-solid fa-quote-left pr-3 testi-dots pb-4"></i>
+                                                                                class="pb-4 pr-3 fa-solid fa-quote-left testi-dots"></i>
                                                                             <br>
                                                                             <span>
                                                                                 {{ $testimonial->message }}</span>
@@ -917,7 +956,7 @@
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <div
-                                                            class="d-flex justify-content-between align-items-center mt-3 mt-lg-5 testimonial-author">
+                                                            class="mt-3 d-flex justify-content-between align-items-center mt-lg-5 testimonial-author">
                                                             <div class="profile d-flex align-items-center">
                                                                 <div>
                                                                     <img src="{{ !empty($testimonial->image) ? asset('storage/' . $testimonial->image) : asset('images/testimonial.png') }}"
@@ -925,9 +964,9 @@
 
                                                                 </div>
                                                                 <div class="pl-3 testimonial-content-de">
-                                                                    <h4 class="text-white fw-semibold mb-0">
+                                                                    <h4 class="mb-0 text-white fw-semibold">
                                                                         {{ $testimonial->name }}</h4>
-                                                                    <p class="text-white mb-0">
+                                                                    <p class="mb-0 text-white">
                                                                         <small>{{ $testimonial->company_name }}</small>
                                                                     </p>
                                                                 </div>
@@ -938,7 +977,7 @@
                                                                         style="color: goldenrod"></i>
                                                                 @endfor
                                                                 <span
-                                                                    class="text-white pl-2">{{ $testimonial->rating }}.0</span>
+                                                                    class="pl-2 text-white">{{ $testimonial->rating }}.0</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -980,7 +1019,7 @@
         @if ($deals->count() > 0 || $deal_products->count() > 0)
             <div class="container px-0">
                 @if ($deals->count() > 0)
-                <h3 class="ps-section__title pb-3 pb-lg-5 mb-0" style="font-size: 30px;">This week deals</h3>
+                    <h3 class="pb-3 mb-0 ps-section__title pb-lg-5" style="font-size: 30px;">This week deals</h3>
                     <div class="ps-promo ps-promo--home">
                         <!-- First Row: First Three Deals -->
                         <div class="row">
@@ -1010,7 +1049,7 @@
                                                         <p class="ps-promo__price text-warning">
                                                             ৳{{ $deal->offer_price }}
                                                         </p>
-                                                        <p class="ps-promo__del text-white">৳{{ $deal->price }}
+                                                        <p class="text-white ps-promo__del">৳{{ $deal->price }}
                                                         </p>
                                                     </div>
                                                 @endif
@@ -1069,7 +1108,8 @@
                 @if ($deal_products->count() > 0)
                     <section class="ps-section--deals">
                         <div class="ps-section__header">
-                            <h3 class="ps-section__title pb-3 pb-lg-5 mb-0" style="font-size: 30px;">Best Deals of the week!</h3>
+                            <h3 class="pb-3 mb-0 ps-section__title pb-lg-5" style="font-size: 30px;">Best Deals of the
+                                week!</h3>
                         </div>
                         <div class="ps-section__carousel">
                             <div class="dealCarousel owl-carousel">
@@ -1144,44 +1184,93 @@
                                                                 count($deal_product->reviews)
                                                             : 0;
                                                 @endphp
-                                                <div class="d-flex justify-content-between align-items-center mb-3 rating-area">
+                                                {{-- Show Only Mobile --}}
+                                                <div
+                                                class="mb-3 only-mobile d-flex justify-content-between align-items-center rating-area">
+                                                <div class="ps-product__rating"
+                                                    style="{{ $review <= 0 ? 'visibility: hidden;' : '' }}">
+                                                    @if ($review > 0)
+                                                        <div
+                                                            class="br-wrapper br-theme-fontawesome-stars">
+                                                            <select class="ps-rating"
+                                                                data-read-only="true"
+                                                                style="display: none;">
+                                                                @php
+                                                                    $maxRating = min(
+                                                                        5,
+                                                                        max(1, floor($review)),
+                                                                    );
+                                                                @endphp
+                                                                @for ($i = 1; $i <= $maxRating; $i++)
+                                                                    <option
+                                                                        value="{{ $i }}">
+                                                                        {{ $i }}</option>
+                                                                @endfor
+                                                            </select>
+                                                        </div>
+                                                    @else
+                                                        <span class="no-found">N/A</span>
+                                                    @endif
+                                                </div>
+                                                <div
+                                                    style="{{ count($deal_product->reviews) == 0 ? 'visibility: hidden;' : '' }}">
+                                                    @if (count($deal_product->reviews) > 0)
+                                                        Reviews
+                                                        ({{ count($deal_product->reviews) }})
+                                                    @else
+                                                        <span class="no-found">N/A</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            {{-- Show Only Mobile End --}}
+                                            <div class="hide-mobile">
+                                                <div
+                                                    class="mb-3 d-flex justify-content-between align-items-center rating-area">
                                                     <div class="ps-product__rating"
                                                         style="{{ $review <= 0 ? 'visibility: hidden;' : '' }}">
                                                         @if ($review > 0)
-                                                            <div class="br-wrapper br-theme-fontawesome-stars">
-                                                                <select class="ps-rating" data-read-only="true"
+                                                            <div
+                                                                class="br-wrapper br-theme-fontawesome-stars">
+                                                                <select class="ps-rating"
+                                                                    data-read-only="true"
                                                                     style="display: none;">
                                                                     @php
-                                                                        $maxRating = min(5, max(1, floor($review)));
+                                                                        $maxRating = min(
+                                                                            5,
+                                                                            max(1, floor($review)),
+                                                                        );
                                                                     @endphp
                                                                     @for ($i = 1; $i <= $maxRating; $i++)
-                                                                        <option value="{{ $i }}">
+                                                                        <option
+                                                                            value="{{ $i }}">
                                                                             {{ $i }}</option>
                                                                     @endfor
                                                                 </select>
                                                             </div>
-                                                        @else
-                                                            <span class="no-found">N/A</span>
                                                         @endif
                                                     </div>
                                                     <div
                                                         style="{{ count($deal_product->reviews) == 0 ? 'visibility: hidden;' : '' }}">
                                                         @if (count($deal_product->reviews) > 0)
-                                                            Reviews ({{ count($deal_product->reviews) }})
+                                                            Reviews
+                                                            ({{ count($deal_product->reviews) }})
                                                         @else
                                                             <span class="no-found">N/A</span>
                                                         @endif
                                                     </div>
                                                 </div>
+                                            </div>
+                                            {{-- Show Only Desktop End --}}
+
                                                 @if (!empty($deal_product->unit_discount_price))
-                                                    <div class="ps-product__meta mb-3">
+                                                    <div class="mb-3 ps-product__meta">
                                                         <span
                                                             class="ps-product__price sale">৳{{ $deal_product->unit_discount_price }}</span>
                                                         <span
                                                             class="ps-product__del">৳{{ $deal_product->unit_price }}</span>
                                                     </div>
                                                 @else
-                                                    <div class="ps-product__meta mb-3">
+                                                    <div class="mb-3 ps-product__meta">
                                                         <span
                                                             class="ps-product__price sale">৳{{ $deal_product->unit_price }}</span>
                                                     </div>
@@ -1189,7 +1278,7 @@
 
                                                 <div class="d-flex align-items-center">
                                                     <a href="{{ route('buy.now', $deal_product->id) }}"
-                                                        class="btn btn-primary btn-block mr-1 mr-lg-3">
+                                                        class="mr-1 btn btn-primary btn-block mr-lg-3">
                                                         Buy Now
                                                     </a>
                                                     <a href="{{ route('cart.store', $deal_product->id) }}"
@@ -1200,7 +1289,7 @@
                                                     </a>
                                                 </div>
 
-                                                <div class="ps-product__actions ps-product__group-mobile mt-3">
+                                                <div class="mt-3 ps-product__actions ps-product__group-mobile">
                                                     <div class="ps-product__item cart">
                                                         <a class="add_to_cart"
                                                             href="{{ route('cart.store', $deal_product->id) }}"

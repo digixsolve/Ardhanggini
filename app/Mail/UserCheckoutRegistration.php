@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class UserRegistrationMail extends Mailable
+class UserCheckoutRegistration extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -34,7 +34,7 @@ class UserRegistrationMail extends Mailable
     {
         return $this->from('support@ardhanggini.com', $this->setting->website_name)
             ->subject('Welcome to'.$this->setting->website_name)
-            ->view('mail.user_registration', [
+            ->view('mail.user_checkout_registration', [
                 'data' => $this->data,
                 'setting'=> $this->setting,
             ]);

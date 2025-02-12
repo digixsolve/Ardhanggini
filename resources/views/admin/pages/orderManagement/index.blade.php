@@ -104,8 +104,8 @@
                             <td colspan="9" class="fw-bold text-gray-800">
                                 <h5 class="text-start">
                                     Client :
-                                    {{ $userOrders->first()->user->first_name }}
-                                    {{ $userOrders->first()->user->last_name }}
+                                    {{ optional($userOrders->first()->user)->first_name }}
+                                    {{ optional($userOrders->first()->user)->last_name }}
                                 </h5>
                             </td>
                         </tr>
@@ -118,7 +118,7 @@
                                         {{ $order->order_number }}
                                     </a>
                                 </td>
-                                <td>{{ $order->user->first_name }} {{ $order->user->last_name }}</td>
+                                <td>{{ optional($order->user)->first_name }} {{ optional($order->user)->last_name }}</td>
                                 <td>{{ $order->created_at->format('Y-m-d') }}</td>
                                 <td><span class="text-info fw-bold">৳</span>{{ $order->total_amount }}</td>
                                 <td>{{ $order->quantity }}</td>
