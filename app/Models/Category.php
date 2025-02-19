@@ -35,7 +35,7 @@ class Category extends Model
     public function products()
     {
         // return Product::whereJsonContains('category_id', (string) $this->id);
-        return Product::whereJsonContains('category_id', json_encode($this->id));
+        return Product::whereJsonContains('category_id', json_encode($this->id))->where('status', 'published');
     }
 
     public function scopeActive($query)
@@ -45,6 +45,6 @@ class Category extends Model
 
     public function catProducts()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class)->where('status', 'published');
     }
 }

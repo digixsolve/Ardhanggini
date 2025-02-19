@@ -137,6 +137,32 @@
             margin-bottom: 1.25rem;
         }
     </style>
+    <!-- Scroll to Top CSS -->
+    <style>
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--site-green);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s;
+            z-index: 55;
+        }
+
+        .scroll-to-top:hover {
+            background-color: var(--site-green);
+        }
+    </style>
 </head>
 
 <body>
@@ -157,7 +183,7 @@
             {{ $slot }}
             {{-- Footer --}}
             @include('frontend.layouts.footer')
-        {{-- Footer --}}
+            {{-- Footer --}}
         </div>
         {{-- Sidebar Cart Common Start --}}
         <div>
@@ -170,7 +196,10 @@
     </div>
 
     <!-- Scroll to Top Button -->
-    <a href="#" class="scroll-top" style="display: none;">↑</a>
+    <button id="scrollToTop" class="scroll-to-top">
+        ↑
+    </button>
+
 
     @include('frontend.layouts.extra')
     <script src="{{ asset('frontend/plugins/jquery.min.js') }}"></script>
@@ -194,7 +223,27 @@
     <script src="{{ asset('frontend/js/sidebar.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
     @stack('scripts')
+    <!-- Scroll to Top JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let scrollToTopBtn = document.getElementById("scrollToTop");
 
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.style.display = "flex";
+                } else {
+                    scrollToTopBtn.style.display = "none";
+                }
+            });
+
+            scrollToTopBtn.addEventListener("click", function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+        });
+    </script>
     <script>
         function addToCart(e, csrfToken, cartUrl) {
             e.preventDefault(); // Prevent the default action of the link
@@ -698,7 +747,7 @@
                         miniCart += `<ul id="minicartHeader" class="product_list_widget list-unstyled">
 
                             <li>
-                                <div class="media clearfix">
+                                <div class="clearfix media">
 
                                     <div class="media-lefta">
                                         <a href="single-product.html">

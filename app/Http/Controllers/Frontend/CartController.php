@@ -201,7 +201,7 @@ class CartController extends Controller
             }
             $user_id = auth()->id();
         }
-        // Validate the request data
+        ini_set('max_execution_time', 300);
         $totalAmount = preg_replace('/[^0-9.]/', '', $request->input('total_amount'));
         $validator = Validator::make($request->all(), [
             'shipping_first_name' => 'nullable|string|max:255',

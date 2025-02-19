@@ -7,6 +7,25 @@
         </a>
     </div>
     <div class="d-flex align-items-center">
+        <div>
+            <div class="ps-header__search mobile-search">
+                <form action="{{ route('allproducts') }}">
+                    <div class="ps-search-table">
+                        <div class="input-group rounded-pill">
+                            <input id="search_text" class="form-control ps-input search_text"
+                                type="text" placeholder="Ladies Bags">
+                            <div class="input-group-append">
+                                <a href="#"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div id="search_container" class="ps-search--result search_container d-none"
+                    style="height: 50vh;overflow-y: auto;">
+                    <!-- Search results will be injected here -->
+                </div>
+            </div>
+        </div>
         <div class="ps-nav__item"><a href="{{ route('login') }}">
                 <img src="{{ asset('images/icon-profile.svg') }}" style="width: 20px" alt="">
             </a>
@@ -34,10 +53,10 @@
         <div class="ps-nav__item">
             <a href="#" id="open-menu">
                 {{-- <i class="icon-menu"></i> --}}
-                <i class="fa-solid fa-bars pt-2 text-white"></i>
+                <i class="pt-2 text-white fa-solid fa-bars"></i>
             </a>
             <a href="#" id="close-menu">
-                <i class="fa-solid fa-xmark text-white"></i>
+                <i class="text-white fa-solid fa-xmark"></i>
             </a>
         </div>
     </div>
@@ -65,7 +84,7 @@
             </li>
             @if (!empty(optional($special_offer)->slug))
                 <li>
-                    <a href="{{ route('special.products', optional($special_offer)->slug) }}" class="button-new mt-2">
+                    <a href="{{ route('special.products', optional($special_offer)->slug) }}" class="mt-2 button-new">
                         <span class="fold"></span>
 
                         <div class="points_wrapper">
@@ -141,7 +160,7 @@
                     </div>
                     <div class="col-12 col-md-4">
                         <div class="ps-footer--block">
-                            <h5 class="ps-block__title text-center mb-0">Visitor Count</h5>
+                            <h5 class="mb-0 text-center ps-block__title">Visitor Count</h5>
                             <div class="visitor-box">
                                 <div class="main-counter">
                                     <h1 class="mb-0">{{ $getOnlineVisitorCount + 10 }}</h1>
@@ -167,4 +186,3 @@
         </div>
     </div>
 </div>
-<button class="btn scroll-top"><i class="fa fa-angle-double-up"></i></button>

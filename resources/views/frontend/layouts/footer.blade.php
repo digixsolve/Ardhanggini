@@ -52,29 +52,29 @@
 <footer class="ps-footer ps-footer--13 ps-footer--14">
     <div class="ps-footer--top">
         <div class="container">
-            <div class="row m-0">
-                <div class="col-12 col-sm-3 p-0">
+            <div class="m-0 row">
+                <div class="p-0 col-12 col-sm-3">
                     <p class="text-center">
                         <span class="ps-footer__link">
                             <i class="icon-wallet"></i>Full Cash on Delivery
                         </span>
                     </p>
                 </div>
-                <div class="col-12 col-sm-2 p-0">
+                <div class="p-0 col-12 col-sm-2">
                     <p class="text-center">
                         <span class="ps-footer__link">
-                            <i class="icon-truck"></i>In Dhaka- 70 TK
+                            <i class="icon-truck"></i>In Dhaka- 80 TK
                         </span>
                     </p>
                 </div>
-                <div class="col-12 col-sm-3 p-0">
+                <div class="p-0 col-12 col-sm-3">
                     <p class="text-center">
                         <span class="ps-footer__link">
                             <i class="icon-truck"></i>Outside Dhaka- 150 TK
                         </span>
                     </p>
                 </div>
-                <div class="col-12 col-sm-4 p-0">
+                <div class="p-0 col-12 col-sm-4">
                     <p class="text-center">
                         <span class="ps-footer__link">
                             <i class="icon-check"></i>Check Product In Front Of Delivery Man
@@ -235,7 +235,7 @@
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="ps-footer--block">
-                                <h5 class="ps-block__title text-center mb-0">Visitor Count</h5>
+                                <h5 class="mb-0 text-center ps-block__title">Visitor Count</h5>
                                 <div class="visitor-box">
                                     <div class="main-counter">
                                         <h1 class="mb-0">{{ $getOnlineVisitorCount + 10 }}</h1>
