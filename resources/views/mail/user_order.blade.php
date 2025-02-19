@@ -17,7 +17,7 @@
                             <table style="width: 100%; border-spacing: 0; text-align: center;">
                                 <tr>
                                     <td>
-                                        <img src="https://i.ibb.co.com/PrHfD92/Ardhanggini-logo-White.png"
+                                        <img src="{{ asset('frontend/img/logo.png') }}"
                                             alt="Logo"
                                             style="max-width: 100%; height: 60px; margin: 20px auto; display: block;" />
                                     </td>

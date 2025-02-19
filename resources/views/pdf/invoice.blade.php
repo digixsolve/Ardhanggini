@@ -72,7 +72,7 @@
                             <img class="text-right" width="150px"
                                 src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
                                 alt=""
-                                onerror="this.onerror=null;this.src='https://neezpackages.com/frontend/img/logo.png';">
+                                onerror="this.onerror=null;this.src='{{ asset('frontend/img/logo.png') }}';">
                         </div>
                     </div>
                     <div class="col-lg-6">
