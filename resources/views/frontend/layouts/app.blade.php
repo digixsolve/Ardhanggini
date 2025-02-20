@@ -17,16 +17,15 @@
     @if (Route::currentRouteName() === 'product.details')
         @php
             $metaTitle = $product->meta_title ?? $product->name;
-            $metaDescription = strip_tags(
-                $product->meta_description ?? substr(htmlspecialchars($product->description), 0, 150),
+            $metaDescription = strip_tags( $product->meta_description ?? substr(htmlspecialchars($product->description), 0, 150),
             );
             $metaImage = $product->thumbnail ?? ''; // Default image
         @endphp
 
         <meta name="title" content="{{ $metaTitle }}" />
-        <meta name="description" content="{{ $metaDescription }}" />
+        <meta name="description" content="{!! $metaDescription !!}" />
         <meta property="og:title" content="{{ $metaTitle }}" />
-        <meta property="og:description" content="{{ $metaDescription }}" />
+        <meta property="og:description" content="{!! $metaDescription !!}" />
         <meta property="og:image" content="{{ $metaImage ? asset('storage/' . $metaImage) : '' }}" />
         <meta property="og:type" content="product" />
 
@@ -35,15 +34,15 @@
         <meta property="og:locale" content="en_US" />
 
         <meta property="twitter:title" content="{{ $metaTitle }}" />
-        <meta property="twitter:description" content="{{ $metaDescription }}" />
+        <meta property="twitter:description" content="{!! $metaDescription !!}" />
         <meta property="twitter:image" content="{{ $metaImage ? asset('storage/' . $metaImage) : '' }}" />
     @else
         <meta name="title" content="{{ optional($setting)->site_title ?: config('app.name', 'E-Commerce') }}" />
-        <meta name="description" content="{{ optional($setting)->meta_description ?: config('app.name') }}" />
+        <meta name="description" content="{!! optional($setting)->meta_description ?: config('app.name') !!}" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{ optional($setting)->site_url ?: config('app.url') }}" />
         <meta property="og:title" content="{{ optional($setting)->site_title ?: config('app.name', 'E-Commerce') }}" />
-        <meta property="og:description" content="{{ optional($setting)->meta_description ?: config('app.name') }}" />
+        <meta property="og:description" content="{!! optional($setting)->meta_description ?: config('app.name') !!}" />
         <meta property="og:image"
             content="{{ optional($setting)->site_logo_black && file_exists(public_path('storage/' . optional($setting)->site_logo_black)) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/images/brandPage-logo-no-img(217-55).jpg') }}" />
 
@@ -53,7 +52,7 @@
         <meta property="twitter:title"
             content="{{ optional($setting)->site_title ?: config('app.name', 'E-Commerce') }}" />
         <meta property="twitter:description"
-            content="{{ optional($setting)->meta_description ?: config('app.name') }}" />
+            content="{!! optional($setting)->meta_description ?: config('app.name') !!}" />
         <meta property="twitter:image"
             content="{{ optional($setting)->site_logo_black && file_exists(public_path('storage/' . optional($setting)->site_logo_black)) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/images/brandPage-logo-no-img(217-55).jpg') }}" />
     @endif
