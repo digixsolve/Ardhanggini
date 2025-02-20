@@ -300,7 +300,7 @@
                                             </div>
 
                                             <div class="pt-4">
-                                                <p class="fw-bold">Color Variation</p>
+                                                <p class="fw-bold text-black">Color Variation</p>
                                                 <div class="color-one">
                                                     @php
                                                         $colors = is_string($product->color)
