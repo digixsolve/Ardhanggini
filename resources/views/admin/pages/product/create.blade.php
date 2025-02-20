@@ -385,7 +385,7 @@
                                             <div class="mb-5 fv-row">
                                                 <x-metronic.label class="form-label">Meta
                                                     Description</x-metronic.label>
-                                                <textarea name="meta_description" class="ckeditor">{!! old('meta_description') !!}</textarea>
+                                                <textarea name="meta_description" class="form-control">{!! old('meta_description') !!}</textarea>
                                                 <div class="text-muted fs-7">
                                                     Add Meta Meta details.
                                                 </div>
