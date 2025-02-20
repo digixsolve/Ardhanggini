@@ -157,6 +157,7 @@ class CartController extends Controller
     }
     public function checkoutStore(Request $request)
     {
+        ini_set('max_execution_time', 300);
         if (Auth::check()) {
             $user_id = auth()->id();
         } else {
