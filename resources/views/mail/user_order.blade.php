@@ -17,7 +17,7 @@
                             <table style="width: 100%; border-spacing: 0; text-align: center;">
                                 <tr>
                                     <td>
-                                        <img src="{{ asset('frontend/img/logo.png') }}"
+                                        <img src="{{ asset('images/default_logo.png') }}"
                                             alt="Logo"
                                             style="max-width: 100%; height: 60px; margin: 20px auto; display: block;" />
                                     </td>
@@ -42,7 +42,7 @@
                         <td>
                             <div>
                                 <img style="height: 250px;width: 100%;object-fit: cover;margin-bottom: -6px;"
-                                    src="{{ asset('frontend/img/order_mail.gif') }}" alt=""/>
+                                    src="{{ asset('images/order_mail.gif') }}" alt=""/>
                             </div>
                         </td>
                     </tr>
