@@ -17,7 +17,7 @@
                             <table style="width: 100%; border-spacing: 0; text-align: center;">
                                 <tr>
                                     <td>
-                                        <img src="https://www.ardhanggini.com/images/default_logo.png"
+                                        <img src="https://www.ardhanggini.com/images/white_logo.png"
                                             alt="Logo"
                                             style="max-width: 100%; height: 60px; margin: 20px auto; display: block;" />
                                     </td>
@@ -41,8 +41,10 @@
                     <tr>
                         <td>
                             <div>
+
                                 <img style="height: 250px;width: 100%;object-fit: cover;margin-bottom: -6px;"
-                                    src="https://www.ardhanggini.com/images/order_mail.gif" alt=""/>
+                                    src="https://www.ardhanggini.com/images/order_mail.gif" alt="" />
+
                             </div>
                         </td>
                     </tr>
@@ -108,7 +110,8 @@
                                             <tr class="">
                                                 <td colspan="2"
                                                     style="text-align: end; font-weight: bold; padding: 10px;">
-                                                    Delivery Charge ({{ ($data['shipping_charge'] > 0) ? $data['shipping_method'] : 'Free Shipping' }})
+                                                    Delivery Charge
+                                                    ({{ $data['shipping_charge'] > 0 ? $data['shipping_method'] : 'Free Shipping' }})
                                                 </td>
                                                 <td colspan="2" style="text-align: end; padding: 10px;">
                                                     ৳ {{ $data['shipping_charge'] }}
