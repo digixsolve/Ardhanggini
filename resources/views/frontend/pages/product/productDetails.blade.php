@@ -1103,7 +1103,7 @@
                     // alert(selectedSlider);
                     $(".slider-wrapper").hide();
                     $(".slider-wrapper[data-slider='" + selectedSlider + "']").show();
-                    $(".slider-wrapper").hide();
+                    // $(".slider-wrapper").hide();
                 });
 
                 $(".slider-wrapper").each(function() {
