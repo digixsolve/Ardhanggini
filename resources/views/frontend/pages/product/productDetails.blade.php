@@ -219,17 +219,14 @@
                         <div class="pr-3 pr-lg-0 col-lg-4">
                             <div class="p-3 bg-white">
                                 @foreach ($product->multiImages as $pic)
-                                    <div class="slider-wrapper" data-slider="{{ $pic->color }}">
+                                    <div class="slider-wrapper" data-slider="{{ $pic->id }}">
                                         <div class="swiper-container slider">
                                             <div class="swiper mySwiper">
                                                 <div class="swiper-wrapper">
-                                                    @foreach ($product->multiImages as $pic)
-                                                        <div
-                                                            class="swiper-slide main-slider-img me-0 magnifier-container">
-                                                            <img class="" alt=""
-                                                                src="{{ asset('storage/' . $pic->photo) }}" />
-                                                        </div>
-                                                    @endforeach
+                                                    <div class="swiper-slide main-slider-img me-0 magnifier-container">
+                                                        <img class="" alt=""
+                                                            src="{{ asset('storage/' . $pic->photo) }}" />
+                                                    </div>
                                                 </div>
                                                 <div>
                                                     <div class="swiper-button-next">
@@ -242,11 +239,9 @@
                                             </div>
                                             <div class="swiper swiper-thumbs">
                                                 <div class="swiper-wrapper">
-                                                    @foreach ($product->multiImages as $pic)
-                                                        <div class="swiper-slide">
-                                                            <img src="{{ asset('storage/' . $pic->photo) }}" />
-                                                        </div>
-                                                    @endforeach
+                                                    <div class="swiper-slide">
+                                                        <img src="{{ asset('storage/' . $pic->photo) }}" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -329,16 +324,15 @@
                                         </div> --}}
                                     </div>
                                 </div>
-                                <p class="mb-0">Color Family</p>
+                                <p class="mb-0">Color Family : <span class="colorFamily"></span></p>
                                 <div class="pt-2 brand-selection">
                                     <div>
                                         @foreach ($product->multiImages as $pic)
                                             <label class="brand-label">
-                                                <input type="radio" name="color" value="{{ $pic->color }}"
-                                                    id="color-select" />
-                                                <div style="padding: 20px; background: {{ $pic->color }};">
-
-                                                </div>
+                                                <input style="border: 5px solid {{ $pic->color }}" type="radio"
+                                                    name="color" data-id="{{ $pic->id }}"
+                                                    value="{{ $pic->color }}" />
+                                                <img src="{{ asset('storage/' . $pic->photo) }}" />
                                             </label>
                                         @endforeach
                                     </div>
@@ -391,12 +385,7 @@
                                         <li><i class="icon-truck"></i>{{ $shippingmethod->title }} -
                                             {{ $shippingmethod->price }} TK ({{ $shippingmethod->duration }})</li>
                                     @endforeach
-                                    {{-- <li><i class="fa-solid fa-location-dot"></i>
-                                        Sub-areas: <br>
-                                        <span class="pt-2"
-                                            style="position: relative;left: 32px;width: 94%;display: inline-block;">Keraniganj,
-                                            Tangi, Savar, Gazipur, Narayanganj, Asulia (2-4 Days)</span>
-                                    </li> --}}
+
                                 </ul>
                             </div>
                         </div>
@@ -1110,9 +1099,11 @@
                 $("input[value='" + firstValue + "']").prop("checked", true);
 
                 $("input[name=color]").change(function() {
-                    let selectedSlider = $(this).val();
+                    let selectedSlider = $(this).data("id");
+                    // alert(selectedSlider);
                     $(".slider-wrapper").hide();
                     $(".slider-wrapper[data-slider='" + selectedSlider + "']").show();
+                    $(".slider-wrapper").hide();
                 });
 
                 $(".slider-wrapper").each(function() {

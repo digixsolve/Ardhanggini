@@ -354,7 +354,7 @@
                                                             <div data-repeater-list="productMediaColor">
                                                                 <div data-repeater-item>
                                                                     <div class="form-group row">
-                                                                        <div class="col-md-4">
+                                                                        <div class="col-md-6">
                                                                             <x-metronic.label for="multi_images"
                                                                                 class="col-form-label fw-bold fs-6 ">{{ __('Product Image') }}
                                                                             </x-metronic.label>
@@ -362,7 +362,7 @@
                                                                                 name="multi_images"
                                                                                 :value="old('multi_images')"></x-metronic.file-input>
                                                                         </div>
-                                                                        <div class="col-md-4">
+                                                                        <div class="col-md-5">
                                                                             <x-metronic.label for="product_color"
                                                                                 class="col-form-label fw-bold fs-6 required">{{ __('Choose Color') }}
                                                                             </x-metronic.label>
