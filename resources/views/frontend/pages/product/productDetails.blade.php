@@ -246,7 +246,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                @else
+                                @empty
+                                    <!-- Fallback when no product images are available -->
                                     <div class="slider-wrapper">
                                         <div class="swiper-container slider">
                                             <div class="swiper mySwiper">
@@ -274,7 +275,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
+                                @endforelse
+
                             </div>
                         </div>
                         <div class="col-lg-5">
