@@ -410,7 +410,7 @@ class ProductController extends Controller
         }
         $multiImage->update([
             'photo' => $multiImageUpload['file_path'] ?? $multiImage->photo,
-            'color' => $request->input('color'),
+            'color' => $request->color,
         ]);
         Session::flash('success', 'Image has been updated successfully!');
         return redirect()->back();
