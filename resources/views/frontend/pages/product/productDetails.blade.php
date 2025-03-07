@@ -324,7 +324,7 @@
                                         </div> --}}
                                     </div>
                                 </div>
-                                <p class="mb-0">Color Family : <span class="colorFamily"></span></p>
+                                <p class="mb-0">Color Family</p>
                                 <div class="pt-2 brand-selection">
                                     <div>
                                         @foreach ($product->multiImages as $pic)
