@@ -183,6 +183,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('log/{id}', [LogController::class, 'show'])->name('log.show');
     Route::delete('log/{id}', [LogController::class, 'destroy'])->name('log.destroy');
     Route::delete('multiimage/{id}', [ProductController::class, 'multiImageDestroy'])->name('multiimage.destroy');
+    Route::put('multiimage/update/{id}', [ProductController::class, 'multiImageUpdate'])->name('multiimage.update');
     Route::get('log/download/{id}', [LogController::class, 'download'])->name('log.download');
 
     Route::get('activity_logs', [ActivityLogController::class, 'index'])->name('activity_logs.index');

@@ -45,6 +45,6 @@ class Category extends Model
 
     public function catProducts()
     {
-        return $this->hasMany(Product::class)->where('status', 'published');
+        return $this->hasMany(Product::class)->latest('id')->where('status', 'published');
     }
 }

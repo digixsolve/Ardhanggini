@@ -136,8 +136,7 @@
         <div class="row mt-3 pt-3">
             <div class="col-lg-12">
                 <p class="text-center text-m-center">
-                    <i class="fa-solid fa-file"></i> <strong>NOTE:</strong> This is a
-                    computer-generated receipt and does not require a physical signature.
+                    <i class="fa-solid fa-file"></i> <strong>NOTE:</strong> The order will be confirmed via call within 24 hours.
                 </p>
             </div>
         </div>

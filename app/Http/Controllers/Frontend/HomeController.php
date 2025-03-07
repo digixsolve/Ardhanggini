@@ -37,7 +37,7 @@ class HomeController extends Controller
         $categoryoneproducts = collect(); // Default to empty collection
         if ($categoryone) {
             // Get products for category one with eager loading of related data
-            $categoryoneproducts = $categoryone->products()->inRandomOrder()->with(['multiImages', 'reviews'])->paginate(8);
+            $categoryoneproducts = $categoryone->products()->latest('id')->with(['multiImages', 'reviews'])->paginate(8);
         }
 
         $categorytwo = null;
@@ -49,7 +49,7 @@ class HomeController extends Controller
 
             if ($categorytwo) {
                 // Get products for category two with eager loading of related data
-                $categorytwoproducts = $categorytwo->products()->inRandomOrder()->with(['multiImages', 'reviews'])->paginate(8);
+                $categorytwoproducts = $categorytwo->products()->latest('id')->with(['multiImages', 'reviews'])->paginate(8);
             }
         }
 
@@ -62,7 +62,7 @@ class HomeController extends Controller
 
             if ($categorythree) {
                 // Get products for category three with eager loading of related data
-                $categorythreeproducts = $categorythree->products()->inRandomOrder()->with(['multiImages', 'reviews'])->paginate(8);
+                $categorythreeproducts = $categorythree->products()->latest('id')->with(['multiImages', 'reviews'])->paginate(8);
             }
         }
 
@@ -84,7 +84,7 @@ class HomeController extends Controller
                 'categorytwoproducts'       => $categorytwoproducts,
                 'categorythree'             => $categorythree ?? '',
                 'categorythreeproducts'     => $categorythreeproducts,
-                'latest_products'           => Product::with('multiImages', 'reviews')->inRandomOrder()->where('status', 'published')->active()->paginate(8),
+                'latest_products'           => Product::with('multiImages', 'reviews')->latest('id')->where('status', 'published')->active()->paginate(8),
                 'deal_products'             => Product::with('multiImages', 'reviews')->whereNotNull('box_discount_price')->inRandomOrder()->limit(10)->active()->get(),
             ];
         });
@@ -213,8 +213,10 @@ class HomeController extends Controller
     {
         $data = [
             'cartItems' => Cart::instance('cart')->content(),
+
             'related_products' => Product::select('id', 'slug', 'meta_title', 'thumbnail', 'name', 'unit_discount_price', 'unit_price')->with('multiImages')->inRandomOrder()->limit(12)->active()->get(),
         ];
+        // dd($data['cartItems']);
         return view('frontend.pages.cart.mycart', $data);
     }
     public function checkout()
