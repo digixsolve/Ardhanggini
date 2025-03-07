@@ -382,6 +382,19 @@
                                 </a>
                             </li>
                         @endif
+                        @if (optional($setting)->youtube_url)
+                            <li>
+                                <a class="ps-social__link youtube" href="{{ optional($setting)->youtube_url }}"
+                                    target="_blank">
+                                    <i class="fab fa-youtube-square fs-3"
+                                        style="
+                                        background: linear-gradient(90deg, #f68e39 0%, #ea6867 29%, #cb4b98 64%, #9256c6 100%);
+                                        -webkit-background-clip: text;
+                                        color: transparent;font-size: 24px; position: relative; top: 4px;"></i>
+                                    <span class="ps-tooltip">Youtube </span>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
                 <ul class="menu-top">
