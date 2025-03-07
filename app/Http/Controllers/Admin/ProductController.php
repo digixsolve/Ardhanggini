@@ -396,22 +396,34 @@ class ProductController extends Controller
 
     public function multiImageUpdate(Request $request, $id)
     {
-        // dd($request->all());
+        // Validate the color input
+        $request->validate([
+            'color' => 'required|regex:/^#[0-9A-Fa-f]{6}$/', // Example for hex color validation
+            'photo' => 'nullable|image|max:2048', // Ensure the uploaded file is an image and under 2MB
+        ]);
+
         $multiImage = ProductImage::findOrFail($id);
 
         if ($request->hasFile('photo')) {
+            // Handle the file upload for the new photo
             $multiImageFile = $request->file('photo');
             $multiImageFilePath = $multiImage->photo;
+
+            // Delete the old image file if it exists
             if ($multiImageFilePath && Storage::exists("public/" . $multiImageFilePath)) {
                 Storage::delete("public/" . $multiImageFilePath);
             }
 
+            // Upload the new image
             $multiImageUpload = customUpload($multiImageFile, 'products/multi_images');
         }
+
+        // Update the product image record with the new color and photo
         $multiImage->update([
-            'photo' => $multiImageUpload['file_path'] ?? $multiImage->photo,
-            'color' => $request->color,
+            'photo' => $multiImageUpload['file_path'] ?? $multiImage->photo, // Only update photo if it's uploaded
+            'color' => $request->color, // Update the color field
         ]);
+
         Session::flash('success', 'Image has been updated successfully!');
         return redirect()->back();
     }
