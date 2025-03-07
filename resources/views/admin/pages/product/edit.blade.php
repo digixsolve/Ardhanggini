@@ -366,17 +366,20 @@
                                                                             <x-metronic.label for="product_color"
                                                                                 class="col-form-label fw-bold fs-6 required">{{ __('Choose Color') }}
                                                                             </x-metronic.label>
-                                                                            <input class="form-control form-control-lg" id="product_color" style="height: 50px"
-                                                                                type="color" name="product_color"
+                                                                            <input class="form-control form-control-lg"
+                                                                                id="product_color"
+                                                                                style="height: 50px" type="color"
+                                                                                name="product_color"
                                                                                 value="{{ old('product_color') }}"
                                                                                 placeholder="Enter the Color">
                                                                         </div>
                                                                         <div class="col-md-1">
                                                                             <div class="pt-2 mt-5 text-end">
-                                                                                <a href="javascript:;" data-repeater-delete
-                                                                                class="mt-5 btn btn-sm btn-danger mt-md-8">
-                                                                                <i class="fas fa-trash fs-5"></i>
-                                                                            </a>
+                                                                                <a href="javascript:;"
+                                                                                    data-repeater-delete
+                                                                                    class="mt-5 btn btn-sm btn-danger mt-md-8">
+                                                                                    <i class="fas fa-trash fs-5"></i>
+                                                                                </a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -416,7 +419,8 @@
                                                                             alt="{{ $image->photo }}" width="70px">
                                                                     </td>
                                                                     <td>
-                                                                        <span class="p-3" style="height:40px; background: {{ $image->color }};"></span>
+                                                                        <span class="p-3"
+                                                                            style="height:40px; background: {{ $image->color }};"></span>
                                                                     </td>
                                                                     <td>
                                                                         <a href="javascript:void(0)"
@@ -430,88 +434,7 @@
                                                                             class="delete"><i
                                                                                 class="text-danger fas fa-trash-alt fs-1"></i></a>
 
-                                                                        <div class="modal fade"
-                                                                            id="multiimage_{{ $image->id }}"
-                                                                            data-backdrop="static">
-                                                                            <div class="modal-dialog modal-lg">
-                                                                                <div
-                                                                                    class="modal-content rounded-0 border-0 shadow-sm">
-                                                                                    <div
-                                                                                        class="modal-header p-2 rounded-0">
-                                                                                        <h5 class="modal-title ps-5">
-                                                                                            Image Update</h5>
-                                                                                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2"
-                                                                                            data-bs-dismiss="modal"
-                                                                                            aria-label="Close">
-                                                                                            <i
-                                                                                                class="fa-solid fa-circle-xmark"></i>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="modal-body">
-                                                                                        <div class="container px-0">
-                                                                                            <div
-                                                                                                class="card border rounded-0">
 
-                                                                                                <form action="{{ route('admin.multiimage.update', $image->id) }}"
-                                                                                                    method="post" enctype="multipart/form-data">
-                                                                                                    @csrf
-                                                                                                    @method('PUT')
-                                                                                                    <div
-                                                                                                        class="card-body p-1 px-2 mb-4">
-                                                                                                        <div
-                                                                                                            class="row">
-                                                                                                            <div
-                                                                                                                class="col-lg-8">
-                                                                                                                <x-metronic.label
-                                                                                                                    for="multi_images"
-                                                                                                                    class="col-form-label fw-bold fs-6 ">{{ __('Product Image') }}
-                                                                                                                </x-metronic.label>
-                                                                                                                <x-metronic.file-input
-                                                                                                                    name="photo"
-                                                                                                                    :source="asset(
-                                                                                                                        'storage/' .
-                                                                                                                            $image->photo,
-                                                                                                                    )"
-                                                                                                                    :value="old(
-                                                                                                                        'photo',
-                                                                                                                    )"></x-metronic.file-input>
-                                                                                                            </div>
-                                                                                                            <div
-                                                                                                                class="col-lg-4">
-                                                                                                                <x-metronic.label
-                                                                                                                    for="product_color"
-                                                                                                                    class="col-form-label fw-bold fs-6 required">{{ __('Choose Color') }}
-                                                                                                                </x-metronic.label>
-                                                                                                                <input
-                                                                                                                    class="form-control form-control-lg"
-                                                                                                                    id="product_color"
-                                                                                                                    style="height: 50px"
-                                                                                                                    type="color"
-                                                                                                                    name="color"
-                                                                                                                    value="{{ old('color', $image->color) }}"
-                                                                                                                    placeholder="Enter the Color">
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="card-footer p-3">
-                                                                                                        <div
-                                                                                                            class="d-flex justify-content-end">
-                                                                                                            <button
-                                                                                                                type="submit"
-                                                                                                                class="btn btn-primary">
-                                                                                                                <span
-                                                                                                                    class="indicator-label"> Update </span>
-                                                                                                                </span>
-                                                                                                            </button>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </form>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
@@ -693,24 +616,81 @@
             </div>
         </form>
     </div>
+
+    @foreach ($product->multiImages as $image)
+        <div class="modal fade" id="multiimage_{{ $image->id }}" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content rounded-0 border-0 shadow-sm">
+                    <div class="modal-header p-2 rounded-0">
+                        <h5 class="modal-title ps-5">
+                            Image Update</h5>
+                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container px-0">
+                            <div class="card border rounded-0">
+
+                                <form action="{{ route('admin.multiimage.update', $image->id) }}" method="post"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="card-body p-1 px-2 mb-4">
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <x-metronic.label for="multi_images"
+                                                    class="col-form-label fw-bold fs-6 ">{{ __('Product Image') }}
+                                                </x-metronic.label>
+                                                <x-metronic.file-input name="photo" :source="asset('storage/' . $image->photo)"
+                                                    :value="old('photo')"></x-metronic.file-input>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <x-metronic.label for="product_color"
+                                                    class="col-form-label fw-bold fs-6 required">{{ __('Choose Color') }}
+                                                </x-metronic.label>
+                                                <input class="form-control form-control-lg" id="product_color"
+                                                    style="height: 50px" type="color" name="color"
+                                                    value="{{ old('color', $image->color) }}"
+                                                    placeholder="Enter the Color">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer p-3">
+                                        <div class="d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary">
+                                                <span class="indicator-label"> Update </span>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
     @push('scripts')
-    <script>
-        $('#productMediaColor').repeater({
-            initEmpty: false,
+        <script>
+            $('#productMediaColor').repeater({
+                initEmpty: false,
 
-            defaultValues: {
-                'text-input': 'foo'
-            },
+                defaultValues: {
+                    'text-input': 'foo'
+                },
 
-            show: function() {
-                $(this).slideDown();
-            },
+                show: function() {
+                    $(this).slideDown();
+                },
 
-            hide: function(deleteElement) {
-                $(this).slideUp(deleteElement);
-            }
-        });
-    </script>
+                hide: function(deleteElement) {
+                    $(this).slideUp(deleteElement);
+                }
+            });
+        </script>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 // The DOM elements you wish to replace with Tagify
