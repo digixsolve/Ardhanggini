@@ -218,7 +218,7 @@
                     <div class="row">
                         <div class="pr-3 pr-lg-0 col-lg-4">
                             <div class="p-3 bg-white">
-                                @foreach ($product->multiImages as $pic)
+                                @forelse ($product->multiImages as $pic)
                                     <div class="slider-wrapper" data-slider="{{ $pic->id }}">
                                         <div class="swiper-container slider">
                                             <div class="swiper mySwiper">
@@ -241,6 +241,34 @@
                                                 <div class="swiper-wrapper">
                                                     <div class="swiper-slide">
                                                         <img src="{{ asset('storage/' . $pic->photo) }}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="slider-wrapper">
+                                        <div class="swiper-container slider">
+                                            <div class="swiper mySwiper">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide main-slider-img me-0 magnifier-container">
+                                                        <img class="" alt=""
+                                                            src="{{ asset('storage/' . $product->thumbnail) }}" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="swiper-button-next">
+                                                        <i class="fas fa-chevron-right"></i>
+                                                    </div>
+                                                    <div class="swiper-button-prev">
+                                                        <i class="fas fa-chevron-left"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="swiper swiper-thumbs">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <img src="{{ asset('storage/' . $product->thumbnail) }}" />
                                                     </div>
                                                 </div>
                                             </div>
