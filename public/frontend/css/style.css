@@ -20625,7 +20625,7 @@ table.dataTable tbody td:last-child {
     margin: auto;
     border-radius: 4px;
     height: 212px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .ps-block-control {
