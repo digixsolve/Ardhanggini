@@ -360,7 +360,7 @@
                                         @foreach ($product->multiImages as $pic)
                                             <label class="brand-label">
                                                 <input style="border: 5px solid {{ $pic->color }}" type="radio"
-                                                    name="color" data-id="{{ $pic->id }}"
+                                                    name="color" data-id="{{ $pic->id }}" data-image="{{ $pic->photo }}"
                                                     value="{{ $pic->color }}" />
                                                 <img src="{{ asset('storage/' . $pic->photo) }}" />
                                             </label>
@@ -877,6 +877,7 @@
                     var cartHeader = $('.miniCart');
                     var qty = $quantityInput.val(); // Get the quantity value
                     var color = $("input[name='color']:checked").val();
+                    var image = $("input[name='color']:checked").data('image');
                     // alert(color);
                     // Check if quantity is valid
                     if (qty <= 0) {
@@ -894,7 +895,8 @@
                         data: {
                             _token: "{{ csrf_token() }}", // Include CSRF token for security
                             quantity: qty,
-                            color: color
+                            color: color,
+                            image: image
                         },
                         dataType: 'json',
                         success: function(data) {

@@ -96,7 +96,7 @@
                                                                             <span
                                                                                 class="symbol symbol-50px">
                                                                                 <span class="symbol-label"
-                                                                                    style="background-image:url({{ asset('storage/' . optional($item->product)->thumbnail) }});"></span>
+                                                                                    style="background-image:url({{ !empty($item->product_image) ? asset('storage/' . $item->product_image) : asset('storage/' . optional($item->product)->thumbnail) }});"></span>
                                                                             </span>
 
                                                                             <div class="ms-5 text-start">

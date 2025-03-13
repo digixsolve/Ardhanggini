@@ -12,7 +12,7 @@
                         <div class="">
                             <a class="" href="{{ route('product.details', $item->model->slug) }}">
                                 <div class="text-center">
-                                    <img src="{{ asset('storage/' . $item->model->thumbnail) }}" alt
+                                    <img src="{{ !empty($item->options->image) ? asset('storage/' . $item->options->image) : asset('storage/' . $item->model->thumbnail) }}" alt
                                         onerror="this.onerror=null; this.src='{{ asset('images/no-preview.png') }}';" />
                                 </div>
                             </a>
@@ -102,7 +102,7 @@
                                 <a class="" href="{{ route('product.details', $item->model->slug) }}">
                                     <div>
                                         <img class="cart-table-img"
-                                            src="{{ asset('storage/' . $item->model->thumbnail) }}" alt=""
+                                            src="{{ !empty($item->options->image) ? asset('storage/' . $item->options->image) : asset('storage/' . $item->model->thumbnail) }}" alt=""
                                             onerror="this.onerror=null; this.src='{{ asset('images/no-preview.png') }}';" />
                                         <!-- Fallback image -->
                                     </div>

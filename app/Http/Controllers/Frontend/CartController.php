@@ -44,7 +44,7 @@ class CartController extends Controller
                     'name' => $product->name,
                     'qty' => $quantity,
                     'price' => !empty($product->unit_discount_price) ? $product->unit_discount_price : $product->unit_price,
-                    'options' => ['color' => $request->color]
+                    'options' => ['color' => $request->color,'image' => $request->image],
                 ])->associate('App\Models\Product');
 
                 $formattedSubtotal = Cart::instance('cart')->subtotal();
@@ -322,6 +322,7 @@ class CartController extends Controller
                     'user_id'       => auth()->id(),
                     'product_name'  => $item->name,
                     'product_color' => $item->options->color ?? null,
+                    'product_image' => $item->options->image ?? null,
                     'product_sku'   => $item->model->sku ?? null,
                     'price'         => $item->price,
                     'tax'           => $item->tax ?? 0,
