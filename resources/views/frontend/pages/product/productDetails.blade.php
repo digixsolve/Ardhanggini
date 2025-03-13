@@ -878,7 +878,7 @@
                     var qty = $quantityInput.val(); // Get the quantity value
                     var color = $("input[name='color']:checked").val();
                     var image = $("input[name='color']:checked").data('image');
-                    alert(image);
+                    // alert(image);
                     // Check if quantity is valid
                     if (qty <= 0) {
                         Swal.fire({

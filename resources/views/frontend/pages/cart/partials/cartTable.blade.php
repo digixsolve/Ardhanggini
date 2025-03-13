@@ -12,8 +12,11 @@
                         <div class="">
                             <a class="" href="{{ route('product.details', $item->model->slug) }}">
                                 <div class="text-center">
-                                    <img src="{{ !empty($item->options->image) ? asset('storage/' . $item->options->image) : asset('storage/' . $item->model->thumbnail) }}" alt
+                                    <img class="cart-table-img"
+                                        src="{{ !empty($item->options->image) ? asset('storage/' . $item->options->image) : asset('storage/' . $item->model->thumbnail) }}"
+                                        alt="Product Image"
                                         onerror="this.onerror=null; this.src='{{ asset('images/no-preview.png') }}';" />
+
                                 </div>
                             </a>
                         </div>
@@ -92,7 +95,7 @@
                 </thead>
                 <tbody>
                     @foreach ($cartItems as $item)
-                    {{-- @dd($item->options->image) --}}
+                        {{-- @dd($item->options->image) --}}
                         <tr>
                             <td class="text-center ps-product__remove">
                                 <a href="{{ route('cart.destroy', $item->rowId) }}" class="remove-from-cart delete">
@@ -103,8 +106,10 @@
                                 <a class="" href="{{ route('product.details', $item->model->slug) }}">
                                     <div>
                                         <img class="cart-table-img"
-                                            src="{{ !empty($item->options->image) ? asset('storage/' . $item->options->image) : asset('storage/' . $item->model->thumbnail) }}" alt=""
+                                            src="{{ !empty($item->options->image) ? asset('storage/' . $item->options->image) : asset('storage/' . $item->model->thumbnail) }}"
+                                            alt="Product Image"
                                             onerror="this.onerror=null; this.src='{{ asset('images/no-preview.png') }}';" />
+
                                         <!-- Fallback image -->
                                     </div>
                                 </a>
