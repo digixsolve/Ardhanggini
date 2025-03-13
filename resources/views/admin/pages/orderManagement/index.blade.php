@@ -241,7 +241,7 @@
 
                             @foreach ($order->orderItems as $item)
                                 <tr data-kt-docs-datatable-subtable="subtable_template" class="d-none bg-light">
-                                    <td colspan="3">
+                                    <td colspan="4">
                                         <div class="d-flex align-items-center gap-3">
                                             <a href="#"
                                                 class="symbol symbol-50px bg-secondary bg-opacity-25 rounded">
@@ -255,6 +255,14 @@
                                                     data-kt-docs-datatable-subtable="template_description">
                                                     {{ optional($item->product)->name }}</div>
                                             </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-end">
+                                        <div class="text-gray-900 fs-7">Color</div>
+                                        <div class="text-muted fs-7 fw-bold"
+                                            data-kt-docs-datatable-subtable="template_color">
+                                            <span class="p-4"
+                                                style="background-color: {{ $item->product_color }}"></span>
                                         </div>
                                     </td>
                                     <td class="text-end">
@@ -274,7 +282,6 @@
                                             data-kt-docs-datatable-subtable="template_total">৳ {{ $item->subtotal }}
                                         </div>
                                     </td>
-                                    <td></td>
                                 </tr>
                             @endforeach
                         @endforeach

@@ -55,6 +55,7 @@
                                 <th width="5%" class="text-white">Sl.</th>
                                 <th width="10%" class="text-white">Img</th>
                                 <th width="35%" class="text-white">Product Description</th>
+                                <th width="10%" class="text-white">Color</th>
                                 <th width="15%" class="text-white">Price</th>
                                 <th width="10%" class="text-center text-white">Qty</th>
                                 <th width="15%" class="text-right text-white">Amount</th>
@@ -76,6 +77,10 @@
                                     </td>
                                     <td>
                                         <span>{{ Str::limit(optional($item->product)->name, 30) }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="p-4"
+                                                style="background-color: {{ $item->product_color }}"></span>
                                     </td>
                                     <td>
                                         <span><span

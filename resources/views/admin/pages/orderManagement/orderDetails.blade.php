@@ -198,7 +198,8 @@
                                                         <i class="fa-solid fa-truck fs-2 me-2"></i>
                                                         Shipping District
                                                         <span class="ms-1">
-                                                            <i class="fa-solid fa-information-5 text-gray-500 fs-6"></i>
+                                                            <i
+                                                                class="fa-solid fa-information-5 text-gray-500 fs-6"></i>
                                                         </span>
                                                     </div>
                                                 </td>
@@ -212,7 +213,8 @@
                                                         <i class="fa-solid fa-truck fs-2 me-2"></i>
                                                         Shipping Upazila
                                                         <span class="ms-1">
-                                                            <i class="fa-solid fa-information-5 text-gray-500 fs-6"></i>
+                                                            <i
+                                                                class="fa-solid fa-information-5 text-gray-500 fs-6"></i>
                                                         </span>
                                                     </div>
                                                 </td>
@@ -280,7 +282,7 @@
                                                 <th width="5%" class="ps-5">Sl</th>
                                                 <th width="10" class="">Image</th>
                                                 <th width="45" class="">Product Description</th>
-                                                <th width="10%" class="">SKU</th>
+                                                <th width="10%" class="">Color</th>
                                                 <th width="10%" class="">Qty</th>
                                                 <th width="10%" class="text-end">Unit Price</th>
                                                 <th width="10%" class="text-end pe-5">Total</th>
@@ -303,7 +305,8 @@
                                                     </td>
 
                                                     <td>
-                                                        <span>{{ optional($item->product)->sku_code }}</span>
+                                                        <span class="p-4"
+                                                            style="background-color: {{ $item->product_color }}"></span>
                                                     </td>
                                                     <td>
                                                         <span>{{ optional($item)->quantity }}</span>

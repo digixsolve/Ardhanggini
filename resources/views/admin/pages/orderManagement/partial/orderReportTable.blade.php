@@ -167,9 +167,9 @@
                         </td>
                     </tr>
                     @foreach ($order->orderItems as $item)
-                    {{-- @dd($item) --}}
+                        {{-- @dd($item) --}}
                         <tr class="d-none bg-light subtable">
-                            <td colspan="3">
+                            <td colspan="4">
                                 <div class="d-flex align-items-center gap-3">
                                     <a href="#" class="symbol symbol-50px bg-secondary bg-opacity-25 rounded">
                                         <img src="{{ asset('storage/' . optional($item->product)->thumbnail) }}"
@@ -180,6 +180,12 @@
                                             name</a>
                                         <div class="fs-7">{{ optional($item->product)->name }}</div>
                                     </div>
+                                </div>
+                            </td>
+                            <td class="text-end">
+                                <div class="text-gray-900 fs-7">Color</div>
+                                <div class="text-muted fs-7 fw-bold"><span class="p-4"
+                                        style="background-color: {{ $item->product_color }}"></span>
                                 </div>
                             </td>
                             <td class="text-end">
