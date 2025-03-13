@@ -92,6 +92,7 @@
                 </thead>
                 <tbody>
                     @foreach ($cartItems as $item)
+                    @dd($item->options->image)
                         <tr>
                             <td class="text-center ps-product__remove">
                                 <a href="{{ route('cart.destroy', $item->rowId) }}" class="remove-from-cart delete">
