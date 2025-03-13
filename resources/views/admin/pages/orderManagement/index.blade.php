@@ -118,7 +118,8 @@
                                         {{ $order->order_number }}
                                     </a>
                                 </td>
-                                <td>{{ optional($order->user)->first_name }} {{ optional($order->user)->last_name }}</td>
+                                <td>{{ optional($order->user)->first_name }} {{ optional($order->user)->last_name }}
+                                </td>
                                 <td>{{ $order->created_at->format('Y-m-d') }}</td>
                                 <td><span class="text-info fw-bold">৳</span>{{ $order->total_amount }}</td>
                                 <td>{{ $order->quantity }}</td>
@@ -155,6 +156,10 @@
                                         class="btn btn-sm btn-icon btn-light btn-active-light-primary toggle h-25px w-25px">
                                         <i class="fa-solid fa-eye" title="Order Details"></i>
                                     </a>
+                                    <a href="{{ route('admin.order.destroy', $order->id) }}"
+                                        class="btn btn-sm btn-icon btn-light btn-active-light-danger toggle h-25px w-25px delete">
+                                        <i class="fa-solid fa-trash-alt text-danger" title="Order Delete"></i>
+                                    </a>
                                     <a data-bs-toggle="modal"
                                         data-bs-target="#changeDeliveryStatus-{{ $order->id }}"
                                         class="btn btn-sm btn-icon btn-light btn-active-light-primary toggle h-25px w-25px">
@@ -168,7 +173,8 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="changeDeliveryStatusLabel">Change
-                                                        Delivery Status (Order Number : #{{ $order->order_number }})</h5>
+                                                        Delivery Status (Order Number : #{{ $order->order_number }})
+                                                    </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
@@ -180,18 +186,24 @@
                                                         @method('PUT')
                                                         <div class="card-body pt-0 justify-content-start text-start">
                                                             <div class="text-start">
-                                                                <x-metronic.label class="col-lg-12">Change The Delivery Status</x-metronic.label>
+                                                                <x-metronic.label class="col-lg-12">Change The Delivery
+                                                                    Status</x-metronic.label>
                                                                 <x-metronic.select-option
                                                                     id="kt_ecommerce_add_product_status_select"
                                                                     class="form-select mb-2" data-control="select2"
                                                                     data-hide-search="true" name="status"
                                                                     data-placeholder="Select an option">
                                                                     <option></option>
-                                                                    <option value="processing" @selected($order->status == 'processing')>Processing</option>
-                                                                    <option value="shipped" @selected($order->status == 'shipped')>Shipped</option>
-                                                                    <option value="delivered" @selected($order->status == 'delivered')>Delivered</option>
-                                                                    <option value="cancelled" @selected($order->status == 'cancelled')>Cancelled</option>
-                                                                    <option value="returned" @selected($order->status == 'returned')>Returned</option>
+                                                                    <option value="processing"
+                                                                        @selected($order->status == 'processing')>Processing</option>
+                                                                    <option value="shipped"
+                                                                        @selected($order->status == 'shipped')>Shipped</option>
+                                                                    <option value="delivered"
+                                                                        @selected($order->status == 'delivered')>Delivered</option>
+                                                                    <option value="cancelled"
+                                                                        @selected($order->status == 'cancelled')>Cancelled</option>
+                                                                    <option value="returned"
+                                                                        @selected($order->status == 'returned')>Returned</option>
                                                                 </x-metronic.select-option>
                                                             </div>
                                                             {{-- <div class="mt-4">
