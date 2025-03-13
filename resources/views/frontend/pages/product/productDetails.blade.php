@@ -404,8 +404,10 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <a class="mr-1 btn btn-primary mr-lg-3"
-                                        href="{{ route('buy.now', $product->id) }}">Buy Now</a>
+                                    {{-- <a class="mr-1 btn btn-primary mr-lg-3"
+                                        href="{{ route('buy.now', $product->id) }}">Buy Now</a> --}}
+                                    <a class="mr-1 btn btn-primary mr-lg-3 buynow_btn_product_details"
+                                        href="javascript:void(0;)" data-product_id="{{ $product->id }}" >Buy Now</a>
                                     <a class="btn btn-outline-primary add_to_cart_btn_product_details"
                                         data-product_id="{{ $product->id }}" href="#">Add to cart</a>
                                 </div>
@@ -878,7 +880,7 @@
                     var qty = $quantityInput.val(); // Get the quantity value
                     var color = $("input[name='color']:checked").val();
                     var image = $("input[name='color']:checked").data('image');
-                    alert(image);
+                    // alert(image);
                     // Check if quantity is valid
                     if (qty <= 0) {
                         Swal.fire({
@@ -932,6 +934,98 @@
                                 // Update mini cart
                                 cartHeader.html(data.cartHeader);
                                 $(".cartCount").html(data.cartCount);
+                            } else {
+                                Toast.fire({
+                                    icon: 'error',
+                                    title: data.error
+                                });
+                            }
+                        },
+                        error: function(xhr) {
+                            let errorMessage = 'An unexpected error occurred.';
+
+                            // Check if the response is JSON and contains an error message
+                            if (xhr.responseJSON && xhr.responseJSON.error) {
+                                errorMessage = xhr.responseJSON.error;
+                            } else if (xhr.responseText) {
+                                try {
+                                    let response = JSON.parse(xhr.responseText);
+                                    if (response.error) {
+                                        errorMessage = response.error;
+                                    }
+                                } catch (e) {
+                                    console.error('Error parsing response text:', e);
+                                }
+                            }
+
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: errorMessage
+                            });
+                        }
+                    });
+                });
+                $('.buynow_btn_product_details').click(function(e) {
+                    e.preventDefault(); // Prevent the default action of the link
+
+                    // Find the quantity input
+                    var $quantityInput = $(this).closest('.ps-product__feature').find('.quantity');
+                    var product_id = $(this).data('product_id');
+                    var cartHeader = $('.miniCart');
+                    var qty = $quantityInput.val(); // Get the quantity value
+                    var color = $("input[name='color']:checked").val();
+                    var image = $("input[name='color']:checked").data('image');
+                    // alert(image);
+                    // Check if quantity is valid
+                    if (qty <= 0) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Invalid Quantity',
+                            text: 'Please select a valid quantity.'
+                        });
+                        return;
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/cart/store/' + product_id,
+                        data: {
+                            _token: "{{ csrf_token() }}", // Include CSRF token for security
+                            quantity: qty,
+                            color: color,
+                            image: image
+                        },
+                        dataType: 'json',
+                        success: function(data) {
+                            const Toast = Swal.mixin({
+                                showConfirmButton: false,
+                                timer: 1000
+                            });
+                            // Toast.fire({
+                            //     icon: 'success',
+                            //     title: data.success
+                            // });
+                            if (data.subTotal > 4000) {
+                                Toast.fire({
+                                    title: 'Congratulations!',
+                                    text: "Your shipping is now free. Happy Shopping!",
+                                    icon: 'success',
+                                    showCancelButton: true,
+                                    // confirmButtonText: 'Yes, delete it!',
+                                    cancelButtonText: 'Close',
+                                    buttonsStyling: false,
+                                    customClass: {
+                                        // confirmButton: 'btn btn-danger',
+                                        cancelButton: 'btn btn-success'
+                                    }
+                                })
+                            }
+                            if ($.isEmptyObject(data.error)) {
+                                // Update mini cart
+                                cartHeader.html(data.cartHeader);
+                                $(".cartCount").html(data.cartCount);
+                                window.location.href = '/mycart';
                             } else {
                                 Toast.fire({
                                     icon: 'error',
