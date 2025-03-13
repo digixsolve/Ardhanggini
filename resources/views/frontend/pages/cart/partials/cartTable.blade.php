@@ -2,7 +2,7 @@
     <div class="col-12 col-md-7 col-lg-9">
         <ul class="ps-shopping__list">
             @foreach ($cartItems as $item)
-                @dd($item->options->image)
+                {{-- @dd($item->options->image) --}}
                 {{-- @dd($item->model->thumbnail) --}}
                 <li>
                     <div class="ps-product ps-product--wishlist">
