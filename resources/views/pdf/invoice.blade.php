@@ -135,7 +135,7 @@
                                             <td>
                                                 <span>
                                                     <img width="50px" height="50px" style="border-radius: 5px;"
-                                                        src="{{ !empty($item->product_image) ? asset('storage/' . $item->product_image) : asset('storage/' . optional($item->product)->thumbnail) }}"
+                                                        src="{{ !is_null($item->product_image) ? asset('storage/' . $item->product_image) : asset('storage/' . optional($item->product)->thumbnail) }}"
                                                         alt=""
                                                         onerror="this.onerror=null;this.src='{{ asset('frontend/img/no-product.jpg') }}';">
                                                 </span>
