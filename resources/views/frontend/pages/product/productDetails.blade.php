@@ -166,7 +166,7 @@
         }
 
         #productContent {
-           height: 450px;
+            height: 450px;
             overflow-y: scroll;
         }
 
@@ -365,8 +365,8 @@
                                         @foreach ($product->multiImages as $pic)
                                             <label class="brand-label">
                                                 <input style="border: 5px solid {{ $pic->color }}" type="radio"
-                                                    name="color" data-id="{{ $pic->id }}" data-image="{{ $pic->photo }}"
-                                                    value="{{ $pic->color }}" />
+                                                    name="color" data-id="{{ $pic->id }}"
+                                                    data-image="{{ $pic->photo }}" value="{{ $pic->color }}" />
                                                 <img src="{{ asset('storage/' . $pic->photo) }}" />
                                             </label>
                                         @endforeach
@@ -412,7 +412,7 @@
                                     {{-- <a class="mr-1 btn btn-primary mr-lg-3"
                                         href="{{ route('buy.now', $product->id) }}">Buy Now</a> --}}
                                     <a class="mr-1 btn btn-primary mr-lg-3 buynow_btn_product_details"
-                                        href="javascript:void(0;)" data-product_id="{{ $product->id }}" >Buy Now</a>
+                                        href="javascript:void(0;)" data-product_id="{{ $product->id }}">Buy Now</a>
                                     <a class="btn btn-outline-primary add_to_cart_btn_product_details"
                                         data-product_id="{{ $product->id }}" href="#">Add to cart</a>
                                 </div>
