@@ -168,9 +168,14 @@
         }
 
         .cst-product {
-            height: 485px;
-            overflow-y: scroll;
+            /* height: 485px;
+            overflow-y: scroll; */
             background: #f2f2f0;
+        }
+
+        #productContent {
+           height: 450px;
+            overflow-y: scroll;
         }
 
         .cst-product::-webkit-scrollbar {
@@ -373,7 +378,8 @@
                                 <ul class="ps-product__bundle">
                                     <li><i class="icon-bag2"></i>Full cash on delivery</li>
                                     @foreach ($shippingmethods as $shippingmethod)
-                                        <li><i class="icon-truck"></i>{{ $shippingmethod->title }} - {{ $shippingmethod->price }} TK ({{ $shippingmethod->duration }})</li>
+                                        <li><i class="icon-truck"></i>{{ $shippingmethod->title }} -
+                                            {{ $shippingmethod->price }} TK ({{ $shippingmethod->duration }})</li>
                                     @endforeach
                                     {{-- <li><i class="fa-solid fa-location-dot"></i>
                                         Sub-areas: <br>
