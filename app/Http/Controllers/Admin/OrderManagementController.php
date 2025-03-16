@@ -142,6 +142,10 @@ class OrderManagementController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $order = Order::findOrFail($id);
+        foreach ($order->orderItems as $orderItem) {
+            $orderItem->delete();
+        }
+        $order->delete();
     }
 }

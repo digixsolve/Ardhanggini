@@ -19,7 +19,7 @@ class ShopController extends Controller
             // 'category'                => $category,
             'categories'   => Category::orderBy('name', 'ASC')->active()->get(),
             'brands'       => Brand::orderBy('name', 'ASC')->active()->get(),
-            'products'     => Product::with('reviews')->latest('id')->active()->paginate(10),
+            'products'     => Product::with('reviews')->orderBy('id', 'desc')->active()->paginate(10),
             'deal'         => DealBanner::active()->inRandomOrder()->first(),
             // 'productCount' => Product::active()->count(),
         ];
@@ -82,14 +82,16 @@ class ShopController extends Controller
                     $query->orderBy('unit_price', 'desc');
                     break;
             }
+        }else{
+            $query->orderBy('id', 'desc');
         }
 
         $perPage = $request->has('showPage') ? (int)$request->showPage : 10;
-        $products = $query->active()->paginate($perPage);
-        $productCount = $products->count();
+        $products = $query->where('status','published')->paginate($perPage);
+        // $productCount = $products->count();
         // return view('frontend.pages.product.partial.getProduct', compact('products'))->render();
         return response()->json([
-            'productCount'   => $productCount,
+            // 'productCount'   => $productCount,
             'html' => view('frontend.pages.product.partial.getProduct', compact('products'))->render(),
         ]);
     }

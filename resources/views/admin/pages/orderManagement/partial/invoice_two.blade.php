@@ -93,7 +93,7 @@
                                                                     <a href="{{ route('product.details', optional($item->product)->slug) }}"
                                                                         class="symbol symbol-50px">
                                                                         <span class="symbol-label"
-                                                                            style="background-image:url({{ asset('storage/' . optional($item->product)->thumbnail) }});"></span>
+                                                                            style="background-image:url({{ !is_null($item->product_image) ? asset('storage/' . $item->product_image) : asset('storage/' . optional($item->product)->thumbnail) }});"></span>
                                                                     </a>
 
                                                                     <div class="ms-5 text-start">

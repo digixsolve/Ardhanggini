@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\ProductRequest;
 
@@ -106,24 +107,41 @@ class ProductController extends Controller
                 'status'                    => $request->input('status'),
             ]);
 
-            // Handle multiple image uploads
-            if ($request->hasFile('multi_images')) {
-                foreach ($request->file('multi_images') as $image) {
-                    if ($image) {
-                        $multiImageUpload = customUpload($image, 'products/multi_images');
-                        if ($multiImageUpload['status'] === 0) {
-                            return redirect()->back()->with('error', $multiImageUpload['error_message']);
+
+            if ($request->has('productMediaColor')) {
+                // dd($request->productMediaColor);
+                foreach ($request->productMediaColor as $media) {
+                    if (isset($media['product_color']) && isset($media['multi_images']) && $media['multi_images']) {
+                        $productColor = $media['product_color'];
+                        $image = $media['multi_images'];
+
+                        // Check if the image exists and upload it
+                        if ($image && $image instanceof \Illuminate\Http\UploadedFile) {
+                            try {
+                                $multiImageUpload = customUpload($image, 'products/multi_images');
+
+                                // If the upload fails, the customUpload function will handle error messages.
+                                if ($multiImageUpload['status'] === 0) {
+                                    throw new \Exception($multiImageUpload['error_message']);
+                                }
+
+                                // Create the product image record
+                                ProductImage::create([
+                                    'product_id' => $product->id,
+                                    'photo'      => $multiImageUpload['file_path'],
+                                    'color'      => $productColor,
+                                    'created_by' => Auth::guard('admin')->user()->id,
+                                    'created_at' => Carbon::now(),
+                                ]);
+                            } catch (\Exception $e) {
+                                // Handle any error that occurs during the upload process
+                                DB::rollback();
+                                return redirect()->back()->with('error', 'Error uploading image for color ' . $productColor . ': ' . $e->getMessage());
+                            }
                         }
-                        ProductImage::create([
-                            'product_id' => $product->id,
-                            'photo'      => $multiImageUpload['file_path'],
-                            'created_by' => Auth::guard('admin')->user()->id,
-                            'created_at' => Carbon::now(),
-                        ]);
                     }
                 }
             }
-
             DB::commit();
 
             // Redirect with success message
@@ -229,24 +247,52 @@ class ProductController extends Controller
                 // 'added_by'                  => Auth::guard('admin')->user()->id,
                 'status'                    => $request->input('status'),
             ]);
+            if ($request->has('productMediaColor')) {
+                foreach ($request->productMediaColor as $media) {
+                    if (isset($media['product_color']) && isset($media['multi_images']) && $media['multi_images']) {
+                        $productColor = $media['product_color'];
+                        $image = $media['multi_images'];
+                        if ($image && $image instanceof \Illuminate\Http\UploadedFile) {
+                            try {
+                                $multiImageUpload = customUpload($image, 'products/multi_images');
+                                if ($multiImageUpload['status'] === 0) {
+                                    throw new \Exception($multiImageUpload['error_message']);
+                                }
 
-            // Handle multiple image uploads
-            if ($request->hasFile('multi_img')) {
-                foreach ($request->file('multi_img') as $image) {
-                    if ($image) {
-                        $multiImageUpload = customUpload($image, 'products/multi_images');
-                        if ($multiImageUpload['status'] === 0) {
-                            return redirect()->back()->with('error', $multiImageUpload['error_message']);
+                                // Create the product image record
+                                ProductImage::create([
+                                    'product_id' => $product->id,
+                                    'photo'      => $multiImageUpload['file_path'],
+                                    'color'      => $productColor,
+                                    'created_by' => Auth::guard('admin')->user()->id,
+                                    'created_at' => Carbon::now(),
+                                ]);
+                            } catch (\Exception $e) {
+                                // Handle any error that occurs during the upload process
+                                DB::rollback();
+                                return redirect()->back()->with('error', 'Error uploading image for color ' . $productColor . ': ' . $e->getMessage());
+                            }
                         }
-                        ProductImage::create([
-                            'product_id' => $product->id,
-                            'photo'      => $multiImageUpload['file_path'],
-                            'created_by' => Auth::guard('admin')->user()->id,
-                            'created_at' => Carbon::now(),
-                        ]);
                     }
                 }
             }
+            // Handle multiple image uploads
+            // if ($request->hasFile('multi_img')) {
+            //     foreach ($request->file('multi_img') as $image) {
+            //         if ($image) {
+            //             $multiImageUpload = customUpload($image, 'products/multi_images');
+            //             if ($multiImageUpload['status'] === 0) {
+            //                 return redirect()->back()->with('error', $multiImageUpload['error_message']);
+            //             }
+            //             ProductImage::create([
+            //                 'product_id' => $product->id,
+            //                 'photo'      => $multiImageUpload['file_path'],
+            //                 'created_by' => Auth::guard('admin')->user()->id,
+            //                 'created_at' => Carbon::now(),
+            //             ]);
+            //         }
+            //     }
+            // }
 
             // Handle deletion of removed images
             if ($request->input('remove_images')) {
@@ -346,5 +392,39 @@ class ProductController extends Controller
         }
 
         return $options;
+    }
+
+    public function multiImageUpdate(Request $request, $id)
+    {
+        // Validate the color input
+        $request->validate([
+            'color' => 'required|regex:/^#[0-9A-Fa-f]{6}$/', // Example for hex color validation
+            'photo' => 'nullable|image|max:2048', // Ensure the uploaded file is an image and under 2MB
+        ]);
+
+        $multiImage = ProductImage::findOrFail($id);
+
+        if ($request->hasFile('photo')) {
+            // Handle the file upload for the new photo
+            $multiImageFile = $request->file('photo');
+            $multiImageFilePath = $multiImage->photo;
+
+            // Delete the old image file if it exists
+            if ($multiImageFilePath && Storage::exists("public/" . $multiImageFilePath)) {
+                Storage::delete("public/" . $multiImageFilePath);
+            }
+
+            // Upload the new image
+            $multiImageUpload = customUpload($multiImageFile, 'products/multi_images');
+        }
+
+        // Update the product image record with the new color and photo
+        $multiImage->update([
+            'photo' => $multiImageUpload['file_path'] ?? $multiImage->photo, // Only update photo if it's uploaded
+            'color' => $request->color, // Update the color field
+        ]);
+
+        Session::flash('success', 'Image has been updated successfully!');
+        return redirect()->back();
     }
 }

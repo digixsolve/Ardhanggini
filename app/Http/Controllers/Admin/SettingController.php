@@ -51,10 +51,6 @@ class SettingController extends Controller
                     $uploadedFiles[$key] = ['status' => 0];
                 }
             }
-
-
-
-
             // dd();
             $setting = Setting::updateOrCreate([], [
                 'website_name'         => $request->website_name,

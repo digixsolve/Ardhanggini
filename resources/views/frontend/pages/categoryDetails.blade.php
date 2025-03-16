@@ -84,7 +84,7 @@
                                                                             alt="{{ $category_product->meta_title }}"
                                                                             class="img-fluid category_product_img" />
                                                                     @else
-                                                                        @foreach ($category_product->multiImages->slice(0, 2) as $image)
+                                                                        @foreach ($category_product->multiImages->slice(0, 1) as $image)
                                                                             @php
                                                                                 $imagePath = 'storage/' . $image->photo;
                                                                                 $imageSrc = file_exists(

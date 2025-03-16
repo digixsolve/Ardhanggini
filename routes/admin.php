@@ -155,6 +155,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
         Route::get('/order/{id}/details', 'orderDetails')->name('orderDetails');
         Route::get('/order/report', 'orderReport')->name('orderReport');
         Route::put('/order/update/{id}', 'statusUpdate')->name('order.update');
+        Route::delete('/order/delete/{id}', 'destroy')->name('order.destroy');
 
     });
 
@@ -183,6 +184,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('log/{id}', [LogController::class, 'show'])->name('log.show');
     Route::delete('log/{id}', [LogController::class, 'destroy'])->name('log.destroy');
     Route::delete('multiimage/{id}', [ProductController::class, 'multiImageDestroy'])->name('multiimage.destroy');
+    Route::put('multiimage/update/{id}', [ProductController::class, 'multiImageUpdate'])->name('multiimage.update');
     Route::get('log/download/{id}', [LogController::class, 'download'])->name('log.download');
 
     Route::get('activity_logs', [ActivityLogController::class, 'index'])->name('activity_logs.index');

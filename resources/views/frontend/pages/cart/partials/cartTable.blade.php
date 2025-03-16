@@ -2,6 +2,7 @@
     <div class="col-12 col-md-7 col-lg-9">
         <ul class="ps-shopping__list">
             @foreach ($cartItems as $item)
+                {{-- @dd($item->model->thumbnail) --}}
                 <li>
                     <div class="ps-product ps-product--wishlist">
                         <div class="ps-product__remove">
@@ -12,8 +13,10 @@
                         <div class="">
                             <a class="" href="{{ route('product.details', $item->model->slug) }}">
                                 <div class="text-center">
-                                    <img src="{{ asset('storage/' . $item->model->thumbnail) }}" alt
-                                        onerror="this.onerror=null; this.src='{{ asset('images/no-preview.png') }}';" />
+                                    <img class="cart-table-img"
+                                            src="{{ !is_null($item->options->image) ? asset('storage/' . $item->options->image) : asset('storage/' . $item->model->thumbnail) }}"
+                                            alt="Product Image" />
+
                                 </div>
                             </a>
                         </div>
@@ -92,6 +95,7 @@
                 </thead>
                 <tbody>
                     @foreach ($cartItems as $item)
+                        {{-- @dd($item->options->image) --}}
                         <tr>
                             <td class="text-center ps-product__remove">
                                 <a href="{{ route('cart.destroy', $item->rowId) }}" class="remove-from-cart delete">
@@ -102,8 +106,9 @@
                                 <a class="" href="{{ route('product.details', $item->model->slug) }}">
                                     <div>
                                         <img class="cart-table-img"
-                                            src="{{ asset('storage/' . $item->model->thumbnail) }}" alt=""
-                                            onerror="this.onerror=null; this.src='{{ asset('images/no-preview.png') }}';" />
+                                            src="{{ !is_null($item->options->image) ? asset('storage/' . $item->options->image) : asset('storage/' . $item->model->thumbnail) }}"
+                                            alt="Product Image" />
+
                                         <!-- Fallback image -->
                                     </div>
                                 </a>

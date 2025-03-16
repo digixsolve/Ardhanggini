@@ -55,7 +55,7 @@
 
         .swiper {
             width: 100%;
-            height: 520px;
+            height: 530px;
             /* Explicit height */
             /* margin-bottom: 20px; */
         }
@@ -151,23 +151,12 @@
 
         .main-slider-img img {
             height: 520px;
-            width: 100%;
-            border: 0px;
-        }
-
-        .swiper-wrapper {
-            height: auto;
         }
 
         .cst-product {
-            /* height: 485px;
-            overflow-y: scroll; */
-            background: #f2f2f0;
-        }
-
-        #productContent {
-           height: 450px;
+            height: 485px;
             overflow-y: scroll;
+            background: #f2f2f0;
         }
 
         .cst-product::-webkit-scrollbar {
@@ -186,30 +175,6 @@
         .ps-badge {
             left: 0%;
         }
-
-        /* Apply magnification only on larger screens */
-        @media (min-width: 768px) {
-            .magnifier-container:hover img {
-                transform: scale(1.5);
-                transition: transform 0.3s ease;
-            }
-
-        }
-
-        /* Disable magnifier effect on small screens */
-        @media (max-width: 767px) {
-            .magnifier-container {
-                cursor: default;
-            }
-
-            .main-slider-img img {
-                height: 430px;
-            }
-
-            .mySwiper {
-                height: 430px;
-            }
-        }
     </style>
     <div class="ps-page--product3">
         <div class="container">
@@ -221,74 +186,255 @@
             <div class="ps-page__content">
                 <div class="ps-product--detail">
                     <div class="row">
-                        <div class="pr-3 pr-lg-0 col-lg-4">
+                        <div class="col-lg-4 pe-0">
                             <div class="p-3 bg-white">
-                                @forelse ($product->multiImages as $pic)
-                                    <div class="slider-wrapper" data-slider="{{ $pic->id }}">
-                                        <div class="swiper-container slider">
-                                            <div class="swiper mySwiper">
-                                                <div class="swiper-wrapper">
-                                                    <div class="swiper-slide main-slider-img me-0 magnifier-container">
-                                                        <img class="" alt=""
-                                                            src="{{ asset('storage/' . $pic->photo) }}" />
-                                                    </div>
+                                <div class="slider-wrapper" data-slider="mobilePhone">
+                                    <div class="swiper-container slider">
+                                        <div class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide main-slider-img me-0">
+                                                    <img
+                                                        src="https://www.ardhanggini.com/storage/products/thumbnail/ndARsfoNcK1739949417.jpg" />
                                                 </div>
-                                                <div>
-                                                    <div class="swiper-button-next">
-                                                        <i class="fas fa-chevron-right"></i>
-                                                    </div>
-                                                    <div class="swiper-button-prev">
-                                                        <i class="fas fa-chevron-left"></i>
-                                                    </div>
+                                                <div class="swiper-slide main-slider-img me-0">
+                                                    <img
+                                                        src="https://www.ardhanggini.com/storage/products/thumbnail/g65nvpsfud1737476983.jpg" />
+                                                </div>
+                                                <div class="swiper-slide main-slider-img me-0">
+                                                    <img
+                                                        src="https://www.ardhanggini.com/storage/products/thumbnail/cvv9eVQZil1739951750.jpg" />
+                                                </div>
+                                                <div class="swiper-slide main-slider-img me-0">
+                                                    <img
+                                                        src="https://www.ardhanggini.com/storage/products/thumbnail/EMPuvdM80F1739949057.jpg" />
+                                                </div>
+                                                <div class="swiper-slide main-slider-img me-0">
+                                                    <img
+                                                        src="https://www.ardhanggini.com/storage/products/thumbnail/0njAqmxRW61739949730.jpg" />
                                                 </div>
                                             </div>
-                                            <div class="swiper swiper-thumbs">
-                                                <div class="swiper-wrapper">
-                                                    <div class="swiper-slide">
-                                                        <img src="{{ asset('storage/' . $pic->photo) }}" />
-                                                    </div>
+                                            <div>
+                                                <div class="swiper-button-next">
+                                                    <i class="fas fa-chevron-right"></i>
+                                                </div>
+                                                <div class="swiper-button-prev">
+                                                    <i class="fas fa-chevron-left"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper swiper-thumbs">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://www.ardhanggini.com/storage/products/thumbnail/ndARsfoNcK1739949417.jpg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://www.ardhanggini.com/storage/products/thumbnail/g65nvpsfud1737476983.jpg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://www.ardhanggini.com/storage/products/thumbnail/cvv9eVQZil1739951750.jpg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://www.ardhanggini.com/storage/products/thumbnail/EMPuvdM80F1739949057.jpg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://www.ardhanggini.com/storage/products/thumbnail/0njAqmxRW61739949730.jpg" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                @empty
-                                    <!-- Fallback when no product images are available -->
-                                    <div class="slider-wrapper">
-                                        <div class="swiper-container slider">
-                                            <div class="swiper mySwiper">
-                                                <div class="swiper-wrapper">
-                                                    <div class="swiper-slide main-slider-img me-0 magnifier-container">
-                                                        <img class="" alt=""
-                                                            src="{{ asset('storage/' . $product->thumbnail) }}" />
-                                                    </div>
+                                </div>
+                                <div class="slider-wrapper" data-slider="tvMonitor">
+                                    <div class="swiper-container slider">
+                                        <div class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://www.hp.com/ca-en/shop/Html/Merch/Images/c08380171_1750x1285.jpg" />
                                                 </div>
-                                                <div>
-                                                    <div class="swiper-button-next">
-                                                        <i class="fas fa-chevron-right"></i>
-                                                    </div>
-                                                    <div class="swiper-button-prev">
-                                                        <i class="fas fa-chevron-left"></i>
-                                                    </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://i5.walmartimages.com/seo/CRUA-27-165Hz-180Hz-Curved-Gaming-Monitor-FHD-1080P-AMD-FreeSync-1800R-Frameless-Computer-Monitor-1ms-GTG-DP-HDMI-Port-Black_4c6350f8-1063-45c0-9ccd-5a31ad697259.899d8d7713aa0b11a2d20c46b447e410.jpeg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://www.mobilepixels.us/cdn/shop/files/23.8MonitorPI11.png?v=1695718169&width=2048" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/peripherals/monitors/p-series/p2425h/mg/monitor-p2425h-black-gallery-1.psd?qlt=90,0&op_usm=1.75,0.3,2,0&resMode=sharp&pscan=auto&fmt=png-alpha&hei=500" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://misura.s11.cdn-upgates.com/_cache/3/c/3cb2fd73d55747db5675a293dc8fcba1-qm24dfi-foto01.jpg" />
                                                 </div>
                                             </div>
-                                            <div class="swiper swiper-thumbs">
-                                                <div class="swiper-wrapper">
-                                                    <div class="swiper-slide">
-                                                        <img src="{{ asset('storage/' . $product->thumbnail) }}" />
-                                                    </div>
+                                            <div>
+                                                <div class="swiper-button-next">
+                                                    <i class="fas fa-chevron-right"></i>
+                                                </div>
+                                                <div class="swiper-button-prev">
+                                                    <i class="fas fa-chevron-left"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper swiper-thumbs">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://www.hp.com/ca-en/shop/Html/Merch/Images/c08380171_1750x1285.jpg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://i5.walmartimages.com/seo/CRUA-27-165Hz-180Hz-Curved-Gaming-Monitor-FHD-1080P-AMD-FreeSync-1800R-Frameless-Computer-Monitor-1ms-GTG-DP-HDMI-Port-Black_4c6350f8-1063-45c0-9ccd-5a31ad697259.899d8d7713aa0b11a2d20c46b447e410.jpeg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://www.mobilepixels.us/cdn/shop/files/23.8MonitorPI11.png?v=1695718169&width=2048" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/peripherals/monitors/p-series/p2425h/mg/monitor-p2425h-black-gallery-1.psd?qlt=90,0&op_usm=1.75,0.3,2,0&resMode=sharp&pscan=auto&fmt=png-alpha&hei=500" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://misura.s11.cdn-upgates.com/_cache/3/c/3cb2fd73d55747db5675a293dc8fcba1-qm24dfi-foto01.jpg" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                @endforelse
-
+                                </div>
+                                <div class="slider-wrapper" data-slider="fashionDress">
+                                    <div class="swiper-container slider">
+                                        <div class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://img.drz.lazcdn.com/static/bd/p/fdc4c0778b91efe9be87ca813cdebb2a.jpg_720x720q80.jpg_.webp" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://cdn.doduae.com/image/cache/catalog/products/181712/181712_4760735762507_7-800x800.webp" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://down-my.img.susercontent.com/file/7ffb99d2f48e8ba8227de95c90ebb008" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://blog.sothebysrealty.ae/hubfs/Imported_Blog_Media/62012ef9-56b4-45a5-b40c-c51119ab63ec-1.jpg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://i5.walmartimages.com/asr/1fc03d14-1f47-4501-ac13-3c72c0b35982.60f3eebf76c044a8436aa5509a205cf9.jpeg" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="swiper-button-next">
+                                                    <i class="fas fa-chevron-right"></i>
+                                                </div>
+                                                <div class="swiper-button-prev">
+                                                    <i class="fas fa-chevron-left"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper swiper-thumbs">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://img.drz.lazcdn.com/static/bd/p/fdc4c0778b91efe9be87ca813cdebb2a.jpg_720x720q80.jpg_.webp" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://cdn.doduae.com/image/cache/catalog/products/181712/181712_4760735762507_7-800x800.webp" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://down-my.img.susercontent.com/file/7ffb99d2f48e8ba8227de95c90ebb008" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://blog.sothebysrealty.ae/hubfs/Imported_Blog_Media/62012ef9-56b4-45a5-b40c-c51119ab63ec-1.jpg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://i5.walmartimages.com/asr/1fc03d14-1f47-4501-ac13-3c72c0b35982.60f3eebf76c044a8436aa5509a205cf9.jpeg" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slider-wrapper" data-slider="flower">
+                                    <div class="swiper-container slider">
+                                        <div class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://wpcdn.us-east-1.vip.tn-cloud.net/www.hawaiimagazine.com/content/uploads/2020/12/plumeria-2-Eric-Tessmer-Flickr-1024x708.jpg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://images.immediate.co.uk/production/volatile/sites/10/2018/02/4f492b22-2d29-4360-80a6-79879487c7b7-e07922e.jpg?quality=90&fit=700,466" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://www.gardendesign.com/pictures/images/675x529Max/site_3/helianthus-yellow-flower-pixabay_11863.jpg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://www.southernliving.com/thmb/xFlQn020pc1NJAl4ksr7_o_B5u4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-598083938-1-22dab883ff2a43d8b2751d9f363f2d5d.jpg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://cdn.britannica.com/45/5645-050-B9EC0205/head-treasure-flower-disk-flowers-inflorescence-ray.jpg" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="swiper-button-next">
+                                                    <i class="fas fa-chevron-right"></i>
+                                                </div>
+                                                <div class="swiper-button-prev">
+                                                    <i class="fas fa-chevron-left"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper swiper-thumbs">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://wpcdn.us-east-1.vip.tn-cloud.net/www.hawaiimagazine.com/content/uploads/2020/12/plumeria-2-Eric-Tessmer-Flickr-1024x708.jpg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://images.immediate.co.uk/production/volatile/sites/10/2018/02/4f492b22-2d29-4360-80a6-79879487c7b7-e07922e.jpg?quality=90&fit=700,466" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://www.gardendesign.com/pictures/images/675x529Max/site_3/helianthus-yellow-flower-pixabay_11863.jpg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://www.southernliving.com/thmb/xFlQn020pc1NJAl4ksr7_o_B5u4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-598083938-1-22dab883ff2a43d8b2751d9f363f2d5d.jpg" />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img
+                                                        src="https://cdn.britannica.com/45/5645-050-B9EC0205/head-treasure-flower-disk-flowers-inflorescence-ray.jpg" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-5">
                             <div class="p-3 bg-white h-100">
 
                                 <div class="ps-product__info">
-                                    <div class="pb-3 text-22 text-dark" style="height: auto;">
+                                    <div class="text-22 text-dark" style="height: auto;">
                                         {{ $product->name }}
                                     </div>
                                     <table class="table m-0 ps-table ps-table--oriented">
@@ -331,7 +477,7 @@
                                             <p>{!! \Illuminate\Support\Str::words($product->overview, 30) !!}</p>
                                         </div>
 
-                                        {{-- <div class="pt-4">
+                                        <div class="pt-4">
                                             <p class="text-black fw-bold">Color Variation</p>
                                             <div class="color-one">
                                                 @php
@@ -356,25 +502,37 @@
                                                     <p class="site-color">No colors available</p>
                                                 @endif
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                 </div>
-                                <p class="mb-0">Color Family</p>
+                                <p>Color Family</p>
                                 <div class="pt-2 brand-selection">
                                     <div>
-                                        @foreach ($product->multiImages as $pic)
-                                            <label class="brand-label">
-                                                <input style="border: 5px solid {{ $pic->color }}" type="radio"
-                                                    name="color" data-id="{{ $pic->id }}" data-image="{{ $pic->photo }}"
-                                                    value="{{ $pic->color }}" />
-                                                <img src="{{ asset('storage/' . $pic->photo) }}" />
-                                            </label>
-                                        @endforeach
+                                        <label class="brand-label">
+                                            <input type="radio" name="action" value="mobilePhone" />
+                                            <img
+                                                src="https://www.ardhanggini.com/storage/products/thumbnail/0njAqmxRW61739949730.jpg" />
+                                        </label>
+                                        <label class="brand-label">
+                                            <input type="radio" name="action" value="tvMonitor" />
+                                            <img
+                                                src="https://www.hp.com/ca-en/shop/Html/Merch/Images/c08380171_1750x1285.jpg" />
+                                        </label>
+                                        <label class="brand-label">
+                                            <input type="radio" name="action" value="fashionDress" />
+                                            <img
+                                                src="https://img.drz.lazcdn.com/static/bd/p/fdc4c0778b91efe9be87ca813cdebb2a.jpg_720x720q80.jpg_.webp" />
+                                        </label>
+                                        <label class="brand-label">
+                                            <input type="radio" name="action" value="flower" />
+                                            <img
+                                                src="https://images.unsplash.com/photo-1471899236350-e3016bf1e69e?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zmxvd2VyfGVufDB8fDB8fHww" />
+                                        </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="px-3 mt-3 mt-lg-0 px-lg-0 col-lg-3">
+                        <div class="col-lg-3 bg-light">
                             <div class="ps-product__feature">
                                 @if (!empty($product->stock) && $product->stock > 0)
                                     <div class="mb-0"><span class="ps-badge bg-success">{{ $product->stock }} In
@@ -409,11 +567,9 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    {{-- <a class="mr-1 btn btn-primary mr-lg-3"
-                                        href="{{ route('buy.now', $product->id) }}">Buy Now</a> --}}
-                                    <a class="mr-1 btn btn-primary mr-lg-3 buynow_btn_product_details"
-                                        href="javascript:void(0;)" data-product_id="{{ $product->id }}" >Buy Now</a>
-                                    <a class="btn btn-outline-primary add_to_cart_btn_product_details"
+                                    <a class="mr-1 btn btn-primary mr-lg-3"
+                                        href="{{ route('buy.now', $product->id) }}">Buy Now</a>
+                                    <a class="btn btn-outline-primary add_to_cart_btn_product_single"
                                         data-product_id="{{ $product->id }}" href="#">Add to cart</a>
                                 </div>
                                 <ul class="ps-product__bundle">
@@ -422,7 +578,199 @@
                                         <li><i class="icon-truck"></i>{{ $shippingmethod->title }} -
                                             {{ $shippingmethod->price }} TK ({{ $shippingmethod->duration }})</li>
                                     @endforeach
+                                    {{-- <li><i class="fa-solid fa-location-dot"></i>
+                                        Sub-areas: <br>
+                                        <span class="pt-2"
+                                            style="position: relative;left: 32px;width: 94%;display: inline-block;">Keraniganj,
+                                            Tangi, Savar, Gazipur, Narayanganj, Asulia (2-4 Days)</span>
+                                    </li> --}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-9">
+                            <div class="row">
+                                <div class="pr-0 col-12 col-xl-7">
+                                    <div class="kovi-product-slider-wrapper">
+                                        <!-- Thumbs Slider for the gallery -->
+                                        <div thumbsSlider="" class="swiper mySwiperDesktop">
+                                            <div class="swiper-wrapper">
+                                                @if (count($product->multiImages) > 0)
+                                                    @foreach ($product->multiImages as $image)
+                                                        <div class="swiper-slide thumb-img">
+                                                            <img src="{{ asset('storage/' . $image->photo) }}" />
+                                                        </div>
+                                                    @endforeach
+                                                @else
+                                                    <div class="swiper-slide thumb-img">
+                                                        <img src="{{ asset('storage/' . $product->thumbnail) }}" />
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </div>
 
+                                        <!-- Main image slider (with magnifier) -->
+                                        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+                                            class="swiper mySwiper2">
+                                            <div class="swiper-wrapper">
+                                                @if (count($product->multiImages) > 0)
+                                                    @foreach ($product->multiImages as $image)
+                                                        <div class="swiper-slide main-img magnifier-container">
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('storage/' . $image->photo) }}" />
+                                                        </div>
+                                                    @endforeach
+                                                @else
+                                                    <div class="swiper-slide main-img magnifier-container">
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('storage/' . $product->thumbnail) }}" />
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div class="swiper-button-next d-none"></div>
+                                            <div class="swiper-button-prev d-none"></div>
+                                        </div>
+                                        <div thumbsSlider="" class="swiper mySwiper">
+                                            <div class="swiper-wrapper">
+                                                @foreach ($product->multiImages as $image)
+                                                    <div class="swiper-slide">
+                                                        <img src="{{ asset('storage/' . $image->photo) }}" />
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 col-xl-5">
+                                    <div class="ps-product__info">
+                                        <div class="text-22 text-dark" style="height: auto;">
+                                            {{ $product->name }}
+                                        </div>
+                                        <table class="table m-0 ps-table ps-table--oriented">
+                                            <tbody>
+                                                @if (!empty($product->sku_code))
+                                                    <tr>
+                                                        <th class="ps-table__th">CODE</th>
+                                                        <td>{{ $product->sku_code }}</td>
+                                                    </tr>
+                                                @endif
+                                                @if (!empty(optional($product->brand)->name))
+                                                    <tr>
+                                                        <th class="ps-table__th">BRAND </th>
+                                                        <td>{{ optional($product->brand)->name }}</td>
+                                                    </tr>
+                                                @endif
+                                                @if (!empty($product->stock) && !empty($product->contains))
+                                                    <tr>
+                                                        <th class="ps-table__th">PALLET QUANTITY </th>
+                                                        <td>{{ $product->stock * $product->contains }}</td>
+                                                    </tr>
+                                                @endif
+                                                @if (!empty($product->width))
+                                                    <tr>
+                                                        <th class="ps-table__th">Width </th>
+                                                        <td>{{ $product->width }} cm</td>
+                                                    </tr>
+                                                @endif
+                                                @if (!empty($product->height))
+                                                    <tr>
+                                                        <th class="ps-table__th">Height </th>
+                                                        <td>{{ $product->height }} cm</td>
+                                                    </tr>
+                                                @endif
+
+                                            </tbody>
+                                        </table>
+                                        <div class="mt-20 ps-product__group">
+                                            <div>
+                                                <p>{!! \Illuminate\Support\Str::words($product->overview, 30) !!}</p>
+                                            </div>
+
+                                            <div class="pt-4">
+                                                <p class="text-black fw-bold">Color Variation</p>
+                                                <div class="color-one">
+                                                    @php
+                                                        $colors = is_string($product->color)
+                                                            ? json_decode($product->color, true)
+                                                            : $product->color;
+                                                    @endphp
+
+                                                    @if (is_array($colors) && !empty($colors))
+                                                        <div class="color-options">
+                                                            <!-- Multi-select dropdown -->
+                                                            <select name="color" id="color-select"
+                                                                class="form-control select">
+                                                                @foreach ($colors as $color)
+                                                                    <option value="{{ strtolower($color['value']) }}">
+                                                                        {{ ucfirst($color['value']) }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    @else
+                                                        <p class="site-color">No colors available</p>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="ps-product__feature">
+                                @if (!empty($product->stock) && $product->stock > 0)
+                                    <div class="mb-0"><span class="ps-badge bg-success">{{ $product->stock }} In
+                                            Stock</span></div>
+                                @else
+                                    <div class="mb-0"><span class="ps-badge ps-badge--outstock">Out Of
+                                            Stock</span></div>
+                                @endif
+                                @if (!empty($product->unit_discount_price))
+                                    <div class="py-3 mt-3 ps-product__meta pr-details-price">
+                                        <span
+                                            class="ps-product__price sale">৳{{ $product->unit_discount_price }}</span>
+                                        <span class="ps-product__del">৳{{ $product->unit_price }}</span>
+                                    </div>
+                                @else
+                                    <div class="py-3 mt-3 ps-product__meta pr-details-price">
+                                        <span class="ps-product__price sale">৳{{ $product->unit_price }}</span>
+                                    </div>
+                                @endif
+
+                                <div class="ps-product__quantity">
+                                    <h6>Quantity</h6>
+                                    <div class="def-number-input number-input safari_only">
+                                        <button class="minus"
+                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()"><i
+                                                class="icon-minus"></i></button>
+                                        <input class="quantity" min="1" name="quantity" value="1"
+                                            type="number" data-product_id="{{ $product->id }}" />
+                                        <button class="plus"
+                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()"><i
+                                                class="icon-plus"></i></button>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <a class="mr-1 btn btn-primary mr-lg-3"
+                                        href="{{ route('buy.now', $product->id) }}">Buy Now</a>
+                                    <a class="btn btn-outline-primary add_to_cart_btn_product_single"
+                                        data-product_id="{{ $product->id }}" href="#">Add to cart</a>
+                                </div>
+                                <ul class="ps-product__bundle">
+                                    <li><i class="icon-bag2"></i>Full cash on delivery</li>
+                                    @foreach ($shippingmethods as $shippingmethod)
+                                        <li><i class="icon-truck"></i>{{ $shippingmethod->title }} -
+                                            {{ $shippingmethod->price }} TK ({{ $shippingmethod->duration }})</li>
+                                    @endforeach
+                                    {{-- <li><i class="fa-solid fa-location-dot"></i>
+                                        Sub-areas: <br>
+                                        <span class="pt-2"
+                                            style="position: relative;left: 32px;width: 94%;display: inline-block;">Keraniganj,
+                                            Tangi, Savar, Gazipur, Narayanganj, Asulia (2-4 Days)</span>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>
@@ -873,198 +1221,6 @@
     @endforeach
 
     @push('scripts')
-        <script>
-            $(document).ready(function() {
-                $('.add_to_cart_btn_product_details').click(function(e) {
-                    e.preventDefault(); // Prevent the default action of the link
-
-                    // Find the quantity input
-                    var $quantityInput = $(this).closest('.ps-product__feature').find('.quantity');
-                    var product_id = $(this).data('product_id');
-                    var cartHeader = $('.miniCart');
-                    var qty = $quantityInput.val(); // Get the quantity value
-                    var color = $("input[name='color']:checked").val();
-                    var image = $("input[name='color']:checked").data('image');
-                    // alert(image);
-                    // Check if quantity is valid
-                    if (qty <= 0) {
-                        Swal.fire({
-                            icon: 'warning',
-                            title: 'Invalid Quantity',
-                            text: 'Please select a valid quantity.'
-                        });
-                        return;
-                    }
-
-                    $.ajax({
-                        type: "POST",
-                        url: '/cart/store/' + product_id,
-                        data: {
-                            _token: "{{ csrf_token() }}", // Include CSRF token for security
-                            quantity: qty,
-                            color: color,
-                            image: image
-                        },
-                        dataType: 'json',
-                        success: function(data) {
-                            const Toast = Swal.mixin({
-                                showConfirmButton: false,
-                                timer: 1000
-                            });
-                            Toast.fire({
-                                icon: 'success',
-                                title: data.success
-                            });
-                            if (data.subTotal > 4000) {
-                                Toast.fire({
-                                    title: 'Congratulations!',
-                                    text: "Your shipping is now free. Happy Shopping!",
-                                    icon: 'success',
-                                    showCancelButton: true,
-                                    // confirmButtonText: 'Yes, delete it!',
-                                    cancelButtonText: 'Close',
-                                    buttonsStyling: false,
-                                    customClass: {
-                                        // confirmButton: 'btn btn-danger',
-                                        cancelButton: 'btn btn-success'
-                                    }
-                                })
-                            }
-                            if ($.isEmptyObject(data.error)) {
-                                Toast.fire({
-                                    icon: 'success',
-                                    title: data.success
-                                });
-
-                                // Update mini cart
-                                cartHeader.html(data.cartHeader);
-                                $(".cartCount").html(data.cartCount);
-                            } else {
-                                Toast.fire({
-                                    icon: 'error',
-                                    title: data.error
-                                });
-                            }
-                        },
-                        error: function(xhr) {
-                            let errorMessage = 'An unexpected error occurred.';
-
-                            // Check if the response is JSON and contains an error message
-                            if (xhr.responseJSON && xhr.responseJSON.error) {
-                                errorMessage = xhr.responseJSON.error;
-                            } else if (xhr.responseText) {
-                                try {
-                                    let response = JSON.parse(xhr.responseText);
-                                    if (response.error) {
-                                        errorMessage = response.error;
-                                    }
-                                } catch (e) {
-                                    console.error('Error parsing response text:', e);
-                                }
-                            }
-
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: errorMessage
-                            });
-                        }
-                    });
-                });
-                $('.buynow_btn_product_details').click(function(e) {
-                    e.preventDefault(); // Prevent the default action of the link
-
-                    // Find the quantity input
-                    var $quantityInput = $(this).closest('.ps-product__feature').find('.quantity');
-                    var product_id = $(this).data('product_id');
-                    var cartHeader = $('.miniCart');
-                    var qty = $quantityInput.val(); // Get the quantity value
-                    var color = $("input[name='color']:checked").val();
-                    var image = $("input[name='color']:checked").data('image');
-                    // alert(image);
-                    // Check if quantity is valid
-                    if (qty <= 0) {
-                        Swal.fire({
-                            icon: 'warning',
-                            title: 'Invalid Quantity',
-                            text: 'Please select a valid quantity.'
-                        });
-                        return;
-                    }
-
-                    $.ajax({
-                        type: "POST",
-                        url: '/cart/store/' + product_id,
-                        data: {
-                            _token: "{{ csrf_token() }}", // Include CSRF token for security
-                            quantity: qty,
-                            color: color,
-                            image: image
-                        },
-                        dataType: 'json',
-                        success: function(data) {
-                            const Toast = Swal.mixin({
-                                showConfirmButton: false,
-                                timer: 1000
-                            });
-                            // Toast.fire({
-                            //     icon: 'success',
-                            //     title: data.success
-                            // });
-                            if (data.subTotal > 4000) {
-                                Toast.fire({
-                                    title: 'Congratulations!',
-                                    text: "Your shipping is now free. Happy Shopping!",
-                                    icon: 'success',
-                                    showCancelButton: true,
-                                    // confirmButtonText: 'Yes, delete it!',
-                                    cancelButtonText: 'Close',
-                                    buttonsStyling: false,
-                                    customClass: {
-                                        // confirmButton: 'btn btn-danger',
-                                        cancelButton: 'btn btn-success'
-                                    }
-                                })
-                            }
-                            if ($.isEmptyObject(data.error)) {
-                                // Update mini cart
-                                cartHeader.html(data.cartHeader);
-                                $(".cartCount").html(data.cartCount);
-                                window.location.href = '/mycart';
-                            } else {
-                                Toast.fire({
-                                    icon: 'error',
-                                    title: data.error
-                                });
-                            }
-                        },
-                        error: function(xhr) {
-                            let errorMessage = 'An unexpected error occurred.';
-
-                            // Check if the response is JSON and contains an error message
-                            if (xhr.responseJSON && xhr.responseJSON.error) {
-                                errorMessage = xhr.responseJSON.error;
-                            } else if (xhr.responseText) {
-                                try {
-                                    let response = JSON.parse(xhr.responseText);
-                                    if (response.error) {
-                                        errorMessage = response.error;
-                                    }
-                                } catch (e) {
-                                    console.error('Error parsing response text:', e);
-                                }
-                            }
-
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: errorMessage
-                            });
-                        }
-                    });
-                });
-            });
-        </script>
         <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
         <script>
             document.querySelectorAll('.magnifier-container').forEach(container => {
@@ -1229,12 +1385,10 @@
                 let firstValue = firstSlider.data("slider");
                 $("input[value='" + firstValue + "']").prop("checked", true);
 
-                $("input[name=color]").change(function() {
-                    let selectedSlider = $(this).data("id");
-                    // alert(selectedSlider);
+                $("input[name=action]").change(function() {
+                    let selectedSlider = $(this).val();
                     $(".slider-wrapper").hide();
                     $(".slider-wrapper[data-slider='" + selectedSlider + "']").show();
-                    // $(".slider-wrapper").hide();
                 });
 
                 $(".slider-wrapper").each(function() {

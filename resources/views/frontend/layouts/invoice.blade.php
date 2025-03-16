@@ -55,6 +55,7 @@
                                 <th width="5%" class="text-white">Sl.</th>
                                 <th width="10%" class="text-white">Img</th>
                                 <th width="35%" class="text-white">Product Description</th>
+                                <th width="10%" class="text-white">Color</th>
                                 <th width="15%" class="text-white">Price</th>
                                 <th width="10%" class="text-center text-white">Qty</th>
                                 <th width="15%" class="text-right text-white">Amount</th>
@@ -69,13 +70,17 @@
                                     <td>
                                         <span>
                                             <img width="50px" height="50px" style="border-radius: 5px;"
-                                                src="{{ asset('storage/' . optional($item->product)->thumbnail) }}"
+                                                src="{{ !is_null($item->product_image) ? asset('storage/' . $item->product_image) : asset('storage/' . optional($item->product)->thumbnail) }}"
                                                 alt=""
                                                 onerror="this.onerror=null;this.src='{{ asset('frontend/img/no-product.jpg') }}';">
                                         </span>
                                     </td>
                                     <td>
                                         <span>{{ Str::limit(optional($item->product)->name, 30) }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="p-4"
+                                                style="background-color: {{ $item->product_color }}"></span>
                                     </td>
                                     <td>
                                         <span><span
@@ -136,8 +141,7 @@
         <div class="row mt-3 pt-3">
             <div class="col-lg-12">
                 <p class="text-center text-m-center">
-                    <i class="fa-solid fa-file"></i> <strong>NOTE:</strong> This is a
-                    computer-generated receipt and does not require a physical signature.
+                    <i class="fa-solid fa-file"></i> <strong>NOTE:</strong> The order will be confirmed via call within 24 hours.
                 </p>
             </div>
         </div>

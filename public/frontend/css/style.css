@@ -4577,7 +4577,7 @@ textarea.form-control {
 }
 
 .ps-product--detail .ps-product__info {
-    margin-bottom: 80px;
+    margin-bottom: 20px;
 }
 
 .ps-product--detail.ps-product--full .ps-product__desc li {
@@ -15060,8 +15060,9 @@ textarea.form-control {
     z-index: 50;
     /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
     /* padding-top: 20px; */
-    width: 83%;
+    width: 82.5%;
     transition: all 0.4s ease;
+    background: white;
     /* opacity: 0;
     visibility: hidden; */
 }
@@ -20624,7 +20625,7 @@ table.dataTable tbody td:last-child {
     margin: auto;
     border-radius: 4px;
     height: 212px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .ps-block-control {

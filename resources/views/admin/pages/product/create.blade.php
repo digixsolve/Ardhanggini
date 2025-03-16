@@ -77,25 +77,25 @@
             @csrf
             <div class="row">
                 <div class="gap-7 gap-lg-10 col-9">
-                    <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-n2">
+                    <ul class="border-0 nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x fs-4 fw-semibold mb-n2">
                         <li class="nav-item">
-                            <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
+                            <a class="pb-4 nav-link text-active-primary active" data-bs-toggle="tab"
                                 href="#kt_ecommerce_add_product_general">General</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                            <a class="pb-4 nav-link text-active-primary" data-bs-toggle="tab"
                                 href="#kt_ecommerce_add_product_media">Media</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                            <a class="pb-4 nav-link text-active-primary" data-bs-toggle="tab"
                                 href="#kt_ecommerce_add_product_advanced">Inventory</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                            <a class="pb-4 nav-link text-active-primary" data-bs-toggle="tab"
                                 href="#kt_ecommerce_add_product_price">Pricing</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                            <a class="pb-4 nav-link text-active-primary" data-bs-toggle="tab"
                                 href="#kt_ecommerce_add_product_meta">Meta Options</a>
                         </li>
                     </ul>
@@ -103,16 +103,16 @@
                         <div class="tab-pane fade show active" id="kt_ecommerce_add_product_general" role="tab-panel">
                             <div class="d-flex flex-column gap-7 gap-lg-10">
                                 {{-- General Info --}}
-                                <div class="card card-flush py-4 mt-3">
+                                <div class="py-4 mt-3 card card-flush">
                                     <div class="card-header">
                                         <div class="card-title">
                                             <h2>General</h2>
                                         </div>
                                     </div>
-                                    <div class="card-body pt-0">
+                                    <div class="pt-0 card-body">
                                         <div class="mb-5 fv-row">
                                             <x-metronic.label class="form-label">Product Name</x-metronic.label>
-                                            <x-metronic.input type="text" name="name" class="form-control mb-2"
+                                            <x-metronic.input type="text" name="name" class="mb-2 form-control"
                                                 placeholder="Product name recommended" :value="old('name')">
                                             </x-metronic.input>
                                             <div class="text-muted fs-7">
@@ -121,13 +121,13 @@
                                         </div>
                                         <div class="mb-5 fv-row">
                                             <x-metronic.label class="form-label">Tags</x-metronic.label>
-                                            <input class="form-control" name="tags" id="product_Tags"
-                                                value="old('tags')" />
+                                            <input class="form-control" name="tags" id="product_Tags" placeholder="Eg: tag1, tag2"
+                                                value="{{ old('tags') }}" />
                                         </div>
                                         <div class="mb-5 fv-row">
                                             <x-metronic.label class="form-label">Short Description</x-metronic.label>
                                             <x-metronic.textarea id="short_description" name="short_description"
-                                                placeholder="Add Product Short Description" class="form-control mb-2"
+                                                placeholder="Add Product Short Description" class="mb-2 form-control"
                                                 cols="30"
                                                 rows="3">{!! old('short_description') !!}</x-metronic.textarea>
                                         </div>
@@ -157,13 +157,13 @@
                         <div class="tab-pane fade" id="kt_ecommerce_add_product_media" role="tab-panel">
                             <div class="d-flex flex-column gap-7 gap-lg-10">
                                 {{-- Inventory --}}
-                                <div class="card card-flush py-4">
+                                <div class="py-4 card card-flush">
                                     <div class="card-header">
                                         <div class="card-title">
                                             <h2>Media</h2>
                                         </div>
                                     </div>
-                                    <div class="card-body py-4 mt-3">
+                                    <div class="py-4 mt-3 card-body">
                                         <div class="row">
                                             <div class="col-4">
                                                 <x-metronic.label for="" class="form-label">Set the product
@@ -176,7 +176,7 @@
                                                     <div class="image-input-wrapper w-100px h-70px"></div>
 
                                                     <label
-                                                        class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                        class="shadow btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body"
                                                         data-kt-image-input-action="change" data-bs-toggle="tooltip"
                                                         data-bs-dismiss="click" title="Change avatar">
                                                         <i class="bi bi-pencil-fill fs-7"></i>
@@ -187,14 +187,14 @@
                                                     </label>
 
                                                     <span
-                                                        class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                        class="shadow btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body"
                                                         data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
                                                         data-bs-dismiss="click" title="Cancel avatar">
                                                         <i class="bi bi-x fs-2"></i>
                                                     </span>
 
                                                     <span
-                                                        class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                        class="shadow btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body"
                                                         data-kt-image-input-action="remove" data-bs-toggle="tooltip"
                                                         data-bs-dismiss="click" title="Remove avatar">
                                                         <i class="bi bi-x fs-2"></i>
@@ -202,8 +202,8 @@
                                                 </div>
                                             </div>
                                             {{-- Product Mutli Image --}}
-                                            <div class="col-8">
-                                                <div class="fv-row pt-5">
+                                            {{-- <div class="col-8">
+                                                <div class="pt-5 fv-row">
                                                     <x-metronic.label for="" class="form-label">Add the
                                                         product multi image</x-metronic.label>
                                                     <div class="dropzone-field">
@@ -224,15 +224,81 @@
                                                             onchange="console.log(this.selected.value)" />
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="fv-row pt-5">
+                                            </div> --}}
+                                            <div class="col-8">
+                                                <div class="pt-5 fv-row">
                                                     <x-metronic.label for="video_link" class="form-label">Product
                                                         Video
                                                         Link</x-metronic.label>
-                                                    <input type="text" name="video_link" class="form-control mb-2"
+                                                    <input type="text" name="video_link" class="mb-2 form-control"
                                                         placeholder="Product Video Link" id="video_link"
                                                         value="{{ old('video_link') }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="p-5 mt-5" style="background-color: #eee">
+                                                    <p>Product Multi image with Color Variation</p>
+                                                    <!--begin::Repeater-->
+                                                    <div id="productMediaColor">
+                                                        <!--begin::Form group-->
+                                                        <div class="form-group">
+                                                            <div data-repeater-list="productMediaColor">
+                                                                <div data-repeater-item>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <x-metronic.label for="multi_images"
+                                                                                class="col-form-label fw-bold fs-6 ">{{ __('Product Image') }}
+                                                                            </x-metronic.label>
+                                                                            <x-metronic.file-input id="multi_images"
+                                                                                name="multi_images"
+                                                                                :value="old('multi_images')"></x-metronic.file-input>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <x-metronic.label for="product_color"
+                                                                                class="col-form-label fw-bold fs-6 required">{{ __('Choose Color') }}
+                                                                            </x-metronic.label>
+                                                                            <input class="form-control form-control-lg" id="product_color" style="height: 50px"
+                                                                                type="color" name="product_color"
+                                                                                value="{{ old('product_color') }}"
+                                                                                placeholder="Enter the Color">
+                                                                        </div>
+                                                                        {{-- <div class="col-md-3">
+                                                                            <x-metronic.label for="product_color" class="col-form-label required fw-bold fs-6">
+                                                                                {{ __('Chose Color ') }}</x-metronic.label>
+                                                                            <x-metronic.select-option id="product_color" name="product_color" data-hide-search="true"
+                                                                                data-placeholder="Select an option">
+                                                                                <option></option>
+                                                                                <option value="red">red</option>
+                                                                                <option value="black">black</option>
+                                                                                <option value="green">green</option>
+                                                                                <option value="yellow">yellow</option>
+                                                                            </x-metronic.select-option>
+                                                                        </div> --}}
+                                                                        <div class="col-md-1">
+                                                                            <div class="pt-2 mt-5 text-end">
+                                                                                <a href="javascript:;" data-repeater-delete
+                                                                                class="mt-5 btn btn-sm btn-danger mt-md-8">
+                                                                                <i class="fas fa-trash fs-5"></i>
+                                                                            </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--end::Form group-->
+
+                                                        <!--begin::Form group-->
+                                                        <div class="mt-5 form-group">
+                                                            <a href="javascript:;" data-repeater-create
+                                                                class="btn btn-primary">
+                                                                <i class="fas fa-plus fs-3"></i>
+                                                                Add
+                                                            </a>
+                                                        </div>
+                                                        <!--end::Form group-->
+                                                    </div>
+                                                    <!--end::Repeater-->
                                                 </div>
                                             </div>
                                         </div>
@@ -243,23 +309,23 @@
                         <div class="tab-pane fade" id="kt_ecommerce_add_product_advanced" role="tab-panel">
                             <div class="d-flex flex-column gap-7 gap-lg-10">
                                 {{-- Inventory --}}
-                                <div class="card card-flush py-4 mt-3">
+                                <div class="py-4 mt-3 card card-flush">
                                     <div class="card-header">
                                         <div class="card-title">
                                             <h2>Inventory</h2>
                                         </div>
                                     </div>
-                                    <div class="card-body pt-0 row">
+                                    <div class="pt-0 card-body row">
                                         <div class="mb-10 fv-row col-6">
                                             <x-metronic.label class="form-label">SKU Code</x-metronic.label>
                                             <x-metronic.input type="text" name="sku_code"
-                                                class="form-control mb-2" placeholder="SKU Number"
+                                                class="mb-2 form-control" placeholder="SKU Number"
                                                 :value="old('sku_code')"></x-metronic.file-input>
                                                 <div class="text-muted fs-7">Enter the product SKU.</div>
                                         </div>
                                         <div class="mb-10 fv-row col-6">
                                             <x-metronic.label class="form-label">MF Code</x-metronic.label>
-                                            <x-metronic.input type="text" name="mf_code" class="form-control mb-2"
+                                            <x-metronic.input type="text" name="mf_code" class="mb-2 form-control"
                                                 placeholder="MF Number" :value="old('mf_code')"></x-metronic.file-input>
                                                 <div class="text-muted fs-7">Enter the product MF.</div>
                                         </div>
@@ -267,7 +333,7 @@
                                         <div class="mb-10 fv-row col-12">
                                             <x-metronic.label class="form-label">Barcode</x-metronic.label>
                                             <x-metronic.input type="text" name="barcode_id"
-                                                class="form-control mb-2" placeholder="Barcode Number"
+                                                class="mb-2 form-control" placeholder="Barcode Number"
                                                 :value="old('barcode_id')"></x-metronic.file-input>
                                                 <div class="text-muted fs-7">
                                                     Enter the product barcode number.
@@ -280,31 +346,31 @@
                         <div class="tab-pane fade" id="kt_ecommerce_add_product_price" role="tab-panel">
                             <div class="d-flex flex-column gap-7 gap-lg-10">
                                 {{-- Pricing --}}
-                                <div class="card card-flush py-4 mt-3">
+                                <div class="py-4 mt-3 card card-flush">
                                     <div class="card-header">
                                         <div class="card-title">
                                             <h2>Box Pricing</h2>
                                         </div>
                                     </div>
-                                    <div class="card-body pt-0 row">
+                                    <div class="pt-0 card-body row">
                                         {{-- <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Box Contains</x-metronic.label>
                                             <x-metronic.input type="number" name="box_contains" id="box_contains"
-                                                class="form-control mb-2" placeholder="how much in a box"
+                                                class="mb-2 form-control" placeholder="how much in a box"
                                                 :value="old('box_contains')"></x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much product in a box.</div>
                                         </div>
                                         <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Box Price</x-metronic.label>
                                             <x-metronic.input type="number" name="box_price" id="box_price"
-                                                class="form-control mb-2" placeholder="how much the box price"
+                                                class="mb-2 form-control" placeholder="how much the box price"
                                                 :value="old('box_price')"></x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much box price.</div>
                                         </div>
                                         <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Box Discount Price</x-metronic.label>
                                             <x-metronic.input type="number" name="box_discount_price"
-                                                id="box_discount_price" class="form-control mb-2"
+                                                id="box_discount_price" class="mb-2 form-control"
                                                 placeholder="how much the box discount price"
                                                 :value="old('box_discount_price')"></x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much box discount price.</div>
@@ -312,14 +378,14 @@
                                         <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Price</x-metronic.label>
                                             <x-metronic.input type="number" name="unit_price" id="unit_price"
-                                                class="form-control mb-2" placeholder="how much the unit price"
+                                                class="mb-2 form-control" placeholder="how much the unit price"
                                                 :value="old('unit_price')" readonly></x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much unit price.</div>
                                         </div>
                                         <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Unit Discount</x-metronic.label>
                                             <x-metronic.input type="number" name="unit_discount_price"
-                                                id="unit_discount" class="form-control mb-2"
+                                                id="unit_discount" class="mb-2 form-control"
                                                 placeholder="how much the unit discount price" :value="old('unit_discount_price')"
                                                 readonly></x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much unit discount price.</div>
@@ -327,7 +393,7 @@
                                         <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Stock</x-metronic.label>
                                             <x-metronic.input type="number" name="stock" id="stock"
-                                                class="form-control mb-2" placeholder="how much thestock"
+                                                class="mb-2 form-control" placeholder="how much thestock"
                                                 :value="old('stock')">
                                                 </x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much stock. Eg: 50</div>
@@ -335,18 +401,18 @@
                                         <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Vat</x-metronic.label>
                                             <x-metronic.input type="number" name="vat" id="vat"
-                                                class="form-control mb-2" placeholder="how much the vat"
+                                                class="mb-2 form-control" placeholder="how much the vat"
                                                 :value="old('vat')"></x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much vat. Eg: 5%</div>
                                         </div>
                                         <div class="mb-5 fv-row col-4">
                                             <x-metronic.label class="form-label">Tax</x-metronic.label>
                                             <x-metronic.input type="number" name="tax" id="tax"
-                                                class="form-control mb-2" placeholder="how much the tax "
+                                                class="mb-2 form-control" placeholder="how much the tax "
                                                 :value="old('tax')"></x-metronic.file-input>
                                                 <div class="text-muted fs-7">How much tax Eg: 5%</div>
                                         </div>
-                                        {{-- <div class="fv-row col-4 mt-10">
+                                        {{-- <div class="mt-10 fv-row col-4">
                                             <div class="form-check">
                                                 <input class="form-check-input" name="is_refurbished" type="checkbox"
                                                     value="1" id="is_refurbished" />
@@ -362,13 +428,13 @@
                         <div class="tab-pane fade" id="kt_ecommerce_add_product_meta" role="tab-panel">
                             <div class="d-flex flex-column gap-7 gap-lg-10">
                                 {{-- Meta Options --}}
-                                <div class="card card-flush py-4 mt-3">
+                                <div class="py-4 mt-3 card card-flush">
                                     <div class="card-header">
                                         <div class="card-title">
                                             <h2>Meta Options</h2>
                                         </div>
                                     </div>
-                                    <div class="card-body pt-0">
+                                    <div class="pt-0 card-body">
                                         <div class="mb-10">
                                             <div class="mb-5 fv-row">
                                                 <x-metronic.label class="form-label">Product Meta
@@ -408,7 +474,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-end mt-10">
+                    <div class="mt-10 d-flex justify-content-end">
                         <a href="{{ route('admin.product.index') }}" class="btn btn-danger me-5">
                             Back To Product List
                         </a>
@@ -416,7 +482,7 @@
                             <span class="indicator-label"> Save Changes </span>
                             <span class="indicator-progress">
                                 Please wait...
-                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                <span class="align-middle spinner-border spinner-border-sm ms-2"></span>
                             </span>
                         </button> --}}
                         <button type="submit" class="btn btn-primary">
@@ -425,17 +491,17 @@
                         </button>
                     </div>
                 </div>
-                <div class="gap-7 gap-lg-10 mb-7  col-3">
+                <div class="gap-7 gap-lg-10 mb-7 col-3">
                     {{-- Status Card Start --}}
-                    <div class="card card-flush py-4 mb-6">
+                    <div class="py-4 mb-6 card card-flush">
                         <div class="card-header">
                             <div class="card-title">
                                 <h2>Status</h2>
                             </div>
                         </div>
-                        <div class="card-body pt-0">
+                        <div class="pt-0 card-body">
                             <x-metronic.select-option id="kt_ecommerce_add_product_status_select"
-                                class="form-select mb-2" data-control="select2" data-hide-search="true"
+                                class="mb-2 form-select" data-control="select2" data-hide-search="true"
                                 name="status" data-placeholder="Select an option">
                                 <option></option>
                                 <option value="published" selected>Published</option>
@@ -447,17 +513,17 @@
                     </div>
                     {{-- Status Card End --}}
                     {{-- Category Card Start --}}
-                    <div class="card card-flush py-4">
+                    <div class="py-4 card card-flush">
                         <div class="card-header">
                             <div class="card-title">
                                 <h2>Category</h2>
                             </div>
                         </div>
-                        <div class="card-body pt-0">
+                        <div class="pt-0 card-body">
                             <div class="fv-row">
                                 <x-metronic.label for="brand_id" class="col-form-label required fw-bold fs-6">
                                     {{ __('Select Brand') }}</x-metronic.label>
-                                <x-metronic.select-option id="brand_id" class="form-select mb-2" name="brand_id"
+                                <x-metronic.select-option id="brand_id" class="mb-2 form-select" name="brand_id"
                                     data-control="select2" data-placeholder="Select an option"
                                     data-allow-clear="true">
                                     <option></option>
@@ -470,7 +536,7 @@
                             <div class="fv-row">
                                 <x-metronic.label for="category_id" class="col-form-label required fw-bold fs-6">
                                     {{ __('Select Category') }}</x-metronic.label>
-                                <x-metronic.select-option id="category_id" class="form-control select mb-2"
+                                <x-metronic.select-option id="category_id" class="mb-2 form-control select"
                                     name="category_id[]" multiple multiselect-search="true"
                                     multiselect-select-all="true" data-control="select2"
                                     data-placeholder="Select an option" data-allow-clear="true">
@@ -691,6 +757,24 @@
             // Example usage:
             const ckEditorInitializer = new CKEditorInitializer('.ckeditor');
             ckEditorInitializer.initialize();
+        </script>
+        {{-- Product Media Form Repeater --}}
+        <script>
+            $('#productMediaColor').repeater({
+                initEmpty: false,
+
+                defaultValues: {
+                    'text-input': 'foo'
+                },
+
+                show: function() {
+                    $(this).slideDown();
+                },
+
+                hide: function(deleteElement) {
+                    $(this).slideUp(deleteElement);
+                }
+            });
         </script>
     @endpush
 </x-admin-app-layout>

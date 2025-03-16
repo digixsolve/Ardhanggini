@@ -7,7 +7,7 @@
             <li class="ps-cart__item">
                 <div class="ps-product--mini-cart">
                     <a class="ps-product__thumbnail" href="{{ route('product.details', $item->model->slug) }}">
-                        <img src="{{ asset('storage/' . $item->model->thumbnail) }}" alt="alt" />
+                        <img src="{{ !is_null($item->options->image) ? asset('storage/' . $item->options->image) : asset('storage/' . $item->model->thumbnail) }}" alt="alt" />
                     </a>
                     <div class="ps-product__content p-0">
                         <a class="ps-product__name" href="{{ route('product.details', $item->model->slug) }}">

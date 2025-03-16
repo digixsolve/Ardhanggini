@@ -81,7 +81,7 @@
                                                         <thead>
                                                             <tr class="border-bottom fs-6 fw-bold text-muted">
                                                                 <th class="min-w-175px pb-2 ps-5">Products</th>
-                                                                <th class="min-w-70px text-end pb-2">SKU</th>
+                                                                <th class="min-w-70px text-end pb-2">Color</th>
                                                                 <th class="min-w-80px text-end pb-2">QTY</th>
                                                                 <th class="min-w-100px text-end pb-2 pe-5">Total</th>
                                                             </tr>
@@ -93,10 +93,9 @@
                                                                 <tr>
                                                                     <td>
                                                                         <div class="d-flex align-items-center">
-                                                                            <span
-                                                                                class="symbol symbol-50px">
+                                                                            <span class="symbol symbol-50px">
                                                                                 <span class="symbol-label"
-                                                                                    style="background-image:url({{ asset('storage/' . optional($item->product)->thumbnail) }});"></span>
+                                                                                    style="background-image:url({{ !is_null($item->product_image) ? asset('storage/' . $item->product_image) : asset('storage/' . optional($item->product)->thumbnail) }});"></span>
                                                                             </span>
 
                                                                             <div class="ms-5 text-start">
@@ -109,7 +108,9 @@
                                                                         </div>
                                                                     </td>
                                                                     <td class="text-end">
-                                                                        {{ optional($item->product)->sku_code }} </td>
+                                                                        <span class="p-4"
+                                                                            style="background-color: {{ $item->product_color }}"></span>
+                                                                    </td>
                                                                     <td class="text-end">
                                                                         {{ optional($item)->quantity }}
                                                                     </td>
