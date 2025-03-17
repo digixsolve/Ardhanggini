@@ -354,7 +354,7 @@
                                                             <div data-repeater-list="productMediaColor">
                                                                 <div data-repeater-item>
                                                                     <div class="form-group row">
-                                                                        <div class="col-md-6">
+                                                                        <div class="col-md-5">
                                                                             <x-metronic.label for="multi_images"
                                                                                 class="col-form-label fw-bold fs-6 ">{{ __('Product Image') }}
                                                                             </x-metronic.label>
@@ -362,9 +362,9 @@
                                                                                 name="multi_images"
                                                                                 :value="old('multi_images')"></x-metronic.file-input>
                                                                         </div>
-                                                                        <div class="col-md-5">
+                                                                        <div class="col-md-2">
                                                                             <x-metronic.label for="product_color"
-                                                                                class="col-form-label fw-bold fs-6 required">{{ __('Choose Color') }}
+                                                                                class="col-form-label fw-bold fs-6 required">{{ __('Color') }}
                                                                             </x-metronic.label>
                                                                             <input class="form-control form-control-lg"
                                                                                 id="product_color"
@@ -372,6 +372,17 @@
                                                                                 name="product_color"
                                                                                 value="{{ old('product_color') }}"
                                                                                 placeholder="Enter the Color">
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <x-metronic.label for="color_name"
+                                                                                class="col-form-label fw-bold fs-6 required">{{ __('Color Name') }}
+                                                                            </x-metronic.label>
+                                                                            <x-metronic.input
+                                                                                class="form-control form-control-lg"
+                                                                                id="color_name" type="text"
+                                                                                name="color_name"
+                                                                                value="{{ old('color_name') }}"
+                                                                                placeholder="Enter the Color Name"></x-metronic.input>
                                                                         </div>
                                                                         <div class="col-md-1">
                                                                             <div class="pt-2 mt-5 text-end">
@@ -406,9 +417,10 @@
                                                     <table class="table table-striped text-center">
                                                         <thead>
                                                             <tr>
-                                                                <th>Image</th>
-                                                                <th>Color</th>
-                                                                <th>Actions</th>
+                                                                <th width="40%">Image</th>
+                                                                <th width="20%">Color</th>
+                                                                <th width="25%">Color Name</th>
+                                                                <th width="15%">Actions</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -421,6 +433,9 @@
                                                                     <td>
                                                                         <span class="p-3"
                                                                             style="height:40px; background: {{ $image->color }};"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ $image->color_name }}
                                                                     </td>
                                                                     <td>
                                                                         <a href="javascript:void(0)"
@@ -639,21 +654,32 @@
                                     @method('PUT')
                                     <div class="card-body p-1 px-2 mb-4">
                                         <div class="row">
-                                            <div class="col-lg-8">
+                                            <div class="col-lg-6">
                                                 <x-metronic.label for="multi_images"
                                                     class="col-form-label fw-bold fs-6 ">{{ __('Product Image') }}
                                                 </x-metronic.label>
                                                 <x-metronic.file-input name="photo" :source="asset('storage/' . $image->photo)"
                                                     :value="old('photo')"></x-metronic.file-input>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-2">
                                                 <x-metronic.label for="product_color"
-                                                    class="col-form-label fw-bold fs-6 required">{{ __('Choose Color') }}
+                                                    class="col-form-label fw-bold fs-6 required">{{ __('Color') }}
                                                 </x-metronic.label>
                                                 <input class="form-control form-control-lg" id="product_color"
                                                     style="height: 50px" type="color" name="color"
                                                     value="{{ old('color', $image->color) }}"
                                                     placeholder="Enter the Color">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <x-metronic.label for="color_name"
+                                                    class="col-form-label fw-bold fs-6 required">{{ __('Color Name') }}
+                                                </x-metronic.label>
+                                                <x-metronic.input
+                                                    class="form-control form-control-lg"
+                                                    id="color_name" type="text"
+                                                    name="color_name"
+                                                    value="{{ old('color_name',$image->color_name) }}"
+                                                    placeholder="Enter the Color Name"></x-metronic.input>
                                             </div>
                                         </div>
                                     </div>

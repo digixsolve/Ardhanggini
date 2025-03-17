@@ -121,8 +121,8 @@
                                         </div>
                                         <div class="mb-5 fv-row">
                                             <x-metronic.label class="form-label">Tags</x-metronic.label>
-                                            <input class="form-control" name="tags" id="product_Tags" placeholder="Eg: tag1, tag2"
-                                                value="{{ old('tags') }}" />
+                                            <input class="form-control" name="tags" id="product_Tags"
+                                                placeholder="Eg: tag1, tag2" value="{{ old('tags') }}" />
                                         </div>
                                         <div class="mb-5 fv-row">
                                             <x-metronic.label class="form-label">Short Description</x-metronic.label>
@@ -245,7 +245,7 @@
                                                             <div data-repeater-list="productMediaColor">
                                                                 <div data-repeater-item>
                                                                     <div class="form-group row">
-                                                                        <div class="col-md-4">
+                                                                        <div class="col-md-5">
                                                                             <x-metronic.label for="multi_images"
                                                                                 class="col-form-label fw-bold fs-6 ">{{ __('Product Image') }}
                                                                             </x-metronic.label>
@@ -253,33 +253,36 @@
                                                                                 name="multi_images"
                                                                                 :value="old('multi_images')"></x-metronic.file-input>
                                                                         </div>
-                                                                        <div class="col-md-4">
+                                                                        <div class="col-md-2">
                                                                             <x-metronic.label for="product_color"
-                                                                                class="col-form-label fw-bold fs-6 required">{{ __('Choose Color') }}
+                                                                                class="col-form-label fw-bold fs-6 required">{{ __('Color') }}
                                                                             </x-metronic.label>
-                                                                            <input class="form-control form-control-lg" id="product_color" style="height: 50px"
-                                                                                type="color" name="product_color"
+                                                                            <input class="form-control form-control-lg"
+                                                                                id="product_color"
+                                                                                style="height: 50px" type="color"
+                                                                                name="product_color"
                                                                                 value="{{ old('product_color') }}"
                                                                                 placeholder="Enter the Color">
                                                                         </div>
-                                                                        {{-- <div class="col-md-3">
-                                                                            <x-metronic.label for="product_color" class="col-form-label required fw-bold fs-6">
-                                                                                {{ __('Chose Color ') }}</x-metronic.label>
-                                                                            <x-metronic.select-option id="product_color" name="product_color" data-hide-search="true"
-                                                                                data-placeholder="Select an option">
-                                                                                <option></option>
-                                                                                <option value="red">red</option>
-                                                                                <option value="black">black</option>
-                                                                                <option value="green">green</option>
-                                                                                <option value="yellow">yellow</option>
-                                                                            </x-metronic.select-option>
-                                                                        </div> --}}
+                                                                        <div class="col-md-4">
+                                                                            <x-metronic.label for="color_name"
+                                                                                class="col-form-label fw-bold fs-6 required">{{ __('Color Name') }}
+                                                                            </x-metronic.label>
+                                                                            <x-metronic.input
+                                                                                class="form-control form-control-lg"
+                                                                                id="color_name" type="text"
+                                                                                name="color_name"
+                                                                                value="{{ old('color_name') }}"
+                                                                                placeholder="Enter the Color Name"></x-metronic.input>
+                                                                        </div>
+
                                                                         <div class="col-md-1">
                                                                             <div class="pt-2 mt-5 text-end">
-                                                                                <a href="javascript:;" data-repeater-delete
-                                                                                class="mt-5 btn btn-sm btn-danger mt-md-8">
-                                                                                <i class="fas fa-trash fs-5"></i>
-                                                                            </a>
+                                                                                <a href="javascript:;"
+                                                                                    data-repeater-delete
+                                                                                    class="mt-5 btn btn-sm btn-danger mt-md-8">
+                                                                                    <i class="fas fa-trash fs-5"></i>
+                                                                                </a>
                                                                             </div>
                                                                         </div>
                                                                     </div>

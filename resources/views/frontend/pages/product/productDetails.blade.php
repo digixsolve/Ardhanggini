@@ -359,13 +359,14 @@
                                         </div> --}}
                                     </div>
                                 </div>
-                                <p class="mb-0">Color Family</p>
+                                <p class="mb-0">Color Family : &nbsp;&nbsp; <span class="colorFamily"></span></p>
                                 <div class="pt-2 brand-selection">
                                     <div>
                                         @foreach ($product->multiImages as $pic)
                                             <label class="brand-label">
                                                 <input style="border: 5px solid {{ $pic->color }}" type="radio"
                                                     name="color" data-id="{{ $pic->id }}"
+                                                    data-color="{{ $pic->color_name }}"
                                                     data-image="{{ $pic->photo }}" value="{{ $pic->color }}" />
                                                 <img src="{{ asset('storage/' . $pic->photo) }}" />
                                             </label>
@@ -875,6 +876,12 @@
     @push('scripts')
         <script>
             $(document).ready(function() {
+                $("input[name='color']").change(function(e) {
+                    var color_name = $("input[name='color']:checked").data(
+                        'color'); // Change this line
+                    $('.colorFamily').html(color_name);
+                });
+
                 $('.add_to_cart_btn_product_details').click(function(e) {
                     e.preventDefault(); // Prevent the default action of the link
 
@@ -885,6 +892,7 @@
                     var qty = $quantityInput.val(); // Get the quantity value
                     var color = $("input[name='color']:checked").val();
                     var image = $("input[name='color']:checked").data('image');
+                    var color_name = $("input[name='color']:checked").data('color_name');
                     // alert(image);
                     // Check if quantity is valid
                     if (qty <= 0) {
@@ -903,7 +911,8 @@
                             _token: "{{ csrf_token() }}", // Include CSRF token for security
                             quantity: qty,
                             color: color,
-                            image: image
+                            image: image,
+                            color_name: color_name
                         },
                         dataType: 'json',
                         success: function(data) {

@@ -113,6 +113,7 @@ class ProductController extends Controller
                 foreach ($request->productMediaColor as $media) {
                     if (isset($media['product_color']) && isset($media['multi_images']) && $media['multi_images']) {
                         $productColor = $media['product_color'];
+                        $productColorName = $media['color_name'];
                         $image = $media['multi_images'];
 
                         // Check if the image exists and upload it
@@ -130,6 +131,7 @@ class ProductController extends Controller
                                     'product_id' => $product->id,
                                     'photo'      => $multiImageUpload['file_path'],
                                     'color'      => $productColor,
+                                    'color_name' => $productColorName,
                                     'created_by' => Auth::guard('admin')->user()->id,
                                     'created_at' => Carbon::now(),
                                 ]);
@@ -251,6 +253,7 @@ class ProductController extends Controller
                 foreach ($request->productMediaColor as $media) {
                     if (isset($media['product_color']) && isset($media['multi_images']) && $media['multi_images']) {
                         $productColor = $media['product_color'];
+                        $productColorName = $media['color_name'];
                         $image = $media['multi_images'];
                         if ($image && $image instanceof \Illuminate\Http\UploadedFile) {
                             try {
@@ -264,6 +267,7 @@ class ProductController extends Controller
                                     'product_id' => $product->id,
                                     'photo'      => $multiImageUpload['file_path'],
                                     'color'      => $productColor,
+                                    'color_name' => $productColorName,
                                     'created_by' => Auth::guard('admin')->user()->id,
                                     'created_at' => Carbon::now(),
                                 ]);
@@ -420,8 +424,9 @@ class ProductController extends Controller
 
         // Update the product image record with the new color and photo
         $multiImage->update([
-            'photo' => $multiImageUpload['file_path'] ?? $multiImage->photo, // Only update photo if it's uploaded
-            'color' => $request->color, // Update the color field
+            'photo'      => $multiImageUpload['file_path'] ?? $multiImage->photo, // Only update photo if it's uploaded
+            'color'      => $request->color,
+            'color_name' => $request->color_name,
         ]);
 
         Session::flash('success', 'Image has been updated successfully!');
