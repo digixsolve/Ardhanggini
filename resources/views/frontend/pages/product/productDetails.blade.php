@@ -892,7 +892,7 @@
                     var qty = $quantityInput.val(); // Get the quantity value
                     var color = $("input[name='color']:checked").val();
                     var image = $("input[name='color']:checked").data('image');
-                    var color_name = $("input[name='color']:checked").data('color_name');
+                    var color_name = $("input[name='color']:checked").data('color');
                     // alert(image);
                     // Check if quantity is valid
                     if (qty <= 0) {
