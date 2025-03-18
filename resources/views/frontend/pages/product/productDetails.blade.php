@@ -286,7 +286,23 @@
                         </div>
                         <div class="col-lg-5">
                             <div class="p-3 bg-white h-100">
-
+                                <div class="color-family-pr-m">
+                                    <p class="mb-0">Color Family : &nbsp;&nbsp; <span class="colorFamily"></span></p>
+                                    <div class="pt-2 brand-selection">
+                                        <div>
+                                            @foreach ($product->multiImages as $pic)
+                                                <label class="brand-label">
+                                                    <input style="border: 5px solid {{ $pic->color }}" type="radio"
+                                                        name="color" data-id="{{ $pic->id }}"
+                                                        data-color="{{ $pic->color_name }}"
+                                                        data-image="{{ $pic->photo }}"
+                                                        value="{{ $pic->color }}" />
+                                                    <img src="{{ asset('storage/' . $pic->photo) }}" />
+                                                </label>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="ps-product__info">
                                     <div class="pb-3 text-22 text-dark" style="height: auto;">
                                         {{ $product->name }}
@@ -359,18 +375,21 @@
                                         </div> --}}
                                     </div>
                                 </div>
-                                <p class="mb-0">Color Family : &nbsp;&nbsp; <span class="colorFamily"></span></p>
-                                <div class="pt-2 brand-selection">
-                                    <div>
-                                        @foreach ($product->multiImages as $pic)
-                                            <label class="brand-label">
-                                                <input style="border: 5px solid {{ $pic->color }}" type="radio"
-                                                    name="color" data-id="{{ $pic->id }}"
-                                                    data-color="{{ $pic->color_name }}"
-                                                    data-image="{{ $pic->photo }}" value="{{ $pic->color }}" />
-                                                <img src="{{ asset('storage/' . $pic->photo) }}" />
-                                            </label>
-                                        @endforeach
+                                <div class="color-family-pr">
+                                    <p class="mb-0">Color Family : &nbsp;&nbsp; <span class="colorFamily"></span></p>
+                                    <div class="pt-2 brand-selection">
+                                        <div>
+                                            @foreach ($product->multiImages as $pic)
+                                                <label class="brand-label">
+                                                    <input style="border: 5px solid {{ $pic->color }}" type="radio"
+                                                        name="color" data-id="{{ $pic->id }}"
+                                                        data-color="{{ $pic->color_name }}"
+                                                        data-image="{{ $pic->photo }}"
+                                                        value="{{ $pic->color }}" />
+                                                    <img src="{{ asset('storage/' . $pic->photo) }}" />
+                                                </label>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             </div>

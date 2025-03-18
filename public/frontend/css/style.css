@@ -21165,8 +21165,7 @@ table.dataTable tbody td:last-child {
         width: 100% !important;
         margin: auto;
         border-radius: 4px;
-        /* height: 140px; */
-        height: 240px;
+        height: 185px;
         object-fit: fill;
     }
     .btn-primary {
@@ -21196,8 +21195,8 @@ table.dataTable tbody td:last-child {
         color: var(--site-green);
         background-color: transparent;
         border-color: var(--site-green);
-        padding-left: 15px;
-        padding-right: 15px !important;
+        padding-left: 5px;
+        padding-right: 10px !important;
         padding-top: 10px !important;
         padding-bottom: 10px !important;
         font-size: 12px !important;

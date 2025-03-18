@@ -24,8 +24,12 @@
     font-size: 22px !important;
 }
 
-
-
+.color-family-pr{
+    display: block;
+}
+.color-family-pr-m{
+    display: none;
+}
 /* d-sm-none */
 @media only screen and (max-width: 768px) {
     .ps-shopping .ps-shopping__checkout .ps-btn{
@@ -35,5 +39,11 @@
     .ps-shopping .ps-shopping__link {
         margin-left: 5px;
         font-size: 15px;
+    }
+    .color-family-pr{
+        display: none;
+    }
+    .color-family-pr-m{
+        display: block;
     }
 }
