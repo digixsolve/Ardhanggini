@@ -59,15 +59,15 @@
                                 </div>
                                 <div class="col-lg-4 mb-7" >
                                     <x-metronic.label class="form-label">Image</x-metronic.label>
-                                    <x-metronic.input type="file" name="image" id="image"
+                                    <x-metronic.file-input type="file" name="image" id="image"
                                         class="form-control mb-2" placeholder="choose image"
-                                        :value="old('image')"></x-metronic.input>
+                                        :value="old('image')"></x-metronic.file-input>
                                 </div>
                                 <div class="col-lg-4 mb-7" >
                                     <x-metronic.label class="form-label">Review Image</x-metronic.label>
-                                    <x-metronic.input type="file" name="review_image" id="review_image"
+                                    <x-metronic.file-input type="file" name="review_image" id="review_image"
                                         class="form-control mb-2" placeholder="choose review image"
-                                        :value="old('review_image')"></x-metronic.input>
+                                        :value="old('review_image')"></x-metronic.file-input>
                                 </div>
                                 <div class="col-lg-4 mb-7" >
                                     <x-metronic.label for="status" class="col-form-label required fw-bold fs-6">
