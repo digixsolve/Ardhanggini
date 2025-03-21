@@ -90,7 +90,7 @@ class ProductReviewController extends Controller
             Session::flash('success', 'Review Added Successfuly');
             return redirect()->route('admin.product-review.index');
         } catch (\Exception $e) {
-            DB::rollback();
+            // DB::rollback();
             Session::flash('error', 'Review Not Submited' . $e->getMessage());
             return redirect()->back()->withInput();
         }
@@ -178,7 +178,7 @@ class ProductReviewController extends Controller
             Session::flash('success', 'Review Updated Successfuly');
             return redirect()->route('admin.product-review.index');
         } catch (\Exception $e) {
-            DB::rolllback();
+            // DB::rolllback();
             Session::flash('error', 'Review Not Submited' . $e->getMessage());
             return redirect()->back()->withInput();
         }
