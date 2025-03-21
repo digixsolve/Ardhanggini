@@ -18,8 +18,9 @@
         @php
             $metaTitle = $product->meta_title ?? $product->name;
             $metaDescription = strip_tags(
-                $product->meta_description ?? substr(htmlspecialchars($product->description), 0, 150),
+                $product->meta_description ?? substr(html_entity_decode($product->description), 0, 150),
             );
+            
             $metaImage = $product->thumbnail ?? ''; // Default image
         @endphp
 
