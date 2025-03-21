@@ -87,33 +87,35 @@
 
                                                 <tbody class="fw-semibold text-gray-600">
                                                     @foreach (optional($order)->orderItems as $item)
-                                                        <tr>
-                                                            <td>
-                                                                <div class="d-flex align-items-center">
-                                                                    <a href="{{ route('product.details', optional($item->product)->slug) }}"
-                                                                        class="symbol symbol-50px">
-                                                                        <span class="symbol-label"
-                                                                            style="background-image:url({{ !is_null($item->product_image) ? asset('storage/' . $item->product_image) : asset('storage/' . optional($item->product)->thumbnail) }});"></span>
-                                                                    </a>
+                                                        @if (optional($item)->product)
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <a href="{{ route('product.details', optional($item->product)->slug) }}"
+                                                                            class="symbol symbol-50px">
+                                                                            <span class="symbol-label"
+                                                                                style="background-image:url({{ !is_null($item->product_image) ? asset('storage/' . $item->product_image) : asset('storage/' . optional($item->product)->thumbnail) }});"></span>
+                                                                        </a>
 
-                                                                    <div class="ms-5 text-start">
-                                                                        <div class="fw-bold text-start">
-                                                                            {{ optional($item->product)->name }}
+                                                                        <div class="ms-5 text-start">
+                                                                            <div class="fw-bold text-start">
+                                                                                {{ optional($item->product)->name }}
+                                                                            </div>
+                                                                            {{-- <div class="fs-7 text-muted">Delivery Date:
+                                                                                        14/08/2024</div> --}}
                                                                         </div>
-                                                                        {{-- <div class="fs-7 text-muted">Delivery Date:
-                                                                                    14/08/2024</div> --}}
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-end">
-                                                                {{ optional($item->product)->sku_code }} </td>
-                                                            <td class="text-end">
-                                                                {{ optional($item)->quantity }}
-                                                            </td>
-                                                            <td class="text-end">
-                                                                {{ optional($item)->quantity * optional($item)->price }}
-                                                            </td>
-                                                        </tr>
+                                                                </td>
+                                                                <td class="text-end">
+                                                                    {{ optional($item->product)->sku_code }} </td>
+                                                                <td class="text-end">
+                                                                    {{ optional($item)->quantity }}
+                                                                </td>
+                                                                <td class="text-end">
+                                                                    {{ optional($item)->quantity * optional($item)->price }}
+                                                                </td>
+                                                            </tr>
+                                                        @endif
                                                     @endforeach
                                                     <tr>
                                                         <td colspan="3" class="text-end">
