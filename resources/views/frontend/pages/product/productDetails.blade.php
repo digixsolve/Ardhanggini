@@ -563,7 +563,16 @@
                                                             @endif
                                                         </div>
                                                         <div class="ps-review__desc">
-                                                            <p>{!! $review['message'] !!}</p>
+                                                            <div class="row align-items-center">
+                                                                @if (!empty($review['review_image']))
+                                                                    <div class="col-12 text-center">
+                                                                        <img style="width: 200px;" class="img-fluid" src="{{ !empty($review['review_image']) ? asset('storage/' . $review['review_image']) : asset('images/testimonial.png') }}" alt="">
+                                                                    </div>
+                                                                @endif
+                                                                <div class="col-12">
+                                                                    <p>{!! $review['message'] !!}</p>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 @endforeach

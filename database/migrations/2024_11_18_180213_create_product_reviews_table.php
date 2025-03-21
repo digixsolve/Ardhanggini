@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('company_name')->nullable();
             $table->timestamp('date')->nullable(); // Using timestamp for date and time
             $table->string('image')->nullable();
+            $table->string('review_image')->nullable();
             $table->text('message')->nullable();
             $table->integer('rating')->nullable();
             $table->string('status')->nullable();

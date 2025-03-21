@@ -64,6 +64,7 @@ class ProductReviewController extends Controller
             }
             $files = [
                 'image' => $request->file('image'),
+                'review_image' => $request->file('review_image'),
             ];
             $uploadedFiles = [];
             foreach ($files as $key => $file) {
@@ -83,6 +84,7 @@ class ProductReviewController extends Controller
                 "date"       => $request->date,
                 "rating"     => $request->rating,
                 'image'      => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : null,
+                'review_image'      => $uploadedFiles['review_image']['status'] == 1 ? $uploadedFiles['review_image']['file_path'] : null,
                 "message"    => $request->message,
                 "status"     => $request->status,
             ]);
@@ -147,6 +149,7 @@ class ProductReviewController extends Controller
             }
             $files = [
                 'image' => $request->file('image'),
+                'review_image' => $request->file('review_image'),
             ];
             $uploadedFiles = [];
             foreach ($files as $key => $file) {
@@ -171,6 +174,7 @@ class ProductReviewController extends Controller
                 "date"       => $request->date,
                 "rating"     => $request->rating,
                 'image'      => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path']: $review->image,
+                'review_image'      => $uploadedFiles['review_image']['status'] == 1 ? $uploadedFiles['review_image']['file_path']: $review->review_image,
                 "message"    => $request->message,
                 "status"     => $request->status,
             ]);
@@ -192,6 +196,7 @@ class ProductReviewController extends Controller
         $review = ProductReview::find($id);
         $files = [
             'image' => $review->image,
+            'review_image' => $review->review_image,
         ];
         foreach ($files as $key => $file) {
             if (!empty($file)) {
