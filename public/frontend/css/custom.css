@@ -1,38 +1,38 @@
-.font-18{
+.font-18 {
     font-size: 18px;
 }
 .form-control {
     height: 37px;
 }
-.updatebutton{
+.updatebutton {
     padding-bottom: 22px;
     margin-top: 10px;
     padding-bottom: 29px;
     font-size: 16px;
 }
-.btn{
+.btn {
     font-size: 15px;
 }
 
-.mt-60{
+.mt-60 {
     margin-top: 60px;
 }
-.mt-20{
+.mt-20 {
     margin-top: 20px;
 }
-.text-22{
+.text-22 {
     font-size: 22px !important;
 }
 
-.color-family-pr{
+.color-family-pr {
     display: block;
 }
-.color-family-pr-m{
+.color-family-pr-m {
     display: none;
 }
 /* d-sm-none */
 @media only screen and (max-width: 768px) {
-    .ps-shopping .ps-shopping__checkout .ps-btn{
+    .ps-shopping .ps-shopping__checkout .ps-btn {
         padding: 10px 5px;
         width: 100%;
     }
@@ -40,10 +40,10 @@
         margin-left: 5px;
         font-size: 15px;
     }
-    .color-family-pr{
+    .color-family-pr {
         display: none;
     }
-    .color-family-pr-m{
+    .color-family-pr-m {
         display: block;
     }
 }

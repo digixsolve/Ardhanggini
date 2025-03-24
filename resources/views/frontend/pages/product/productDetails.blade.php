@@ -200,12 +200,14 @@
         @media (max-width: 767px) {
             .magnifier-container {
                 cursor: default;
+                transform: none !important;
             }
-
+            .magnifier-container:hover img {
+                transform: none !important;
+            }
             .main-slider-img img {
                 height: 430px;
             }
-
             .mySwiper {
                 height: 430px;
             }
@@ -565,7 +567,7 @@
                                                         <div class="ps-review__desc">
                                                             <div class="row align-items-center">
                                                                 @if (!empty($review['review_image']))
-                                                                    <div class="col-12 text-center">
+                                                                    <div class="text-center col-12">
                                                                         <img style="width: 200px;" class="img-fluid" src="{{ !empty($review['review_image']) ? asset('storage/' . $review['review_image']) : asset('images/testimonial.png') }}" alt="">
                                                                     </div>
                                                                 @endif
