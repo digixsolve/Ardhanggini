@@ -351,6 +351,10 @@
                         button.innerText = 'Included'; // Change button text
                         document.querySelector(".cartCount").innerHTML = data.cartCount;
                         cartHeader.innerHTML = data.cartHeader;
+                        fbq('track', 'AddToCart', {
+                            currency: 'TK',
+                            value: data.subTotal
+                        });
                         if (data.subTotal > 4000) {
                             Toast.fire({
                                 title: 'Congratulations!',
