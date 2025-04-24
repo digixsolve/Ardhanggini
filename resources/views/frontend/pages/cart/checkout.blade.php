@@ -1,6 +1,14 @@
 <x-frontend-app-layout :title="'Checkout'">
+    @push('heads')
+        <script>
+            fbq('track', 'Purchase', {
+                currency: "TK",
+                value: {{$subTotal}}
+            });
+        </script>
+    @endpush
     <style>
-        ::placeholder{
+        ::placeholder {
             color: #7a7a7a !important;
         }
     </style>
@@ -37,45 +45,57 @@
                                         <div class="row">
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">First name <span class="text-danger">*</span></label>
-                                                    <input class="ps-input" type="text" placeholder="Enter Your First Name."
+                                                    <label class="ps-checkout__label">First name <span
+                                                            class="text-danger">*</span></label>
+                                                    <input class="ps-input" type="text"
+                                                        placeholder="Enter Your First Name."
                                                         value="{{ old('shipping_first_name', optional($user)->first_name) }}"
-                                                        name="shipping_first_name" required/>
+                                                        name="shipping_first_name" required />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Last name </label>
-                                                    <input class="ps-input" type="text" placeholder="Enter Your Last Name."
+                                                    <input class="ps-input" type="text"
+                                                        placeholder="Enter Your Last Name."
                                                         value="{{ old('shipping_last_name', optional($user)->last_name) }}"
                                                         name="shipping_last_name" />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">Email address <span class="text-danger">*</span></label>
-                                                    <input class="ps-input" type="email" name="shipping_email" placeholder="Enter Your Email Address."
-                                                        value="{{ old('shipping_email', optional($user)->email) }}" required />
+                                                    <label class="ps-checkout__label">Email address <span
+                                                            class="text-danger">*</span></label>
+                                                    <input class="ps-input" type="email" name="shipping_email"
+                                                        placeholder="Enter Your Email Address."
+                                                        value="{{ old('shipping_email', optional($user)->email) }}"
+                                                        required />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">Phone <span class="text-danger">*</span></label>
-                                                    <input class="ps-input" type="text" name="shipping_phone" placeholder="Enter Your Phone Number."
-                                                        value="{{ old('shipping_phone', optional($user)->phone) }}" required />
+                                                    <label class="ps-checkout__label">Phone <span
+                                                            class="text-danger">*</span></label>
+                                                    <input class="ps-input" type="text" name="shipping_phone"
+                                                        placeholder="Enter Your Phone Number."
+                                                        value="{{ old('shipping_phone', optional($user)->phone) }}"
+                                                        required />
                                                 </div>
                                             </div>
 
                                             <div class="col-12 col-md-4">
                                                 <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">District <span class="text-danger">*</span></label>
-                                                    <input class="ps-input" type="text" name="shipping_state"  placeholder="Enter Your District." required/>
+                                                    <label class="ps-checkout__label">District <span
+                                                            class="text-danger">*</span></label>
+                                                    <input class="ps-input" type="text" name="shipping_state"
+                                                        placeholder="Enter Your District." required />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-4">
                                                 <div class="ps-checkout__group">
                                                     <label class="ps-checkout__label">Upazila </label>
-                                                    <input class="ps-input" type="text" name="shipping_postcode" placeholder="Enter Your Upazila."/>
+                                                    <input class="ps-input" type="text" name="shipping_postcode"
+                                                        placeholder="Enter Your Upazila." />
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-4">
@@ -94,8 +114,10 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="ps-checkout__group">
-                                                    <label class="ps-checkout__label">Full Address <span class="text-danger">*</span></label>
-                                                    <textarea class="ps-textarea" name="shipping_address" id="" rows="2" placeholder="Enter Full Address (House, Road, Area, City)." required>{{ old('shipping_address', optional($user)->address_one) }}</textarea>
+                                                    <label class="ps-checkout__label">Full Address <span
+                                                            class="text-danger">*</span></label>
+                                                    <textarea class="ps-textarea" name="shipping_address" id="" rows="2"
+                                                        placeholder="Enter Full Address (House, Road, Area, City)." required>{{ old('shipping_address', optional($user)->address_one) }}</textarea>
                                                     {{-- <input class="mb-3 ps-input" type="text" name="shipping_address"
                                                         placeholder="House number and street name" /> --}}
                                                 </div>
@@ -105,8 +127,7 @@
                                     <div class="col-12">
                                         <div class="ps-checkout__group">
                                             <label class="ps-checkout__label">Order notes (optional)</label>
-                                            <textarea class="ps-textarea" name="order_note" rows="6"
-                                                placeholder="Have any special note?"></textarea>
+                                            <textarea class="ps-textarea" name="order_note" rows="6" placeholder="Have any special note?"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -132,7 +153,8 @@
                                 @endforeach
                                 <div class="ps-checkout__row">
                                     <div class="ps-title">Subtotal</div>
-                                    <input type="hidden" name="sub_total" id="sub_total" value="{{ $subTotal }}">
+                                    <input type="hidden" name="sub_total" id="sub_total"
+                                        value="{{ $subTotal }}">
                                     <div class="ps-product__price">৳{{ number_format($subTotal, 2) }}</div>
                                 </div>
                                 <div class="ps-checkout__row row">
