@@ -163,6 +163,9 @@
     </noscript>
     <!-- End Meta Pixel Code -->
 
+    {!! optional($setting)->google_analytics !!}
+    {!! optional($setting)->google_adsense !!}
+
     <style>
         /* Preloader styles */
         #preloader {
@@ -1104,8 +1107,7 @@
             }
         @endif
     </script>
-    {!! optional($setting)->google_analytics !!}
-    {!! optional($setting)->google_adsense !!}
+
     {{-- add_to_cart_btn_product_single --}}
 </body>
 
