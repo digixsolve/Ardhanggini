@@ -1,12 +1,5 @@
 <x-frontend-app-layout :title="'Checkout'">
-    @push('heads')
-        <script>
-            fbq('track', 'Purchase', {
-                currency: "TK",
-                value: {{$subTotal}}
-            });
-        </script>
-    @endpush
+    
     <style>
         ::placeholder {
             color: #7a7a7a !important;
