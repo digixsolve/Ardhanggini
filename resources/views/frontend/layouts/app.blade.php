@@ -20,7 +20,7 @@
             $metaDescription = strip_tags(
                 $product->meta_description ?? substr(html_entity_decode($product->description), 0, 150),
             );
-            
+
             $metaImage = $product->thumbnail ?? ''; // Default image
         @endphp
 
@@ -101,7 +101,7 @@
         })();
     </script> --}}
     <!--End of Tawk.to Script-->
-    <!-- Meta Pixel Code -->
+    {{-- <!-- Meta Pixel Code -->
     <script>
         ! function(f, b, e, v, n, t, s) {
             if (f.fbq) return;
@@ -126,7 +126,46 @@
     </script>
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=622213250781319&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code --> --}}
+    <!-- Meta Pixel Code -->
+    <script>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+
+        // Initialize Pixel with your ID
+        fbq('init', '622213250781319');
+
+        // Set test event code
+        fbq('set', 'test_event_code', 'TEST32070');
+
+        // Track default PageView
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=622213250781319&ev=PageView&noscript=1" />
+    </noscript>
     <!-- End Meta Pixel Code -->
+
+    {!! optional($setting)->google_analytics !!}
+    {!! optional($setting)->google_adsense !!}
+
     <style>
         /* Preloader styles */
         #preloader {
@@ -315,6 +354,10 @@
                         button.innerText = 'Included'; // Change button text
                         document.querySelector(".cartCount").innerHTML = data.cartCount;
                         cartHeader.innerHTML = data.cartHeader;
+                        fbq('track', 'AddToCart', {
+                            currency: 'TK',
+                            value: data.subTotal
+                        });
                         if (data.subTotal > 4000) {
                             Toast.fire({
                                 title: 'Congratulations!',
@@ -1064,8 +1107,7 @@
             }
         @endif
     </script>
-    {!! optional($setting)->google_analytics !!}
-    {!! optional($setting)->google_adsense !!}
+
     {{-- add_to_cart_btn_product_single --}}
 </body>
 
