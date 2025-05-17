@@ -230,10 +230,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <h6 class="text-left">
-                            {{ $order->order_note }}
-                        </h6>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h4>Order Details (#{{ $order->order_number }})</h4>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-12">
+                                <h6 class="text-left">
+                                    {{ $order->order_note }}
+                                </h6>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="d-flex flex-column gap-7 gap-lg-10">
