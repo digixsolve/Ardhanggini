@@ -229,11 +229,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mb-10">
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title">
-                                <h4>Order Details (#{{ $order->order_number }})</h4>
+                                <h4>Order Note :</h4>
                             </div>
                         </div>
                         <div class="card-body">
