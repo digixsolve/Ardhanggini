@@ -230,19 +230,17 @@
                     </div>
                 </div>
                 @if (!empty($order->order_note))
-                    <div class="row mb-10">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title">
-                                    <h4>Order Note :</h4>
-                                </div>
+                    <div class="card mb-10">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h4>Order Note :</h4>
                             </div>
-                            <div class="card-body">
-                                <div class="col-xl-12">
-                                    <h6 class="text-left">
-                                        {{ $order->order_note }}
-                                    </h6>
-                                </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-xl-12">
+                                <h6 class="text-left">
+                                    {{ $order->order_note }}
+                                </h6>
                             </div>
                         </div>
                     </div>
