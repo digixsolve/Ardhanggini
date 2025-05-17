@@ -21,39 +21,34 @@
                         <li class="breadcrumb-item text-muted">
                             Order Details (#{{ $order->order_number }}) </li>
                     </ul>
-                    <h5 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">
-                        Order Details (#{{ $order->order_number }})
-                    </h5>
-
                 </div>
             </div>
         </div>
         <div id="kt_app_content" class="app-content  flex-column-fluid ">
             <div id="kt_app_content_container" class="app-container container-fluid">
                 <div class="row mb-10">
-                    <div class="col-xl-4">
-                        <div class="card card-flush py-4 flex-row-fluid">
-                            <div class="card-header">
-                                <div class="card-title">
-                                    <h4>Order Details (#{{ $order->order_number }})</h4>
-                                </div>
+                    <div class="col-xl-3 card card-flush py-4 flex-row-fluid">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h4>Order Details (#{{ $order->order_number }})</h4>
                             </div>
-                            <div class="card-body pt-0">
-                                <div class="table-responsive">
-                                    <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5 min-w-300px">
-                                        <tbody class="fw-semibold text-gray-600">
-                                            <tr>
-                                                <td class="text-muted">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fa-solid fa-calendar fs-2 me-2"><span
-                                                                class="path1"></span><span class="path2"></span></i>
-                                                        Date Created
-                                                    </div>
-                                                </td>
-                                                <td class="fw-bold text-end">{{ $order->created_at->format('d M , Y') }}
-                                                </td>
-                                            </tr>
-                                            {{-- <tr>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="table-responsive">
+                                <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5 min-w-300px">
+                                    <tbody class="fw-semibold text-gray-600">
+                                        <tr>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-calendar fs-2 me-2"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                    Date Created
+                                                </div>
+                                            </td>
+                                            <td class="fw-bold text-end">{{ $order->created_at->format('d M , Y') }}
+                                            </td>
+                                        </tr>
+                                        {{-- <tr>
                                                 <td class="text-muted">
                                                     <div class="d-flex align-items-center">
                                                         <i class="fa-solid fa-wallet fs-2 me-2">
@@ -67,164 +62,157 @@
                                                         class="w-50px ms-2">
                                                 </td>
                                             </tr> --}}
-                                            <tr>
-                                                <td class="text-muted">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fa-solid fa-truck fs-2 me-2"></i>
-                                                        Shipping Method
-                                                    </div>
+                                        <tr>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-truck fs-2 me-2"></i>
+                                                    Shipping Method
+                                                </div>
+                                            </td>
+                                            @if (optional($order->shippingCharge))
+                                                <td class="fw-bold text-end">
+                                                    {{ optional($order->shippingCharge)->title }}({{ optional($order->shippingCharge)->price }})
                                                 </td>
-                                                @if (optional($order->shippingCharge))
-                                                    <td class="fw-bold text-end">
-                                                        {{ optional($order->shippingCharge)->title }}({{ optional($order->shippingCharge)->price }})
-                                                    </td>
-                                                @else
-                                                    <td class="fw-bold text-end">
-                                                        Free Shipping
-                                                    </td>
-                                                @endif
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                            @else
+                                                <td class="fw-bold text-end">
+                                                    Free Shipping
+                                                </td>
+                                            @endif
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4">
-                        <div class="card card-flush py-4  flex-row-fluid">
-                            <div class="card-header">
-                                <div class="card-title">
-                                    <h4>Customer Details</h4>
-                                </div>
+                    <div class="col-xl-4 card card-flush py-4 flex-row-fluid">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h4>Customer Details</h4>
                             </div>
-                            <div class="card-body pt-0">
-                                <div class="table-responsive">
-                                    <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5 min-w-300px">
-                                        <tbody class="fw-semibold text-gray-600">
-                                            <tr>
-                                                <td class="text-muted">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fa-solid fa-profile-circle fs-2 me-2">
-                                                        </i>
-                                                        Customer
-                                                    </div>
-                                                </td>
-                                                <td class="fw-bold text-end">
-                                                    <div class="d-flex align-items-center justify-content-end">
-                                                        <a href="#" class="text-gray-600 text-hover-primary">
-                                                            {{ optional($order->user)->first_name }}
-                                                            {{ optional($order->user)->last_name }}
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-muted">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fa-solid fa-sms fs-2 me-2">
-                                                        </i>
-                                                        Email
-                                                    </div>
-                                                </td>
-                                                <td class="fw-bold text-end">
-                                                    <a href="mailto:{{ optional($order->user)->email }}"
-                                                        class="text-gray-600 text-hover-primary">
-                                                        {{ optional($order->user)->email }} </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-muted">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fa-solid fa-phone fs-2 me-2"><span
-                                                                class="path1"></span><span class="path2"></span></i>
-                                                        Phone
-                                                    </div>
-                                                </td>
-                                                <td class="fw-bold text-end">{{ optional($order->user)->phone }} </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="table-responsive">
+                                <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5 min-w-300px">
+                                    <tbody class="fw-semibold text-gray-600">
+                                        <tr>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-profile-circle fs-2 me-2">
+                                                    </i>
+                                                    Customer
+                                                </div>
+                                            </td>
+                                            <td class="fw-bold text-end">
+                                                <div class="d-flex align-items-center justify-content-end">
+                                                    <a href="#" class="text-gray-600 text-hover-primary">
+                                                        {{ optional($order->user)->first_name }}
+                                                        {{ optional($order->user)->last_name }}
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-sms fs-2 me-2">
+                                                    </i>
+                                                    Email
+                                                </div>
+                                            </td>
+                                            <td class="fw-bold text-end">
+                                                <a href="mailto:{{ optional($order->user)->email }}"
+                                                    class="text-gray-600 text-hover-primary">
+                                                    {{ optional($order->user)->email }} </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-phone fs-2 me-2"><span
+                                                            class="path1"></span><span class="path2"></span></i>
+                                                    Phone
+                                                </div>
+                                            </td>
+                                            <td class="fw-bold text-end">{{ optional($order->user)->phone }} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4">
-                        <div class="card card-flush py-4  flex-row-fluid">
-                            <div class="card-header">
-                                <div class="card-title">
-                                    <h4>Shipping Address</h4>
-                                </div>
+                    <div class="col-xl-5 card card-flush py-4 flex-row-fluid">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h4>Shipping Address</h4>
                             </div>
-                            <div class="card-body pt-0">
-                                <div class="table-responsive">
-                                    <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5">
-                                        <tbody class="fw-semibold text-gray-600">
-                                            <tr>
-                                                <td class="text-muted">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fa-solid fa-devices fs-2 me-2"></i>
-                                                        Invoice
-                                                        <span class="ms-1" data-bs-toggle="tooltip"
-                                                            aria-label="View the invoice generated by this order."
-                                                            data-bs-original-title="View the invoice generated by this order."
-                                                            data-kt-initialized="1">
-                                                            <i class="fa-solid fa-information-5 text-gray-500 fs-6"></i>
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="fw-bold text-end"><a
-                                                        href="https://preview.keenthemes.com/metronic8/demo1/apps/invoices/view/invoice-3.html"
-                                                        class="text-gray-600 text-hover-primary">#{{ $order->order_number }}</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-muted">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fa-solid fa-truck fs-2 me-2"></i>
-                                                        Shipping Address
-                                                        <span class="ms-1">
-                                                            <i class="fa-solid fa-information-5 text-gray-500 fs-6"></i>
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="fw-bold text-end"><a href="#"
-                                                        class="text-gray-600 text-hover-primary">{{ $order->shipping_address }}</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-muted">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fa-solid fa-truck fs-2 me-2"></i>
-                                                        Shipping District
-                                                        <span class="ms-1">
-                                                            <i
-                                                                class="fa-solid fa-information-5 text-gray-500 fs-6"></i>
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="fw-bold text-end"><a href="#"
-                                                        class="text-gray-600 text-hover-primary">{{ $order->shipping_state }}</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-muted">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fa-solid fa-truck fs-2 me-2"></i>
-                                                        Shipping Upazila
-                                                        <span class="ms-1">
-                                                            <i
-                                                                class="fa-solid fa-information-5 text-gray-500 fs-6"></i>
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td class="fw-bold text-end"><a href="#"
-                                                        class="text-gray-600 text-hover-primary">{{ $order->shipping_zipcode }}</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="table-responsive">
+                                <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5">
+                                    <tbody class="fw-semibold text-gray-600">
+                                        <tr>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-devices fs-2 me-2"></i>
+                                                    Invoice
+                                                    <span class="ms-1" data-bs-toggle="tooltip"
+                                                        aria-label="View the invoice generated by this order."
+                                                        data-bs-original-title="View the invoice generated by this order."
+                                                        data-kt-initialized="1">
+                                                        <i class="fa-solid fa-information-5 text-gray-500 fs-6"></i>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td class="fw-bold text-end"><a
+                                                    href="https://preview.keenthemes.com/metronic8/demo1/apps/invoices/view/invoice-3.html"
+                                                    class="text-gray-600 text-hover-primary">#{{ $order->order_number }}</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-truck fs-2 me-2"></i>
+                                                    Shipping Address
+                                                    <span class="ms-1">
+                                                        <i class="fa-solid fa-information-5 text-gray-500 fs-6"></i>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td class="fw-bold text-end"><a href="#"
+                                                    class="text-gray-600 text-hover-primary">{{ $order->shipping_address }}</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-truck fs-2 me-2"></i>
+                                                    Shipping District
+                                                    <span class="ms-1">
+                                                        <i class="fa-solid fa-information-5 text-gray-500 fs-6"></i>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td class="fw-bold text-end"><a href="#"
+                                                    class="text-gray-600 text-hover-primary">{{ $order->shipping_state }}</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fa-solid fa-truck fs-2 me-2"></i>
+                                                    Shipping Upazila
+                                                    <span class="ms-1">
+                                                        <i class="fa-solid fa-information-5 text-gray-500 fs-6"></i>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td class="fw-bold text-end"><a href="#"
+                                                    class="text-gray-600 text-hover-primary">{{ $order->shipping_zipcode }}</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
