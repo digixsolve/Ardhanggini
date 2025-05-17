@@ -238,7 +238,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="col-12">
+                                <div class="col-xl-12">
                                     <h6 class="text-left">
                                         {{ $order->order_note }}
                                     </h6>
