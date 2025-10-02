@@ -23,9 +23,10 @@
                 </div>
             </div>
             <div class="modal-footer text-center">
-                <button class="btn btn-primary" data-target="#pm_modal_3" data-toggle="modal" data-dismiss="modal">Ok
+                <button class="btn btn-primary me-2" data-target="#pm_modal_3" data-toggle="modal"
+                    data-dismiss="modal">Ok
                     Proceed</button>
-                <button class="btn btn-primary" data-target="#pm_modal_2" data-toggle="modal"
+                <button class="btn btn-outline-primary ml-2" data-target="#pm_modal_2" data-toggle="modal"
                     data-dismiss="modal">Cancel</button>
             </div>
         </div>
@@ -60,14 +61,17 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" data-target="#pm_modal_1" data-toggle="modal" data-dismiss="modal">Back
-                    to first</button>
+                <button class="btn btn-primary" data-target="#pm_modal_3" data-toggle="modal" data-dismiss="modal">Go
+                    Back & Confirm</button>
+                <button type="button" class="btn btn-outline-primary ml-2" data-dismiss="modal"
+                    aria-label="Close">Cancel</button>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="pm_modal_3" aria-hidden="true" aria-labelledby="pm_modal_3Label2" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
+
+<div class="modal fade" id="pm_modal_3" tabindex="-1" aria-labelledby="pm_modal_3Label2" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title" id="pm_modal_3Label2">Payment Details</h3>
@@ -78,31 +82,28 @@
             <div class="modal-body">
 
                 <!-- Payment Options -->
-                <div class="text-center mb-4">
-                    <div class="d-flex justify-content-center">
-
-                        @if (!empty($setting->bkash_no))
-                            <div class="mx-3 text-center">
-                                <img class="payment_logo" src="{{ asset('images/bkash.svg') }}" alt="Bkash"
-                                    class="mb-2">
-                                <div class="payment-number">{{ $setting->bkash_no }}</div>
-                            </div>
-                        @endif
-                        @if (!empty($setting->nagad_no))
-                            <div class="mx-3 text-center">
-                                <img class="payment_logo" src="{{ asset('images/nagad.svg') }}" alt="Nagad"
-                                    class="mb-2">
-                                <div class="payment-number">{{ $setting->nagad_no }}</div>
-                            </div>
-                        @endif
-                        @if (!empty($setting->rocket_no))
-                            <div class="mx-3 text-center">
-                                <img class="payment_logo" src="{{ asset('images/rocket.png') }}" alt="Rocket"
-                                    class="mb-2">
-                                <div class="payment-number">{{ $setting->rocket_no }}</div>
-                            </div>
-                        @endif
-                    </div>
+                <div class="row justify-content-center mb-4">
+                    @if (!empty($setting->bkash_no))
+                        <div class="mx-3 text-center">
+                            <img class="payment_logo" src="{{ asset('images/bkash.svg') }}" alt="Bkash"
+                                class="mb-2">
+                            <div class="payment-number">{{ $setting->bkash_no }}</div>
+                        </div>
+                    @endif
+                    @if (!empty($setting->nagad_no))
+                        <div class="mx-3 text-center">
+                            <img class="payment_logo" src="{{ asset('images/nagad.svg') }}" alt="Nagad"
+                                class="mb-2">
+                            <div class="payment-number">{{ $setting->nagad_no }}</div>
+                        </div>
+                    @endif
+                    @if (!empty($setting->rocket_no))
+                        <div class="mx-3 text-center">
+                            <img class="payment_logo" src="{{ asset('images/rocket.png') }}" alt="Rocket"
+                                class="mb-2">
+                            <div class="payment-number">{{ $setting->rocket_no }}</div>
+                        </div>
+                    @endif
                 </div>
 
                 <!-- Instruction -->
@@ -114,12 +115,12 @@
 
                 <!-- Form Heading -->
                 <div class="text-center mb-3">
-                    <h5 class="font-weight-bold">Provide Your Payment Details</h5>
-                    <p class="small font-weight-bold text-muted">(আপনার পেমেন্ট এর তথ্য নিচে ফর্ম দিন)</p>
+                    <h3 class="font-weight-bold">Provide Your Payment Details</h3>
+                    <h5 class="small font-weight-bold text-muted">(আপনার পেমেন্ট এর তথ্য নিচে ফর্ম দিন)</h5>
                 </div>
 
                 <!-- Form Fields -->
-                <form class="ps-checkout__form">
+                <div class="payment_form border-0">
                     <div class="form-group ps-checkout__group">
                         <label class="ps-checkout__label">Your Name</label>
                         <input type="text" class="form-control ps-input" name="client_payment_name"
@@ -142,19 +143,19 @@
                             placeholder="Write your paid amount here" required>
                     </div>
 
-                    <!-- Buttons -->
-                    <div class="text-center mt-5 mb-3">
-                        <button type="submit" class="btn btn-custom px-4">Submit Info and Confirm</button>
-                        <button type="button" class="btn btn-outline-custom px-4 ml-2">Cancel</button>
-                    </div>
-                </form>
+                </div>
+                <!-- Buttons -->
+                <div class="text-center mt-5 mb-3">
+                    <button type="submit" class="btn btn-custom px-4">Submit Info and Confirm</button>
+                    <button type="button" class="btn btn-outline-custom px-4 ml-2" data-dismiss="modal"
+                        aria-label="Close">Cancel</button>
+                </div>
             </div>
 
             <!-- Custom Styles -->
             <style>
                 .payment-number {
                     background: #4a006d;
-                    /* purple background like image */
                     color: #fff;
                     padding: 6px 12px;
                     border-radius: 25px;
@@ -177,7 +178,7 @@
                 .btn-custom {
                     background-color: #4a006d;
                     color: #fff;
-                    border-radius: 8px;
+                    border-radius: 3px;
                     font-weight: 500;
                 }
 
@@ -189,7 +190,7 @@
                 .btn-outline-custom {
                     border: 1px solid #4a006d;
                     color: #4a006d;
-                    border-radius: 8px;
+                    border-radius: 3px;
                     font-weight: 500;
                 }
 
@@ -197,7 +198,18 @@
                     background-color: #4a006d;
                     color: #fff;
                 }
+
+                @media only screen and (min-width: 767px) {
+                    .payment_form {
+                        padding: 20px 5rem;
+                    }
+
+                    .instruction-text {
+                        padding: 0px 5rem;
+                    }
+                }
             </style>
+
 
 
         </div>
