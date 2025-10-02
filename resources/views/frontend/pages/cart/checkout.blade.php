@@ -1,5 +1,5 @@
 <x-frontend-app-layout :title="'Checkout'">
-    
+
     <style>
         ::placeholder {
             color: #7a7a7a !important;
@@ -226,18 +226,33 @@
                                                 I have read and agree to the website terms and conditions *</label>
                                         </div>
                                     </div>
-                                    <button type="submit" class="mt-4 btn btn-primary w-100 register-btns">
-                                        <i class="pr-2 fa-solid fa-clipboard-check"></i> Place order
+                                    <button type="button" class="mt-4 btn btn-primary w-100 register-btns"
+                                        data-toggle="modal" data-target="#pm_modal_1">
+                                        Place Order
                                     </button>
+                                    {{-- <button type="submit" class="mt-4 btn btn-primary w-100 register-btns">
+                                        <i class="pr-2 fa-solid fa-clipboard-check"></i> Place order
+                                    </button> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @include('frontend.pages.cart.partials.paymentModal')
                 </form>
             </div>
         </div>
     </div>
+
     @push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('input[name="shipping_first_name"]').on('input', function() {
+                    var firstName = $(this).val();
+                    $('input[name="client_payment_name"]').val(firstName);
+                    $('.client_name').text(firstName);
+                });
+            });
+        </script>
         {{-- <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const subtotal = parseFloat('{{ $subTotal }}');
@@ -271,7 +286,10 @@
 
                         console.log('Shipping Price:', shippingPrice);
                         console.log('Calculated Total:', total);
-
+                        const paymentDeliveryChargeSpan = document.getElementById('paymentDeliveryCharge');
+                        if (paymentDeliveryChargeSpan) {
+                            paymentDeliveryChargeSpan.textContent = shippingPrice.toFixed(2);
+                        }
                         totalInput.value = total.toFixed(2); // Update hidden field value
                         totalPriceSpan.textContent = total.toFixed(2); // Update the visible total price
                     });

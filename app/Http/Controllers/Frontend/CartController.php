@@ -44,7 +44,7 @@ class CartController extends Controller
                     'name' => $product->name,
                     'qty' => $quantity,
                     'price' => !empty($product->unit_discount_price) ? $product->unit_discount_price : $product->unit_price,
-                    'options' => ['color' => $request->color,'image' => $request->image],
+                    'options' => ['color' => $request->color, 'image' => $request->image],
                 ])->associate('App\Models\Product');
 
                 $formattedSubtotal = Cart::instance('cart')->subtotal();
@@ -279,39 +279,43 @@ class CartController extends Controller
             }
 
             $order = Order::create([
-                'order_number'                 => $code, // Generate a unique order number
-                'user_id'                      => auth()->id(), // Assuming user is logged in
-                'shipping_method_id'           => $shipping_method_id,
-                'sub_total'                    => $request->input('sub_total'), // Use Cart instance
-                'coupon'                       => $request->input('coupon', 0),
-                'discount'                     => $request->input('discount', 0),
-                'total_amount'                 => $totalAmount,
-                'quantity'                     => Cart::instance('cart')->count(), // Total quantity of items in cart
-                'shipping_charge'              => $shipping_charge,
-                'payment_method'               => $request->input('payment_method'),
-                'payment_status'               => 'unpaid',
-                'status'                       => 'pending',
-                'shipped_to_different_address' => $request->has('ship-address') ? 'yes' : 'no',
-                'billing_first_name'           => $request->input('billing_first_name'),
-                'billing_last_name'            => $request->input('billing_last_name'),
-                'billing_email'                => $request->input('billing_email'),
-                'billing_phone'                => $request->input('billing_phone'),
-                'billing_address'              => $billingAddress,
-                'billing_zipcode'              => $request->input('billing_postcode'),
-                'billing_state'                => $request->input('billing_state'),
-                'billing_country'              => $request->input('billing_country', 'UK'),
-                'shipping_first_name'          => $request->input('shipping_first_name'),
-                'shipping_last_name'           => $request->input('shipping_last_name'),
-                'shipping_email'               => $request->input('shipping_email'),
-                'shipping_phone'               => $request->input('shipping_phone'),
-                'shipping_address'             => $shippingAddress,
-                'shipping_zipcode'             => $request->input('shipping_postcode'),
-                'shipping_state'               => $request->input('shipping_state'),
-                'shipping_country'             => $request->input('shipping_country'),
-                'order_note'                   => $request->input('order_note'),
-                'created_by'                   => auth()->id(),
-                'order_created_at'             => Carbon::now(),
-                'created_at'                   => Carbon::now(),
+                'order_number'                  => $code, // Generate a unique order number
+                'user_id'                       => auth()->id(), // Assuming user is logged in
+                'shipping_method_id'            => $shipping_method_id,
+                'sub_total'                     => $request->input('sub_total'), // Use Cart instance
+                'coupon'                        => $request->input('coupon', 0),
+                'discount'                      => $request->input('discount', 0),
+                'total_amount'                  => $totalAmount,
+                'quantity'                      => Cart::instance('cart')->count(), // Total quantity of items in cart
+                'shipping_charge'               => $shipping_charge,
+                'payment_method'                => $request->input('payment_method'),
+                'payment_status'                => 'unpaid',
+                'status'                        => 'pending',
+                'shipped_to_different_address'  => $request->has('ship-address') ? 'yes' : 'no',
+                'billing_first_name'            => $request->input('billing_first_name'),
+                'billing_last_name'             => $request->input('billing_last_name'),
+                'billing_email'                 => $request->input('billing_email'),
+                'billing_phone'                 => $request->input('billing_phone'),
+                'billing_address'               => $billingAddress,
+                'billing_zipcode'               => $request->input('billing_postcode'),
+                'billing_state'                 => $request->input('billing_state'),
+                'billing_country'               => $request->input('billing_country', 'UK'),
+                'shipping_first_name'           => $request->input('shipping_first_name'),
+                'shipping_last_name'            => $request->input('shipping_last_name'),
+                'shipping_email'                => $request->input('shipping_email'),
+                'shipping_phone'                => $request->input('shipping_phone'),
+                'shipping_address'              => $shippingAddress,
+                'shipping_zipcode'              => $request->input('shipping_postcode'),
+                'shipping_state'                => $request->input('shipping_state'),
+                'shipping_country'              => $request->input('shipping_country'),
+                'order_note'                    => $request->input('order_note'),
+                'client_payment_name'           => $request->input('client_payment_name'),
+                'client_payment_number'         => $request->input('client_payment_number'),
+                'client_payment_transaction_id' => $request->input('client_payment_transaction_id'),
+                'client_payment_amount'         => $request->input('client_payment_amount'),
+                'created_by'                    => auth()->id(),
+                'order_created_at'              => Carbon::now(),
+                'created_at'                    => Carbon::now(),
             ]);
 
             // Add items to order_items table

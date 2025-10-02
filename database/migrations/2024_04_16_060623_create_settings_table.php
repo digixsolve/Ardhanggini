@@ -26,6 +26,9 @@ return new class extends Migration
             $table->string('primary_phone', 20)->nullable();
             $table->string('alternative_phone', 20)->nullable();
             $table->string('whatsapp_number', 20)->nullable();
+            $table->string('bkash_no', 20)->nullable();
+            $table->string('nagad_no', 20)->nullable();
+            $table->string('rocket_no', 20)->nullable();
             $table->string('default_language', 50)->nullable();
             $table->text('address_line_one')->nullable();
             $table->text('address_line_two')->nullable();

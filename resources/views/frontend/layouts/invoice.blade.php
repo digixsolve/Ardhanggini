@@ -4,22 +4,21 @@
             <div class="col-lg-6">
                 <div class="pb-5 text-m-center">
                     <img class="text-right" width="150px"
-                        src="{{ !empty(optional($setting)->site_logo_black) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
-                        alt=""
-                        onerror="this.onerror=null;this.src='https://neezpackages.com/frontend/img/logo.png';">
+                        src="{{ !empty(optional($setting)->site_logo_black) && file_exists(public_path('storage/' . optional($setting)->site_logo_black)) ? asset('storage/' . optional($setting)->site_logo_black) : asset('frontend/img/logo.png') }}"
+                        alt="Ardhanggini">
                 </div>
             </div>
             <div class="col-lg-6">
                 <h1 class="text-right mb-0 text-m-center pb-2 pb-lg-0">Invoice</h1>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div
                     style="background-color: var(--site-green); clip-path: polygon(90% 0, 100% 50%, 90% 99%, 0% 100%, 0 53%, 0% 0%);">
                     <p class="mb-0 p-3 text-white"><span class="text-white">Invoice No:</span>
                         #{{ optional($order)->order_number }}</p>
                 </div>
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-6">
                 {{-- <p class="mb-0 p-3 text-right">Date: {{ optional($order)->created_at->format('d/m/Y') }}</p> --}}
                 <p class="mb-0 p-3 text-right text-m-center">Date: {{ optional($order)->created_at->format('d M, Y') }}</p>
             </div>
@@ -45,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-3 pt-3 mt-lg-5 pt-lg-5">
+        <div class="row mt-3 pt-3 mt-lg-3">
             <div class="col-lg-12">
                 <h4 class="text-m-center">Order Information:</h4>
                 <div class="table-responsive">
@@ -98,7 +97,7 @@
                                 </tr>
                             @endforeach
                             <tr class="">
-                                <td colspan="5" class="text-right">
+                                <td colspan="6" class="text-right">
                                     <span>Subtotal</span>
                                 </td>
                                 <td class="text-right">
@@ -106,7 +105,7 @@
                                 </td>
                             </tr>
                             <tr class="">
-                                <td colspan="5" class="text-right">
+                                <td colspan="6" class="text-right">
                                     <span>VAT (0%)</span>
                                 </td>
                                 <td class="text-right">
@@ -115,7 +114,7 @@
                             </tr>
                             @if (optional($order)->shippingCharge)
                                 <tr class="">
-                                    <td colspan="5" class="text-right">
+                                    <td colspan="6" class="text-right">
                                         <span>Shipping Charge</span>
                                     </td>
                                     <td class="text-right">
@@ -124,8 +123,8 @@
                                     </td>
                                 </tr>
                             @endif
-                            <tr class="invoice_table">
-                                <td colspan="5" class="text-right">
+                            <tr class="">
+                                <td colspan="6" class="text-right">
                                     <span class="font-weight-bold">Grand Total</span>
                                 </td>
                                 <td class="text-right font-weight-bold">

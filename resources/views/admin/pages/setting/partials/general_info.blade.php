@@ -49,6 +49,27 @@
             placeholder="Contact email address"></x-metronic.input>
     </div>
     <div class="col-lg-4 mb-7">
+        <x-metronic.label for="bkash_no" class="col-form-label fw-bold fs-6 ">{{ __('BKash No') }}
+        </x-metronic.label>
+
+        <x-metronic.input id="bkash_no" type="text" name="bkash_no" :value="old('bkash_no', optional($setting)->bkash_no)"
+            placeholder="BKash No"></x-metronic.input>
+    </div>
+    <div class="col-lg-4 mb-7">
+        <x-metronic.label for="nagad_no" class="col-form-label fw-bold fs-6 ">{{ __('Nagad No') }}
+        </x-metronic.label>
+
+        <x-metronic.input id="nagad_no" type="text" name="nagad_no" :value="old('nagad_no', optional($setting)->nagad_no)"
+            placeholder="Nagad No"></x-metronic.input>
+    </div>
+    <div class="col-lg-4 mb-7">
+        <x-metronic.label for="rocket_no" class="col-form-label fw-bold fs-6 ">{{ __('DBBL Rocket No') }}
+        </x-metronic.label>
+
+        <x-metronic.input id="rocket_no" type="text" name="rocket_no" :value="old('rocket_no', optional($setting)->rocket_no)"
+            placeholder="DBBL Rocket No"></x-metronic.input>
+    </div>
+    <div class="col-lg-3 mb-7">
         <x-metronic.label for="support_email" class="col-form-label fw-bold fs-6 ">{{ __('Support Email') }}
         </x-metronic.label>
 
@@ -85,14 +106,14 @@
         <x-metronic.input id="alternative_phone" type="text" name="alternative_phone" :value="old('alternative_phone', optional($setting)->alternative_phone)"
             placeholder="Alternative phone"></x-metronic.input>
     </div>
-    <div class="col-lg-6 mb-7">
+    <div class="col-lg-5 mb-7">
         <x-metronic.label for="address_line_one" class="col-form-label fw-bold fs-6">{{ __('Address Line One') }}
         </x-metronic.label>
 
         <textarea name="address_line_one" id="address_line_one" cols="1" rows="1" class="form-control"
             placeholder="Enter Address Line One">{!! old('address_line_one', optional($setting)->address_line_one) !!}</textarea>
     </div>
-    <div class="col-lg-6 mb-7">
+    <div class="col-lg-4 mb-7">
         <x-metronic.label for="address_line_two" class="col-form-label fw-bold fs-6">{{ __('Address Line Two') }}
         </x-metronic.label>
 
