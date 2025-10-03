@@ -179,7 +179,7 @@
                     </div>
                     <div class="form-group ps-checkout__group">
                         <label class="ps-checkout__label">Amount Paid <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control ps-input" name="client_payment_amount"
+                        <input type="number" class="form-control ps-input" name="client_payment_amount" step="0.01"
                             placeholder="Write your paid amount here" required>
                     </div>
 

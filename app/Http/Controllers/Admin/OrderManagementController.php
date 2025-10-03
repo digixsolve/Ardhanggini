@@ -128,32 +128,47 @@ class OrderManagementController extends Controller
     public function statusUpdate(Request $request, string $id)
     {
         $order = Order::findOrFail($id);
+        $previousStatus = $order->payment_status;
         $order->update([
             'status' => $request->status,
             'payment_status' => $request->payment_status,
             'external_order_id' => $request->external_order_id,
             'client_payment_amount' => $request->client_payment_amount,
         ]);
-        if ($request->payment_status && $request->payment_status == 'delivery_charge_paid') {
+        // if ($request->payment_status && $request->payment_status == 'delivery_charge_paid') {
+        //     $order->update([
+        //         'total_amount' => $order->sub_total + $order->shipping_charge - $order->client_payment_amount,
+        //     ]);
+        // }
+        if ($request->payment_status === 'delivery_charge_paid') {
+            $subTotal = $order->sub_total ?? 0;
+            $shippingCharge = $order->shipping_charge ?? 0;
+            $clientPayment = is_numeric($order->client_payment_amount) ? $order->client_payment_amount : 0;
+
+            $newTotal = $subTotal + $shippingCharge - $clientPayment;
+
             $order->update([
-                'total_amount' => $order->sub_total + $order->shipping_charge - $order->client_payment_amount,
+                'total_amount' => max($newTotal, 0), // Prevent negative total just in case
             ]);
         }
 
-        try {
-            $user = $order->user;
-            $setting = Setting::first();
-            $data = [
-                'order'             => $order,
-                'order_items'       => $order->orderItems,
-                'user'              => $user,
-                'shipping_charge'   => $order->shipping_charge,
-                'shipping_method'   => optional($order->shippingCharge)->title,
-            ];
-            Mail::to([$order->shipping_email, $user->email])->send(new UserOrderMail($user->name, $data, $setting));
-        } catch (\Exception $e) {
-            // Handle PDF save exception
-            Session::flash('error', 'Failed to send Mail: ' . $e->getMessage());
+
+        if ($previousStatus === 'unpaid' && $request->payment_status === 'delivery_charge_paid') {
+            try {
+                $user = $order->user;
+                $setting = Setting::first();
+                $data = [
+                    'order'             => $order,
+                    'order_items'       => $order->orderItems,
+                    'user'              => $user,
+                    'shipping_charge'   => $order->shipping_charge,
+                    'shipping_method'   => optional($order->shippingCharge)->title,
+                ];
+                Mail::to([$order->shipping_email, $user->email])->send(new UserOrderMail($user->name, $data, $setting));
+            } catch (\Exception $e) {
+                // Handle PDF save exception
+                Session::flash('error', 'Failed to send Mail: ' . $e->getMessage());
+            }
         }
 
         // if($request->payment_status && $request->payment_status == 'paid'){
