@@ -142,6 +142,7 @@ class OrderManagementController extends Controller
 
         try {
             $user = $order->user;
+            dd($user->email);
             $setting = Setting::first();
             $data = [
                 'order'             => $order,
@@ -150,7 +151,7 @@ class OrderManagementController extends Controller
                 'shipping_charge'   => $order->shipping_charge,
                 'shipping_method'   => optional($order->shippingCharge)->title,
             ];
-            Mail::to([$request->input('shipping_email'), $user->email])->send(new UserOrderMail($user->name, $data, $setting));
+            Mail::to([$order->shipping_email, $user->email])->send(new UserOrderMail($user->name, $data, $setting));
         } catch (\Exception $e) {
             // Handle PDF save exception
             Session::flash('error', 'Failed to send Mail: ' . $e->getMessage());
