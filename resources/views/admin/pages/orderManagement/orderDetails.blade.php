@@ -122,8 +122,14 @@
                     <div class="col-lg-4">
                         <div class="card card-flush py-4">
                             <div class="card-header">
-                                <div class="card-title">
-                                    <h4>Payment Details</h4>
+                                <div class="card-title justify-content-between w-100">
+                                    <div>
+                                        <h4>Payment Details</h4>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                            data-bs-target="#paymentApprovalModal">Approval</button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-body pt-0">
@@ -403,6 +409,16 @@
                                                     (৳){{ $order->shipping_charge }}
                                                 </td>
                                             </tr>
+                                            @if ($order->payment_status == 'delivery_charge_paid')
+                                                <tr style="background-color: #eee;">
+                                                    <td colspan="6" class="fs-3 text-gray-900 text-end">
+                                                        Paid
+                                                    </td>
+                                                    <td class="text-gray-900 fs-3 fw-bolder text-end pe-5">
+                                                        (৳){{ $order->client_payment_amount }}
+                                                    </td>
+                                                </tr>
+                                            @endif
                                             <tr style="background-color: #eee;">
                                                 <td colspan="6" class="fs-3 text-gray-900 text-end">
                                                     Grand Total
@@ -427,20 +443,77 @@
     {{-- Print Invoice Modal End --}}
     {{-- view order Modal  --}}
     <!-- Modal -->
-    <div class="modal fade" id="vieworderInovice" tabindex="-1" aria-labelledby="vieworderInoviceLabel"
+    <div class="modal fade" id="paymentApprovalModal" tabindex="-1" aria-labelledby="paymentApprovalModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog        ">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">View Worder</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Payment Approval</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                <form id="" method="post" action="{{ route('admin.order.update', $order->id) }}"
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="payment_status" class="form-label">Payment Status</label>
+                                    <select class="form-select" name="payment_status" id="payment_status">
+                                        <option value="paid"
+                                            {{ $order->payment_status == 'paid' ? 'selected' : '' }}>
+                                            Paid</option>
+                                        <option value="unpaid"
+                                            {{ $order->payment_status == 'unpaid' ? 'selected' : '' }}>Unpaid</option>
+                                        <option value="pending"
+                                            {{ $order->payment_status == 'pending' ? 'selected' : '' }}>Pending
+                                        </option>
+                                        <option value="failed"
+                                            {{ $order->payment_status == 'failed' ? 'selected' : '' }}>Failed</option>
+                                        <option value="cancel"
+                                            {{ $order->payment_status == 'cancel' ? 'selected' : '' }}>Cancel</option>
+                                        <option value="delivery_charge_paid"
+                                            {{ $order->payment_status == 'delivery_charge_paid' ? 'selected' : '' }}>
+                                            Partially Paid</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Order Status</label>
+                                    <select class="form-select" name="status" id="status">
+                                        <option value="new" {{ $order->status == 'new' ? 'selected' : '' }}>New
+                                        </option>
+                                        <option value="pending" {{ $order->status == 'pending' ? 'selected' : '' }}>
+                                            Pending</option>
+                                        <option value="processing"
+                                            {{ $order->status == 'processing' ? 'selected' : '' }}>Processing</option>
+                                        <option value="shipped" {{ $order->status == 'shipped' ? 'selected' : '' }}>
+                                            Shipped</option>
+                                        <option value="delivered"
+                                            {{ $order->status == 'delivered' ? 'selected' : '' }}>Delivered</option>
+                                        <option value="cancelled"
+                                            {{ $order->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                                        <option value="returned" {{ $order->status == 'returned' ? 'selected' : '' }}>
+                                            Returned</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="client_payment_amount" class="form-label">Paid Amount</label>
+                                    <input type="number" class="form-control" name="client_payment_amount"
+                                        id="client_payment_amount" value="{{ $order->client_payment_amount }}">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('quantity')->nullable();
             $table->double('shipping_charge')->nullable();
             $table->string('payment_method')->nullable();
-            $table->enum('payment_status', ['paid', 'unpaid', 'pending', 'failed', 'cancel'])->default('unpaid');
+            $table->enum('payment_status', ['paid', 'unpaid', 'pending', 'failed', 'cancel','delivery_charge_paid'])->default('unpaid');
             $table->enum('status', ['new', 'pending', 'processing', 'shipped', 'delivered', 'cancelled', 'returned'])->default('pending');
             $table->string('shipped_to_different_address')->default('no')->nullable();
             $table->string('billing_first_name')->nullable();

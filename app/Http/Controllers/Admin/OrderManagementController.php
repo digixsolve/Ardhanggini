@@ -127,8 +127,20 @@ class OrderManagementController extends Controller
         $order = Order::findOrFail($id);
         $order->update([
             'status' => $request->status,
+            'payment_status' => $request->payment_status,
             'external_order_id' => $request->external_order_id,
+            'client_payment_amount' => $request->client_payment_amount,
         ]);
+        if($request->payment_status && $request->payment_status == 'delivery_charge_paid'){
+            $order->update([
+               'total_amount' => $order->total_amount - $order->client_payment_amount,
+            ]);
+        }
+        // if($request->payment_status && $request->payment_status == 'paid'){
+        //     $order->update([
+        //        'total_amount' => $order->total_amount - $order->client_payment_amount,
+        //     ]);
+        // }
         Session::flash('success', 'Order Status Updated Successfully');
         return redirect()->back();
     }

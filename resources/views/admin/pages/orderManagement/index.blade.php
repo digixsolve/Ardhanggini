@@ -184,35 +184,76 @@
                                                         enctype="multipart/form-data">
                                                         @csrf
                                                         @method('PUT')
-                                                        <div class="card-body pt-0 justify-content-start text-start">
-                                                            <div class="text-start">
-                                                                <x-metronic.label class="col-lg-12">Change The Delivery
-                                                                    Status</x-metronic.label>
-                                                                <x-metronic.select-option
-                                                                    id="kt_ecommerce_add_product_status_select"
-                                                                    class="form-select mb-2" data-control="select2"
-                                                                    data-hide-search="true" name="status"
-                                                                    data-placeholder="Select an option">
-                                                                    <option></option>
-                                                                    <option value="processing"
-                                                                        @selected($order->status == 'processing')>Processing</option>
-                                                                    <option value="shipped"
-                                                                        @selected($order->status == 'shipped')>Shipped</option>
-                                                                    <option value="delivered"
-                                                                        @selected($order->status == 'delivered')>Delivered</option>
-                                                                    <option value="cancelled"
-                                                                        @selected($order->status == 'cancelled')>Cancelled</option>
-                                                                    <option value="returned"
-                                                                        @selected($order->status == 'returned')>Returned</option>
-                                                                </x-metronic.select-option>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="mb-3">
+                                                                    <label for="payment_status"
+                                                                        class="form-label">Payment Status</label>
+                                                                    <select class="form-select" name="payment_status"
+                                                                        id="payment_status">
+                                                                        <option value="paid"
+                                                                            {{ $order->payment_status == 'paid' ? 'selected' : '' }}>
+                                                                            Paid</option>
+                                                                        <option value="unpaid"
+                                                                            {{ $order->payment_status == 'unpaid' ? 'selected' : '' }}>
+                                                                            Unpaid</option>
+                                                                        <option value="pending"
+                                                                            {{ $order->payment_status == 'pending' ? 'selected' : '' }}>
+                                                                            Pending
+                                                                        </option>
+                                                                        <option value="failed"
+                                                                            {{ $order->payment_status == 'failed' ? 'selected' : '' }}>
+                                                                            Failed</option>
+                                                                        <option value="cancel"
+                                                                            {{ $order->payment_status == 'cancel' ? 'selected' : '' }}>
+                                                                            Cancel</option>
+                                                                        <option value="delivery_charge_paid"
+                                                                            {{ $order->payment_status == 'delivery_charge_paid' ? 'selected' : '' }}>
+                                                                            Partially Paid</option>
+                                                                    </select>
+                                                                </div>
                                                             </div>
-                                                            {{-- <div class="mt-4">
-                                                                <x-metronic.label class="form-label">Delivery Tracking
-                                                                    ID</x-metronic.label>
-                                                                <x-metronic.input type="text"
-                                                                    name="external_order_id" class="form-control mb-2"
-                                                                    placeholder="Add Product Delivery ID By Royal Mail"></x-metronic.input>
-                                                            </div> --}}
+                                                            <div class="col-md-6">
+                                                                <div class="mb-3">
+                                                                    <label for="status" class="form-label">Order
+                                                                        Status</label>
+                                                                    <select class="form-select" name="status"
+                                                                        id="status">
+                                                                        <option value="new"
+                                                                            {{ $order->status == 'new' ? 'selected' : '' }}>
+                                                                            New
+                                                                        </option>
+                                                                        <option value="pending"
+                                                                            {{ $order->status == 'pending' ? 'selected' : '' }}>
+                                                                            Pending</option>
+                                                                        <option value="processing"
+                                                                            {{ $order->status == 'processing' ? 'selected' : '' }}>
+                                                                            Processing</option>
+                                                                        <option value="shipped"
+                                                                            {{ $order->status == 'shipped' ? 'selected' : '' }}>
+                                                                            Shipped</option>
+                                                                        <option value="delivered"
+                                                                            {{ $order->status == 'delivered' ? 'selected' : '' }}>
+                                                                            Delivered</option>
+                                                                        <option value="cancelled"
+                                                                            {{ $order->status == 'cancelled' ? 'selected' : '' }}>
+                                                                            Cancelled</option>
+                                                                        <option value="returned"
+                                                                            {{ $order->status == 'returned' ? 'selected' : '' }}>
+                                                                            Returned</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="mb-3">
+                                                                    <label for="client_payment_amount"
+                                                                        class="form-label">Paid Amount</label>
+                                                                    <input type="number" class="form-control"
+                                                                        name="client_payment_amount"
+                                                                        id="client_payment_amount"
+                                                                        value="{{ $order->client_payment_amount }}">
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="card-footer">
                                                             <x-metronic.button type="submit" class="primary">
