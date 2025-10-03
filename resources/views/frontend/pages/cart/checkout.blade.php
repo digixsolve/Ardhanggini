@@ -245,14 +245,57 @@
 
     @push('scripts')
         <script>
+            function ucFirst(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+            // Make showOnlySelectedPaymentInfo globally accessible
+            function showOnlySelectedPaymentInfo(method) {
+                // Hide all payment info
+                $('.payment-info').addClass('d-none');
+                // Show selected one
+                $('#' + method + '_info').removeClass('d-none');
+            }
+
+            $(document).ready(function() {
+                // Handle name sync and client_name update
+                $('input[name="shipping_first_name"]').on('input', function() {
+                    var firstName = $(this).val();
+                    $('input[name="client_payment_name"]').val(firstName);
+                    $('.client_name').text(firstName);
+                });
+
+                // Update text based on selected payment method
+                $('input[name="delivery_charge_payment_method"]').on('change', function() {
+                    var paymentMethodValue = $(this).val();
+                    $('#paymentMethodNo').text(ucFirst(paymentMethodValue));
+                    $('#paymentMethodTransID').text(ucFirst(paymentMethodValue));
+
+                    // Show only relevant payment info
+                    showOnlySelectedPaymentInfo(paymentMethodValue);
+                });
+
+                // Initial setup: show default selected method's info
+                const defaultMethod = $('input[name="delivery_charge_payment_method"]:checked').val();
+                showOnlySelectedPaymentInfo(defaultMethod);
+            });
+        </script>
+
+        {{-- <script>
+
             $(document).ready(function() {
                 $('input[name="shipping_first_name"]').on('input', function() {
                     var firstName = $(this).val();
                     $('input[name="client_payment_name"]').val(firstName);
                     $('.client_name').text(firstName);
                 });
+                $('input[name="delivery_charge_payment_method"]').on('change', function() {
+                    var paymentMethodValue = $(this).val();
+                    $('#paymentMethodNo').text(ucFirst(paymentMethodValue));
+                    $('#paymentMethodTransID').text(ucFirst(paymentMethodValue));
+                });
             });
-        </script>
+
+            </script> --}}
         {{-- <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const subtotal = parseFloat('{{ $subTotal }}');
@@ -286,7 +329,8 @@
 
                         console.log('Shipping Price:', shippingPrice);
                         console.log('Calculated Total:', total);
-                        const paymentDeliveryChargeSpan = document.getElementById('paymentDeliveryCharge');
+                        const paymentDeliveryChargeSpan = document.getElementById(
+                            'paymentDeliveryCharge');
                         if (paymentDeliveryChargeSpan) {
                             paymentDeliveryChargeSpan.textContent = shippingPrice.toFixed(2);
                         }

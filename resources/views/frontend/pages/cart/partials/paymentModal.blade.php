@@ -19,19 +19,57 @@
                             আপনি বিকাশ / নগদ / রকেট এর মাধ্যমে ডেলিভারি চার্জ পেমেন্ট করার পর, পেমেন্টের বিবরণ আমাদের
                             জানালে আমরা আপনার অর্ডারটি দ্রুত কনফার্ম ও প্রসেস করতে পারব।
                         </p> <br>
+                        <p>
+                            <strong>Select Your Payment Option <span class="text-danger">*</span></strong>
+                        </p>
+                        {{-- Radion button to select payment method (bkash/nagad/rocket) with their logo --}}
+                        <div class="d-flex justify-content-center align-items-center">
+                            @if (!empty($setting->bkash_no))
+                                <div class="mx-3 text-center d-flex align-items-center">
+                                    <input class="mr-2" type="radio" name="delivery_charge_payment_method"
+                                        value="bkash" id="bkash_radio" checked style="width: 1.5rem; height: 1.5rem;">
+                                    <label class="mt-0 form-check-label" for="bkash_radio">
+                                        <img class="payment_logo" src="{{ asset('images/bkash.svg') }}" alt="Bkash"
+                                            class="mb-2">
+                                    </label>
+                                </div>
+                            @endif
+                            @if (!empty($setting->nagad_no))
+                                <div class="mx-3 text-center d-flex align-items-center">
+                                    <input class="mr-2" type="radio" name="delivery_charge_payment_method"
+                                        value="nagad" id="nagad_radio" style="width: 1.5rem; height: 1.5rem;">
+                                    <label class="mt-0 form-check-label" for="nagad_radio">
+                                        <img class="payment_logo" src="{{ asset('images/nagad.svg') }}" alt="Nagad"
+                                            class="mb-2">
+                                    </label>
+                                </div>
+                            @endif
+                            @if (!empty($setting->rocket_no))
+                                <div class="mx-3 text-center d-flex align-items-center">
+                                    <input class="mr-2" type="radio" name="delivery_charge_payment_method"
+                                        value="rocket" id="rocket_radio" style="width: 1.5rem; height: 1.5rem;">
+                                    <label class="mt-0 form-check-label" for="rocket_radio">
+                                        <img class="payment_logo" src="{{ asset('images/rocket.png') }}" alt="Rocket"
+                                            class="mb-2">
+                                    </label>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer text-center">
-                <button class="btn btn-primary me-2" data-target="#pm_modal_3" data-toggle="modal"
-                    data-dismiss="modal">Ok
-                    Proceed</button>
-                <button class="btn btn-outline-primary ml-2" data-target="#pm_modal_2" data-toggle="modal"
-                    data-dismiss="modal">Cancel</button>
+                <div class="modal-footer text-center">
+                    <button class="btn btn-primary mr-2" data-target="#pm_modal_3" data-toggle="modal"
+                        data-dismiss="modal">Ok
+                        Proceed</button>
+                    <button class="btn btn-outline-primary ml-2" data-target="#pm_modal_2" data-toggle="modal"
+                        data-dismiss="modal">Cancel</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
 <div class="modal fade" id="pm_modal_2" aria-hidden="true" aria-labelledby="pm_modal_2Label2" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -53,7 +91,8 @@
                             দয়া করে ডেলিভারি চার্জ দিয়ে আপনার অর্ডার কনফার্ম করুন।
                         </h5>
                         <p>
-                            আপনি বিকাশ / নগদ / রকেট এর মাধ্যমে ডেলিভারি চার্জ পেমেন্ট করার পর, পেমেন্টের বিবরণ আমাদের
+                            আপনি বিকাশ / নগদ / রকেট এর মাধ্যমে ডেলিভারি চার্জ পেমেন্ট করার পর, পেমেন্টের বিবরণ
+                            আমাদের
                             জানালে আমরা
                             আপনার অর্ডারটি দ্রুত কনফার্ম ও প্রসেস করতে পারব।
                         </p> <br>
@@ -61,7 +100,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" data-target="#pm_modal_3" data-toggle="modal" data-dismiss="modal">Go
+                <button class="btn btn-primary" data-target="#pm_modal_1" data-toggle="modal" data-dismiss="modal">Go
                     Back & Confirm</button>
                 <button type="button" class="btn btn-outline-primary ml-2" data-dismiss="modal"
                     aria-label="Close">Cancel</button>
@@ -69,6 +108,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="modal fade" id="pm_modal_3" tabindex="-1" aria-labelledby="pm_modal_3Label2" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
@@ -84,31 +124,30 @@
                 <!-- Payment Options -->
                 <div class="row justify-content-center mb-4">
                     @if (!empty($setting->bkash_no))
-                        <div class="mx-3 text-center">
-                            <img class="payment_logo" src="{{ asset('images/bkash.svg') }}" alt="Bkash"
-                                class="mb-2">
+                        <div id="bkash_info" class="payment-info mx-3 text-center">
+                            <img class="payment_logo mb-2" src="{{ asset('images/bkash.svg') }}" alt="Bkash">
                             <div class="payment-number">{{ $setting->bkash_no }}</div>
                         </div>
                     @endif
                     @if (!empty($setting->nagad_no))
-                        <div class="mx-3 text-center">
-                            <img class="payment_logo" src="{{ asset('images/nagad.svg') }}" alt="Nagad"
-                                class="mb-2">
+                        <div id="nagad_info" class="payment-info mx-3 text-center d-none">
+                            <img class="payment_logo mb-2" src="{{ asset('images/nagad.svg') }}" alt="Nagad">
                             <div class="payment-number">{{ $setting->nagad_no }}</div>
                         </div>
                     @endif
                     @if (!empty($setting->rocket_no))
-                        <div class="mx-3 text-center">
-                            <img class="payment_logo" src="{{ asset('images/rocket.png') }}" alt="Rocket"
-                                class="mb-2">
+                        <div id="rocket_info" class="payment-info mx-3 text-center d-none">
+                            <img class="payment_logo mb-2" src="{{ asset('images/rocket.png') }}" alt="Rocket">
                             <div class="payment-number">{{ $setting->rocket_no }}</div>
                         </div>
                     @endif
                 </div>
 
+
                 <!-- Instruction -->
                 <p class="text-center instruction-text">
-                    দয়া করে আপনার ডেলিভারি চার্জ <span id="paymentDeliveryCharge">১৫০</span> টাকা 'Send Money' অপশনে
+                    দয়া করে আপনার ডেলিভারি চার্জ <span id="paymentDeliveryCharge">১৫০</span> টাকা 'Send Money'
+                    অপশনে
                     গিয়ে পরিশোধ করে আপনার অর্ডারটি কনফার্ম
                     করুন।
                 </p>
@@ -127,13 +166,14 @@
                             placeholder="Your name here">
                     </div>
                     <div class="form-group ps-checkout__group">
-                        <label class="ps-checkout__label">Bkash/Rocket/Nagad Account Number <span
+                        <label class="ps-checkout__label"><span id="paymentMethodNo">BKash</span> Account Number <span
                                 class="text-danger">*</span></label>
                         <input type="text" class="form-control ps-input" name="client_payment_number"
                             placeholder="017XXXXXXXX" required>
                     </div>
                     <div class="form-group ps-checkout__group">
-                        <label class="ps-checkout__label">Transaction ID <span class="text-danger">*</span></label>
+                        <label class="ps-checkout__label"><span id="paymentMethodTransID">BKash</span> Transaction ID
+                            <span class="text-danger">*</span></label>
                         <input type="text" class="form-control ps-input" name="client_payment_transaction_id"
                             placeholder="Txn ID here" required>
                     </div>
@@ -209,10 +249,8 @@
                     }
                 }
             </style>
-
-
-
         </div>
     </div>
 </div>
+
 {{-- <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a> --}}
