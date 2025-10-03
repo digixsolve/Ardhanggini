@@ -313,6 +313,7 @@ class CartController extends Controller
                 'client_payment_number'         => $request->input('client_payment_number'),
                 'client_payment_transaction_id' => $request->input('client_payment_transaction_id'),
                 'client_payment_amount'         => $request->input('client_payment_amount'),
+                'delivery_charge_payment_method'=> $request->input('delivery_charge_payment_method'),
                 'created_by'                    => auth()->id(),
                 'order_created_at'              => Carbon::now(),
                 'created_at'                    => Carbon::now(),

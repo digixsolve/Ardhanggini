@@ -144,6 +144,17 @@
                                             <tr>
                                                 <td class="text-muted">
                                                     <div class="d-flex align-items-center">
+                                                        <i class="fas fa-money-bill fs-2 me-2"></i>
+                                                        Payment Method
+                                                    </div>
+                                                </td>
+                                                <td class="fw-bold text-end">
+                                                    {{ ucfirst(optional($order)->delivery_charge_payment_method) }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-muted">
+                                                    <div class="d-flex align-items-center">
                                                         <i class="fa-solid fa-money-bill fs-2 me-2"></i>
                                                         BKAsh/NAGAD/ROCKET Account No
                                                     </div>
