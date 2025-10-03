@@ -142,7 +142,6 @@ class OrderManagementController extends Controller
 
         try {
             $user = $order->user;
-            dd($user->email);
             $setting = Setting::first();
             $data = [
                 'order'             => $order,
