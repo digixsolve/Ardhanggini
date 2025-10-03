@@ -409,24 +409,35 @@
                                                     (৳){{ $order->shipping_charge }}
                                                 </td>
                                             </tr>
-                                            @if ($order->payment_status == 'delivery_charge_paid')
-                                                <tr style="background-color: #eee;">
-                                                    <td colspan="6" class="fs-3 text-gray-900 text-end">
-                                                        Paid
-                                                    </td>
-                                                    <td class="text-gray-900 fs-3 fw-bolder text-end pe-5">
-                                                        (৳){{ $order->client_payment_amount }}
-                                                    </td>
-                                                </tr>
-                                            @endif
+
                                             <tr style="background-color: #eee;">
                                                 <td colspan="6" class="fs-3 text-gray-900 text-end">
                                                     Grand Total
                                                 </td>
                                                 <td class="text-gray-900 fs-3 fw-bolder text-end pe-5">
-                                                    (৳){{ $order->total_amount }}
+                                                    (৳){{ $order->sub_total + $order->shipping_charge }}
                                                 </td>
                                             </tr>
+                                            @if ($order->payment_status == 'delivery_charge_paid')
+                                                <tr style="background-color: #eee;">
+                                                    <td colspan="6" class="fs-4 text-gray-800 text-end">
+                                                        Paid Amount
+                                                    </td>
+                                                    <td class="text-gray-800 fs-4 fw-bolder text-end pe-5">
+                                                        (৳){{ $order->client_payment_amount }}
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                            @if ($order->payment_status == 'delivery_charge_paid')
+                                                <tr style="background-color: #eee;">
+                                                    <td colspan="6" class="fs-4 text-gray-800 text-end">
+                                                        Due Amount
+                                                    </td>
+                                                    <td class="text-gray-800 fs-4 fw-bolder text-end pe-5">
+                                                        (৳){{ $order->total_amount }}
+                                                    </td>
+                                                </tr>
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>

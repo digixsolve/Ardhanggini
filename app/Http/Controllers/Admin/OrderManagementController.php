@@ -133,7 +133,7 @@ class OrderManagementController extends Controller
         ]);
         if($request->payment_status && $request->payment_status == 'delivery_charge_paid'){
             $order->update([
-               'total_amount' => $order->total_amount - $order->client_payment_amount,
+               'total_amount' => $order->sub_total + $order->shipping_charge - $order->client_payment_amount,
             ]);
         }
         // if($request->payment_status && $request->payment_status == 'paid'){

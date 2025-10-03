@@ -39,7 +39,9 @@
                                                 <th>Order Number</th>
                                                 <th>Date</th>
                                                 <th>Items</th>
-                                                <th>Amount</th>
+                                                <th>Total Amount</th>
+                                                <th>Paid</th>
+                                                <th>Due</th>
                                                 {{-- <th>Track</th> --}}
                                                 <th>Payment Status</th>
                                                 <th>Status</th>
@@ -53,6 +55,14 @@
                                                     <td>{{ $order->order_number }}</td>
                                                     <td>{{ $order->created_at->format('d M, Y') }}</td>
                                                     <td>{{ $order->quantity }}</td>
+                                                    <td>
+                                                        <span
+                                                            class="text-info fw-bold">৳</span>{{ $order->sub_total + $order->shipping_charge }}
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            class="text-info fw-bold">৳</span>{{ $order->client_payment_amount }}
+                                                    </td>
                                                     <td>
                                                         <span
                                                             class="text-info fw-bold">৳</span>{{ $order->total_amount }}
@@ -73,6 +83,9 @@
                                                         @elseif ($order->payment_status == 'paid')
                                                             <span
                                                                 class="badge p-2 rounded-3 fs-7 badge-success">Paid</span>
+                                                        @elseif ($order->payment_status == 'delivery_charge_paid')
+                                                            <span
+                                                                class="badge p-2 rounded-3 fs-7 badge-success">Partially Paid</span>
                                                         @endif
                                                     </td>
                                                     <td>
