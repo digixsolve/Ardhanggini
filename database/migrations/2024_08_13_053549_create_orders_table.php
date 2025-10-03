@@ -48,6 +48,7 @@ return new class extends Migration
             $table->timestamp('order_status_updated_at')->nullable();
             $table->timestamp('order_created_at')->nullable();
             $table->string('transaction_id')->nullable();
+            $table->string('delivery_charge_payment_method')->nullable();
             $table->string('client_payment_name')->nullable();
             $table->string('client_payment_number', 20)->nullable();
             $table->string('client_payment_transaction_id')->nullable();
