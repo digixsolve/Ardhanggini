@@ -39,15 +39,19 @@
                     <div class="p-0 p-lg-5 pt-lg-0">
                         <div class="text-center">
                             <h1>Thank You for Your Order!</h1>
-                            <p>Your order has been successfully placed, and we’re preparing it for delivery.To keep a
+                            <p>আপনার অর্ডার সফলভাবে রেকর্ড করা হয়েছে, আমাদের টিম থেকে একজন প্রতিনিধি আপনাকে কল করে
+                                অর্ডারটি নিশ্চিত করার জন্য সহায়তা করবে। যেকোনো সময় সাহায্যের জন্য আমাদের সাথে যোগাযোগ
+                                করুন <a href="mailto:info.ardhanggini@gmail.com"
+                                    class="text-muted">info.ardhanggini@gmail.com</a> ।</p>
+                            {{-- <p>Your order has been successfully placed, and we’re preparing it for delivery.To keep a
                                 record, you can download
                                 your invoice using the button below. Need help? Contact our support team anytime at <a
                                     href="mailto:info.ardhanggini@gmail.com"
-                                    class="text-muted">info.ardhanggini@gmail.com</a>.</p>
+                                    class="text-muted">info.ardhanggini@gmail.com</a>.</p> --}}
                         </div>
-                        <div class="">
+                        {{-- <div class="">
                             @include('frontend.layouts.invoice')
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

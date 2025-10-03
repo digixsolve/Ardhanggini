@@ -427,8 +427,6 @@
                                                         (৳){{ $order->client_payment_amount }}
                                                     </td>
                                                 </tr>
-                                            @endif
-                                            @if ($order->payment_status == 'delivery_charge_paid')
                                                 <tr style="background-color: #eee;">
                                                     <td colspan="6" class="fs-4 text-gray-800 text-end">
                                                         Due Amount

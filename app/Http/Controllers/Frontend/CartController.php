@@ -344,50 +344,34 @@ class CartController extends Controller
 
             // Commit the transaction
             DB::commit();
-
             // Clear the cart after successful order
             Cart::instance('cart')->destroy();
-            $order = Order::with('orderItems')->where('id', $order->id)->first();
-            $user = Auth::user();
-            $data = [
-                'order' =>  $order,
-                'user'  => $user,
-            ];
+            // $order = Order::with('orderItems')->where('id', $order->id)->first();
+            // $user = Auth::user();
 
-            try {
-                $setting = Setting::first();
-                $data = [
-                    'order'             => $order,
-                    'order_items'       => $order->orderItems,
-                    'user'              => $user,
-                    'shipping_charge'   => $shipping_charge,
-                    'shipping_method'   => ($shipping_method) ? $shipping_method->title : null,
-                ];
-                Mail::to([$request->input('shipping_email'), $user->email])->send(new UserOrderMail($user->name, $data, $setting));
-            } catch (\Exception $e) {
-                // Handle PDF save exception
-                // flash()->error('Failed to generate PDF: ' . $e->getMessage());
-                Session::flash('error', 'Failed to send Mail: ' . $e->getMessage());
-                // Session::flush();
-            }
-            // Redirect to a confirmation page or thank you page
-            // if ($order->payment_method == "stripe") {
-            //     Session::flash('success', 'Order placed successfully!');
-            //     // Session::flush();
-            //     // flash()->success('Order placed successfully!');
-            //     return redirect()->route('stripe.payment', $order->order_number);
-            // } else if ($order->payment_method == "paypal") {
-            //     return view('frontend.pages.cart.paypal', $data);
-            // } else {
-            // flash()->success('Order placed successfully!');
-            Session::flash('success', 'Order placed successfully!');
-            // Session::flush();
-            return redirect()->route('checkout.success', $order->order_number);
+            // try {
+            //     $setting = Setting::first();
+            //     $data = [
+            //         'order'             => $order,
+            //         'order_items'       => $order->orderItems,
+            //         'user'              => $user,
+            //         'shipping_charge'   => $shipping_charge,
+            //         'shipping_method'   => ($shipping_method) ? $shipping_method->title : null,
+            //     ];
+            //     Mail::to([$request->input('shipping_email'), $user->email])->send(new UserOrderMail($user->name, $data, $setting));
+            // } catch (\Exception $e) {
+            //     // Handle PDF save exception
+            //     // flash()->error('Failed to generate PDF: ' . $e->getMessage());
+            //     Session::flash('error', 'Failed to send Mail: ' . $e->getMessage());
             // }
+
+            Session::flash('success', 'Order placed successfully!');
+            return redirect()->route('checkout.success', $order->order_number);
+
         } catch (\Exception $e) {
             DB::rollback();
             Session::flash('error', $e->getMessage());
-            // Session::flush();
+
             return redirect()->back()->withInput();
         }
     }

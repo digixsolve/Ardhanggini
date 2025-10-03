@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
+use App\Models\Setting;
+use App\Mail\UserOrderMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class OrderManagementController extends Controller
@@ -131,11 +134,28 @@ class OrderManagementController extends Controller
             'external_order_id' => $request->external_order_id,
             'client_payment_amount' => $request->client_payment_amount,
         ]);
-        if($request->payment_status && $request->payment_status == 'delivery_charge_paid'){
+        if ($request->payment_status && $request->payment_status == 'delivery_charge_paid') {
             $order->update([
-               'total_amount' => $order->sub_total + $order->shipping_charge - $order->client_payment_amount,
+                'total_amount' => $order->sub_total + $order->shipping_charge - $order->client_payment_amount,
             ]);
         }
+
+        try {
+            $user = $order->user;
+            $setting = Setting::first();
+            $data = [
+                'order'             => $order,
+                'order_items'       => $order->orderItems,
+                'user'              => $user,
+                'shipping_charge'   => $order->shipping_charge,
+                'shipping_method'   => optional($order->shippingCharge)->title,
+            ];
+            Mail::to([$request->input('shipping_email'), $user->email])->send(new UserOrderMail($user->name, $data, $setting));
+        } catch (\Exception $e) {
+            // Handle PDF save exception
+            Session::flash('error', 'Failed to send Mail: ' . $e->getMessage());
+        }
+
         // if($request->payment_status && $request->payment_status == 'paid'){
         //     $order->update([
         //        'total_amount' => $order->total_amount - $order->client_payment_amount,

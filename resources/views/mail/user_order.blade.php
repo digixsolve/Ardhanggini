@@ -124,9 +124,31 @@
                                                 </td>
                                                 <td colspan="2"
                                                     style="text-align: end; padding: 10px; border-top: 1px solid #252525;">
-                                                    ৳ {{ number_format($data['order']->total_amount, 2) }}
+                                                    ৳ {{ number_format($data['sub_total'] + $data['shipping_charge'], 2) }}
                                                 </td>
                                             </tr>
+                                            @if ($order->payment_status == 'delivery_charge_paid')
+                                                <tr class="">
+                                                    <td colspan="2"
+                                                        style="text-align: end; font-weight: bold; padding: 10px; border-top: 1px solid #252525;">
+                                                        Paid Amount
+                                                    </td>
+                                                    <td colspan="2"
+                                                        style="text-align: end; padding: 10px; border-top: 1px solid #252525;">
+                                                        ৳ {{ number_format($data['order']->client_payment_amount, 2) }}
+                                                    </td>
+                                                </tr>
+                                                <tr class="">
+                                                    <td colspan="2"
+                                                        style="text-align: end; font-weight: bold; padding: 10px; border-top: 1px solid #252525;">
+                                                        Due Amount
+                                                    </td>
+                                                    <td colspan="2"
+                                                        style="text-align: end; padding: 10px; border-top: 1px solid #252525;">
+                                                        ৳ {{ number_format($data['order']->total_amount, 2) }}
+                                                    </td>
+                                                </tr>
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>

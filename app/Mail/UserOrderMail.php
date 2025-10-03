@@ -34,7 +34,7 @@ class UserOrderMail extends Mailable
      */
     public function build()
     {
-        return $this->from('support@neezpackages.com', $this->setting->website_name)
+        return $this->from('support@ardhanggini.com', $this->setting->website_name)
             ->subject($this->setting->website_name . ' Order Placed. (Order #' . $this->data['order']->order_number . ')')
             ->view('mail.user_order')
             ->with([

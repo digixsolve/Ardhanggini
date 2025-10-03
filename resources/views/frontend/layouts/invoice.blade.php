@@ -132,6 +132,15 @@
                                             class="text-info">(৳)</span>{{ number_format(optional($order)->total_amount, 2) }}</span>
                                 </td>
                             </tr>
+                            <tr class="">
+                                <td colspan="6" class="text-right">
+                                    <span class="font-weight-bold">Paid Amount </span>
+                                </td>
+                                <td class="text-right font-weight-bold">
+                                    <span><span
+                                            class="text-info">(৳)</span>{{ number_format(optional($order)->client_payment_amount, 2) }}</span>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
