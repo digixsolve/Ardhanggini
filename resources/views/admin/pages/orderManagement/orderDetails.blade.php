@@ -418,7 +418,7 @@
                                                     (৳){{ $order->sub_total + $order->shipping_charge }}
                                                 </td>
                                             </tr>
-                                            @if ($order->payment_status == 'delivery_charge_paid')
+                                            @if ($order->payment_status == 'delivery_charge_paid' || $order->payment_status == 'paid')
                                                 <tr style="background-color: #eee;">
                                                     <td colspan="6" class="fs-4 text-gray-800 text-end">
                                                         Paid Amount

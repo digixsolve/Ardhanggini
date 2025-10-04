@@ -127,7 +127,7 @@
                                                     ৳ {{ number_format($data['order']->sub_total + $data['shipping_charge'], 2) }}
                                                 </td>
                                             </tr>
-                                            @if ($order->payment_status == 'delivery_charge_paid')
+                                            @if ($data['order']->payment_status == 'delivery_charge_paid' || $data['order']->payment_status == 'paid')
                                                 <tr class="">
                                                     <td colspan="2"
                                                         style="text-align: end; font-weight: bold; padding: 10px; border-top: 1px solid #252525;">
