@@ -31,9 +31,16 @@
                 border: 1px solid #dee2e6;
             }
         }
+        @media (max-width: 768px) {
+            .mobile-container {
+                padding-left: 15px;
+                padding-right: 15px;
+                margin-top: 7rem;
+            }
+        }
     </style>
-    <section>
-        <div class="container">
+    <div class="ps-checkout">
+        <div class="container mobile-container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1 col-12">
                     <div class="p-0 p-lg-5 pt-lg-0">
@@ -59,7 +66,8 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
     @push('scripts')
         <script src="https://cdn.sheetjs.com/xlsx-0.19.1/xlsx.full.min.js"></script>
         {{-- thank-you.blade.php --}}
