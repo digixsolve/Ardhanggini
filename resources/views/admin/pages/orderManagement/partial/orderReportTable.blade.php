@@ -132,17 +132,17 @@
                         </td>
                         <td>
                             @if ($order->status == 'pending')
-                                <span class="badge py-3 px-4 fs-7 badge-light-primary">Pending</span>
+                                <span class="badge py-3 px-4 fs-7 badge-primary">Pending</span>
                             @elseif ($order->status == 'processing')
-                                <span class="badge py-3 px-4 fs-7 badge-light-warning">Processing</span>
+                                <span class="badge py-3 px-4 fs-7 badge-warning">Processing</span>
                             @elseif ($order->status == 'shipped')
-                                <span class="badge py-3 px-4 fs-7 badge-light-success">Shipped</span>
+                                <span class="badge py-3 px-4 fs-7 badge-success">Shipped</span>
                             @elseif ($order->status == 'delivered')
-                                <span class="badge py-3 px-4 fs-7 badge-light-success">Delivered</span>
+                                <span class="badge py-3 px-4 fs-7 badge-info">Delivered</span>
                             @elseif ($order->status == 'cancelled')
-                                <span class="badge py-3 px-4 fs-7 badge-light-dangered">Cancelled</span>
+                                <span class="badge py-3 px-4 fs-7 badge-danger">Cancelled</span>
                             @elseif ($order->status == 'returned')
-                                <span class="badge py-3 px-4 fs-7 badge-light-dangered">Returned</span>
+                                <span class="badge py-3 px-4 fs-7 badge-danger">Returned</span>
                             @endif
                         </td>
                         <td>
