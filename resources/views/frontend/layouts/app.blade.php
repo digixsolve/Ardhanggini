@@ -41,6 +41,13 @@
     @if (Route::currentRouteName() === 'product.details')
         @php
             $metaTitle = $product->meta_title ?? $product->name;
+            $keywords = '';
+            if ($product->meta_keywords) {
+                $decoded = json_decode($product->meta_keywords, true);
+                if (is_array($decoded)) {
+                    $keywords = collect($decoded)->pluck('value')->implode(', ');
+                }
+            }
             $metaDescription = strip_tags(
                 $product->meta_description ?? substr(html_entity_decode($product->description), 0, 150),
             );
@@ -50,6 +57,7 @@
 
         <meta name="title" content="{{ $metaTitle }}" />
         <meta name="description" content="{!! $metaDescription !!}" />
+        <meta name="keywords" content="{{ $keywords ?: $product->name }}" />
         <meta property="og:title" content="{{ $metaTitle }}" />
         <meta property="og:description" content="{!! $metaDescription !!}" />
         <meta property="og:image" content="{{ $metaImage ? asset('storage/' . $metaImage) : '' }}" />
@@ -65,6 +73,7 @@
     @else
         <meta name="title" content="{{ optional($setting)->site_title ?: config('app.name', 'E-Commerce') }}" />
         <meta name="description" content="{!! optional($setting)->meta_description ?: config('app.name') !!}" />
+        <meta name="keywords" content="{{ !!optional($setting)->meta_keyword }}" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{ optional($setting)->site_url ?: config('app.url') }}" />
         <meta property="og:title" content="{{ optional($setting)->site_title ?: config('app.name', 'E-Commerce') }}" />
