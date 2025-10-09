@@ -20,14 +20,16 @@
             </div>
             <div class="col-lg-6">
                 {{-- <p class="mb-0 p-3 text-right">Date: {{ optional($order)->created_at->format('d/m/Y') }}</p> --}}
-                <p class="mb-0 p-3 text-right text-m-center">Date: {{ optional($order)->created_at->format('d M, Y') }}</p>
+                <p class="mb-0 p-3 text-right text-m-center">Date: {{ optional($order)->created_at->format('d M, Y') }}
+                </p>
             </div>
         </div>
         <div class="row mt-2 mt-lg-5">
             <div class="col-lg-6">
                 <div class="text-m-center">
                     <span class="font-weight-bold">Invoice To:</span>
-                    <p class="mb-0">{{ optional($order->user)->first_name }} {{ optional($order->user)->last_name }}</p>
+                    <p class="mb-0">{{ optional($order->user)->first_name }} {{ optional($order->user)->last_name }}
+                    </p>
                     <p class="mb-0">{{ optional($order->user)->phone }}</p>
                     <p class="mb-0">{{ optional($order->user)->email }}</p>
                     <p class="mb-0">{{ optional($order)->shipping_address }}</p>
@@ -78,8 +80,17 @@
                                         <span>{{ Str::limit(optional($item->product)->name, 30) }}</span>
                                     </td>
                                     <td>
-                                        <span class="p-4"
-                                                style="background-color: {{ $item->product_color }}"></span>
+                                        @php
+                                            $color = $item->product_color;
+                                            $isHex = preg_match('/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/', $color);
+                                        @endphp
+
+                                        @if ($isHex)
+                                            <span class="inline-block w-6 h-6 rounded"
+                                                style="background-color: {{ $color }}"></span>
+                                        @else
+                                            <span class="fw-bolder">{{ ucfirst($color) }}</span>
+                                        @endif
                                     </td>
                                     <td>
                                         <span><span
@@ -158,7 +169,8 @@
         <div class="row mt-3 pt-3">
             <div class="col-lg-12">
                 <p class="text-center text-m-center">
-                    <i class="fa-solid fa-file"></i> <strong>NOTE:</strong> The order will be confirmed via call within 24 hours.
+                    <i class="fa-solid fa-file"></i> <strong>NOTE:</strong> The order will be confirmed via call within
+                    24 hours.
                 </p>
             </div>
         </div>

@@ -326,7 +326,7 @@
                                                         name="color" data-id="{{ $pic->id }}"
                                                         data-color="{{ $pic->color_name }}"
                                                         data-image="{{ $pic->photo }}"
-                                                        value="{{ $pic->color }}" />
+                                                        value="{{ $pic->color_name }}" />
                                                     <img src="{{ asset('storage/' . $pic->photo) }}" />
                                                 </label>
                                             @endforeach

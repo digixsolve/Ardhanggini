@@ -119,7 +119,7 @@
                             </div>
                         </div>
                     </div>
-                    @if(!empty(optional($order)->client_payment_transaction_id))
+                    @if (!empty(optional($order)->client_payment_transaction_id))
                         <div class="col-lg-4">
                             <div class="card card-flush py-4">
                                 <div class="card-header">
@@ -372,8 +372,20 @@
                                                     </td>
 
                                                     <td>
-                                                        <span class="p-4"
-                                                            style="background-color: {{ $item->product_color }}"></span>
+                                                        @php
+                                                            $color = $item->product_color;
+                                                            $isHex = preg_match(
+                                                                '/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/',
+                                                                $color,
+                                                            );
+                                                        @endphp
+
+                                                        @if ($isHex)
+                                                            <span class="inline-block w-6 h-6 rounded"
+                                                                style="background-color: {{ $color }}"></span>
+                                                        @else
+                                                            <span class="fw-bolder">{{ ucfirst($color) }}</span>
+                                                        @endif
                                                     </td>
                                                     <td>
                                                         <span>{{ optional($item)->quantity }}</span>
