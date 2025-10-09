@@ -381,7 +381,7 @@
                                                         @endphp
 
                                                         @if ($isHex)
-                                                            <span class="inline-block w-6 h-6 rounded"
+                                                            <span class="p-4"
                                                                 style="background-color: {{ $color }}"></span>
                                                         @else
                                                             <span class="fw-bolder">{{ ucfirst($color) }}</span>
