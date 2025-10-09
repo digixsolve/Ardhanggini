@@ -374,15 +374,12 @@
                                                     <td>
                                                         @php
                                                             $color = $item->product_color;
-                                                            $isHex = preg_match(
-                                                                '/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/',
-                                                                $color,
-                                                            );
+                                                            $isHex = preg_match('/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/', $color);
                                                         @endphp
 
                                                         @if ($isHex)
                                                             <span class="p-4"
-                                                                style="background-color: {{ $color }}"></span>
+                                                                style="background-color: {{ $color }};"></span>
                                                         @else
                                                             <span class="fw-bolder">{{ ucfirst($color) }}</span>
                                                         @endif
