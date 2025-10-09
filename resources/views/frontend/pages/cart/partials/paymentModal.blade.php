@@ -27,7 +27,7 @@
                             @if (!empty($setting->bkash_no))
                                 <div class="mx-3 text-center d-flex align-items-center">
                                     <input class="mr-2" type="radio" name="delivery_charge_payment_method"
-                                        value="bkash" id="bkash_radio" checked style="width: 1.5rem; height: 1.5rem;">
+                                        value="bkash" id="bkash_radio" style="width: 1.5rem; height: 1.5rem;">
                                     <label class="mt-0 form-check-label" for="bkash_radio">
                                         <img class="payment_logo" src="{{ asset('images/bkash.svg') }}" alt="Bkash"
                                             class="mb-2">

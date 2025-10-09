@@ -7,6 +7,31 @@
             $metaImage = $product->thumbnail ?? ''; // Default image
         @endphp
     @endpush
+
+    @php
+        $cart_price = !empty($product->unit_discount_price) ? $product->unit_discount_price : $product->unit_price;
+    @endphp
+
+    @push('pixel-events')
+        <script>
+            const price = {{ $cart_price }};
+
+            fbq('track', 'ViewContent', {
+                content_ids: ['{{ $product->sku_code }}'],
+                content_type: 'product',
+                content_name: '{{ $product->name }}',
+                value: price,
+                currency: 'BDT'
+            });
+
+            fbq('trackCustom', 'ProductVisit', {
+                content_ids: ['{{ $product->sku_code }}'],
+                content_name: '{{ $product->name }}',
+                value: price,
+                currency: 'BDT'
+            });
+        </script>
+    @endpush
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <style>
         .magnifier-container {
@@ -202,12 +227,15 @@
                 cursor: default;
                 transform: none !important;
             }
+
             .magnifier-container:hover img {
                 transform: none !important;
             }
+
             .main-slider-img img {
                 height: 430px;
             }
+
             .mySwiper {
                 height: 430px;
             }
@@ -568,7 +596,9 @@
                                                             <div class="row align-items-center">
                                                                 @if (!empty($review['review_image']))
                                                                     <div class="text-center col-12">
-                                                                        <img style="width: 200px;" class="img-fluid" src="{{ !empty($review['review_image']) ? asset('storage/' . $review['review_image']) : asset('images/testimonial.png') }}" alt="">
+                                                                        <img style="width: 200px;" class="img-fluid"
+                                                                            src="{{ !empty($review['review_image']) ? asset('storage/' . $review['review_image']) : asset('images/testimonial.png') }}"
+                                                                            alt="">
                                                                     </div>
                                                                 @endif
                                                                 <div class="col-12">

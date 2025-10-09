@@ -78,6 +78,7 @@ class SettingController extends Controller
                 'meta_description'     => $request->meta_description,
                 'google_analytics'     => $request->google_analytics,
                 'google_adsense'       => $request->google_adsense,
+                'pixel_code'           => $request->pixel_code,
                 'maintenance_mode'     => $request->maintenance_mode ?? '0',
                 'company_name'         => $request->company_name,
                 'system_timezone'      => $request->system_timezone,

@@ -20,8 +20,7 @@
     </div>
     <div class="fv-row col-lg-6 mb-7">
         <x-metronic.label class="fw-semibold fs-6 mb-2">Meta Description</x-metronic.label>
-        <x-metronic.input type="text" name="meta_description"
-            value="{{ optional($setting)->meta_description }}"
+        <x-metronic.input type="text" name="meta_description" value="{{ optional($setting)->meta_description }}"
             class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Meta Description" />
     </div>
     <div class="fv-row col-lg-12 mb-7">
@@ -31,5 +30,11 @@
     <div class="fv-row col-lg-12 mb-7">
         <x-metronic.label class="fw-semibold fs-6 mb-2">Google Adsense</x-metronic.label>
         <textarea class="form-control form-control-solid mb-3 mb-lg-0" name="google_adsense" id="" rows="7">{!! optional($setting)->google_adsense !!}</textarea>
+    </div>
+    <div class="fv-row col-lg-12 mb-7">
+        <x-metronic.label class="fw-semibold fs-6 mb-2">Facebook Pixel Code</x-metronic.label>
+        <x-metronic.input type="text" name="pixel_code" value="{{ optional($setting)->pixel_code }}"
+            class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Facebook Pixel Code" />
+        
     </div>
 </div>

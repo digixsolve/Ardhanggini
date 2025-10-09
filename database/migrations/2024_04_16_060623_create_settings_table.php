@@ -42,6 +42,7 @@ return new class extends Migration
             $table->text('meta_description')->nullable();
             $table->text('google_analytics')->nullable();
             $table->text('google_adsense')->nullable();
+            $table->string('pixel_code')->nullable();
 
             $table->boolean('maintenance_mode')->default(false);
             $table->string('company_name')->nullable();

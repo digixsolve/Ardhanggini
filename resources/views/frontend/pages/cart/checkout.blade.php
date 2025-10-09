@@ -248,19 +248,19 @@
     </div>
 
     @push('scripts')
-        {{-- <script>
+        <script>
             document.addEventListener('DOMContentLoaded', function() {
                 // Existing shipping logic...
 
                 // ✅ Modal "Place Order" button click
-                const modalSubmitBtn = document.getElementById('modal-submit-btn');
+                const modalSubmitBtn = document.getElementById('submit-order-btn');
                 const checkoutForm = document.getElementById('checkoutForm');
 
                 modalSubmitBtn.addEventListener('click', function() {
                     checkoutForm.submit();
                 });
             });
-        </script> --}}
+        </script>
 
         <script>
             function ucFirst(string) {

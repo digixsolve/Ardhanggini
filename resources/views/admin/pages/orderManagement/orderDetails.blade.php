@@ -119,84 +119,86 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="card card-flush py-4">
-                            <div class="card-header">
-                                <div class="card-title justify-content-between w-100">
-                                    <div>
-                                        <h4>Payment Details</h4>
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal"
-                                            data-bs-target="#paymentApprovalModal">Approval</button>
+                    @if(!empty(optional($order)->client_payment_transaction_id))
+                        <div class="col-lg-4">
+                            <div class="card card-flush py-4">
+                                <div class="card-header">
+                                    <div class="card-title justify-content-between w-100">
+                                        <div>
+                                            <h4>Payment Details</h4>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                                data-bs-target="#paymentApprovalModal">Approval</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="table-responsive">
-                                    <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5">
-                                        <tbody class="fw-semibold text-gray-600">
-                                            <tr>
-                                                <td class="text-muted">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fas fa-money-bill fs-2 me-2"></i>
-                                                        Payer Name
-                                                    </div>
-                                                </td>
-                                                <td class="fw-bold text-end">
-                                                    {{ optional($order)->client_payment_name }}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-muted">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fas fa-money-bill fs-2 me-2"></i>
-                                                        Payment Method
-                                                    </div>
-                                                </td>
-                                                <td class="fw-bold text-end">
-                                                    {{ ucfirst(optional($order)->delivery_charge_payment_method) }}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-muted">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fa-solid fa-money-bill fs-2 me-2"></i>
-                                                        BKAsh/NAGAD/ROCKET Account No
-                                                    </div>
-                                                </td>
-                                                <td class="fw-bold text-end">
-                                                    {{ optional($order)->client_payment_number }}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-muted">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fa-solid fa-money-bill fs-2 me-2"></i>
-                                                        Transaction ID
-                                                    </div>
-                                                </td>
-                                                <td class="fw-bold text-end">
-                                                    {{ optional($order)->client_payment_transaction_id }}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-muted">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="fa-solid fa-money-bill fs-2 me-2"></i>
-                                                        Paid Amount
-                                                    </div>
-                                                </td>
-                                                <td class="fw-bold text-end">
-                                                    {{ optional($order)->client_payment_amount }} TK
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="card-body pt-0">
+                                    <div class="table-responsive">
+                                        <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5">
+                                            <tbody class="fw-semibold text-gray-600">
+                                                <tr>
+                                                    <td class="text-muted">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fas fa-money-bill fs-2 me-2"></i>
+                                                            Payer Name
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold text-end">
+                                                        {{ optional($order)->client_payment_name }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fas fa-money-bill fs-2 me-2"></i>
+                                                            Payment Method
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold text-end">
+                                                        {{ ucfirst(optional($order)->delivery_charge_payment_method) }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fa-solid fa-money-bill fs-2 me-2"></i>
+                                                            BKAsh/NAGAD/ROCKET Account No
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold text-end">
+                                                        {{ optional($order)->client_payment_number }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fa-solid fa-money-bill fs-2 me-2"></i>
+                                                            Transaction ID
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold text-end">
+                                                        {{ optional($order)->client_payment_transaction_id }}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fa-solid fa-money-bill fs-2 me-2"></i>
+                                                            Paid Amount
+                                                        </div>
+                                                    </td>
+                                                    <td class="fw-bold text-end">
+                                                        {{ optional($order)->client_payment_amount ?? 0 }} TK
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                     <div class="col-lg-4">
                         <div class="card card-flush py-4">
                             <div class="card-header">
@@ -393,14 +395,14 @@
                                                     (৳){{ $order->sub_total }}
                                                 </td>
                                             </tr>
-                                            <tr style="background-color: #eeeeeead;">
+                                            {{-- <tr style="background-color: #eeeeeead;">
                                                 <td colspan="6" class="text-end">
                                                     VAT (0%)
                                                 </td>
                                                 <td class="text-end pe-5">
                                                     $0.00
                                                 </td>
-                                            </tr>
+                                            </tr> --}}
                                             <tr style="background-color: #eeeeeed8;">
                                                 <td colspan="6" class="text-end">
                                                     Shipping Rate
@@ -418,24 +420,24 @@
                                                     (৳){{ $order->sub_total + $order->shipping_charge }}
                                                 </td>
                                             </tr>
-                                            @if ($order->payment_status == 'delivery_charge_paid' || $order->payment_status == 'paid')
-                                                <tr style="background-color: #eee;">
-                                                    <td colspan="6" class="fs-4 text-gray-800 text-end">
-                                                        Paid Amount
-                                                    </td>
-                                                    <td class="text-gray-800 fs-4 fw-bolder text-end pe-5">
-                                                        (৳){{ $order->client_payment_amount }}
-                                                    </td>
-                                                </tr>
-                                                <tr style="background-color: #eee;">
-                                                    <td colspan="6" class="fs-4 text-gray-800 text-end">
-                                                        Due Amount
-                                                    </td>
-                                                    <td class="text-gray-800 fs-4 fw-bolder text-end pe-5">
-                                                        (৳){{ $order->total_amount }}
-                                                    </td>
-                                                </tr>
-                                            @endif
+                                            {{-- @if ($order->payment_status == 'delivery_charge_paid' || $order->payment_status == 'paid') --}}
+                                            <tr style="background-color: #eee;">
+                                                <td colspan="6" class="fs-4 text-gray-800 text-end">
+                                                    Paid Amount
+                                                </td>
+                                                <td class="text-gray-800 fs-4 fw-bolder text-end pe-5">
+                                                    (৳){{ $order->client_payment_amount ?? 0 }}
+                                                </td>
+                                            </tr>
+                                            <tr style="background-color: #eee;">
+                                                <td colspan="6" class="fs-4 text-gray-800 text-end">
+                                                    Due Amount
+                                                </td>
+                                                <td class="text-gray-800 fs-4 fw-bolder text-end pe-5">
+                                                    (৳){{ $order->total_amount }}
+                                                </td>
+                                            </tr>
+                                            {{-- @endif --}}
                                         </tbody>
                                     </table>
                                 </div>
