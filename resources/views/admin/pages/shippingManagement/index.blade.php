@@ -42,11 +42,11 @@
                                     data-bs-toggle="modal" data-bs-target="#shipping_methodsEdit_{{ $method->id }}">
                                     <i class="fa-solid fa-pen"></i>
                                 </a>
-                                <a href="{{ route('admin.shipping-management.destroy',$method->id) }}"
+                                {{-- <a href="{{ route('admin.shipping-management.destroy',$method->id) }}"
                                     class="btn btn-icon btn-bg-light-danger btn-active-color-danger btn-sm me-1 delete"
                                     data-kt-docs-table-filter="delete_row">
                                     <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                </a>
+                                </a> --}}
                             </td>
                         </tr>
                     @endforeach

@@ -25,7 +25,7 @@
                         <a href="shopping-cart.html">Click here to enter your code</a>
                     </p>
                 </div> --}}
-                <form action="{{ route('checkout.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('checkout.store') }}" id="checkoutForm" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-12 col-lg-8">
@@ -167,7 +167,7 @@
                                                         id="shipping-{{ $shippingmethod->id }}"
                                                         data-shipping_price="{{ $shippingmethod->price }}"
                                                         value="{{ $shippingmethod->id }}" required
-                                                        @checked($loop->first) />
+                                                        @checked($shippingmethod->id === 1) />
                                                     <label class="form-check-label"
                                                         for="shipping-{{ $shippingmethod->id }}">{{ $shippingmethod->title }}
                                                         {{ $shippingmethod->duration }}
@@ -226,13 +226,17 @@
                                                 I have read and agree to the website terms and conditions *</label>
                                         </div>
                                     </div>
-                                    <button type="button" class="mt-4 btn btn-primary w-100 register-btns"
-                                        data-toggle="modal" data-target="#pm_modal_1">
-                                        Place Order
-                                    </button>
-                                    {{-- <button type="submit" class="mt-4 btn btn-primary w-100 register-btns">
-                                        <i class="pr-2 fa-solid fa-clipboard-check"></i> Place order
-                                    </button> --}}
+                                    <div id="place-order-buttons">
+                                        <button type="submit" class="mt-4 btn btn-primary w-100 register-btns d-none"
+                                            id="submit-order-btn">
+                                            <i class="pr-2 fa-solid fa-clipboard-check"></i> Place order
+                                        </button>
+
+                                        <button type="button" class="mt-4 btn btn-primary w-100 register-btns d-none"
+                                            id="modal-order-btn" data-toggle="modal" data-target="#pm_modal_1">
+                                            Place Order
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -244,6 +248,20 @@
     </div>
 
     @push('scripts')
+        {{-- <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Existing shipping logic...
+
+                // ✅ Modal "Place Order" button click
+                const modalSubmitBtn = document.getElementById('modal-submit-btn');
+                const checkoutForm = document.getElementById('checkoutForm');
+
+                modalSubmitBtn.addEventListener('click', function() {
+                    checkoutForm.submit();
+                });
+            });
+        </script> --}}
+
         <script>
             function ucFirst(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);
@@ -316,7 +334,7 @@
                 });
             });
         </script> --}}
-        <script>
+        {{-- <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const subtotal = parseFloat('{{ $subTotal }}');
                 const totalInput = document.getElementById('total-input');
@@ -343,6 +361,52 @@
                     defaultShippingRadio.dispatchEvent(new Event('change'));
                 }
 
+            });
+        </script> --}}
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const subtotal = parseFloat('{{ $subTotal }}');
+                const totalInput = document.getElementById('total-input');
+                const totalPriceSpan = document.getElementById('total-price');
+
+                const submitBtn = document.getElementById('submit-order-btn');
+                const modalBtn = document.getElementById('modal-order-btn');
+
+                function togglePlaceOrderButton(shippingId) {
+                    if (shippingId === '0' || shippingId === '1') {
+                        submitBtn.classList.remove('d-none');
+                        modalBtn.classList.add('d-none');
+                    } else {
+                        modalBtn.classList.remove('d-none');
+                        submitBtn.classList.add('d-none');
+                    }
+                }
+
+                document.querySelectorAll('input[name="shipping_id"]').forEach(function(radio) {
+                    radio.addEventListener('change', function() {
+                        const shippingPrice = parseFloat(this.getAttribute('data-shipping_price')) || 0;
+                        const total = subtotal + shippingPrice;
+
+                        // Update delivery charge and total price UI
+                        const paymentDeliveryChargeSpan = document.getElementById(
+                            'paymentDeliveryCharge');
+                        if (paymentDeliveryChargeSpan) {
+                            paymentDeliveryChargeSpan.textContent = shippingPrice.toFixed(2);
+                        }
+                        totalInput.value = total.toFixed(2);
+                        totalPriceSpan.textContent = total.toFixed(2);
+
+                        // ✅ Toggle Place Order button based on selected shipping ID
+                        togglePlaceOrderButton(this.value);
+                    });
+                });
+
+                // Trigger change on default checked radio to set initial values and correct button
+                const defaultShippingRadio = document.querySelector('input[name="shipping_id"]:checked');
+                if (defaultShippingRadio) {
+                    defaultShippingRadio.dispatchEvent(new Event('change'));
+                }
             });
         </script>
     @endpush
