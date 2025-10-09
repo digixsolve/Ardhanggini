@@ -18,7 +18,7 @@
         });
     </script>
 
-    <script>
+    {{-- <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
@@ -33,7 +33,7 @@
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-M9L8S9KZ');
-    </script>
+    </script> --}}
     <!-- End Google Tag Manager -->
     @stack('heads')
     @props(['product'])
@@ -213,8 +213,8 @@
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9L8S9KZ" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
+    {{-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9L8S9KZ" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript> --}}
     <!-- End Google Tag Manager (noscript) -->
     <!-- Preloader HTML -->
     <div id="preloader" class="flex-column">
