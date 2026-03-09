@@ -18,6 +18,38 @@
         });
     </script>
 
+    <!-- Meta Pixel Code -->
+    @if (!empty(optional($setting)->pixel_code))
+        <script>
+            ! function(f, b, e, v, n, t, s) {
+                if (f.fbq) return;
+                n = f.fbq = function() {
+                    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+                };
+                if (!f._fbq) f._fbq = n;
+                n.push = n;
+                n.loaded = !0;
+                n.version = '2.0';
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = !0;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s);
+            }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+            fbq('init', '{{ optional($setting)->pixel_code }}');
+            fbq('track', 'PageView');
+        </script>
+
+        <noscript>
+            <img height="1" width="1" style="display:none"
+                src="https://www.facebook.com/tr?id={{ optional($setting)->pixel_code }}&ev=PageView&noscript=1" />
+        </noscript>
+    @endif
+
+    @stack('pixel-events')
+    <!-- End Meta Pixel Code -->
     {{-- <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
@@ -349,10 +381,12 @@
                         button.innerText = 'Included'; // Change button text
                         document.querySelector(".cartCount").innerHTML = data.cartCount;
                         cartHeader.innerHTML = data.cartHeader;
-                        fbq('track', 'AddToCart', {
-                            currency: 'TK',
-                            value: data.subTotal
-                        });
+                        if (typeof fbq === 'function') {
+                            fbq('track', 'AddToCart', {
+                                currency: 'BDT',
+                                value: data.subTotal
+                            });
+                        }
                         if (data.subTotal > 4000) {
                             Toast.fire({
                                 title: 'Congratulations!',

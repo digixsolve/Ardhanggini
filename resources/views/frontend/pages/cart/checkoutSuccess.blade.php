@@ -48,12 +48,14 @@
                 optional($order)->orderItems->map(fn($item) => optional($item->product)->sku_code)->filter()->values(),
             ) !!};
 
-            fbq('track', 'Purchase', {
-                content_ids: contentIds,
-                content_type: 'product',
-                value: totalValue,
-                currency: 'BDT'
-            });
+            if (typeof fbq === 'function') {
+                fbq('track', 'Purchase', {
+                    content_ids: contentIds,
+                    content_type: 'product',
+                    value: totalValue,
+                    currency: 'BDT'
+                });
+            }
         </script>
     @endpush
 
@@ -97,14 +99,7 @@
         </div>
     </div>
 
-    @push('scripts')
+        {{-- @push('scripts')
         <script src="https://cdn.sheetjs.com/xlsx-0.19.1/xlsx.full.min.js"></script>
-        {{-- thank-you.blade.php --}}
-        <script>
-            fbq('track', 'Purchase', {
-                currency: "TK",
-                value: {{ $order->total_amount ?? '0' }}
-            });
-        </script>
-    @endpush
+    @endpush --}}
 </x-frontend-app-layout>
