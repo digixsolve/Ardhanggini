@@ -35,7 +35,6 @@
 
     <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap_icons.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/css/font_awesome_6.css') }}">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 
     <link href="{{ asset('admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
